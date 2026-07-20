@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : General Concepts 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>General Concepts of CindyScript</h2>
+<br />
+This section is a brief introduction to the most fundamental concepts of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->.<br />
+<br />
+<h3>CindyScript Is a Functional Language</h3>
+<!-- latexreplace<br />
+\index{functional programming}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+All calculations in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> are performed by executing functions. A function can be considered as a kind of calculation that takes the arguments of the function and produces some kind of output value. Many calculations can already be expressed using only elementary functions. Thus the code fragment<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sum(1..10)
+</pre></div><br />
+<br />
+calculates the sum of the first 10 integers. Here <span style="color:red;"><code>..</code></span> is a function that takes two integer numbers, <code>a</code> and <code>b</code>, and generates as output the list of all integers from <code>a</code> to <code>b</code>. Thus <code>1..10</code> generates a list of 10 integers: <code>[1,2,3,4,5,6,7,8,9,10]</code>. The function <span style="color:red;">sum(_)</span> is unary (that is, it takes a single argument). It takes as its argument a list of numbers as input and generates as output a number that corresponds to the sum of the list entries.  Thus if we type <code>sum(1..10)</code> into the command shell, the system will respond with the result <code>55</code>.<br />
+<br />
+Moreover, seemingly procedural statements, such as an <code>if</code>-statement, are realized as functions. For instance, the expression<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(x~60~y,print("Mine"),print("Yours"))
+</pre></div><br />
+<br />
+demonstrates the function <code>if</code>, which takes three arguments. It checks the condition of its first argument <code>x&#60;y</code> and depending on the result, evaluates the second or the third argument, that is, either <code>print("Mine")</code> or <code>print("Yours"))</code>. The result of this evaluation will be the result of the <code>if(_,_,_)</code> function. Thus the above expression is equivalent to<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+print(if(x~60~y,"Mine","Yours"))
+</pre></div><br />
+<br />
+Depending on the evaluation of the condition, the <code>if</code> function returns the value of the second argument or the third argument.<br />
+<br />
+<h3>Side Effects</h3>
+<!-- latexreplace<br />
+\index{side effect}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+If a function is evaluated in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->, it may have "side effects." Side effects are important for all kinds of interactions between a <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> program and a Cinderella construction. Typical side effects are:<br />
+<br />
+<ul><li> <b>Drawing:</b> A <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> statement may cause drawing operations in the construction views.
+</li><li> <b>Assignments:</b> A <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> operation may change the position, color, size, etc. of geometric objects.
+</li><li> <b>Variable assignments:</b> A <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> statement can create variables and assign values to them.
+</li><li> <b>Function creation:</b> A <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> statement can create and define a function that can be used later.
+</li></ul>
+<br />
+For instance, the statement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw([0,0])
+</pre></div><br />
+<br />
+produces the side effect of drawing a point at position <code>(0,0)</code>. The statement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.color=[1,1,1]
+</pre></div><br />
+<br />
+sets the color of point <i>A</i> to <i>white</i>.<br />
+<br />
+<h3> Control Flow</h3>
+<br />
+<!-- latexreplace<br />
+\index{control flow}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Most users are probably accustomed to sequential programming languages like C, Java, Pascal, and Basic. In practice, writing sequential code in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is not so different from writing code in these languages. <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> has a <span style="color:red;"><code>;</code></span> operator <span style="color:red;"><code>&#60;statement1>;&#60;statement2></code></span> that simply first evaluates <code>statement1</code> and then <code>statement2</code>. The return value of the <span style="color:red;"><code>;</code></span> operator is the result of the last statement. Writing a sequential program is relatively simple, and it looks similar to a program written in a sequential language. For instance, the program<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(9,i,
+   j=i*i;
+   draw([i,j]);
+)
+</pre></div><br />
+<br />
+creates nine points on a parabola. The function <code>repeat(&#60;number&#62;, &#60;variable&#62;, &#60;program&#62;)</code> creates a loop that performs <code>&#60;number&#62;</code> runs. In each run the variable <code>&#60;variable&#62;</code> is incremented (starting with <code>1</code>). The body of the loop is the two lines <code>j=i*i; draw([i,j]);</code>.<br />
+<br />
+<h3> No Explicit Typing</h3>
+<!-- latexreplace<br />
+\index{typing}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is designed to provide a maximum of functionality with a minimum of syntactic overhead. Therefore, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> does not have explicit typing of values. Like many other languages, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> uses the concept of <span style="color:blue;">variables</span>. However, in contrast to other languages, the variables do not belong to a specific type. Any value of any type can be assigned to any variable. On the one hand, this gives the programmer a great deal of freedom to generate powerful code. For instance, the following code fragment<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x,y):=x+y;
+</pre></div><br />
+<br />
+defines a function <code>f(x,y)</code> that could be used to add integers or complex numbers as well as vectors or matrices. On the other hand, this freedom requires that the programmer take some responsibility while writing a program in order to produce code that is semantically meaningful. When a function tries to evaluate a meaningless expression, the program will not automatically terminate. Instead, the function will return the value <span style="color:red;"><code>&#095;&#095;&#095;</code></span>, which stands for a meaningless expression. So, in the above example, <code>f([1,2],[3,4])</code> will perform a vector addition and evaluate to <code>[4,5]</code>, whereas the expression <code>f(4,[3,4])</code> is meaningless and evaluates to <code>&#095;&#095;&#095;</code>.<br />
+<br />
+<h3>Local Variables: The # Variable</h3>
+<!-- latexreplace<br />
+\index{variable}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+There are several loop-like constructions in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. For instance, the operator <code>select(&#60;list&#62;,&#60;condition&#60;)</code> traverses all elements of <code>&#60;list&#62;</code> and returns a list of objects that satisfy the condition. For this to occur, there must be a way to feed elements that are to be tested to the condition. By default, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> uses a variable  <span style="color:red;">#</span>, which serves as a handle for the run variable. For instance, the statement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+select(1..30,isodd(#))
+</pre></div><br />
+<br />
+returns a list of all odd numbers between <code>1</code> and <code>30</code>. Moreover, loops use this run variable, and thus<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(9,print(#))
+</pre></div><br />
+<br />
+prints all numbers from <code>1</code> to <code>9</code>. It is also possible to use an explicit run variable by providing it as the second argument. Thus <code>select(1..30,i,isodd(i))</code> and <code>repeat(9,i,print(i))</code> are equivalent to the above statements.<br />
+<br />
+<h3>The Data Types of CindyScript</h3>
+<!-- latexreplace<br />
+\index{data type}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+As already mentioned, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> does not have explicit typing. Nevertheless, any <i>value</i> of a variable belongs to an explicit type. The basic types of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> are<br />
+<br />
+<ul><li> <span style="color:blue;">&#60;number&#62;</span>: Any numeric value. Numbers can be integers, real numbers, or complex numbers.
+</li><li> <span style="color:blue;">&#60;list&#62;</span>: A list of arbitrary objects. Such a list may semantically also have the meaning of a vector or matrix.
+</li><li> <span style="color:blue;">&#60;string&#62;</span>: A text expression.
+</li><li> <span style="color:blue;">&#60;geo&#62;</span>: A geometric object that belongs to a construction.
+</li><li> <span style="color:blue;">&#60;boolean&#62;</span>: A value <code>true</code> or <code>false</code>.
+</li></ul>
+<br />
+The number type is particularly powerful, since it can contain integers, floating-point numbers, and complex numbers.<br />
+<br />
+<h3>Variables and Their Scope</h3>
+<br />
+Since <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> does not have explicit typing for variables, it allows variables to be created "on the fly" as needed. A variable is created when it is assigned for the first time. If <code>x</code> is not already being used, the statement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=7
+</pre></div><br />
+<br />
+creates the variable <code>x</code> and assigns the value <code>7</code> to it. After a variable has been assigned, its value is accessible for the rest of the execution. Values may also be partially overloaded by local variables of a function. Thus in a function defined by<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x,y):=x+y
+</pre></div><br />
+<br />
+the values of <code>x</code> and <code>y</code> are the local parameters of the function. After the execution of the function is completed, the original value of <code>x</code> is restored. One can also produce additional local variables with the <code>regional(...)</code> operator.<br />
+<br />
+<h3>Access to Geometric Elements and Their Properties</h3>
+Variables are also used as a kind of handle to geometric objects. They form a major link of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> to Cinderella and <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->. If a variable has a name that is identical to the label of a geometric object, it provides a link to that geometric object. The value of the variable can still be overloaded by an explicit assignment of a value to the variable. The different properties of a geometric object (position, color, size, etc.) are accessible via the <span style="color:red;">.</span> operator. Thus if <code>A</code> is a point in a geometric construction, the expression <code>A.size</code> returns an integer that represents the size of the point. The expression <code>A.xy=[3,4]</code> assigns the point to the coordinate <code>[3,4]</code>. Furthermore, properties relevant to physics simulation (mass, velocity, kinetic energy, etc.) are accessible via the <span style="color:red;">.</span> operator.<br />
+<br />
+<h3>Modifiers</h3>
+<!-- latexreplace<br />
+\index{modifyer}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Many operators in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provide more functionality than one may notice at first glance. Usually these features can be accessed using so-called modifiers. The operators are defined in a way such that their default usage provides a suitable behavior for most situations. However, it may be necessary to modify the default behavior. To that end, one lists corresponding modifiers in the call of the operator. For instance, the statement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw([0,0])
+</pre></div><br />
+<br />
+draws a point at position <code>(0,0)</code>. By default, the point is green and of size 3. The statement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw([0,0],size->15,color->[1,1,0])
+</pre></div><br />
+<br />
+draws a yellow point of size 15. Modifiers have to be separated by commas. They may occur in any order and at any position of the function call.<br />
+<br />
+<br />
+<h3>Lists/Vectors/Matrices</h3>
+<tt> <!-- latexreplace</tt><br />
+\index{vector}<br />
+\index{matrix}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> offers <i>lists</i> as elementary data types. Lists are the fundamental paradigm that is used to define more complex data structures. In addition to the obvious application as enumeration objects, lists can also be used to represent vectors and matrices. A vector is a list of numbers. A list of vectors whose vectors all have the same length will be interpreted as a matrix. <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provides the usual operations for combining vectors, matrices, and numbers. Depending on the content of <code>a</code> and <code>b</code>, the expression <code>a*b</code> may represent a usual multiplication of numbers, a matrix product, or a matrix/vector multiplication.<br />
+<br />
+In <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> there is no distinction between row vectors and column vectors on the level of vectors. However, by the use of suitable functions one can convert a vector of length <code>n</code> to an (<i>n</i> × 1) matrix or to a (1 × <i>n</i>) matrix.<br />
+<br />
+<h3>Drawing</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provides many statements with which one can draw directly on the canvas of the geometric views. Using this feature it is possible to enrich the behavior of Cinderella constructions significantly. It is possible to draw points, lines, segments, polygons, tables, functions, etc. However, it is important not to confuse a script-drawn geometric object with a geometric object that is active in geometry. It is not possible to use such script-drawn elements as definers in Cinderella modes.<br />
+<br />
+If one wants to modify active elements using a script, then it is necessary to first construct them and then alter their positions using <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> statements. All free elements can be moved by setting their position parameters.<br />
+<br />
+<br />
+<h3>Execution Slots</h3>
+<br />
+The <a title="no description" href="tiki-cindydoc.php@page=The+CindyScript+Editor.html" class="wiki">script window of Cinderella</a> in which one enters the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code contains several slots in which the text can be entered. The particular slots are called<br />
+<br />
+<ul><li> Draw
+</li><li> Move
+</li><li> Initialization
+</li><li> Timer Tick
+</li><li> Simulation Start
+</li><li> Simulation Stop
+</li><li> …
+</li></ul>
+<br />
+Each of these entries corresponds to the occasion that triggers the execution of the script. For instance, scripts in the <i>Draw</i> slot is executed directly before a screen refresh in the view. The <i>Initialization</i> slot is executed directly after the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code is parsed. <i>Simulation Start</i> is executed before starting an animation when the play button is pressed. Using this mechanism it is possible to write programs that react nicely to user events.<br />
+<br />
+<br />
+<h3>Runtime Error handling</h3>
+<tt> <!-- latexreplace</tt><br />
+\index{error handling}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> runs in a runtime environment. In principle, every tiny move in a construction can cause the evaluation of a script. For this to happen, a reasonable design decision in the language had to be made concerning the occurrence of runtime errors. It would be very distractive if the usual user interaction was interrupted by error messages over and over (in particular, if a construction is used as an applet within an HTML page). For this reason, error handling in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> at runtime reports only the first ten errors. However, runtime errors will never interrupt execution. Runtime errors (such as division by zero, or access to a nonexistent array index) are simply ignored in the program flow. Erroneous function evaluations simply produce an undefined result, and the calculation proceeds (perhaps causing more undefined results). This usually guarantees fluent performance of a construction even if errors occur.<br />
+<br />
+This feature may make debugging of programs a little cumbersome, since runtime errors are not reported. For this purpose a special function, <span style="color:red;"><code>assert(&#60;boolean&#62;,&#60;string&#62;)</code></span>, was introduced to check whether a certain assumption about the current data is satisfied. If the assumption in the first argument is not satisfied, the message in the second argument is printed.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:38:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=General%20Concepts">
+    http://doc.cinderella.de/tiki-index.php?page=General%20Concepts
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

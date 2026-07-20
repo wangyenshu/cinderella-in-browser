@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : GeometriesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>幾何学</h2>
+<!--latexreplace<br />
+\index{hyperbolic geometry}<br />
+\index{spherical geometry}<br />
+\index{euclidean geometry}<br />
+\index{geometries}<br />
+--><!-- /latexreplace --><br />
+<b>シンデレラ</b>の特徴の1つは、様々な幾何学での作図ができるという点です。 「様々な幾何学での」という考え方にはなれていない人もいるかもしれません。 <a title="no description" href="tiki-cindydoc.php@page=Theoretical+BackgroundJ.html" class="wiki">理論的背景</a>を読めば、どのような幾何学が元にあって、それらが シンデレラにどのように組み込まれているかを知ることができるでしょう。すでに、 ユークリッド幾何、非ユークリッド幾何について知っている読者はその章だけ を参照すればよいでしょう。<br />
+<br />
+もう1つ注意しておきます。幾何学 と 表示を混同しないように注意しましょう。 どちらも見た目は同じですが、幾何学とは要素の振舞いを決定するものであり、表示とは要素の見え方を決めるものなのです。<br />
+<br />
+<br />
+<h3>幾何学の種類</h3>
+<br />
+<b>シンデレラ</b>のメインのウィンドウには幾何学を選択するボタンがついています。 現在のバージョンでは3種類の幾何学が使えるようになっています。 「ユークリッド幾何」「双曲幾何」「楕円幾何」です。 次のボタンを押すことにより幾何学を切り替えることができます。<br />
+<tt> <span class="img"><img alt="" src="buttonsback/euclidean.png" border="0"  /></span>  ユークリッド幾何,  <span class="img"><img alt="" src="buttonsback/hyperbolic.png" border="0"  /></span>  双曲幾何, または  <span class="img"><img alt="" src="buttonsback/elliptic.png" border="0"  /></span>  楕円幾何です。</tt><br />
+<br />
+作図の途中で幾何学を切り替えても、それまでに描いた要素は変わりません。 しかし切り替え後に描いた要素は新しい幾何学に従って解釈されます。 それぞれの要素はその要素がどの幾何学に属しているかを示す記録がなされているとみなすことができます。 幾何学の選び方によって性質が変わってしまう基本的な概念は、<i>距離</i>と<i>角度</i>です。<br />
+<br />
+しかし、作図の他の部分にも幾何学の選択が影響するところがあります。 たとえば、角の2等分線ですが、これは2直線に対して、そのなす角を半分にするような直線を与えるものです。 角度の測り方が変わってしまえば、角の2等分線の定義も変わってしまいます。 同じようなことは、平行線や垂線についても言えます。 円の定義も幾何学によって変わります。 円とは中心となる1点から等距離にある点の集まりということですが、距離の概念が変わってしまえば、円の概念も変わってしまうということです。<br />
+<br />
+他の操作は幾何学の選択に依存しません。 2点を結ぶ直線は、どの幾何学を選ぼうともいつも同じ図形になります。<br />
+<br />
+次のリストは幾何学の選び方に影響を受ける操作を並べたものです。 作図される要素の数や場所が変わることがあるのがわかるでしょう。<br />
+<br />
+<ul><li> <b>距離：</b>距離の考え方は幾何学の選び方に依存しています。 双曲幾何では2点間の距離が複素数になってしまうこともあります。 たとえば2点を結ぶ直線が無限遠点の外側を通る場合などはそうなります。
+</li><li> <b>角度：</b>角度の概念も幾何学によって変わります。 距離の場合と同様に、角度が複素数の値をとることもあります。
+</li><li> <b>円：</b>円の定義は距離の概念に依存しています。 ですから、選んだ幾何学によって変わります。 ユークリッド表示では双曲幾何学の円や楕円幾何学の円は2次曲線の形に見えます。 他の表示にしてみるともっとよくわかります。 双曲表示(ポアンカレディスク)では双曲幾何学の円はまさしく円のように見えます。 楕円表示では楕円幾何学の円は球の上の円であることがわかります。
+</li><li> <b>鏡映：</b>鏡映の概念は、距離の概念に依存しますから、従って幾何学の選び方にも依存します。 どの種類の鏡映についても同じことです。
+</li><li> <b>角の二等分線：</b>どの幾何学においても、2直線の角の2等分線は定義されます。 しかしその場所は幾何学によって異なります。 双曲幾何学では、実数の直線の角の2等分線が複素数の直線になることもあります。
+</li><li> <b>中点：</b> 2頂点の中点は、距離の定義に依存した概念です。 ユークリッド幾何学では中点はただ1つです。 双曲幾何と楕円幾何では中点はいつでも2つあります。 注意： 双曲表示で見ると、画面上に見える中点は1つだけです。 というのは、もう1つが無限遠点のかなたにあるからです。
+</li><li> <b>固定した角度の直線：</b>この作図は幾何学の選び方に依存します。 というのは、角度の定義が幾何学によっているからです。
+</li><li> <b>垂線：</b>垂線の概念は角度に依存していますから、幾何学の選び方によります。
+</li><li> <b>平行線：</b> シンデレラでは、直線<i>L</i>の平行線を「<i>L</i> とのなす角度が0である直線」 というように定義しています。 ユークリッド幾何学では1点を通る平行線は1本です。 (訳註：ユークリッド幾何学では直線の無限遠点は1点であり、無限遠点と定点とを結ぶ直線が唯一の平行線となります。) しかし双曲幾何学や楕円幾何学では一般には1点を固定しても平行線は2本引けます。 楕円幾何学では平行線は複素係数をもつ直線になりますから、 式による表示でしか見ることができません。
+</li></ul>
+<br />
+<b>シンデレラ</b>の現在のバージョンでは幾つかの操作が双曲幾何や楕円幾何では定義されていません。 たとえば、<a title="no description" href="tiki-cindydoc.php@page=Circle+by+Three+PointsJ.html" class="wiki">３点で決まる円</a>, <a title="no description" href="tiki-cindydoc.php@page=AreaJ.html" class="wiki">面積</a>, <a title="no description" href="tiki-cindydoc.php@page=CenterJ.html" class="wiki">２次曲線の中心</a>です。これらは、ユークリッド幾何学でのみ計算がなされます。<br />
+<br />
+<A NAME="Views and Geometries"></A><br />
+<h3>表示と幾何学</h3>
+<br />
+もちろん、どの幾何学でもあらゆる表示と組み合わせることは可能ですが、数学的に意味のある場合は限られています。 ここに一般的な組み合わせをあげてみましょう。<br />
+<br />
+<b>ユークリッド幾何</b>を<i>ユークリッド表示</i>する：<br />
+この組み合わせがもっとも一般的な場合です。 この場合、おのおのの要素は「普通の平面」にある「普通の要素」のように振舞います。<br />
+<br />
+<b>ユークリッド幾何</b>を<i>球面表示</i>する：<br />
+この組み合わせにより、ユークリッド平面の無限遠点を観察することができます。 球面表示はユークリッド平面の2重被覆になっています。 平面上の任意の直線は球面上の大円に対応しています。 平面上の任意の点は球面上の一組の対蹠点に対応しています。 そして、球の絵の縁(表示させた最初の状態での、表側と裏側の境目)がユークリッド平面の無限遠点に対応しています。<br />
+<br />
+<b>双曲幾何</b>を<i>ユークリッド表示</i>する：<br />
+ここで表示されているのは、通称ベルトラミ--クライン・モデルと呼ばれる双曲幾何学のモデルの1つです。 このモデルにおいては、双曲直線は普通の意味での直線と一致します (従って、角度は見た目のものと異なります)． これはケーリー-クライン幾何の定義から導かれることです。 この表示においては双曲幾何の水平線は細い円で表示されます。<br />
+<br />
+<b>双曲幾何</b>を<i>双曲表示</i>する：<br />
+これはいわゆるポアンカレディスク・モデルと呼ばれるものです。 ここでの双曲直線とは、単位円に直交する円弧です。 ここでの双曲角とは、円弧と円弧のなす角をユークリッドの意味で測ったものになっています。 数学の言葉を使うと、「ポアンカレディスク・モデルは双曲平面の等角写像による像である」ということになります。 この絵では、双曲円は実際に円の形をしています。<br />
+ポアンカレディスク・モデルで表示されている部分は、対応しているケーリー-クライン幾何学の全平面の一部分にすぎません。 ユークリッド表示での円の内側がちょうどここに対応しています。<br />
+ポアンカレディスク・モデルにおける長さは、円内の点から円上の点までの距離が無限大になるように決められています。<br />
+<br />
+<b>楕円幾何</b>を<i>球面表示</i>する：<br />
+球面表示は、楕円幾何を目で見るには最も適しています。 2本の直線のなす角とは、対応する2本の大円の球面上でのなす角度です。 2点間の距離は、球面上の最短距離を測ったものが対応します。 楕円幾何の円は球面上に描かれた円に対応しています。<br />
+<br />
+しかし、多少の注意が必要です。 楕円幾何学は球面上の幾何学とはやや異なるからです。 楕円幾何学では、球面上の対蹠点を同じ点であるとみなしています。<br />
+<br />
+(阿原)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 28 of August, 2011 [10:14:49 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=GeometriesJ">
+    http://doc.cinderella.de/tiki-index.php?page=GeometriesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Texts and TablesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>文字と表</h2>
+<br />
+CindyScript を用いて描画画面に書いた文字のスタイルを設定することが簡単にできます。 drawtext 演算子がそれです。また、drawtable 演算子で表を作ることもできます。スクリプト内で文章や表を扱えるのは便利です。これは、入力に対する説明文を書いたりするのに大切な道具です。<br />
+<br />
+<br />
+<A NAME="drawtext"></A><br />
+<h4>文字の表示: <span style="color:red;"><code>drawtext(&#60;vec&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>drawtext(&#60;vec&#62;,&#60;string&#62;)</code> 演算子は <code>&#60;string&#62;</code> で与えられる文字列を <code>&#60;vec&#62;</code>の指定する位置に表示します。この位置ベクトルは、 ユークリッド xy-座標か、同次座標で与えます。<br />
+<br />
+<b>例:</b>  <code>drawtext((0,0),"Hello World")</code> 命令は、文字列 "Hello World"  (0, 0) の位置から書き始めます。<br />
+<br />
+<b>Modifiers:</b> The <code>drawtext</code> では外観と位置に関するいくつかの修飾子が使えます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >文字の大きさの設定</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" >文字の色を設定</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >文字の不透明度を設定</td></tr><tr><td class="wikicell" ><code>xoffset</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >文字と基準点の x 方向のピクセル単位の隔たりを設定t</td></tr><tr><td class="wikicell" ><code>yoffset</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >文字と基準点の y 方向のピクセル単位の隔たりを設定</td></tr><tr><td class="wikicell" ><code>offset</code></td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;real&#62;]</code></td><td class="wikicell" >文字と基準点の xy ピクセル単位の隔たりを設定</td></tr><tr><td class="wikicell" ><code>align</code></td><td class="wikicell" ><code>"left", "right", "mid"</code></td><td class="wikicell" > 文字の配置を設定</td></tr><tr><td class="wikicell" ><code>bold</code></td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >太字</td></tr><tr><td class="wikicell" ><code>italics</code></td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >斜体</td></tr><tr><td class="wikicell" ><code>family</code></td><td class="wikicell" ><code>&#60;文字列&#62;</code></td><td class="wikicell" >フォントの指定</td></tr></table><br />
+<br />
+<br />
+<br />
+　３つのフォント <code>serif</code>, <code>sansserif</code> および <code>monospaced</code> の他に標準的なフォントが使えます。<br />
+<br />
+<b> 例:</b> 次のコードは、図のような結果になります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=1..10;
+forall(x,i,
+  drawtext((i,0),"Text",
+  size->2*i+15,
+  bold->true,
+  color->(1-i/10,0,i/10))
+)
+</pre></div><br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TextX.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+　文字列中に改行コードがあると、文字通りそこで改行されます。ただし、改行コードは不可視ですので、次のようにスクリプト中で単にEnterキーで改行するときに入ります。これにより、複数行からなる文章を書くことができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->16,
+"In Cinderella 'newlines' in Text
+are really used as line terminators.
+So this text will appear as a 
+multilined text.")
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Newlines.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="fontfamilies"></A><br />
+<h4>利用できるフォント: <span style="color:red;"><code>fontfamilies()</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子では、あなたのコンピュータで利用できるすべてのフォントのリストを作成します。<br />
+次のコードはそれらのフォントの名前をその字体で表示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+families=fontfamilies();
+i=0;
+while(i＜length(families),i=i+1;
+   drawtext((mod(i,5)*7,round(i/5)),families_i,family->families_i);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Fonts.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="unicode"></A><br />
+<h4>Unicode: <span style="color:red;"><code>unicode(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> CinderellaではUnicodeが扱えます。Unicodeで文字を表示するには<a href="https://doc.cinderella.de/tiki-editpage.php?page=Cinderella%E3%81%A7%E3%81%AFUnicode%E3%81%8C%E6%89%B1%E3%81%88%E3%81%BE%E3%81%99%E3%80%82Unicode%E3%81%A7%E6%96%87%E5%AD%97%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF" title="Create page: Cinderella%E3%81%A7%E3%81%AFUnicode%E3%81%8C%E6%89%B1%E3%81%88%E3%81%BE%E3%81%99%E3%80%82Unicode%E3%81%A7%E6%96%87%E5%AD%97%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF" class="wiki wikinew">?</a> <code>unicode(&#60;string&#62;)</code> 関数を使います。引数は、16進数のUnicode列です。戻り値はそれに対応する文字です。修飾子によって16進数ではない形式の引数にもできます。<br />
+<br />
+<b>修飾子:</b> <code>base -&#62; &#60;int&#62;)</code> を用いると、Unicodeのコード表現を変更できます。<br />
+<br />
+<b>例:</b>  <code>unicode("0041")</code> と <code>unicode(65,base->10)</code> はどちらも文字 "A"を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="candisplay"></A><br />
+<h4>文字列の表示可/不可: <span style="color:red;"><code>candisplay(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、与えられた文字列が、現在選択されているフォントで表示できるかどうを調べます。戻り値はブール値です。<br />
+<br />
+<hr />
+<br />
+<A NAME="drawtable"></A><br />
+<h4>表を描く: <span style="color:red;"><code>drawtable(&#60;vec&#62;,&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+１次および２次のリストで表を作れます。リストと位置を用いた簡単な書式でどこに表を描くかが決められます。表の外観のために、修飾子も使えます。<br />
+<br />
+<br />
+<b>例:</b> 次のコードで図のような表ができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=1..10;
+table=apply(x,(#,#^2,#^3,#^4));
+drawtable((0,0),table);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Table1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b>  <code>drawtable</code> 演算子は、表の図形的表現に関する多くの修飾子を有します。その要約を次に示します。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>width</code></td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >セル幅をピクセル単位で指定する</td></tr><tr><td class="wikicell" ><code>height</code></td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >セルの高さをピクセル単位で指定する</td></tr><tr><td class="wikicell" ><code>flip</code></td><td class="wikicell" ><code></code></td><td class="wikicell" > 行と列を入れ替える</td></tr><tr><td class="wikicell" ><code>border</code></td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" > 背景と線を描くかどうかの指定</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >文字の大きさを設定</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;実数&#62;,&#60;real&#62;]</code></td><td class="wikicell" >文字の色を設定 </td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >文字の透明度を設定</td></tr><tr><td class="wikicell" ><code>offset</code></td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;実数&#62;]</code></td><td class="wikicell" > 文字と基準点の xy ピクセル単位の隔たりを設定</td></tr><tr><td class="wikicell" ><code>align</code></td><td class="wikicell" ><code>"left", "right", "mid"</code></td><td class="wikicell" > セル内での横位置を指定</td></tr><tr><td class="wikicell" ><code>back</code></td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >表の背景を描くかどうかを指定</td></tr><tr><td class="wikicell" ><code>back</code></td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" > 表の背景を指定したRGBの色で描くかどうかを指定</td></tr><tr><td class="wikicell" ><code>backalpha</code></td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >  表の背景の不透明度</td></tr></table><br />
+<br />
+<br />
+<br />
+<b>例:</b> 次のコードは  <code>drawtable</code> 演算子を用いた精巧な例です。修飾子が表の外観を見事に表現しています。２番目の表は見出しです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=1..9;
+tab=apply(x,(#,#^2,#^3,#^4));
+tab1=("x","x^2","x^3","x^4");
+linecolor((0,0,.8));
+drawtable((0,0),tab,
+  width->50,
+  back->(1,0,0),
+  backalpha->0.1,
+  align->"right",
+  size->12
+);
+linecolor((0,0,0));
+drawtable((0,8,1),tab1,flip->true,
+  width->50,
+  height->33,
+  back->(0,0,1),
+  backalpha->0.4,
+  align->"mid",
+  size->16,
+  color->(1,1,1)
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Table2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 16 of April, 2014 [22:40:54 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Texts%20and%20TablesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Texts%20and%20TablesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

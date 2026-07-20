@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Appearance of ObjectsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1>オブジェクトの外観と表現</h1>
+<br />
+シンデレラの描画エンジンは、点、直線、文字などの要素を表示するときの外観の初期設定を持っています。描画命令が修飾子なしで実行されるときは初期設定が用いられます。これは、視覚的な統一を図るのに便利です。外観として主なものは <b>色</b>, <b>大きさ</b>, そして <b>透明度</b>です。<br />
+<br />
+<br />
+<A NAME="gsave"></A><br />
+<h2>表現データの一時保存: <span style="color:red;"><code>gsave()</code></span> と <span style="color:red;"><code>grestore()</code></span></h2>
+<br />
+一時的に異なる初期設定の表現データを使いたいことがよくあります。そのために、演算子 <span style="color:red;"><code>gsave()</code></span> と <span style="color:red;"><code>grestore()</code></span>  が用意されています。演算子 <code>gsave</code> は図形の情報(大きさ、色、透明度)をスタックに保存します。演算子  <code>grestore</code> はスタックからこれらの情報を読み出します。表現のデータに加え、局所的な座標系に関する情報も同様に保存します。<br />
+<br />
+<b>次も参照してください:</b> <a title="no description" href="tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html" class="wiki">座標系</a><br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<A NAME="size"></A><br />
+<h2>大きさ</h2>
+<br />
+初期状態の大きさは <span style="color:red;"><code>pointsize(<number>)</code></span>, <span style="color:red;"><code>linesize(<number>)</code></span>,  <span style="color:red;"><code>textsize(<number>)</code></span> の３つの演算子で設定できます。大きさは、実数で指定します。点と線の大きさは1から20までの整数で、ピクセルのサイズです。次のコードと実行結果はその例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sizes=1..15;
+forall(sizes,
+  pointsize(#);
+  textsize(#+4);
+  draw((#,0));
+  drawtext((#,1),#);
+)
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/SizesX.png" border="0"  /></span><br />
+<br />
+<hr />
+<br />
+<A NAME="color"></A><br />
+<h2>色の設定</h2>
+<br />
+色は、赤/緑/青(R/G/B)の3つの実数のリストで指定します。これを色ベクトルといいます。それぞれの値は0から1までで、0が最も暗く1が最も明るくなります。このＲＧＢ指定による基本的な8色は次のようになります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>color:</b></td><td class="wikicell" ><b>vector:</b></td></tr><tr><td class="wikicell" >black</td><td class="wikicell" >(0,0,0)</td></tr><tr><td class="wikicell" >red</td><td class="wikicell" >(1,0,0)</td></tr><tr><td class="wikicell" >green</td><td class="wikicell" >(0,1,0)</td></tr><tr><td class="wikicell" >blue</td><td class="wikicell" >(0,0,1)</td></tr><tr><td class="wikicell" >cyan</td><td class="wikicell" >(0,1,1)</td></tr><tr><td class="wikicell" >magenta</td><td class="wikicell" >(1,0,1)</td></tr><tr><td class="wikicell" >yellow</td><td class="wikicell" >(1,1,0)</td></tr><tr><td class="wikicell" >white</td><td class="wikicell" >(1,1,1)</td></tr></table><br />
+<br />
+初期状態の色は、 <span style="color:red;"><code>pointcolor(<colorvec>)</code></span>, <span style="color:red;"><code>linecolor(<colorvec>)</code></span>,  <span style="color:red;"><code>textcolor(<colorvec>)</code></span>の3つの演算子で設定できます。さらに、 <span style="color:red;"><code>color(<colorvec>)</code></span> 演算子はすべてのオブジェクトの色を同時に設定します。<br />
+<br />
+ある実数が色のコードと解釈される場合、0以下の数は0に、1以上の数は1に置き換えられます。<br />
+<br />
+次のコードと実行結果はその例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+n=13;
+ind=1..n;
+pointsize(9);
+forall(ind,i,
+  forall(ind,j,
+    pointcolor((i/n,j/n,0));
+    draw((i,j),noborder->true);
+    pointcolor((0,i/n,j/n));
+    draw((i+15,j),noborder->true);
+    pointcolor((j/n,0,i/n));
+    draw((i+30,j),noborder->true);
+  )
+)
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/ColorsX.png" border="0"  /></span><br />
+<br />
+<hr />
+<br />
+<A NAME="opacity"></A><br />
+<h2>透明度</h2>
+<br />
+透明度は0から1までの実数で指定します。ここで、0は完全に透明で、1は完全に不透明になります。 この範囲外の値は0か1のどちらかに設定されます。透明度は、演算子  <span style="color:red;"><code>alpha(<number>)</code></span> によりすべての要素に設定されます。<br />
+<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2>色の関数</h2>
+<br />
+色についての計算を簡単にするために、色の値を返すいくつかの関数が用意されています。<br />
+<br />
+<A NAME="red"></A><br />
+<h3>赤色  <span style="color:red;"><code>red(<number>)</code></span>:</h3>
+<br />
+<b>説明:</b> この演算子は緑と青の値を0にした色ベクトルを作ります。赤の値は <code><number></code> で設定されます。<br />
+<br />
+<hr />
+<br />
+<A NAME="green"></A><br />
+<h3>緑色  <span style="color:red;"><code>green(<number>)</code></span>:</h3>
+<br />
+<b>説明:</b> この演算子は赤と青の値を0にした色ベクトルを作ります。緑の値は <code><number></code> で設定されます。<br />
+<br />
+<hr />
+<br />
+<A NAME="blue"></A><br />
+<h3>青色  <span style="color:red;"><code>blue(<number>)</code></span>:</h3>
+<br />
+<b>説明:</b> この演算子は赤と緑の値を0にした色ベクトルを作ります。青の値は <code><number></code> で設定されます。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="gray"></A><br />
+<h3>灰色  <span style="color:red;"><code>gray(<number>)</code></span>:</h3>
+<br />
+<b>説明:</b> この演算子は、赤、緑、青の各値を <code><number></code> に設定した色ベクトルを作ります。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="hue"></A><br />
+<h3>虹色  <span style="color:red;"><code>hue(<number>)</code></span>:</h3>
+<br />
+<b>説明:</b> この演算子は、すべての色のうちの一つを表す色ベクトルを作ります。 <code><number></code> は0から1までの数です。この値の範囲は色相環の範囲を表します。１より大きな値の場合には、色相環を何周かして色を決めます。<br />
+<br />
+次のコードと実行結果はその例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+n=360;
+ind=(1..n)/n;
+linesize(2);
+forall(ind,
+  color(hue(#));
+  draw((0,0),(sin(#*2*pi),cos(#*2*pi)))
+)
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/HueX.png" border="0"  /></span><br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [10:51:36 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Appearance%20of%20ObjectsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Appearance%20of%20ObjectsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

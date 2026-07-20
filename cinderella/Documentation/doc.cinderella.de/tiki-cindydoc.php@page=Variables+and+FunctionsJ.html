@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Variables and FunctionsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>変数と関数</h2>
+<br />
+CindyScript では、変数と関数は事前に宣言される必要はありません。それらは必要に応じて作られ、明確な型を持ちません。ここが他の多くのプログラミング言語と異なるところです。この節では、どんな状況下で関数や変数が作られるかを学びます。また、変数を削除したり初期化する方法や変数の適用範囲についても学びます。<br />
+<br />
+<br />
+<h3>関数の定義</h3>
+<br />
+CindyScript で関数を定義することはとても簡単です。関数の名前を決め、変数のリストを作り、関数の内容を書きます。引数の型や関数の型を明示する必要はありません。 では、簡単な関数の例を提示しましょう。関数 <code>f</code> を次のように定義します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(n):=sum(1..n,i,i^2)
+</pre></div><br />
+<br />
+この例ではこの例では、1から <code>n</code> までの２乗の和を計算します。従って、 <code>f(4)</code> を実行すると <code>30</code> を表示します。<br />
+<br />
+２つ以上の引数を持つ関数も同じように定義できます。 a と b が2次元のベクトルを表す次の関数では、このベクトルによって定義される正方形を描きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sq(a,b):=(
+  n=(b-a);
+  n2=(-n_2,n_1);
+  draw(a,b);
+  draw(a,a-n2);
+  draw(b,b-n2);
+  draw(a-n2,b-n2);
+)
+</pre></div><br />
+<br />
+このコードでは少し面白いことが起こります。まず、このコードは原則として手続き的になっています。関数の本体は<code>(命令文_1; … ;命令文_k)</code>の形をしています。さらに、関数は変数 n と n2 を使います。これらの変数は、関数が最初に呼ばれたときに作られますが、局所変数ではありません。その値は、あとで関数が呼ばれたときにも参照されます。<br />
+<br />
+この関数の戻り値は、関数の中で最後の文で評価された値です。したがって、次の関数では、3つの数の平均値を計算して戻り値とします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+mean(a,b,c):=(
+  sum=a+b+c;
+  sum/3;
+)
+</pre></div><br />
+<br />
+関数は型を明示しないので、引数に実数以外のものを与えることも可能です。関数は可能な限り多様に解釈され、その中で使われている演算の一般性によってのみ制限を受けます。例えば,  <code>mean([3,4],[2,7],[4,7])</code> は <code>[3,6]</code>を意味します。<br />
+<br />
+<br />
+<h3>再帰的関数</h3>
+<br />
+関数は再帰的に定義することもできます。再帰の各段階において、パラメータが更新されます。次のコードでは数の階乗を計算します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+fac(n):=if(n==0,1,n*fac(n-1));
+</pre></div><br />
+<br />
+つぎのやや複雑なコードでは、２つの正の整数の最大公約数を計算します。ユークリッドの互除法です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+gcd(a,b):=if(b==0,                //再帰の終了条件
+               a,                 //最後にaを戻り値とする
+               if(b>a,            //bがaより大きければ
+                 gcd(b,a),        //aとbを入れ替えて再帰
+                 gcd(b,mod(a,b))  //そうでなければaをbで割った余りを用いて再帰
+                 )
+             );
+</pre></div><br />
+<br />
+<br />
+<h3>変数の定義</h3>
+<br />
+CindyScript における変数は、コード内で最初に現れたときに定義されます。変数はプログラムが終わるまで存在します。変数はどんな種類のもの(数、文字列、ブール値、リスト、幾何学的な点、あるいはプログラムでさえ)も含みます。 次のプログラムでは x に 4 を、 b に <code>[9,27]</code> を、 c に<code>[18,54]</code> を代入します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=3;
+b=[x^2,x^3];
+c=2*b;
+</pre></div><br />
+<br />
+関数で定義される変数は、関数の外側からも見えます。例外は、関数のパラメータと、明示的に定義された局所変数です。次のプログラムは、変数の有効範囲を例示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):= (
+  x=x+x;
+  println(x);
+  y="User"  
+);
+x="Hello ";
+y="World";
+println(x+y);
+f(x);
+println(x+y);
+</pre></div><br />
+<br />
+実行結果は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+Hello World  
+Hello Hello  
+Hello User 
+</pre></div><br />
+<br />
+関数の中における局所変数は <code>regional(…)</code> 命令によって明示的に定義されます。関数の外に出れば自動的に消去されます。さきほどのプログラムを少し変更した次のプログラムでは <code>y</code> は、関数の中で局所変数です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):= (
+  regional(y);
+  x=x+x;
+  println(x);
+  y="User";
+);
+x="Hello ";
+y="World";
+println(x+y);
+f(x);
+println(x+y);
+</pre></div><br />
+<br />
+<br />
+実行結果は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+Hello World 
+Hello Hello  
+Hello World 
+</pre></div><br />
+<br />
+ループ変数も局所変数とみなされます。<br />
+<br />
+<h3>関数内での変数の拘束</h3>
+<br />
+　関数の中で使われる変数は、それが局所変数として定義されていないときは、関数の実行後も利用できる状態にあります。また、関数の評価に影響を与えるような値を持つかも知れません。<br />
+　たとえば、次のコードを見てください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=3;
+timesa(x):= x*a;
+println(timesa(2));
+a=5;
+println(timesa(2));
+</pre></div><br />
+<br />
+実行結果は次のようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+6
+10
+</pre></div><br />
+<br />
+<tt> <code>timesa(2)</code> の戻り値（評価結果）は大域的変数 <code>a</code> の値に依存し、まず <code>a=3</code> として評価されます。そのあと、 <code>a=5</code> と再定義されると、関数 <code>timesa</code> の結果は変化します。これはあるときにはそのつもりで実行されることもあれば、そうでないこともあります。関数を定義したときに、その値が変化しないように「凍結」させたいこともあるでしょう。 <span style="color:red;"><code>::=</code></span> で関数を定義すれば変数の値を凍結することができます。この演算子は、変数に割り当てられた値をすべてコピーし、関数内に拘束します。先ほどのコードを次のように変えます。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=3;
+timesa(x)::= x*a;
+println(timesa(2));
+a=5;
+println(timesa(2));
+</pre></div><br />
+<br />
+実行結果は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+6
+6
+</pre></div><br />
+<br />
+関数が呼ばれるたびに、変数 <code>a</code> には元の値が書き戻されます。この拘束のプロセスは、関数内で使われるすべての変数に及ぶだけではありません。 それは、関数の実行に関係する <span style="color:blue;">すべての</span> 変数に及びます。<br />
+<br />
+この拘束を回避する方法があります。変数の値は修飾子を用いると明確に設定できます。次のコードを見てください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=3;
+timesa(x)::= x*a;
+println(timesa(2));
+println(timesa(2,a->10));
+</pre></div><br />
+<br />
+結果は次のようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+6
+20
+</pre></div><br />
+<br />
+<br />
+<h3>定数</h3>
+<br />
+　数学では、円周率πや虚数単位iのような定数がよく使われます。πは「pi」、iはそのままiです。これらの定数は <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> ではあらかじめ定義されています。ですから、複素数を 3+i*5 のように書くことが可能です。しかし、これらの変数の値を定義しなおすこともできます。したがって、ループ変数としてこれらの変数を使うこともできます。 次のプログラムがこのことを示しています。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+println(i);
+repeat(4,i,println(i));
+println(i);
+</pre></div><br />
+<br />
+実行結果は次のようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+0 + i*1 
+1 
+2 
+3 
+4 
+0 + i*1 
+</pre></div><br />
+<br />
+もしも、複素数を使うときに、変数 i が何かの値で上書きされてしまった場合には、 <code>complex([0,1])</code>演算子によって戻すことができます。その他の既定の定数は、論理で使う true と false 空リストの nil です。<br />
+<br />
+もう一つ、重要な既定の変数があります。幾何学的要素の名前は、その名前の変数として定義されたものとみなします。したがって、例えば、点 <i>A</i> は変数<code>A</code> によってアクセスできます。この件については   <a title="no description" href="tiki-cindydoc.php@page=Accessing+Geometric+ElementsJ.html" class="wiki">幾何学要素へのアクセス</a>に詳しく書かれています。<br />
+<br />
+なお、Cindyscriptでは、ネピア数eは用意されていません。eを使うときは、exp()関数を用いて e=exp(1) とします。<br />
+<br />
+<h3> ユーザー定義データ</h3>
+<br />
+　ユーザーによる定義データを幾何の要素に結びつけることができます。簡単ですが強力なものです。そのためには、演算子 <span style="color:red;"><code>:</code></span> を使います。コロンのあとの任意の文字列がデータにアクセスするためのキーとして付け加えられます。このキーで任意の値が付加されます。<br />
+<br />
+　使用法を例で説明しましょう。<i>A</i> と <i>B</i>  は幾何のオブジェクトです。次のコードは、それらにいくつかのデータを付加します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A:"age"=17;
+B:"age"=34;
+A:"haircolor"="brown";
+B:"haircolor"="blonde";
+</pre></div><br />
+<br />
+データは同じキーでアクセスされます。したがって、次のコードでは<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+  forall(allpoints(),p,
+    println(p:"age");
+    println(p:"haircolor");
+)
+</pre></div><br />
+<br />
+出力結果は次のようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+17
+brown
+34
+blonde
+</pre></div><br />
+<br />
+幾何オブジェクトに付与されているキーのリストには <span style="color:red;"><code>keys(...)</code></span> 演算子でアクセスできます。したがって先ほどの例では、次のコードにより<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+print(keys(A));
+</pre></div><br />
+<br />
+次の結果を得ます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+["age","haircolor"];
+</pre></div><br />
+<br />
+<br />
+付与するデータはリストで与えることもできます。これにより、変数のようなカスタムデータを作ることができます。次のコードはこの例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+  a=[];
+  a:"data"=18
+  print(a:"data")
+</pre></div><br />
+<br />
+<b>注意:</b> この機能は今後変更される可能性があります。データ構造のようなものをサポートすることが計画されています。ですから、将来のリリースにおいて互換性を持たなくなるかもしれません。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [10:08:55 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Variables%20and%20FunctionsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Variables%20and%20FunctionsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

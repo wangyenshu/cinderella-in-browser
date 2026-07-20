@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Javascript 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>JavaScript</h2>
+<br />
+Whenever you use Cinderella as an applet in an internet browser you can link Cinderella and your HTML page via JavaScript. The communication is bidirectional. The Cinderella construction can notify the HTML page of events that occur, and the construction can react to events on the HTML page like a button being pressed.<br />
+<br />
+There are many possible scenarios in which one would like to use the JavaScript extensions. Here are a few of them.<br />
+<br />
+<ul><li> <b>Control by HTML buttons:</b> In many demonstration applets it may be good style to trigger a demonstration by pressing a button in the explanatory text. Such a button could move a construction to a special configuration, for example.
+</li></ul>
+<br />
+<ul><li> <b>Explain parts of the construction:</b> The mouseover functionality of JavaScript may be used to link certain explanations in the HTML text to events in the applet.
+</li></ul>
+<br />
+<ul><li> <b>Notification:</b> It may be useful to notify your HTML text of events happening in Cinderella. Thus you may display alert windows or change the text on your HTML page in order to explain something.
+</li></ul>
+<br />
+<br />
+<h3> Calling Cinderella from JavaScript</h3>
+<!-- latexreplace<br />
+\index{JavaScript}<br />
+--><!-- /latexreplace --><br />
+Basically, you can perform CindyScript commands from JavaScript. By these operations it is for instance possible to<br />
+<br />
+<ul><li> call functions in CindyScript,
+</li><li> change the values of variables in CindyScript,
+</li><li> move elements of your construction, or
+</li><li> change the appearance of elements.
+</li></ul>
+<br />
+To that end it is important that your Cinderella applet has an associated name that is used as handle for JavaScript commands. The name is given in the applet tag of your HTML code using the name parameter,  for instance with <code>name="CindyJSDemo"</code>. Using this handle, JavaScript can call an arbitrary CindyScript statement via the function <!-- latexreplace \verb|doCindyScript(<statement>)| --><code>doCindyScript(&#60;statement&#62;)</code><!-- /latexreplace -->. The statement is given as a string. This string will be parsed and executed whenever the function <!-- latexreplace \verb|doCindyScript| --><code>doCindyScript</code><!-- /latexreplace --> is called. The following piece of code exemplifies this procedure. It shows how to provide four buttons in the HTML text that manage to place a point <i>D</i> in various geometrically interesting positions with respect to <i>A</i>, <i>B</i> and <i>C</i>.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+⟨script language="JavaScript" type="text/javascript"⟩
+   function doScript(c) { document.CindyJSDemo.doCindyScript(c);};
+   
+⟨/script⟩
+
+
+⟨input type="button" value="Middle of AB" 
+       onclick="doScript('D.xy=(A+B)/2');" /⟩
+⟨input type="button" value="Middle of AC" 
+       onclick="doScript('D.xy=(A+C)/2');" /⟩
+⟨input type="button" value="Middle of BC"
+       onclick="doScript('D.xy=(B+C)/2');" /⟩
+⟨input type="button" value="Middle of ABC"
+       onclick="doScript('D.xy=(A+B+C)/3');" /⟩
+⟨br⟩
+
+⟨applet   name="CindyJSDemo"
+          code     = "de.cinderella.CindyApplet"
+          archive = "cindyrun2.jar"
+          width    = 680
+          height   = 336⟩
+
+... applet specifications ...
+
+⟨/applet⟩
+
+</pre></div><br />
+<br />
+In the Cinderella construction only the four points <i>A</i>,...,<i>D</i> are needed to use this JavaScript code.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/JS.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Since the CindyScript calls may be arbitrarily complex this technique may be used for many different purposes. By using a <code>repaint</code> statement within the call one can even trigger smooth transitions of a construction from one position to a new one. Unfortunately, in JavaScript, a string is not allowed to contain a usual <code>newline</code> character. So it may be the case that complicated script calls look a bit cluttered. One can bypass this problem by subdividing a script into smaller strings. The following piece of code shows the code for a button that smoothly moves the points <i>A</i>, <i>B</i> and <i>C</i> to the positions <code>[0,0]</code>, <code>[4,0]</code> and <code>[2,3]</code>.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+⟨input type="button" value="Smooth move of ABC" onclick="doScript(
+'oldpos=[A.xy,B.xy,C.xy];'+
+'newpos=[[0,0],[4,0],[2,3]];'+
+'n=40;'+
+'repeat(n,i,'+
+'  l=i/n;'+
+'  pos=l*newpos+(1-l)*oldpos;'+
+'  A.xy=pos_1;'+
+'  B.xy=pos_2;'+
+'  C.xy=pos_3;'+
+'  repaint();'+
+'  wait(10);'+
+');'
+);" /⟩
+</pre></div><br />
+<br />
+<h4>Calling JavaScript from Cinderella: <span style="color:red;"><code>javascript(&#60;string&#62;)</code></span></h4>
+<br />
+Conversely, it is also possible to call JavaScript from CindyScript. This can simply be done by using the CindyScript function <code>javascript(...)</code>. The following piece of code shows how to raise a JavaScript alert whenever point <i>A</i> gets to close to the origin (a rather useless piece of code, by the way).<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(|A,[0,0]|<1,
+  javascript("alert('A is too close to the origin')");
+);
+</pre></div><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 30 of August, 2011 [09:28:41 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Javascript">
+    http://doc.cinderella.de/tiki-index.php?page=Javascript
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

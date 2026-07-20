@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Floor 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Floor</h2>
+<!--latexreplace<br />
+\index{simulation!floor}<br />
+\index{floor}<br />
+\index{damping}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-floor.png" border="0"  align="left" /></span></div> A floor is a horizontal line through which no mass particle can pass. Mass particles that hit the line will bounce of like light tennis balls. A floor is added either by a press/drag/release sequence or by a simple click. It may also be attached to an existing point. Floors can either model completely elastic bounces or be equipped with a coefficient of friction that reduces a particle's velocity whenever it hits the floor. The following picture shows the behavior of a point that bounces off a floor (with a small coefficient of friction).<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Floor1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A ball under gravitational attraction meeting a floor</b></td></tr></table><br />
+<br />
+A floor is very similar to a <a title="no description" href='tiki-cindydoc.php@page=Bouncer.html' class='wiki'>Bouncer</a>, which behaves like a segment of a floor.<br />
+<br />
+<br />
+<h3>Inspecting a Floor</h3>
+<!--latexreplace<br />
+\index{inspect!floor}<br />
+--><!-- /latexreplace --><br />
+The floor inspector has three values that can be adjusted:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FloorInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The floor inspector</b></td></tr></table><br />
+<br />
+<i>X-damp</i> and <i>Y-damp</i> are damping factors that can attain values between 0.0 and 1.0. The two numbers <i>dx</i> = 1 – <i>X-damp</i> and <i>dy</i> = 1 – <i>Y-damp</i> are factors by which the <i>x</i>- and <i>y</i>-components of a mass-object’s velocity are multiplied whenever the mass-object hits the floor. Thus if both sliders are set to 0.0, the point will bounce off without any damping, while if both sliders are set to 1.0, the particle will stop moving as soon as it hits the floor.<br />
+<br />
+<br />
+<h3>Floors and CindyScript</h3>
+<br />
+Like other <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> object, a floor provides several fields that can be read and set by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The following list shows the accessible fields for a floor:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>xdamp</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > handle to the <i>X-damp</i> factor  </td></tr><tr><td class="wikicell" ><code>ydamp</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > handle to the <i>Y-damp</i> factor  </td></tr><tr><td class="wikicell" ><code>simulate</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" > turn on/off simulation for the floor  </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Bouncer.html' class='wiki'>Bouncer</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of September, 2011 [10:32:00 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Floor">
+    http://doc.cinderella.de/tiki-index.php?page=Floor
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

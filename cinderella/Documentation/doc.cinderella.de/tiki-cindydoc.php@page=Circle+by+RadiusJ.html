@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Circle by RadiusJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 半径つき円を加える</h2>
+<!--latexreplace<br />
+\index{mode!add circle by radius}<br />
+\index{add circle by radius}<br />
+\index{circle}<br />
+\index{circle!by center and radius}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/circle-by-radius.png" border="0"  align="left" /></span></div> このモードでは中心となる点と半径をもつ円を新しく描きます。 このモードで描いた円は、動かすモードで中心を動かすと、半径を一定に保ったまま動きます。 また動かすモードで円周を動かすと中心は固定されて半径だけが変わります。<br />
+<br />
+<br />
+このモードでは「押す、ドラッグする、離す」という一連の動作で中心と円を描くことができます。 マウスのボタンを押すと円の中心となる点が描かれます。 マウスをドラッグすると円が生成されますが、その半径は決まっていません。円の半径はマウスの場所で決まります。 マウスのボタンを離すと、半径が固定され円が描かれます。 この要領は <a title="no description" href="tiki-cindydoc.php@page=Line+through+a+PointJ.html" class="wiki">傾きつき直線 </a> の時とまったく同じです。<br />
+<br />
+このモードで円を描くには次の3つのステップを経ることになります。<br />
+<br />
+<ul><li> <b>マウスのボタンを押す</b> と、中心となる点が追加されます。 その定義はマウスのボタンが押された場所で決まります <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a> と同じことです。
+</li><li> <b>マウスをドラッグする</b> と円が生成されます。 半径はまだ決まっておらず、自由に変えることができます。 マウスがすでにある点や直線に近づくと、その点や直線が選択されていればスナップします。
+</li><li> <b>マウスのボタンを離す</b> 図形は固定され、円が描かれて作業が終了します。 マウスのボタンを離す場所によって、次の2つの場合が起こりえます。
+<ul><li>  半径つき円 が加えられる
+</li><li>  マウスをすでにある点の上で離すと、その点を通るような円が描かれます。
+</li></ul></li></ul>
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+<br />
+「押す、ドラッグする、離す」の一連の動作で半径つき円を描く。<br />
+<br />
+<h3>注意</h3>
+幾何学によって、円(＝中心点から等距離にある点の集合)は見え方が異なります。<br />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Fixed+RadiusJ.html" class="wiki">固定した半径の円を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Line+through+a+PointJ.html" class="wiki">傾きつき直線</a>
+</li></ul>
+<br />
+<br />
+(阿原)<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [11:04:46 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Circle%20by%20RadiusJ">
+    http://doc.cinderella.de/tiki-index.php?page=Circle%20by%20RadiusJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

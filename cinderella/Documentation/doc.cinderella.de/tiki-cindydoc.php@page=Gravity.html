@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Gravity 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Gravity</h2>
+<!--latexreplace<br />
+\index{simulation!gravity}<br />
+\index{gravity}<br />
+\index{force}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-gravity.png" border="0"  align="left" /></span></div> Gravity is a constant force that acts on all masses. The gravity mode in <b>Cinderella</b> is designed to model the gravitational force at the earth's surface, that is, a constant force field that acts on an object with nonzero mass. The force on a mass-object caused by gravity is dependent on two parameters: gravity's strength and the value of the mass of the object (you can consider this as the weight of the object, though technically, mass and weight are two different concepts). The exact relation between these three magnitudes is described by the following equation:<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\textrm{gravityconstant}\cdot\textrm{mass}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> =  <b>gravityconstant</b> ∗ <b>mass</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+Gravity also has a direction toward which a mass-object is drawn. In <b>Cinderella</b> you create a gravitational force by a press/drag/release cycle similar to that for creating a line in <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a> mode. The gravitational force field is represented by a black arrow that points in the direction of the force. The longer the arrow, the stronger the gravitational force.<br />
+<br />
+The following pictures demonstrate how gravity acts on a mass with nonzero initial <a title="no description" href='tiki-cindydoc.php@page=Velocity.html' class='wiki'>Velocity</a>. The first picture shows the situation before the simulation is started. The second picture shows a trace of the mass-object during the simulation: a ballistic parabola.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.66in">width=1.66in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Gravity1} &amp;\includegraphics<a class="wiki external"  href="width=1.66in">width=1.66in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Gravity2}\\</tt><br />
+{\small\it  A mass-object with nonzero} &amp;  {\small\it Trace of the mass-object under}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   initial velocity before start.} &amp;  {\small\it the influence of gravity.}<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Gravity1.png" border="0"  width="250" /></span></td><td width=10><td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Gravity2.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>A mass-object with nonzero <br> initial velocity before start</b><br></td><td width=10><td>
+	<td><b>Trace of the mass-object under <br> the influence of gravity</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+As a second example we consider the action of gravity on a string of masses connected by <a title="no description" href="tiki-cindydoc.php@page=Rubber+Band.html" class="wiki">Rubber Bands</a>, whose endpoints are pinned to fixed positions in the drawing. Without a change in the default settings of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->, the system would oscillate wildly. However, if we add some friction to the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a>, the system will enter a state of equilibrium after some time. In this equilibrium situation the chain of masses forms a perfect parabola.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Gravity3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A chain of mass-objects under the influence of gravity</b></td></tr></table><br />
+<br />
+The picture below shows an even more sophisticated example. Here a background image of the Golden Gate Bridge has been loaded. The upper left part of the picture shows a physics simulation of a rubber-band chain under the influence of gravity. A <a title="no description" href='tiki-cindydoc.php@page=Projective+Transformation.html' class='wiki'>Projective Transformation</a> has been used to map the simulated situation to a rectangular frame on the Golden Gate Bridge. Adjusting the gravitational force to the correct value shows that this situation exactly resembles the situation on the supporting cables of the bridge.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Gravity4.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>An analysis of the Golden Gate Bridge</b></td></tr></table><br />
+<br />
+<br />
+<h3> Inspecting Gravity</h3>
+<!--latexreplace<br />
+\index{inspect!gravity}<br />
+--><!-- /latexreplace --><br />
+A <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> gravitational field is equipped with a built-in scaling factor that is set to a relatively small value. The actual value of the <i>gravityconstant</i> is calculated as this factor times the length of the gravity arrow in the drawing.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GravityInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The gravity inspector</b></td></tr></table><br />
+<br />
+<br />
+<h3> Gravity and CindyScript</h3>
+<!--latexreplace<br />
+\index{potential energy}<br />
+--><!-- /latexreplace --><br />
+Like any <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> object, a gravitational force provides several fields that can be read and very often set by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The following list shows the accessible fields for gravity:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > a handle to the scaling factor  </td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the overall potential energy of masses in the gravitational field, defined only up to an additive constant that depends on the choice of coordinates  </td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the overall potential energy of mass objects in the gravitational field,  defined only up to an additive constant that depends on the choice of coordinates  </td></tr><tr><td class="wikicell" ><code>simulate</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >turn on/off simulation for the gravitational field </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Sun.html' class='wiki'>Sun</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 26 of August, 2011 [15:22:51 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Gravity">
+    http://doc.cinderella.de/tiki-index.php?page=Gravity
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

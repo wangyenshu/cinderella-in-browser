@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Operator IndexJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<a id='id865443'><h1>演算子一覧表</h1></a>
+<!-- latexreplace --><ul class="toc"><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id865443' class='link'>演算子一覧表</a>
+<ul><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id865477' class='link'> 挿入演算子</a>
+<ul><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id865869' class='link'>定義済み関数</a>
+<ul><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id865913' class='link'>制御</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id866062' class='link'>変数の管理</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id866184' class='link'>出力</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id866306' class='link'>算術関数</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id866678' class='link'>ブール関数</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id866753' class='link'>型の判定</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867024' class='link'>文字関数</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867237' class='link'>微積分</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867322' class='link'>基本的なリスト処理</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867456' class='link'>リストの要素の走査</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867564' class='link'>高度なリスト処理</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867710' class='link'>幾何学要素のリスト</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id867831' class='link'>リストの算術演算</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id868008' class='link'>ベクトルと行列の操作</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id868258' class='link'>描画関数</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id868474' class='link'>描画の外観を設定する</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id868639' class='link'>色の関数</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id868744' class='link'>関数プロット</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id868886' class='link'>画像の操作</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id869081' class='link'>シェイプ</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id869201' class='link'>幾何変換</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id869321' class='link'>幾何関数</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id869664' class='link'>インスペクタ</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id869729' class='link'>要素の作成と消去</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id869829' class='link'>MIDI</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870043' class='link'>サンプルーオーディオ</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870121' class='link'>マウスとキーボードからの入力</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870251' class='link'>時間</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870358' class='link'>ファイル入出力</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870475' class='link'>ネットワーク</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870522' class='link'>物理シミュレーション</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870604' class='link'>アニメーション</a>
+</li><li> <a href='tiki-cindydoc.php@page=Operator+IndexJ.html#id870678' class='link'>特別な演算子(実験段階のため説明なし)</a>
+</li></ul></li></ul></li></ul></li></ul>
+<br />
+<!-- /latexreplace --><br />
+<a id='id865477'><h2> 挿入演算子</h2></a>
+<br />
+挿入演算子は優先順位順に並んでいます。優先順位は数で表され、小さな数のものが優先順位は高くなっています。優先順位が同じであれば、左から右へ演算が行われます。<br />
+<br />
+<code> : </code> (20)   自身の定義にアクセスする<br />
+<code> .   </code> (25)    あらかじめ定義されたデータフィールドにアクセスする<br />
+<code> °   </code> (25)   度数法を弧度法に変換する<br />
+<code> _   </code> (50)   リスト内の要素にアクセスする<br />
+<code> ^  </code> (50)   べき乗<br />
+<code> *   </code> (100)   乗法 (ベクトル、行列も含む)<br />
+<code> /  </code> (100)   除法(ベクトル、行列をスカラーで割る場合も含む)<br />
+<code> +   </code> (200)   加法 (ベクトル、行列も含む)<br />
+<code> -   </code> (200)   減法 (ベクトル、行列も含む)<br />
+<code> !   </code> (200)   論理否定<br />
+<code> ==  </code> (300)   相等<br />
+<code> >   </code> (300)   より大きい<br />
+<code> <   </code> (300)   より小さい<br />
+<code> >=  </code>  (300)  以上<br />
+<code> <=  </code> (300)   以下<br />
+<code> !=  </code> (300)   等しくない<br />
+<code> ~=  </code> (300)   ほぼ等しい<br />
+<code> ~<  </code> (300)   ほぼ小さい<br />
+<code> ~>  </code> (300)   ほぼ大きい<br />
+<code> ~>= </code> (300)   ほぼ以上である<br />
+<code> ~<= </code> (300)   ほぼ以下である<br />
+<code> =:= </code> (300)   equals after evaluation<br />
+<code> &amp;   </code> (350)   論理積<br />
+<code> %   </code> (350)   論理和<br />
+<code> !=  </code> (350)   等しくない<br />
+<code> ~!= </code> (350)   ほぼ等しくない<br />
+<code> ..  </code> (350)   aからbまでの範囲の数のリスト<br />
+<code> ++  </code> (370)   リストの連結<br />
+<code> --  </code> (370)     リストの差<br />
+<code> &#126;&#126; </code> (370)     ２つのリストの共通要素<br />
+<code> :> </code> (370)    リストの後方に要素を追加する<br />
+<code> <: </code> (370)    リストの前方に要素を追加する<br />
+<code> = </code> (400)   変数への代入<br />
+<code> := </code> (400)     関数の定義<br />
+<code> :=_ </code> (400)    定義の消去<br />
+<code> -> </code> (400)    修飾子の宣言<br />
+<code> , </code> (500)   リストと関数の区切り<br />
+<code> ; </code> (500)   命令文の区切り<br />
+<br />
+<br />
+<a id='id865869'><h3>定義済み関数</h3></a>
+<br />
+定義済み関数と、その引数の数が書かれています。関数はいくつかのカテゴリーに分類されています。複数のカテゴリーに含まれている関数もあります。リンクのないものはまだドキュメントがありません。<br />
+<br />
+<br />
+<a id='id865913'><h4>制御</h4></a>
+<br />
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#if2' class='wiki'>if</a></code> (2) もし〜ならば〜<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#if3' class='wiki'>if</a></code> (3) もし〜ならば〜、そうでなければ〜<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#trigger' class='wiki'>trigger</a></code> (2) 条件を満たせば実行<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#while' class='wiki'>while</a></code> (2) While 繰り返し<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#repeat' class='wiki'>repeat</a></code> (2)  # を実行変数として繰り返し<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#repeat' class='wiki'>repeat</a></code> (3)  実行変数を指定して繰り返し<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#forall' class='wiki'>forall</a></code> (2)  # を実行変数としてすべての要素に対して繰り返し<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#forall' class='wiki'>forall</a></code> (3)  実行変数を指定してforall繰り返し<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#eval' class='wiki'>eval</a></code> (1)  式の強制的な評価<br />
+<br />
+<br />
+<a id='id866062'><h4>変数の管理</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#clear' class='wiki'>clear</a></code> (0)  すべての変数をクリア<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#clear' class='wiki'>clear</a></code> (1) 特定の変数をクリアする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#keys' class='wiki'>keys</a></code> (1) オブジェクトまたは変数に関連したローカルキーのリストを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#createvar' class='wiki'>createvar</a></code> (1)  局所変数の作成<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#removevar' class='wiki'>removevar</a></code> (1)  局所変数の削除<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#regional' class='wiki'>regional</a></code> 局所変数を作る。引数の数は任意<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#local' class='wiki'>local</a></code> いくつかの局所変数を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Control+OperatorsJ.html#release' class='wiki'>release</a></code> いくつかの局所変数の削除<br />
+<br />
+<a id='id866184'><h4>出力</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#print' class='wiki'> print</a></code>  (1)  値を印字する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#println' class='wiki'> println</a></code>  (0)  改行<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#println' class='wiki'> println</a></code>  (1)  印字して改行する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#clearconsole' class='wiki'> clearconsole</a></code> (0) コンソールをクリア<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#err' class='wiki'> err</a></code>  (1)  デバッグ用の印字<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#assert' class='wiki'> assert</a></code> (2)  エラーチェックの印字<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#format' class='wiki'>format</a></code> (2)  数を整形する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#message' class='wiki'>message</a></code>  (1)  ステータス行にメッセージを表示する<br />
+<br />
+<a id='id866306'><h4>算術関数</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#sqrt' class='wiki'>sqrt</a></code> (1)  平方根<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#exp' class='wiki'>exp</a></code> (1)  指数関数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#log' class='wiki'>log</a></code> (1)  自然対数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#sin' class='wiki'>sin</a></code> (1)  正弦<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#cos' class='wiki'>cos</a></code> (1)  余弦<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#tan' class='wiki'>tan</a></code> (1)  正接<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#arcsin' class='wiki'>arcsin</a></code> (1)  正弦の逆関数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#arccos' class='wiki'>arccos</a></code> (1)  余弦の逆関数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#arctan' class='wiki'>arctan</a></code> (1)  正接の逆関数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#arctan2' class='wiki'>arctan2</a></code> (2)  ベクトル (x,y) のなす角<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#add' class='wiki'>add</a></code> (2)  和<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#sub' class='wiki'>sub</a></code> (2)  差<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#mult' class='wiki'>mult</a></code> (2)  積<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#div' class='wiki'>div</a></code> (2) 商<br />
+<code> <a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#mod' class='wiki'>mod</a></code>  (2)   剰余<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#pow' class='wiki'>pow</a></code> (2) べき乗<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#abs' class='wiki'>abs</a></code> (1)  絶対値<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#round' class='wiki'>round</a></code> (1) 四捨五入<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#floor' class='wiki'>floor</a></code> (1) その数以下の最大の整数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#ceil' class='wiki'>ceil</a></code> (1) その数以上の最小の整数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#re' class='wiki'>re</a></code> (1) 複素数の実部<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#im' class='wiki'>im</a></code> (1) 複素数の虚部<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#conjugate' class='wiki'>conjugate</a></code> (1) 共役複素数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#random' class='wiki'>random</a></code> (1) 0 から 1 までの一様乱数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#randomint' class='wiki'>randominteger</a></code> (1) 整数の一様乱数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#random' class='wiki'>random</a></code> (0) 0から1までの実数の一様乱数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#randombool' class='wiki'>randombool</a></code> (0) ブール値の乱数 true または false<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#randomnormal' class='wiki'>randomnormal</a></code> (0) (0,1)正規乱数<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html#seedrandom' class='wiki'>seedrandom</a></code> (1) 乱数の種(seed)の設定<br />
+<br />
+<br />
+<a id='id866678'><h4>ブール関数</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#not' class='wiki'>not</a></code> (1) 論理否定<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#and' class='wiki'>and</a></code> (2)  論理積<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#or' class='wiki'>or</a></code> (2)   論理和<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#xor' class='wiki'>xor</a></code> (2)  排他的論理和<br />
+<br />
+<a id='id866753'><h4>型の判定</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isinteger' class='wiki'>isinteger</a></code> (1) 整数か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isreal' class='wiki'>isreal</a></code> (1) 実数か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#iscomplex' class='wiki'>iscomplex</a></code> (1) 複素数か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#iseven' class='wiki'>iseven</a></code> (1) 偶数か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isodd' class='wiki'>isodd</a></code> (1) 奇数か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#islist' class='wiki'>islist</a></code> (1) リストか<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#ismatrix' class='wiki'>ismatrix</a></code> (1) 行列か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isnumbervector' class='wiki'>isnumbervector</a></code> (1) 数ベクトルか<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isnumbermatrix' class='wiki'>isnumbermatrix</a></code> (1) 数行列か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isstring' class='wiki'>isstring</a></code> (1) 文字列か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isgeometric' class='wiki'>isgeometric</a></code> (1) 幾何学要素か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isselected' class='wiki'>isselected</a></code> (1) 選択されているか<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#ispoint' class='wiki'>ispoint</a></code> (1) 幾何の点か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isline' class='wiki'>isline</a></code> (1) 直線か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#iscircle' class='wiki'>iscircle</a></code> (1) 円か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isconic' class='wiki'>isconic</a></code> (1) 円錐曲線か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#ismass' class='wiki'>ismass</a></code> (1) 質点か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#issun' class='wiki'>issun</a></code> (1) 恒星か<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isspring' class='wiki'>isspring</a></code> バネか<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Boolean+OperatorsJ.html#isundefined' class='wiki'>isundefined</a></code> (1) 未定義要素か<br />
+<br />
+<br />
+<a id='id867024'><h4>文字関数</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#text' class='wiki'>text</a></code> (1) 文字列への変換<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#parse' class='wiki'>parse</a></code> (1) <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の式として文字列を解析<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#substring' class='wiki'>substring</a></code> (3) 文字列の抜きだし<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#replace' class='wiki'>replace</a></code> (3) 文字列の置換<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#replace' class='wiki'>replace</a></code> (2) 文字列の置換<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#tokenize' class='wiki'>tokenize</a></code> (2) 文字列の分解<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#indexof' class='wiki'>indexof</a></code> (2) 文字列の検索<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#indexof' class='wiki'>indexof</a></code> (3) 文字列の検索<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#length' class='wiki'>length</a></code> (1) 文字列の長さ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#format' class='wiki'>format</a></code> (2)  数を整形する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#guess' class='wiki'>guess</a></code> (1) 文字列の解析<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=String+OperatorsJ.html#sort' class='wiki'>sort</a></code>  リストの並べ替え<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Texts+and+TablesJ.html#fontfamilies' class='wiki'> fontfamilies</a></code> (0) 使用可能なフォントのリストを得る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Texts+and+TablesJ.html#unicode' class='wiki'>unicode</a></code> (1), (2) ユニコードを文字列に変換する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Texts+and+TablesJ.html#candisplay' class='wiki'>candisplay</a></code> (1) 文字列が現在のシステムフォントで表示できるかどうかテストする<br />
+<br />
+<br />
+<a id='id867237'><h4>微積分</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=CalculusJ.html#d' class='wiki'> d</a></code> (2)  関数の微分<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=CalculusJ.html#tangent' class='wiki'> tangent</a></code>(2) 接線を計算する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=CalculusJ.html#guess' class='wiki'> guess</a></code> (1) 浮動小数点数から記号的意味を推測する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=CalculusJ.html#guess' class='wiki'> pslq</a></code> (1)  <code>guess</code> guess と同じ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=CalculusJ.html#roots' class='wiki'> roots</a></code> (1) ｎ次方程式の解を与える<br />
+<br />
+<a id='id867322'><h4>基本的なリスト処理</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ListsJ.html#take' class='wiki'>take</a></code> (2) リストの要素へのアクセス<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#length' class='wiki'>length</a></code> (1) リストの長さ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#contains' class='wiki'>contains</a></code> (2) 内容のテスト<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#append' class='wiki'>append</a></code> (2)　要素の後方追加<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#prepend' class='wiki'>prepend</a></code> (2) 要素の前方追加<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#concat' class='wiki'>concat</a></code> (2) リストの連結<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#common' class='wiki'>common</a></code> (2) リストの共通部分<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#remove' class='wiki'>remove</a></code> (2) リストからの要素の削除<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#nil' class='wiki'>nil</a></code> (0)   空リスト<br />
+<br />
+<a id='id867456'><h4>リストの要素の走査</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#forall' class='wiki'>forall</a></code> (2)  # を実行変数として全要素を走査する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#forall' class='wiki'>forall</a></code> (3)   実行変数を指定して全要素を走査する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#apply' class='wiki'>apply</a></code> (2)  # を実行変数として全要素に式を適用する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#apply' class='wiki'>apply</a></code> (3)  実行変数を指定して全要素に式を適用する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#select' class='wiki'>select</a></code> (2)  # を実行変数として条件を満たす要素を選び出す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+List+OperationsJ.html#select' class='wiki'>select</a></code> (3)  実行変数を指定して条件を満たす要素を選び出す)<br />
+<br />
+<br />
+<a id='id867564'><h4>高度なリスト処理</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#pairs' class='wiki'>pairs</a></code> (1)  リストの要素のすべてのペアを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#triples' class='wiki'>triples</a></code> (1)  リストの要素のすべての3つの組を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#directproduct' class='wiki'>directproduct</a></code> (2)  2つのリストの直積<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#consecutive' class='wiki'>consecutive</a></code> (1)  リストの連続する要素のペアからなるチェーンを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#cycle' class='wiki'>cycle</a></code> (1)  連続する２つずつの要素のペアで輪を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#reverse' class='wiki'>reverse</a></code> (1)  リストの要素を逆順にする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#set' class='wiki'>set</a></code> (1)  リストの要素を単一化した集合を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#sort' class='wiki'>sort</a></code> (1)  リストの要素を並べ替える<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#sort2' class='wiki'>sort</a></code> (2)  リストの各要素を評価式によって並べ替える<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Advanced+List+OperationsJ.html#flatten' class='wiki'>flatten</a></code> (1)  ネストされたリストの平坦化<br />
+<br />
+<a id='id867710'><h4>幾何学要素のリスト</h4></a>
+<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allelements</a></code> (0) すべての要素のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allpoints</a></code> (0) すべての点のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">alllines</a></code> (0) すべての直線のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allsegments</a></code> (0) すべての線分のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allcircles</a></code> (0) すべての円のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allconics</a></code> (0) すべての円錐曲線のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allmasses</a></code> (0) すべての質点のリストを作る<br />
+<code><a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">allsprings</a></code> (0) すべてのバネのリストを作る<br />
+<br />
+<a id='id867831'><h4>リストの算術演算</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#sum1' class='wiki'>sum</a></code> (1) 要素の総和を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#sum2' class='wiki'>sum</a></code> (2) 実行変数を # として各要素に式を実行した結果の総和を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#sum3' class='wiki'>sum</a></code> (3) 実行変数を指定して各要素に式を実行した結果の総和を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#product1' class='wiki'>product</a></code> (1) 要素をすべて掛け合わせる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#product2' class='wiki'>product</a></code> (2) 実行変数を # として各要素に式を適用し、結果をすべて掛け合わせる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#product3' class='wiki'>product</a></code> (3) 実行変数を指定して各要素に式を適用し、結果をすべて掛け合わせる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#min1' class='wiki'>min</a></code> (1) 要素の最小値を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#min2' class='wiki'>min</a></code> (2) 実行変数を # として各要素に式を適用し、その最小値を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#min3' class='wiki'>min</a></code> (3) 実行変数を指定して各要素に式を適用し、その最小値を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#max1' class='wiki'>max</a></code> (1) 要素の最大値を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#max2' class='wiki'>max</a></code> (2) 実行変数を # として各要素に式を適用し、その最大値を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#max3' class='wiki'>max</a></code> (3) 実行変数を指定して各要素に式を適用し、その最大値を求める<br />
+<br />
+<br />
+<a id='id868008'><h4>ベクトルと行列の操作</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#zerovector' class='wiki'>zerovector</a></code> (1)  零ベクトルを生成する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#zeromatrix' class='wiki'>zeromatrix</a></code> (2)  零行列を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#rowmatrix' class='wiki'>rowmatrix</a></code> (1)  行ベクトルから行列への変換<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#columnmatrix' class='wiki'> columnmatrix</a></code> (1)  列ベクトルから行列への変換<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#matrixrowcolumn' class='wiki'> matrixrowcolumn</a></code> (1) 行と列の数を2つの数の要素からなるリストとして返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#row' class='wiki'> row</a></code> (2) 行をベクトルとして返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#column' class='wiki'> column</a></code> (2) 列をベクトルとして返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#submatrix' class='wiki'> submatrix</a></code> (2) 小行列を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#transpose' class='wiki'> transpose</a></code> (1) 転置行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#dist' class='wiki'> dist</a></code> (2) ベクトルの距離を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#det' class='wiki'> det</a></code> (1) 正方行列の行列式を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#hermiteanproduct' class='wiki'> hermiteanproduct</a></code> ２つのベクトルのエルミート内積を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#inverse' class='wiki'> inverse</a></code> (1) 正方行列の逆行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#adj' class='wiki'> adj</a></code> (1) 正方行列の余因子行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#eigenvalues' class='wiki'> eigenvalues</a></code> (1) 正方行列の固有値を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#eigenvectors' class='wiki'> eigenvectors</a></code> (1) 正方行列の固有ベクトルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#linearsolve' class='wiki'> linearsolve</a></code> (2)  一次方程式の解を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Vectors+and+MatricesJ.html#convexhull3d' class='wiki'> convexhull3d</a></code> (1)  ３次元の凸多面体を作る。<br />
+<br />
+<br />
+<a id='id868258'><h4>描画関数</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#repaint' class='wiki'> repaint</a></code> (0) 面を塗り直す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#draw1' class='wiki'> draw</a></code> (1) 点を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#draw2' class='wiki'> draw</a></code> (2) 線分を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#drawpoly' class='wiki'> drawpoly</a></code> (1) 多角形を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#drawpoly' class='wiki'> drawpolygon</a></code> (1) <code>drawpoly</code>と同じ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#fillpoly' class='wiki'> fillpoly</a></code> (1) 中を塗った多角形を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#drawall' class='wiki'> fillpolygon</a></code> (1)  <code>fillpoly</code>と同じ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#drawcircle' class='wiki'> drawcircle</a></code> (2) 中心と半径を与えて円を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#fillcircle' class='wiki'> fillcircle</a></code> (2) 中を塗った円を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#drawall' class='wiki'> drawall</a></code> (1) リストのすべての要素を描画する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Elementary+Drawing+FunctionsJ.html#connect' class='wiki'> connect</a></code> (1) リストの点をつなぐ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Texts+and+TablesJ.html#drawtext' class='wiki'> drawtext</a></code>  (2) 文字列を表示する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Texts+and+TablesJ.html#drawtable' class='wiki'> drawtable</a></code> (2)  表を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#repaint' class='wiki'> repaint</a></code> (0) 画面の再描画<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#repaint1' class='wiki'> repaint</a></code> (1) 画面の再描画<br />
+<br />
+<br />
+<a id='id868474'><h4>描画の外観を設定する</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#size' class='wiki'> pointsize</a></code> (1)  点の大きさ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#size' class='wiki'> linesize</a></code> (1)  線の太さ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#size' class='wiki'> textsize</a></code> (1)  文字の大きさ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#color' class='wiki'> pointcolor</a></code> (1) 点の色<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#color' class='wiki'> linecolor</a></code> (1)  線の色<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#color' class='wiki'> textcolor</a></code> (1)  文字の色<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#color' class='wiki'> color</a></code> (1) すべての色<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#opacity' class='wiki'> alpha</a></code> (1) すべての不透明度のアルファ値<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#gsave' class='wiki'> gsave</a></code> (0) 色、アルファ値、幅、変換をスタックに入れる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#grestore' class='wiki'> grestore</a></code> (0) 色、アルファ値、幅、変換をスタックから出す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#greset' class='wiki'> greset</a></code> (0) 色、アルファ値、幅、変換のスタックを空にする<br />
+<br />
+<br />
+<a id='id868639'><h4>色の関数</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#red' class='wiki'> red</a></code> (1)  赤のRGBベクトルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#green' class='wiki'> green</a></code> (1)  緑のRGBベクトルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#blue' class='wiki'> blue</a></code> (1)  青のRGBベクトルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#gray' class='wiki'> grey</a></code> (1)  灰色のRGBベクトルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#gray' class='wiki'> gray</a></code> (1)  grey と同じ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html#hue' class='wiki'> hue</a></code> (1)  色相のRGBベクトルを返す<br />
+<br />
+<br />
+<a id='id868744'><h4>関数プロット</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#plot' class='wiki'> plot</a></code> (1) 実行変数を # として関数をプロットする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#plot' class='wiki'> plot</a></code> (2) 実行変数を指定して関数をプロットする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+Plotting.html#fillplot' class='wiki'> fillplot</a></code> (1) 積分のようにハイライトさせてプロットする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+Plotting.html#fillplot' class='wiki'> fillplot</a></code> (2) ２つの関数の差をハイライトさせてプロットする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#colorplot' class='wiki'> colorplot</a></code> (3) 関数の値によって色をプロットする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#drawfield' class='wiki'> drawfield</a></code> (1) ベクトル場を描画する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#drawfieldcomplex' class='wiki'> drawfieldcomplex</a></code> (1) 複素ベクトル場を描画する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#drawforces' class='wiki'> drawforces</a></code> (1) 力の場を表示する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Function+PlottingJ.html#drawcurves' class='wiki'> drawcurves</a></code> (2) 物理のオシログラフを描く<br />
+<br />
+<br />
+<a id='id868886'><h4>画像の操作</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#drawimage2' class='wiki'> drawimage</a></code> (2) 1点を指定して画像を表示する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#drawimage3' class='wiki'> drawimage</a></code> (3) ２点を指定して画像を表示する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#drawimage4' class='wiki'> drawimage</a></code> (4) ３点を指定して画像を表示する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#drawimage5' class='wiki'> drawimage</a></code> (5) ４点を指定して画像を表示する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#mapimage' class='wiki'> mapimage</a></code> (2) 画像を変形する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#imagesize' class='wiki'> imagesize</a></code> (1) 画像の大きさを取得する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#imagergb' class='wiki'> imagergb</a></code> (3) 画素の色情報を取得する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#createimage' class='wiki'> createimage</a></code> (3) カスタム画像を作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#clearimage' class='wiki'> clearimage</a></code> (1) 画像の内容を消去する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#removeimage' class='wiki'> removeimage</a></code> (1) 画像を削除する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#canvas3' class='wiki'> canvas</a></code> (3) 参照点を１つ指定してキャンバスに描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#canvas4' class='wiki'> canvas</a></code> (4) 参照点を２つ指定してキャンバスに描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Image+Manipulation+and+RenderingJ.html#canvas5' class='wiki'> canvas</a></code> (5) 参照点を３つ指定してキャンバスに描く<br />
+<br />
+<a id='id869081'><h4>シェイプ</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#circle' class='wiki'> circle</a></code> (2) 円形のシェイプを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#polygon' class='wiki'> polygon</a></code> (1) 多角形シェイプを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#halfplane' class='wiki'> halfplane</a></code> (2) 半平面シェイプを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#screen' class='wiki'> screen</a></code> () スクリーンのシェイプを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#fill' class='wiki'> fill</a></code> (1) シェイプを塗りつぶす<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#draw' class='wiki'> draw</a></code> (1) シェイプの輪郭線を描く<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=ShapesJ.html#clip' class='wiki'> clip</a></code> (1) シェイプのクリップパスの設定<br />
+<br />
+<br />
+<a id='id869201'><h4>幾何変換</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#translate' class='wiki'> translate</a></code>  (1) 座標系全体を平行移動<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#rotate' class='wiki'> rotate</a></code>  (1) 座標系全体を回転<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#scale' class='wiki'> scale</a></code>  (1) 座標系全体を拡大・縮小<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#setbasis' class='wiki'> setbasis</a></code> (1)  座標系全体の基底を変換<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#setbasis' class='wiki'> setbasis</a></code> (2)  座標系全体の基底を相似変換にする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#setbasis' class='wiki'> setbasis</a></code> (3)  座標系全体の基底をアフィン変換にする<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html#setbasis' class='wiki'> setbasis</a></code> (4)  座標系全体の基底を射影変換にする<br />
+<br />
+<br />
+<a id='id869321'><h4>幾何関数</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#moveto' class='wiki'> moveto</a></code> (2)  点の位置を変える<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#meet' class='wiki'> meet</a></code> (2)  直線の交点を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#join' class='wiki'> join</a></code> (2)  ２点を結ぶ<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#perp1' class='wiki'> perp</a></code> (1)  垂直な２次元ベクトルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#perp2' class='wiki'> perp</a></code> (2)  点を通り直線に垂直な直線を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#perp2' class='wiki'> perpendicular</a></code> (2)  点を通り直線に垂直な直線を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#para' class='wiki'> para</a></code> (2)  点を通り直線に平行な直線を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#para' class='wiki'> parallel</a></code> (2)  点を通り直線に平行な直線を求める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#cross' class='wiki'> cross</a></code> (2)  ２つの３次元ベクトルの外積を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#dist' class='wiki'> dist</a></code> (2)  ２点間の距離を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#area' class='wiki'> area</a></code> (3)  ３点で与えられた三角形の面積を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#det' class='wiki'> det</a></code> (3)  3 × 3 行列の行列式を計算する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#crossratio' class='wiki'> crossratio</a></code> (4)  ４点の複比を計算する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#complex' class='wiki'> complex</a></code> (1)  xy座標を複素数に変換する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#gauss' class='wiki'> gauss</a></code> (1)  複素数を点の座標に変換する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#point' class='wiki'> point</a></code> (1)  数ベクトルを点として位置づける<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#line' class='wiki'> line</a></code> (1)  数ベクトルを直線として位置づける<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#geotype' class='wiki'> geotype</a></code> (1)  ベクトルの幾何学的意味を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#map' class='wiki'> map</a></code> (2)  平行移動を表す行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#map' class='wiki'> map</a></code> (4)  相似変換を表す行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#map' class='wiki'> map</a></code> (6)  アフィン変換を表す行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#map' class='wiki'> map</a></code> (8)  射影変換を表す行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#pointreflect' class='wiki'> pointreflect</a></code> (1)  点に関する対称点を求める行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Geometric+OperatorsJ.html#linereflect' class='wiki'> linereflect</a></code> (1)  直線に関して対称な点をを求める行列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#incidences' class='wiki'> incidences</a></code> (1) 幾何要素にインシデントである要素のリストを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#locusdata' class='wiki'> locusdata</a></code> (1)  軌跡上の点の座標のリストを返す<br />
+<br />
+<br />
+<a id='id869664'><h4>インスペクタ</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Accessing+Geometric+ElementsJ.html#inspect' class='wiki'>inspect</a></code> (1) 利用できる属性のリストを作る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Accessing+Geometric+ElementsJ.html#inspect' class='wiki'>inspect</a></code> (2) 属性を読み出す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Accessing+Geometric+ElementsJ.html#inspect' class='wiki'>inspect</a></code> (3) 属性を設定する<br />
+<br />
+<a id='id869729'><h4>要素の作成と消去</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#create' class='wiki'>createpoint</a></code> (2) 位置とラベルを指定して点を加える ( 2.1版から)<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#create' class='wiki'>create</a></code> (3) create a an arbitrary geometric element<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#remove' class='wiki'>removeelement</a></code> (1)幾何の要素をそれに従属する点とともに消去する  ( 2.1版から)<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+Geometry.html#algorithm' class='wiki'>algorithm</a></code> (1) 幾何要素の作図手順を得る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+Geometry.html#inputs' class='wiki'>inputs</a></code> (1) 幾何要素を定義するために必要な要素のリストを得る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+Geometry.html#element' class='wiki'>element</a></code> (1) 引数の名前の幾何要素へのハンドルを得る<br />
+<br />
+<a id='id869829'><h4>MIDI</h4></a>
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#playtone' class='wiki'> playtone</a></code> (1)  MIDIの単音を鳴らす<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#stoptone' class='wiki'> stoptone</a></code> (1) 音を止める<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#playfrequency' class='wiki'> playfrequency</a></code> (1)  特定の周波数で鳴らす<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#playmelody' class='wiki'> playmelody</a></code> (1)  メロディを鳴らす<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midiaddtrack' class='wiki'> midiaddtrack</a></code> (1)  シーケンサにトラックを追加する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midistart' class='wiki'> midistart</a></code> (0)  シーケンサの開始<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midistop' class='wiki'> midistop</a></code> (0)  シーケンサの停止<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midispeed1' class='wiki'> midispeed</a></code> (1)  シーケンサの速度設定<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midispeed0' class='wiki'> midispeed</a></code> (0)  シーケンサの速度を問い合わせる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midiposition1' class='wiki'> midiposition</a></code> (1)  シーケンサの位置を設定する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midiposition0' class='wiki'> midiposition</a></code> (0)  シーケンサの開始位置を得る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#instrument' class='wiki'> instrument</a></code> (1) 楽器を選ぶ<br />
+<tt> <code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#instrumentnames' class='wiki'> instrumentnames</a></code> (0) 利用できる楽器のリストを得る</tt><br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midichannel' class='wiki'> midichannel</a></code> (1)  チャンネルを設定する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midivolume' class='wiki'> midivolume</a></code> (1)  チャンネルの音量を設定する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=MIDI+Functions.html#midicontrol' class='wiki'> midicontrol</a></code> (2)  チャンネルのコントローラを設定する<br />
+<br />
+<a id='id870043'><h4>サンプルーオーディオ</h4></a>
+<code><a title="no description" href='tiki-cindydoc.php@page=Sampled-Audio+Functions.html#playsin' class='wiki'> playsin</a></code> (1)  特定の周波数の音を鳴らす<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Sampled-Audio+Functions.html#playfunction' class='wiki'> playfunction</a></code> (1)  数式で定義した音を鳴らす<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Sampled-Audio+Functions.html#playwave' class='wiki'> playwave</a></code> (1)  オーディオデータのリストを再生する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Sampled-Audio+Functions.html#stopsound' class='wiki'> stopsound</a></code> (0)  すべての音の再生を停止する<br />
+<br />
+<br />
+<a id='id870121'><h4>マウスとキーボードからの入力</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#mover' class='wiki'> mover</a></code> (0), 最後に動かされた点を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=User+InputJ.html#mouse' class='wiki'> mouse</a></code> (0) マウスボタンが押されたときのマウスの位置を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#elementsatmouse' class='wiki'> elementsatmouse</a></code> (0) マウスカーソルの近くにある要素のリストを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=User+InputJ.html#key' class='wiki'> key</a></code> (0)  キーボードで打たれた文字列を返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=User+InputJ.html#iskeydown' class='wiki'> iskeydown</a></code> (1)  あるキーが押されたかどうか問い合わせる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=User+InputJ.html#keydownlist' class='wiki'> keydownlist</a></code> (0)  押されたキーのリストを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=User+InputJ.html#amsdata' class='wiki'> amsdata</a></code> (0)  重力センサからデータを得る<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=User+InputJ.html#calibratedamsdata' class='wiki'> calibratedamsdata</a></code> (0)  調整されたAMSデータを取得する<br />
+<br />
+<br />
+<a id='id870251'><h4>時間</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#resetclock' class='wiki'> resetclock</a></code> (0)   内部時計のリセット<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#seconds' class='wiki'> seconds</a></code> (0)  リセット後の経過時間<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#similationtime' class='wiki'> simulationtime</a></code> (0)  シミュレーションの進行に同期した実行用時計のハンドルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#time' class='wiki'> time</a></code> (0) 現在の時刻<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#date' class='wiki'> date</a></code> (0) 現在の日付<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Timing+and+Animations.html#wait' class='wiki'> wait</a></code> (1) ミリ秒単位で指定された時間、実行を止めて待つ<br />
+<br />
+<br />
+<a id='id870358'><h4>ファイル入出力</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#setdirectory' class='wiki'> setdirectory</a></code> (1)  ファイルのディレクトリを設定する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#load' class='wiki'> load</a></code> (1) データの読み込み<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#import' class='wiki'> import</a></code> (1) プログラムコードの読み込み<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#openfile' class='wiki'> openfile</a></code> (1) ファイルを開いてハンドルを返す<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#closefile' class='wiki'> closefile</a></code> (1) ファイルを閉じる<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#print' class='wiki'> print</a></code> (2) ファイルに書き出す。改行なし。<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=File+ManagementJ.html#println' class='wiki'> println</a></code> (2) ファイルに書き出す。改行あり。<br />
+<br />
+<br />
+<a id='id870475'><h4>ネットワーク</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#openurl' class='wiki'> openurl</a></code> (1) Webページをブラウザで開く<br />
+<br />
+<br />
+<a id='id870522'><h4>物理シミュレーション</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#simulation' class='wiki'> simulation</a></code> (0) シミュレーションへのハンドル提供<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#force' class='wiki'> force</a></code> (1)  力の探索粒子を設定する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#addforce' class='wiki'> addforce</a></code> (2) 力を存在する質点に適用する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Special+OperatorsJ.html#setforce' class='wiki'> setforce</a></code> (2) 力を存在する質点に設定する<br />
+<br />
+<br />
+<a id='id870604'><h4>アニメーション</h4></a>
+<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Timing+and+AnimationsJ.html#playanimation' class='wiki'> playanimation</a></code> (0) アニメーションを開始する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Timing+and+AnimationsJ.html#pauseanimation' class='wiki'> pauseanimation</a></code> (0) アニメーションをいったん停止する<br />
+<code><a title="no description" href='tiki-cindydoc.php@page=Timing+and+AnimationsJ.html#stopanimation' class='wiki'> stopanimation</a></code> (0) アニメーションを終わる<br />
+<br />
+<br />
+<a id='id870678'><h4>特別な演算子(実験段階のため説明なし)</h4></a>
+<br />
+次の演算子は、自己責任で使ってください<br />
+<br />
+<code>freevariables</code> (1)<br />
+<code>java</code> (1)<br />
+<code>curview</code> (0)<br />
+<code>curkernel</code> (0)<br />
+<code>curgraphalgorithm</code> (0)<br />
+<code>attribute</code> (2) 属性を読む<br />
+<code>attribute</code> (3) ユーザー属性を設定する<br />
+<code>inspectinfo</code> (2)  属性情報<br />
+<code>createmass</code> (3) 名前と位置、速度を持った質点を作る（現在未サポート）<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 04 of March, 2013 [22:03:15 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Operator%20IndexJ">
+    http://doc.cinderella.de/tiki-index.php?page=Operator%20IndexJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

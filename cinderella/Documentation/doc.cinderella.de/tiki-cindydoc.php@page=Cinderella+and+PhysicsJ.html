@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Cinderella and PhysicsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>シンデレラと物理学</h2>
+<!--latexreplace<br />
+\index{Runge Kutta}<br />
+\index{Dormand Prince}<br />
+\index{numerical integration}<br />
+--><!-- /latexreplace --><br />
+　シンデレラには、強力で使いやすい物理シミュレーションシステムがあります。それは、数値的方法に基づいており、（専門家のために： Dormand-Prince-45 integrator を使用）, 実行ボタンを押して何が起こるかを観察することで簡単に物理実験を行うことができます。<br />
+<br />
+　すべての物理シミュレーション<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->は質量を持つ粒子とそれらの間に働く力に基づいて行われます。シンデレラの幾何学部分のようなキーボードによる入力は通常はありません。質量や電荷を持つ点、バネ、重力、惑星、壁などの実験が簡単にできます。実行ボタンを押すと、実験は<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->とその数値的統合によりシミュレートされます. 重要な特徴は、いつでもマウスで点をつかんで動かすことにより実験に影響を与えることができるということです。これにより、実験が現実の世界でどのような振舞いをするかについての非常に現実的なイメージを得ることができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral3.png" border="0"  /></span></td></tr><tr><td class="caption"><b><b>重力のもとでの質点とバネ</b></b></td></tr></table><br />
+<!--latexreplace<br />
+\index{Dormand Prince}<br />
+\index{numerical integration}<br />
+--><!-- /latexreplace --><br />
+　<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->のもう一つの特徴は、シンデレラの幾何学部分とプログラミング・インターフェースの<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->とがシームレスに働くことです。これを利用することによって、実験の図形的描画力をかなり強化することができます。次の5つの振り子の図は、運動量の保存則について示す、よくある例です。質点は、多少硬いボールとみなされます。円周上だけを動くことのできる点によって、固い振り子の動きをシミュレートできます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral4.png" border="0"  /></span></td></tr><tr><td class="caption"><b><b>振り子による運動量保存則</b></b></td></tr></table><br />
+<br />
+　シンデレラでの物理的な物体は、いくつかの現実的な属性を示すことができます。たとえば、粒子は質量や電荷、半径を持つことができます。これらの属性は、二つの方法でコントロールされます。ひとつは、インスペクタを使って手動で調節され、もうひとつは<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->によってプログラム的に変更されます。<br />
+<br />
+<br />
+<hr />
+<!--latexreplace --><br />
+<b>続ける</b> --> <a title="no description" href="tiki-cindydoc.php@page=CindyLab+and+CindyScriptJ.html" class="wiki">CindyLab と CindyScript</a><br />
+<!--/latexreplace --><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [13:16:36 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Cinderella%20and%20PhysicsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Cinderella%20and%20PhysicsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Inspecting Appearance 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Inspecting Appearance</h2>
+<!--latexreplace<br />
+\index{inspect!appearance}<br />
+\index{appearance}<br />
+--><!-- /latexreplace --><br />
+With the inspector you can control the appearance of the geometric objects. There are two levels on which this can be done. The individual appearance inspector is responsible for the currently selected elements. There you can inspect and change the properties of the currently selected items. The default settings are not affected by this. The main setup for appearance issues can be accessed via the button  <span class="img"><img alt="" src="buttonsback/inspector-appearance.png" border="0"  /></span> . This section focuses on these basic appearance settings. The following pictures show the parameters for points, lines, and circles that can be inspected.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><IMG SRC="img/wiki_up/PointApp.png"></td><td width=10></td>
+<td ><IMG  SRC="img/wiki_up/LineApp.png"></td><td width=10></td>
+<td ><IMG  SRC="img/wiki_up/CircleApp.png"></td><td width=10></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->Point appearance<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->Line appearance<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm}  --> <!-- /latexreplace -->Circle/polygon appearance<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+Each of these windows has controls for color and visibility. Some of the parameters are specific to the inspected objects.<br />
+<br />
+<br />
+<h3> Color and Opacity</h3>
+<!--latexreplace<br />
+\index{inspect!color}<br />
+\index{inspect!opacity}<br />
+\index{color}<br />
+\index{opacity}<br />
+--><!-- /latexreplace --><br />
+For changing the color of the selected elements you simply click on one of the little boxes in the color palette. The color of the selected objects will change immediately.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColorSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The color palette</b></td></tr></table><br />
+<br />
+It may be the case that you are not satisfied with the color choices offered by Cinderella. You can change a color value in the palette by  double-clicking the corresponding box.  A color-chooser window pops up in which you can adjust the color of the palette entry. Depending on your operating system, this color chooser may look slightly different. Usually, several different ways of selecting a color are provided. On an Apple Macintosh, two of these ways of selection look as follows:<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><IMG SRC="img/wiki_up/Color1.png"></td><td width=10><!--latexreplace {\kern1.2cm} --> <!-- /latexreplace --></td>
+<td ><IMG SRC="img/wiki_up/Color2.png"></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it {\kern1mm}  --> <!-- /latexreplace -->Color wheel<!--latexreplace } --> <!-- /latexreplace --></b></td> <td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->Extended palette<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+It is important to know that by changing the color of an entry in the palette, <b>you change the color of all geometric elements associated with this color entry</b>.<br />
+<br />
+Next to the color palette you also have a slider with which you can adjust the opacity of the elements. The opacity can vary from "absolutely invisible" to "solid."<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AlphasB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Grades of opacity</b></td></tr></table><br />
+<br />
+Absolutely invisible elements are good for auxiliary constructions that should not disturb the rest of the drawing. Slightly visible elements can be used for parts of a construction that are of minor importance. For an element to take active part in the views (being movable and selectable), it needs an opacity of at least 20 percent. You can select invisible elements in the textual view. They cannot, however, be used for clipping lines. Another way to make points or lines invisible is to give them a size of zero.<br />
+<br />
+In <b>Cinderella.2</b> it is also possible to fill circles (in contrast to previous releases). Fill colors can be controlled by the fill color properties. The opacity of interior and border can be controlled individually.<br />
+<br />
+<br />
+<h3> Size</h3>
+<!--latexreplace<br />
+\index{inspect!size}<br />
+\index{size}<br />
+--><!-- /latexreplace --><br />
+There are also sliders provided for the control of the size of objects. There is an individual slider for all points, and another slider for lines and circles.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SizesB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Possible sizes of points</b></td></tr></table><br />
+<br />
+Points of size zero are very useful objects. They are invisible, but they are selectable and movable, and they still serve as active clipping points for clipping lines. This makes them ideal elements to use when you want a line that you can move by grabbing its endpoints.  This obviates the need to create unnecessary "decorations" with visible points.<br />
+<br />
+<br />
+<h3> Clipping</h3>
+<!--latexreplace<br />
+\index{inspect!clipping}<br />
+\index{clipping}<br />
+--><!-- /latexreplace --><br />
+You can control whether a line is "clipped."  For this purpose  the inspector offers three buttons that turn clipping on and off.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ClippingSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Controls for clipping, line size and overhang</b></td></tr></table><br />
+<br />
+An unclipped line will be drawn over the whole extent of a view. A clipped line can be truncated in two different ways. The second button clips a line defined by two points with respect to exactly these points. The third button clips with respect to all points that are incident to the line.  The rules that govern this clipping logic are a bit intricate, but they lead to natural behavior:<br />
+<br />
+<ul><li> To be a "clipping point" of a line the point must be incident to the line.  Furthermore, the point must not be completely invisible, and it must not lie at infinity. Hidden clipping points can be created by setting the size of a point to zero.
+</li><li> All clipping points of a line are consulted for the clipping.
+</li><li> If the line has at least two clipping points, then the portion of the line that reaches from the first clipping point of the line to the last clipping point is drawn.
+</li><li> If there are fewer than two clipping points, the line is not clipped.
+</li></ul>
+<br />
+These rules have the following effect:<br />
+<br />
+<ul><li> At least a small portion of the line is always shown.
+</li><li> All visible points incident to the line lie on this portion.
+</li></ul>
+<br />
+This is what you would  expect for geometric drawings. The decision as to whether a point is (always) incident to a line is made by the automatic theorem checking capacity of <b>Cinderella.2</b>. In this way, correct and mathematically consistent behavior is ensured.<br />
+<br />
+<br />
+<h3> Overhang</h3>
+<!--latexreplace<br />
+\index{inspect!overhang}<br />
+\index{overhang}<br />
+--><!-- /latexreplace --><br />
+It is often undesirable to have a clipped line end directly at certain points. It frequently looks much nicer to have some overhang that suggests that the line continues farther.  You can control the size of an overhang using the overhang slider. The slider's position adjusts the overhang on both sides between  0% and 50% of the line's total length.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ConicB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Pascal's theorem with individual colors, sizes, and overhang</b></td></tr></table><br />
+<br />
+<br />
+<h3> Default Settings</h3>
+<!--latexreplace<br />
+\index{inspect!defaults}<br />
+--><!-- /latexreplace --><br />
+There are two other information blocks in the inspector that are accessible via the buttons  <span class="img"><img alt="" src="buttonsback/inspector-defaults.png" border="0"  /></span>  and  <span class="img"><img alt="" src="buttonsback/inspector-special-def.png" border="0"  /></span> . Changes that are made there affect all selected elements and at the same time define the default settings for elements that will be constructed in the future.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><table align=center>
+<tr>
+<td ><IMG SRC="img/wiki_up/Dafaults1.png"></td><td width=10><!--latexreplace {\kern1.2cm} --> <!-- /latexreplace --></td>
+<td ><IMG  SRC="img/wiki_up/Defaults2.png"></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->Basic appearance defaults<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->Arrow and trace defaults<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 31 of July, 2011 [10:28:06 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Inspecting%20Appearance">
+    http://doc.cinderella.de/tiki-index.php?page=Inspecting%20Appearance
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

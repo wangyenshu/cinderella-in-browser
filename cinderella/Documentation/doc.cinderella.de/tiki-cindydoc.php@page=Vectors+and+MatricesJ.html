@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Vectors and MatricesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>ベクトルと行列</h2>
+<br />
+リストはベクトルと行列の表現として用いることができます。特に、数値からなるリストでは、多くの算術演算ができます。さらに、幾何学要素の座標は数値のリストとして読み出されます。たとえば、 <code>A</code> が点のラベルであるとすると <code>A.xy</code> は２つの数 <code>x</code> と <code>y</code>を点の座標として返します。同様に、 <code>A.homog</code> は３つの数のリスト:点の同次座標を返します。いくつかの算術演算は、これらの座標ベクトルを直接計算することができます。<br />
+<br />
+<h3>ベクトルと行列の定義</h3>
+<br />
+どのようなリストも、オブジェクトのベクトルとみなすことができますが、数のベクトルには特に興味があります。そのようなベクトルは"数ベクトル" と呼ばれます。あるリストが数ベクトルかどうかは  <span style="color:red;"><code>isnumbervector(&#60;expr&#62;)</code></span> 演算子によって確かめられます。<br />
+<br />
+もし、リストの要素がまたリストであり、しかもそれらがすべて同じ長さであれば、そのようなリストは <i>行列</i>と呼ばれます。あるリストが行列であるかどうかは、 <span style="color:red;"><code>ismatrix(&#60;expr&#62;)</code></span>.  演算子によって確かめられます。さらに、行列の個々の要素がすべて数であれば、この行列は数行列と呼ばれます。ある行列が数行列かどうかは  <span style="color:red;"><code>isnumbermatrix(&#60;expr&#62;)</code></span>演算子によって確かめられます。行列の要素は同じ長さのベクトルとも考えられ、このようなベクトルは行列の行ベクトルです。したがって、行列が  <i>n</i> 個の、長さ <i>m</i>の行ベクトルからなるならば、 <i>n</i> × <i>m</i> 行列です。<br />
+<br />
+<br />
+<h3>和と積</h3>
+<br />
+数のリストに対する四則演算は  <a title="no description" href="tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html" class="wiki">算術演算子</a> の節で説明してあります。経験則として、このレベルの計算はCindyScript 上で数学的に合理的になされます。たとえば、 <code>A</code> と <code>B</code> が数のリストであれば、 <code>(A+B)/2</code> は２つのベクトルの中点を計算します。<br />
+<br />
+リストが同じ形を持つときは、加法と減法ができます。これは、リストが同じ長さで、いくつかの要素がやはり同じようなリストであれば、和・差に対応する要素は同じ形になるということです。<br />
+<br />
+リストのかけ算は、数学的に意味があれば許されます。次の表は、かけ算が許される場合についてまとめてあります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>要素 1</b> </td><td class="wikicell" ><b>要素 2</b></td><td class="wikicell" ><b>結果</b></td><td class="wikicell" ><b>意味</b></td></tr><tr><td class="wikicell" >数 </td><td class="wikicell" > 数 </td><td class="wikicell" > 数 </td><td class="wikicell" > 通常のかけ算</td></tr><tr><td class="wikicell" >数 </td><td class="wikicell" > 長さ <i>r</i> のベクトル </td><td class="wikicell" >長さ <i>r</i> のベクトル</td><td class="wikicell" > ベクトルの実数倍</td></tr><tr><td class="wikicell" >長さ <i>r</i> のベクトル</td><td class="wikicell" > 数 </td><td class="wikicell" > 長さ <i>r</i> のベクトル</td><td class="wikicell" > ベクトルの実数倍</td></tr><tr><td class="wikicell" >長さ <i>r</i> のベクトル</td><td class="wikicell" > 長さ <i>r</i> のベクトル</td><td class="wikicell" > 数 </td><td class="wikicell" > ベクトルの内積</td></tr><tr><td class="wikicell" ><i>n</i> × <i>r</i> 行列 </td><td class="wikicell" > 長さ <i>r</i> のベクトル</td><td class="wikicell" > 長さ <i> n</i> のベクトル </td><td class="wikicell" > 行列×列ベクトル</td></tr><tr><td class="wikicell" >長さ <i>n</i> のベクトル </td><td class="wikicell" > <i>n</i> × <i>r</i> 行列 </td><td class="wikicell" >  長さ <i>r</i> のベクトル</td><td class="wikicell" > 行ベクトル × 行列</td></tr><tr><td class="wikicell" ><i>n</i> × <i>r</i> 行列 </td><td class="wikicell" > <i>r</i>× <i>m</i> 行列 </td><td class="wikicell" > <i>n</i> × <i>m</i> 行列</td><td class="wikicell" > 行列の積</td></tr></table><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h3>積、和、最大と最小</h3>
+<br />
+<A NAME="sum"></A><br />
+<A NAME="sum1"></A><br />
+<h4>総和演算子: <span style="color:red;"><code>sum(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は要素の総和を求めます。要素は数か、それ自身がリスト(またはベクトル、行列)か、文字列です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>sum(1..10)</code>   </td><td class="wikicell"  colspan="3">  <code>55</code></td></tr><tr><td class="wikicell" ><code>sum([4,6,2,6])</code>   </td><td class="wikicell"  colspan="3">  <code>18</code></td></tr><tr><td class="wikicell" ><code>sum([[3, 5], [2, 5], [5, 6]])</code>   </td><td class="wikicell"  colspan="3">  <code>[10, 16]</code></td></tr><tr><td class="wikicell" ><code>sum(["h","e","ll","o"]</code>  </td><td class="wikicell"  colspan="3">  <code>"hello"</code></td></tr></table><br />
+<br />
+<br />
+たとえば、次のコードで示されるように、sum 演算子は平均を計算する関数を定義するのに使えます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+average(x) := sum(x)/length(x)
+</pre></div><br />
+<br />
+この関数は数のリストと同様に、ベクトルや行列の平均も計算します。<br />
+<br />
+<hr />
+<br />
+<A NAME="sum2"></A><br />
+<h4>総和演算子: <span style="color:red;"><code>sum(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子はsum演算子と同様ですが、各要素に  <code>&#60;expr&#62;</code> を実行し、その結果の総和を求めます。実行変数は例によって <code>#</code> です。<br />
+<br />
+<b>例:</b><br />
+<br />
+次の式で、100以下の自然数の平方の和を求めることができます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>sum(1..100,#&#136;2)</code>   </td><td class="wikicell"  colspan="3">  <code>338350</code></td></tr></table><br />
+<br />
+すこし神秘的な結果があります。 <img alt="wink" src="img/smiles/icon_wink.gif" /><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>sum(1..10,#&#136;2)</code>   </td><td class="wikicell"  colspan="3">  <code>385</code></td></tr><tr><td class="wikicell" ><code>sum(1..100,#&#136;2)</code>   </td><td class="wikicell"  colspan="3">  <code>338350</code></td></tr><tr><td class="wikicell" ><code>sum(1..1000,#&#136;2)</code>   </td><td class="wikicell"  colspan="3">  <code>333833500</code></td></tr><tr><td class="wikicell" ><code>sum(1..10000,#&#136;2)</code>   </td><td class="wikicell"  colspan="3">  <code>333383335000</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="sum3"></A><br />
+<h4>総和演算子: <span style="color:red;"><code>sum(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は実行変数が <code>&#60;var&#62;</code>である以外は先ほどの演算子と同じです。<br />
+<br />
+<hr />
+<br />
+<A NAME="product"></A><br />
+<A NAME="product1"></A><br />
+<h4>積演算子: <span style="color:red;"><code>product(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は要素をすべて掛け合わせます。要素は数であることが前提です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>product(1..5)</code>   </td><td class="wikicell"  colspan="3">  <code>120</code></td></tr></table><br />
+<br />
+<br />
+この演算子を使って、たとえば、次のコードのように、階乗を計算する関数を定義することができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+fac(x) := product(1..x)
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="product2"></A><br />
+<h4>積演算子: <span style="color:red;"><code>product(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は product 演算子と同様ですが、各要素に <code>&#60;expr&#62;</code> を実行し、その結果をすべて掛け合わせます。実行変数は例によって <code>#</code> です。<br />
+<br />
+<hr />
+<br />
+<A NAME="product3"></A><br />
+<h4>積演算子: <span style="color:red;"><code>product(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は実行変数が <code>&#60;var&#62;</code>である以外は先ほどの演算子と同じです。<br />
+<br />
+<hr />
+<br />
+<A NAME="max"></A><br />
+<A NAME="max1"></A><br />
+<h4>最大値演算子: <span style="color:red;"><code>max(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は要素の最大値を求めます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>max([4,2,6,3,5])</code>   </td><td class="wikicell"  colspan="3">  <code>6</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="max2"></A><br />
+<h4>最大値演算子: <span style="color:red;"><code>max(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+この演算子は  <code>max(&#60;list&#62;)</code> と同様ですが、 <code>&#60;expr&#62;</code>  をリストのすべての要素に実行した結果の最大値を与えます。実行変数は例によって  <code>#</code> です。<br />
+<br />
+<hr />
+<br />
+<A NAME="max3"></A><br />
+<h4>最大値演算子: <span style="color:red;"><code>max(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は実行変数が <code>&#60;var&#62;</code>である以外は先ほどの演算子と同じです。<br />
+<br />
+<hr />
+<br />
+<A NAME="min"></A><br />
+<A NAME="min1"></A><br />
+<h4>最小値演算子: <span style="color:red;"><code>min(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は要素の最小値を求めます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>min([4,2,6,3,5])</code>   </td><td class="wikicell"  colspan="3">  <code>2</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="min2"></A><br />
+<h4>最小値演算子: <span style="color:red;"><code>min(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+この演算子は  <code>min(&#60;list&#62;)</code> と同様ですが、 <code>&#60;expr&#62;</code> をリストのすべての要素に実行した結果の最大値を与えます。実行変数は例によって  <code>#</code> です。<br />
+<br />
+<hr />
+<br />
+<A NAME="min3"></A><br />
+<h4>最小値演算子: <span style="color:red;"><code>min(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は実行変数が <code>&#60;var&#62;</code>である以外は先ほどの演算子と同じです。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h3>ベクトルと行列の演算</h3>
+<br />
+この節の初めの方で述べたように、ベクトルと行列には和と積の他にもいくつかの演算があります。<br />
+<br />
+<A NAME="matrixrowcolumn"></A><br />
+<h4>行列の次数: <span style="color:red;"><code>matrixrowcolum(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  引数が行列であれば、この演算子は行と列の数を、2つの数の要素からなるリストとして返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>matrixrowcolumn([[1,2],[3,2],[1,3],[5,4]])</code> </td><td class="wikicell"  colspan="3"> <code>[4,2]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="transpose"></A><br />
+<h4>転置行列: <span style="color:red;"><code>transpose(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  引数が行列であれば、この演算子は転置行列を返します。転置行列では行と列が入れ替わります。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>transpose([[1,2],[3,2],[1,3],[5,4]])</code> </td><td class="wikicell"  colspan="3"> <code>[[1,3,1,5],[2,2,3,4]]</code></td></tr><tr><td class="wikicell" ><code>transpose([[1],[3],[1],[5]])</code> </td><td class="wikicell"  colspan="3"> <code>[[1,3,1,5]]</code></td></tr><tr><td class="wikicell" ><code>transpose([[1,3,1,5]]) </td><td class="wikicell"  colspan="3"> [[1],[3],[1],[5]]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="row"></A><br />
+<h4>行列の行抽出: <span style="color:red;"><code>row(&#60;matrix&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  引数が行列であれば、この演算子は  <code>&#60;int&#62;</code> 番目の行をベクトルとして返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>row([[1,2],[3,2],[1,3],[5,4]],2)</code> </td><td class="wikicell"  colspan="3"> <code>[3,2]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="column"></A><br />
+<h4>行列の列抽出: <span style="color:red;"><code>column(&#60;matrix&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、引数が行列であれば index <code>&#60;int&#62;</code> 番目の列をベクトルとして返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>column([[1,2],[3,2],[1,3],[5,4]],2)</code> </td><td class="wikicell"  colspan="3"> <code>[2,2,3,4]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="submatrix"></A><br />
+<h4>小行列: <span style="color:red;"><code>submatrix(&#60;matrix&#62;,&#60;int1&#62;,&#60;int2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、第１引数が行列であれば、第  <code>&#60;int1&#62;</code> 列と 第 <code>&#60;int2&#62;</code> 行を削除した小行列を返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>submatrix([[1,2,4],[3,2,3],[1,3,6],[5,4,7]],2,3)</code> </td><td class="wikicell"  colspan="3"> <code>[[1,4],[3,3],[5,7]]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="rowmatrix"></A><br />
+<h4>ベクトルから行列への変換: <span style="color:red;"><code>rowmatrix(&#60;vector&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、第１引数がベクトルであれば、このベクトルを１行とする行列を返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>rowmatrix([1,2,3,4])</code> </td><td class="wikicell"  colspan="3"> <code>[[1,2,3,4]]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="columnmatrix"></A><br />
+<h4>ベクトルから行列への変換: <span style="color:red;"><code>columnmatrix(&#60;vector&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、第１引数がベクトルであれば、このベクトルを１列とする行列を返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式:</b> </td><td class="wikicell"  colspan="3"> <b>結果:</b></td></tr><tr><td class="wikicell" ><code>columnmatrix([1,2,3,4])</code> </td><td class="wikicell"  colspan="3"> <code>[[1],[2],[3],[4]]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="zerovector"></A><br />
+<h4>零ベクトルの生成: <span style="color:red;"><code>zerovector(&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  長さが <code>&#60;int&#62;</code> の零ベクトルを作ります。<br />
+<br />
+<hr />
+<br />
+<A NAME="zeromatrix"></A><br />
+<h4>零行列の生成: <span style="color:red;"><code>zeromatrix(&#60;int1&#62;,&#60;int2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>&#60;int1&#62;</code> 行 <code>&#60;int2&#62;</code> 列の零行列を作ります。<br />
+<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>線形代数</h3>
+<br />
+　リストはベクトルまたは行列としても使われますので、いくつかの算術演算は線形代数としてリストに適用できます。<br />
+<!-- latexreplace<br />
+\index{linear algebra}<br />
+\index{vector}<br />
+\index{matrix}<br />
+<tt> --></tt><br />
+<A NAME="det"></A><br />
+<h4>正方行列の行列式: <span style="color:red;"><code>det(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、正方行列(行と列の長さが同じである行列)の行列式を計算します。幾何学的な目的のために、行列式はとても役に立つことを銘記してください。たとえば、3点の同次座標(homogenous coordinate)からできる 3 × 3 行列の行列式が0のときに限り、その3点は共線(collinear)になります。行列式の符号は、3点の相対的な方向に関する情報を持っています。  <a title="no description" href="tiki-cindydoc.php@page=Geometric+OperatorsJ.html" class="wiki">幾何学演算子</a> の節に、関数 <code>area(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code> と <code>det(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code> の説明があります。いずれも行列式を変形したもので、特に幾何学で有用であり、一般的な行列式よりもやや性能のよい関数です。<br />
+<br />
+<hr />
+<br />
+<h4>ベクトルの大きさ: <span style="color:red;"><code>&#124;&#60;vec&#62;&#124;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> ベクトルを２本の縦線  <code>|…|</code>  で挟むと、ベクトルの大きさを表します。この演算子は実数や複素数にも適用できて、その絶対値を返します。<br />
+<br />
+<hr />
+<br />
+<h4>２つのベクトルの距離: <span style="color:red;"><code>&#124;&#60;vec1&#62;,&#60;vec2&#62;&#124;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 同じ長さの２つのベクトルを２本の縦線 <code>|…|</code> で挟むと、ベクトル間の距離を計算します。<br />
+<br />
+<hr />
+<br />
+<A NAME="dist"></A><br />
+<h4>ベクトルの距離: <span style="color:red;"><code>dist(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、２つのベクトル間の距離を計算し、数として返します。この演算子も幾何学では非常に有用です。<br />
+<br />
+<hr />
+<br />
+<A NAME="hermiteanproduct"></A><br />
+<h4>エルミート内積: <span style="color:red;"><code>hermiteanproduct(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、２つのベクトルのエルミート内積を返します。それは、内積  &#60;vec1&#62;*&#60;vec2&#62;と似ていますが、２番目のベクトルは掛けられる前に、共役複素数にされます。特に、 <code>hermiteanproduct(a,a)</code> は常に非負です。<br />
+<br />
+<b>例:</b><br />
+<br />
+次のコードは、内積とエルミート内積の違いを示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=[2+3*i,1-i];
+println(hermiteanproduct(a,a));
+println(a*a);
+</pre></div><br />
+<br />
+結果は次の通り。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+15 
+-5 + i*10
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="inverse"></A><br />
+<h4>正方行列の逆行列: <span style="color:red;"><code>inverse(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、正方行列の逆行列を計算します。もし、行列が正方行列でないか、逆行列を持たない場合は、未定義のオブジェクトを返します。逆行列は、１次方程式 <i>Ax=b</i>  を解くときに役に立ちます。しかし、 <i>A</i>  を変形するより、  <code>linearsolve</code> 演算子を使う方がよいでしょう。<br />
+<br />
+<hr />
+<br />
+<A NAME="adj"></A><br />
+<h4>余因子行列: <span style="color:red;"><code>adj(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、正方行列の余因子行列を計算します。逆行列が存在する行列においては、余因子行列は逆行列に行列式を掛けたものです。 逆行列と異なり、余因子行列はいつでも存在します。<br />
+<br />
+<hr />
+<br />
+<A NAME="eigenvalues"></A><br />
+<h4>固有値: <span style="color:red;"><code>eigenvalues(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>   この演算子は、正方行列の固有値を計算します。結果は値のリストとして返されます。ｎ次の正方行列からはn個の固有値を返します。実数の行列であっても、固有値は複素数の範囲で求めるのが普通です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m1=[[1,1,0],[0,1,0],[0,0,.5]];
+println(eigenvalues(m1));
+m2=[[1,1,0],[-1,1,0],[0,0,.5]];
+println(eigenvalues(m2));
+</pre></div><br />
+<br />
+結果は次の通り:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[1,1,0.5]
+[1 + i*1,1 - i*1,0.5]  
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="eigenvectors"></A><br />
+<h4>固有ベクトル: <span style="color:red;"><code>eigenvectors(&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、正方行列の固有ベクトルの基底を計算します。結果としてベクトルのリストを返します。 このリストの順序は、 <code>eigenvalues</code> 演算子における固有ベクトルの順序と同じです。<br />
+<br />
+<b>警告:</b> もし、行列が対角化可能でない場合は、この結果は意味がありません。<br />
+<br />
+<hr />
+<br />
+<A NAME="linearsolve"></A><br />
+<h4>１次方程式の解: <span style="color:red;"><code>linearsolve(&#60;matrix&#62;,&#60;vector&#62;)</code></span></h4>
+<br />
+<h4>または: <span style="color:red;"><code>linearsolve(&#60;matrix&#62;,&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b>   演算子 <code>linearsolve(A,b)</code> は、方程式  <i>Ax=b</i>  の解  <i>x</i>  を計算します。 行列  <i>A</i> は正方行列で逆行列を持たなければなりません。 <i>b</i> は <i>n</i> 次のベクトルか、 <i>n</i> 行の行列です。 <i>A</i> が逆行列を持たないか、次数が合わない場合は未定義値を返します。<br />
+<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m=[[1,1,0],[0,1,0],[0,1,1]];
+x=linearsolve(m,[2,3,4]);
+println(x);
+println(m*x);
+</pre></div><br />
+<br />
+結果は次の通りです。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[-1,3,1] 
+[2,3,4] 
+</pre></div><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>高度な幾何学操作</h3>
+<br />
+<A NAME="convexhull3d"></A><br />
+<h4>3次元の凸多面体を作る: <span style="color:red;"><code>convexhull3d(&#60;list of vectors&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、３次元ベクトルのリストを与えると凸多面体を作ります。戻り値は２つのリストからなるのペアです。第１の要素は凸多面体の頂点、第２の要素は面です。それぞれの面は第１要素の頂点によって与えられます。<br />
+<br />
+<b>例:</b> 次の点のリストは、立方体の頂点と中心を示すリストです。<br />
+<br />
+<code>[[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[0,0,0]]</code><br />
+<br />
+このリストに convexhull3d 関数を適用すると、次の出力を得ます。<br />
+<div dir="ltr"><pre class='codelisting'>
+[
+ [[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1]],
+ [[6,5,1,2],[3,1,5,7],[3,4,2,1],[8,7,5,6],[8,6,2,4],[8,4,3,7]]
+] 
+</pre></div><br />
+<br />
+　convexhull関数が、内部の点が削除された凸多面体をうまく取り扱うことができることを示しています。<br />
+<br />
+　次の図は <code>convexhull3d(...)</code> 関数を用いて作りました。これは4次元多面体(600 セル) を３次元空間に表示したものです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ConvexHullX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+注意: 上図は CindyScript を用いて描いています。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 11 of February, 2015 [22:52:58 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Vectors%20and%20MatricesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Vectors%20and%20MatricesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

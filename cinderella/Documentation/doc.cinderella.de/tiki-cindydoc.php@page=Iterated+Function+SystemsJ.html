@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Iterated Function SystemsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 反復関数系(Iterated Function Systems)</h2>
+<!--latexreplace<br />
+\index{iterated function system}<br />
+\index{IFS}<br />
+\index{fractal}<br />
+--><!-- /latexreplace --><br />
+　反復関数系(IFS)を利用すると、シンデレラでフラクタルを作ることができます。 反復関数系は、いくつかの変換 T1, T2, T3,を必要とします。これらの変換から、つぎのようにして図形ができます。<br />
+<br />
+　まず、繰り返しの起点として、画面上の任意の点を選びます。次に、どれかの変換をランダムに選び、変換によって写った点を描きます。さらに、どれかの変換をランダムに選び、その写った点を変換します。この手続きを何度も繰り返します。こうして、画面上の「点の雲」が作られます。<br />
+<br />
+　反復関数系についての驚くべき事実は、この点の雲がすべての変換 T1, T2, T3, …による自己相似形だということです。<br />
+<br />
+　例として、次のような状況を考えます。まず２つの<a title="no description" href="tiki-cindydoc.php@page=SimilarityJ.html" class="wiki">相似変換</a> が定義されているとします。一つは点 <i>A</i> を自分自身に写し、点 <i>B</i> を点 <i>C</i>に写します。すると、この変換は、点 <i>A</i> の周りにわずかに収縮しながら回転する変換を(この図の点 <i>A</i>, <i>B</i>, <i>C</i> の場合は)引き起こします。２番目の変換は、 <i>A</i> を <i>D</i> に、 <i>B</i> を <i>E</i> に写します。これも回転と収縮をしますが、中心と収縮率は異なります。この２つの変換によって定義された反復関数系は図のような結果になります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFS1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>相似変換による反復関数系</b></td></tr></table><br />
+<br />
+<br />
+<h3>反復関数系(IFS)を定義する</h3>
+<br />
+　反復関数系を定義するためには、まずいくつかの変換を選びます。そのためには <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a>で、シフトキーを押しながら、望む変換のボタンをクリックしていきます。この方法で変換の組み合わせが選ばれます。次に、「モード」メニューの「特別」から「反復関数系(IFS)」を選びます。すると、「IFS」ボタンが追加されます。先ほどの点の雲の例では、２つの相似変換に対して自己相似形が生成されたのです。<br />
+<br />
+<br />
+<h3>反復関数系の機能を高める</h3>
+<!--latexreplace<br />
+\index{inspect!IFS}<br />
+--><!-- /latexreplace --><br />
+ここまででは、反復関数系はそれほど強い印象を与えるものではないでしょう。その理由は、点の雲を生成する間、２つの変換が同じ割合でランダムに選ばれたということにあります。しかしながら、２番目の変換は第１の変換に比べてはるかに収縮率が高いので、２番目の変換の定点の近くに点がたまることになります。ユーザーは、インスペクタで変換の相対的な確率を調節することにより、変換の「重要性」を変えることができます。そのためには、動かすモード で、シフトキーを押しながらIFSボタンをクリックしてインスペクタを開きます。「表現方法」タブにそれぞれの変換に関係したスライダーと色のセレクタがあります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFSInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>反復関数系インスペクタ</b></td></tr></table><br />
+<br />
+スライダーはそれぞれの変換が選ばれる相対的な確率をコントロールします。色のコントロールは、点の雲の中でその変換に関係している色です。おおざっぱに言うと、ある変換をよく使って生成される点は、比較的その変換の色を持ちがちです。２番目の(収縮率の高い)変換の確率を下げると、先ほどの絵によい影響を与えます。最初の相似変換(<i>A</i>周りの回転)がより「重要」になり、内部が螺旋で満たされるようになります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFS3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>異なる確率分布</b></td></tr></table><br />
+<br />
+もしも、マウスの動きに対する即時的な反応を必要としないならば、IFSの可視性を変えることによって、絵をより強調することができます。可視性を小さな値にすることにより、個々の点を高水準の透明度で表示されます。もし、十分に待つことができれば絵はサブピクセルレベルで絵が構成されるでしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFS4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>低い可視性での表示</b></td></tr></table><br />
+<br />
+<br />
+<h3>パラメータの変更</h3>
+<br />
+反復関数系(IFS) はとても豊かな構造物です。関係する点の位置次第で、IFSはシンデレラの同一の図形に対して、質的に非常に異なったものに見えるかも知れません。 次の図は、前の例のIFSに対して、２つの異なるパラメータを選択したものを示します。<br />
+<br />
+<br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS5.png" border="0"  width="300" /></span></td>
+<td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS6.png" border="0"  width="300" /></span></td>
+ </tr>
+<tr> <td><b>異なるパラメータ</b></td> </tr>
+</table><br />
+<br />
+異なる定義による変換は異なる（時々とても美しい）視覚効果を引き起こすかもしれません。次の図の中で、最初の例は４つの異なるアフィン変換によって作られました。２番目の図は８つの対称的に選ばれた円反転によって作られました。<br />
+<br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS7.png" border="0"  width="300" /></span></td>
+<td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS8.png" border="0"  width="300" /></span></td>
+ </tr>
+<tr> <td><b>Bernsleyのシダ</b></td>
+<td width=10></td>
+<td><b>双曲フラクタル</b></td>
+</tr>
+</table><br />
+<br />
+<br />
+<h3>反復関数系と <a title="no description" href="tiki-cindydoc.php@page=Transformation+GroupsJ.html" class="wiki">変換群</a></h3>
+<!--latexreplace<br />
+\index{transformation group}<br />
+\index{group}<br />
+--><!-- /latexreplace --><br />
+<br />
+反復関数系は、シンデレラの<a title="no description" href="tiki-cindydoc.php@page=Transformation+GroupsJ.html" class="wiki">変換群</a>の概念と非常に密接な関係があります。変換群は変換の集まりで、幾何のオブジェクトに集めた変換を繰り返し適用するものです。反復関数系は、この反復過程の極限(存在するならば)と考えることができます。２つの相似変換が定義された次の例を考えましょう。最初の図は、変換を繰り返し適用したものを(マッピングの痕跡を示す線分とともに)示します。今、(動かすモードのシフト+クリックにより)単に変換群を選んでからIFSモードを選ぶことで、簡単に関連するIFSを作ることができます。 これにより、対応するIFSが自動的に作れます。結果として生じる絵が右側に示されています。<br />
+<br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS9.png" border="0"  width="300" /></span></td>
+<td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS10.png" border="0"  width="300" /></span></td>
+ </tr>
+<tr> <td><b>変換群と・・・</b></td>
+<td width=10></td>
+<td><b>その反復関数系</b></td>
+</tr>
+</table><br />
+<br />
+<br />
+<hr />
+<br />
+<h3>注意</h3>
+　反復関数系の構造は、定義された変換の属性に大きく依存します。変換が「収縮」型でない場合は、通常理にかなった効果は見られません。その場合は無限の彼方に拡散してしまうからです。<br />
+<br />
+<br />
+<br />
+<h3>次も参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Transformation+GroupsJ.html" class="wiki">変換群</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Transformation+ModesJ.html" class="wiki">変換モード</a>
+</li></ul>
+<br />
+(磯部)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [11:06:50 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Iterated%20Function%20SystemsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Iterated%20Function%20SystemsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

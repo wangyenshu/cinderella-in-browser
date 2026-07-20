@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Move Mode 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Move Mode</h2>
+<!--latexreplace<br />
+\index{mode!move}<br />
+\index{move mode}<br />
+\index{drag mode}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/move.png" border="0"  align="left" /></span></div> This mode is probably the most important feature of <b>Cinderella</b>.  It allows objects to be selected and to be moved around.<br />
+<br />
+<br />
+<h3>Moving Elements</h3>
+<br />
+Usually, move mode is used to move the free elements of a construction. To do this, place the mouse over a movable element, select the element by pressing the left mouse button, and drag it (with the button still pressed) to the desired position. After the button is released, another element can be moved around.<br />
+<br />
+<b>Cinderella</b> distinguishes two types of elements: <b>movable elements</b> and <b>fixed elements</b>.  As the name indicates, movable elements are those that you can move around in this mode.  The fixed elements are those whose position is already completely determined by the rest of the construction. If, for instance, a point is defined to be the intersection of two lines that have already been defined, then the point is no longer movable and becomes a fixed element. You can visually distinguish movable points from fixed points by their appearance: movable points appear brighter.<br />
+<br />
+There are seven types of movable elements:<br />
+<!--latexreplace<br />
+\index{point!on a line}<br />
+\index{point!on a conic}<br />
+\index{point!on a circle}<br />
+\index{line!with slope}<br />
+\index{circle!by center and radius}<br />
+\index{text}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+<ul><li> <b>Free Points:</b> These are points that are not dependent on other elements of the construction. These points can be moved about freely.
+</li><li> <b>Points on a line:</b> Points may be defined always to be incident to a certain line.  During a move these points slide along the line.
+</li><li> <b>Points on a circle:</b> Points may be defined to be always incident to a certain circle.  During a move these points slide along the circle.
+</li><li> <b>Points on a conic:</b> Similar to points on a circle, since circles are special conics.
+</li><li> <b>Line with a slope:</b> A line may be defined to be always incident to an already constructed point, with no further restrictions. Such a line can be selected directly for a move. During the move the line rotates about the point.
+</li><li> <b>Circles by center and radius:</b> A circle that is defined by its center and its radius may be scaled in move mode. Select the boundary of the circle with the mouse and drag the mouse. The radius changes according to the current mouse position. You can move the whole circle by dragging its center point.
+</li><li> <b>Texts and Measurements:</b>  Texts and measurements may be also dragged in move mode. You select the text and move it to the desired position. Texts and measurements may be placed everywhere in the view. The boundary of the view has snap points that support the creation of nice layouts. Texts and measurements may also be "docked" to points of the construction.
+</li></ul>
+<br />
+There is one more reason to use the move mode: you can use it to <b>change the position of labels</b>.  To do this, press the <b>shift key</b> on the keyboard, select the label with the mouse, and move it to the new position. However, labels cannot be moved to an arbitrary position. They must be close to their corresponding element. Movements that drag the label too far away are automatically blocked.<br />
+<br />
+<h3> Selecting Objects</h3>
+<!--latexreplace<br />
+\index{selecting}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+Move mode is also used to select one or more geometric elements with the mouse.<br />
+You can easily recognize selected elements, since they are highlighted in all views.  There are four reasons why you might want to select elements:<br />
+<ul><li> The most common use of select mode is to individualize the appearance of geometric elements.  All changes that you make in the <a title="no description" href="tiki-cindydoc.php@page=Inspector.html" class="wiki">inspector</a> are immediately applied to all selected elements.  If, for instance, several lines are selected and you move the size slider in the appearance editor, then the thickness of the selected lines changes.
+</li><li> Selected elements may be deleted by using the <a title="no description" href='tiki-cindydoc.php@page=General+Operations.html#Delete' class='wiki'>Delete</a> action.
+</li><li> Selected elements may be moved simultaneously.
+</li><li> Elements may be selected to define "Input," "Output," and "Hints" for an exercise.  For details on this, consult the section about creating <a title="Creating HTML pages" href="tiki-cindydoc.php@page=HTML+Export.html" class="wiki">interactive web pages</a> and exercises.
+</li></ul>
+<br />
+You can select elements in the view by clicking on them. Depending on what you do, several different behaviors are possible:<br />
+<br />
+<ul><li> When you click with the mouse somewhere on a view, then precisely those elements hit by the mouse pointer will become selected. All other elements will be deselected.
+</li><li> When you hold the shift key down while clicking the mouse over an element, the selection state of the element will toggle. The selection state of elements not hit by the mouse will remain the same. You can use "shift-clicking" to select more than one object.
+</li></ul>
+<br />
+We strongly recommend playing with the different possibilities of select mode.<br />
+<br />
+<br />
+<h3>Moving Several Elements</h3>
+<br />
+It is also possible to move several free points at once. To do this, one first has to select the points that are to be moved. This can be done by pressing the shift key and clicking all points to be selected. If after this selection one of the selected points is clicked on and dragged, all other selected points will move as well. The shape and orientation of the selected points will remain constant during the move.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern1cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.5733333333333333in">width=1.5733333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Move2BX}  &amp;  {  \includegraphics<a class="wiki external"  href="width=1.5733333333333333in">width=1.5733333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Move3}} \\<br />
+{\small\it Select several points\ldots{}} &amp;  {\small\it \ldots{}and move them.}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Move2BX.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Move3.png" border="0"  /></span></td>
+</tr>
+<tr> <td><b>Select several points…</b></td><td width=10></td>
+ <td><b>…and move them</b></td><td width=10></td>
+</tr>
+</table><br />
+<tt> <!-- /latexreplace --></tt><br />
+<br />
+The possibility of moving many selected points is particularly useful after a "copy and paste" action (or the use of a user-defined tool). The pasted objects will be selected after the pasting operation. With move mode they can be moved all at once to a different place by selecting one of the selected points.<br />
+<br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Move elements by dragging. Select elements by clicking.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Point.html' class='wiki'>Add a Point</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Line+through+a+Point.html' class='wiki'>Line through a Point</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Circle+by+Radius.html' class='wiki'>Circle by Radius</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Text.html' class='wiki'>Text</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Multitouch+Support.html' class='wiki'>Multitouch Support</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 29 of August, 2011 [07:41:53 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Move%20Mode">
+    http://doc.cinderella.de/tiki-index.php?page=Move%20Mode
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

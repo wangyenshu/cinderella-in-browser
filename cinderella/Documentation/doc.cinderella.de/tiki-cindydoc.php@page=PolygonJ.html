@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : PolygonJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>多角形</h2>
+<!--latexreplace<br />
+\index{polygon}<br />
+\index{mode!polygon}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/polygon.png" border="0"  align="left" /></span></div>このモードでは頂点の列を与えることにより多角形を定義することができます。 多角形を描くように、頂点を順番に選択していきます。 他の定義するモードとは違って、このモードでは選択される要素の個数の制限がありません． 多角形の定義を終了する時には、最初に選択した点を再び選択します。 たとえば、 <i>A</i>, <i>B</i>, <i>C</i>, <i>D</i> の4つを点とする多角形を定義したい時 には、 <i>A</i>, <i>B</i>, <i>C</i>, <i>D</i>,  <i>A</i> という順序で選択すればよいのです。<br />
+<br />
+もし、点を間違えて選択してしまった時には、間違えた点を再びクリックすることにより、1つ前に戻ることができます。 ただし、最後に選択した点のみ取り消すことができます。<br />
+<br />
+画面上にグラフィックでヒントが出ますから、それを見ながら作業すると簡単です。 出来上がる多角形が部分的に描かれますから、以後の予想がつきやすいでしょう。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly1} &amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly2} &amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly3}&amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly4} &amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly5} \\</tt><br />
+{\small\it 1st click  } &amp;  {\small\it 2nd click}&amp;  {\small\it  3rd click  }&amp;  {\small\it  4th click }&amp;  {\small\it  5th click  }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/AddPoly1.png" border="0"  /></span></td>    <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/AddPoly2.png" border="0"  /></span></td>   <td width=10></td>
+ <td><span class="img"><img alt="" src="img/wiki_up/AddPoly3.png" border="0"  /></span></td>   <td width=10></td>
+ <td><span class="img"><img alt="" src="img/wiki_up/AddPoly4.png" border="0"  /></span></td>  <td width=10></td>
+ <td><span class="img"><img alt="" src="img/wiki_up/AddPoly5.png" border="0"  /></span></td>   <td width=10></td>
+ </tr>
+<tr>   <td><b>最初のクリック</b></td>   <td width=10></td>
+ <td><b>2番目のクリック</b></td>  <td width=10></td>
+  <td><b>3番目のクリック</b></td>  <td width=10></td>
+  <td><b>4番目のクリック</b></td>  <td width=10></td>
+<tt>  <td><b>5番目のクリック</b></td> </td> </tr>  </table></tt><br />
+<!-- /latexreplace --><br />
+<hr />
+<br />
+<h3>要約</h3>
+点を順にクリックすることで多角形を定義する。 定義を終了させるためには最初にクリックした点を再びクリックする。<br />
+<br />
+<h3>注意</h3>
+このモードはユークリッド表示、球面表示、式による表示でのみ使うことができます。 双曲表示ではこの要素は無視されます。<br />
+<br />
+多角形を囲む時の「向き」により、多角形の面積を求めた時の符号が異なります。<br />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=AreaJ.html" class="wiki">面積</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=PolygonsJ.html" class="wiki">正多角形など</a>
+</li></ul>
+<br />
+(阿原)<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [12:21:02 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=PolygonJ">
+    http://doc.cinderella.de/tiki-index.php?page=PolygonJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

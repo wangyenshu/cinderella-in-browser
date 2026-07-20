@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interactive ModesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>インタラクティブモード</h2>
+<!--latexreplace<br />
+\index{interactive modesJ}<br />
+--><!-- /latexreplace --><br />
+<br />
+このモードは作図をする時に最も役に立ちます。 一度の「押す、ドラッグする、離す」という動作でいくつかの図を描くことができます。 さらに新しい要素の定義は、マウスの場所で完全に決めることができます。 たとえば、「直線を加える」というモードでは始点と終点とそれを結ぶ直線とが描かれるわけです。 ボタンを最初に押したところが始点、ボタンを離したところが終点として描かれます。 さらに、マウスを離した点が他の直線の交点であったならば、新しく追加される点はこれらの直線の交点として定義されるのです。<br />
+<br />
+<br />
+定義しようとしている要素が作図上すでに存在している場合、重ねて付け加わるということはありません。すでに存在している要素の定義を参照しているばかりでなく、<b>シンデレラ</b>の自動定理確認機能によって定義が同じであることが保証されるのです。<br />
+<br />
+インタラクティブモードはツールバーの中で、小さなマウスポインタの絵が書き込まれているアイコンなので、容易に見分けることができます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-line.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a> </td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="http://doc.cinderella.de/buttonsback/through.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Line+through+a+PointJ.html" class="wiki">傾きつき直線を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-parallel.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Add+a+ParallelJ.html" class="wiki">平行線を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-perp.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Add+a+PerpendicularJ.html" class="wiki">垂線を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/line-fixed-angle.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Add+a+Line+with+a+Fixed+AngleJ.html" class="wiki">固定した角の直線を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-circle.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/circle-by-radius.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Circle+by+RadiusJ.html" class="wiki">半径つき円を加える</a> </td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/circle-fixed-radius.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Circle+by+Fixed+RadiusJ.html" class="wiki">固定した半径の円を加える</a> </td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-middle.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=MidpointJ.html" class="wiki">中点</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/segment.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=SegmentJ.html" class="wiki">線分を加える</a></td></tr></table><br />
+<br />
+これらの標準的なボタンによるモードに加えて、<b>シンデレラ２</b>では、新しいモードがメニューに用意されています。これらは <a title="no description" href="tiki-cindydoc.php@page=PolygonsJ.html" class="wiki">多角形</a>, <a title="no description" href="tiki-cindydoc.php@page=Conic+OperationsJ.html" class="wiki">２次曲線</a>,  <a title="no description" href="tiki-cindydoc.php@page=Transformation+ModesJ.html" class="wiki">変換モード</a>を参照してください。<br />
+<br />
+<br />
+(阿原)<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [11:29:43 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interactive%20ModesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Interactive%20ModesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

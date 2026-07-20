@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Add a PointJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>点を加える</h2>
+<!--latexreplace<br />
+\index{point!free}<br />
+\index{point!on a line}<br />
+\index{point!on a conic}<br />
+\index{point!on a circle}<br />
+\index{mode!add point}<br />
+\index{add point}<br />
+\index{meet}<br />
+--><br />
+<!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  align="left" /></span></div>  新しく1つ点を追加します。 このモードは使いやすいように多目的に作られています。 マウスのボタンをクリックすれば新しい点が描かれます。 マウスのボタンを押したままドラッグすると、新しく加えられる点の場所を変えることができます。 最終的にはマウスボタンを離した場所に点が描かれます。 つまり、点の場所は「マウスボタンを離した場所」で定義されるようになっているのです。 <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>, <a title="no description" href="tiki-cindydoc.php@page=Add+a+ParallelJ.html" class="wiki">平行線を加える</a>,  <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a>などといった、他のインタラクティブなモードを使って図形とともに点を描いたほうがよい場合もあります。<br />
+<br />
+前にも記したとおり、1つの点を描くのには次の3つの手続きを経ています。<br />
+<br />
+<ul><li> <b>マウスのボタンを押す</b> と点が生成されます。
+</li><li> <b>マウスをドラッグする</b> とその点はマウスにくっついて移動します。 もしマウスをドラッグしながらすでにある要素に近づけるとスナップします。 このとき、点はスナップした要素の一部となり、要素がハイライトされます。 新しく加えられる点は、すでに存在する直線の交点または点にスナップします。（スナップ：その点に吸い付くように一致すること）
+</li><li> <b>マウスのボタンを離す</b> と点の場所が決まります。 この瞬間、もしマウスが・・
+<ul><li> すでに存在する要素の上になければ、新しい自由点(可動要素)が追加されます。 この点は「動かすモード」で自由に動かすことができます。
+</li><li> すでに存在している直線の上にあれば、新しい点はその直線の上にある自由点(可動要素)ということになります。 つまり「動かすモード」でこの点はこの直線の上のみを自由に動かすことができます。
+</li><li> すでに存在している円の上にあれば、新しい点はその円の上にある自由点(可動要素)ということになります。 つまり「動かすモード」でこの点はこの円の上のみを自由に動かすことができます。
+</li><li> すでに存在している2つの要素(直線、円、2次曲線)の交わりの上にあれば、新しい点はその交点として追加されます。 このような点はもとの直線などの場所に完全に依存しますから、従属点であって、点の色が暗い色で表示されます。 「動かすモード」でこの点だけを動かすことはできません。
+</li><li>すでに存在している点の上にあれば、新しい点が追加されることはなく結果としてなにも起こりません。
+</li></ul></li></ul>
+<br />
+いずれの場合でも、定義された要素はハイライトされ(光ったようになり)選択された状態になります。<br />
+<br />
+次の図には主な3つの場合が描かれています。 つまり点がまったく自由な場合、点が直線の上を自由に動ける場合、点が従属点である場合です。 もう1つ注目したいことは、マウスをドラッグしている間、点の座標が絶えず表示されていることです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+{\small\it Free point:} &amp;  {\small\it Point on a line:}&amp;  {\small\it  Intersection point:}\\<br />
+\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoint1} &amp; \includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoint2} &amp;\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoint3} \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=15>
+      <tr>
+	<td><b>自由点:</b><br></td>
+	<td><b>直線上の点:</b><br></td>
+	<td><b>交点:</b><br></td>
+      </tr>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPoint1.png" border="0"  /></span></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPoint2.png" border="0"  /></span></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPoint3.png" border="0"  /></span></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+もちろん、単に点を描きたい場所（ここでは2直線の交点）にマウスを持ってきてクリックすればその場所に点が描かれます。 上に書いた3つのステップが一度に行われます。 こうしてももちろん点を追加することができますが、上の3つのステップを踏まえて点の場所を決めたほうがより確実に図を書くことができます。 （単にクリックでは微妙にずれるかもしれません）<br />
+<br />
+大切な３つのステップ<br />
+　　　　<b>ボタンを押して、ドラッグして位置を決めて、ボタンを離す</b><br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+<br />
+「押す、ドラッグする、離す」の一連の動作で新しく点を描く。<br />
+<br />
+<h3>注意</h3>
+次の2つの場合にはこのモードで点を描くのは適当ではありません。<br />
+<br />
+<ul><li> 2つの要素が画面内で交わっておらず、画面外の交点に新しく点を追加したい場合。この場合は<a title="no description" href="tiki-cindydoc.php@page=IntersectionJ.html" class="wiki">交点</a> モードを利用することができます。
+</li><li> 3つ以上の要素が入り組んでいる場所に新しく点を追加する場合、次の3つの方法があります。
+<ul><li> 可能なら <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a>  を使って図をずらします。
+</li><li> 図を<a title="no description" href='tiki-cindydoc.php@page=Views.html#Zoom in' class='wiki'>拡大</a>します。
+</li><li> 直線の交点の場合 <a title="no description" href="tiki-cindydoc.php@page=IntersectionJ.html" class="wiki">交点</a> モードにして2本の直線を特定して交点を求めます。
+</li></ul></li></ul>
+<br />
+<h2>次も参照してください</h2>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=IntersectionJ.html" class="wiki">交点</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of March, 2012 [06:17:18 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Add%20a%20PointJ">
+    http://doc.cinderella.de/tiki-index.php?page=Add%20a%20PointJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

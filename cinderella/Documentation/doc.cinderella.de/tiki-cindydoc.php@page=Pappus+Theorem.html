@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Pappus Theorem 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Pappus's Theorem</h2>
+<!--latexreplace<br />
+\index{Pappus's theorem}<br />
+--><!-- /latexreplace --><br />
+<br />
+Pappus's theorem is one of the most fundamental theorems in projective geometry. In a certain sense it is the smallest example of an incidence theorem.  In this step-by-step example we will construct an instance of the theorem that can be selected and dragged.<br />
+<br />
+<br />
+<h3>Drawing Your First Point</h3>
+<!--latexreplace<br />
+\index{point!free}<br />
+\index{mode!add point}<br />
+\index{add point}<br />
+--><!-- /latexreplace --><br />
+When you start <b>Cinderella.2</b>, the first  window that appears is a "Euclidean view." This window has a large toolbar that is the key to most of <b>Cinderella's</b> functionality.  Below this toolbar is the drawing surface on which you perform operations by constructing and dragging the elements you need.<br />
+<br />
+You may notice that in the toolbar one button  <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span>  is slightly darker.  This indicates the current mode of <b>Cinderella</b>.<br />
+<br />
+All mouse actions in the drawing surface refer to the selected mode. For drawing a single point you have to switch to the <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point</a>  <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span>  mode by clicking it.  Now <b>move the mouse over the drawing surface and click the left button.</b> A new point is added and labeled with a capital letter.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap01B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 1: Your first point</b></td></tr></table><br />
+<br />
+Before you add a second point, continue reading.  If you hold the left mouse button down while adding a point, you are able to move the point around. The definition of the point will be adapted to the geometric situation at the current location of the mouse pointer. (So far, there is not a lot of geometry in our drawing, but this will change soon.) <b>Move the mouse over the drawing surface, press the left button, and hold it. Now move the mouse.</b> You will notice that the new point sticks to the mouse pointer.  Coordinates  that indicate the current position are shown. When you approach an existing point (<b>try  it</b>), the new point snaps to the old point. Only after you <b>release the button</b> is the new point added to the construction.  If you release the mouse over an old point, no new point is added. <b>Play with these features and add a few new points.</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap02B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 2: Many points</b></td></tr></table><br />
+<br />
+<br />
+<h3>Undoing an Operation</h3>
+<!--latexreplace<br />
+\index{undo}<br />
+--><!-- /latexreplace --><br />
+Your screen may look a bit crowded now. There is an undo operation that inverts the actions you have performed. By pressing the undo button,  <span class="img"><img alt="" src="buttonsback/undo.png" border="0"  /></span>   you will cause the last point you added to disappear. <b>Click the undo button until exactly two points remain on the  drawing surface</b>. You can use the undo button whenever you make a mistake. You can undo as many consecutive operations as you want.<br />
+<br />
+<br />
+<h3>Moving a Point</h3>
+<!--latexreplace<br />
+\index{mode!move}<br />
+\index{move mode}<br />
+\index{drag mode}<br />
+--><!-- /latexreplace --><br />
+We want to continue with our construction of Pappus's theorem. You should first move the two remaining points <i>A</i> and <i>B</i> to approximately the positions shown in Figure 3.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap03B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 3: Move to this situation.</b></td></tr></table><br />
+<br />
+<br />
+Most probably, your points are not already there. To move them, <b>select <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> by pressing the "move mode" button   <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span>  in the toolbar</b>. Now mouse actions in the drawing surface no longer add points; instead, you can select points and move them around. <b>Move the mouse pointer over the point you want to move. Press the left mouse button. Hold it and drag the mouse.</b> The point follows the mouse pointer. You will also notice that in this mode a point does not snap to other points.  When you <b>release the mouse button</b>, the point is placed. In general, move mode allows free elements of a construction to be moved. The rest of the construction will change accordingly.<br />
+<br />
+<br />
+<h3>Adding a Line</h3>
+<!--latexreplace<br />
+\index{mode!add line}<br />
+\index{line!by two points}<br />
+\index{add line}<br />
+\index{join}<br />
+--><!-- /latexreplace --><br />
+We are now going to add a line from <i>A</i> to <i>B</i>.   <b>Switch to <a title="no description" href="tiki-cindydoc.php@page=Add+a+Line.html" class="wiki">add a line</a> mode  by pressing the button  <span class="img"><img alt="" src="buttonsback/multi-add-line.png" border="0"  /></span> .</b> In this mode you can add a line between two points using a  press–drag–release sequence with the mouse. <b>Move over point <i>A</i>. Press the left mouse button. Hold it and move the mouse over point <i>B</i>. Release the mouse.</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap04B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 4: Add a line</b></td></tr></table><br />
+<br />
+This action should have created the desired line.  You might have noticed a few things: When you pressed the mouse over point <i>A</i>, the point became highlighted.  This means that you selected this point as the starting point of the line.  While you drag the mouse, a second point is always present at the mouse position. When you release the mouse button, this second point will be added at the release point.  When you approach another point, it will be highlighted, and the second point will snap to it. This is the action you used for attaching the line to point <i>B</i>.<br />
+<br />
+If you did not notice these things or made a mistake, undo your operations and try again. Your final picture should look like Figure 4 before you proceed.<br />
+<br />
+<br />
+<h3>Adding More Lines</h3>
+<br />
+Now you are ready to add three more lines, in order to end up with Figure 5. You can  do this with just three mouse operations.  <b>First, move over point <i>B</i> and press–drag to the position of the not-yet-existing point <i>C</i>.   Do another press–drag–release from <i>C</i> to <i>D</i>, and finally from <i>D</i> to <i>E</i>.</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap05B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 5: More lines</b></td></tr></table><br />
+<br />
+Observe that you have done all this without leaving "add a line" mode. You did some unnecessary work when you added the points <i>A</i> and <i>B</i> in <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point</a> mode.  You could have done this directly in <a title="no description" href="tiki-cindydoc.php@page=Add+a+Line.html" class="wiki">add a line</a> mode, since not only will the second point be created if necessary, but also the first one. The lines  created so far were automatically labeled with the lowercase letters <i>a</i> to <i>d</i>.<br />
+<br />
+<br />
+<h3>Creating Points of Intersection</h3>
+<!--latexreplace<br />
+\index{meet}<br />
+--><!-- /latexreplace --><br />
+We will stay in <a title="no description" href="tiki-cindydoc.php@page=Add+a+Line.html" class="wiki">add a line</a> mode. Now we want to draw a line from point <i>E</i> to the intersection of the lines <i>a</i> and <i>c</i>.  <b>Move the mouse over <i>E</i>. Press the button. Hold it and move to the intersection of <i>a</i> and <i>c</i>. Release the mouse.</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap06B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 6: Adding an intersection</b></td></tr></table><br />
+<br />
+<br />
+When you approached the intersection of the lines, they were highlighted and the endpoint of the new line snapped to the intersection. When you released the mouse, the new point was defined to be the intersection of the lines. If you move any one of the points <i>A</i> to <i>E</i>, the new line will follow the moves accordingly.<br />
+<br />
+The new point <i>F</i> is drawn slightly darker. This means that it is not possible to move <i>F</i>  freely in move mode. Thus, <i>F</i> is a "dependent" point. The other points in the construction are "free."<br />
+<br />
+Two things are worth mentioning: With the same procedure you could also have added a "half-free" point that is bound to only one line. To do so, you need to release the mouse when you are over only one line. All these operations of creating intersections (dependent points), free, and half-free points work similarly in <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point</a> mode.  Many other modes, the <a title="no description" href="tiki-cindydoc.php@page=Interactive+Modes.html" class="wiki">interactive modes</a>, also come with this feature. Browse the reference guide of this manual for further information.<br />
+<br />
+<br />
+<h3>Finishing the Drawing</h3>
+<br />
+Now it should be easy for you to finish the drawing by adding four more lines to achieve the final configuration shown in Figure 7. <b>First add a line from <i>A</i> to the intersection of <i>b</i> and <i>d</i>. Then draw two lines from <i>A</i> to <i>D</i> and from <i>B</i> to <i>E</i>. Finally, draw a line from  <i>C</i> to the intersection of <i>e</i> and <i>f</i>.</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap07B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 7: Pappus's theorem</b></td></tr></table><br />
+<br />
+You have created a configuration of eight points and nine lines.  If you look at the configuration, you will notice that if everything was done correctly, the lines <i>g</i>, <i>h</i>, and <i>k</i> meet in a point.  That this will always be the case in such a construction is the content of Pappus's theorem.  <b>Switch to <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> by clicking   <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span>  in the toolbar, and drag around the free points of the construction to convince yourself of the truth of this theorem.</b> This theorem was known to the ancient Greek geometers and is named for Pappus of Alexandria, who flourished in the fourth century C.E. Later, the theorem turned out to be of fundamental importance for the theory of <b>projective geometry</b>.<br />
+<br />
+<br />
+<h3>Selecting and Changing the Appearance of a Drawing</h3>
+<!--latexreplace<br />
+\index{appearance}<br />
+\index{inspector}<br />
+--><!-- /latexreplace --><br />
+You may not like the appearance of a drawing. The lines may be too thin, and perhaps you want to emphasize the final conclusion of the theorem. This can be changed by using the <a title="no description" href="tiki-cindydoc.php@page=Inspector.html" class="wiki">inspector</a> of <b>Cinderella.2</b>. For this <b>choose the menu item "Edit/Information".</b> The following window will pop up:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PapInsp1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 8: The inspector</b></td></tr></table><br />
+<br />
+There are several tabs in the inspector that refer to different aspects of the construction and the selected objects. To change the appearance of objects, go to the appearance tab by <b>clicking the button  <span class="img"><img alt="" src="buttonsback/inspector-appearance.png" border="0"  /></span> .</b> If no elements are selected, the inspector shows that there are no attributes to edit.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PapInsp2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 9: Selecting the appearance tab</b></td></tr></table><br />
+<br />
+As soon as an element is selected, the editable attributes of this elements are shown. <b>Now select all lines by clicking the  button  <span class="img"><img alt="" src="buttonsback/select-lines.png" border="0"  /></span>  "Select all lines".</b> The inspector window then looks as follows:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PapInsp3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 10: The appearance tab</b></td></tr></table><br />
+<br />
+Changes in the inspector are immediately applied to selected elements.  If you now <b>move the slider "Line Size" in the inspector to its third tick</b>, all lines become thicker. After this, <b>switch to move mode  <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span> .</b> Now, when you click over one or more elements, those elements will be selected. If you hold the shift key while you click, the selection state of the element will be toggled.<br />
+<br />
+<b>Click over line <i>k</i>, and then hold the shift key and click over lines <i>h</i> and <i>g</i>.</b> The lines <i>g</i>, <i>h</i>, and <i>k</i> should be  highlighted. <b>Click the red color box in the inspector's color palette.</b> The color of the three lines changes from blue to red.  You can also change the size of these lines by moving the "Line Size" slider to its fourth tick.  Finally, <b>deselect everything</b> by clicking the button  <span class="img"><img alt="" src="http://doc.cinderella.de/buttonsback/select-none.png" border="0"  /></span> .<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap11B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 11: Changed appearance</b></td></tr></table><br />
+<br />
+<br />
+<h3>Adding a Final Point and Proving a Theorem</h3>
+<!--latexreplace<br />
+\index{prover}<br />
+--><!-- /latexreplace --><br />
+<br />
+Before continuing, open <b>Cinderella's</b> information window by choosing the menu item <b>Views/Information Window</b>. A console window pops up. <b>Cinderella.2</b> uses this console to report nontrivial facts about a configuration.<br />
+<br />
+We will now create a final point at the intersection of the three red lines. This time we will add a point by <b>changing to <a title="no description" href="tiki-cindydoc.php@page=Intersection.html" class="wiki">intersection</a> mode   <span class="img"><img alt="" src="buttonsback/meet.png" border="0"  /></span> .</b> This mode expects you to mark two lines. A new point will be added at the intersection of these two lines. <b>Click two of the red lines, say <i>g</i> and <i>h</i></b>. Their intersection point will be added.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap12B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 12: The point of intersection</b></td></tr></table><br />
+<br />
+Note that the newly added point <i>K</i> will always be incident to line <i>k</i> because of Pappus's theorem.  The information console reports this remarkable fact automatically.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap13.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 13: A proven theorem</b></td></tr></table><br />
+<br />
+You may wonder how this "theorem proving" works.  <b>Cinderella</b> does not use symbolic methods to create a formal proof, but a technique called "randomized theorem checking."  First the conjecture, "it seems that line <i>k</i> always passes through point <i>K</i>," is generated. Then the configuration is moved into many different positions, and for each of these it is checked whether the conjecture holds.  It may sound ridiculous, but  generating enough (!)  random (!) examples in which the theorem holds is at least as convincing as a computer-generated symbolic proof.  <b>Cinderella</b> uses this method over and over to keep its own data structures clean and consistent.<br />
+<br />
+<br />
+<h3>Moving Points to Infinity</h3>
+<!--latexreplace<br />
+\index{infinity}<br />
+\index{line!at infinity}<br />
+\index{view!spherical}<br />
+--><!-- /latexreplace --><br />
+Let us explore the symmetry properties of Pappus's theorem. For a nicer picture, we want to get rid of the line labels and make the points and lines a bit smaller.  <b>First select all lines using  <span class="img"><img alt="" src="buttonsback/select-lines.png" border="0"  /></span> . Turn off the labeling by pressing the corresponding button in the inspector.  Change the line size to "thin" (use the slider in the inspector).  Then select all points using  <span class="img"><img alt="" src="buttonsback/select-points.png" border="0"  /></span> . Make them smaller using the "Point Size" slider in the inspector (observe that the inspector shows always information about the selected elements).  Now choose the menu option "Views/Spherical View".</b> What you get will not look very instructive at first glance.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap14B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 14: A spherical view</b></td></tr></table><br />
+<br />
+The spherical view shows a central projection of the plane to the surface of a ball. The projection point is the center of the sphere (see Figure 15). Every point is mapped to an antipodal pair of points, and each line is mapped to a great circle (a circle on the sphere dividing it into two equal hemispheres) of the ball.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Homo.gif" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>Figure 15: Projection from the plane to the ball</b></td></tr></table><br />
+<br />
+In spherical view there is a little red slider for controlling the distance of the ball to the original plane. Moving this slider corresponds to a kind of "zooming" operation on the sphere. Please <b>move the slider from its original position much more to the right.</b> Then the situation on the ball should become clearer. If you have adjusted the slider correctly, it should look somewhat like Figure 16. You should clearly recognize the original construction, now drawn on the surface of this ball.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap15B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 16: Pappus's theorem on a ball</b></td></tr></table><br />
+<br />
+The picture needs some explanation: For each point in the plane consider the line spanned by the point and the center of the ball.  The intersection of this line with the surface of the ball gives the pair of antipodal points. For each line consider the plane spanned by the line and the center of the ball.  The intersection of this plane and the surface of the ball is the great circle that represents the line in spherical view.<br />
+<br />
+On the sphere there are points that have no correspondence in the Euclidean plane. If the ball touches the Euclidean plane at the "south pole," then the equator of the ball corresponds to the "points at infinity" in the usual Euclidean plane.  In <b>Cinderella</b> it is possible to make manipulations in any currently open view. Therefore you can also move points in spherical view. The changes will be instantly reported to the Euclidean view. In particular, you can grab a point in spherical view and move it to what is really infinity in the Euclidean view.<br />
+<br />
+We will do that now, in order to observe that our configuration has a nice threefold symmetry.  <b>Select point <i>A</i> (in spherical view) and move it to the 11 o'clock position of the boundary.</b> This point is now really located "at infinity." Notice that in Euclidean view the  lines passing through  <i>A</i> became parallel, corresponding to the notion that "parallel lines meet at infinity." In a similar way, <b>move point <i>E</i> to the  7 o'clock position on the boundary and move point <i>C</i> to the 3 o'clock position.</b> Your spherical picture should then look like the ball in Figure 17. In Euclidean view you find three bundles of parallel lines, representing a kind of Euclidean specialization of Pappus's theorem. If you like, you can try to figure out the corresponding statement in terms of parallels and incidences.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.68in">width=1.68in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{pap17B}&amp; \includegraphics<a class="wiki external"  href="width=1.68in">width=1.68in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Pap16B}\\</tt><br />
+\multicolumn{2}{c}{\small\it  Figure 17: A threefold symmetry} \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align=center>
+<tr><td ><span class="img"><img alt="" src="img/wiki_up/pap17B.png" border="0"  /></span></td><td width=20></td>
+<td>   <span class="img"><img alt="" src="img/wiki_up/Pap16B.png" border="0"  /></span></td> </tr>
+<tr><td ><b>Figure 17: A threefold symmetry</b></td> </tr>
+</table><!-- /latexreplace --><br />
+<br />
+It may happen that the drawing in Euclidean view is too big or too small.  You can use the zooming tools to change this. There is a "Zoom-In"  <span class="img"><img alt="" src="buttonsback/zoom-in.png" border="0"  /></span>  and a "Zoom-Out"  <span class="img"><img alt="" src="buttonsback/zoom-out.png" border="0"  /></span>  tool below the Euclidean view. With a press–drag–release sequence you can mark the region to be zoomed in or out.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [16:36:14 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Pappus%20Theorem">
+    http://doc.cinderella.de/tiki-index.php?page=Pappus%20Theorem
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

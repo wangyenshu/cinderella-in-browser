@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Boolean Operators 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Boolean Operators</h2>
+<!-- latexreplace<br />
+\index{comparison}<br />
+\index{boolean expression}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Conditional branching may very much depend on the outcome of a boolean query. in this section we describe all such types of queries as well as the different ways to process boolean values.<br />
+<br />
+<h3>Infix Operators</h3>
+<br />
+<h4>Testing equality: <span style="color:red;"><code>&#60;expr1&#62; == &#60;expr2&#62;</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{equality}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether two expressions evaluate to the same value. The result of this operator is either <code>true</code> or <code>false</code>. </div><br />
+<br />
+<hr />
+<br />
+<h4>Testing inequality: <span style="color:red;"><code>&#60;expr1&#62; != &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether two expressions do not evaluate to the same value. The result of this operator is either <code>true</code> or <code>false</code>. It is the logical negation of <code>&#60;expr1&#62; == &#60;expr2&#62;</code>.</div><br />
+<br />
+<hr />
+<br />
+<h4>Greater than: <span style="color:red;"><code>&#60;expr1&#62; > &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr1&#62;</code> is <b>greater than</b> the expression <code>&#60;expr2&#62;</code>. It returns a <code>&#60;bool&#62;</code> value. The comparison is available only for two situations: If both expressions are <b>real numbers</b>, then the order of size is the usual ordering of real numbers. If both expressions are <b>strings</b>, then  the order is the lexicographic (dictionary) order. In all other cases (if the values are not comparable) the value <code>____</code> is returned. </div><br />
+<br />
+<br />
+<hr />
+<br />
+<h4>Less than: <span style="color:red;"><code>&#60;expr1&#62; < &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to <b>></b> but tests for <b>less than</b>.</div><br />
+<br />
+<hr />
+<br />
+<h4>Greater than or equal: <span style="color:red;"><code>&#60;expr1&#62; >= &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to <b>></b> but tests for <b>greater than or equal to</b>.</div><br />
+<br />
+<hr />
+<br />
+<h4>Less than or equal: <span style="color:red;"><code>&#60;expr1&#62; &#60;&#61; &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to <b>></b> but tests for <b>less than or equal to</b>.</div><br />
+<br />
+<hr />
+<br />
+<h5> Fuzzy comparisons: <font color=#ff0000><code>~=</code></font>, <font color=#ff0000><code>~!=</code></font>, <font color=#ff0000><code>~<</code></font>, <font color=#ff0000><code>~></code></font>, <font color=#ff0000><code>~>=</code></font>, <font color=#ff0000><code>~<=</code></font></h5>
+<br />
+<div class="description"><br />
+<b>Description:</b>  CindyScript provides a <i>fuzzy</i> variant for each comparison operator. This version tests whether the condition is satisfied up to an epsilon bound. Thus the test <code>a~=0</code> tests whether is the variable <code>a</code> lies between <code>+epsilon</code> and <code>-epsilon</code>. The small value epsilon is set to <code>0.0000000001</code>. This operator is sometimes very useful to circumvent inaccuracies which are unavoidable in purely numerical calculations.</div><br />
+<br />
+The exact semantics of the exact and the fuzzy operators can be read off from the following diagram. Here for each operator the picture shows for which region of <code>b</code> (marked in red) the operator evaluates to true.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/CindyScript/Comparisons.png" border="0"  width="250" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<h4>Logical and: <span style="color:red;"><code>&#60;bool1&#62; &amp; &#60;bool2&#62;</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{and}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Logical <b>and</b> of two Boolean values defined by the following truth table:</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell" ><b><code>B</code></b></td><td class="wikicell" ><b><code>A &amp; B</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr></table><br />
+<br />
+If one of the two arguments is not a Boolean expression, the operator returns <code>___</code>.<br />
+<br />
+<hr />
+<br />
+<h4>Logical or: <span style="color:red;"><code>&#60;bool1&#62; % &#60;bool2&#62;</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{or}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  Logical <b>or</b> of two Boolean values defined by the following truth table:</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell" ><b><code>B</code></b></td><td class="wikicell" ><b><code>A % B</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr></table><br />
+<br />
+If one of the two arguments is not a Boolean expression, the operator returns <code>___</code>.<br />
+<br />
+<hr />
+<br />
+<h4>Logical not: <span style="color:red;"><code>!&#60;bool&#62;</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{not}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Logical <b>not</b> of one Boolean value defined by the following truth table:</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell"  colspan="2"><b><code>!A</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell"  colspan="2"><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell"  colspan="2"><code>false</code></td></tr></table><br />
+<br />
+If the argument is not a Boolean expression, the operator returns <code>____</code>.<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>Functional Operators</h3>
+<br />
+<A NAME="and"></A><br />
+<h4>Logical and: <span style="color:red;"><code>and(&#60;bool1&#62;,&#60;bool2&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  <code>and(x,y)</code> is equivalent to <code>x &amp; y</code>.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="or"></A><br />
+<h4>Logical or: <span style="color:red;"><code>or(&#60;bool1&#62;,&#60;bool2&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  <code>or(x,y)</code> is equivalent to <code>x % y</code>.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="not"></A><br />
+<h4>Logical not: <span style="color:red;"><code>not(&#60;bool&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  <code>not(x)</code> is equivalent to <code>!x</code>.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="xor"></A><br />
+<h4>Logical exclusive or: <span style="color:red;"><code>xor(&#60;bool1&#62;,&#60;bool2&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Logical <b>exclusive or</b> of two Boolean values defined by the following truth table:</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell" ><b><code>B</code></b></td><td class="wikicell" ><b><code>xor(A,B)</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td></tr></table><br />
+<br />
+If one of the two arguments is not a Boolean expression, the operator returns <code>___</code>.<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>Type Predicates</h3>
+<br />
+The following predicates test whether the expression <code>&#60;expr&#62;</code> belongs to a certain class of objects. The predicates are important in defining functions whose behavior depends on the type of input expressions. Furthermore, these arguments are very useful for debugging, since they can be used to test assertions on the typing of the values in a program.<br />
+<br />
+<hr />
+<br />
+<A NAME="isinteger"></A><br />
+<h4>Is an integer: <span style="color:red;"><code>isinteger(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is an integer.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="isreal"></A><br />
+<h4>Is a real number: <span style="color:red;"><code>isreal(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is a real number. Note that integers are also real numbers.</div><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="iscomplex"></A><br />
+<h4>Is a complex number: <span style="color:red;"><code>iscomplex(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is a complex number. Note that real numbers are also complex numbers.</div><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="iseven"></A><br />
+<h4>Is even: <span style="color:red;"><code>iseven(&#60;expr&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{even}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is an even integer.</div><br />
+<br />
+<hr />
+<A NAME="isodd"></A><br />
+<h4>Is odd: <span style="color:red;"><code>isodd(&#60;expr&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{odd}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is an odd integer.</div><br />
+<br />
+<hr />
+<A NAME="islist"></A><br />
+<h4>Is a list: <span style="color:red;"><code>islist(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is a list.</div><br />
+<br />
+<hr />
+<!-- latexreplace<br />
+\index{type}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<A NAME="ismatrix"></A><br />
+<h4>Is a matrix: <span style="color:red;"><code>ismatrix(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> has the shape of a matrix. This means that the entries of the list are themselves lists, all of equal length. If there are <i>n</i> entries each of length <i>m</i> the expression represents an <i>n</i> × <i>m</i> matrix.</div><br />
+<br />
+<hr />
+<A NAME="isnumbervector"></A><br />
+<h4>Is a number vector: <span style="color:red;"><code>isnumbervector(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is a list all of whose entries are  numbers (integer, real, or complex). </div><br />
+<br />
+<hr />
+<A NAME="isnumbermatrix"></A><br />
+<h4>Is a number matrix: <span style="color:red;"><code>isnumbermatrix(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is a matrix all of whose entries are  numbers (integer, real, or complex). </div><br />
+<br />
+<hr />
+<A NAME="isstring"></A><br />
+<h4>Is a string: <span style="color:red;"><code>isstring(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> is a string.</div><br />
+<br />
+<hr />
+<A NAME="isgeometric"></A><br />
+<h4>Is a geometric element: <span style="color:red;"><code>isgeometric(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a geometric element.</div><br />
+<br />
+<hr />
+<A NAME="isselected"></A><br />
+<h4>Is selected: <span style="color:red;"><code>isselected(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a geometric element and is selected. For a geometric element you can also use the .selected property to check this.</div><br />
+<br />
+<hr />
+<A NAME="ispoint"></A><br />
+<h4>Is a point: <span style="color:red;"><code>ispoint(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a geometric point.</div><br />
+<br />
+<hr />
+<A NAME="isline"></A><br />
+<h4>Is a line: <span style="color:red;"><code>isline(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a geometric line.</div><br />
+<br />
+<hr />
+<A NAME="iscircle"></A><br />
+<h4>Is a circle: <span style="color:red;"><code>iscircle(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a geometric circle.</div><br />
+<br />
+<hr />
+<A NAME="isconic"></A><br />
+<h4>Is a conic: <span style="color:red;"><code>isconic(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a geometric conic.</div><br />
+<br />
+<hr />
+<A NAME="ismass"></A><br />
+<h4>Is a mass: <span style="color:red;"><code>ismass(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> mass.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="issun"></A><br />
+<h4>Is a sun: <span style="color:red;"><code>issun(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> sun.</div><br />
+<br />
+<hr />
+<A NAME="isspring"></A><br />
+<h4>Is a spring: <span style="color:red;"><code>isspring(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> represents a <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> spring.</div><br />
+<br />
+<hr />
+<A NAME="isundefined"></A><br />
+<h4>Is undefined: <span style="color:red;"><code>isundefined(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator tests whether the expression <code>&#60;expr&#62;</code> returns an undefined element (<code>___</code>).</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 09 of February, 2015 [19:37:16 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Boolean%20Operators">
+    http://doc.cinderella.de/tiki-index.php?page=Boolean%20Operators
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

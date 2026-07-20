@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : FloorJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>床</h2>
+<!--latexreplace<br />
+\index{simulation!floor}<br />
+\index{floor}<br />
+\index{damping}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-floor.png" border="0"  align="left" /></span></div>床は、質点が通ることのできない水平線です。 床に当たった質点は、テニスボールのようにはね返ります。床は、マウスボタンを押す/ドラッグする/離す、という操作か、単にクリックすることによって加えられます。床は、既存の点にもとりつけることができます。床は、完全に弾性のあるものとしても、衝突した粒子の速度を減少させる摩擦係数を持ったものとしてもモデル化できます。次の図は、小さな摩擦係数を持った床に跳ね返る粒子の様子を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Floor1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>重力のもとで床に当たるボール</b></td></tr></table><br />
+<br />
+床と <a title="no description" href="tiki-cindydoc.php@page=BouncerJ.html" class="wiki">反射壁</a>は非常によく似ています。反射壁は、床の一部のようなものです。<br />
+<br />
+<br />
+<h3>床のインスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!floor}<br />
+--><!-- /latexreplace --><br />
+床のインスペクタは、調整可能な3つの要素を持ちます。:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FloorInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>床のインスペクタ</b></td></tr></table><br />
+<br />
+減衰率 は、0.0 と 1.0 の間の数値をとる減衰係数です。2つの数 dx = 1 – 横方向減衰率 と dy = 1 – 縦方向減衰率 は、粒子が床に当たるたびに、速度の x- 成分と y-成分に掛けられる係数になります。したがって、両方のスライダーが0に設定されるならば、点は完全に跳ね返り、両方のスライダーが1に設定されるならば、点は床に当たった瞬間に停止します。<br />
+<br />
+<br />
+<br />
+<h3>床と <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a></h3>
+<br />
+<tt> <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の他の要素のように、床には <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> によって読み書きのできるいくつかの要素があります。次のリストはアクセス可能な床の要素です。:</tt><br />
+<br />
+<ul><li> <b>xdamp</b>: 横方向減衰率 (実数, 読み書き可)
+</li><li> <b>ydamp</b>: 縦方向減衰率 (実数, 読み書き可)
+</li><li> <b>simulate</b>: 床のシミュレーションのON/OFF (ブール値, 読み書き可)
+</li></ul>
+<br />
+<br />
+<h3> 次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=BouncerJ.html" class="wiki">反射壁</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:45:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=FloorJ">
+    http://doc.cinderella.de/tiki-index.php?page=FloorJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

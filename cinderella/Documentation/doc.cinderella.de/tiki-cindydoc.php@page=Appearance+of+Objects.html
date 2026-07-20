@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Appearance of Objects 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Appearance of Objects</h2>
+<br />
+The drawing engine of Cinderella stores a default appearance for each kind of element (point, line, text) that can be drawn. Whenever a drawing statement is invoked without any modifiers, the default appearance is used to render the object. This is very useful for drawing objects that look graphically identical. The main attributes that are influenced by the appearance are the <b>color</b>, <b>size</b>, and <b>opacity</b> of the object.<br />
+<br />
+<A NAME="gsave"></A><br />
+<h4>Push elements on the appearance stack: <span style="color:red;"><code>gsave()</code></span></h4>
+<br />
+<h4>Pop elements from the appearance stack: <span style="color:red;"><code>grestore()</code></span></h4>
+<br />
+<h4>Clear the appearance stack: <span style="color:red;"><code>greset()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> It is often necessary to switch to temporarily a different default appearance. For this purpose the operators <span style="color:red;"><code>gsave()</code></span> and <span style="color:red;"><code>grestore()</code></span>  are provided. The <code>gsave</code> operator stores all information about the graphic state (sizes, colors, opacities) in a stack. The <code>grestore</code> operator reverses this effect by popping the information from the stack. Finally, the <code>greset</code> operator sets the stack back to its initial state. In addition to appearance information, information on the local coordinate system is stored as well.</div><br />
+<br />
+<b>See also:</b> <a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+System.html' class='wiki'>Script Coordinate System</a><br />
+<br />
+<hr />
+<hr />
+<br />
+<A NAME="size"></A><br />
+<h3>Size</h3>
+<h4>Set point size: <span style="color:red;"><code>pointsize(&#60;number&#62;)</code></span></h4>
+<br />
+<h4>Set line size: <span style="color:red;"><code>linesize(&#60;number&#62;)</code></span></h4>
+<br />
+<h4>Set text size: <span style="color:red;"><code>textsize(&#60;number&#62;)</code></span></h4>
+<br />
+Default sizes can be set by three operators: <span style="color:red;"><code>pointsize(&#60;number&#62;)</code></span>, <span style="color:red;"><code>linesize(&#60;number&#62;)</code></span>, and <span style="color:red;"><code>textsize(&#60;number&#62;)</code></span>. The size is represented by a real number. For lines and points, the sizes are assumed to be integers between <code>1</code> and <code>20</code>. The sizes encode absolute pixel values. The following code produces the picture below:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sizes=1..15;
+forall(sizes,
+  pointsize(#);
+  textsize(#+4);
+  draw((#,0));
+  drawtext((#,1),#);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SizesX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="color"></A><br />
+<h3> Colors</h3>
+<!-- latexreplace<br />
+\index{color}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Colors are represented by lists of three real numbers that represent the red/green/blue component of the color. Each number is assumed to lie between 0 and 1, where 0 means black and 1 means the full color value. With this RGB color scheme the eight fundamental colors are represented by the following vectors:<br />
+<br />
+<!-- latexreplace<br />
+{\begin{center}<br />
+\begin{tabular}{r<{\quad}r<{\quad}r<{\quad}r}<br />
+black: (0,0,0) &amp; \textcolor{red}{red}: (1,0,0) &amp; \textcolor{green}{green}: (0,1,0) &amp; \textcolor{blue}{blue}: (0,0,1)\\<br />
+\textcolor{cyan}{cyan}: (0,1,1) &amp; \textcolor{magenta}{magenta}: (1,0,1) &amp; \textcolor{yellow}{yellow}: (1,1,0) &amp; \colorbox{black}{\textcolor{white}{white}}: (1,1,1)<br />
+\end{tabular}<br />
+\end{center}} --><br />
+<table class="wikitable"><tr><td class="wikicell" ><b>color:</b></td><td class="wikicell" ><b>vector:</b></td></tr><tr><td class="wikicell" >black</td><td class="wikicell" >(0,0,0)</td></tr><tr><td class="wikicell" >red</td><td class="wikicell" >(1,0,0)</td></tr><tr><td class="wikicell" >green</td><td class="wikicell" >(0,1,0)</td></tr><tr><td class="wikicell" >blue</td><td class="wikicell" >(0,0,1)</td></tr><tr><td class="wikicell" >cyan</td><td class="wikicell" >(0,1,1)</td></tr><tr><td class="wikicell" >magenta</td><td class="wikicell" >(1,0,1)</td></tr><tr><td class="wikicell" >yellow</td><td class="wikicell" >(1,1,0)</td></tr><tr><td class="wikicell" >white</td><td class="wikicell" >(1,1,1)</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+<h4>Set point color: <span style="color:red;"><code>pointcolor(&#60;colorvec&#62;)</code></span></h4>
+<br />
+<h4>Set line color: <span style="color:red;"><code>linecolor(&#60;colorvec&#62;)</code></span></h4>
+<br />
+<h4>Set text color: <span style="color:red;"><code>textcolor(&#60;colorvec&#62;)</code></span></h4>
+<br />
+<h4>Set color: <span style="color:red;"><code>color(&#60;colorvec&#62;)</code></span></h4>
+<br />
+The default colors can be set by three operators: <span style="color:red;"><code>pointcolor(&#60;colorvec&#62;)</code></span>, <span style="color:red;"><code>linecolor(&#60;colorvec&#62;)</code></span>, and <span style="color:red;"><code>textcolor(&#60;colorvec&#62;)</code></span>. Furthermore, the operator <span style="color:red;"><code>color(&#60;colorvec&#62;)</code></span> simultaneously sets the color of all types of objects.<br />
+<br />
+If real values are interpreted as color components, then values below <code>0</code> will be replaced by <code>0</code> and values above <code>1</code> will be replaced by <code>1</code>.<br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> The following code produces the picture below:</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+n=13;
+ind=1..n;
+pointsize(9);
+forall(ind,i,
+  forall(ind,j,
+    pointcolor((i/n,j/n,0));
+    draw((i,j),noborder->true);
+    pointcolor((0,i/n,j/n));
+    draw((i+15,j),noborder->true);
+    pointcolor((j/n,0,i/n));
+    draw((i+30,j),noborder->true);
+  )
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColorsX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<A NAME="opacity"></A><br />
+<h3> Opacity</h3>
+<h4>Set opacity: <span style="color:red;"><code>alpha(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> Opacity is encoded by a real value between <code>0</code> and <code>1</code>. Here <code>0</code> stands for completely transparent and <code>1</code> for completely opaque. Values that are outside this range are set to either <code>0</code> or to <code>1</code>. </div><br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h3> Color Functions</h3>
+<br />
+To make calculations with colors slightly simpler, a few default functions are declared that return color values.<br />
+<br />
+<A NAME="red"></A><br />
+<h4>Red colors: <span style="color:red;"><code>red(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator creates an RGB vector whose green and blue values are set to <code>0</code>. The red value is set to <code>&#60;number&#62;</code>.</div><br />
+<br />
+<hr />
+<A NAME="green"></A><br />
+<h4>Green colors: <span style="color:red;"><code>green(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator creates an RGB vector whose red and blue values are set to <code>0</code>. The green value is set to <code>&#60;number&#62;</code>.</div><br />
+<br />
+<hr />
+<A NAME="blue"></A><br />
+<h4>Blue colors: <span style="color:red;"><code>blue(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator creates an RGB vector whose red and green values are set to <code>0</code>. The blue value is set to <code>&#60;number&#62;</code>.</div><br />
+<br />
+<hr />
+<A NAME="gray"></A><br />
+<h4>Gray colors: <span style="color:red;"><code>gray(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator creates an RGB vector whose red, green, and blue values are all set to <code>&#60;number&#62;</code>.</div><br />
+<br />
+<hr />
+<A NAME="hue"></A><br />
+<h4>Rainbow colors: <span style="color:red;"><code>hue(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator creates an RGB vector that creates one of the fully saturated rainbow colors. The value of <code>&#60;number&#62;</code> lies between 0 and 1. This range of values represents a full rainbow color cycle. For larger numbers, the cycle repeats periodically.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> The following code produces the picture below:</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+n=360;
+ind=(1..n)/n;
+linesize(2);
+forall(ind,
+  color(hue(#));
+  draw((0,0),(sin(#*2*pi),cos(#*2*pi)))
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/HueX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [17:18:36 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Appearance%20of%20Objects">
+    http://doc.cinderella.de/tiki-index.php?page=Appearance%20of%20Objects
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

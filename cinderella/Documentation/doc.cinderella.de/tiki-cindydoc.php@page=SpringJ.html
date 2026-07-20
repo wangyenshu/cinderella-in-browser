@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : SpringJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>バネ</h2>
+<!--latexreplace<br />
+\index{simulation!spring}<br />
+\index{spring}<br />
+\index{Hook's law}<br />
+\index{rest length}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-long-spring.png" border="0"  align="left" /></span></div> <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> で、バネは ゴムバンド<a title="no description" href='tiki-cindydoc.php@page=Rubber+Band.html' class='wiki'>Rubber Band</a>とよく似ています。 バネは 直線を加えるモードのように、マウスボタンを押し、ドラッグし、離すという動作によって作成されます。バネの端点がすでに描かれた点ではない場合は、自由質点が付け加えられます。バネは2つの端点に対して力を及ぼします。ゴムバンドと異なり、バネは力がゼロの自然長を持ちます。2つの端点の間の距離が自然長より小さいならば反発し、自然長より大きいならば引きあいます。力は次の式によって計算されます。<br />
+<br />
+<!--latexreplace $$\textrm{force} = \textrm{spring constant}\cdot|\textrm{length}-\textrm{restlength}|$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>バネ定数</b> ∗ |<b>長さ</b> – <b>自然長</b>|
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+　ここで、 |x| は、ここでは、xの絶対値を意味します。 "バネ定数" はインスペクタで調整することのできるバネ特有の定数で、"自然長" はバネが静止しているときの長さ、 "長さ" は2点間の距離です。バネはインスペクタによっていろいろなバリエーションを持つことのできる非常にパワフルなものです。そこで、バネのいろいろな可能性を議論する前に、まずインスペクタを見てみましょう。<br />
+<br />
+<br />
+<br />
+<h3>バネのインスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!spring}<br />
+--><!-- /latexreplace --><br />
+　バネのインスペクタには、変更可能なものがいくつかあります。 ひとつずつ見ていきましょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>バネのインスペクタ</b></td></tr></table><br />
+<br />
+<br />
+<b>バネの強さ</b><br />
+<br />
+　バネの強さ(strength)スライダーは"バネ定数"の値を調整するものです。バネによる相互作用がどのようにモデル化されていても、"バネ定数"は最終的に力を増加させるように働きます。したがって、このスライダーをゼロに設定することは、バネを取り外すことに等しくなります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringStrengthSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>バネのタイプ</b><br />
+<br />
+　<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> では、2点間のすべての相互作用は、内部的にはバネとしてモデル化されます。したがって、異なるタイプの相互作用を切り替えるのが簡単です。これは、インスペクタでバネの種類を選ぶことでできます。現在、4つの異なる相互作用が実装されており、それぞれが特有な振舞いをします。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringTypeSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+4つの相互作用は次の通りです。<br />
+<!--latexreplace<br />
+\index{rubber band}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-rubberband.png" border="0"  align="left" /></span></div>  "ゴムバンド": このタイプでは、バネは長さゼロの自然長をもつとみなされます。したがって、2つの質点間の力は常に引力です。その絶対値は次の式で計算されます。<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\textrm{springconstant}\cdot\textrm{length}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>バネ定数</b> ∗ <b>長さ</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+このタイプは、 ゴムバンド が加えられたときの初期状態です。<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-spring.png" border="0"  align="left" /></span></div>"バネ": このタイプでは、バネは正の自然長を持つと見なされます。したがって、2つの質点が自然長よりも遠くにあるならば力は引力になり、自然長よりも近くにあるならば斥力になります。力の絶対値は次の式で計算されます。<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\textrm{springconstant}\cdot(\textrm{length}-\textrm{restlength})$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>バネ定数</b> ∗ (<b>長さ</b> – <b>自然長</b>)
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+このタイプは、バネが加えられたときの初期状態です。<br />
+<br />
+<!--latexreplace<br />
+\index{gravitational force}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-newton.png" border="0"  align="left" /></span></div> "ニュートン力": このタイプは、2つの物体の間に働く重力のモデルです。この力は、物体の質量とそれらの距離に依存します。それは常に引力です。力の絶対値は次の式で計算されます。<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\frac{\textrm{springconstant}\cdot\textrm{mass}_1\cdot\textrm{mass}_2}{\textrm{dist}<div class="simplebox">2}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>バネ定数</b> ∗ <b>質量<sub>1</sub></b> ∗ <b>質量<sub>2</sub></b> / <b>距離&#178;</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<!--latexreplace<br />
+\index{Coulomb force}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-culomb.png" border="0"  align="left" /></span></div> "クーロン力": このタイプは、帯電した粒子の相互作用のモデルです。この力は粒子の電荷とそれらの距離に依存します。電荷が異符号なら引力、そうでなければ斥力です。力の絶対値は次の式で計算されます。<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\frac{\textrm{springconstant}\cdot\textrm{charge}_1\cdot\textrm{charge}_2}{\textrm{dist}</div>2}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>バネ定数</b> ∗ <b>電荷<sub>1</sub></b> ∗ <b>電荷<sub>2</sub></b> / <b>距離&#178;</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+この力は、 クーロン力 が加えられたときの初期状態です。<br />
+<br />
+<b>自然長</b><br />
+<br />
+　"図から自然長を得る" と "自然長" の2つの項目は、バネが自然長を持つときのみ関連を持ちます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringLengthSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+　もし "図から自然長を読む" がチェックされていると、シミュレーションを開始するときに、描画されているバネの長さが自然長として定義されます。したがって、この場合、1個のバネは端点の質点に何の力も及ぼしません。<br />
+<br />
+　このボックスがチェックされていなければ、バネの自然長はインスペクタの静止しているときの長さ の値によって定義されます。<br />
+<br />
+<br />
+<b>バネの動作</b><br />
+<!--latexreplace<br />
+\index{actuation}<br />
+\index{phase}<br />
+\index{amplitude}<br />
+--><!-- /latexreplace --><br />
+　バネが自然長を持つときだけ、 <i>振幅(Amplitude)</i> と <i>位相(Phase)</i> は関連を持ちます。この場合、 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> は、周期的に自然長を変化させるという可能性を提供します。自然長は正弦(sine)関数により、周期的に長くなったり短くなったりします。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringActuationSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+　自然長の振幅は 振幅 スライダーで調整することができます。他のバネに対する位相は 位相 スライダーで調整することができます。 振動の速さは 環境設定 インスペクタで全体的に調整されます。<br />
+<br />
+<br />
+<br />
+<h3>例</h3>
+<br />
+　このような柔軟性により、バネは多くの異なった状況で使われます。ここで、バネの使用を例証するいくつかの例と図を示します。<br />
+<br />
+<h5>橋</h5>
+<!--latexreplace \index{bridge} --><!-- /latexreplace --><br />
+　最初の例は、橋の動きをシミュレートするバネのネットワークです。この例では、すべてのバネの物理的機構は初期状態で使われています。ただし、バネの外観は少し変えられています。通常、バネは小刻みに動くものとして描写されます。この特徴は、インスペクタの表現描写ボタンでオフにすることができます。さらに、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> で、内部の張力によってバネの色が変わるようになっています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Spring6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>バネによって構築された橋</b></td></tr></table><br />
+<br />
+<br />
+<!--latexreplace<br />
+\index{pendulum}<br />
+--><!-- /latexreplace --><br />
+<h5>二重振り子</h5>
+　次の例は、二重振り子の混沌とした動きを見せます。ここでは、2つのバネがつなげられており、一つの端点が地面に固定されています。バネ定数は、バネが固い棒のように振舞うように比較的高い値に設定されています。図は、重力の影響を受けている二重振り子の動きを示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Spring7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>二重振り子の混沌とした動き</b></td></tr></table><br />
+<br />
+<!--latexreplace<br />
+\index{two-body movement}<br />
+--><!-- /latexreplace --><br />
+<h5>二体運動</h5>
+　次の図は、初速度を持ち、互いの重力のもとにある2つの質点を示します。この例のために、バネのタイプはニュートンの法則にセットされています。2つの質点は、互いの周囲を回る2つの星のシステムをシミュレートします。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.35in">height=1.35in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Spring8} &amp;\includegraphics<a class="wiki external"  href="height=1.35in">height=1.35in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Spring9}\\</tt><br />
+{\small\it  Two instances of two-body motion} \\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Spring8.png" border="0"  /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Spring9.png" border="0"  /></span></td>
+      </tr>
+      <tr>
+	<td><b>二体運動の2つの例</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<h3>バネと CindyScript</h3>
+<!--latexreplace<br />
+\index{potential energy}<br />
+--><!-- /latexreplace --><br />
+　他の <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の要素のように、バネには、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> によって読み書きできるいくつかの要素があります。次のリストはアクセス可能なバネの要素を示します:<br />
+<br />
+<ul><li> <b>l</b>: バネの現在の長さ (実数、読み出しのみ)
+</li><li> <b>lrest</b>: バネの自然長(実数、読み書き可)
+</li><li> <b>ldiff</b>: 現在の長さと自然長との差 (実数、読み出しのみ)
+</li><li> <b>potential</b>: バネの位置エネルギー(実数、読み出しのみ)
+</li><li> <b>pe</b>: バネの位置エネルギー(実数、読み出しのみ)
+</li><li> <b>strength</b>: バネ定数 (実数、読み書き可)
+</li><li> <b>amplitude</b>: 振幅 (実数、読み書き可)
+</li><li> <b>phase</b>: 位相 (実数、読み書き可)
+</li><li> <b>simulate</b>: シミュレーションの実行/非実行 (ブール値、読み書き可)
+</li></ul>
+<br />
+<h3> 次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Rubber+BandJ.html" class="wiki">ゴムバンド</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Coulomb+ForceJ.html" class="wiki">クーロン力</a>
+</li></ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:42:26 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=SpringJ">
+    http://doc.cinderella.de/tiki-index.php?page=SpringJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

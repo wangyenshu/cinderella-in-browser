@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Animations and CindyLab 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Animations and CindyLab</h2>
+<!--latexreplace<br />
+\index{animation}<br />
+\index{spring}<br />
+\index{actuation}<br />
+--><!-- /latexreplace --><br />
+Many devices in the real world are driven by some kind of motor. On an abstract level, a motor pumps energy into the system. It causes movement that goes beyond the pure interaction of free mass-objects. There are three principles in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> that allow for the <i>external</i> actuation and control of a simulated environment.<br />
+<br />
+<ul><li> Actuation of springs
+</li><li> Use of a geometric Cinderella <a title="no description" href='tiki-cindydoc.php@page=Animation.html' class='wiki'>Animation</a>
+</li><li> Use of a <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> script to change parameters (such as positions and velocities) of the system
+</li></ul>
+<br />
+In what follows we shall briefly sketch these three possibilities. Since the number of possible interaction scenarios is practically infinite, we shall again focus only on the basic principles and give a few illustrative examples.<br />
+<br />
+<h3>Spring Actuation</h3>
+<br />
+Spring actuation is perhaps the most intrinsic way to drive a <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> simulation. It is discussed in the context of <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a>s. It can be used to vary the resting length of a spring periodically. If the environment also supplies some friction, then one can use spring actuation to obtain points that exhibit periodic motion. As explained in the <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a> section, one can alter the amplitude and the phase of the actuation independently. The picture below shows several springs all actuated with identical amplitudes but with differing phases.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys3.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>Many actuated springs: same amplitude, different phases</b></td></tr></table><br />
+<br />
+A typical application of actuated springs is the generation of legs for small walking devices, whereby one connects a point to several springs that are actuated with a particular phase shift. In the figure below, the two springs of each leg are actuated with a phase shift of 0.25. Each leg has a phase shift with respect to the other. This results in a cyclic walking behavior of the four legs.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Walking legs</b></td></tr></table><br />
+<br />
+If this device is dropped onto a <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> <a title="no description" href='tiki-cindydoc.php@page=Floor.html' class='wiki'>Floor</a>, it automatically starts to walk like a little animal.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A walker taking a stroll across the floor</b></td></tr></table><br />
+<br />
+<br />
+<h3> Geometric Animations</h3>
+<br />
+In the geometry part of Cinderella there is a standard way of animating points through the use of <a title="no description" href='tiki-cindydoc.php@page=Animation.html' class='wiki'>Animation</a> mode. In this way, one can, for example, create rotating points on a circle or moving points on a segment. The animation mode of Cinderella works seamlessly with <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->. One can use animated points and equip them with physical properties or connect them to springs. In the picture below a kind of long elastic rope was created by connecting several rubber bands. One end of the elastic was fixed to the green point at the far left. The other end is driven by a Cinderella animation. The rotating point on the circle is used to move the end of the elastic up and down in periodic motion.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys4.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>Animation of an oscillating wave</b></td></tr></table><br />
+<br />
+Mass-objects can also be used directly in animations. The following example is physically quite unrealistic, but it demonstrates a possible use of mass-objects in animations. Here a <a title="no description" href='tiki-cindydoc.php@page=Sun.html' class='wiki'>Sun</a> is bound to a circle. An animation causes the sun to revolve around the circle. The picture shows the trace of a red planet under the attraction of a rotating yellow sun.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A planet revolving about a revolving sun</b></td></tr></table><br />
+<br />
+Animations are synchronized with the physics simulation. This means that if one moves the animation speed slider, then both the physics simulation and the animation itself become slower.<br />
+<br />
+<br />
+<h3>Driving Simulations with CindyScript</h3>
+<!--latexreplace<br />
+\index{CindyScript!and CindyLab}<br />
+\index{CindyLab!and CindyScript}<br />
+--><!-- /latexreplace --><br />
+As usual, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provides the most flexible and powerful way of influencing a simulation. With <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> one can directly influence the parameters of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> objects such as <i>position</i>, <i>velocity</i>, and <i>restlength</i>. In this way, whenever the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code is executed, one can influence the behavior of the physics objects. As explained in the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> manual, this scripting language allows execution to take place at a specific time. A detailed list can be found in the <a title="no description" href='tiki-cindydoc.php@page=CindyLab+and+CindyScript.html' class='wiki'>CindyLab and CindyScript</a> section.<br />
+<br />
+In principle, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> can alter any physics behavior, since it has the "final word" on the parameters of the object. For instance, one can alter the speed of a particle programmatically. The following example shows a simple control loop for balancing a spring by moving one of its points.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AnimPhys6.png" border="0"  width="300" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AnimPhys7.png" border="0"  width="300" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->The <i>balancing seal</i> before start<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->The <i>balancing seal</i> at work<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+     </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+The tip of the nose of the seal is point C. The other endpoint of the spring is point D. The following lines of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code perform the balancing by changing the horizontal velocity of point C.<br />
+<!--latexreplace<br />
+\index{seal}<br />
+--><!-- /latexreplace --><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(C.x < D.x,C.vx=C.vx+.05);
+if(C.x > D.x,C.vx=C.vx-.05);
+C.vx=C.vx+random(0.02);
+</pre></div><br />
+<br />
+The first line says that whenever the spring tends to fall to the left, the seal has to accelerate in this direction to prevent the spring from falling. The second line says exactly the same for the other direction. Finally, the last line adds a small degree of randomness to the movement of the seal. This makes the animation appear much more realistic.<br />
+<br />
+<br />
+Sometimes it is useful to perform <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> actions at specific moments of time. For this there are two different concepts of time within <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. There is a function <code>simulationtime()</code> that is synchronized with the internal time of a simulation. Every time step of the simulation increases this value. Alternatively, one can refer to a timer that is synchronized with real time. For this, the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> functions <code>time()</code> and <code>seconds()</code> are useful. For details on this concept please refer to the section <b>Time</b> on the page <a title="no description" href='tiki-cindydoc.php@page=Special+Operators.html' class='wiki'>Special Operators</a>.<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 30 of July, 2011 [23:38:38 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Animations%20and%20CindyLab">
+    http://doc.cinderella.de/tiki-index.php?page=Animations%20and%20CindyLab
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

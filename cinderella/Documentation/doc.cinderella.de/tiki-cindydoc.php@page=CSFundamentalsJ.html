@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : CSFundamentalsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> CindyScript の概要</h1>
+<!--latexreplace<br />
+\index{CindyScript|(}<br />
+--><!-- /latexreplace --><br />
+<br />
+　シンデレラで非常に強力な関数型言語が使えるようになりました。それは、最初、Cinderella.2で、幾何と物理シミュレーションを相互に関連付けるためにデザインされました。しかし、それは数学の計算を実行するための言語としても使うことができます。<br />
+<br />
+Cinderella.2でCindyScriptを使う方法が３つあります。第一に、シンデレラのツールの関数プロットで使うことができます。もう一つは、コマンドシェルで、例えば幾何要素の色や大きさを設定します。<br />
+<br />
+しかし、一般的にはスクリプトエディタを用います。スクリプトエディタでは、プログラムを実行する場面に応じてスクリプトを書き分けることができます。<br />
+<br />
+　次の節で、プログラミング言語 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の概要を示します。プログラミング言語CindyScriptは、次の原則によって設計されています。<br />
+<br />
+<ul><li> 学びやすく、読み書きがしやすいこと。
+</li><li> 最小限の文法からなること
+</li><li> 実行速度が速いこと
+</li><li> Cinderella や <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> との連携が円滑なこと。
+</li></ul>
+<br />
+以下の話題は、主要な特徴についての概要です。<br />
+<br />
+<ul><li> <b><a title="no description" href="tiki-cindydoc.php@page=General+ConceptsJ.html" class="wiki">全般的仕様</a>:</b> CindyScript　の全般的な仕様について
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=Entering+Program+CodeJ.html" class="wiki">コードの入力</a>:</b> プログラムの書き方と編集のしかたについて
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=Variables+and+FunctionsJ.html" class="wiki">変数と関数</a>:</b> 変数、関数の定義のしかたについて
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=Accessing+Geometric+ElementsJ.html" class="wiki">幾何要素へのアクセス</a>:</b>  Cinderella 、CindyLabとの連携について
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=Control+OperatorsJ.html" class="wiki">制御命令</a>:</b>  <code>if, repeat, while,...</code>　など、実行の制御命令について
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html" class="wiki">算術命令</a>:</b>  (+, -, *, /, sin(), cos(), …)など、演算と組み込み関数について
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=Boolean+OperatorsJ.html" class="wiki">論理演算子</a>:</b> 論理演算子について
+</li><li> <b><a title="no description" href="tiki-cindydoc.php@page=String+OperatorsJ.html" class="wiki">文字列演算子</a>:</b> 文字列の取り扱いについて
+</li></ul>
+<br />
+　詳しい説明のためには、個々に用意されているパラメータ（修飾子）について言及する必要があります。ひとまず、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の可能性について、全体をざっとごらんになることを勧めます。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [13:17:36 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=CSFundamentalsJ">
+    http://doc.cinderella.de/tiki-index.php?page=CSFundamentalsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

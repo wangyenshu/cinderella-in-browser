@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : TextJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> 文字（テキスト）を加える</h3>
+<!--latexreplace<br />
+\index{add text}<br />
+\index{text}<br />
+\index{mode!text}<br />
+\index{label}<br />
+\index{change label}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/text.png" border="0"  align="left" /></span></div>「文字を加える」モードは多目的に 作られたモードで、画面上に表示されている文字のほとんどすべてについて、それを操作することができます。 主な使い方は以下のようになっています。<br />
+<br />
+<ul><li> <b>文字(テキスト)を加える:</b>画面上の表示したい場所でクリックすると、 小さなウィンドウが現れ、テキストを入力するように促されます。 テキストを入力してウィンドウを閉じると、クリックした場所にテキストが表示されます。
+</li><li> <b>テキストを編集する:</b> すでに画面上に書かれているテキストをクリックすると、再び編集ウィンドウが開き、そこに書いてあったテキストをもう一度編集することができます。 ウィンドウを閉じると、テキストは変更されています。
+</li><li> <b>識別名を変更する:</b> 画面上の要素をクリックすると、識別名を編集することができます。そこでその要素に新しい識別名をつけることができます。 しかし、識別名には制限もあります。 その図の中で他に同じ識別名があってはいけません。 もし、他の要素と同じ識別名をつけようとすると、警告のメッセージが現れ、識別名は変更されません。なお、識別名はインスペクタでも変更できます。
+</li></ul>
+<br />
+　ここで、日本語を入力するにはちょっと手続きが必要です。そのままではコンピュータの入力モードを日本語入力にしても、入力ウィンドウには日本語が出ません。<br />
+まず、入力ウィンドウの右の方にある「＜」印をクリックします。すると、矢印の向きが変わって入力エリアが広がります。この状態でなら日本語入力ができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TextJapan.png" border="0"  /></span></td></tr><tr><td class="caption"><b>日本語入力をする</b></td></tr></table><br />
+<br />
+<h4>ドッキングと参照</h4>
+<!--latexreplace<br />
+\index{docking}<br />
+--><!-- /latexreplace --><br />
+<br />
+画面上の文は最初あなたが考えているよりもずっと融通の利くものです。 2つの重要な特徴があります。: <b>ドッキング</b> と <b>参照</b>です。<br />
+<br />
+<ul><li> <b>ドッキング</b>: 通常、テキストは作図の座標系に従って特定の位置に置かれています。 絵を拡大したり平行移動したりすると、テキストもそれに従って動きます。 だいたいはこれでよいのでしょうが、時々、違った動きをしてほしいと思うこともあります。 たとえば、あるテキストをいつも画面の左上に表示しておきたいということもあるでしょう。 そこでドッキングを用います。 動かすモードにしてテキストをドラッグして動かしてみましょう。 そして描画面の縁へ持ってくると、文字がスナップするのがわかるでしょう。 そこでマウスのボタンを離すと、そのテキストは描画面の縁にドッキングしているのです。 描画面の大きさを変更してみるとその様子がよくわかります。
+</li></ul>
+<br />
+テキストを点にドッキングさせることもできます。 テキストをドラッグによって動かし、点の近くに持ってくると、点にスナップします (このときその点はハイライト表示されます)． 動かすモードでその点を動かしてみれば、そのテキストは点とくっついているのがわかるでしょう。<br />
+<br />
+<!--latexreplace<br />
+\index{referencing}<br />
+--><!-- /latexreplace --><br />
+<ul><li> <b>テキスト中への値の参照</b>:しばしば、テキストの中のパラメータを自動的に変更したいこともあるでしょう。 たとえば、「点Aと点Bの距離は25cm」というテキストを表示することを考えてみましょう。 ここで25という数字は定まった数字ではなく、点Aと点Bとの実際の距離であるようにしたいわけです。 これを実現するために、描画面上の要素の名前や量をテキスト中で参照することができます。 Aという識別名を持った点があるとすると、<code>@#A</code>」でその座標を参照することができます。 さらに、AやBという要素の識別名を変更した時にテキストがそれに従って変更されるようになるほうが便利でしょう。 そのためには、<code>@$A</code>という書き方をします。 これにより識別名が参照されます。 「距離」の識別名が「<code>dist0</code>」であったとして、文を次のように書けばよいのです。(訳注：Cinderella.2 になって仕様が変わったのか、<code>@$A</code> と書いたとき、識別名を変更すると認識されなくなります。すなわち、点Aの識別名をBに変えると、表示は Bにはならず、　A? となります)
+</li></ul>
+<br />
+<div dir="ltr"><pre class='codelisting'>
+点 @$A と点 @$B の距離は @#dist0 cm.
+</pre></div><br />
+<br />
+このとき、次の２点に注意してください。(i)@$Aは半角文字で入力しなければいけません． (ii)@$Aの前後に、半角スペース を入力しなければいけません。あるいは、@$”A" のように識別名をダブルクウォートで囲みます。 また、距離の識別名などは、「式による表示」またはインスペクタで調べます。通常は、dist0, dist1,... という名前がついています。<br />
+<br />
+点や直線や2次曲線に関して、<code>@#</code>をつけると値の表示を行うことができます。 点の場合は座標、直線や2次曲線は式です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+点 @$A の座標は @#A
+</pre></div><br />
+<br />
+と書くと、「点Aの座標は(0, 1)」のような表示になります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+直線 @$a の式は @#a
+</pre></div><br />
+<br />
+と書くと、「直線 a の式は y=2x+1」のような表示になります。<br />
+<br />
+要素から文中への参照は次の3つの方法があります。 Aを要素の識別名であるとしましょう。 このとき、<br />
+<br />
+<ul><li> <b>識別名</b> を参照したいときは． <code>@$A</code>と書きます。
+</li><li> <b>定義</b> を参照したいときは<code>@@A</code>と書きます。
+</li><li> <b>位置や値</b>を参照したいときは<code>@#A</code>と書きます。
+</li></ul>
+<br />
+こうして生成されるテキストを「式による表示」で見ることもできます。 要素を値で表示する時の表示の仕方には幾つかオプションがあります。 (訳註：たとえば、点の座標を(1, 0)(平面座標表示)と表示するか、(1:0:1)(同次座標表示)と表示するかを選ぶことができます。) メニューから「フォーマット」を選んでください。<br />
+<br />
+<code>@</code>を使えば、ギリシャ文字を表示することができます。 <code>@alpha</code>や-+@Omega+のように@のあとにギリシャ文字の名前を書いてください (ここでもやはり「@ギリシャ文字名」の前後に半角スペースが必要です)。<br />
+<br />
+さらに、テキストとして <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコードを書き、その結果を表示することもできます。そのための書き方は、<code>@{…}</code>で、 +…+-の部分は <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコードです。たとえば、 <code>@{sin(A.x)}</code> は、点Aの <i>x</i> 座標のsinの値になります。<br />
+<br />
+<!--latexreplace<br />
+\index{TeX}<br />
+--><!-- /latexreplace --><br />
+さらに、TeX のコードを使うことができます。たとえば、<code>The point $P_1$ has coordinates $({x \over y},x^2)$</code> とすると、次の図のような表示になります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TeXInTextsX.png" border="0"  /></span></td></tr><tr><td class="caption"><b>TeXによる式表示</b></td></tr></table><br />
+<br />
+TeXの書きかたについては「TeX記法」を参照してください。<br />
+<br />
+<h5> クリックして参照する</h5>
+<br />
+<tt> <a title="no description" href="tiki-cindydoc.php@page=FunctionJ.html" class="wiki">関数を定義する</a> モードのように、幾何の要素を単にクリックするだけで参照することができます。これで、ダイアログボックスに文字を入力していくのが簡単になります。他のテキストをクリックすれば、このテキストがコピーされます。</tt><br />
+<br />
+<h5>  CindyScript で使う</h5>
+<!--latexreplace<br />
+\index{clickable button}<br />
+\index{button}--><br />
+<!-- /latexreplace --><br />
+<tt> <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>を用いて、文字列をボタンにすることができます。ボタンは押しボタンか、トグル動作のボタンにできます。トグルボタンは <a title="no description" href="tiki-cindydoc.php@page=Accessing+Geometric+ElementsJ.html" class="wiki">状態を読む</a>ことができます。 <a title="no description" href="tiki-cindydoc.php@page=CindyScriptJ.html" class="wiki">CindyScript </a> を使えば両方のボタンを設定できます。 <a title="no description" href="tiki-cindydoc.php@page=The+CindyScript+EditorJ.html" class="wiki">このマニュアルの該当部分を読んでください。</a>.</tt><br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+画面中に文を加えたり画面中の文の編集を行う。<br />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=MeasurementsJ.html" class="wiki">計測</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=FunctionJ.html" class="wiki">関数を定義する</a>
+</li><li> <a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a>
+</li></ul>
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 11 of March, 2012 [05:36:31 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=TextJ">
+    http://doc.cinderella.de/tiki-index.php?page=TextJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

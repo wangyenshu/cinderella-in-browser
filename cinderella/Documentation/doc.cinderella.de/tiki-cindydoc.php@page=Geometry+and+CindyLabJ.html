@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Geometry and CindyLabJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>幾何学とCindyLab</h2>
+<br />
+　ある意味では、このセクションはシンデレラのユーザーにとってはその機能を思い出してもらう程度のものかもしれません。 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> では、すべての質点は幾何学的な点であり、バネや反射壁や床は直線や線分であるということです。したがって、幾何学的な構造によって <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> の実験装置を強化することがいつでも可能です。これらの幾何学的な構造は実験の正確な意味を分析するのに有益なことがあります。このことを3つの小さな例で示します。<br />
+<br />
+<br />
+<h3>例 1: 力のつりあい</h3>
+<!--latexreplace<br />
+\index{equilibrium}<br />
+\index{forces!in equilibrium}<br />
+\index{conic}<br />
+--><!-- /latexreplace --><br />
+　力がつりあっているとき、質点は加速しません。しかし、そのような場合、どの質点にも力がかからないことを意味します。これはまた、いくつかの粒子に及ぼす力の和がゼロであるともいえます。次の実験では、ゴムバンドとバネでできている簡単な網が、これを例証しています。青い三角形のバネがあります。各頂点は、中央の粒子とゴムバンドでつながっています。最初は、ゴムバンドの長さと方向は任意かもしれません。 しかしながら、シミュレーションの始めにすこし摩擦力を加えてやることによって、つりあいの状態になるようにするならば、内部の頂点でゴムバンドによる力は相殺されなければなりません。もし、すべてのゴムバンドが同じバネ定数を持っているならば、ゴムバンドを表す3つの線分は、平行移動によって(力の合計がゼロになる)三角形を作ることができます。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/GeoPhys1.png" border="0"  width="300" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/GeoPhys2.png" border="0"  width="300" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->開始前の状態<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td width=10></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->つりあった状態<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+　これは、3つの線分を平行移動によって補助的な図を作ることで簡単にテストできます。(図の右方)　開始時点ではこの3つの矢線は必ずしもつながっている必要はないことがわかるでしょう。２番目の図は、3つの端が自動的に完全な三角形をつくるつりあい状態にあることを示します。<br />
+<br />
+　ときどき、大変びっくりするような興味深い関係がつりあった状態の上に起こります。たとえば、次の図は6本のゴムバンドで囲まれる3本のバネの状況を表します。ゴムバンドには任意のバネ定数があるかもしれません。つりあっているとき、6つの頂点は自動的に楕円上にきます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>驚くべきつりあい状態</b></td></tr></table><br />
+<br />
+<br />
+<h3>例 2: 惑星の動き</h3>
+<!--latexreplace<br />
+\index{planet movement}<br />
+\index{Kepler's law}<br />
+--><!-- /latexreplace --><br />
+　二体システムの惑星運動に、あまり知られていませんが驚くべき幾何学的特性があります。すでに述べたように、恒星の周りを回っている惑星は楕円軌道を描きます。惑星の速度を考えると、恒星の近くでは速く、遠くでは遅くなります。また、動いている間、速度の方向が変わります。シンデレラでは速度ベクトルの様子をはっきりと調べることが簡単にできます。まず <a title="no description" href="tiki-cindydoc.php@page=SunJ.html" class="wiki">恒星</a> と、  <a title="no description" href="tiki-cindydoc.php@page=VelocityJ.html" class="wiki">速度</a>を持つ質点を加えます。シミュレーションを始めると、惑星はケプラー楕円に沿って動きます。 それから、自由点を加え、惑星からこの点へ<a title="no description" href="tiki-cindydoc.php@page=TranslationJ.html" class="wiki">変換</a> を定義します。これで、速度ベクトルをこの点に写し、速度ベクトルの動きとは独立した図を描くことができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>速度ベクトルの軌跡</b></td></tr></table><br />
+<br />
+　速度ベクトルの軌跡を見ると、円だと推測されるでしょう。この推測を少なくとも視覚的に実証するのは簡単で、自由な円を加え、アニメーションが動いている間速度ベクトルの軌跡にマッチするようにしてやればいいのです。次の図は、それがどのくらいうまくマッチしているかを示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>軌跡は円</b></td></tr></table><br />
+<br />
+<br />
+<h3>例 3: 金門橋にかかる力</h3>
+<!--latexreplace<br />
+\index{bridge}<br />
+\index{Golden Gate Bridge}<br />
+\index{transformation!projective}<br />
+\index{projective transformation}<br />
+--><!-- /latexreplace --><br />
+　次の図は、重力の節で示されている例です。ここでは金門橋の写真が背景に読み込まれています。CindyLab を使って、橋のケーブルにかかる力の分布をシミュレーションします。シンデレラは写真の遠近感を出すのに使われます。物理シミュレーションの結果を写真の上に写すには <a title="no description" href="tiki-cindydoc.php@page=Projective+TransformationJ.html" class="wiki">射影変換</a> を使います。重力を適正な値に調整することによって、この状況が橋をささえるケーブルの形状に似ていることが示されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys6.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>金門橋の解析</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 29 of August, 2011 [00:29:55 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Geometry%20and%20CindyLabJ">
+    http://doc.cinderella.de/tiki-index.php?page=Geometry%20and%20CindyLabJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

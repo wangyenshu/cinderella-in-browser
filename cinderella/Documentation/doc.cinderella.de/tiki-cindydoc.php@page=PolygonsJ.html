@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : PolygonsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 多角形</h2>
+<!--latexreplace<br />
+\index{mode!polygon}<br />
+\index{mode!regular polygon}<br />
+\index{polygon}<br />
+\index{regular polygon}<br />
+--><!-- /latexreplace --><br />
+<b>シンデレラ２</b> には、正多角形をつくるためのいろいろな方法が。「モード」メニューの「多角形」サブメニューに用意されています。これらは２つのグループに分けられます。「正多角形」モードとそれ以外のものです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Poly1J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>多角形モードのメニュー</b></td></tr></table><br />
+<br />
+<br />
+<h3> 正多角形</h3>
+<!--latexreplace<br />
+\index{star polygon}<br />
+--><!-- /latexreplace --><br />
+描きたい正多角形の一辺(２つの端点)がすでにある場合はこのモードが使えます。まず、その２つの点を順にクリックします。つぎに、そのままマウスを動かすと、画面に正多角形がヒントとして表示されます。マウスの位置を調節して、三角形や正方形、正五角形など、望む形になったらマウスボタンをクリックすれば、正多角形とともに、各頂点が作られます。できあがった点などは、普通の幾何学的要素として扱えます。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly2}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly3} &amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly4}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly5} \\</tt><br />
+{\small\it The two points } &amp;  {\small\it Selecting them}&amp;  {\small\it   Hints while dragging}&amp;  {\small\it  Situation after the}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it  } &amp;  {\small\it }&amp;  {\small\it }&amp;  {\small\it  third click}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly4.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly5.png" border="0"  width="150" /></span></td> <td width=10></td>
+<tr>
+<td><b>２つの点がある</b></td> <td></td>
+<td><b>順に選ぶ</b></td> <td></td>
+<td><b>マウスを動かす</b></td> <td></td>
+<td><b>クリックすればできあがり</b></td> <td></td></tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+このモードは双曲幾何学でも利用できます、その場合には、正<i>双曲</i>多角形がつくられます。これは、辺の長さとなす角がすべて等しい多角形です。<br />
+<br />
+<h3>注意</h3>
+このモードは、球面幾何学では現在サポートされていません。双曲幾何学においては、ユークリッド幾何学と異なり、n角形の角度は、数nでは決まりません。<br />
+<br />
+<br />
+<h3>中心と頂点で決まる正多角形</h3>
+<br />
+正多角形のもうひとつのモードは、「円を加える」モードとよく似ています。マウスボタンを押す-ドラッグする-離すという一連の操作で作図します。マウスボタンを押すと中心が決まり、ドラッグすると多角形ができ、ボタンを離すと決定されます。<br />
+<br />
+メニューには正三角形から正九角形までのモードと、いくつかの星形多角形のモードがあります。次の図は、このモードで作図できる多角形を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Poly6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>正多角形の例</b></td></tr></table><br />
+<br />
+このモードは、双曲幾何学にも使えます。そこでは、もうひとつの重要な特徴があります。双曲幾何学での正 <i>n</i> 角形は各頂点での角が等しく、辺の長さが等しい多角形です。ユークリッド幾何学と異なり、数 n は角度を決定しません。多角形の大きさによって、 0° から  (<i>n</i> – 2)/<i>n</i> ∗ 180°までのどんな角でも取り得ます。たとえば、すべての角が90°である正五角形が存在します。そのような五角形は頂点のところではユークリッド幾何学の正方形のようです。通常はこのような多角形を正しく描くのは困難です。 <b>シンデレラ２</b> の正多角形モードではこのような多角形を作れます。マウスをドラッグしている間、スナップ点が示され、どのくらいの相似多角形が角のまわりにできるかを示す小さな数が表示されます。<br />
+<br />
+<br />
+<br />
+<h3> 次も参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Transformation+GroupsJ.html" class="wiki">変換群</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=GeometriesJ.html" class="wiki">双曲幾何学</a>
+</li></ul>
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 24 of February, 2012 [23:39:11 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=PolygonsJ">
+    http://doc.cinderella.de/tiki-index.php?page=PolygonsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

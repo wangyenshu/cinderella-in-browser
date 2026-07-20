@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Accessing Geometric elementsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>幾何学要素へのアクセス</h2>
+<br />
+<a title="The Cinderella scripting language CindyScript" href="https://doc.cinderella.de/tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> とシンデレラの幾何学部分の間のコミュニケーションは、作成物の幾何学的な対象にアクセスすることによってなされます。幾何学要素へのアクセスには2つの異なる方法があります。ひとつは、要素のラベル名で、もう一つは CindyScript の特殊演算子によってです。基本的に、シンデレラの幾何学要素のパラメータはすべて CindyScript で読むことができますし、大部分のパラメータは CindyScript で設定することができます。以下では、まず、幾何学要素へのアクセスのしかたを述べ、その後パラメータの詳細なリストを示します。<br />
+<br />
+<br />
+<h3>要素にその名前でアクセスする</h3>
+<br />
+すべての幾何学要素には個々の名前(ラベル)があります。この名前はCindyScriptへの「ハンドル」として取り扱うことができます。CindyScript において、要素はあらかじめ定義され他変数の役割を演じます。それぞれのパラメータは <span style="color:red;">.</span> (ドット)演算子によって読み書きできます。例えば、次のコードでは、点 <i>A</i>の大きさを20に設定します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.size=20
+</pre></div><br />
+<br />
+もし、点や線がドット演算子ではなく算術演算子に含まれるときは、自動的にその位置を表すベクトルに変換されます。 したがって、点は2次元座標で表される <code>[x,y]</code> ベクトルに変換されます。直線は、同様に同次座標で表される <code>[x,y,z]</code> ベクトルに変換されます。しかし、座標を設定する場合は、ドット演算子を用いて明示的に設定されなければなりません。幾何学要素へのハンドルが算術演算子で使われないのであれば、依然として幾何学的要素として扱われます。この概念が微妙なので、少し例を挙げてはっきりさせましょう。<br />
+<br />
+<tt> <i>A</i> と <i>B</i> , <i>C</i> がシンデレラの点であると仮定します。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.xy=(B+C)/2
+</pre></div><br />
+<br />
+は、 <i>A</i> を線分 <i>BC</i>の中点に設定します。この2点は算術演算子に含まれますので、すぐに <code>[x,y]</code> ベクトルとし処理されます。しかし、点  <i>A</i> の位置は <code>.xy</code> パラメータによって明示的に設定されなければなりません。<br />
+<br />
+次のプログラムでは３つの点の色をすべて緑色にします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=[A,B,C];
+forall(pts,p,
+  p.color=[0,1,0];
+)
+</pre></div><br />
+<br />
+このコードでは、点の名前はリスト  <code>pts</code>へのハンドルとしてそのまま扱われます。 <code>forall</code> 演算子で走査されたハンドルは一度 <code>p</code>変数に代入され、そこから色のパラメータにアクセスされます。<br />
+<br />
+<br />
+<h3>要素のリスト</h3>
+<br />
+ときには、それぞれの名前によって個々にアクセスする必要がないこともあります。特に、図面の全体に対して操作をしたい場合です。たとえば、点集合の凸包を計算する時などです。そのために、CindyScript は要素のリストを返すいくつかの演算子を用意しています。たとえば、 <code>allpoints()</code> 演算子はすべての点の リストを返します。例でこれを示しましょう。次のスクリプトは、位置を <i>y</i>軸 と比較して、点の色を変えます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=allpoints();
+forall(pts,p,
+  if(p.x<0,
+    p.color=[1,1,0],
+    p.color=[0,1,0];
+   )
+)
+</pre></div><br />
+<br />
+次の図は、ばらばらに置いた点にこのスクリプトを適用した結果を示します。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/ProgList1X.png" border="0"  /></span><br />
+<code>点のリストを処理する</code><br />
+<br />
+<br />
+<h3>幾何学要素のパラメータ</h3>
+<br />
+<a title="The Cinderella scripting language CindyScript" href="https://doc.cinderella.de/tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> でアクセスできるすべてのパラメータについて解説します。このリストは将来のシンデレラのリリース時に拡張されるかもしれません。各パラメータにおいて、読み出しのみか、読み書き可能かに関わらず、型と使用目的についての簡単な説明をします。パラメータの型は次の通りです。<br />
+<br />
+<ul><li><b>real:</b> 実数
+</li><li><b>int:</b> 整数
+</li><li><b>bool:</b>  <code>true</code> または <code>false</code>
+</li><li><b>string:</b> 文字列
+</li><li><b>2-vector:</b> 2次元ベクトル
+</li><li><b>3-vector:</b> 3次元ベクトル
+</li><li><b>3x3-matrix:</b> 3行3列行列
+</li></ul>
+<br />
+パラメータの書き込みは、時には自由要素に限られることがあります。該当する項で "free" の語を使ってそれを表します<br />
+<br />
+<br />
+<h5>すべての幾何学要素についてのパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>color</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > 3-vector</td><td class="wikicell" >オブジェクトの色 (赤, 緑, 青) </td></tr><tr><td class="wikicell" ><b><code>colorhsb</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > 3-vector</td><td class="wikicell" >オブジェクトの色 (色相, 彩度, 輝度) </td></tr><tr><td class="wikicell" ><b><code>isshowing</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > bool</td><td class="wikicell" >オブジェクトの表示/非表示 (オブジェクトに依存するすべての要素に引き継がれる)</td></tr><tr><td class="wikicell" ><b><code>visible</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > bool</td><td class="wikicell" >オブジェクトの表示/非表示 (従属するオブジェクトからは引き継がれない)</td></tr><tr><td class="wikicell" ><b><code>alpha</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >オブジェクトの透明度 ( 0.0 から 1.0)</td></tr><tr><td class="wikicell" ><b><code>labelled</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > bool</td><td class="wikicell" >ラベルの表示/非表示</td></tr><tr><td class="wikicell" ><b><code>name</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" >string</td><td class="wikicell" >オブジェクトの名称</td></tr><tr><td class="wikicell" ><b><code>caption</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >string</td><td class="wikicell" >オブジェクトのラベル</td></tr><tr><td class="wikicell" ><b><code>trace</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >bool</td><td class="wikicell" >軌跡(足跡)の表示/非表示</td></tr><tr><td class="wikicell" ><b><code>tracelength</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >int</td><td class="wikicell" >足跡の長さ</td></tr><tr><td class="wikicell" ><b><code>selected</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >bool</td><td class="wikicell" >オブジェクトが選択されているかどうか</td></tr></table><br />
+<br />
+それぞれの幾何学要素は個別の<span style="color:blue;">識別名</span>を持ちます。識別名は<code>.name</code>パラメータによってアクセスできます。たとえば、 <code>A.name</code> は文字列 <code>"A"</code> を返します。その名前は、画面上に表示される <span style="color:blue;">ラベル(caption)</span> とは異なる場合があります。ラベルが設定されていなければ  <code>A.caption</code> は空の文字列です。また、ラベルはインスペクタで変更することができます。<br />
+<br />
+<h5>点のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>x</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >点の<i>x</i>座標</td></tr><tr><td class="wikicell" ><b><code>y</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >点の<i>y</i>座標</td></tr><tr><td class="wikicell" ><b><code>xy</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >2-vector</td><td class="wikicell" >点の<i>xy</i>座標</td></tr><tr><td class="wikicell" ><b><code>coord</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >2-vector</td><td class="wikicell" >点の<i>xy</i>座標</td></tr><tr><td class="wikicell" ><b><code>homog</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >3-vector</td><td class="wikicell" >点の同次座標</td></tr><tr><td class="wikicell" ><b><code>angle</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >円周上の点の角度(円周上の点にのみ適用)</td></tr><tr><td class="wikicell" ><b><code>size</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >int</td><td class="wikicell" >点の大きさ (0 から 40)</td></tr><tr><td class="wikicell" ><b><code>imagerot</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >real</td><td class="wikicell" >点が画像で置き換えられている場合、回転角度</td></tr></table><br />
+<br />
+<br />
+<h5>直線のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>homog</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >3-vector</td><td class="wikicell" >直線の同次座標</td></tr><tr><td class="wikicell" ><b><code>angle</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >直線の角度</td></tr><tr><td class="wikicell" ><b><code>slope</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >直線の傾き</td></tr><tr><td class="wikicell" ><b><code>size</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >int</td><td class="wikicell" >直線の幅 (0 から 10)</td></tr></table><br />
+<br />
+<br />
+<h5>円と円錐曲線(２次曲線)</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>center</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >円の中心</td></tr><tr><td class="wikicell" ><b><code>radius</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >円の半径</td></tr><tr><td class="wikicell" ><b><code>matrix</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" >real</td><td class="wikicell" >円または二次曲線を記述する行列</td></tr><tr><td class="wikicell" ><b><code>size</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >int</td><td class="wikicell" >線の幅 (0 から 10)</td></tr></table><br />
+<br />
+<br />
+<h5>テキストのパラメータ</h5>
+<!--latexreplace<br />
+\index{button}<br />
+--><!-- /latexreplace --><br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>text</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >string</td><td class="wikicell" >文字列の内容</td></tr><tr><td class="wikicell" ><b><code>pressed</code></b></td><td class="wikicell" >可</td><td class="wikicell" >可</td><td class="wikicell" >boolean</td><td class="wikicell" >文字列の状態。ボタンならばtrue</td></tr><tr><td class="wikicell" ><b><code>xy</code></b></td><td class="wikicell" >可</td><td class="wikicell" >可</td><td class="wikicell" >2-vector</td><td class="wikicell" >文字列の位置</td></tr></table><br />
+<br />
+<br />
+<h5>アニメーションのパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>run</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >bool</td><td class="wikicell" >アニメーションの実行/非実行</td></tr><tr><td class="wikicell" ><b><code>speed</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" >real</td><td class="wikicell" >アニメーションの相対的な速さ</td></tr></table><br />
+<br />
+<br />
+<h5>変換のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>matrix</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" >3x3 matrix</td><td class="wikicell" >変換の同次行列</td></tr><tr><td class="wikicell" ><b><code>inverse</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" >3x3 matrix</td><td class="wikicell" >逆変換の同次行列transformation</td></tr></table><br />
+<br />
+<br />
+<br />
+<h4>)) CindyLab((オブジェクトのパラメータ</h4>
+<br />
+CindyScript でアクセスできる幾何学要素以外のものとして、<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='https://doc.cinderella.de/tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のシミュレーション・パラメータがあり、 CindyScript によって読み書きができます。<br />
+<br />
+<br />
+<h5>すべての <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='https://doc.cinderella.de/tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> 要素のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>simulate</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > bool</td><td class="wikicell" >オブジェクトがシミュレーションに加わるかどうか</td></tr></table><br />
+<br />
+<br />
+<h5>質点のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>mass</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >オブジェクトの質量</td></tr><tr><td class="wikicell" ><b><code>charge</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > int</td><td class="wikicell" >オブジェクトの電荷</td></tr><tr><td class="wikicell" ><b><code>friction</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >オブジェクトの摩擦</td></tr><tr><td class="wikicell" ><b><code>radius</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >質点を球とみなすときの半径</td></tr><tr><td class="wikicell" ><b><code>posx</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >質点のx座標</td></tr><tr><td class="wikicell" ><b><code>posy</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >質点のy座標</td></tr><tr><td class="wikicell" ><b><code>pos</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > 2-vector</td><td class="wikicell" >質点の位置ベクトル</td></tr><tr><td class="wikicell" ><b><code>vx</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >速度のx成分</td></tr><tr><td class="wikicell" ><b><code>vy</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >速度のy成分</td></tr><tr><td class="wikicell" ><b><code>v</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > 2-vector</td><td class="wikicell" >速度ベクトル</td></tr><tr><td class="wikicell" ><b><code>fx</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >粒子にかかる力のx成分</td></tr><tr><td class="wikicell" ><b><code>fy</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >粒子にかかる力のy成分</td></tr><tr><td class="wikicell" ><b><code>f</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > 2-vector</td><td class="wikicell" >粒子にかかる力のベクトル</td></tr><tr><td class="wikicell" ><b><code>kinetic</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >粒子の運動エネルギー</td></tr><tr><td class="wikicell" ><b><code>ke</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >粒子の運動エネルギー</td></tr></table><br />
+<br />
+質点間に力を定義したい場合があります。そのときは <code>Integeration Tick</code> スロットにコードを書きます。質点の位置が内部的に通常の幾何学要素と異なるタイムスケールで動くときは <code>pos</code>, <code>posx</code> および <code>posy</code> によってその位置にアクセスする必要があります。<br />
+<br />
+<h5>バネとクーロン力のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>l</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >バネの現在長</td></tr><tr><td class="wikicell" ><b><code>lrest</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >バネの自然長</td></tr><tr><td class="wikicell" ><b><code>ldiff</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >現在の長さと自然長との差</td></tr><tr><td class="wikicell" ><b><code>strength</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >バネ定数</td></tr><tr><td class="wikicell" ><b><code>f</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >バネにかかる力</td></tr><tr><td class="wikicell" ><b><code>amplitude</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >振幅</td></tr><tr><td class="wikicell" ><b><code>speed</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >運動の速さ</td></tr><tr><td class="wikicell" ><b><code>phase</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >運動の段階（位相） ( 0.0 と 1.0 の間の数)</td></tr><tr><td class="wikicell" ><b><code>potential</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >バネのポテンシャルエネルギー</td></tr><tr><td class="wikicell" ><b><code>pe</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >バネのポテンシャルエネルギー</td></tr></table><br />
+<br />
+<br />
+<h5>速度のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>factor</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >図で表されている速度と実際の速度との掛け率</td></tr></table><br />
+<br />
+<br />
+<h5>重力のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>strength</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >重力場の強さ</td></tr><tr><td class="wikicell" ><b><code>potential</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >重力場におけるすべての質点のポテンシャルエネルギー</td></tr><tr><td class="wikicell" ><b><code>pe</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >重力場におけるすべての質点のポテンシャルエネルギー</td></tr></table><br />
+<br />
+<br />
+<h5>恒星のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>mass</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >恒星の質量</td></tr><tr><td class="wikicell" ><b><code>potential</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >恒星の場におけるすべての質点のポテンシャルエネルギー</td></tr><tr><td class="wikicell" ><b><code>pe</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >恒星の場におけるすべての質点のポテンシャルエネルギー</td></tr></table><br />
+<br />
+<br />
+<h5>電磁場のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>strength</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >電磁場の強さ</td></tr><tr><td class="wikicell" ><b><code>friction</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >磁力のかかるフィールドでの摩擦</td></tr></table><br />
+<br />
+<br />
+<h5>床と反射壁のパラメータ</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>xdamp</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >x方向の吸収率</td></tr><tr><td class="wikicell" ><b><code>ydamp</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >y方向の吸収率</td></tr></table><br />
+<br />
+<br />
+<h5>環境のパラメータ</h5>
+<br />
+<br />
+環境は内蔵演算子の  <code>simulation()</code> によってアクセスできます。次の項目がアクセスできます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>名前</b></td><td class="wikicell" ><b>読み出し</b></td><td class="wikicell" ><b>書き込み</b></td><td class="wikicell" ><b>型</b></td><td class="wikicell" ><b>目的</b></td></tr><tr><td class="wikicell"  colspan="5"></td></tr><tr><td class="wikicell" ><b><code>gravity</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >全体にかかる重力</td></tr><tr><td class="wikicell" ><b><code>friction</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >可</td><td class="wikicell" > real</td><td class="wikicell" >全体にかかる摩擦力</td></tr><tr><td class="wikicell" ><b><code>kinetic</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >全体的な運動エネルギー</td></tr><tr><td class="wikicell" ><b><code>ke</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >全体的な運動エネルギー</td></tr><tr><td class="wikicell" ><b><code>potential</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >全体的なポテンシャルエネルギー</td></tr><tr><td class="wikicell" ><b><code>pe</code></b></td><td class="wikicell" > 可</td><td class="wikicell" >不可</td><td class="wikicell" > real</td><td class="wikicell" >全体的なポテンシャルエネルギー</td></tr></table><br />
+<br />
+<A NAME="inspect"></A><br />
+<h3>インスペクタ</h3>
+<br />
+<a title="The Cinderella scripting language CindyScript" href="https://doc.cinderella.de/tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の <span style="color:red;"><code>inspect(<element>)</code></span> 関数を使えば、 <a title="no description" href="https://doc.cinderella.de/tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a> で利用できるすべての属性にアクセスできます。たとえば、すでに描かれている点Ａがあるとき、<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+inspect(A)
+</pre></div><br />
+<br />
+とすれば、<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[name,definition,color,visibility,drawtrace,tracelength,
+traceskip,tracedim,render,isvisible,text.fontfamily,
+pinning,incidences,labeled,textsize,textbold,textitalics,
+ptsize,pointborder,printname,point.image,
+point.image.rotation,freept.pos]
+</pre></div><br />
+<br />
+という文字列が返されます。<br />
+<br />
+2つのパラメータを使う形式の <span style="color:red;"><code>inspect(<element>,<string>)</code></span> を使えば、上のリストにあるもののどれかを読み出せます。たとえば、<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+inspect(A,"text.fontfamily")
+</pre></div><br />
+<br />
+とすれば<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+SansSerif
+</pre></div><br />
+<br />
+が返ってきます。<br />
+<br />
+3つのパラメータを使う形式の <span style="color:red;"><code>inspect(<element>,<string>,<expr>)</code></span> を使えば、読み出しのみの属性(たとえば、要素の定義など)を除いて、その値を設定することができます。次の例は、Aのフォント Serif に設定します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+inspect(A,"text.fontfamily","Serif")
+</pre></div><br />
+<br />
+<br />
+inspect 命令は非常に強力で、インスペクタでマウスを使ってやらなければならないようなことを自動化することができます。また、すぺてのパラメータのきめ細かいコントロールが可能になります。<br />
+<br />
+<hr />
+<br />
+<h4>ユーザー属性の設定: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string1&#62;,&#60;string2&#62;)</code></span></h4>
+<br />
+<b>説明：</b> &#60;geo&#62; の属性を &#60;string1&#62; と &#60;string2&#62;で設定します。<br />
+<br />
+<h4>ユーザー属性の取得: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<b>説明：</b> &#60;string&#62; で定義される幾何要素  &#60;geo&#62; のユーザー属性を取得します。<br />
+<br />
+この２つのユーザー属性に関する関数は<a title="no description" href="https://doc.cinderella.de/tiki-cindydoc.php@page=VisageJ.html" class="wiki">Visage </a>で主に使用します。<br />
+<br />
+<hr />
+<br />
+<A NAME="create"></A><br />
+<h3>要素の作成と消去</h3>
+<br />
+シンデレラ2.1からは、 <a title="The Cinderella scripting language CindyScript" href="https://doc.cinderella.de/tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> で点を追加することができます。関数<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+p = createpoint("A",[4,6])
+</pre></div><br />
+<br />
+は、点Aが既存でなければ、座標(4,6)に点Aを作ります。すでに点Aがあれば、座標(4,6)に点を移動します。関数の値は、作られた点か、すでにあった点になります。 つまり、<span style="color:red;"><code>createpoint</code></span>-　命令で点を作ったとき、この関数を繰り返して使ったとしても悪影響はなく、その点を確実に作れます。。<br />
+<br />
+<A NAME="remove"></A><br />
+<br />
+<tt> <span style="color:red;"><code>removeelements</code></span> 関数を使えば、図形から要素を取り除くことができます。ただし、従属する点もすべて消去されますので注意してください。 この関数の引数は、つぎのいずれかの方法で与えます。要素「A」を取り除くためには</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+removeelement(A)
+</pre></div><br />
+<br />
+または<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+removeelement(element("A"))
+</pre></div><br />
+<br />
+とします。<br />
+任意の要素を作成する他の関数については、 <a title="no description" href='https://doc.cinderella.de/tiki-cindydoc.php@page=Interaction+with+GeometryJ.html#createandremove' class='wiki'>幾何との連携</a>の節にもあります。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [09:45:11 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Accessing%20Geometric%20elementsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Accessing%20Geometric%20elementsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

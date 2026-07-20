@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interactive Modes 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Interactive Modes</h2>
+<!--latexreplace<br />
+\index{interactive modes}<br />
+--><!-- /latexreplace --><br />
+<br />
+The interactive modes are very powerful construction tools. They take full advantage of the mouse. A single click–drag–release sequence constructs several elements. Moreover, the  definitions of the new elements are adapted according to the mouse position. For instance, in "add a line" mode, the line together with its endpoints is generated.  The definition of the start point and endpoint depends on the mouse position when the mouse button is pressed and when it is released. As another example, when the mouse pointer is clicked on the intersection of two lines, the new point will be defined as the point of intersection of those lines.<br />
+<br />
+<br />
+If elements are already present in the construction, they will not be added a second time. This refers not only to the definition of elements, but it is guaranteed by <b>Cinderella's</b> automatic theorem checking facilities.<br />
+<br />
+Interactive modes can easily be recognized in the toolbar since their icon contains a little mouse pointer symbol.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Add+a+Point.html' class='wiki'>Add a Point</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-line.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a> </td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="http://doc.cinderella.de/buttonsback/through.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Line+through+a+Point.html' class='wiki'>Line through a Point</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-parallel.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Add+a+Parallel.html' class='wiki'>Add a Parallel</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-perp.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Add+a+Perpendicular.html' class='wiki'>Add a Perpendicular</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/line-fixed-angle.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Add+a+Line+with+a+Fixed+Angle.html' class='wiki'>Add a Line with a Fixed Angle</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-circle.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Add+a+Circle.html' class='wiki'>Add a Circle</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/circle-by-radius.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Circle+by+Radius.html' class='wiki'>Circle by Radius</a> </td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/circle-fixed-radius.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Circle+by+Fixed+Radius.html' class='wiki'>Circle by Fixed Radius</a> </td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/multi-add-middle.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Midpoint.html' class='wiki'>Midpoint</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/segment.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Segment.html' class='wiki'>Segment</a></td></tr></table><br />
+<br />
+In addition to the standard modes, that are provided with a button, there are also many new modes in <b>Cinderella.2</b> that are accessible only via the menu. For these, please consult the sections <a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a>, <a title="no description" href='tiki-cindydoc.php@page=Conic+Operations.html' class='wiki'>Conic Operations</a>, and <a title="no description" href='tiki-cindydoc.php@page=Transformation+Modes.html' class='wiki'>Transformation Modes</a>.<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [11:08:59 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interactive%20Modes">
+    http://doc.cinderella.de/tiki-index.php?page=Interactive%20Modes
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

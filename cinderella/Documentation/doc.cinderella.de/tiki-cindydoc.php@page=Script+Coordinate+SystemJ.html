@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Script Coordinate SystemJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>CindyScript における座標系の取り扱い</h2>
+<br />
+スクリプトによって全体的な外観をすぐに変えてしまう CindyScript の重要な特徴があります。通常、 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の座標系はシンデレラの図形描画での座標系と同じです。しかし、特殊演算子によって座標系を変えることができます。そのあとは、この修正された画面に対して描画が行われます。座標変換を行うときは注意が必要です。それらをいくつか行うときは、どこで実際の描画を行っているかを決定するのが難しいかも知れません。それでも、変換の演算子を使いやすくするために、CindyScript は <code>gsave</code> と <code>grestore</code> の演算子を用意しています。それは、 PostScript に似て、現在の描画エンジンをスタックに push/pop するのです。これは、図形の表現情報の他に、現在の座標変換を含みます。そこで、現在の座標系を <code>gsave()</code>....<code>grestore()</code> で封じ込めるかも知れません。まず、初めに演算子を紹介し、それから例を示します。<br />
+<br />
+<b>注意:</b>  現在の Cinderella 2.6 版では、円の変換は実装されていません。円についてはユークリッド変換（回転、平行移動、鏡像、拡大縮小）だけがサポートされています。アフィン変換と射影変換は今後のリリースとなります。<br />
+<hr />
+<A NAME="translate"></A><br />
+<h4>座標系の平行移動: <span style="color:red;"><code>translate(&#60;list&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{coordinates!translate}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>説明:</b> この演算子は  [&#60;real&#62;,&#60;real&#62;] 型の &#60;list&#62; を与えて、このベクトルにより描画する座標系を移動します。<br />
+<br />
+<hr />
+<br />
+<A NAME="rotate"></A><br />
+<h4>座標系の回転: <span style="color:red;"><code>rotate(&#60;real&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{coordinates!rotation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<b>説明:</b> この演算子は、実数 <code>&#60;real&#62;</code> の角だけ座標系を回転します。角は弧度法です。度数法で与えたい場合は  <code>°</code> 演算子を使います。この演算子は、その数に <code>pi/180</code> を掛けます。したがって、 <code>rotate(30°)</code> とすれば、座標系を 30° 回転します。<br />
+<br />
+<hr />
+<br />
+<A NAME="scale"></A><br />
+<h4>拡大・縮小: <span style="color:red;"><code>scale(&#60;real&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{coordinates!scaling}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>説明:</b> この演算子は <code>&#60;real&#62;</code> によって、拡大・縮小を行います。<br />
+<br />
+<b>例:</b> 次の表は、頂点の座標が <code>[0,0],[0,1],[1,1],[1,0]</code> である正方形を描く前に、座標変換をしたときの効果を示します。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR1X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR2X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR3X} \\</tt><br />
+{\small\tt  {\kern2mm} translate(<a class="wiki external"  href="1,0">1,0</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);} &amp;  {\small\tt {\kern2mm} rotate(30°);} &amp;  {\small\tt {\kern2mm} scale(2);}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --><table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR1X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR2X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR3X.png" border="0"  /></span></td><td class="wikicell" ></td></tr><tr><td class="wikicell" ><code>translate([1,0]);</code></td><td class="wikicell" ><code>rotate(30°);</code></td><td class="wikicell"  colspan="2"><code>scale(2));</code></td></tr></table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+次の表は、異なる変換の組み合わせを示します。演算子の順序は、すこし直感に反するかも知れません。座標変換はオブジェクトを描画する前に行われるのです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR4X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR5X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR6X} \\</tt><br />
+{\small\tt {\kern2mm} translate(<a class="wiki external"  href="1,0">1,0</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);} &amp;  {\small\tt {\kern2mm} rotate(30°);} &amp;  {\small\tt {\kern2mm} rotate(30°);}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\tt {\kern2mm} rotate(30°);} &amp;  {\small\tt {\kern2mm} translate(<a class="wiki external"  href="-0.5,-0.5">-0.5,-0.5</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);} &amp;  {\small\tt {\kern2mm} scale(2);}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\tt   } &amp;  {\small\tt  } &amp;  {\small\tt {\kern2mm} translate(<a class="wiki external"  href="-0.5,-0.5">-0.5,-0.5</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --><table class="wikitable"><tr><td class="wikicell"  colspan="4"></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR4X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR5X.png" border="0"  /></span></td><td class="wikicell"  colspan="2"><span class="img"><img alt="" src="img/wiki_up/TR6X.png" border="0"  /></span></td></tr><tr><td class="wikicell" ><code>translate([1,0]);<br>rotate(30°);</code></td><td class="wikicell" ><code>rotate(30°);<br>translate([-0.5,-0.5]);</code></td><td class="wikicell"  colspan="2"><code>rotate(30°);<br>scale(2));<br>translate([-0.5,-0.5]);</code></td></tr></table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+再帰的に、あるいは繰り返しておこなう座標変換は驚くような効果をもたらします。次の図は、このコードで描かれました。( <code>square</code> は一つの正方形を描くためのリストとします)<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(90,
+drawall(square);
+translate((1,1));
+scale(0.92);
+rotate(30°);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SimilaritySpiral2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="setbasis"></A><br />
+<h4>射影基底との関係: <span style="color:red;"><code>setbasis(&#60;basis&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{basis!projective}<br />
+\index{projective basis}<br />
+<tt> --></tt><br />
+<b>説明:</b> シンデレラの幾何学部分は、すべての描画が関わる基底を定められるようになっています。これらの基底とは、平行移動、相似、アフィン、射影です。これらの基底は、CindyScript でも使えます。  <code>setbasis(<basis>)</code> 演算子はシンデレラで使われる基底を定義します。引数はシンデレラで使われる基底のラベルでなければなりません。  setbasis 演算子を適用したあとは、CindyScript の以前の座標変換は使われなくなります。しかし、それらは  <code>gsave</code> で保存しておき、 <code>grestore</code> で呼び出すことができます。<br />
+<br />
+<b>例:</b> 次の例で、基底 <code>Bas0</code> は点A,B,C,Dによって定められる射影基底です。これは、一辺の長さが１である正方形(単位正方形)の４頂点 <code>[0,0],[0,1],[1,1],[1,0]</code> が、点 A,B,C,D に対応するような基底であることを意味します。コードの１行目が基底変換です。次の３つの行は、単位正方形内の格子を描きます。結果の図はその後に示されています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+setbasis(Bas0);
+x=(0..10)/10;
+drawall(apply(x,([#,0],[#,1])));
+drawall(apply(x,([0,#],[1,#])));
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SetBasisX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>参照:</b> 変換と基底<br />
+<br />
+<hr />
+<h4>平行移動基底を設定する: <span style="color:red;"><code>setbasis(&#60;vec1&#62;)</code></span></h4>
+<br />
+<h4>相似基底を設定する: <span style="color:red;"><code>setbasis(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<h4>アフィン基底を設定する: <span style="color:red;"><code>setbasis(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code></span></h4>
+<br />
+<h4>射影基底を設定する: <span style="color:red;"><code>setbasis(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;,&#60;vec4&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  CindyScript の内部基底を、既存の点に基づく基底に直接関連付けることも可能です。すると、シンデレラでの基底を変えなくて済みます。これは、基底を定義するための点を与えれば簡単に実行できます。<br />
+<br />
+<b>例:</b>  次のコードはこの性質を示すものです。  <code>sq</code> の部分は正方形の格子を描く関数の定義です。この格子をいろいろな基底によって描きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'> 
+sq:=(draw([0,0],[1,0]);
+     draw([0,0.25],[1,0.25]);
+     draw([0,0.5],[1,0.5]);
+     draw([0,0.75],[1,0.75]);
+     draw([0,1],[1,1]);
+     draw([0,0],[0,1]);
+     draw([0.25,0],[0.25,1]);
+     draw([0.5,0],[0.5,1]);
+     draw([0.75,0],[0.75,1]);
+     draw([1,0],[1,1]));
+
+setbasis(A);
+sq;
+setbasis(B,C);
+sq;
+setbasis(D,E,F);
+sq;
+setbasis(G,H,L,K);
+sq;
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SetBasis2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h2>表現と基底スタック</h2>
+<br />
+　座標系変換は全体的な表示に影響します。一時的に座標系変換を行い、そのあと以前の状態に戻したいことはよくあります。CindyScriptにはそのための関数が用意されています。<br />
+<tt> <code>gsave</code> 演算子は、すべての図形の状態(座標変換、大きさ、色、透明度)についての情報をスタックに保存します。 <code>grestore</code> はこの情報をスタックから引き出します。したがって、 <code>gsave() ..... grestore()</code> の間は、他のコードの部分に影響を与えることがありません。</tt><br />
+<hr />
+<br />
+<A NAME="gsave"></A><br />
+<h4>図の状態の一時保存: <span style="color:red;"><code>gsave()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、描画に関する現在の情報をすべてスタックに保存します。この情報には座標系、点や線、文字列の大きさや色、透明度などを含みます。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="grestore"></A><br />
+<h4>図の状態を戻す: <span style="color:red;"><code>grestore()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は最後にスタックに保存された図の状態情報を取り出して、その状態に戻します。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="greset"></A><br />
+<h4>グラフの状態を消去する: <span style="color:red;"><code>greset()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、スタックに保存されていた座標系やすべての図形に関する色、大きさなどの情報を消去し、初期状態に戻します。<br />
+<br />
+<br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=Appearance+of+ObjectsJ.html" class="wiki">オブジェクトの外観と表現</a><br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h2>レイヤー</h2>
+<br />
+　ある意味で、 Cindyscript で描画される図には3番目の次元があります。各々の図は特定の層（レイヤー）にあります。レイヤーは数で指定されます。図が描かれるとレイヤーは付随する番号の順に塗られます。レイヤーが指定されなければ、Cindyscript　で描画される図は背景層すなわち幾何要素のある層で描画されます。初期状態ではCindyscriptのdrawが実行される前にレイヤーは消去されます。しかしながら、自動消去されないレイヤーをマークすることも可能です。<br />
+<br />
+<A NAME="layer"></A><br />
+<h4>描画レイヤーを設定する: <span style="color:red;"><code>layer(&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>この関数はレイヤーを指定したレベルに設定します。初期状態では描画が行われる前にレイヤーは消去されます。<br />
+<br />
+<b>例:</b>次の例は、通常の描画順で４つにオーバーラップして円盤を描きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+cir(x,y):=(
+  fillcircle((x,y),3,color->(1,.8,0));
+  drawcircle((x,y),3,color->(0,0,0),size->3);
+);
+cir(0,0);
+cir(1,1);
+cir(2,2);
+cir(3,3)
+</pre></div><br />
+<br />
+それぞれの円盤を描画する前にレイヤー関数が呼ばれると、それぞれの円盤を逆順に描画することができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+cir(x,y):=(
+  fillcircle((x,y),3,color->(1,.8,0));
+  drawcircle((x,y),3,color->(0,0,0),size->3);
+);
+layer(6);
+cir(0,0);
+layer(5);
+cir(1,1);
+layer(4);
+cir(2,2);
+layer(3);
+cir(3,3)
+</pre></div><br />
+<br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Layer1.png" border="0"  /></span></td><td><span class="img"><img alt="" src="img/wiki_up/Layer2.png" border="0"  /></span></td></tr>
+<tr><td>通常の描画</td><td>逆順にレイヤーで描画</td></tr>
+</table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="clearlayer"></A><br />
+<h4>レイヤーを空にする。: <span style="color:red;"><code>clearlayer(&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、与えられたレイヤーを空にします。<br />
+<br />
+<hr />
+<br />
+<A NAME="clearscr"></A><br />
+<h4>レイヤーからすべての図を消去する: <span style="color:red;"><code>clrscr()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、スクリーンで実行されたすべての図を消去します。図が本当に消去された状態になっているかどうかを確認することは時々役に立ちます。特に、他のスクリプトスロットから <code>repaint()</code>関数が呼ばれているときに必要になるでしょう。<br />
+<br />
+<hr />
+<br />
+<A NAME="autoclearlayer"></A><br />
+<h4>レイヤーの自動消去: <span style="color:red;"><code>autoclearlayer(&#60;int&#62;,&#60;boolean&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> レイヤーのフラグの自動消去はこの関数で行なえます。初期状態で、すべてのレイヤーは画面の再計算の間に自動的に消去されます。この自動消去フラグを <code>false</code>にすることでこれを切り替えることができます。<br />
+<br />
+　レイヤーが自動消去されなければすべての描画命令が保存されます。シンデレラはビットマップを保存しないであらゆるステップで画面を描き直すので、レイヤーのために多くの描画命令を使うとパフォーマンスに影響します。<br />
+<br />
+<b>例：</b>　initialization スロットに次のコードを書くと、消去されないレイヤーを背景あるいは前面に描くことができ、 <i>draw</i> スロットに書くと、何か操作するたびにレイヤーを書き換えます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+autoclearlayer(-4,false);
+layer(-4);
+repeat(1000,
+   p = [random(20)-5,random(20)-5];
+   color([random(),random(),random()]);
+   fillpolygon(apply([[0,0],[1,0],[1,1],[0,1]],p+#),alpha->.2);
+);
+layer(0);
+</pre></div><br />
+<br />
+このコードをInitializationスロットに描くと、レイヤーー４で背景を描きます。自動消去フラグが false なので、次の図のように、他の作業をする間も表示したままになります。これを <i>draw</i> スロットに書いて同じ効果を得るためには、乱数によってできる異なる長方形と色をすべて保存しておかなければなりません。<br />
+<!-- latexreplace<br />
+\index{background}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/autoclear-background.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A random background</b></td></tr></table><br />
+<br />
+<hr />
+<hr />
+<h4>スクリーン境界の決定: <span style="color:red;"><code>screenbounds()</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{pixel}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>説明:</b> もし射影平面の有限部分だけ使い、 <a title="no description" href="tiki-cindydoc.php@page=ViewsJ.html" class="wiki">球面表示</a> を使わないのであれば、スクリーン境界を求めることに意味があります。この関数は、見える範囲の長方形を定義している４つの同次座標のリストを返します。<br />
+この関数はユークリッド表示においてのみ有効です。<br />
+<br />
+<h4>画面解像度の決定: <span style="color:red;"><code>screenresolution()</code></span></h4>
+<br />
+<b>説明:</b> 双曲表示と球面表示と対照的に、ユークリッド表示はいたるところに同じ画面解像度を持ちます。この関数は、原点と <code>[0,1]</code>間の画素数を与えます。同じ図に対していくつかのユークリッド表示があるとき、この関数はすべての画面解像度の最大値を返します。<br />
+<br />
+<b>例：</b>点に色をつけてチェッカーボードを作ることができます。次のコードは、現在の拡大率に関わりなくすべての画素に色をつけます。画素単位で色をつけることを勧めているわけではありません。しかし、これが必要なことがあるかもしれません。ほとんどの場合、<a title="no description" href='tiki-cindydoc.php@page=Function+Plotting.html#colorplot' class='wiki'><code>colorplot</code> 関数</a> が使いやすく、より高速です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+upperleft=(screenbounds()_1).xy;
+lowerright=(screenbounds()_3).xy;
+width in pixels=screenresolution()*(lowerright.x-upperleft.x);
+height in pixels=screenresolution()*(upperleft.y-lowerright.y);
+
+repeat(width in pixels/2, x, 
+ start->upperleft.x, stop->lowerright.x,
+ repeat(height in pixels/2, y,
+   start->upperleft.y, stop->lowerright.y,
+   draw((x,y),border->false,size->.5,color->[0,0,0]);
+ )
+)
+</pre></div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 19 of July, 2014 [12:54:22 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Script%20Coordinate%20SystemJ">
+    http://doc.cinderella.de/tiki-index.php?page=Script%20Coordinate%20SystemJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

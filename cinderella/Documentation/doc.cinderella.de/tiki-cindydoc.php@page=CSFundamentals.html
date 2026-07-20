@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : CSFundamentals 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> CindyScript Fundamentals</h1>
+<!--latexreplace<br />
+\index{CindyScript|(}<br />
+--><!-- /latexreplace --><br />
+<br />
+Cinderella comes with an easy to learn yet still very powerful functional language. It is designed primarily with the intention to allow for high-level interaction with geometric constructions or physical simulations created in <b>Cinderella.2</b>. Nevertheless, it can also be used as a standalone language for performing mathematical calculations.<br />
+<br />
+There are three ways to use the CindyScript language within <b>Cinderella.2</b>. First of all, one can write CindyScript expressions as parts of <a title="no description" href="tiki-cindydoc.php@page=Function+Plotting.html" class="wiki">functions</a> in a <b>Cinderella</b> construction. Besides, one can enter CindyScript commands in a command shell to, e.g., immediately set properties such as color or size of geometric elements.<br />
+<br />
+However, CindyScript is most commonly used to write programs in <a title="no description" href="tiki-cindydoc.php@page=The+CindyScript+Editor.html" class="wiki">the script editor</a>. Here, one can specify the occasion on which the program will be executed. For instance, it can be executed whenever the user moves the construction or after any mouse click. Thus one can easily add functional behavior and graphical enhancements to an existing construction.<br />
+<br />
+The following sections will give you an overview of the global design of the programming language <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The language design follows some guiding principles:<br />
+<br />
+<ul><li> The language should be easy to learn, write and read
+</li><li> The language should have only minimal syntactic overhead
+</li><li> The language should be fast in execution
+</li><li> The language should interact seemlessly with Cinderella and <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a>
+</li></ul>
+<br />
+The following topics will give you an overview over the main language features:<br />
+<br />
+<ul><li> <b><a title="no description" href='tiki-cindydoc.php@page=General+Concepts.html' class='wiki'>General Concepts</a>:</b> Main functionality of the language
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=Entering+Program+Code.html' class='wiki'>Entering Program Code</a>:</b> How to write and edit a program
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=Variables+and+Functions.html' class='wiki'>Variables and Functions</a>:</b> Declearing, destroying and scope of variables and functions
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=Accessing+Geometric+Elements.html' class='wiki'>Accessing Geometric Elements</a>:</b> How to interact with Cinderella and <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a>
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=Control+Operators.html' class='wiki'>Control Operators</a>:</b> How to create control structures with <code>if, repeat, while,...</code>
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=Arithmetic+Operators.html' class='wiki'>Arithmetic Operators</a>:</b> Dealing with numbers (+, -, *, /, sin(), cos(), …)
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=Boolean+Operators.html' class='wiki'>Boolean Operators</a>:</b> Logic statements
+</li><li> <b><a title="no description" href='tiki-cindydoc.php@page=String+Operators.html' class='wiki'>String Operators</a>:</b> Dealing with strings of characters
+</li></ul>
+<br />
+For a detailed description of the language it is necessary to consult the documentation on specific parameters. We recommend to browse over the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> manual at least once to get an impression of various possibilities of the language.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [16:14:01 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=CSFundamentals">
+    http://doc.cinderella.de/tiki-index.php?page=CSFundamentals
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

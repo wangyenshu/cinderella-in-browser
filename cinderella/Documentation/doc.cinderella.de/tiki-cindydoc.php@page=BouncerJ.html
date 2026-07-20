@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : BouncerJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>反射壁</h2>
+<!--latexreplace<br />
+\index{simulation!bouncer}<br />
+\index{bouncer}<br />
+\index{damping}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-bouncer.png" border="0"  align="left" /></span></div>反射壁は <a title="no description" href="tiki-cindydoc.php@page=FloorJ.html" class="wiki">床</a>と非常によく似ています。反射壁に衝突した粒子はテニスボールのようにはね返ります。しかし、床と異なり、反射壁は <a title="no description" href="tiki-cindydoc.php@page=SegmentJ.html" class="wiki">線分を加える</a> モードのように、マウスボタンを押す/ドラッグする/離す、という操作によって加えられます。反射壁は、シミュレーションのシナリオに対する環境制限を構築するのに非常に強力なものです。次の図は、多角形の領域内での弾むボールのデモです。境界線はそれぞれ反射壁になっています。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.8466666666666667in">width=1.8466666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bouncer1} &amp;\includegraphics<a class="wiki external"  href="width=1.8466666666666667in">width=1.8466666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bouncer2}\\</tt><br />
+{\small\it  Starting a mass in a polygonal region} &amp;  {\small\it The trace of the mass}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Bouncer1.png" border="0"  width="250" /></span></td><td width=10><td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Bouncer2.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>多角形領域での質点:スタート</b><br></td><td width=10><td>
+	<td><b>質点の軌跡</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+　反射壁は、ビリヤードや卓球のように、 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> で作成する物理的な面白いゲームにとって不可欠です。次の図は、反射壁と  <a title="no description" href="tiki-cindydoc.php@page=GravityJ.html" class="wiki">重力</a>を組み合わせた簡単な例です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Bouncer3.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>階段の上のボール</b></td></tr></table><br />
+<br />
+<br />
+<h3>反射壁インスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!bouncer}<br />
+--><!-- /latexreplace --><br />
+<br />
+反射壁インスペクタは床の場合とほとんど同じです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/BouncerInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>反射壁インスペクタ</b></td></tr></table><br />
+<br />
+　これに加えて、反射壁は <i>動力の向きを変える</i>チェックボックスを持っています。もしこのチェックボックスがチェックされていると、粒子が反射壁に衝突したときに内部のバネ駆動装置のアニメーションの方向が反転します。この駆動装置の詳細については、<a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a> と <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境</a>をご覧ください。この振舞いは、壁に当たると方向を変える、歩行エンジンの構築に大変有用です。<br />
+<br />
+<br />
+<h3>反射壁と CindyScript</h3>
+<br />
+　<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->の他の要素と同じく、反射壁にも  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> によって読み書きのできるいくつかのフィールドがあります。<br />
+<br />
+<br />
+<ul><li> <b>xdamp</b>: X方向の減衰率(実数, 読み書き可)
+</li><li> <b>ydamp</b>: Y方向の減衰率(実数, 読み書き可)
+</li><li> <b>simulate</b>: 反射壁によるシミュレーションのON/OFF (ブール値, 読み書き可)
+</li></ul>
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:47:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=BouncerJ">
+    http://doc.cinderella.de/tiki-index.php?page=BouncerJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

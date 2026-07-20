@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Elementary Drawing Functions 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Elementary Drawing Functions</h2>
+<br />
+The operators described in this section are used to draw points, lines, and segments in a construction window.<br />
+<A NAME="draw"></A><A NAME="draw1"></A><br />
+<h4>Drawing: <span style="color:red;"><code>draw(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> The <code>draw(&#60;expr&#62;)</code> function is a multifunctional operator. Depending on the meaning of <code>&#60;expr&#62;</code>, the corresponding objects will be drawn if possible. Currently, there are three possible inputs that will lead to a drawing action. For the first two we assume that <code>x</code>, <code>y</code>, and <code>z</code> are numbers.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="2"><b>Result</b></td></tr><tr><td class="wikicell" ><code>draw([x,y])</code></td><td class="wikicell"  colspan="2">Draws a point with <i>x</i>-coordinate <code>x</code> and <i>y</i>-coordinate <code>y</code></td></tr><tr><td class="wikicell" ><code>draw([x,y,z])</code></td><td class="wikicell"  colspan="2">Draws a point with homogenous coordinates given by <code>[x,y,z]</code></td></tr></table><br />
+<br />
+<br />
+A word on homogeneous coordinates: If <code>[x,y,z]</code> are the homogeneous coordinates of a point, then the corresponding point that will be drawn has <i>xy</i>-coordinates <code>[x/z,y/z]</code>. Points that have homogeneous coordinates with <code>z=0</code> correspond to "points at infinity." You won't see them in a usual Cinderella Euclidean view. However, they will be drawn in spherical view (or when a local projective basis is set (see <a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+System.html' class='wiki'>Script Coordinate System</a>).<br />
+<br />
+<b>Drawing a segment:</b> A segment can be drawn by providing a list of two points. The points can be given in either Euclidean or homogeneous coordinates, which we assume for <code>a</code> and <code>b</code> below.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="2"><b>Result</b></td></tr><tr><td class="wikicell" ><code>draw([a,b])</code></td><td class="wikicell"  colspan="2">Draws a segment from <code>a</code> to <code>b</code></td></tr></table><br />
+<br />
+<br />
+<b>Example:</b> The code below produces the following picture. Observe that both Euclidean and homogeneous coordinates are given. Furthermore, the segments appear in front of the points, since their drawing operators are invoked after the drawing operators for the points.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A=[0,0];
+B=[0,2,2];
+C=[1,1,1];
+D=[1,0];
+E=[0.5,1.5];
+linesize(3);
+pointsize(10);
+draw(A);draw(B);
+draw(C);draw(D);draw(E);
+draw([A,B]);draw([B,C]);
+draw([C,D]);draw([D,A]);
+draw([C,E]);draw([B,E]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/HouseX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Drawing a line:</b> Homogeneous coordinates can also be used to represent lines. One can think of this encoding for lines by three real numbers <code>[a,b,c]</code> as encoding a line with implicit equation <code>a∗x+b∗y+c=0</code>. A point with Euclidean coordinates <code>[x,y]</code> is on this line if and only if the equation is satisfied. A point with homogeneous coordinates <code>[x,y,z]</code> is on this line if and only if the equation <code>a∗x+b∗y+c∗z=0</code> is satisfied.<br />
+<br />
+In order to tell CindyScript whether a list of three real numbers <code>[a,b,c]</code> is a point or a line, an internal flag for the list is set by operations that produce lines as output. So for instance, the operation <code>join(A,B)</code> calculates the line through two points <code>A</code> and <code>B</code> and sets the internal line flag. Invoking the draw operator on the result of this operation will draw the line. One can also force the setting of the line flag by applying the operator <code>line(&#60;expr&#62;)</code>.<br />
+<br />
+<b>Examples:</b> Each of the following two draw operations draws a line:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw(line([1,1,0.5]));
+draw(join([1,2],[2,-1]));
+</pre></div><br />
+<br />
+<b>Modifiers:</b> The draw operator can handle the modifiers summarized in the following table:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>point size</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the point size</td></tr><tr><td class="wikicell" ><code>line size</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the line size</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the line size and the point size</td></tr><tr><td class="wikicell" ><code>pointcolor</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the point color to an RGB value</td></tr><tr><td class="wikicell" ><code>linecolor</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the line color to an RGB value</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the point color and the line color to an RGB value</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the opacity to the value <code>&#60;real&#62;</code></td></tr><tr><td class="wikicell" ><code>noborder</code></td><td class="wikicell" ><code>&#60;bool&#62;</code></td><td class="wikicell" ><code>noborder→true</code> turns off the border of points</td></tr><tr><td class="wikicell" ><code>border</code></td><td class="wikicell" ><code>&#60;bool&#62;</code></td><td class="wikicell" ><code>border→true</code> the opposite of the last modifier</td></tr><tr><td class="wikicell" ><code>dashtype</code></td><td class="wikicell" ><code>&#60;int&#62;</code></td><td class="wikicell" >Specify a certain type of dashing (values 0..4 allowed)</td></tr><tr><td class="wikicell" ><code>dashing</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >Size of dashing</td></tr><tr><td class="wikicell" ><code>dashpattern</code></td><td class="wikicell" ><code>&#60;list&#62;</code></td><td class="wikicell" >Specify an individual dash pattern</td></tr></table><br />
+<br />
+<br />
+Modifiers have only a local effect. This means that the default appearance settings are not affected when a modifier is used.<br />
+<br />
+<b>Example:</b> The following piece of code illustrates the effect of the dashing modifiers.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+linesize(3);
+draw((0,0),(0,6),dashtype->0);
+draw((1,0),(1,6),dashtype->1);
+draw((2,0),(2,6),dashtype->2);
+draw((3,0),(3,6),dashtype->3);
+draw((4,0),(4,6),dashtype->4);
+draw((6,0),(6,6),dashing->4);
+draw((7,0),(7,6),dashing->6);
+draw((8,0),(8,6),dashing->8);
+draw((9,0),(9,6),dashing->10);
+draw((11,0),(11,6),dashpattern->[0,4,2,4]);
+draw((12,0),(12,6),dashpattern->[0,2,2,2,4,2]);
+draw((13,0),(13,6),dashpattern->[0,4,2,4]);
+draw((14,0),(14,6),dashpattern->[4,2,1,2]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Dashing.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>See also:</b> <a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+System.html' class='wiki'>Script Coordinate System</a> and <a title="no description" href='tiki-cindydoc.php@page=Geometric+Operators.html' class='wiki'>Geometric Operators</a><br />
+<br />
+<hr />
+<br />
+<A NAME="draw2"></A><br />
+<h4>Drawing segments: <span style="color:red;"><code>draw(&#60;expr&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> Invoking the draw operator with two arguments can also be used to draw a segment. Both arguments must represent points either in Euclidean or in homogeneous coordinates. Thus <code>[draw([0,0],[1,1])]</code> draws a segment from <code>[0,0]</code> to <code>[1,1]</code>.<br />
+<br />
+<b>Modifiers:</b> This operator can handle the same modifiers as the <code>draw(&#60;expr&#62;)</code> operator. However, the modifiers that are specific for points have no effect.<br />
+<br />
+<hr />
+<br />
+<A NAME="drawall"></A><br />
+<h4>Drawing lists of objects: <span style="color:red;"><code>drawall(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> The operator <code>drawall(&#60;list&#62;)</code> takes a list as argument. Each element of the list should be such that it could be drawn by the usual <code>draw(&#60;expr&#62;)</code> operator. The <code>drawall</code> operator will then apply the draw operator to each of the entries of the list. The <code>drawall</code> operator is extremely useful for drawing more complicated mathematical pictures that involve structured or highly interrelated mathematical content.<br />
+<br />
+<b>Example:</b> The following code produces the picture below. The second line defines a function that maps a number to a point on the unit circle. The line <code>steps=2*pi*(1..n)/n;</code> initializes the variable <code>steps</code> with a list of 17 angles that correspond to 17 points on the unit circle. These points are assigned to the variable <code>pts</code> by the line <code>pts=apply(steps,f(#))</code>. The variable <code>segs</code> contains all pairs of such points. In the final two lines the <code>draw</code> operator is used to draw these lists of objects.<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+n=17;
+f(x):=[sin(x),cos(x)];
+steps=2*pi*(1..n)/n;
+pts=apply(steps,f(#));
+segs=pairs(pts);
+drawall(segs,alpha->0.9);
+drawall(pts,size->4);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CompleteGraphX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> This operator can handle the same modifiers as the <code>draw(&#60;expr&#62;)</code> operator.<br />
+<br />
+<hr />
+<br />
+<A NAME="connect"></A><br />
+<h4>Connect the dots: <span style="color:red;"><code>connect(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> This operator takes a list of points as input and connects them by line segments.<br />
+<br />
+<b>Example:</b> The following code together with a collection of points of a construction produces the picture below. The first line assigns to the variable <code>pts</code> all points of a construction. The second line assigns to <code>sortpts</code> a list of these points that was sorted by the <i>x</i>-coordinate of the points. Finally, the <code>connect</code> operator connects these points in the given sequential order.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=allpoints();
+sortpts=sort(pts,#.x);
+connect(sortpts);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ConnectTheDotsX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> This operator can handle the same modifiers as the <code>draw(&#60;expr&#62;)</code> operator.<br />
+<br />
+<hr />
+<br />
+<A NAME="drawpoly"></A><br />
+<h4>Draw a polygon: <span style="color:red;"><code>drawpoly(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> This operator takes a list of points as input and draws the border of the polygon described by this list.<br />
+<br />
+<b>Modifiers:</b> This operator can handle the following modifiers:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the point color and the line color to an RGB value</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the opacity to the value <code>&#60;real&#62;</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="fillpoly"></A><br />
+<h4>Fill a polygon: <span style="color:red;"><code>fillpoly(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> This operator takes a list of points as input and creates a polygon from them.<br />
+<br />
+<b>Example:</b> The following code creates the picture below. In each iteration step of the <code>repeat</code> loop the square is drawn, and after this the coordinate system is rotated and scaled.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sq=[[-1,-1],[-1,1],[1,1],[1,-1]];
+repeat(300,i,
+  fillpoly(sq,color->hue(i/10));
+  rotate(4°);
+  scale(0.95);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/DrawPolyX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> This operator can handle the following modifiers:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the point color and the line color to an RGB value</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the opacity to the value <code>&#60;real&#62;</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="drawcircle"></A><br />
+<h4>Drawing circles: <span style="color:red;"><code>drawcircle(&#60;point&#62;,&#60;radius&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> Draws a circle at <code>&#60;point&#62;</code> with radius given by a number <code>&#60;radius&#62;</code>. The point may be given either in euclidean or in homogeneous coordinates.<br />
+<br />
+<b>Modifiers:</b> This operator can handle the same modifiers as the <code>draw(&#60;expr&#62;)</code> operator.<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="fillcircle"></A><br />
+<h4>Filling circles: <span style="color:red;"><code>fillcircle(&#60;point&#62;,&#60;radius&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> Draws the interior of a circle at <code>&#60;point&#62;</code> with radius given by a number <code>&#60;radius&#62;</code>. The point may be given either in euclidean or in homogeneous coordinates.<br />
+<br />
+<b>Modifiers:</b> This operator can handle the following modifiers:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the fill color to an RGB value</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the opacity to the value <code>&#60;real&#62;</code> </td></tr></table><br />
+<br />
+<br />
+<b>Example:</b> The following piece of code shows a combined usage of the <code>drawcircle</code> and the  <code>fillcircle</code> operator.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(100,i,
+ fillcircle((0,0),1,color->hue(i/70));
+ drawcircle((0,0),1,color->(0,0,0));
+ translate((1.5,0));rotate(26°);scale(.95);
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FillCircleX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of September, 2011 [10:46:13 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Elementary%20Drawing%20Functions">
+    http://doc.cinderella.de/tiki-index.php?page=Elementary%20Drawing%20Functions
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

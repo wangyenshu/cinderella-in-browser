@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Add a Parallel 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> Add a Parallel</h3>
+<!--latexreplace<br />
+\index{mode!add parallel}<br />
+\index{line!parallel}<br />
+\index{parallel}<br />
+\index{hyperbolic geometry}<br />
+\index{geometry!hyperbolic}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/multi-add-parallel.png" border="0"  align="left" /></span></div> With this mode you can construct a line through a point parallel to another line with a press–drag–release sequence. The  point through which the parallel should pass can also be generated in this mode.  Constructing the parallel is a three-step procedure.<br />
+<br />
+<ul><li> <b>Move the mouse over the line</b> for which you want a parallel. Press the left mouse button. This creates the parallel and the point through which it should pass.
+</li><li> <b>Hold the left button and drag the mouse.</b>  This moves  the parallel and the new point to the desired position.
+</li><li> <b>Release the mouse.</b> Now the construction is frozen.  Depending on the position at which you release the mouse, the definition of the new point is adapted:
+<ul><li> If the mouse pointer is over an existing point, then this point is taken.
+</li><li> If the mouse pointer is over the intersection of two elements (line, circle, or conic), then this intersection is automatically  constructed and taken as the new point.
+</li><li> If the mouse pointer is over just one element (line or circle),  then a point is constructed that is constrained to this element.  This point is taken as the new point.
+</li><li> Otherwise, a free point is added.
+</li></ul></li></ul>
+<br />
+The figures below show the three stages during the construction of a parallel.  Here the new point will be bound to  the existing point <i>P.</i><br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l}<br />
+{\small\it Press the mouse \ldots{}} &amp;  {\small\it\ldots{} drag it \ldots{}}&amp;  {\small\it    \ldots{} and release.}\\<br />
+\includegraphics<a class="wiki external"  href="width=1.2in">width=1.2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPara1} &amp; \includegraphics<a class="wiki external"  href="width=1.2in">width=1.2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPara2} &amp;\includegraphics<a class="wiki external"  href="width=1.2in">width=1.2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPara3}\ \\<br />
+\end{tabular}<br />
+$$<br />
+ -->    <table align="center" >
+      <tr>
+	<td><b>Press the mouse …</b><br></td> <td width=10></td>
+	<td><b>… drag it …</b><br></td> <td width=10></td>
+	<td><b>… and release.</b><br></td>
+      </tr>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPara1.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPara2.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPara3.png" border="0"  /></span></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Add a parallel mode creates a parallel with a press–drag–release sequence.<br />
+</div><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+The behavior of this mode is dependent on the geometry that is  chosen. While in Euclidean geometry there is always exactly one  parallel, in non-Euclidean geometries the number of parallels is subject to the definition of parallelity.  Depending on the underlying  "philosophy," in hyperbolic geometry there can be infinitely many  parallels, from an incidence-geometric viewpoint, or there can be  exactly two parallels, from an algebraic or measurement-based  point of view.  <b>Cinderella</b> takes the algebraic point of  view: <b>A parallel to a line <i>L</i> is a line that creates a zero angle with <i>L</i></b>. So in hyperbolic geometry the mode  produces exactly two parallels.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AddPara4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+In elliptic geometry the usual viewpoint is that there are no parallels at all.  However, from an algebraic standpoint there  exist such parallels. It is just that they have complex coordinates. In  other words, they will never be visible.  <b>Cinderella</b>  constructs these parallels, and they are invisible but are  nevertheless present in the <a title="no description" href='tiki-cindydoc.php@page=Views.html#Construction Text' class='wiki'>Construction Text</a> view. From there  they can be accessed for further constructions.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Perpendicular.html' class='wiki'>Add a Perpendicular</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [08:05:48 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Add%20a%20Parallel">
+    http://doc.cinderella.de/tiki-index.php?page=Add%20a%20Parallel
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

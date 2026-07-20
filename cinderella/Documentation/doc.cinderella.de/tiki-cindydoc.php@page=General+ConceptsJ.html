@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : General ConceptsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>CindyScript の全般的仕様</h2>
+<br />
+<br />
+この節は、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の最も基本的な概念をおおまかに説明します。<br />
+<br />
+<h3>CindyScriptは関数型プログラミング言語</h3>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のすべての計算は関数によって行われます。「関数」とは、引数を与えるとなんらかの計算をして値を返すものと考えてよいでしょう。いろいろな計算は、基本的な関数によってなされます。また、通常の計算のように a+b のようにして計算をすることもできます。この場合、「＋」は演算子と呼ばれますが、CindyScriptでは、これを挿入演算子と呼んでいます。同じ計算が、add(a,b) によってもできます。こちらは関数です。そこで、このマニュアルでは、「演算子」と「関数」をほぼ同義なものとして使っています。つまり、add(a,b)のような関数も「演算子」と呼ぶことがあります。</tt><br />
+　次のコードは、1から10までの整数の和を計算します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sum(1..10)
+</pre></div><br />
+<br />
+ここで、 <span style="color:red;"><code>..</code></span> には、2つの整数 <code>a</code> と <code>b</code> に対して <code>a</code> から <code>b</code>までの整数のリストを出力する機能があります。つまり、 <code>1..10</code> によって、10個の整数:  <code>[1,2,3,4,5,6,7,8,9,10]</code>を生成します。 <span style="color:red;">sum(_)</span> 関数は、単変数関数です。 (1個の引数を与えます)。1つの数のリストを入力として引数に与えると、リストの内容の合計を出力します。したがって、コマンドシェルに <code>sum(1..10)</code> と打ち込むと、関数は結果として <code>55</code>を返してきます。<br />
+<br />
+さらに、 <code>if</code>文のような一見手続き風の命令文が、関数として認識されます。例えば、<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(x＜y,print("Mine"),print("Yours"))
+</pre></div><br />
+<br />
+という文は、３つの引数を持つ <code>if</code>関数の例です。第１の引数 <code>x<y</code> の条件を評価し、その結果により第２または第３の結果 <code>print("Mine")</code> または <code>print("Yours"))</code>を実行します。それが <code>if(_,_,_)</code> 関数の実行結果です。したがって、これは次の命令文と同じです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+print(if(x＜y,"Mine","Yours"))
+</pre></div><br />
+<br />
+条件の評価結果により <code>if</code> 関数は第２または第３の引数の値を返します。<br />
+<br />
+<br />
+<h3>副作用</h3>
+<br />
+関数が <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> で評価されるということは、 "副作用" があるかもしれないということです。副作用は、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のプログラムとシンデレラで作成したものとのいろいろな相互作用にとって重要です。典型的な副作用は次のものです。<br />
+<br />
+<ul><li> <b>描画:</b> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の命令により、画面に何かが描画されるかもしれません。
+</li><li> <b>属性の変更:</b> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の動作により、点や線の位置や色、大きさなどを変更するかもしれません。
+</li><li> <b>変数の変更:</b> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の命令により変数が作られ、その値を変更します。
+</li><li> <b>関数の生成:</b> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の命令により関数が定義され、後に使われます。
+</li></ul>
+<br />
+例えば、<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw([0,0])
+</pre></div><br />
+<br />
+という命令は、位置 <code>(0,0)</code>に点を打つという副作用があります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.color=[1,1,1]
+</pre></div><br />
+<br />
+では、点 <i>A</i> の色を ''白" に設定します。<br />
+<br />
+<br />
+<h3>プログラムの流れ</h3>
+<br />
+多くのユーザーは、C, Java, Pascal, Basic といった手続き型言語に慣れているでしょう。実際には、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> でプログラムを書くというのはこれらの言語とそれほど違いはありません。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> では、演算子 <span style="color:red;"><code><statement1>;<statement2></code></span> (セミコロン)を許可しますが、<span style="color:red;"><code>&#60;statement1>;&#60;statement2></code></span>では、まず <code>命令1</code> を評価し次に <code>命令2</code>を評価します。  <span style="color:red;"><code>;</code></span> 演算子は、最後の文の結果を出力します。手続き的なプログラムを書くのは比較的簡単で、手続き型言語で書くのとよく似ています。 例えば、次のようなプログラムで、放物線状に９つの点を描きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(9,i,
+   j=i*i;
+   draw([i,j]);
+)
+</pre></div><br />
+<br />
+関数 <code>repeat(&#60;number&#62;,&#60;variable&#62;,&#60;program&#62;)</code><br />
+<tt> は、プログラムを <code>number</code>回繰り返します。それぞれの回で、変数  <code>&#60;variable&#62;</code> の値が増加します。 (最初は 1)　繰り返す内容は、 <code>j=i*i; draw([i,j]);</code>の２つの行です。</tt><br />
+<br />
+<br />
+<h3>型の非明示</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は、文法を最小限にし、関数の働きを最大限にするようにデザインされています。従って、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は値の型を明示しません。他の言語のように <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->にも <span style="color:blue;">variables</span>の概念があります。しかし、他の言語と対照的に、変数は特定の型を持ちません。どんな型のどんな値でも変数に代入することができます。これはプログラマに、強力なコードを生み出す多くの自由を与えます。 例えば、関数<code>f(x,y)</code> を定義する次のコード<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x,y):=x+y;
+</pre></div><br />
+<br />
+は、整数、複素数、ベクトル、行列のいずれでも使えます。この自由は、一方では、意味がはっきりとわかるようなコードを書くことをプログラマに義務づけます。関数が意味不明なことをすると、プログラムは正しく動きません。そのかわり、「意味がない」ことを表す <span style="color:red;">_</span><span style="color:red;">_</span><span style="color:red;">_</span> 印を返します。したがって、上の例で、<code>f([1,2],[3,4])</code> ならばベクトルの和として <code>[4,6]</code>を返しますが、 <code>f(4,[3,4])</code> では意味がなく、 ___を返します。<br />
+<br />
+<br />
+<br />
+<h3>局所変数: 変数＃</h3>
+<br />
+繰り返し構造に似たものが <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> にはいくつかあります。例えば、演算 <code>select(&#60;list&#62;,&#60;condition&#62;)</code> は <code>&#60;list&#62;</code> のすべての要素を走査し、条件に合うものを返します。このため、条件を試すような要素がなければなりません。CindyScript では、このために実行用変数として、初期状態では  <span style="color:red;">#</span>を使います。例えば、<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+select(1..30,isodd(#))
+</pre></div><br />
+<br />
+という命令では、 1 から 30までのすべての奇数のリストを返します。さらに、この実行用変数を繰り返し使って<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(9,print(#))
+</pre></div><br />
+<br />
+とすれば、1 から 9までのすべての数を表示します。２番目の引数として、明確な変数を使うことも可能です。したがって. <code>select(1..30,i,isodd(i))</code> と  <code>repeat(9,i,print(i))</code> は上の命令文と同じ意味になります。<br />
+<br />
+<h3>CindyScript のデータ型</h3>
+<br />
+すでに述べたように、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は変数の型を明示しません。しかしながら、いくつかの変数の値は明確な型を持ちます。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の基本的な型は次の通りです。<br />
+<br />
+<ul><li> <span style="color:blue;">&#60;number&#62;</span>: 数値。整数、実数、複素数のいずれか。
+</li><li> <span style="color:blue;">&#60;list&#62;</span>: 任意の値のリスト。ベクトルや行列はリストで表されます。
+</li><li> <span style="color:blue;">&#60;string&#62;</span>: 文字列
+</li><li> <span style="color:blue;">&#60;geo&#62;</span>: 幾何学的要素
+</li><li> <span style="color:blue;">&#60;boolean&#62;</span>:  <code>true</code> または <code>false</code> のブール値
+</li></ul>
+<br />
+数値の型は、整数、浮動小数点数、複素数を含みます。<br />
+<br />
+<br />
+<h3>変数とその適用範囲</h3>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は変数の型を明示的にもたないので、変数は必要に応じて "その場" で作られます。変数は最初に割り当てられるときに作られます。もし <code>x</code> がまだ使われていなければ、</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=7
+</pre></div><br />
+<br />
+という文は変数 <code>x</code> を作り、値 <code>7</code> を割り当てます。値が割り当てられると、残りのプログラムを実行中にアクセス可能になります。 値は、関数の局所変数として部分的に多重定義されるかも知れません。次の関数の定義では <code>x</code> と <code>y</code> の値は関数の局所変数です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x,y):=x+y
+</pre></div><br />
+<br />
+関数の実行が完了すると <code>x</code>の元の値が戻されます。また、 <code>createvar(...)</code> 演算子によって局所変数を作ることもできます。<br />
+<br />
+<br />
+<h3>幾何学的要素とその属性へのアクセス</h3>
+<br />
+変数は幾何学的要素を操作するためにも用いられます。それらにより、シンデレラと<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> が <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> にリンクします。変数が幾何学的要素と同じ名前を持つと、その幾何学的要素とリンクします。変数の値は明示的な割り当てによって多重定義させることができます。幾何学的要素の異なる属性 (位置、色、大きさなど) は <span style="color:red;">.</span> 演算子によってアクセス可能です。もし <code>A</code>が点であれば <code>A.size</code> という文は点の大きさを表す整数を返します。 <code>A.xy=[3,4]</code> という文は、点の座標を <code>[3,4]</code>にします。さらに、物理シミュレーションに関する属性 (質量、速度、運動エネルギーなど)も <span style="color:red;">.</span> 演算子によってアクセス可能です。<br />
+<br />
+<br />
+<h3>修飾子</h3>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の演算子は、一見したところ気がつかないような多くの機能を持ちます。通常、これらの機能は修飾子と呼ばれるものによってアクセスできます。演算子は、初期状態で大部分の状況に適合するように定義されています。しかしながら、初期状態の振舞いを変更する必要があるかも知れません。そこで、必要な修飾子を演算子を呼び出すときに書き並べます。例えば、</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw([0,0])
+</pre></div><br />
+<br />
+という行は、位置 <code>(0,0)</code>に点を描きます。初期状態では色は緑、大きさは３です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw([0,0],size->15,color->[1,1,0])
+</pre></div><br />
+<br />
+という行では、黄色の点を大きさ15で描きます。size->やcolor->が修飾子です。修飾子は、コンマで区切ります。それらの順序は自由です。<br />
+<br />
+<br />
+<h3>リスト/ベクトル/行列</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->の基本的なデータ型に リスト があります。リストは、複雑なデータ構造を定義するのに用いられる基本的な仕組みです。ものを列挙するという明らかな利用法に加えて、リストはベクトルや行列を意味するのにも用いられます。ベクトルは数のリストです。同じ長さを持つベクトルのリストは行列であると解釈されます。<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は通常の計算をベクトル、行列、数値に統合的に用います。 <code>a</code> と  <code>b</code>の内容に応じて、式 <code>a*b</code> は、数のかけ算であったり、行列のかけ算であったり、行列とベクトルのかけ算であったりします。<br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> では、列ベクトルと行ベクトルの区別がありません。しかし、適当な関数を用いて、長さ <code>n</code> のベクトルを (<i>n</i> × 1) 行列、または (1 × <i>n</i>) 行列に変換することができます。<br />
+<br />
+<h3>描画</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> には幾何のキャンバスに直接図を描くことのできるいくつかの命令があります。この特徴を用いると、シンデレラで作ったものの動きをかなり豊かにすることができます。点、直線、線分、多角形、表、関数のグラフなどを描くことができます。しかし、幾何で使用しているものと、スクリプトで描いたものを混同しないことが大切です。スクリプトで描いたものをシンデレラで描いたもののように扱うことはできません。例えば、「動かすモード」で動かすことはできません。<br />
+<br />
+もし、スクリプトで描かれたものを修正したいのであれば、まず先にCinderellaの描画ツールでそれを作っておいて<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の命令で位置を変えるようにする必要があります。すべての自由な要素はその位置を表す変数をセットすることで動かせます。<br />
+<br />
+<h3>スロット</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のコードを入力するスクリプトウィンドウは、テキストが入力できる次のようないくつかのスロットがあります。(スロットとは、棚のようなものです。スロットの概念はCindyScriptの大きな特徴です。)<br />
+<br />
+<ul><li> Draw
+</li><li> Move
+</li><li> Initialization
+</li><li> Timer Tick
+</li><li> Simulation Start
+</li><li> Simulation Stop
+</li><li> …
+</li></ul>
+<br />
+これらのスロットは、スクリプトが実行する場面と一致します。たとえば <i>Draw</i>スロットは、画面が新しくなる前に直接実行されます。 <i>Initialization</i>スロットは、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のコードが解釈されたあと直ちに一度だけ実行されます。  <i>Simulation Start</i> スロットはプレイボタンが押されたとき、アニメーションを始める前に実行されます。このメカニズムを使うと、ユーザーの要求にうまく対応するプログラムを書くことができます。<br />
+<br />
+<br />
+<h3>実行エラー処理</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> はプログラム実行環境で動作します。原則として、どんな小さな動きでもスクリプトが評価されます。そのため、実行時にエラーが起きた場合の合理的な設計がなされていなければなりません。通常の操作エラーメッセージが頻繁に出て、そのたびに中断するのでは(特にHTMLページのアプレットで使うときに)困ります。そのため、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> では、最初の10個のエラーだけを報告するようになっています。しかし、ランタイムエラーは決して実行を中断しません。また、ゼロで割る、存在しない配列へのアクセスなどのランタイムエラーは単に無視されます。誤った関数の評価は単に未定義と見なされ、計算は続行されます。(おそらく、さらに未定義となる結果を引き起こすでしょうが。)　これにより、エラーが起きても円滑な実行が保証されます。<br />
+<br />
+ランタイムエラーが報告されないというこの特徴は、デバッグを多少厄介にするかもしれません。そのため、あるデータについての仮定が満たされるかどうかを調べる特殊関数 <span style="color:red;"><code>assert(&#60;boolean&#62;,&#60;string&#62;)</code></span> が導入されました。もし、第１引数の条件が満たされなければ、第２引数の文字列が印字されます。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of March, 2012 [12:04:00 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=General%20ConceptsJ">
+    http://doc.cinderella.de/tiki-index.php?page=General%20ConceptsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

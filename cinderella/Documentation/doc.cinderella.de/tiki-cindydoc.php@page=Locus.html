@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Locus 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> Locus</h3>
+<!--latexreplace<br />
+\index{locus}<br />
+\index{add locus}<br />
+\index{mode!locus}<br />
+--><!-- /latexreplace --><br />
+<h4> Constructing Loci</h4>
+<!--latexreplace<br />
+\index{mover}<br />
+\index{road}<br />
+\index{tracer}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/locus.png" border="0"  align="left" /></span></div> A locus is the trace of a point under the movement of another point. A locus is defined by three objects:<br />
+<br />
+<br />
+<ul><li> The <b>mover</b>, a free element whose movement drives the generation of the locus.
+</li><li> The <b>road</b>, an element incident to the mover. The mover will be moved along the road.
+</li><li> The <b>tracer</b>, the element whose trace is calculated and presented as a geometric locus.
+</li></ul>
+<br />
+The mover, road, and tracer must be selected in this order. However, if the mover is either a "point on a line," a "point on a circle," or a "line through a point," then <b>Cinderella</b> automatically recognizes that there is a unique road and selects it for you automatically.  You should watch the message line to check what input is required at each stage of a construction.  Currently, the following combinations of mover and road are supported:<br />
+<ul><li> <b>mover = point, road = line:</b> The point moves along the line.
+</li><li> <b>mover = point, road = circle:</b> The point moves along the circle.
+</li><li> <b>mover = point, road = segment:</b> The point moves along the segment.
+</li><li> <b>mover = point, road = arc:</b> The point moves along the arc.
+</li><li> <b>mover = line, road = point:</b> The line rotates around the point.
+</li></ul>
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Locus1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A cycloid</b></td></tr></table><br />
+<br />
+<b>Cinderella</b> also supports the selection of a "line" as the tracer.  In this case the envelope of the moving line is calculated.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Locus2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The envelope of light rays in a circular mirror</b></td></tr></table><br />
+<br />
+Loci of elements are real branches of algebraic curves. <b>Cinderella</b> will always try  to generate an entire branch.<br />
+<br />
+<h4> Inspecting Loci</h4>
+<!--latexreplace<br />
+\index{inspect!locus}<br />
+\index{color!of a locus}<br />
+--><!-- /latexreplace --><br />
+Compared to <b>Cinderella 1.4</b>, loci have become much more flexible and powerful. Most of the new functionality is accessible through the <a title="no description" href="tiki-cindydoc.php@page=Inspector.html" class="wiki">inspector</a>. Here we give only a rough overview of the possibilities.<br />
+<br />
+In the appearance tab of the inspector a selected locus offers the following control access:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/LocusInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Appearance of a locus</b></td></tr></table><br />
+<br />
+Usually, loci are drawn as lines, so only the color, visibility, and line size controls will be relevant.<br />
+However, in <b>Cinderella.2</b> it is also possible to present a locus as sample snapshots of the trace element. In this way, the locus of a moving point is drawn as a sequence of points. Hence in this case, the appearance controls for points will also be relevant. The behavior of the locus can be influenced by the "Locus Properties" section of at the bottom of the inspector. The precise meanings of the three checkboxes are as follows:<br />
+<br />
+<ul><li> <b>Use original shape:</b> If this box is checked, then instead of a line, a trace of images of the original object is drawn.
+</li><li> <b>Follow tracers data:</b> This box ensures that the original data of the tracer are taken; in particular, appearance information is also represented by the trace.
+</li><li> <b>Recalc in animations:</b> This selection forces that in animations the locus is always updated with the actual data and position of the mover.
+</li></ul>
+<br />
+The resolution slider allows for control of the number of sample points in a trace.<br />
+<br />
+To get a slight impression of the possibilities of the new locus features, consider the example given by the following construction:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Locus4a.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Construction text</b></td></tr></table><br />
+<br />
+The two pictures below show two different ways of presenting the locus.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern.7cm}c@{\kern.7cm}c}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.8466666666666667in">width=1.8466666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Locus4} &amp;\includegraphics<a class="wiki external"  href="width=1.8466666666666667in">width=1.8466666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Locus5}\\</tt><br />
+{\small\it  Plain locus} &amp;  {\small\it Colored trace}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Locus4.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Locus5.png" border="0"  /></span></td>
+      </tr>
+      <tr>
+	<td><b>Plain locus</b><br></td> <td width=10></td>
+	<td><b>Colored trace</b><br></td>
+      </tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+The first picture shows the plain locus. After adding the line<br />
+<div dir="ltr"><pre class='codelisting'>
+D.color=hue(B.angle/pi/2)
+</pre></div><br />
+in the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> panel, the tracer changes its color in accordance with the angle of the mover. If one then checks the "Use original shape" box and the "Follow tracers data" box, the resulting image is the one on the right. Observe that in this way, one recognizes, the nontrivial way in which the tracer follows the figure eight in this example.<br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Generate a geometric locus by selecting a mover, a road, and a tracer.<br />
+</div><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+Sometimes you will notice a short delay when a locus is being calculated. Do not blame your computer or <b>Cinderella</b> (or, even worse, the authors). These delays can be caused by extremely difficult calculations that are necessary  to get the correct result (a complete branch of the curve) or the correct screen representation after a movement.  We have tried our best to speed up these calculations, but there is a (mathematical) limit: We do not want to sacrifice accuracy for speed.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Animation.html' class='wiki'>Animation</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Traces+and+Arrows.html" class="wiki">Traces</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [09:18:37 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Locus">
+    http://doc.cinderella.de/tiki-index.php?page=Locus
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

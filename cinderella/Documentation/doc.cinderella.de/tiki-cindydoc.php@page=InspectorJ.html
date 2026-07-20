@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : InspectorJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>インスペクタ</h2>
+<!--latexreplace<br />
+\index{inspector}<br />
+--><!-- /latexreplace --><br />
+インスペクタは、すべての幾何学的要素の属性を設定するコントロールセンターのようなものです。これは、 <b>Cinderella.2</b> での根本的な改訂部分の一つで、以前の版の「要素の設定」に完全に作り直したものです。<br />
+<br />
+インスペクタの機能を理解すれば、シンデレラでの作図を独自なものにすることができます。この節では、インスペクタの機能について概要を述べます。幾何学要素や物理的要素の個々の機能や属性については、それぞれの要素の説明の中にあります。<br />
+<br />
+<br />
+<h3> 全体的な概要</h3>
+<br />
+インスペクタのメニューは <i>編集/インスペクタ</i> から開きます。選択されている要素に応じて、ツールバーと、その下に選択された要素についての情報ウィンドウが開きます。ツールバーによって、インスペクタの情報ブロックを切り替えることができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/InspectorToolbar.png" border="0"  /></span></td></tr><tr><td class="caption"><b>インスペクタのツールバー</b></td></tr></table><br />
+<br />
+それぞれのボタンは、インスペクタによって管理できる属性の種類を表します。ボタンをクリックすると、対応する情報ブロックを表示します。<br />
+　大ざっぱに言うと、上段のボタンは個々の要素に関する情報を示し、下段はシンデレラの初期設定を示します。インスペクタは現在選択されているすべての要素を参照します。それぞれの要素の属性はインスペクタによって表示され、また変更することができます。表示される属性は、選択されているインスペクタのブロックによります。以下では、インスペクタでできることを、それぞれのブロック別に簡単に述べます。<br />
+<br />
+<br />
+<ul><li>  <span class="img"><img alt="" src="buttonsback/inspector-info.png" border="0"  /></span>  <b>要素の情報:</b>  定義、ラベル、パラメータなど
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-appearance.png" border="0"  /></span>  <b>基本的な外観:</b> 色、大きさ、表示の有無、ラベルの表示など
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-special.png" border="0"  /></span>  <b>高度な外観:</b> 足跡や矢印の形
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-defaults.png" border="0"  /></span> <b> 基本設定:</b> 色、大きさ、表示の有無、ラベルの有無などの全体的な初期設定
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-physics.png" border="0"  /></span>  <b> 物理:</b>  <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の要素の物理的パラメータ
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-port.png" border="0"  /></span>  <b> 表示１ :</b> 網目や背景画像などの表示属性
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-port2.png" border="0"  /></span>  <b> 表示２ :</b>計測の精度などの設定
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-cindy.png" border="0"  /></span>  <b> 初期設定:</b>  全体的な色の設定といくつかの初期パラメータ設定
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-ui.png" border="0"  /></span> <b>メニュー/言語:</b> メニューの表示と言語の設定
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-global.png" border="0"  /></span>  <b> 環境:</b> 精度、摩擦、動作設定などの物理的環境
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-license.png" border="0"  /></span>  <b> ライセンス :</b> ライセンス情報
+</li></ul>
+<br />
+<br />
+インスペクタについての詳しい説明は次のそれぞれの節にあります。<br />
+<br />
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Info+BlockJ.html" class="wiki">情報ブロック</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Inspecting+AppearanceJ.html" class="wiki">外観のインスペクタ</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Traces+and+ArrowsJ.html" class="wiki">足跡と矢印</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> （物理実験室）
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Controlling+the+ViewsJ.html" class="wiki">表示画面のコントロール</a>
+</li></ul>
+<HR><br />
+}<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 28 of February, 2012 [08:00:13 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=InspectorJ">
+    http://doc.cinderella.de/tiki-index.php?page=InspectorJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

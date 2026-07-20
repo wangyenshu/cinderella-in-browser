@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : The CindyScript Editor 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Entering CindyScript Code</h2>
+<br />
+<h3> The CindyScript Editor</h3>
+<br />
+To enter <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> one can use the editor that is available from the menu <i>Scripting/Edit Scripts</i>. Here we explain briefly how to use the editor.<br />
+<br />
+<h4> The Input Window</h4>
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b>The Script Editor</b></td></tr></table><br />
+<br />
+The script editor shows a three pane view. On the left you see a an overview over all occasions (see below) and the associated scripts. On the right you see, below a panel that features a start, stop and help button as well as a field to enter script names, a large text area which is used to edit (i.e. type) scripts, and a smaller text area that shows any output from the scripts.<br />
+<br />
+<h4> Occasions</h4>
+<br />
+Cinderella is highly interactive, and that is the reason for many "occasions" that are suited for triggering the execution of <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> commands. On the left side of the script editor you see the available occasions.<br />
+<br />
+Usually, you write scripts for the "Draw" occasion. These are executed whenever the <a title="no description" href="tiki-cindydoc.php@page=Views.html" class="wiki">view</a> is rendered. To edit a script, first click on "Draw".<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-draw.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b>Entering scripts for the draw occasion.</b></td></tr></table><br />
+<br />
+The edit area will display the message "Enter your script here". Click there, and start entering text.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-example.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+In the view you will notice a diagonal of green points that were created by the script.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-view.png" border="0"  width="480" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+You find an overview over all occasions in <a title="no description" href="tiki-cindydoc.php@page=CSFundamentals.html" class="wiki">the introduction to CindyScript</a>.<br />
+<br />
+<h3> The Shell</h3>
+<br />
+You can also enter <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> commands and have them executed immediately. Just choose the "Shell" item from the left panel, and type the commands into the text area on the right. Pressing shift+enter will execute the command you typed, and you will see the in- and output in the lower text area. You can use shift-up and shift-down to scroll through a history of commands entered.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-shell.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> The Command Line</h3>
+<br />
+Sometimes it is very convenient to manipulate constructions using <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> commands. You can either do this using the shell window as described above, or, for short commands, you can use the command line integrated into the construction view. To enable it, choose "Scripting/Command Line" from the menu, or press the corresponding keyboard shortcut Ctrl-Enter (Windows and Unix) or CMD-Enter (Mac OS X).<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CindyScriptCommandline.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Using the command line to move a point</b></td></tr></table><br />
+<br />
+The command line is located below the status line. You can enter arbitrary <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace -->  functions and evaluate them by pressing the enter key. If you press shift-enter, the code will be evaluated in the same way, but the command line text field will not be cleared. You can use this in case you want to issue several similar commands or if you look for the correct syntax by trial-and-error.<br />
+<br />
+If you check the <b>permanent</b>-checkbox to the right of the command line, then the code will be stored in the draw occasion and thus will be evaluated whenever the construction is redrawn. You can access the code by opening the script editor as explained above.<br />
+<br />
+As a quick example we show how to move a point <b>C</b> permanently to the midpoint of two  points <b>A</b> and <b>B</b>: Draw the three points, activate the command line, enter <code>C.xy=(A+B)/2</code>, and check the <b>permanent</b> checkbox.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PermanentCommandLine.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Using the <b>permanent</b> checkbox</b></td></tr></table><br />
+<br />
+After pressing enter, <b>C</b> will move to the midpoint of <b>A</b> and <b>B</b> and stays there, even if <b>A</b> or <b>B</b> moves. Checking the Script Editor reveals the automatically generated draw occasion script named CommandLine.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CommandLineScript.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The automatically generated command line script</b></td></tr></table><br />
+<br />
+<h3> CindyScript and the Inspector</h3>
+<br />
+Many text input fields of the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a> window accept CindyScript code as input. The script will only be evaluated once – if you want to make permanent changes you have to use either the command line or the draw occasion in the Script Editor. After pressing enter, you can still see your <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> code, but if the input field looses the input focus its value will be replaced with the evaluation result.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CindyScriptInspector.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> Clickable Buttons</h3>
+<br />
+Text objects can be transformed into a clickable button by checking the <b>Use as button</b> box in the inspector. You can attach  CindyScript code to the button that will be executed every time the user clicks on it. As the field for script code is very small we recommend to just call functions defined in the <i>init</i> script of the construction.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Clickable-Button.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> Other Languages</h3>
+<br />
+You can choose the programming language used to interpret a script using the choice box in the top panel. Available languages are <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a>, Python, JRuby and CDY, the internal language that is used to store constructions. However, currently we only support <!-- latexreplace CindyScript-->CindyScript<!-- /latexreplace -->, and this is also the only language you can use in <a title="Creating HTML pages" href="tiki-cindydoc.php@page=HTML+Export.html" class="wiki">Cinderella applets</a>.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-languages.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of September, 2011 [11:04:19 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=The%20CindyScript%20Editor">
+    http://doc.cinderella.de/tiki-index.php?page=The%20CindyScript%20Editor
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

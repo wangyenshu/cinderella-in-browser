@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Free MassJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<!-- latexreplace \chapter{CindyLab  Objects} --><!-- /latexreplace --><br />
+<br />
+<h2> 自由質点</h2>
+<!--latexreplace<br />
+\index{simulation!mass}<br />
+\index{mass}<br />
+\index{Newton's law}<br />
+\index{animation control panel}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-mass.png" border="0"  align="left" /></span></div> 自由質点（粒子）を加えることは、幾何学的な自由点を与えるのと似ています。唯一の違いは、自由点が 点を加える モードで加えられるのに対して、自由質点は自由質点モードで加えれなければならないことです。<br />
+<br />
+　力や速度が存在しなければ、自由質点は幾何学的な点との違いはないように見えます。(自由点と自由質点のわずかな違いは、自由質点の方が画面上ですこし明るい色で表示されていることからわかります。)<br />
+<br />
+　物体 (たとえば質点)が追加されると、すぐにアニメーションコントロールパネルが画面に現れます。プレイボタンが押されない限り、質点は幾何学的な点のように振舞います。 物理シミュレーションを始めるにはプレイボタンを押します。もし 速度 が質点に設定されたならば、質点は自動的に動き始めます。もし、質点が バネ や 重力といった力の影響を受けるならば、質点の速度は、質点が動いている間、力によって変化します。単位時間あたりの速度の変化は加速度と呼ばれています。力に応じた加速度は次の方程式によって決まります。<br />
+<br />
+<!-- latexreplace $$\textrm{acceleration}=\frac{\textrm{force}}{\textrm{mass}}$$ --><table align=center cellpadding=5 border=1><tr><td>
+<b>加速度</b> = <b>力</b> / <b>質量</b>
+</td></tr></table><!-- /latexreplace --><br />
+<br />
+ここで、 力 は、質点に作用するすべての力のベクトル和です。<br />
+<br />
+<br />
+<h3>質点の設定情報の管理</h3>
+<!--latexreplace<br />
+\index{inspect!mass}<br />
+\index{friction}<br />
+\index{charge}<br />
+\index{radius!of a mass}<br />
+--><!-- /latexreplace --><br />
+質点の基本的属性は、 設定情報インスペクタ<a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>の物理タブ（上段の4番目）を用いて設定したり変更したりできます。質点の設定情報インスペクタは次のようになっています。:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MassInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>質点のインスペクタ</b></td></tr></table><br />
+<br />
+それぞれの項目の意味は次の通りです。:<br />
+<br />
+<ul><li> <b>質量:</b> これは、物体の物理的質量の値です。"加速度 = 力/質量" という式によって、力が一定ならば質量の小さい方が加速度は大きくなります。これは慣性の法則とみなすこともできます。 (だから、同じ力なら、自動車を押すよりもテニスボールを押す方が簡単なのです。) 一方、質点は重力の影響も受けます。重力は物体の質量に比例します。（このように重い物は、小さい物より重力の影響を受けます。テニスボールの重力は、車のそれより非常に小さいです。）たとえば、自然落下においては、上記の影響の両方が正確に相殺します、そのため、一定の重力のフィールドでは、車は正確にテニスボールと同じくらい速く落ちます。
+</li></ul>
+<br />
+<ul><li> <b>摩擦力:</b> 地球上の普通の環境では、水平な面を転がっているボールは、まもなく停止します。その理由は、"摩擦力"です。 原則として、摩擦力は運動の方向と逆向きに働く力とみなすことができます。この力は、運動する物体が時間とともに失速する原因となります。地球上で日常生活の状況をモデル化するほとんどの物理シミュレーションでは、質点はいくらかの摩擦力を受けると仮定するのが合理的です。対照的に、惑星や電子の動きをモデル化するならば、摩擦力は存在しないと仮定する方が現実的です。初期状態では、質点にかかる摩擦力はゼロに設定されています。すべての質点に働くグローバルな摩擦力を 環境設定 インスペクタで設定することもできます。
+</li></ul>
+<br />
+<ul><li> <b>電荷:</b> 電磁力（クーロン力とローレンツ力）は、帯電している粒子だけに作用します。スライダーを使って電荷をある値に設定することができます。電荷は正か負のどちらかをとります。異符号なら互いに引きあい、同符号なら互いに反発します。粒子の電荷は、両方の粒子が相互作用するか、 環境設定 の"電荷による力を有効にする"ボックスがチェックされている場合のみ意味があります。 初期状態では、質点の電荷はゼロに設定されています。
+</li></ul>
+<br />
+<ul><li> <b>半径:</b> 通常、 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> は、粒子は点のようなものであるとみなします。しかしながら、 環境設定 の「質点はボール」ボックスがチェックされていると、粒子はゼロでない直径を持つ物体として振舞い、衝突したときは互いに跳ね返ります。このスライダーは、粒子の半径を設定します。初期状態では、半径は1.0に設定されています。
+</li></ul>
+<br />
+<ul><li> <b>固定:</b> 通常、質点は自由に動き回ることができます。しかしながら、このボックスがチェックされていると、その質点は物理シミュレーションによって動かされません。 このボックスがチェックされているときでも、質点は重力や静電力を持つことを知っておくことが大切です。次の図は、いくつかの同じように帯電した粒子で作られたかごの中の、3つの帯電した粒子の動きを表します。 外側の粒子は動かないように固定されています。
+</li></ul>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Mass2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>T固定した帯電粒子のかごの中の <br>3つの帯電粒子</br></b></td></tr></table><br />
+<br />
+ピンで留められた点と異なり、「固定された」点はマウスで動かすことができるということを注意しておく必要があります。<br />
+<br />
+<ul><li> <b>速度限界:</b> このボタンは粒子の速度に限界を設けます。この性質は、物理的な条件にはなりませんが (光速という絶対的な限界を除いて),これをチェックしておくとシミュレーションの数値的問題を避けられることがあります。
+</li></ul>
+<br />
+<br />
+<h3>質点と幾何学</h3>
+<br />
+　幾何学上のいろいろな点と同様、質点も直線や線分、円と結合することができます。その場合、 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> シミュレータは、質点が摩擦のない直線や線分、円周上に取り付けられているように振舞います。次の図は、重力の影響下にあるバネのチェーンが釣りあっている状態を示しますが、ここで、バネの端の点は2つの円周上に取り付けられています。:<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Mass3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>円につながったバネのチェーン</b></td></tr></table><br />
+<br />
+<br />
+<h3> CindyScript　と質点</h3>
+<!--latexreplace<br />
+\index{kinetic energy}<br />
+--><!-- /latexreplace --><br />
+　いくつかの <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の物体のように、質点は<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> によって読み書きのできるいくつかの領域を提供します. 次のリストは、質点に対して利用可能な領域を示します。:<br />
+<br />
+<ul><li> <b>vx</b>: 速度のx-成分 (実数, 読み書き可)
+</li><li> <b>vy</b>: 速度のy-成分 (実数, 読み書き可)
+</li><li> <b>v</b> : 速度ベクトル (2つの実数によるベクトル, 読み書き可)
+</li><li> <b>fx</b>: 力のx-成分 (実数, 読み出しのみ)
+</li><li> <b>fy</b>: 力のy-c-成分 (実数, 読み出しのみ)
+</li><li> <b>f</b>: 力のベクトル (2つの実数によるベクトル, 読み出しのみ)
+</li><li> <b>kinetic</b>: 運動エネルギー(実数, 読み出しのみ)
+</li><li> <b>ke</b>: 運動エネルギー(実数, 読み出しのみ)
+</li><li> <b>mass</b>: 点の質量 (実数, 読み書き可)
+</li><li> <b>friction</b>: 点の摩擦力 (実数, 読み書き可)
+</li><li> <b>charge</b>: 点の電荷 (整数, 読み書き可)
+</li><li> <b>radius</b>: 点の半径 (実数, 読み書き可)
+</li><li> <b>simulate</b>: この点に対するシミュレーションの on/off (ブール値, 読み書き可)
+</li></ul>
+<br />
+<h3> 次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=VelocityJ.html" class="wiki">速度</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:29:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Free%20MassJ">
+    http://doc.cinderella.de/tiki-index.php?page=Free%20MassJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

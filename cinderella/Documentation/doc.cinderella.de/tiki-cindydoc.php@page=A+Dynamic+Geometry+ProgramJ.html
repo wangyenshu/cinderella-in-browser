@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : A Dynamic Geometry ProgramJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>動的な幾何学</h3>
+<br />
+<br />
+ここでは、平面幾何のプログラムとして(スクリプトとシミュレーションは除外して)シンデレラ２を使う方法を簡単に述べます。特に、シンデレラの利用が有利であるようないくつかの例を示します。<br />
+<br />
+<br />
+<br />
+<h4> 使用例</h4>
+<br />
+シンデレラの応用領域は、物理学（たとえば光学)による純粋ユークリッド幾何学および非ユークリッド幾何学から計算運動学とコンピュータ設計（CAD）までひろがります。以下の例で、シンデレラを用いた有益な場面を示します。<br />
+<br />
+<br />
+<h5>正確な図面</h5>
+<br />
+いくつかの図面を必要とする科学の出版物を書いているとしましょう。図を描く必要があるとき、最初から完璧な図を描くことはほとんど不可能です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EulerLineB.png" border="0"  width="380" /></span></td></tr><tr><td class="caption"><b><b>三角形のオイラー線</b> </b></td></tr></table><br />
+<br />
+<br />
+ほとんど同じ場所に多くの要素を描かなければならなかったり、図の一部がページにうまくレイアウトできなかったりするでしょう。<br />
+<br />
+<br />
+シンデレラで、コンピュータ上に簡単な図を描くことから始めましょう。これは、あなたが期待している最終的な図とは違って見えるかもしれません。しかし、それは作図のためのすべてのものを含んでいます。簡単な図ができたら、あなたの思い描くものになるまで、必要な要素を選んだり、それらを動かしたりします。動かしている間にうまく描けたものができるでしょう。最後に、インスペクタを使って、要素の色や大きさを調整します。<br />
+<br />
+<br />
+<h5>幾何学的な計算機</h5>
+<br />
+幾何学的なことで何かしら面白そうなことを感じるということがよくあります。幾何学の本で面白いものを読んだり、あなた自身が新しいことを思いついたりすることがあるでしょう。<br />
+<br />
+そうしたら、シンデレラで図を描いて遊び始めましょう。幾何学的な探査を通して新しいことに気付き、隠れた特性が明らかになるでしょう。シンデレラは 数学的に一貫した機能を実装しているので、変な効果が起こったりすることはありません。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/ThreeBarX.gif" border="0"  width="300" /></span></td></tr><tr><td class="caption"><b><b>４節リンク機構の動き</b> </b></td></tr></table><br />
+<br />
+あなたが他の同僚にあなたの研究を伝えたいときは、あなたはインタラクティブなウェブページをつくって、それをインターネットで利用可能にすることができます。そうすれば、あなたの同僚はJAVAが使えるブラウザで即座にアクセスして、その場で見ることができます。<br />
+<br />
+<br />
+<h5>学生用の練習問題</h5>
+<br />
+もう一つの面白い応用は、学生用のインタラクティブな練習問題作成です。あなたが定規とコンパスだけを使って、三角形の外心を作図する方法を学生に教えたいと想像してください。まず、あなたは自分でその図を作ります。それから、「要素を入力する」をマークし、問題文を書き、「作図の中間ステップ」と「作図完了」をマークして練習問題を作ります。 シンデレラ は、定規とコンパスで作図するための道具と、入力要素(おそらく、学生が描き始めるための三角形)を提示するインタラクティブなウェブページを作ります。<br />
+<br />
+学生は自分のコンピュータを使って、自力で、あるいはあなたが用意したヒントを使って問題を解くことができます。学生が問題を解くためにどんな作図をしても大丈夫です。シンデレラの統合的な自動定理チェック機能で正誤を決められます。解答を発見するための学生の想像力は、プログラムによって制限されることはありません。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/NewIntroExerciseJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b><b>学生用練習問題</b></b></td></tr></table><br />
+<br />
+<br />
+<h4>設計と特徴</h4>
+<br />
+シンデレラを開発するとき、いくつかの大きな設計目標がありました。プログラムの全体的な構造についての印象を持ってもらうために３つの重要な事柄について述べます。<br />
+<br />
+<br />
+<h5>全般的なアプローチ</h5>
+<br />
+<i>シンデレラ</i> は、幅広い幾何学分野をカバーするように設計されました。プログラムは、<b>ユークリッド幾何</b>, <b>双曲幾何</b>, <b>楕円幾何</b>, そして <b>射影幾何</b>を直接サポートします。<br />
+<br />
+これは、双曲幾何学をシミュレートするために、複雑なユークリッド幾何の作図をする必要がないことを意味します。シンデレラの「双曲幾何モード」を使えば、図は双曲平面上の要素のように振る舞います。<br />
+<br />
+シンデレラ は、一般的な数学のアプローチによって、上記のすべての領域のために共通の背景を形成しています。シンデレラ の数学的背景は、１９世紀の偉大な、しかしほとんど忘れられてしまったような数学者の業績によっています。何人かの人に言及しましょう。 : <b>モンジュ</b> と <b>ポンスレ</b> は、射影幾何学を考案しました。 <b>プリュッカー</b> と <b>グラスマン</b>、 <b>ケーリー</b>、 <b>メビウス</b> は射影幾何学に対処するために美しい代数言語を開発しました。 <b>ガウス</b>、 <b>ボヤイ</b>、 <b>ロバチェフスキー</b> は、今日双曲幾何学と呼ばれる幾何学を「発見」しました。最後に、 <b>クライン</b>、 <b>ケーリー</b>、 <b>ポアンカレ</b> は、射影幾何学と複素数に関してユークリッド幾何学と非ユークリッド幾何学を統一的に説明しました。19世紀の幾何学の歴史の発展について書かれた面白い本として、 ヤグロムの本を推薦します。さらに、フェリックス・クラインによる歴史の本 Kl1 は、この話題への非常に面白い入門書です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Hyperbolic2.gif" border="0"  width="300" /></span></td></tr><tr><td class="caption"><b><b>同じ大きさの双曲面の円</b></b></td></tr></table><br />
+<br />
+<br />
+<b>射影幾何学</b> は <i>シンデレラ</i> の幾何学の背景となっており、 <b>ケーリー・クライン幾何学</b> はシンデレラの計量の骨格となっています。<br />
+<br />
+<br />
+<h5>数学的な一貫性</h5>
+<br />
+もののたとえですが、 「シンデレラで作図した幾何学の図形は、合理的な幾何学の宇宙に住んでいるようなものです。この宇宙では、不自然なことな起こらないのです。」<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Offset.gif" border="0"  width="300" /></span></td></tr><tr><td class="caption"><b><b>ＣＡＤシステムに挑戦した <br> 放物線の描く曲線</b>  </b></td></tr></table><br />
+<br />
+<br />
+インタラクティブ幾何学のための他のシステムは、数学的な矛盾で苦しんでいます。作図をして、基本的な要素をドラッグしたときに、図の一部が突然他のところに飛んだりします。これは変数を使うCADでは残念ながらよくあることです。<br />
+<br />
+シンデレラ は新しい理論を用いて完全にこの問題を解決しました。 <b>複素解析</b> の手法を用い、古典的な幾何学と統合したのです。<br />
+<br />
+この理論に基づいて、シンデレラが自分自身をチェックする自動定理証明機能を身に付けました。この定理証明機能が、学生用の練習問題において、自動フィードバック機能として使われています。このアプローチのもう一つの利点は正確な描画と、代数的な曲線の一部としての幾何学的軌跡を描くための道具を持ったことです。<br />
+<br />
+<br />
+<br />
+<h5>モジュールとしての設計</h5>
+<br />
+シンデレラ は、可能な限りモジュール形式になっています。いろいろな方向に拡張ができるようになっているのです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern1cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.6666666666666667in">width=1.6666666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{MarkedRulerEuc2}   &amp;    \includegraphics<a class="wiki external"  href="width=1.5in">width=1.5in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{MarkedRulerSp} \\<br />
+{\small\it Conchoidal curve in a Euclidean\ldots{}} &amp;  {\small\it \ldots{}and in a spherical view}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align=center >
+<tr>
+<td><IMG width=250 SRC="../cinderella.de/files/CindyDocu/Images/MarkedRulerEuc2.gif"></td><td width=20></td>
+<td>    <IMG width=250 SRC="../cinderella.de/files/CindyDocu/Images/MarkedRulerSp.gif"> </tr>
+<tr>
+<td align=center><b>ユークリッド平面でのコンコイド曲線と…</b></td><td></td>
+<td align=center><b>その球面表示</b>  </td>
+</tr>   <tr>     <td>   </tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+現在の版でも、モジュール化の利点があります。たとえば、 同じ図形を多くの幾何学で同時に見ることができます。双曲幾何学でのポアンカレモデルやベルトラミークラインモデルにおいて、双曲幾何学の図形は同時に表示でき、操作することもできます。 異なる表示画面を同時に使えば状況がより深く理解できます。たとえば、図形の「無限遠点」のふるまいは球面表示にすればよくわかります。<br />
+<br />
+<h5>変換と変換群</h5>
+<br />
+シンデレラはあらゆる幾何変換（鏡像、平行移動、回転、射影変換、メビウス変換）を強力にサポートしています。変換はいろいろな場面で使われます。<br />
+<br />
+射影変換は、３次元の図形の透視図を正確に描くために有効なツールです。さらに、シンデレラはいくつかの変換によって作られる変換群を構成する機能を提供します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/ProjectiveGroup.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b><b>模様の透視図</b> </b></td></tr></table><br />
+<br />
+たとえば上の図は、円に変換群をほどこし、透視図にしたものです。変換群は、正三角形の頂点の周りの60度回転を作り出します。<br />
+<br />
+<br />
+<h5>フラクタル</h5>
+<br />
+シンデレラはフラクタルを作るための簡単な方法も提供します。シンデレラで作ることのできるフラクタルは反復関数系と呼ばれるものです。それは幾何変換を使って作られます。反復関数系は、いわば変換で定義される自己相似形の「雲」です。シンデレラのインタラクティブな特徴を使って、フラクタルの世界を探索するユニークな実験的環境が作り出されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/NiceIFS.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b><b>簡単なフラクタル</b></b></td></tr></table><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of March, 2012 [00:04:39 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=A%20Dynamic%20Geometry%20ProgramJ">
+    http://doc.cinderella.de/tiki-index.php?page=A%20Dynamic%20Geometry%20ProgramJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

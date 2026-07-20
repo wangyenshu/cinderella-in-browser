@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : VisageJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Visage: グラフアルゴリズムの視覚化</h2>
+<br />
+　シンデレラの拡張機能 Visage は、ベルリンの DFG リサーチセンター <!-- latexreplace \textsc{Matheon} -->Matheon<!-- /latexreplace -->で2005年に始まったプロジェクトに由来します。<br />
+<br />
+　ここでは、Visage の基本的な要素についての概要を述べます。 Visage についての詳細は(ドイツ語ですが) ウェブページ <a class="wiki external"  href="http://cinderella.de/visage">http://cinderella.de/visage</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> にあり、現在、 数学教育リサーチセンター CERMAT (Centre for Educational Research in Mathematics Education ) が主催しています。授業での Visage の利用法については <!-- latexreplace \cite{GesKorLutMat-VVADM-2005,FesKor-TGAWV-2009} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[GKLWM05] and [FK09]</a><!-- /latexreplace --> を参照してください。<br />
+<br />
+<h3>  Visage を始める。</h3>
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/visage-button.png" border="0"  align="left" /></span></div>  Visage はスクリプトメニューにあります。「Visageを動かす」を選ぶと、基本的なグラフアルゴリズムを選択するウィンドウが開きます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ChoosAlgorithmVisage.png" border="0"  /></span></td></tr><tr><td class="caption"><b> Visage のグラフアルゴリズムを選ぶ</b></td></tr></table><br />
+<br />
+　今、 "Draw Graph" アルゴリズムを選びます。シンデレラのツールバーは、編と頂点を描くためのツールを含む Visage 専用のツールバーに変わります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/DrawingAGraphJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>有名なグラフ</b></td></tr></table><br />
+<br />
+　このツールを使って、有向／有向でない、また重みのある／なしのグラフを描くことができます。 通常、選ばれたグラフアルゴリズムで利用できるタイプが制限されます。新しいアルゴリズム（とそのためのツールバー）は、いつでも   <span class="img"><img alt="" src="buttonsback/visage-button.png" border="0"  /></span>  ボタンで選ぶことができ、可能ならば既存のグラフをそのまま利用することができます。<br />
+<br />
+<h3> アルゴリズムを動かす</h3>
+<br />
+　Visage にはいくつかの組み込みアルゴリズムがあります。初期設定では、教育的な設定での視覚的効果を除けば、ステップ・バイ・ステップモードで実行されます。プレイボタン  <span class="img"><img alt="" src="buttonsback/SchrittVor.png" border="0"  /></span>  を押すたびに、１つのステップが実行されます。巻き戻しボタン  <span class="img"><img alt="" src="buttonsback/ReSet.png" border="0"  /></span>  はアルゴリズムを再初期化して最初からやり直すことができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Visage-DFS.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b>最初の探索における深度の視覚化</b></td></tr></table><br />
+<br />
+<h3>  CindyScript との連携</h3>
+<br />
+　 <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> でもグラフアルゴリズムを書くことができます。 Visage のウェブサイトで、グラフの編と頂点にアクセスするための簡単なライブラリを見つけることができるでしょう。このライブラリは幾何的要素のユーザー属性によっています。ユーザー属性は CindyScript の２つのコマンドでアクセスできます。<br />
+<br />
+<h4>ユーザー属性を設定する: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string1&#62;,&#60;string2&#62;)</code></span></h4>
+<br />
+説明： &#60;string1&#62; から &#60;string2&#62; で識別される&#60;geo&#62; のユーザー属性を設定します。<br />
+<br />
+<h4>ユーザー属性を読む: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+説明：幾何要素 &#60;geo&#62; の &#60;string&#62; によって識別されるユーザー属性を返します。<br />
+<br />
+　Visage は有向線分でない端点を <code>"u"</code> に、有向線分の端点を <code>"d"</code> に設定します。  <code>"頂点"</code> の属性は "v" に設定します。したがって、属性をチェックすればそのグラフの端点と頂点が識別できます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+alledges():=select(allsegments(),
+                   attribute(#,"edge")=="u" % attribute(#,"edge")=="v");
+allvertices():=select(allpoints(),attribute(#,"vertex")=="v");
+</pre></div><br />
+<br />
+　もし、グラフアルゴリズムの開始点か終点をマークするならば、それは<code>"start"</code> か <code>"finish"</code> という値を持つ <code>"特別な頂点"</code>という属性を持つことになります。最後に、重みつきの端点は、ユーザー属性 <code>"weight"</code> にその重さを保存します。流れアルゴリズムに対しては、容量と流れがユーザー属性 <code>"capacity"</code> と <code>"flow"</code> に保存されます。<br />
+<br />
+<h3> Java 拡張機能</h3>
+<br />
+　Java を使ってVisage と連携するアルゴリズムを書くこともできます。しかしながら、そのような連携のための API はオンラインで <a class="wiki external"  href="http://cinderella.de/visage">http://cinderella.de/visage</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> で利用できるだけです。もし、 Visage をJavaで使うことに興味があるようでしたら、 <code>visage@cinderella.de</code> で私たちに連絡をしてください。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 26 of February, 2012 [13:33:09 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=VisageJ">
+    http://doc.cinderella.de/tiki-index.php?page=VisageJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

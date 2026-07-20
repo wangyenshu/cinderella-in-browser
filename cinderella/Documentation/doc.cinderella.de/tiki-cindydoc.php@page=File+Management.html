@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : File Management 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>File Management</h2>
+<!-- latexreplace<br />
+\index{files}<br />
+\index{input}<br />
+\index{output}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+There is a number of operations that allow for the interaction of CindyScript with files that are stored elsewhere on the computer. Please note that these commands will not work with applets in HTML pages.<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Reading Files</h3>
+<br />
+<A NAME="load"></A><br />
+<h4>Loading data: <span style="color:red;"><code>load(&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes the argument <code>&#60;string&#62;</code>, which is considered to be a file name (possibly preceded by directory information). If the file name is legitimate, then the entire information contained in the file will be returned as a string. This operator is particularly useful together with the <code>tokenize</code> operator, which helps to analyze structured data. The data are read from the currently active directory, which can be set with the <code>setdirectory</code> operator. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  Assume that in the file <code>LoadDemo.txt</code> contains the data<br />
+<br />
+<code>abc,gfdg;1,3,5.6,3.141;56,abc,xxx,yyy</code> </div><br />
+<br />
+The following code reads the data and creates a list by tokenizing it with respect to ";" and ",".<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=load("LoadTest.txt");
+y=tokenize(x,(";",","));
+apply(y,println(#));
+</pre></div><br />
+<br />
+The resulting output is<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[abc,gfdg]
+[1,3,5.6,3.141]
+[56,abc,xxx,yyy]
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="import"></A><br />
+<h4>Importing program code: <span style="color:red;"><code>import(&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes the argument <code>&#60;string&#62;</code>, which is considered to be a file name (including directory information). If the file name is legitimate, then the whole content of the file is assumed to be able to be parsed by CindyScript code, and it is immediately executed. In this way, one can load libraries with predefined functionality. It is advisable to use the <code>import</code> operator only in the "Init" section of CindyScript, since otherwise, the file will be read for each move. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="setdirectory"></A><br />
+<h4>Setting the directory: <span style="color:red;"><code>setdirectory(&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator sets the directory for all subsequent file operations.  </div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>Writing Files</h3>
+<br />
+It is also possible to write files by a sequence of Cindy script commands. The usual cycle for writing is: Open a file &mdash; write to it &mdash; close the file. This can be done using the following commands.<br />
+<br />
+<hr />
+<br />
+<A NAME="openfile"></A><br />
+<h4>Opening a file: <span style="color:red;"><code>openfile(&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Opens a file with the specified name. The function returns a handle to the file that is needed for subsequent print operations. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="println"></A><br />
+<h4>Println to a file: <span style="color:red;"><code>println(&#60;file&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Identical to the <code>println(...)</code> command. However this command prints to the file specified by <code>&#60;file&#62;</code>. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="print"></A><br />
+<h4>Print to a file: <span style="color:red;"><code>print(&#60;file&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Identical to the <code>print(...)</code> command. However this command prints to the file specified by <code>&#60;file&#62;</code>. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="closefile"></A><br />
+<h4>Print to a file: <span style="color:red;"><code>closefile(&#60;file&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This command finally closes the file.  </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following example illustrates a file write cycle:</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f=openfile("myFile");
+println(f,"Here are some numbers");
+forall(1..15,print(f,#+" ");
+println(f,"");
+closefile(f);
+</pre></div><br />
+<br />
+This code generates a file with the following content:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+Here are some numbers
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+</pre></div><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>Connection to HTML</h3>
+<br />
+<A NAME="openurl"></A><br />
+<h4>Opening a web page: <span style="color:red;"><code>openurl(&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Opens a browser with the webpage given in &#60;string&#62;. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="javascript"></A><br />
+<h4>Calling javascript: <span style="color:red;"><code>javascript(&#60;string&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{JavaScript}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  In exported applets this statement calls a statement in the Javascript environment of the browser. The statement is given by  the content of the <code>&#60;string&#62;</code>. In the standalone application this statement does nothing. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following piece of script will cause a message window to pop up in the browser:</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+  javascript("alert('Hi from Cinderella!!')");
+</pre></div><br />
+<br />
+<hr />
+<hr />
+<h3> Network Connections</h3>
+<!-- latexreplace<br />
+\index{TCP}<br />
+\index{networking}<br />
+\index{communication}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+The TCP commands of Cinderella are rudimentary at best, but they provide the basic functionality necessary for simple networking. You should be able to send and retrieve data over the internet.<br />
+<br />
+<hr />
+<br />
+<A NAME="openconnection"></A><br />
+<h4>Open a TCP port: <span style="color:red;"><code>openconnection(&#60;string&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Opens a bidirectional tcp connection to the server specified by the first argument and the port specified by the second argument. The return value is a handle to this network connection.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> In the following example we open a connection to a web server and read the HTML code from there.</div><br />
+<div dir="ltr"><pre class='codelisting'>
+x=openconnection("cermat.org",80);
+println(x,"GET /");
+y="";
+while(!isundefined(y),y=readln(x);println(y));
+closeconnection(x);
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="print2"></A><A NAME="println2"></A><br />
+<h4>Write to a TCP connection: <span style="color:red;"><code>print(&#60;handle&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<h4>Write to a TCP connection: <span style="color:red;"><code>println(&#60;handle&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> The <code>print</code> and <code>println</code> functions not only support writing to a file, but also to a network connection created by <code>openconnection</code>.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="flush"></A><br />
+<h4>Flush output to a TCP port: <span style="color:red;"><code>flush(&#60;handle&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Flushes the output buffer of the given connection.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="readln"></A><br />
+<h4>Read from a TCP connection: <span style="color:red;"><code>readln(&#60;handle&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Reads a line from the given connection. If no data can be read, this command times out after 5 seconds.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="closeconnection"></A><br />
+<h4>Close a TCP connection: <span style="color:red;"><code>closeconnection(&#60;handle&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Closes the connection given by the handle.</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 10 of July, 2014 [08:48:06 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=File%20Management">
+    http://doc.cinderella.de/tiki-index.php?page=File%20Management
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

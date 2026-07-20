@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : SimilarityJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>相似変換</h2>
+<!--latexreplace<br />
+\index{mode!define a similarity}<br />
+\index{transformation!simimarity}<br />
+\index{similarity}<br />
+--><!-- /latexreplace --><br />
+相似変換はCinderellaの中でも最も使いやすい変換です。この変換は回転と拡大・縮小を組み合わせた変換と考えられます。的確な相似変換を選ぶことにより、任意の(順序づけられた)一組の点をほかの点へと写すことができます。<br />
+<br />
+相似変換は写す前とあとの像を２組の標本点を指定することによって定義できます。要するに、相似変換は(順序づけられた)４点を選ぶことで定義できます。<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity1}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity2}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity3}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity4} \\<br />
+{\small\bf First click: } &amp;  {\small\bf  Second click:}&amp;  {\small\bf  Third click: }&amp;  {\small\bf Fourth click:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it The first preimage  } &amp;  {\small\it  The first image}&amp;  {\small\it  The second preimage }&amp;  {\small\it  The second image}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   is defined. } &amp;  {\small\it is defined.}&amp;  {\small\it is defined }&amp;  {\small\it  is defined.}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity1.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity4.png" border="0"  width="150" /></span></td>
+ </tr>
+<tr>
+<td><b>最初のクリック:</b><br>１つ目の元画像が定義<br>
+されます</td><td></td>
+<td><b>２度目のクリック:</b><br> １つ目の写った先が<br> 定義されます</td><td></td>
+<td><b>３度目のクリック:</b><br> ２つ目の元画像が定義 <br>されます</td><td></td>
+<td><b>４度目のクリック:</b><br> ２つ目の写った先が <br>  定義されます</td>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+繰り返した４度目のクリックの後、相似変換の定義は完了します。この例では、相似変換は点<i>A</i>が点<i>C</i>に、点<i>B</i>が点<i>D</i>に写るという一意的な定義がされています。<br />
+<br />
+多くの対象に対し変換を適用すると、すべて同時に写します。つぎの図は相似変換の効果を実際に示しています。<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity5.png" border="0"  /></span></td> <td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity6.png" border="0"  /></span></td>
+ </tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->元の図形<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->写像後の状況<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+相似変換を繰り返すと、写された図形の列が一種の対数螺旋を自動的に形成します。下の画像はその効果を実際に示しています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Similarity7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>対数螺旋</b></td></tr></table><br />
+<br />
+相似変換の定義において、１つの点を２度以上使うことができます。つまり、同じ点を元の画像と変換後の画像の点として選択することができるのです。いくつかの特別な相似変換の場合を示してみます。<br />
+<br />
+<ul><li> <b><i>A</i> → <i>A</i> and <i>B</i> → <i>B</i>:</b> <i>恒等変換</i> : すべての点が不変の変換
+</li><li> <b><i>A</i> → <i>A</i> and <i>B</i> → <i>C</i>:</b> <i>相似変換</i> : 定点<i>A</i> を持つ相似変換
+</li><li> <b><i>A</i> → <i>B</i> and <i>B</i> → <i>C</i>:</b> <i>鏡映</i> : <i>A</i> と <i>B</i>　を交換する
+</li></ul>
+<br />
+<h3> 相似変換とスライダー</h3>
+<br />
+相似変換は時々、幾何学的なシナリオをスライダーでコントロールするための道具としてとても便利です。つぎの例がその技術を説明しています。仮に、あなたがある形からほかの形へと滑らかに変換できる図形を作りたい、とします。その変化はスライダーコントローラとして働く線分上の点によりコントロールされます。仮に、あなたが左にある正方形から、右にある三角形へと緑の点が動くにつれて滑らかに"モーフィング"するような図形を作りたいとしましょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Similarity8.png" border="0"  /></span></td></tr><tr><td class="caption"><b>モーフィングの操作</b></td></tr></table><br />
+<br />
+<br />
+相対的配置にある１組の元の画像と変換後の画像について、相似変換をいくつも定義することでこのような効果を得ることができます。その組の各点に対して、スライダーの２つの端点をその組の対応する２点にそれぞれ写す相似変換を定義します。それから、スライダーの点(下図の緑の点)をこれらの変換をすべて使ってそれぞれ写します。写された点を線分で結んでおきます。こうしておいて、スライダーを動かすと、モーフィングによって動かされる点が滑らかに最初にあった位置から終わりの位置まで動いていきます。下の絵はその様子が示されています。(スライダーの点をアニメーションモードでスライダー上を動かしています。)<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Similarity9.png" border="0"  /></span></td></tr><tr><td class="caption"><b>モーフィングを間単に行うことができました</b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<h3>注意</h3>
+相似変換は双曲幾何学や、楕円幾何学では定義されません。<br />
+<br />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=TranslationJ.html" class="wiki">平行移動</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Affine+TransformationJ.html" class="wiki">アフィン変換</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Projective+TransformationJ.html" class="wiki">射影変換</a>
+</li></ul>
+<br />
+<br />
+(横山)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [12:48:01 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=SimilarityJ">
+    http://doc.cinderella.de/tiki-index.php?page=SimilarityJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

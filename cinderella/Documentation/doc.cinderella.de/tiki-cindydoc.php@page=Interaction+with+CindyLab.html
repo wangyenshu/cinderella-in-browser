@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interaction with CindyLab 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Interaction with <!-- latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> -->CindyLab<!-- /latexreplace --></h2>
+<A NAME="simulation"></A><br />
+<h4>The simulation environment: <span style="color:red;"><code>simulation()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator provides a handle to the simulation environment. The simulation environment offers several fields than can be used to access its global properties.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > total friction of the simulation  </td></tr><tr><td class="wikicell" ><code>gravity</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > total gravity of the simulation  </td></tr><tr><td class="wikicell" ><code>kinetic</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > total kinetic energy of the simulation  </td></tr><tr><td class="wikicell" ><code>ke</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > total kinetic energy of the simulation  </td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > total potential energy of the simulation  </td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > total potential energy of the simulation </td></tr></table><br />
+<br />
+<br />
+<hr />
+<A NAME="addforce"></A><br />
+<h4>Applying a force: <span style="color:red;"><code>addforce(&#60;mass&#62;,&#60;vec&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Applying a force <code>&#60;vec&#62;</code> to an existing mass <code>&#60;mass&#62;</code>. This operator is useful to implement user defined force fields. It should be called in the <code>Integration Tick</code> slot.</div><br />
+<hr />
+<A NAME="setforce"></A><br />
+<h4>Applying a force: <span style="color:red;"><code>setforce(&#60;mass&#62;,&#60;vec&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Setting the force <code>&#60;vec&#62;</code> for an existing mass <code>&#60;mass&#62;</code>. This operator is very useful to implement user defined force fields. It should be called in the <code>Integration Tick</code> slot.</div><br />
+<hr />
+<A NAME="force"></A><br />
+<h4>Probing particle forces: <span style="color:red;"><code>force(&#60;vector&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> The operator <code>force</code> is closely related to physics simulations in <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a>. It can be used for testing the force that would affect a mass particle at a specific position. The vector <code>&#60;vector&#62;</code> represents the position. The operator returns a two-dimensional vector that is the force at this position. If no modifiers are used, the operator assumes that the probe particle has <code>mass=1</code>, <code>charge=1</code> and <code>radius=1</code> (see <a title="no description" href='tiki-cindydoc.php@page=Free+Mass.html' class='wiki'>Free Mass</a>).</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> The following picture was generated using the <code>drawforces</code> operator and a color plot of the <code>force</code> operator. It shows the force field and force strength of the electrostatic field of two charges.</div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Flux.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<!-- latexreplace<br />
+\index{force field}<br />
+\index{electrostatic field}<br />
+\index{field!electrostatic}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div dir="ltr"><pre class='codelisting'>
+A.charge=(|C,G|-3)*3;
+B.charge=(|E,H|-3)*3;
+f(x):=max((0,min([x,1])));
+colorplot([0.1,0.1,0.1]+hue(f(abs(force(#)/3))),(-10,-10),(20,10));
+drawforces(stream->true,move->0.2,color->[0,0,0],resolution->10);
+</pre></div><br />
+<br />
+<div class="modifiers"><br />
+<b>Modifiers:</b>  It is also possible to set the values of mass, charge and radius explicitly. Each of these values can be set by a modifier of the same name. If at least one of these values is set explicitly, then all unset values are set to zero. Thus <code>force([0,0],charge->2)</code> tests the force that would be present for a particle of <code>charge=2</code>, <code>mass=0</code>, and <code>radius=0</code> at point <code>[0,0]</code>.</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 10 of July, 2014 [08:18:13 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20CindyLab">
+    http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20CindyLab
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

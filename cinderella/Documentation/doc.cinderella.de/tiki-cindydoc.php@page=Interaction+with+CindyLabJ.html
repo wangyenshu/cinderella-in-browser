@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interaction with CindyLabJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> <!-- latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> -->CindyLab<!-- /latexreplace --> との連携</h2>
+<A NAME="simulation"></A><br />
+<h4>シミュレーション環境: <span style="color:red;"><code>simulation()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数はシミュレーション環境へのハンドルを与えます。この関数で、たとえば、運動や位置エネルギーにアクセスできます。次のものがシミュレーションで重要なものです。<br />
+<br />
+<ul><li> <b>friction</b>: シミュレーション全体の摩擦力 (実数, 読み書き可)
+</li><li> <b>gravity</b>: シミュレーション全体の重力 (実数, 読み書き可)
+</li><li> <b>kinetic</b>: シミュレーション全体の運動エネルギー (実数, 読み出しのみ)
+</li><li> <b>ke</b>: 同上 (実数, 読み出しのみ)
+</li><li> <b>potential</b>: シミュレーション全体の位置エネルギー (実数, 読み出しのみ)
+</li><li> <b>pe</b>: 同上 (実数, 読み出しのみ)
+</li></ul>
+<br />
+<hr />
+<br />
+<A NAME="addforce"></A><br />
+<h4>力の適用: <span style="color:red;"><code>addforce(&#60;mass&#62;,&#60;vec&#62;)</code></span></h4>
+<br />
+<b>説明:</b> 力 <code><vec></code> を存在する質点  <code><mass></code> に適用します。この演算子は、ユーザーの定義する力の場を実現するのに有用です。これは、 <code>Integration Tick</code> スロットに置かなければなりません。<br />
+<br />
+<hr />
+<br />
+<A NAME="setforce"></A><br />
+<h4>力の設定: <span style="color:red;"><code>setforce(&#60;mass&#62;,&#60;vec&#62;)</code></span></h4>
+<br />
+<b>説明:</b> 力 <code><vec></code> を存在する質点  <code><mass></code> に設定します。この演算子は、ユーザーの定義する力の場を実現するのに有用です。これは、 <code>Integration Tick</code> スロットに置かなければなりません。<br />
+<br />
+<hr />
+<br />
+<A NAME="force"></A><br />
+<h4>力の探索粒子: <span style="color:red;"><code>force(&#60;vector&#62;)</code></span></h4>
+<br />
+<br />
+<tt> <code>force</code>  演算子は、<!-- latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> -->CindyLab<!-- /latexreplace --> におけるシミュレーションと密接な関係があります。それは、特定の場所で粒子に及ぼす力をテストするのに使うことができます。ベクトル  <code><vector></code>  は位置を表します。演算子はこの位置での力を２次元ベクトルで返します。修飾子が使われないならば、演算子は探針となる粒子は、質量が1，電荷が1，半径が1とみなされます。 (see <a title="no description" href="tiki-cindydoc.php@page=Free+MassJ.html" class="wiki">自由質点</a>参照)。</tt><br />
+<br />
+次の図は、 <code>drawforces</code> 演算子と <code>force</code>  演算子のカラープロットを使って描かれました。２つの電荷の力の場と、電磁場の強さを示しています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Flux.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.charge=(|C,G|-3)*3;
+B.charge=(|E,H|-3)*3;
+f(x):=max((0,min([x,1])));
+colorplot([0.1,0.1,0.1]+hue(f(abs(force(#)/3))),(-10,-10),(20,10));
+drawforces(stream->true,move->0.2,color->[0,0,0],resolution->10);
+</pre></div><br />
+<br />
+<b>修飾子:</b> 質量と電荷、半径を明示することも可能です。これらはその名前の修飾子で設定されます。これらのうち少なくとも１つが設定されたならば、残りのものは0に設定されます。 したがって、 <code>force((0,0),charge->2)</code> は、電荷2，質量0，半径0の粒子で、点 <code>point [0,0]</code> の力をテストします。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 26 of July, 2011 [12:20:33 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20CindyLabJ">
+    http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20CindyLabJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

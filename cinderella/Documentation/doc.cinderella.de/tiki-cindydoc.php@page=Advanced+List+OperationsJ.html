@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Advanced List OperationsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>高度なリスト処理</h2>
+<br />
+リストを他のリストに変換するいくつかの演算子があります。この節ではそのような演算子を扱います。これらは高度な計算をするのに強力なツールです。現実的な場面での使い方を知るために、CindyScript の描画の例を読むことを強く勧めます。<br />
+<br />
+<h2>要素の組み合わせ</h2>
+<br />
+<A NAME="pairs"></A><br />
+<h4>ペアを作る: <span style="color:red;"><code>pairs(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、リストに含まれるすべての要素から２つずつを組み合わせたペアの部分リストを要素とするリストを作ります。この演算子は、いくつかの点があるときそれらを結ぶすべての線分を作るときに有用です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>pairs([1, 2, 3, 4])</code> </td><td class="wikicell" > <code>[[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="consecutive"></A><br />
+<h4>チェーンを作る: <span style="color:red;"><code>consecutive(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、引数  <code>&#60;list&#62;</code> の連続する２つずつの要素のペアからなるリストを作ります。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>consecutive([1, 2, 3, 4, 5])</code> </td><td class="wikicell" > <code>[[1, 2], [2, 3], [3, 4], [4, 5]]</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="cycle"></A><br />
+<h4>輪を作る: <span style="color:red;"><code>cycle(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、引数 <code>&#60;list&#62;</code> の連続する２つずつの要素のペアからなるリストを作ります。さらに、最後の要素と最初の要素もつなげます。<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>cycle([1, 2, 3, 4, 5])</code> </td><td class="wikicell" > <code>[[1, 2], [2, 3], [3, 4], [4, 5], [5, 1]]</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="triples"></A><br />
+<h4>３つの組合せを作る: <span style="color:red;"><code>triples(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、リストに含まれるすべての要素から3つずつを組み合わせた部分リストを要素とするリストを作ります。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>triples([1, 2, 3, 4])</code> </td><td class="wikicell" > <code>[[1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3,4 ]]</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="directproduct"></A><br />
+<h4>２つのリストの直積を作る: <span style="color:red;"><code>directproduct(&#60;list1&#62;,&#60;list2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は２つのリストの直積を作ります。ここでいう直積とは、 <code>&#60;list1&#62;</code> の要素を第１成分に、 <code>&#60;list2&#62;</code> の要素を第２成分とした、すべてのペアからなるリストです。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>directproduct([1,2,3],["A","B"])</code> </td><td class="wikicell" > <code>[[1,"A"],[1,"B"],[2,"A"],[2,"B"],[3,"A"],[3,"B"]]</code> </td></tr></table><br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<A NAME="flatten"></A><br />
+<h4>入れ子リストの平坦化: <span style="color:red;"><code>flatten(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、リストが入れ子になっているときに、その入れ子を平坦化します。第２の入れ子を解除して平坦化したリストを返します。修飾子を使うと、再帰的な操作が可能です。また、平坦化のレベルを制御できます。<br />
+<br />
+　この演算子は、２つのリストの直積を作るのと似ています。直積は、<code>&#60;list1&#62;</code>の要素を第１成分に、 <code>&#60;list2&#62;</code> の要素を第２成分にしたリストを作ります。<br />
+<br />
+<b>修飾子:</b> 修飾子 <code>levels</code> は、"all" ですべてを平坦化します。 整数を与えるとその回数だけ再帰的に平坦化します。 <code>flatten(...,levels->1)</code> は修飾子を付けない場合と同じです。<br />
+<br />
+<b>例:</b> 次のリストを用意します。<br />
+<br />
+<code>list=[[1,2],[3,[4,5],[6,[7,8]]],6];</code><br />
+<br />
+このリストに対して平坦化を行なった結果は次の通りです。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>flatten(list)</code> </td><td class="wikicell" > <code>[1,2,3,[4,5],[6,[7,8]],6] </code> </td></tr><tr><td class="wikicell" ><code>flatten(list,levels->0)</code> </td><td class="wikicell" > <code> [[1,2],[3,[4,5],[6,[7,8]]],6]</code> </td></tr><tr><td class="wikicell" ><code>flatten(list,levels->1)</code> </td><td class="wikicell" > <code>[1,2,3,[4,5],[6,[7,8]],6]</code> </td></tr><tr><td class="wikicell" ><code>flatten(list,levels->2)</code> </td><td class="wikicell" > <code>[1,2,3,4,5,6,[7,8],6]</code> </td></tr><tr><td class="wikicell" ><code>flatten(list,levels->3)</code> </td><td class="wikicell" > <code>[1,2,3,4,5,6,7,8,6] </code> </td></tr><tr><td class="wikicell" ><code>flatten(list,levels->"all")</code> </td><td class="wikicell" > <code>[1,2,3,4,5,6,7,8,6] </code> </td></tr></table><br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<h2>順序</h2>
+<br />
+次の演算子はリストに含まれる要素の順序を変更します。<br />
+<br />
+<A NAME="reverse"></A><br />
+<h4>逆順にする: <span style="color:red;"><code>reverse(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、 <code>&#60;list&#62;</code> の要素を逆順にします。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>reverse([1, 2, 3, 4])</code> </td><td class="wikicell" > <code>[4, 3, 2, 1]</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="sort"></A><br />
+<h4>並べ替え: <span style="color:red;"><code>sort(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> においては、すべての要素はどんな２つの要素でも比較できるような自然な順序を有します。２つの要素は等しいか、どちらかが大きくなります。実数では通常の数の順序です。文字列では辞書順です。複素数はまず実部の順序で並べ、実部が同じなら虚部の順序になります。 リストは、最初の要素を比較します。さらに、慣例として次の順序があります。<br />
+<br />
+<div align="center">ブール値 &#60; 数 &#60; 文字列 &#60; リスト</div><br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>sort([4.5, 1.3, 6.7, 0.2])</code> </td><td class="wikicell" > <code>[0.2, 1.3, 4.5, 6.7]</code> </td></tr><tr><td class="wikicell" ><code>sort(["one","two","three","four","five"])</code> </td><td class="wikicell" > <code>["five","four","one","three","two"]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="sort2"></A><br />
+<h4>並べ替え: <span style="color:red;"><code>sort(&#60;list&#62;, &#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、リストの各要素を  <code>&#60;expr&#62;</code> の内容によって評価し、その結果に従って並べ替えます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>sort([-4.5, 1.3, -6.7, 0.2], abs(#))</code> </td><td class="wikicell" > <code>[0.2, 1.3, -4.5, -6.7]</code> </td></tr><tr><td class="wikicell" ><code>sort(["one","two","three","four","five"],length(#))</code> </td><td class="wikicell" > <code>["one","two","four","five","three"]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="sort3"></A><br />
+<h4>並べ替え: <span style="color:red;"><code>sort(&#60;list&#62;, &#60;var&#62;, &#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b>  <code>sort(&#60;list&#62;, &#60;expr&#62;)</code>と同じですが、 <code>&#60;var&#62;</code> を実行変数とします。<br />
+<br />
+<hr />
+<A NAME="set"></A><br />
+<h4>リストの要素を単一化した集合(set)を作る: <span style="color:red;"><code>set(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、リストのすべての要素を分類し、同一のものを取り除いて並べ替えます。すなわち、リストをオブジェクトの集合とみなして唯一の表現にします。演算子 <code>concat</code>, <code>remove</code>,  <code>common</code> とともに用いて、集合の表現とすることができます。<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式:</b> </td><td class="wikicell" ><b>結果:</b></td></tr><tr><td class="wikicell" ><code>set([3, 5, 2, 4, 3, 5, 7])</code> </td><td class="wikicell" > <code>[2, 3, 4, 5, 7]</code> </td></tr><tr><td class="wikicell" ><code>set([3, 5, 2]++[4, 5, 2])</code> </td><td class="wikicell" > <code>[2, 3, 4, 5]</code> </td></tr><tr><td class="wikicell" ><code>set([3, 5, 2]~~[4, 5, 2])</code> </td><td class="wikicell" > <code>[2, 5]</code> </td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 03 of August, 2011 [01:57:11 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Advanced%20List%20OperationsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Advanced%20List%20OperationsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

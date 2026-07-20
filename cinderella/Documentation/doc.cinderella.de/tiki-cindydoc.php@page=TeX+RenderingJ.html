@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : TeX RenderingJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<A NAME="TeX Rendering"></A><br />
+<h2>TeX 記法</h2>
+　Cinderella 2.4版から、文字表現が強力になりました。TeX記法<!-- latexreplace \cite{Knu-T-1993} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Knu93]</a><!-- /latexreplace -->による数式表現ができます。これは数式を含む複雑な文章を書くときの標準的な記法です。現在の Cinderella ではおよそ 95% のTeX記法が使えます。ここでは、最も重要な点についてのみ記述します。また、標準的なTeXとの違いについても記述します。<br />
+<br />
+　TeXはCindyScriptのdrawtext()で表示する文章と、幾何学要素のラベル、「文字列を追加する」ボタンによる文字列に使えます。特別メニューの文字列入力による文章には使えません。<br />
+<br />
+<br />
+<h3>TeX 記法の宣言</h3>
+<br />
+　通常の文章の中で、ドル記号ではさんだ部分が TeX記法によるものと解釈されます。:  <code>$... ここがTeX形式のテキスト...$</code>　 次の文は、TeXの特徴を示す例です。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext(
+  (0,0), 
+  "和の公式: $\sum_{i=1}^n i^2 = { 2\cdot n^3+ 4\cdot n^2 +n\over 6 }"
+);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX1X.png" border="0"  /></span><br />
+<br />
+　もし間違ったフォントが選ばれていても、CinderellaのTeX では最適な解釈をしようとします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext(
+  (0,0),
+  "和の公式: $\sum_{i=1}^n i^2 = { 2\cdot n^3+ 3\cdot n^2 +n\over 6 }$",size->20,
+  family->"Lucida Calligraphy"
+);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX2X.png" border="0"  /></span><br />
+<br />
+<br />
+<h3>サブスクリプトとスーパースクリプト</h3>
+<br />
+　TeXでの最もよく使われる記法は、サブスクリプト(上付き文字)とスーパースクリプト（添え字）でしょう。これには、それぞれ <code>_</code> と <code>^</code> 記号を用います。もし、複雑なサブ・スーパースクリプトを用いたい場合は、波括弧でくくります。通常の TeX スクリプトと異なり、数だけからなるものであれば、括弧はいりません。次のコードがその例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+textsize(20);
+drawtext((0,0), "$A_1$");
+drawtext((2,0), "$A_123$");
+drawtext((4,0), "$A_1^12$");
+drawtext((6,0), "$A_{1_2}^{1/2}$");
+drawtext((8,0), "$A_{1_2}^{\sqrt{x^2+y^2}}$");
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX3X.png" border="0"  /></span><br />
+<br />
+<br />
+<h3>特殊な式</h3>
+<br />
+<tt> Cinderella の TeX は、和、平方根、積分記号といった特殊記号が扱えます。次がその例です。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+textsize(20);
+drawtext((0,0), "$\sum_{i=1}^n (i^2+1)");
+drawtext((3,0), "$\sqrt{x^2+y^2}");
+drawtext((6,0), "$\int_a^b f(x)dx");
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX4X.png" border="0"  /></span><br />
+<br />
+　TeX ではバックスラッシュ <code>\</code> を用いて制御コードを書きます。 <code>\sum</code> と <code>\int</code> では、自動的に和の記号や積分記号、上付き文字と下付き文字などを使って式を表現します。次のものは同じように式を作ります。:<br />
+<br />
+<code>\prod</code>, <code>\coprod</code>, <code>\bigcup</code>, <code>\bigcap</code>, <code>\bigwedge</code>, <code>\bigvee</code>, <code>\bigoplus</code>,<br />
+<code>\bigotimes</code>, <code>\bigodot</code>, <code>\biguplus</code>, <code>\int</code>, <code>\iint</code>, <code>\iiint</code>, <code>\ont</code><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX5X.png" border="0"  /></span><br />
+<br />
+<h3>括弧</h3>
+<br />
+　 Cinderella TeX では4種類の括弧を式の中で使います。<br />
+<br />
+<ul><li> 丸い括弧 : (....)
+</li><li> 角括弧 : [....]
+</li><li> 波括弧 : \{...\}
+</li><li> 縦線 : |...|
+</li></ul>
+<br />
+　波括弧は TeX では特別な意味を持つので、波括弧そのものを表示したいときはバックスラッシュに続いて書く必要があります。数式では異なる大きさの括弧を使いたい場合があります。そのためには、 <code>\big</code>, <code>\Big</code>, <code>\bigg</code>, <code>\Bigg</code> に続いて括弧を書きます。次の例をごらん下さい。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->16,
+"$\Bigg( \bigg( \Big( \big( (\ldots) \big) \Big) \bigg) \Bigg)$");
+drawtext((5,0),size->16,
+"$\Bigg[ \bigg[ \Big[ \big[ [\ldots] \big] \Big] \bigg] \Bigg]$");
+drawtext((10,0),size->16,
+"$\Bigg\{ \bigg\{ \Big\{ \big\{ \{\ldots\} \big\} \Big\} \bigg\} \Bigg\}$");
+drawtext((15,0),size->16,
+"$\Bigg| \bigg| \Big| \big| |\ldots| \big| \Big| \bigg| \Bigg|$")
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX6X.png" border="0"  /></span><br />
+<br />
+　大きな括弧を表示するのに、次のような方法もあります。次の例に見られるように <code>\left</code> と <code>\right</code> を使うことによって、ちょうどよい大きさの括弧でくくることができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->16,
+"$\left[\sum_{i=1}^n \left({\sqrt sin(i)\right)\right]^2$") 
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX7X.png" border="0"  /></span><br />
+<br />
+　 <code>\left</code> と <code>\right</code> は、きちんと入れ子状になっていなければなりません。一方の括弧だけを使いたい場合は <code>\left.</code> あるいは <code>\right.</code> を用います。<br />
+<br />
+<br />
+<h3>特殊な形の式</h3>
+<br />
+　分数のような特殊な形の式があります。 Cinderella TeX は次の式をサポートしています。<br />
+<br />
+<code>\frac,\over,\choose,\binom</code><br />
+<br />
+次のような使い方をします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->16,"${1+n^2\over 1-n^2}$"); 
+drawtext((3,0),size->16,"${2\choose 3}$");
+drawtext((6,0),size->16,"$\frac{a+b}{x^2}$");
+drawtext((9,0),size->16,"$\binom{a+b}{x^2}$");
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX8X.png" border="0"  /></span><br />
+<br />
+<br />
+<h3>空白</h3>
+<br />
+　空白と改行は、よく式を区切るためだけに使われ、式のレイアウトのためにはあまり使われません。<code>\,\;\quad\qquad\!</code> を使えば、空白の大きさを変えられます。現在のフォントの "m" の大きさが空白の単位になります。<br />
+<br />
+<ul><li> <code>\qquad</code>:  2.0 単位の空白
+</li><li> <code>\quad</code>:  1.0 単位の空白
+</li><li> <code>\;</code>:  5/18 単位の空白
+</li><li> <code>\,</code>:  3/18 単位の空白
+</li><li> <code>\!</code>:  -5/18 単位の空白（マイナスなので前の文字と重なることになります）
+</li></ul>
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->16,"$A\!A A \,A\;A\quad A \qquad A$") 
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX9X.png" border="0"  /></span><br />
+<br />
+<br />
+<h3>上線と下線</h3>
+<br />
+　Cinderella TeX は式の上または下に矢印などの線を引くいくつかの方法をサポートしています。それは次のものです。<br />
+<br />
+<code>\overline, \underline, \overleftarrow, \overrightarrow, \vec, \hat, \tilde</code><br />
+<br />
+　これらの記号のあとに、線を引きたい部分を波括弧でくくります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->16,"$\overline{A}\;\cap\;\overline{B}\;=\;\overline{A\;\cup\; B}$");
+drawtext((6,0),size->16,"$|\overrightarrow{(x,y)}|\;= \; \sqrt{x^2+y^2}$");
+drawtext((13,0),size->16,"$\tilde{X}+\hat{Y}\;=\;\underline{X\oplus Y}$");
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX10X.png" border="0"  /></span><br />
+<br />
+<br />
+<br />
+<h3>ベクトルと行列</h3>
+<br />
+　ベクトルと行列は数式では特別なものです。 Cinderellas TeX ではこれらもサポートしています。最も基本的な使い方は <code>\begin{array}{...}.....\end{array}</code> です。各行は <code>\\</code> で区切ります。各行の中で、各成分は <code>&amp;</code> で区切ります。２番目の波括弧には、各列での書式を書きます。これは次の３つです。<br />
+<ul><li><code>r</code> 右寄せ
+</li><li><code>l</code> 左寄せ
+</li><li><code>c</code> センタリング（中央揃え）
+</li></ul>
+<br />
+次の例は一般的な行列の表示の方法を示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),
+"$M\;=\;\left(
+\begin{array}{lcr}
+ 1+1&2&3\\
+ 1&2+2&3\\
+ 1&2&3+3\\
+ \end{array}
+\right)
+$"
+,size->20);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX11X.png" border="0"  /></span><br />
+<br />
+<br />
+　Array 記号は次の例に見られるように、いろいろな場面で使うことができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),
+"$sign(x)\;:=\;\left\{
+\begin{array}{ll}
+  1&if \quad x>0\\
+ -1&if \quad x<0\\
+  0&if \quad x=0\\
+ \end{array}
+\right.
+$"
+,size->20);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX12X.png" border="0"  /></span><br />
+<br />
+　Cinderella は行列の形式についての情報を必要とせず、自動的に括弧をつけて表示します。括弧のつけかたには次の５つの種類があります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0), "$\begin{matrix} a-\lambda & b\\ c & b-\lambda\\ \end{matrix}$",);
+drawtext((4,0), "$\begin{pmatrix}a-\lambda & b\\ c & b-\lambda\\ \end{pmatrix}$");
+drawtext((8,0), "$\begin{bmatrix}a-\lambda & b\\ c & b-\lambda\\ \end{bmatrix}$");
+drawtext((12,0),"$\begin{Bmatrix}a-\lambda & b\\ c & b-\lambda\\ \end{Bmatrix}$");
+drawtext((16,0),"$\begin{vmatrix}a-\lambda & b\\ c & b-\lambda\\ \end{vmatrix}$");
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX14X.png" border="0"  /></span><br />
+<br />
+<br />
+<h3>色</h3>
+<br />
+　Cinderellas TeX は式に色をつけることができます。そのためには <code>\color{...}</code> を用います。現在用意されている色の名前は<br />
+<br />
+<code>white, balck, red, green, blue, darkred, darkgreen, darkblue, magenta, yellow, cyan, orange</code><br />
+<br />
+です。色記号とそれに続いて書かれた文全体を波括弧でくくると、それらが指示した色で表示されます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->20,color->(0,0,0),
+  "Sum formula: $
+\sum_{\color{darkgreen}i=1}^{\color{darkgreen}n} {\color{darkred}i^2} 
+\quad = \quad 
+{\color{blue}{ 2\cdot n^3+ 4\cdot n^2 +n\over 6 }}$"
+);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX15X.png" border="0"  /></span><br />
+<br />
+<br />
+<h3>通常の文</h3>
+<br />
+　式の中で普通の文を書きたいことはよくあります。その場合は、次の例で示すように <code>\mbox{....}</code> 記号の波括弧の中に書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->20,color->(0,0,0),
+  "$
+\sum_{\mbox{All i not equal to j}}(i^2+j^2)
+$"
+);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX16X.png" border="0"  /></span><br />
+<br />
+<br />
+<br />
+<h3>特殊記号</h3>
+<br />
+　数式ではいろいろな特殊記号を用います。TeXで用いるそれらの記号の一覧を以下に示します。それぞれ、バックスラッシュに続いてその名前を書きます。<br />
+<br />
+<h3>ギリシャ文字</h3>
+<!-- latexreplace \pluginimage{\includegraphics<a class="wiki external"  href="width=\textwidth">width=\textwidth</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Greek}}{}<br />
+<tt> --></tt><br />
+<table><tr>
+<td width=15>&#945;</td><td width=130>\alpha</td>
+<td width=15>&#946;</td><td width=130>\beta</td>
+<td width=15>&#947;</td><td width=130>\gamma</td>
+<td width=15>&#948;</td><td width=130>\delta</td>
+<td width=15>&#8714;</td><td width=130>\epsilon</td>
+</tr><tr>
+<td width=15>&#949;</td><td width=130>\varepsilon</td>
+<td width=15>&#950;</td><td width=130>\zeta</td>
+<td width=15>&#951;</td><td width=130>\eta</td>
+<td width=15>&#952;</td><td width=130>\theta</td>
+<td width=15>&#977;</td><td width=130>\vartheta </td>
+</tr><tr>
+<td width=15>&#953;</td><td width=130>\iota</td>
+<td width=15>&#954;</td><td width=130>\kappa</td>
+<td width=15>&#955;</td><td width=130>\lambda</td>
+<td width=15>&#955;</td><td width=130>\lamda</td>
+<td width=15>&#956;</td><td width=130>\mu</td>
+</tr><tr>
+<td width=15>&#956;</td><td width=130>\my</td>
+<td width=15>&#957;</td><td width=130>\nu</td>
+<td width=15>&#957;</td><td width=130>\ny</td>
+<td width=15>&#958;</td><td width=130>\xi</td>
+<td width=15>&#959;</td><td width=130>\omicron</td>
+</tr><tr>
+<td width=15>&#960;</td><td width=130>\pi</td>
+<td width=15>&#982;</td><td width=130>\varpi</td>
+<td width=15>&#961;</td><td width=130>\rho</td>
+<td width=15>&#1009;</td><td width=130>\varrho</td>
+<td width=15>&#963;</td><td width=130>\sigma</td>
+</tr><tr>
+<td width=15>&#962;</td><td width=130>\varsigma</td>
+<td width=15>&#964;</td><td width=130>\tau</td>
+<td width=15>&#965;</td><td width=130>\upsilon</td>
+<td width=15>&#965;</td><td width=130>\ypsilon</td>
+<td width=15>&#966;</td><td width=130>\phi</td>
+</tr><tr>
+<td width=15>&#967;</td><td width=130>\chi</td>
+<td width=15>&#968;</td><td width=130>\psi</td>
+<td width=15>&#969;</td><td width=130>\omega</td>
+<td width=15>&#913;</td><td width=130>\Alpha</td>
+<td width=15>&#914;</td><td width=130>\Beta</td>
+</tr><tr>
+<td width=15>&#915;</td><td width=130>\Gamma</td>
+<td width=15>&#916;</td><td width=130>\Delta</td>
+<td width=15>&#917;</td><td width=130>\Epsilon</td>
+<td width=15>&#918;</td><td width=130>\Zeta</td>
+<td width=15>&#919;</td><td width=130>\Eta</td>
+</tr><tr>
+<td width=15>&#920;</td><td width=130>\Theta</td>
+<td width=15>&#921;</td><td width=130>\Oota</td>
+<td width=15>&#922;</td><td width=130>\Kappa</td>
+<td width=15>&#923;</td><td width=130>\Lambda</td>
+<td width=15>&#923;</td><td width=130>\Lamda</td>
+</tr><tr>
+<td width=15>&#924;</td><td width=130>\Mu</td>
+<td width=15>&#924;</td><td width=130>\My</td>
+<td width=15>&#925;</td><td width=130>\Nu</td>
+<td width=15>&#925;</td><td width=130>\Ny</td>
+<td width=15>&#926;</td><td width=130>\Xi</td>
+</tr><tr>
+<td width=15>&#927;</td><td width=130>\Omicron</td>
+<td width=15>&#928;</td><td width=130>\Pi</td>
+<td width=15>&#929;</td><td width=130>\Rho</td>
+<td width=15>&#931;</td><td width=130>\Sigma</td>
+<td width=15>&#932;</td><td width=130>\Tau</td>
+</tr><tr>
+<td width=15>&#933;</td><td width=130>\Upsilon</td>
+<td width=15>&#933;</td><td width=130>\Ypsilon</td>
+<td width=15>&#934;</td><td width=130>\Phi</td>
+<td width=15>&#935;</td><td width=130>\Chi</td>
+<td width=15>&#936;</td><td width=130>\Psi</td>
+</tr><tr>
+<td width=15>&#937;</td><td width=130>\Omega</td>
+</tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+<h3>矢印</h3>
+<!-- latexreplace \pluginimage{\includegraphics<a class="wiki external"  href="width=\textwidth">width=\textwidth</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Arrows}}{}<br />
+--><br />
+<table><tr>
+<td width=15>&#8592;</td><td width=130>\leftarrow</td>
+<td width=15>&#8594;</td><td width=130>\rightarrow</td>
+<td width=15>&#8594;</td><td width=130>\to</td>
+<td width=15>&#8596;</td><td width=130>\leftrightarrow</td>
+<td width=15>&#8656;</td><td width=130>\Leftarrow</td>
+</tr><tr>
+<td width=15>&#8658;</td><td width=130>\Rightarrow</td>
+<td width=15>&#8660;</td><td width=130>\Leftrightarrow</td>
+<td width=15>&#8614;</td><td width=130>\mapsto</td>
+<td width=15>&#8617;</td><td width=130>\hookleftarrow</td>
+<td width=15>&#8636;</td><td width=130>\leftharpoonup</td>
+</tr><tr>
+<td width=15>&#8637;</td><td width=130>\leftharpoondown</td>
+<td width=15>&#8618;</td><td width=130>\hookrightarrow</td>
+<td width=15>&#8640;</td><td width=130>\rightharpoonup</td>
+<td width=15>&#8641;</td><td width=130>\rightharpoondown</td>
+<td width=15>&#8592;</td><td width=130>\longleftarrow</td>
+</tr><tr>
+<td width=15>&#8594;</td><td width=130>\longrightarrow</td>
+<td width=15>&#8596;</td><td width=130>\longleftrightarrow</td>
+<td width=15>&#8656;</td><td width=130>\Longleftarrow</td>
+<td width=15>&#8658;</td><td width=130>\Longrightarrow</td>
+<td width=15>&#8660;</td><td width=130>\Longleftrightarrow</td>
+</tr><tr>
+<td width=15>&#8662;</td><td width=130>\longmapsto</td>
+<td width=15>&#8593;</td><td width=130>\uparrow</td>
+<td width=15>&#8595;</td><td width=130>\downarrow</td>
+<td width=15>&#8597;</td><td width=130>\updownarrow</td>
+<td width=15>&#8657;</td><td width=130>\Uparrow</td>
+</tr><tr>
+<td width=15>&#8659;</td><td width=130>\Downarrow</td>
+<td width=15>&#8661;</td><td width=130>\Updownarrow</td>
+<td width=15>&#8599;</td><td width=130>\nearrow</td>
+<td width=15>&#8600;</td><td width=130>\searrow</td>
+<td width=15>&#8601;</td><td width=130>\swarrow</td>
+</tr><tr>
+<td width=15>&#8598;</td><td width=130>\nwarrow</td>
+<td width=15>&#8605;</td><td width=130>\leadsto</td>
+<td width=15>&#8672;</td><td width=130>\dashleftarrow</td>
+<td width=15>&#8647;</td><td width=130>\leftleftarrows</td>
+<td width=15>&#8646;</td><td width=130>\leftrightarrows</td>
+</tr><tr>
+<td width=15>&#8666;</td><td width=130>\Lleftarrow</td>
+<td width=15>&#8606;</td><td width=130>\twoheadleftarrow</td>
+<td width=15>&#8610;</td><td width=130>\leftarrowtail</td>
+<td width=15>&#8651;</td><td width=130>\leftrightharpoons</td>
+<td width=15>&#8624;</td><td width=130>\Lsh</td>
+</tr><tr>
+<td width=15>&#8619;</td><td width=130>\looparrowleft</td>
+<td width=15>&#8630;</td><td width=130>\curvearrowleft</td>
+<td width=15>&#8634;</td><td width=130>\circlearrowleft</td>
+<td width=15>&#8674;</td><td width=130>\dashrightarrow</td>
+<td width=15>&#8649;</td><td width=130>\rightrightarrows</td>
+</tr><tr>
+<td width=15>&#8644;</td><td width=130>\rightleftarrows</td>
+<td width=15>&#8667;</td><td width=130>\Rrightarrow</td>
+<td width=15>&#8608;</td><td width=130>\twoheadrightarrow</td>
+<td width=15>&#8611;</td><td width=130>\rightarrowtail</td>
+<td width=15>&#8652;</td><td width=130>\rightleftharpoons</td>
+</tr><tr>
+<td width=15>&#8625;</td><td width=130>\Rsh</td>
+<td width=15>&#8620;</td><td width=130>\looparrowright</td>
+<td width=15>&#8631;</td><td width=130>\curvearrowright</td>
+<td width=15>&#8635;</td><td width=130>\circlearrowright</td>
+<td width=15>&#8888;</td><td width=130>\multimap</td>
+</tr><tr>
+<td width=15>&#8648;</td><td width=130>\upuparrows</td>
+<td width=15>&#8650;</td><td width=130>\downdownarrows</td>
+<td width=15>&#8639;</td><td width=130>\upharpoonleft</td>
+<td width=15>&#8638;</td><td width=130>\upharpoonright</td>
+<td width=15>&#8643;</td><td width=130>\downharpoonleft</td>
+</tr><tr>
+<td width=15>&#8642;</td><td width=130>\downharpoonright</td>
+<td width=15>&#8669;</td><td width=130>\rightsquigarrow</td>
+<td width=15>&#8621;</td><td width=130>\leftrightsquigarrow</td>
+<td width=15>&#8592;</td><td width=130>\leftarrow</td>
+<td width=15>&#8593;</td><td width=130>\uparrow</td>
+</tr><tr>
+<td width=15>&#8594;</td><td width=130>\rightarrow</td>
+<td width=15>&#8595;</td><td width=130>\downarrow</td>
+<td width=15>&#8596;</td><td width=130>\leftrightarrow</td>
+<td width=15>&#8597;</td><td width=130>\updownarrow</td>
+<td width=15>&#8598;</td><td width=130>\nwarrow</td>
+</tr><tr>
+<td width=15>&#8599;</td><td width=130>\nearrow</td>
+<td width=15>&#8600;</td><td width=130>\searrow</td>
+<td width=15>&#8601;</td><td width=130>\snarrow</td>
+<td width=15>&#8656;</td><td width=130>\Leftarrow</td>
+<td width=15>&#8657;</td><td width=130>\Uparrow</td>
+</tr><tr>
+<td width=15>&#8658;</td><td width=130>\Rightarrow</td>
+<td width=15>&#8659;</td><td width=130>\Downarrow</td>
+<td width=15>&#8660;</td><td width=130>\Leftrightarrow</td>
+<td width=15>&#8661;</td><td width=130>\Updownarrow</td>
+<td width=15>&#8662;</td><td width=130>\Nwarrow</td>
+</tr><tr>
+<td width=15>&#8663;</td><td width=130>\Nearrow</td>
+<td width=15>&#8664;</td><td width=130>\Searrow</td>
+<td width=15>&#8665;</td><td width=130>\Snarrow</td>
+</tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+<h3>数学記号</h3>
+<br />
+<!-- latexreplace \pluginimage{\includegraphics<a class="wiki external"  href="width=\textwidth">width=\textwidth</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Math}}{}<br />
+--><br />
+<table><tr>
+<td width=15>&#8804;</td><td width=130>\leq</td>
+<td width=15>&#8810;</td><td width=130>\ll</td>
+<td width=15>&#8826;</td><td width=130>\prec</td>
+<td width=15>&#8828;</td><td width=130>\preceq</td>
+<td width=15>&#8834;</td><td width=130>\subset</td>
+</tr><tr>
+<td width=15>&#8838;</td><td width=130>\subseteq</td>
+<td width=15>&#8847;</td><td width=130>\sqsubset</td>
+<td width=15>&#8849;</td><td width=130>\sqsubseteq</td>
+<td width=15>&#8712;</td><td width=130>\in</td>
+<td width=15>&#8866;</td><td width=130>\vdash</td>
+</tr><tr>
+<td width=15>&#8739;</td><td width=130>\mid</td>
+<td width=15>&#8995;</td><td width=130>\smile</td>
+<td width=15>&#8805;</td><td width=130>\geq</td>
+<td width=15>&#8811;</td><td width=130>\gg</td>
+<td width=15>&#8827;</td><td width=130>\succ</td>
+</tr><tr>
+<td width=15>&#8829;</td><td width=130>\succeq</td>
+<td width=15>&#8835;</td><td width=130>\supset</td>
+<td width=15>&#8839;</td><td width=130>\supseteq</td>
+<td width=15>&#8848;</td><td width=130>\sqsupset</td>
+<td width=15>&#8850;</td><td width=130>\sqsupseteq</td>
+</tr><tr>
+<td width=15>&#8715;</td><td width=130>\ni</td>
+<td width=15>&#8867;</td><td width=130>\dashv</td>
+<td width=15>&#8741;</td><td width=130>\parallel</td>
+<td width=15>&#8994;</td><td width=130>\frown</td>
+<td width=15>&#8713;</td><td width=130>\notin</td>
+</tr><tr>
+<td width=15>&#8801;</td><td width=130>\equiv</td>
+<td width=15>&#8784;</td><td width=130>\doteq</td>
+<td width=15>&#8764;</td><td width=130>\sim</td>
+<td width=15>&#8771;</td><td width=130>\simeq</td>
+<td width=15>&#8776;</td><td width=130>\approx</td>
+</tr><tr>
+<td width=15>&#8773;</td><td width=130>\cong</td>
+<td width=15>&#8904;</td><td width=130>\Join</td>
+<td width=15>&#8904;</td><td width=130>\bowtie</td>
+<td width=15>&#8733;</td><td width=130>\propto</td>
+<td width=15>&#8872;</td><td width=130>\models</td>
+</tr><tr>
+<td width=15>&#8869;</td><td width=130>\perp</td>
+<td width=15>&#8781;</td><td width=130>\asymp</td>
+<td width=15>&#8800;</td><td width=130>\neq</td>
+<td width=15>&#177;</td><td width=130>\pm</td>
+<td width=15>&#215;</td><td width=130>\times</td>
+</tr><tr>
+<td width=15>&#8746;</td><td width=130>\cup</td>
+<td width=15>&#8852;</td><td width=130>\sqcup</td>
+<td width=15>&#8744;</td><td width=130>\vee</td>
+<td width=15>&#8853;</td><td width=130>\oplus</td>
+<td width=15>&#8857;</td><td width=130>\odot</td>
+</tr><tr>
+<td width=15>&#8855;</td><td width=130>\otimes</td>
+<td width=15>&#9651;</td><td width=130>\bigtriangleup</td>
+<td width=15>&#8882;</td><td width=130>\lhd</td>
+<td width=15>&#8884;</td><td width=130>\unlhd</td>
+<td width=15>&#8723;</td><td width=130>\mp</td>
+</tr><tr>
+<td width=15>&#247;</td><td width=130>\div</td>
+<td width=15>&#8726;</td><td width=130>\setminus</td>
+<td width=15>&#8745;</td><td width=130>\cap</td>
+<td width=15>&#8851;</td><td width=130>\sqcap</td>
+<td width=15>&#8743;</td><td width=130>\wedge</td>
+</tr><tr>
+<td width=15>&#8854;</td><td width=130>\ominus</td>
+<td width=15>&#8856;</td><td width=130>\oslash</td>
+<td width=15>&#9675;</td><td width=130>\bigcirc</td>
+<td width=15>&#9661;</td><td width=130>\bigtriangledown</td>
+<td width=15>&#8883;</td><td width=130>\rhd</td>
+</tr><tr>
+<td width=15>&#8885;</td><td width=130>\unrhd</td>
+<td width=15>&#9665;</td><td width=130>\triangleleft</td>
+<td width=15>&#9655;</td><td width=130>\triangleright</td>
+<td width=15>&#8902;</td><td width=130>\star</td>
+<td width=15>&#8727;</td><td width=130>\ast</td>
+</tr><tr>
+<td width=15>&#8728;</td><td width=130>\circ</td>
+<td width=15>&#8729;</td><td width=130>\bullet</td>
+<td width=15>&#8900;</td><td width=130>\diamond</td>
+<td width=15>&#8846;</td><td width=130>\uplus</td>
+<td width=15>&#8224;</td><td width=130>\dagger</td>
+</tr><tr>
+<td width=15>&#8225;</td><td width=130>\ddagger</td>
+<td width=15>&#8768;</td><td width=130>\wr</td>
+<td width=15>&#8721;</td><td width=130>\sum</td>
+<td width=15>&#8719;</td><td width=130>\prod</td>
+<td width=15>&#8720;</td><td width=130>\coprod</td>
+</tr><tr>
+<td width=15>&#8744;</td><td width=130>\int</td>
+<td width=15>&#8899;</td><td width=130>\bigcup</td>
+<td width=15>&#8898;</td><td width=130>\bigcap</td>
+<td width=15>&#8852;</td><td width=130>\bigsqcup</td>
+<td width=15>&#8750;</td><td width=130>\oint</td>
+</tr><tr>
+<td width=15>&#8897;</td><td width=130>\bigvee</td>
+<td width=15>&#8896;</td><td width=130>\bigwedge</td>
+<td width=15>&#8853;</td><td width=130>\bigoplus</td>
+<td width=15>&#8855;</td><td width=130>\bigotimes</td>
+<td width=15>&#8857;</td><td width=130>\bigodot</td>
+</tr><tr>
+<td width=15>&#8846;</td><td width=130>\biguplus</td>
+<td width=15>&#8230;</td><td width=130>\dots</td>
+<td width=15>&#8943;</td><td width=130>\cdots</td>
+<td width=15>&#8942;</td><td width=130>\vdots</td>
+<td width=15>&#8945;</td><td width=130>\ddots</td>
+</tr><tr>
+<td width=15>&#8463;</td><td width=130>\hbar</td>
+<td width=15>&#8467;</td><td width=130>\ell</td>
+<td width=15>&#8476;</td><td width=130>\Re</td>
+<td width=15>&#8465;</td><td width=130>\Im</td>
+<td width=15>&#1488;</td><td width=130>\aleph</td>
+</tr><tr>
+<td width=15>&#8472;</td><td width=130>\wp</td>
+<td width=15>&#8704;</td><td width=130>\forall</td>
+<td width=15>&#8707;</td><td width=130>\exists</td>
+<td width=15>&#8487;</td><td width=130>\mho</td>
+<td width=15>&#8706;</td><td width=130>\partial</td>
+</tr><tr>
+<td width=15>&#8242;</td><td width=130>\prime</td>
+<td width=15>&#8709;</td><td width=130>\emptyset</td>
+<td width=15>&#8734;</td><td width=130>\infty</td>
+<td width=15>&#8711;</td><td width=130>\nabla</td>
+<td width=15>&#9651;</td><td width=130>\triangle</td>
+</tr><tr>
+<td width=15>&#9633;</td><td width=130>\Box</td>
+<td width=15>&#9671;</td><td width=130>\Diamond</td>
+<td width=15>&#8869;</td><td width=130>\bot</td>
+<td width=15>&#8868;</td><td width=130>\top</td>
+<td width=15>&#8736;</td><td width=130>\angle</td>
+</tr><tr>
+<td width=15>&#8730;</td><td width=130>\surd</td>
+<td width=15>&#9826;</td><td width=130>\diamondsuit</td>
+<td width=15>&#9825;</td><td width=130>\heartsuit</td>
+<td width=15>&#9827;</td><td width=130>\clubsuit</td>
+<td width=15>&#9824;</td><td width=130>\spadesuit</td>
+</tr><tr>
+<td width=15>&#172;</td><td width=130>\neg</td>
+<td width=15>&#9837;</td><td width=130>\flat</td>
+<td width=15>&#9838;</td><td width=130>\natural</td>
+<td width=15>&#9839;</td><td width=130>\sharp</td>
+<td width=15>&#988;</td><td width=130>\digamma</td>
+</tr><tr>
+<td width=15>&#1008;</td><td width=130>\varkappa</td>
+<td width=15>&#1489;</td><td width=130>\beth</td>
+<td width=15>&#1491;</td><td width=130>\daleth</td>
+<td width=15>&#1490;</td><td width=130>\gimel</td>
+<td width=15>&#8918;</td><td width=130>\lessdot</td>
+</tr><tr>
+<td width=15>&#8804;</td><td width=130>\leqslant</td>
+<td width=15>&#8806;</td><td width=130>\leqq</td>
+<td width=15>&#8920;</td><td width=130>\lll</td>
+<td width=15>&#8818;</td><td width=130>\lesssim</td>
+<td width=15>&#8822;</td><td width=130>\lessgtr</td>
+</tr><tr>
+<td width=15>&#8922;</td><td width=130>\lesseqgtr</td>
+<td width=15>&#8828;</td><td width=130>\preccurlyeq</td>
+<td width=15>&#8926;</td><td width=130>\curlyeqprec</td>
+<td width=15>&#8830;</td><td width=130>\precsim</td>
+<td width=15>&#8912;</td><td width=130>\Subset</td>
+</tr><tr>
+<td width=15>&#8847;</td><td width=130>\sqsubset</td>
+<td width=15>&#8756;</td><td width=130>\therefore</td>
+<td width=15>&#8995;</td><td width=130>\smallsmile</td>
+<td width=15>&#8882;</td><td width=130>\vartriangleleft</td>
+<td width=15>&#8884;</td><td width=130>\trianglelefteq</td>
+</tr><tr>
+<td width=15>&#8919;</td><td width=130>\gtrdot</td>
+<td width=15>&#8807;</td><td width=130>\geqq</td>
+<td width=15>&#8921;</td><td width=130>\ggg</td>
+<td width=15>&#8819;</td><td width=130>\gtrsim</td>
+<td width=15>&#8823;</td><td width=130>\gtrless</td>
+</tr><tr>
+<td width=15>&#8923;</td><td width=130>\gtreqless</td>
+<td width=15>&#8829;</td><td width=130>\succcurlyeq</td>
+<td width=15>&#8927;</td><td width=130>\curlyeqsucc</td>
+<td width=15>&#8831;</td><td width=130>\succsim</td>
+<td width=15>&#8913;</td><td width=130>\Supset</td>
+</tr><tr>
+<td width=15>&#8848;</td><td width=130>\sqsupset</td>
+<td width=15>&#8757;</td><td width=130>\because</td>
+<td width=15>&#8741;</td><td width=130>\shortparallel</td>
+<td width=15>&#8994;</td><td width=130>\smallfrown</td>
+<td width=15>&#8883;</td><td width=130>\vartriangleright</td>
+</tr><tr>
+<td width=15>&#8885;</td><td width=130>\trianglerighteq</td>
+<td width=15>&#8785;</td><td width=130>\doteqdot</td>
+<td width=15>&#8787;</td><td width=130>\risingdotseq</td>
+<td width=15>&#8786;</td><td width=130>\fallingdotseq</td>
+<td width=15>&#8790;</td><td width=130>\eqcirc</td>
+</tr><tr>
+<td width=15>&#8791;</td><td width=130>\circeq</td>
+<td width=15>&#8796;</td><td width=130>\triangleq</td>
+<td width=15>&#8783;</td><td width=130>\bumpeq</td>
+<td width=15>&#8782;</td><td width=130>\Bumpeq</td>
+<td width=15>&#8764;</td><td width=130>\thicksim</td>
+</tr><tr>
+<td width=15>&#8776;</td><td width=130>\thickapprox</td>
+<td width=15>&#8778;</td><td width=130>\approxeq</td>
+<td width=15>&#8765;</td><td width=130>\backsim</td>
+<td width=15>&#8872;</td><td width=130>\vDash</td>
+<td width=15>&#8873;</td><td width=130>\Vdash</td>
+</tr><tr>
+<td width=15>&#8874;</td><td width=130>\Vvdash</td>
+<td width=15>&#8717;</td><td width=130>\backepsilon</td>
+<td width=15>&#8733;</td><td width=130>\varpropto</td>
+<td width=15>&#8812;</td><td width=130>\between</td>
+<td width=15>&#8916;</td><td width=130>\pitchfork</td>
+</tr><tr>
+<td width=15>&#9664;</td><td width=130>\blacktriangleleft</td>
+<td width=15>&#9655;</td><td width=130>\blacktriangleright</td>
+<td width=15>&#8724;</td><td width=130>\dotplus</td>
+<td width=15>&#8905;</td><td width=130>\ltimes</td>
+<td width=15>&#8915;</td><td width=130>\Cup</td>
+</tr><tr>
+<td width=15>&#8891;</td><td width=130>\veebar</td>
+<td width=15>&#8862;</td><td width=130>\boxplus</td>
+<td width=15>&#8864;</td><td width=130>\boxtimes</td>
+<td width=15>&#8907;</td><td width=130>\leftthreetimes</td>
+<td width=15>&#8910;</td><td width=130>\curlyvee</td>
+</tr><tr>
+<td width=15>&#8901;</td><td width=130>\centerdot</td>
+<td width=15>&#8904;</td><td width=130>\rtimes</td>
+<td width=15>&#8914;</td><td width=130>\Cap</td>
+<td width=15>&#8892;</td><td width=130>\barwedge</td>
+<td width=15>&#8863;</td><td width=130>\boxminus</td>
+</tr><tr>
+<td width=15>&#8865;</td><td width=130>\boxdot</td>
+<td width=15>&#8908;</td><td width=130>\rightthreetimes</td>
+<td width=15>&#8911;</td><td width=130>\curlywedge</td>
+<td width=15>&#8890;</td><td width=130>\intercal</td>
+<td width=15>&#8903;</td><td width=130>\divideontimes</td>
+</tr><tr>
+<td width=15>&#8726;</td><td width=130>\smallsetminus</td>
+<td width=15>&#8861;</td><td width=130>\circleddash</td>
+<td width=15>&#8858;</td><td width=130>\circledcirc</td>
+<td width=15>&#8859;</td><td width=130>\circledast</td>
+<td width=15>&#8463;</td><td width=130>\hbar</td>
+</tr><tr>
+<td width=15>&#8463;</td><td width=130>\hslash</td>
+<td width=15>&#9633;</td><td width=130>\square</td>
+<td width=15>&#9632;</td><td width=130>\blacksquare</td>
+<td width=15>&#9416;</td><td width=130>\circledS</td>
+<td width=15>&#9651;</td><td width=130>\vartriangle</td>
+</tr><tr>
+<td width=15>&#9650;</td><td width=130>\blacktriangle</td>
+<td width=15>&#8705;</td><td width=130>\complement</td>
+<td width=15>&#9661;</td><td width=130>\triangledown</td>
+<td width=15>&#9660;</td><td width=130>\blacktriangledown</td>
+<td width=15>&#9674;</td><td width=130>\lozenge</td>
+</tr><tr>
+<td width=15>&#9670;</td><td width=130>\blacklozenge</td>
+<td width=15>&#9733;</td><td width=130>\bigstar</td>
+<td width=15>&#8736;</td><td width=130>\angle</td>
+<td width=15>&#8737;</td><td width=130>\measuredangle</td>
+<td width=15>&#8738;</td><td width=130>\sphericalangle</td>
+</tr><tr>
+<td width=15>&#8245;</td><td width=130>\backprime</td>
+<td width=15>&#8708;</td><td width=130>\nexists</td>
+<td width=15>&#8498;</td><td width=130>\Finv</td>
+<td width=15>&#8709;</td><td width=130>\varnothing</td>
+<td width=15>&#240;</td><td width=130>\eth</td>
+</tr><tr>
+<td width=15>&#8487;</td><td width=130>\mho</td>
+<td width=15>&#124;</td><td width=130>\vert</td>
+<td width=15>&#8214;</td><td width=130>\Vert</td>
+<td width=15>&#8450;</td><td width=130>\C</td>
+<td width=15>&#8455;</td><td width=130>\vareps</td>
+</tr><tr>
+<td width=15>&#8461;</td><td width=130>\H</td>
+<td width=15>&#8465;</td><td width=130>\Im</td>
+<td width=15>&#8467;</td><td width=130>\ell</td>
+<td width=15>&#8469;</td><td width=130>\N</td>
+<td width=15>&#8473;</td><td width=130>\P</td>
+</tr><tr>
+<td width=15>&#8474;</td><td width=130>\Q</td>
+<td width=15>&#8476;</td><td width=130>\Re</td>
+<td width=15>&#8477;</td><td width=130>\R</td>
+<td width=15>&#8484;</td><td width=130>\Z</td>
+<td width=15>&#177;</td><td width=130>\pm</td>
+</tr><tr>
+<td width=15>&#8723;</td><td width=130>\mp</td>
+<td width=15>&#9733;</td><td width=130>\star</td>
+<td width=15>&#8727;</td><td width=130>\ast</td>
+<td width=15>&#8226;</td><td width=130>\bullet</td>
+<td width=15>&#183;</td><td width=130>\centerdot</td>
+</tr><tr>
+<td width=15>&#8501;</td><td width=130>\aleph</td>
+<td width=15>&#8712;</td><td width=130>\in</td>
+<td width=15>&#8713;</td><td width=130>\not\in</td>
+<td width=15>&#8715;</td><td width=130>\ni</td>
+<td width=15>&#8716;</td><td width=130>\not\ni</td>
+</tr><tr>
+<td width=15>&#8726;</td><td width=130>\backslash</td>
+<td width=15>&#8726;</td><td width=130>\setminus</td>
+<td width=15>&#8725;</td><td width=130>\slash</td>
+<td width=15>&#8704;</td><td width=130>\forall</td>
+<td width=15>&#9587;</td><td width=130>\times</td>
+</tr><tr>
+<td width=15>&#8745;</td><td width=130>\cap</td>
+<td width=15>&#8746;</td><td width=130>\cup</td>
+<td width=15>&#8901;</td><td width=130>\cdot</td>
+<td width=15>&#8734;</td><td width=130>\infty</td>
+<td width=15>&#8658;</td><td width=130>\implies</td>
+</tr><tr>
+<td width=15>&#8942;</td><td width=130>\vdots</td>
+<td width=15>&#8945;</td><td width=130>\ddots</td>
+<td width=15>&#8943;</td><td width=130>\cdots</td>
+<td width=15>&#8230;</td><td width=130>\ldots</td>
+</tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<h4>Unicode</h4>
+<br />
+　まれに、特定の記号が TeX で表現できないことがあります。その場合、Unicodeを使う方法があります。 <code>\unicode{...}</code> か <code>\unicodex{...}</code> という記号を用いてTeXのなかで使います。第１の式では、Unicodeを10進数で指定します。２番目の式では16進数で指定します。次の（少し高度な）例では、まず <code>sum(...)</code> 関数を用いてUnicodeの列を作り、それをTeXで表示しています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'> 
+chess=sum(0..11,i,"\;\unicode{"+(9812+i)+"}");
+drawtext((0,0),size->30,"$"+chess+"$");
+</pre></div><br />
+<br />
+結果は次のようになります。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/TeX13X.png" border="0"  /></span><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 10 of March, 2012 [22:53:55 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=TeX%20RenderingJ">
+    http://doc.cinderella.de/tiki-index.php?page=TeX%20RenderingJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

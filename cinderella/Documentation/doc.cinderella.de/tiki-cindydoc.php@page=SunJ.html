@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : SunJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>恒星</h2>
+<!--latexreplace<br />
+\index{simulation!sun}<br />
+\index{sun}<br />
+\index{gravitational force}<br />
+\index{force field}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-sun.png" border="0"  align="left" /></span></div>  重力 モードを、地球上における一定の重力場のモデル化とすると、"恒星"モードは宇宙空間における力の場のモデル化といえます。その重力場は、質量を持つ点をシミュレートするためにモデル化されます。この質点は、幾何モードの 点を加えると同様に.簡単に追加されます。 自由質点と異なり、恒星はシミュレーションの間、動くことはありません。それぞれの質点に力を及ぼすだけです。力は恒星に近い質点ほど大きくなります。距離と質点、力の関係は次の方程式（重力についてのニュートンの法則）によって説明されます。<br />
+<!-- latexreplace $$\textrm{force}=\frac{\textrm{sunmass}\cdot\textrm{mass}}{\textrm{dist}^2}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>恒星の質量</b> * <b>惑星の質量</b> / <b>距離</b>&#178;
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+　恒星による力のもとで、初速度を持つ自由質点は、楕円、放物線、双曲線のいずれかの軌道上を動きます。 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> では、そのような状況を、恒星と速度を持つ質点を置いてアニメーションを始めるという、わずかなマウスクリックだけでシミュレーションできます。次の図は、そのような状況を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>恒星の周りを回る惑星</b></td></tr></table><br />
+<br />
+<br />
+　２つの恒星をおくと、状況はさらに面白くなります。次の図は、２つの恒星の複合した力の場での惑星の軌跡を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>１つの惑星と２つの恒星</b></td></tr></table><br />
+<br />
+　つぎの２つの画像は、１つまたは２つの恒星による力の場のイメージです。この図は、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->の"drawforces"命令によって生成されました。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Sun3.png" border="0"  width="300" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Sun4.png" border="0"  width="300" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->１つの恒星による力の場<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td width=10></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->２つの恒星による力の場<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+     </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+<h3> 恒星インスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!sun}<br />
+--><!-- /latexreplace --><br />
+恒星は、インスペクタに変更できる１個のアイテム:初期質量:を持ちます。初期値は10で、それは質点の初期値の10倍です。<br />
+<br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> で、重力には、比較的小さな尺度が内蔵されています。重力定数の実際の値は、画面に描かれた重力矢線の長さによって計算されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SunInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>恒星のインスペクタ</b></td></tr></table><br />
+<br />
+<h3> 恒星と CindyScript</h3>
+<!--latexreplace<br />
+\index{potential energy}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のいくつかの要素と同様、恒星は <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> で読み書きできるいくつかの要素を提供します。次のリストは、重力に関してアクセス可能なものを示します。<br />
+<br />
+<ul><li> <b>strength</b>: 大きさの要因 (実数、読み書き可)
+</li><li> <b>potential</b>: 恒星の重力場における惑星の位置エネルギー(実数、読み出しのみ、追加可能な定数として定義される)
+</li><li> <b>pe</b>: 恒星の重力場における惑星の位置エネルギー(実数、読み出しのみ、追加可能な定数として定義される)
+</li><li> <b>simulate</b>: 重力場シミュレーションのON/OFF(ブール値, 読み書き)
+</li></ul>
+<br />
+<h2> 次もご覧ください</h2>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Gravity+.html" class="wiki"> 重力</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a>
+</li></ul>
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:36:41 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=SunJ">
+    http://doc.cinderella.de/tiki-index.php?page=SunJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Setting a BasisJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 基底の定義</h2>
+<!--latexreplace<br />
+\index{basis}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/basis.png" border="0"  align="left" /></span></div> 基底は <b>シンデレラ２</b> における非常に強力な新しい概念で、図形が論理的に依存する系を構成します。最高４つの基準点からなる枠組みに関して基底を定義できます。基底が定義されると、すべての自由要素による描画はこの基底に関して行われます。基準点が動くと、その基底に関して描かれているすべてのものが動きます。<br />
+<br />
+選択できる基底には次の４つがあります。<br />
+<br />
+<ul><li> <b>平行移動</b> は１つの基準点が必要です。その点が平行移動すると、この基底上の図形がすべて同じように平行移動します。
+</li><li> <b>相似基底</b> は２つの基準点が必要です。これら２つの点は座標系の原点と (1, 0) を定義します。基準点が動くと、この基底上の図形は拡大・縮小と回転をします。
+</li><li> <b>アフィン基底</b> ３点が必要です。これら３つの点は、アフィン座標系の原点と (1, 0) , (0, 1) を定義します。基準点が動くと、この基底上の図形は拡大・縮小と回転、せん断をします。
+</li><li> <b>射影基底</b> ４点が必要です。これらの４点は、この座標系で正方形をなすものと考えられます。すべての図形がこれに従って描かれます。
+</li></ul>
+<br />
+モード-特別メニューかツールバーで、"基底を定義する"ボタンを選んだ後、１つないし４つの点を順次選んでいきます。他のモードに移ると、そこで基底が定義され、基底が有効となります。基底が有効であれば、すべての描画はこの基底に基づいて行われます。これは、基準点が動かされると、この基底に基づいて描画されたものは(自由要素であっても)それに従って動くということを意味します<br />
+<br />
+<br />
+<h3>例: 相似基底を作る</h3>
+<br />
+相似基底を用いて、基底の使い方を示します。まず、基底を定義するための２点を描くことから始めます。次に、「基底を定義する」モードを選び、この２点を順に選びます。この間、どの種類の基底が現在定義されているかがヒントとして表示されます。現段階で最高４つの点を選ぶことができます。ほかのモードに移動すれば基底の定義が終わり、この基底が有効になります。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases1} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases2} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases3}\\</tt><br />
+{\small\it Two points for defining  } &amp;  {\small\it  Selecting the first point}&amp;  {\small\it  Selecting the second point  }&amp; \\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it a similarity basis  } &amp;  {\small\it  }&amp;  {\small\it   }&amp; \\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases1.png" border="0"  width="200" /></span>
+</td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases2.png" border="0"  width="200" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases3.png" border="0"  width="200" /></span></td>
+      </tr>
+      <tr>
+	<td><b>相似基底を定義するために<br> ２点を作る</b><br></td><td></td>
+	<td><b>最初の点を選ぶ</b><br></td><td></td>
+	<td><b>２つ目の点を選ぶ</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+定義モードを抜けると、この基底を示すボタンができます。このボタンの枠が黄色になっているときは、この基底が有効になります。この状態で描かれるものはすべてこの基底に依存します。いま、自由点や半径を持つ円など任意の自由要素を描くことができます。いつでもよいので、 <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a> にします。そこで、この基底の定義に用いた点のひとつを動かすと、先ほど描いた図形は、現在の基底に合うように移動します。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases4} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases5} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases6}\\</tt><br />
+{\small\it The basis is generated  } &amp;  {\small\it  Draw something.}&amp;  {\small\it  Move the basis.  }&amp; \\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it and selected.  } &amp;  {\small\it  }&amp;  {\small\it   }&amp; \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases4.png" border="0"  width="200" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases5.png" border="0"  width="200" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases6.png" border="0"  width="200" /></span></td>
+      </tr>
+      <tr>
+	<td><b>基底が作られ、選ばれている</b><br></td><td></td>
+	<td><b>何か描画する</b><br></td><td></td>
+	<td><b>基底を動かす</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<tt> <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a> で基底のボタンをクリックすれば、その基底を有効/無効に切り替えることができます。有効な基底は、黄色の枠でマークされます。有効な基底のボタンをクリックするとその基底を(他の基底も)無効にします。有効でない基底のボタンをクリックするとその基底が有効になります。これにより、ひとつの制作物のなかでいくつかの基底を定義して、いくつかの部分がいずれかの基底に依存するようにすることができます。ある基底が有効なときに別の基底を定義することも可能です。つまり、基底を重ねることができるのです。</tt><br />
+<br />
+<br />
+<h3>例: 射影基底を使う</h3>
+<br />
+４つの点を用いることにより射影基底を定義できます。射影基底が選ばれていると、４つの点が選ばれた順序により四角形の頂点をなしているかのようにすべての描画が行われます。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases7.png" border="0"  width="250" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases8.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->射影基底のための４点<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->クリックして基底を定義する<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+<br />
+基準点が動かされると、いくつかの描画手続きに影響が及びます。特に、ユークリッドの測度(距離や角)を(暗黙のうちに)必要とするような手続きは、遠近法によってゆがめられます。次の図は、射影基底によるいくつかの図を示しています。特に、中点と円が遠近法によって調節されています。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases9.png" border="0"  width="250" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases10.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->簡単な図<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->より複雑な図<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+<br />
+次の図は、より複雑な設定で射影基底を用いた例を示しています。まず、射影基底を定義します。次に、通常の方法で反復関数系を定義します。反復関数系(IFS)は、射影基底による遠近法によって自動的に現れます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Bases11.png" border="0"  /></span></td></tr><tr><td class="caption"><b>射影基底上の反復関数系</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [12:41:26 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Setting%20a%20BasisJ">
+    http://doc.cinderella.de/tiki-index.php?page=Setting%20a%20BasisJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

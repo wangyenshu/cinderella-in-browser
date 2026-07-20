@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Composition of TransformationsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>変換の合成</h3>
+<!--latexreplace<br />
+\index{mode!define composition of transformation}<br />
+\index{transformation!composition of}<br />
+\index{composition of transformations}<br />
+--><!-- /latexreplace --><br />
+２つの変換を合成して新しい変換を作ることができます。そのために、メニューから合成モードを選び、合成したい２つの変換のボタンをクリックします。 (変換の２乗を得るために同じ変換を２度クリックすることもできます)　ほとんどすべての変換の組み合わせができますが、若干の例外がありますので以下で説明します。<br />
+<br />
+<br />
+<h4> ユークリッド変換の合成</h4>
+<br />
+ユークリッド平面上の <i>回転</i>, <i>線対称</i> と <i>平行移動</i> は、ユークリッド変換と呼ばれます。これらは、ユークリッド平面上の長さと角を保存します。これらの合成変換はやはりユークリッド変換です。<br />
+<br />
+<br />
+<h4>相似変換</h4>
+<br />
+<i>平行移動</i> と <i>回転</i> は、<i>相似変換</i>の特別な場合です。ユークリッド変換とは対照的に、 <i>相似変換</i> は、オブジェクトを拡大・縮小します。相似変換は角と長さの比を保存します。相似変換と回転、平行移動の合成は相似変換と類似性があります。相似変換と線対称の合成でできる対称相似変換は、シンデレラでは 直接には作れませんが、こうすれば作ることができるわけです。<br />
+<br />
+<br />
+<br />
+<h4>アフィン変換</h4>
+<br />
+平行移動, 線対称, 回転, そして 相似変換 はすべて アフィン変換の特別な場合です。アフィン変換は長さの比を変えませんが、角は不変ではありません。これらの変換の合成の結果は別のアフィン変換となります。アフィン変換は平行線を平行線に変換するという特別な属性を持ちます。<br />
+<br />
+<br />
+<h4> 双曲変換</h4>
+<br />
+もし、双曲幾何学に変えるならば ( <a title="no description" href="tiki-cindydoc.php@page=GeometriesJ.html" class="wiki">幾何学</a>の節に記述 )すべての変換は双曲幾何学流に解釈されます。特に、双曲平行移動と双曲回転が得られます。それらの合成は別の双曲変換となります。<br />
+<br />
+<br />
+<h4> 楕円変換</h4>
+<br />
+もし、楕円幾何学に変えるならば すべての変換は楕円幾何学流に解釈されます。特に、楕円平行移動と楕円回転が得られます。それらの合成は別の楕円変換となります。<br />
+<br />
+<br />
+<h4>射影変換</h4>
+<br />
+今までに述べたすべての変換は、射影変換の特別な場合です。したがって、それらはすべて自由に合成できて、結果は射影変換になります。<br />
+<br />
+<hr />
+<br />
+<br />
+<h4>メビウス変換</h4>
+<br />
+メビウス変換は射影変換の一般化ではありません。そればかりでなく、射影変換とメビウス変換を含むような上位の変換というのも簡単には得られません。したがって、シンデレラではメビウス変換と射影変換の合成を許可していません。同様な理由で、メビウス変換とアフィン変換の合成も許可していません。<br />
+<br />
+しかしながら、ユークリッド変換はメビウス変換の特別な場合で、それらは合成可能です。また、メビウス変換と鏡映(対称)あるいは円逆変換との合成も許可されています。メビウス変換の特徴的な属性は円と直線を円と直線に写すことです。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 04 of January, 2012 [06:13:35 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Composition%20of%20TransformationsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Composition%20of%20TransformationsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

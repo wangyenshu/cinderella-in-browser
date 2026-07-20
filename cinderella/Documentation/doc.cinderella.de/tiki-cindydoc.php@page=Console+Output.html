@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Console Output 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Console Output</h2>
+<br />
+<!-- latexreplace<br />
+\index{debugging}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+In the CindyScript input window you find a console for text output. For most practical purposes this will not be used for the final construction. However, it is extremely useful for debugging.<br />
+<br />
+<A NAME="print"></A><br />
+<h4>Printing text: <span style="color:red;"><code>print(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator prints the result of evaluating <code>&#60;expr&#62;</code> to the console. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="err"></A><br />
+<h4>Printing text: <span style="color:red;"><code>err(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Prints the result of evaluating <code>&#60;expr&#62;</code> to the console. If <code>&#60;expr&#62;</code> is a variable, the variable name is printed as well. Very useful for debugging. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="println"></A><br />
+<h4>Printing text: <span style="color:red;"><code>println(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator prints the result of evaluating <code>&#60;expr&#62;</code> to the console and adds a newline character to the end of the text.  </div><br />
+<br />
+<hr />
+<br />
+<h4>Printing a newline: <span style="color:red;"><code>println()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator prints a newline character to the console.  </div><br />
+<br />
+<hr />
+<br />
+<A NAME="clearconsole"></A><br />
+<h4>Clearing the console: <span style="color:red;"><code>clearconsole()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Removes all text from the console. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="assert"></A><br />
+<h4>Conditional print: <span style="color:red;"><code>assert(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is mainly meant for convenience purpose when generating own error mesages. it is equivalent to <code>if(!&#60;bool&#62;,println(&#60;expr&#62;))</code>. It can be used to test wheter a condition is met and otherwise generate an error message.  </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  A typical usage of this operator is the following:</div><br />
+<div dir="ltr"><pre class='codelisting'>
+assert(isinteger(k),"k is not an integer");
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="message"></A><br />
+<h4>Output a status message: <span style="color:red;"><code>message(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>   This operator shows the result of evaluating <code>&#60;expr&#62;</code> in the status line of the application, or in the status line of the browser for Cinderella applets.</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [16:42:25 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Console%20Output">
+    http://doc.cinderella.de/tiki-index.php?page=Console%20Output
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

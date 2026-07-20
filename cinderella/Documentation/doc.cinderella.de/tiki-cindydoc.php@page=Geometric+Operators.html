@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Geometric Operators 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> Geometric Operators</h1>
+<br />
+The geometric operators provide high-level access to several elementary geometric operations. They can be applied either directly to objects of the geometric construction or to vectors (lists of numbers) that represent the coordinates for the geometric objects. If the operator returns a geometric object, it can also be directly drawn with the draw operator.<br />
+<br />
+<h2> Lists and Coordinates</h2>
+<br />
+Coordinates for lines are always homogeneous coordinates (i.e., list of three numbers that are the parameters <code>[a,b,c]</code> of the line with equation <code>a∗x+b∗y+c=0</code>). Coordinates of points can be either Euclidean (list of two numbers <code>[x,y]</code>) or homogeneous (list of three numbers <code>[x,y,z]</code> that represent the point <code>[x/z,y/z]</code>). Return values will always be in homogeneous coordinates. In the text below we will indicate pointlike arguments as <code>&#60;point&#62;</code>, and linelike arguments as <code>&#60;line&#62;</code>, without further mentioning that the coordinates have to of the kind described above.<br />
+<br />
+Since both object types <code>&#60;point&#62;</code> and <code>&#60;line&#62;</code> can be represented as lists of three numbers, one needs a way to distinguish these two cases. Internally, a list carries flags that indicate whether it has an intrinsic geometric meaning. One can interrogate the operator <code>geotype(&#60;list&#62;)</code> to obtain this information. This operator will return either <code>"Point"</code>, <code>"Line"</code>, or <code>"None"</code>. If such a vector has an intrinsic geometric meaning, then the <code>draw</code> operator will automatically render it as such an object.<br />
+<br />
+<br />
+<h2> Elementary geometric operators</h2>
+<br />
+<A NAME="meet"></A><br />
+<h4>Intersection of two lines: <span style="color:red;"><code>meet(&#60;line1&#62;,&#60;line2&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{intersection}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<b>Description:</b> This operator calculates the intersection of two lines. It returns a point in homogeneous coordinates.<br />
+<br />
+<hr />
+<br />
+<A NAME="join"></A><br />
+<h4>Joining two points: <span style="color:red;"><code>join(&#60;point1&#62;,&#60;point2&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{connecting line}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>Description:</b> This operator calculates the line joining two points. The result is a line in homogeneous coordinates.<br />
+<br />
+<hr />
+<br />
+<A NAME="para"></A><br />
+<h4>Calculating a parallel: <span style="color:red;"><code>parallel(&#60;point&#62;,&#60;line&#62;)</code></span></h4>
+<br />
+<h4>Calculating a parallel: <span style="color:red;"><code>parallel(&#60;line&#62;,&#60;point&#62;)</code></span></h4>
+<br />
+<br />
+<b>Description:</b> This operator takes a point and a line as input (no matter in which order) and calculates the line parallel to the input line and through the input point. The line that is returned by the operator is again represented in homogeneous coordinates. This operator refers to Euclidean geometry. Hyperbolic and spherical computations are not supported. This operator can also be abbreviated by <code>para(...)</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="perp2"></A><br />
+<h4>Calculating an orthogonal line: <span style="color:red;"><code>perpendicular(&#60;point&#62;,&#60;line&#62;)</code></span></h4>
+<br />
+<h4>Calculating an orthogonal line: <span style="color:red;"><code>perpendicular(&#60;line&#62;,&#60;point&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{orthogonal line}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<b>Description:</b> This operator takes a point and a line as input (no matter in which order) and calculates the line orthogonal to the input line and through the input point. The line that is returned by the operator is again represented in homogeneous coordinates. This operator refers to Euclidean geometry. Hyperbolic and spherical computations are not supported. This operator can also be abbreviated by <code>perp(...)</code>.<br />
+<br />
+<b>Combined example:</b> The following code creates the picture below. Observe that the operator generates an implicit typing of the return values, so that the objects are rendered correctly automatically.<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A=[1,1];
+B=[2,5];
+C=[7,2];
+a=join(B,C);
+b=join(C,A);
+c=join(A,B);
+ha=perpendicular(A,a);
+hb=perpendicular(B,b);
+hc=perpendicular(C,c);
+X=meet(ha,hb);
+drawall([a,b,c,d,ha,hb,hc,X,A,B,C]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MeetJoinX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="perp1"></A><br />
+<h4>Calculating an orthogonal vector: <span style="color:red;"><code>perpendicular(&#60;list&#62;)</code></span></h4>
+<br />
+<b>Description:</b> If the <code>perp</code> operator is invoked with one argument, it assumes that the input list consists of two numbers. Such a list <code>[a,b]</code> is converted by this operator to the list <code>[-b,a]</code>, which is the input vector rotated 90° about the origin.<br />
+<br />
+<hr />
+<br />
+<A NAME="area"></A><br />
+<h4>The area of a triangle: <span style="color:red;"><code>area(&#60;point1&#62;,&#60;point2&#62;,&#60;point3&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator calculates the (oriented) area of the triangle formed by the three vertices <code>&#60;point1&#62;</code>, <code>&#60;point2&#62;</code>, and <code>&#60;point3&#62;</code>. If the orientation of the points is counterclockwise, then the area is positive, while if it is clockwise, the area is negative. If the three points are collinear, then the area is zero.<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2> Useful Linear Algebra Operators</h2>
+<br />
+The following operators from linear algebra are very useful in geometric contexts. They apply especially to numeric vectors of length 3. For other useful operators in that context (such as <code>dist</code>, matrix operations, and scalar product) please refer to <a title="no description" href='tiki-cindydoc.php@page=Vectors+and+Matrices.html' class='wiki'>Vectors and Matrices</a>.<br />
+<br />
+<A NAME="det"></A><br />
+<h4>The determinant of three points: <span style="color:red;"><code>det(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator calculates the determinant of a 3 × 3 matrix formed by the three three-dimensional vectors <code>&#60;vec1&#62;</code>, <code>&#60;vec2&#62;</code>, <code>&#60;vec3&#62;</code>. Unlike the general determinant method described in the section <a title="no description" href='tiki-cindydoc.php@page=Vectors+and+Matrices.html' class='wiki'>Vectors and Matrices</a>, this method is optimized for performance.<br />
+<!-- latexreplace<br />
+\index{determinant}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<hr />
+<br />
+<A NAME="cross"></A><br />
+<h4>The cross product of two points: <span style="color:red;"><code>cross(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator takes two three-dimensional vectors and calculates their cross product. The cross product is a three-dimensional vector that is orthogonal to the other two vectors.<br />
+<!-- latexreplace<br />
+\index{cross product}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<hr />
+<hr />
+<h2> Conversion and Typing</h2>
+<!-- latexreplace<br />
+\index{type}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<A NAME="geotype"></A><br />
+<h4>The type of an object: <span style="color:red;"><code>geotype(&#60;list&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator determines whether an object has an explicit geometric meaning. It returns a string that is either <code>"POINT"</code>, <code>"LINE"</code>, or <code>"NONE"</code>.<br />
+<br />
+Applying this operator to a list of two numbers will always return <code>"Point"</code>. Applying this operator to a list of three numbers will return <code>"Point"</code>, <code>"Line"</code>, or <code>"None"</code>, depending on whether the internal meaning of this list is set to <code>"Point"</code> or <code>"Line"</code>. Values that come from geometric objects of a Cinderella construction will always be assigned the corresponding geometric type. The output of the <code>meet</code> operator is always a "Point". The output of the operators <code>join</code>, <code>parallel</code>, and <code>perpendicular</code> is always a "Line". Furthermore, the geometric meaning can be explicitly set using the operators <code>line</code> and <code>point</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="point"></A><br />
+<h4>Declaring points: <span style="color:red;"><code>point(&#60;vec&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator explicitly sets the geometric type of a vector of three numbers to <code>"Point"</code>. If the argument is not a list of three numbers, the operator has no effect.<br />
+<br />
+<hr />
+<br />
+<A NAME="line"></A><br />
+<h4>Declaring lines: <span style="color:red;"><code>line(&#60;vec&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator explicitly sets the geometric type of a vector of three numbers to <code>"Line"</code>. If the argument is not a list of three numbers, the operator has no effect.<br />
+<br />
+<hr />
+<br />
+<A NAME="complex"></A><br />
+<h4>Points to complex numbers: <span style="color:red;"><code>complex(&#60;point&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator takes a point and converts it into a complex number. Here the usual coordinate system of the Euclidean plane is identified with the Gaussian complex plane. The point <code>[x,b]</code> is converted to the complex number <code>a+i∗b</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="gauss"></A><br />
+<h4>Complex numbers to points: <span style="color:red;"><code>gauss(&#60;point&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator is the opposite of the previous one. It converts a complex number <code>a+i∗b</code> to a list of two numbers <code>[a,b]</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="crossratio"></A><br />
+<h4>Cross ratio of four points or lines: <span style="color:red;"><code>crossratio(&#60;vec&#62;,&#60;vec&#62;,&#60;vec&#62;,&#60;vec&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Calculates the geometric cross ratio of four points. If the four points are collinear, the usual cross ratio in the real projective plane is calculated. If the points are not collinear, then the cross ratio of the corresponding points in the complex projective line is calculated. For collinear finite points these two results coincide.<br />
+<br />
+<hr />
+<br />
+<A NAME="crossratio"></A><br />
+<h4>Cross ratio of four numbers: <span style="color:red;"><code>crossratio(&#60;numb&#62;,&#60;numb&#62;,&#60;numb&#62;,&#60;numb&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Calculates the cross ratio (A/B)/(C/D) of four real or complex numbers. An extremely useful geometric invariant.<br />
+<br />
+<hr />
+<br />
+<h2> Geometric Transformations and Bases</h2>
+<!-- latexreplace<br />
+\index{transformation}<br />
+\index{basis}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+One can deal with geometric transformations on an explicit algebraic level. Transformations are best represented by 3 × 3 matrices. A real transformation corresponds to a matrix multiplication of the homogeneous coordinates of a point by the corresponding transformation matrix. There are several operators for the calculation of these transformation matrices.<br />
+<br />
+<br />
+<A NAME="linereflect"></A><br />
+<h4>Reflection in a line: <span style="color:red;"><code>linereflect(&#60;line&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Returns a matrix that represents a reflection in the line <code>&#60;line&#62;</code>.<br />
+<br />
+<b>Example:</b> The following code takes the line <i>a</i>, creates the reflecting transformation, and maps point <i>C</i> by multiplying its homogeneous coordinates by the matrix. The result is the green point in the figure.<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m=linereflect(a);
+draw(m*C.homog);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/LineReflectX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="pointreflect"></A><br />
+<h4>Reflection in a point: <span style="color:red;"><code>pointreflect(&#60;point&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Returns a matrix that represents a reflection in the point <code>&#60;point&#62;</code>.<br />
+<!-- latexreplace<br />
+\index{reflection}<br />
+\index{transformation!reflection}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>Translation: <span style="color:red;"><code>map(&#60;point1&#62;,&#60;point2&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Returns a matrix that represents a translation that maps <code>&#60;point1&#62;</code> to <code>&#60;point2&#62;</code>.<br />
+<!-- latexreplace<br />
+\index{translation}<br />
+\index{transformation!translation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>Similarity: <span style="color:red;"><code>map(&#60;point1&#62;,&#60;point3&#62;,&#60;point2&#62;,&#60;point4&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Returns a matrix that represents a similarity that maps <code>&#60;point1&#62;</code> to <code>&#60;point2&#62;</code> and <code>&#60;point3&#62;</code> to <code>&#60;point4&#62;</code>.<br />
+<!-- latexreplace<br />
+\index{similarity}<br />
+\index{transformation!similarity}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>Affine transformation: <span style="color:red;"><code>map(&#60;point1&#62;,&#60;point3&#62;,&#60;point5&#62;,&#60;point2&#62;, &#60;point4&#62;,&#60;point6&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{affine transformation}<br />
+\index{transformation!affine}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<b>Description:</b> Returns a matrix that represents an affine transformation that maps <code>&#60;point1&#62;</code> to <code>&#60;point2&#62;</code>, <code>&#60;point3&#62;</code> to <code>&#60;point4&#62;</code>, and <code>&#60;point5&#62;</code> to <code>&#60;point6&#62;</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>Projective transformation: <span style="color:red;"><code>map(&#60;point1&#62;,&#60;point3&#62;,&#60;point5&#62;,&#60;point7&#62;, &#60;point2&#62;,&#60;point4&#62;,&#60;point6&#62;,&#60;point8&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{transformation!projective}<br />
+\index{projective transformation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<b>Description:</b> Returns a matrix that represents a projective transformation that maps <code>&#60;point1&#62;</code> to <code>&#60;point2&#62;</code>, <code>&#60;point3&#62;</code> to <code>&#60;point4&#62;</code>, <code>&#60;point5&#62;</code> to <code>&#60;point6&#62;</code>, and <code>&#60;point7&#62;</code> to <code>&#60;point8&#62;</code>.<br />
+<br />
+<hr />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 17 of July, 2015 [07:09:48 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Geometric%20Operators">
+    http://doc.cinderella.de/tiki-index.php?page=Geometric%20Operators
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

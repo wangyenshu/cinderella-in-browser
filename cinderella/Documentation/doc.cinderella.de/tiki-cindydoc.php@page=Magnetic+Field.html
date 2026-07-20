@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Magnetic Field 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Magnetic Field</h2>
+<!--latexreplace<br />
+\index{simulation!magnetic field}<br />
+\index{magnetic field}<br />
+\index{polygon}<br />
+\index{force field}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/physics-polygon.png" border="0"  align="left" /></span></div>Perhaps the most complicated force available in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is the Lorentz force. Whenever a charged particle enters a magnetic field with nonzero velocity, the particle's path is perturbed. The magnetic field causes a force orthogonal (at right angles) to both the direction of movement and the magnetic field. The force is proportional to three quantities:  the <i>charge</i> of the particle, its <i>speed</i>, and its <i>velocity</i>. For instance, if an electron moves in a magnetic field without being subject to any additional forces, it will move in a circular path. If friction is present, the path will be a spiral.<br />
+<br />
+In <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> one can add magnetic fields that are orthogonal to the drawing surface. Magnetic fields are polygonal regions that are added just as in <a title="no description" href='tiki-cindydoc.php@page=Polygon.html' class='wiki'>Polygon</a> mode. The exact relation between the <i>fieldstrength</i> of the field, the <i>velocity</i> of the particle, its <i>charge</i>, and the resulting <i>force</i> is given by the following formula:<br />
+<br />
+<!-- latexreplace $$\textrm{force}=(\textrm{fieldstrength}\times\textrm{velocity})\cdot\textrm{charge}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = (<b>fieldstrength</b> x <b>velocity</b>) ∗ <b>charge</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+Since the field is assumed to be orthogonal to the drawing surface, it will result in a force that is orthogonal to the movement of the particle. A charged particle will therefore move along a circular path. The following picture shows the trace of a charged particle that is shot into a region of a magnetic field.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.66in">width=1.66in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Magnet1} &amp;\includegraphics<a class="wiki external"  href="width=1.66in">width=1.66in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Magnet2}\\</tt><br />
+{\small\it  Shooting a charged particle} &amp;  {\small\it \ldots{}causes circular motion}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it  into a magnetic field\ldots{}} &amp;  \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Magnet1.png" border="0"  width="250" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Magnet2.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>Shooting a charged particle<br>
+into a magnetic field...</b><br></td><td width=10></td>
+	<td><b>...causes circular motion</b><br></td>
+     </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+The magnetic fields in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> admit a second kind of force, one that simulates friction in the field. A particle subjected to a frictional force is slowed down by a force proportional to its speed. The relation of the <b>friction</b> and the particle's <b>velocity</b> is given by the following equation:<br />
+<br />
+<!-- latexreplace $$\textrm{force}=-\textrm{friction}\cdot\textrm{velocity}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = – <b>friction</b> ∗ <b>velocity</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<!--latexreplace<br />
+\index{decay}<br />
+\index{atomic decay}<br />
+--><!-- /latexreplace --><br />
+Magnetic fields are often used in physics to observe the decay of atomic particles. If, for instance, an electrically neutral particle decays into two smaller particles, one carrying a positive charge, the other a negative charge, the two constituent particles will follow circular paths in a magnetic field if no friction is present, and they will follow spiral paths in the presence of friction. This effect is used in physics research to observe and analyze the constituents of particle decay in a bubble chamber. The following picture compares a real observed decay in a bubble chamber with a simulated decay in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> and <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=2in">height=2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Nebelkammer} &amp;\includegraphics<a class="wiki external"  href="height=2in">height=2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Magnet3}\\</tt><br />
+{\small\it  Real decay} &amp;  {\small\it Simulated decay}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><IMG height=250 SRC="../cinderella.de/files/CindyDocu/CindyLab/Nebelkammer.png"></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Magnet3.png" border="0"  height="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>Real decay</b><br></td><td width=10></td>
+	<td><b>Simulated decay</b><br></td>
+     </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<h3> Inspecting Magnetic Fields</h3>
+<!--latexreplace<br />
+\index{inspect!magnetic field}<br />
+--><!-- /latexreplace --><br />
+In the inspector one can adjust the <i>fieldstrength</i> and the <i>friction</i> values of a magnetic field. In particular, it is possible to reverse the direction of the magnetic field by assigning a negative value to it.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MagnetInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The magnetic field inspector</b></td></tr></table><br />
+<br />
+<br />
+<h3> Magnetic Fields and CindyScript</h3>
+<br />
+Like any <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> object, a magnetic field provides several entries that can be read and  set by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The following list shows the accessible fields:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the strength of the field  </td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the friction in the polygonal region  </td></tr><tr><td class="wikicell" ><code>simulate</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" > turn on/off simulation for the field </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Polygon.html' class='wiki'>Polygon</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Coulomb+Force.html' class='wiki'>Coulomb Force</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:01:57 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Magnetic%20Field">
+    http://doc.cinderella.de/tiki-index.php?page=Magnetic%20Field
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

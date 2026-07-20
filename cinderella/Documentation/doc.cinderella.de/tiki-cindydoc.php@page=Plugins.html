@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Plugins 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Plugins</h2>
+<!-- latexreplace<br />
+\index{Java}<br />
+\index{extensions}<br />
+\index{plugin}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+With CindyScript it is possible to enhance and customize the behavior of Cinderella in an almost unlimited variety of ways. Still it may be desirable from time to time to be able to use self-written Java code in connection with Cinderella. The Cinderella Plugin Structure gives a way to handle such situations. There may be several reasons that make it desirable to use a plugin. Here are some of them<br />
+<br />
+<br />
+<ul><li> <b>Performance:</b> For some tasks CindyScript may simply be too slow, so that one wants to use some custom optimized code.
+</li></ul>
+<br />
+<ul><li> <b>Native libraries:</b> Sometimes one wants to use native libraries (like for instance the JOGL library for dealing with 3D graphics). In these cases a plugin may be used to link Cinderella to this library.
+</li></ul>
+<br />
+<ul><li><b>Licensing issues:</b> Plugins make it possible to write and to offer extensions for Cinderella that run under a specifically chosen license (for instance GNU GPL). We will make use of this ourselves in the future and publish open source extensions to Cinderella. These plugins will be available for download soon under....
+</li></ul>
+<br />
+<ul><li><b>Third-party code:</b> Plugins also form a good basis to include Java code written by others into a Cinderella project.
+</li></ul>
+<br />
+At the time of this writing, Plugins are only available in the standalone version of Cinderella and are not applicable in applets. This will be fixed in the near future.<br />
+<br />
+<br />
+<h3>Plugin Architecture</h3>
+<br />
+For detailed descriptions of the plugin architecture see our website at <a class="wiki external"  href="http://cinderella.de/plugins">http://cinderella.de/plugins</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />. There you may also find example plugins as well as suitable make files to create them. Here we only describe the workflow very roughly.<br />
+<br />
+A plugin itself is a <code>.jar</code> file that contains executable Java classes. The core link of the plugin is a Java file (compiled to a class file) that exports all the functionality of the plugin to Cinderella. Within Cinderella, the plugin can be accessed using CindyScript. The core file of the plugin must extend the Java class <code>CindyScriptPlugin</code>. This parent class is available through the <code>cindy2.jar</code> file in the Cinderella application.<br />
+<br />
+The code for a plugin may typically look as follows<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+import de.cinderella.api.cs.CindyScript;
+import de.cinderella.api.cs.CindyScriptPlugin;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class ExamplePlugin extends CindyScriptPlugin {
+
+    public String getName() {
+        return "Example Plugin";
+    }
+
+    public String getAuthor() {
+        return "Ulrich Kortenkamp and Juergen Richter-Gebert";
+    }
+
+    @CindyScript("sayHello")
+    public String testFunction() {
+        return "Hello from Plugin";
+    }
+
+    @CindyScript("square")
+    public double quadrieren(double x) {
+        return x * x;
+    }
+
+    @CindyScript("grayvalue")
+    public double getGray(Color c) {
+        return (c.getBlue() + c.getRed() + c.getGreen()) / 3.;
+    }
+
+    @CindyScript("testarray")
+    public String writeArray(ArrayList<Double> al) {
+        return Arrays.toString(al.toArray());
+    }
+
+}
+</pre></div><br />
+<br />
+The fragments given by code like <code>@CindyScript("square")</code> declare the name under which the function is accessible in CindyScript. The plugin can be used in CindyScript after it has been loaded with the <code>use</code> function:<br />
+<br />
+<h4>Loading a plugin: <span style="color:red;"><code>use(&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> This function loads a plugin with the name given as argument. <br />
+It is good practice to call this function in the initialization slot of CindyScript.</div><br />
+<br />
+So the above plugin may be used within CindyScript as follows:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+use("ExamplePlugin");
+println(sayHello());
+println(square(4));
+println(grayvalue((0.7,0.4,0.1)));
+println(testarray([1,2,3,4,5]));
+</pre></div><br />
+<br />
+This will create the output<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+Hello from plugin 
+16 
+102.3333 
+[1.0, 2.0, 3.0, 4.0, 5.0] 
+</pre></div><br />
+<br />
+Observe that all class casts are performed automatically. For a detailed description of the casting rules see the online documentation.<br />
+<br />
+<h3> Available Plugins</h3>
+<br />
+At the time of this writing there are only few plugins available. We publish all user contributed plugins on our website at <a class="wiki external"  href="http://cinderella.de/plugins">http://cinderella.de/plugins</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />, so please check there for current versions. Here we briefly present two of the them.<br />
+<br />
+<h4>Cindy to LegoNXT Communication</h4>
+<!-- latexreplace<br />
+\index{NXT}<br />
+\index{Lego Mindstorms}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+This plugin written by Michael Schmid provides a high-level interface to Lego Mindstorms NXT block. With this plugin all inputs and outputs of the Lego computer can be accessed and controlled. Thus it is possible to use Cinderella as a controller for Lego robots.<br />
+<br />
+Among others this plugin implements statements like <code>nxtforward(...)</code>, <code>nxtturnright(...)</code>, or <code>nxtgetlight()</code>. Using these statements it is for isntance directly possible to use a CindyScript program to influence the behavior of a robot car that is sensible to light changes.<br />
+<br />
+You can download the plugin along with a brief documentation from our webpage.<br />
+<br />
+<h4>Cindy3D</h4>
+<!-- latexreplace<br />
+\index{3D}<br />
+\index{JOGL}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+Another project is the use of the JOGL 3D interface as a 3D output device for Cinderella. A Plugin called <i>Cindy3D</i> designed by Matthias Reitinger, Jürgen Richter-Gebert and Jan Sommer will be specialized to this task. Using this plugin it will be possible to use 3D drawing functions directly from CindyScript. There will be functions for drawing points, lines, circles, polygons and three-dimensional meshes. The following three pictures which were generated via CindyScript give a rough impression of the possibilities of the plugin.<br />
+<br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/3D1X.png" border="0"  width="350" /></span></td><td><span class="img"><img alt="" src="img/wiki_up/3D2X.png" border="0"  width="350" /></span></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/3D3X.png" border="0"  width="350" /></span></td><td><span class="img"><img alt="" src="img/wiki_up/3D4X.png" border="0"  width="350" /></span></td></tr>
+</table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [09:14:28 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Plugins">
+    http://doc.cinderella.de/tiki-index.php?page=Plugins
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

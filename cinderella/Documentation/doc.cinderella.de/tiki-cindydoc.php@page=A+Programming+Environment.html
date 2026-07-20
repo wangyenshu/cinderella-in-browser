@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : A Programming Environment 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> A Programming Environment</h3>
+<br />
+<!--latexreplace<br />
+\index{CindyScript|(}<br />
+\index{programming|(}<br />
+--><!-- /latexreplace --><br />
+The <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> programming language is a powerful tool for adding all kinds of enhancements to Cinderella constructions. It is designed in a way such that the interplay with the geometric part of Cinderella and the simulations of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is as smooth as possible. Its functional design allows for high-level programming that enables rapid prototyping of interactive scenarios. The <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> language takes advantage of the fact that it runs in an environment in which on the one hand, facilities are present for graphical output and mouse-driven input (the geometric part), and on the other hand, physical simulations can be "outsourced" to the <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> simulation engine. As a consequence, the user can focus on programming the core problem. Very often, only a few lines of code are needed to achieve the desired behavior. This is in strong contrast to common programming languages, where a substantial part of programming goes into the creation of a graphical mouse-driven user interface.<br />
+<br />
+<h4>Sample Applications</h4>
+The possibilities of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> are endless and restricted only by the imagination of the user (and perhaps disk space), as in any other programming language. Nevertheless, we here want to present a few core application areas of the language.<br />
+<br />
+<h5> Enhanced Drawing Output</h5>
+One of the core facilities of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is that one can programmatically produce graphical output in a geometric view. When using a dynamic geometry system, one very often encounters situations in which it would be desirable to extend a geometric construction by more and more elements to such an extent that it becomes unreasonable to do this constructively. The programming facilities of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> can be used to create these elements automatically.<br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> offers access to geometric transformations, such that it is very easy to create functionally very complicated geometric drawings with only a few lines of code.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PythTree2.png" border="0"  width="450" /></span></td></tr><tr><td class="caption"><b>A scripted "Pythagoras tree"</b></td></tr></table><br />
+<br />
+<h5> Programmatic Drawing</h5>
+There is a special class of applications that cannot be covered at all by a classical approach to dynamic geometry. Constructions in dynamic geometry are inherently like unbranched programs, in which all calculations are always performed. Thus it is inherently difficult to include logical decisions or algorithmic behavior in a dynamic geometry program. Usually, these problems are resolved by conditionally controlling the visibility behavior of geometric elements by intersection properties (so-called <i>Boolean points</i>). <b>Cinderella.2</b> also offers this functionality, but at the same time, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provides a much better and more elegant way of dealing with this problem.<br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is a full-featured high-level programming language in which it is easy to implement arbitrary algorithmic behavior. Thus even complicated algorithms can be included on a general level in a dynamic geometry environment. Graphical output can be easily included in such algorithms.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/VoronoiB.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>The Delaunay and Voronoi diagrams of a point set</b></td></tr></table><br />
+<br />
+<h5> Analysis of Mathematical Functions</h5>
+<!--latexreplace<br />
+\index{function}<br />
+--><!-- /latexreplace --><br />
+In particular, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> offers advanced routines for function plotting. Thus it is possible to draw and analyze functions dealing with derivatives, extrema, and so on. Functions can be entered directly in a drawing, and results can be shown instantly. Making use of this together with the HTML export features of Cinderella, it is easy to generate interactive worksheets that allow for a wide variety of modes of analysis of functions. Functions can also be defined by geometric dependencies of the geometric constructions, which facilitates combining input and analytic parts in one example.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/NewtonBX.png" border="0"  width="450" /></span></td></tr><tr><td class="caption"><b>Newton iteration to find a root of a function</b></td></tr></table><br />
+<br />
+<br />
+<h5> Controlling the Behavior of Constructions</h5>
+A particularly interesting scenario arises when <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> controls the positions of free elements. The movements controlled by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> usually have priority over those performed by the user. Thus you can influence the effect of user input. The following example illustrates this in a very simple scenario. The picture below demonstrates Pick's theorem, which allows one to calculate the area of a triangle by calculating the integer points in the polygon and the integer points on the boundary.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PickB.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>A demonstration of Pick's theorem</b></td></tr></table><br />
+<br />
+Pick's theorem applies only to polygons whose vertex coordinates are pairs of integers, a restriction that is usually not supported by a dynamic geometry program. However, by adding the following three lines of code one can alter the behavior of the three free points:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.xy=round(A);
+B.xy=round(B);
+C.xy=round(C);
+</pre></div><br />
+<br />
+Although the points are freely movable, this code forces each vertex to snap to the closest integral point. All the text and all the green and yellow points in this example are also generated with <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->.<br />
+<br />
+<h4>Design and Features</h4>
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> was designed to suit the needs of programming mathematical problems in an environment in which the input parameters change dynamically due to user interaction. On the one hand, this was achieved by providing a language that has both powerful data types (real numbers, complex numbers, lists, vectors, matrices, etc.) and powerful operations that can work on these data. On the other hand, it was achieved by taking into account the real-time requirements for interactive user input already when the language was designed.<br />
+<br />
+<h5> High-Level Functional Programming</h5>
+<!--latexreplace<br />
+\index{functional programming}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is a functional language. This means that all operations are expressed as the application of functions to data. Programming functionally may take some time to get used to, but it offers a very high expressiveness, such that it is possible to describe complex situations with just a few lines of code. For instance, the following three lines of code calculate and print a list of the prime numbers smaller than 100:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+divisors(x):=select(1..x,mod(x,#)==0);
+primes(n):=select(1..n,length(divisors(#))==2);
+print(primes(100));
+</pre></div><br />
+<br />
+The first line defines a function that returns a list of all divisors of a number <code>x</code>. The second line provides a function that returns a list of all numbers smaller than <code>n</code> that have exactly two divisors. These are exactly the prime numbers smaller than <code>n</code>. The output of the algorithm is the following line:<br />
+<br />
+<!-- latexreplace \medskip\noindent{\small\texttt{<a class="wiki external"  href="2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97">2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />}}\medskip --><br />
+<code>[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]</code><br />
+<!-- /latexreplace --><br />
+<br />
+Using these high-level programming facilities together with graphics input and output offers possibilities that are not available in most other programming environments. The picture below shows an iteratively defined plant-like structure that was programmed in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The code for generation of this plant is shown next to it. It essentially uses only elementary drawing functions, advanced geometric transformations, and functional programming to create the entire drawing.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern1cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{PlantB} &amp;  \includegraphics<a class="wiki external"  href="width=2.26in">width=2.26in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ScriptPromo14} \\<br />
+<tt> \multicolumn{2}{l}{  \small\it Growing a plant in a view}\\</tt><br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/PlantB.png" border="0"  height="400" /></span></td><td width=30></td>
+<td><IMG height=400 SRC="../cinderella.de/files/CindyDocu/CindyScript/ScriptPromo14.png"></td>
+      </tr>
+      <tr>
+	<td><b>Growing a plant in a view</b></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<h5> Real-Time Calculations</h5>
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code can be evaluated for even the tiniest move of a geometric configuration. In this way, it is possible to achieve real-time interaction with geometric drawings. A user selects a point, moves it, and then can directly observe the changing results of the calculations. Although <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is an interpreted language, it is still fast enough to create a fluent drawing impression for most standard situations. The possibility of dynamically running programs that immediately react to user input opens a wide variety of applications and interactive scenarios. Here the applications range from explanations at an elementary- and high-school level through university courses up to investigations in sophisticated mathematical research. The example below shows a snapshot of an illustration of linear regression using the least squares method. The picture is dynamically updated when points are moved or added.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RegressionB.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>Linear regression by Gaussian approximation</b></td></tr></table><br />
+<br />
+<h5> Exact Timing</h5>
+<!--latexreplace<br />
+\index{timing}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provides various possibilities for synchronizing programs both with real time and with the time of a physics simulation. Thus one can easily create simulations that involve timing behavior. This can be very useful in programming interactive games or edutainment scenarios in which, for instance, the task of solving an exercise is bound to time restrictions. The ability to synchronize <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> with the timing of physics simulations can be used in two directions. Thus one can use this technique to synchronize a physics simulation with real time. Alternatively, it is possible to couple programming time and computation time, making it possible to slow down or speed up a simulation synchronously with a computation.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ClockB.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>A real-time clock</b></td></tr></table><br />
+<br />
+<h5> Advanced Plotting</h5>
+<!--latexreplace<br />
+\index{color plot}<br />
+--><!-- /latexreplace --><br />
+One line of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code is sufficient for simple function plotting. For example, <code>plot(sin(x))</code> will immediately invoke the graph of the sine function to be plotted in the view. However, Cinderella also provides several possibilities and enhancements that allow for the direct display of maxima, minima, and inflection points. With these features it is easy to make a visually meaningful analysis of functions. It is also possible to generate two-dimensional function plots that use color values for different function values. It is thus possible to create images of two-dimensional data quite easily. The picture below shows the density distribution of the function <code>sin(dist(x-A)*dist(x-B))</code> for two points <i>A</i> and <i>B</i>.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CasinB.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>Cassinian ovals as waves</b></td></tr></table><br />
+<br />
+<!--latexreplace<br />
+\index{CindyScript|)}<br />
+\index{programming|)}<br />
+--><!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [21:39:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=A%20Programming%20Environment">
+    http://doc.cinderella.de/tiki-index.php?page=A%20Programming%20Environment
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

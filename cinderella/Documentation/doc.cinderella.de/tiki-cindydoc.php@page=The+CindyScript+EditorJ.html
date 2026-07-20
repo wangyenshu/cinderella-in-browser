@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : The CindyScript EditorJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> CindyScriptコードの入力</h2>
+<br />
+<h3> CindyScript エディタ</h3>
+<br />
+CindyScript のスクリプトエディタはメニューの <i>スクリプト/CindyScript</i> から起動します。ここでは、スクリプトエディタの使い方を簡単に説明します。<br />
+<br />
+<br />
+<h4> 入力ウィンドウ</h4>
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditorJ.png" border="0"  width="480" /></span></td></tr><tr><td class="caption"><b>スクリプトエディタ</b></td></tr></table><br />
+<br />
+スクリプトエディタには３つのパーツがあります。左側にはスロットとその中のスクリプトについてツリー上に表示されています。右側には、スクリプト名を入力するフィールドと、プレイボタン、ストップボタン、ヘルプボタンの下に、スクリプトを書くおおきなテキストエリアと、スクリプトからの出力を表示するエリアがあります。<br />
+<br />
+<h4> スロット</h4>
+<br />
+シンデレラは高度にインタラクティブですが、それは <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコマンド(命令文)に適した多くの"実行場面"が用意されているからです。スクリプトエディタの左側には利用できる場面が表示されています。これをスロットともいいます。<br />
+<br />
+通常は、"Draw" スロットを使います。<a title="no description" href="tiki-cindydoc.php@page=ViewsJ.html" class="wiki">表示画面</a>に図が描かれるときにはいつでもここに書かれたスクリプトが実行されます。スクリプトを書くために、まず "Draw"スロット(フォルダアイコン)をクリックしてください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-drawJ.png" border="0"  width="480" /></span></td></tr><tr><td class="caption"><b>drawスロットにスクリプトを書く</b></td></tr></table><br />
+<br />
+テキストエリアに "クリックしてスクリプトを書き始めてください"と表示されます。テキストエリア上でクリックしてテキストを書き始めます。<br />
+<br />
+err("Drawing");<br />
+forall(1..20,draw(<a class="wiki external"  href="tiki-cindydoc.php@page=The+CindyScript+EditorJ.html#,#">#,#</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />));<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-exampleJ.png" border="0"  width="480" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+実行ボタン(歯車アイコン)を押すと、スクリプトによって作られた緑色の点が表示画面に斜めに表示されるのがわかるでしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-viewJ.png" border="0"  width="480" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+それぞれのスロットの役割は次の表のようになっています:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>スロット</b></td><td class="wikicell" ><b>実行される機会</b></td><td class="wikicell" ><b>注</b></td></tr><tr><td class="wikicell" >Draw </td><td class="wikicell" > 表示画面が書き換えられるとき </td><td class="wikicell" > </td></tr><tr><td class="wikicell" >Move </td><td class="wikicell" > 要素が動いたとき </td><td class="wikicell" > 要素が動くときいつも表示画面が書き換えられるわけではありません。したがって、MoveはDrawより頻繁に実行されます。</td></tr><tr><td class="wikicell" >Initialization </td><td class="wikicell" > 他のスクリプトより前に一度だけ実行	 </td><td class="wikicell" > スクリプトが変更されたり、図の要素が追加／削除されたときだけ実行されます。</td></tr><tr><td class="wikicell" >Timer Tick </td><td class="wikicell" > 定期的に</td><td class="wikicell" > </td></tr><tr><td class="wikicell" >Integration Tick </td><td class="wikicell" > 定期的に </td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Simulation Start </td><td class="wikicell" > シミュレーション(アニメーション)の開始時</td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Simulation Stop </td><td class="wikicell" > シミュレーション(アニメーション)の停止時 </td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Mouse Down </td><td class="wikicell" > マウスボタンが押されたとき </td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Mouse Up </td><td class="wikicell" > マウスボタンが離されたとき	 </td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Mouse Click </td><td class="wikicell" > マウスがクリックされたとき </td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Mouse Drag </td><td class="wikicell" > マウスがドラッグされたとき </td><td class="wikicell" ></td></tr><tr><td class="wikicell" >Key Typed </td><td class="wikicell" > キーボードが打たれたとき </td><td class="wikicell" ></td></tr></table><br />
+<br />
+<br />
+<h3> シェル</h3>
+<br />
+<a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコマンドを入力してすぐに実行することができます。いま、"Shell" スロットを選び、テキストエリアに命令を入力してみましょう。たとえば、「1+1」と入力してシフトキーと enter(return) キーを同時に押すと入力した命令が実行され、下のエリアに in-<a class="wiki external"  href="tiki-cindydoc.php@page=The+CindyScript+EditorJ.html"> </a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> と結果が出力されます。 shift-up と shift-down でスクロールして履歴を見ることもできます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-shellJ.png" border="0"  width="480" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> コマンドライン</h3>
+<br />
+　 <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> の命令を直接使って幾何要素を操作したりできると便利です。前述のようにシェルウィンドウを使うほかに、描画面のコマンドラインを使って短い命令を実行することができます。そのためには、メニューの「スクリプトーCommand Line" を選びます。あるいは、キーボードのショートカットを用いて Ctrl-Enter (Windows and Unix) あるいは CMD-Enter (Mac OS X) を押すとコマンドラインが表示されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CindyScriptCommandlineJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>コマンドラインを使って点を移動した</b></td></tr></table><br />
+<br />
+任意の <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> の命令を打ち込んでEnterキーを押すと実行され、コマンドラインはクリアされます。 Shift+Enter を押した場合は、実行後もコマンドラインはクリアされません。似たような命令を試したいときや、正しい構文を試行錯誤したいときに使えます。<br />
+<br />
+コマンドラインの右にある <b>permanent</b>-チェックボックスをチェックすると、実行したコードはDrawスロットに書き込まれ、描画面が書き換えられるたびに実行されます。スクリプトエディタを開いて、Drawスロットを開けば、編集ができます。<br />
+<br />
+簡単な例として、点Ｃを常に２点ABの中点に置く方法を示します。３つの点をとり、コマンドラインを開いて、 <code>C.xy=(A+B)/2</code> と打ち、 <b>permanent</b> チェックボックスをチェックします。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PermanentCommandLineJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b> <b>permanent</b> チェックボックスの使い方</b></td></tr></table><br />
+<br />
+Enterキーを押すと、点 <b>C</b> は <b>A</b> と <b>B</b> の中点に移動し、 <b>A</b> か <b>B</b> を移動しても常に中点にあります。スクリプトエディタのDrawスロットを開いて、命令文が自動的に移ったことをを確かめてください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CommandLineScriptJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>自動的に command line のスクリプトが作成された</b></td></tr></table><br />
+<br />
+<h3> CindyScript とインスペクタ</h3>
+<br />
+<a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>のテキスト入力フィールドにかかれたコードは CindyScript のコードと認識されます。そのスクリプトは一度だけ実行されますので、常に実行したい場合は、コマンドラインかスクリプトエディタに書かなければなりません。Enterキーを押した後も、コードはまだそこに書かれたままですが、その後の結果によっては入力フィールドの内容も書き換えられます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CindyScriptInspectorJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>インスペクタでCindyScript の命令を使う</b></td></tr></table><br />
+<br />
+<h3> クリック可能ボタン</h3>
+<br />
+文字オブジェクトは、インスペクタの <b>ボタンとして使う</b> ボックスをチェックするとクリックでボタンとして働くようにすることができます。  CindyScript のコードを書いて、ユーザーがクリックしたらその機能が働くようにできます。スクリプトを書くスペースは小さいので、<i>inititalization</i> スロットに書いて呼びだすこともできます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Clickable-ButtonJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<h3> 他の言語</h3>
+<br />
+上のドロップダウンメニューで、スクリプトを記述する言語を選ぶことができます。利用できる言語は Python と、図形を保存するために用いられている内部言語である CDYです。ただし、現在のところは、<!-- latexreplace CindyScript-->CindyScript<!-- /latexreplace --> だけが使えます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptEditor-languages.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 08 of March, 2012 [09:43:28 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=The%20CindyScript%20EditorJ">
+    http://doc.cinderella.de/tiki-index.php?page=The%20CindyScript%20EditorJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

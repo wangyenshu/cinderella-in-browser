@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Conic OperationsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> ２次曲線の扱い</h2>
+<!--latexreplace<br />
+\index{mode!conic}<br />
+\index{conic}<br />
+\index{tangent}<br />
+--><!-- /latexreplace --><br />
+２次曲線の描画に関して４つのボタンがあります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/conic-by-5.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Conic+by+Five+PointsJ.html" class="wiki">５点で決まる２次曲線</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/ellipse-by-foci.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Ellipse+by+FociJ.html" class="wiki">焦点と通る点で決まる楕円</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/parabola-by-foci.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Parabola+by+Focus+and+DirectrixJ.html" class="wiki">	焦点と準線で決まる放物線</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/hyperbola-by-foci.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Hyperbola+by+FociJ.html" class="wiki">焦点と通る点で決まる双曲線</a></td></tr></table><br />
+<br />
+この４つの方法の他に、メニューから選べるいくつかの方法が用意されています。この節では、これらのモードについて簡単に説明します。これらはすべて、すでに描かれている要素を用いて定義されるものです。２次曲線のメニューは次のようになっています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MenuConicXJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>２次曲線のメニュー</b></td></tr></table><br />
+<br />
+<h3> ５直線で決まる２次曲線</h3>
+<!--latexreplace<br />
+\index{conic!by five lines}<br />
+--><!-- /latexreplace --><br />
+５つの点を通る２次曲線がひとつ定まるので、５本の接線で決まる２次曲線も定義できます。このメニューを選ぶ前か、選んだあとで５本の直線を指定すれば２次曲線が描けます。<br />
+<br />
+<br />
+<h3> ４点と１直線で決まる２次曲線</h3>
+<!--latexreplace<br />
+\index{conic!by four points and a line}<br />
+--><!-- /latexreplace --><br />
+<br />
+４点を通り１つの直線に接する２次曲線は２つあります。このモードで描画できます。<br />
+<br />
+<h3> ４直線と１点で決まる２次曲線</h3>
+<!--latexreplace<br />
+\index{conic!by four lines and a point}<br />
+--><!-- /latexreplace --><br />
+４つの直線に接し、１つの点を通る２次曲線は２つあります。このモードで描画できます。<br />
+<br />
+次の図は、これら３つの例を示します。<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Conic5L}&amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Conic4P1L} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Conic1P4L} \\<br />
+{\small\it Five lines } &amp;  {\small\it Four points / one line}&amp;  {\small\it   One point / four lines}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+<tr> <td><IMG width=200 SRC="../cinderella.de/files/CindyDocu/CindyGeo/Conic5L.png"></td> <td width=10></td>
+<td><IMG width=200 SRC="../cinderella.de/files/CindyDocu/CindyGeo/Conic4P1L.png"></td> <td width=10></td>
+<td><IMG width=200 SRC="../cinderella.de/files/CindyDocu/CindyGeo/Conic1P4L.png"></td> </tr>
+<tr>
+<td><b>５本の直線</b></td> <td></td>
+<td><b>４点と１直線</b></td><td></td>
+<td><b>１点と４直線</b></td> </tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+<h3> 四角形に内接する２次曲線</h3>
+<!--latexreplace<br />
+\index{conic!inscribed}<br />
+--><!-- /latexreplace --><br />
+<br />
+このモードは透視図を描くときにとても便利です。四角形に内接する２次曲線を描きますが、最終的には正方形に内接する円の透視図となるように描画されます。そのため、４点を選ぶときは円を描くような順序でクリックする必要があります。<br />
+<br />
+<h3> 中心と主軸上の点と通る点で決まる２次曲線</h3>
+<!--latexreplace<br />
+\index{conic!by center and principal axis}<br />
+--><!-- /latexreplace --><br />
+２次曲線は、主軸と通る点によって特徴づけされることがよくあります。このモードは、中心と、主軸上の２つの通る点(長軸と短軸を決定する点)で決まる楕円を描きます。<br />
+<br />
+次の図は、上記の例を示します。<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Conic4gon}&amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ConicAxes}\\<br />
+{\small\it Inscribed conic } &amp;  {\small\it Conic by principal axes}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+<tr> <td><IMG width=200 SRC="../cinderella.de/files/CindyDocu/CindyGeo/Conic4gon.png"></td><td width=10></td>
+<td><IMG width=200 SRC="../cinderella.de/files/CindyDocu/CindyGeo/ConicAxes.png"></td>
+</tr>
+<tr>
+<td><b>内接する２次曲線</b></td> <td width=10></td>
+<td><b>長軸と短軸で決まる楕円</b></td>
+</tr>
+</table><br />
+<!-- /latexreplace --><br />
+<hr />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Conic+by+Five+PointsJ.html" class="wiki">５点を通る２次曲線</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Ellipse+by+FociJ.html" class="wiki">焦点と通る点で決まる楕円</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Hyperbola+by+FociJ.html" class="wiki">焦点と通る点で決まる双曲線</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Parabola+by+Focus+and+DirectrixJ.html" class="wiki">焦点と準線で決まる放物線</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Definition+ModesJ.html" class="wiki">定義モード</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 24 of February, 2012 [23:37:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Conic%20OperationsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Conic%20OperationsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

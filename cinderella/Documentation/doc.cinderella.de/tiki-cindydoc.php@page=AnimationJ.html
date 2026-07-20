@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : AnimationJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> アニメーション</h3>
+<!--latexreplace<br />
+\index{animation}<br />
+\index{mover}<br />
+\index{road}<br />
+\index{mode!animation}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/animation.png" border="0"  align="left" /></span></div>アニメーションモードでは点を動かす作業を<b>シンデレラ</b>が自動的に行ってくれます。 アニメーションモードで動かすためには、軌跡のときと同様、「動かすもの」と「動かす道」 を指定する必要があります。<br />
+<br />
+<ul><li> <b>動かすもの</b> はアニメーションで動かす自由要素です。
+</li><li> <b>動かす道</b> は、動かすものが乗っている要素です。アニメーションの間、動くものは動かす道に沿って動きます。
+</li></ul>
+<br />
+動かすものと動かす道をこの順に選ぶか、軌跡をクリックします。動かすものが「直線上の点」か「円周上の点」か、「点を通る直線」の場合、 シンデレラは、自動的に動かす道を判断します。現在、動かすものと道について、次の組合せがサポートされています。<br />
+<ul><li> <b>「動かすもの」= 点，「動かす道」= 直線:</b> 点が直線に沿って動きます。
+</li><li> <b>「動かすもの」= 点，「動かす道」= 円:</b> 点が円に沿って動きます。
+</li><li> <b>「動かすもの」= 直線，「動かす道」= 点:</b> 直線が点の周りに回転します。
+</li></ul>
+<br />
+アニメーションを定義すると、コントローラが画面に表示されます。次の図は、点が円周上を動くアニメーションが始まったところを示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Animation1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>点の周りを回る点のアニメーション</b></td></tr></table><br />
+<br />
+<br />
+<h4> アニメーションの全般的な制御</h4>
+<!--latexreplace<br />
+\index{animation control panel}<br />
+\index{animation!speed}<br />
+\index{animation!play}<br />
+\index{animation!pause}<br />
+\index{animation!stop}<br />
+--><!-- /latexreplace --><br />
+アニメーションのコントローラは、３つのボタンと速さスライダーからなり、画面の左下に表示されます。これで、アニメーションののすべての制御を行います。ボタンの正確な意味は、以下の通りです。<br />
+<br />
+<table align="center">
+<tr>
+<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/play.gif"> </td>
+<td>アニメーションの開始</td></tr>
+<tr>
+<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/pause.gif"></td>
+<td>アニメーションの一時停止 </td></tr>
+<tr>
+<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/stop.gif"></td>
+<td>アニメーションの停止 </td></tr></table><br />
+<br />
+動いているアニメーションを停止すると、図はアニメーションを始める前の状態に戻ります。一時停止したアニメーションを停止すると、一時停止の状態から再開できます。スライダーは、アニメーションの速さを調節します。<br />
+<br />
+<b>シンデレラ1.4</b>のアニメーションと異なるところが少しあります。<br />
+<br />
+<ul><li> アニメーションを定義したら、開始ボタンを押して始める必要があります。
+</li><li> アニメーションの途中でも要素を動かすことができます。
+</li><li> 複数の要素をアニメーションとして動かすことができます。それぞれのアニメーションは画面右上のポートボタンで個々に開始や停止ができます。
+</li></ul>
+<br />
+<h4> 個々のアニメーションの制御</h4>
+<br />
+ポートボタンは、アニメーションを選ぶためのものでもあります。アニメーションを選ぶには、シフトキーを押しながらポートボタンをクリックします。選択されたアニメーションはポートボタンの境界線がハイライトしています。<br />
+<br />
+<br />
+選ばれているアニメーションの属性は <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>で変更できます。特に、インスペクタの「情報」パネルには、アニメーションの速さを調節するスロットがあります。それにより、アニメーション間の相対的な速さを調節できます。アニメーションの速さは負の値にもできて、その場合はアニメーションの方向が変わります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>アニメーションのインスペクタ</b></td></tr></table><br />
+<br />
+インスペクタの「実行」ボックスをチェックすることにより個々のアニメーションを開始したり停止したりすることもできます。<br />
+<br />
+<br />
+<h4> 要素のトレース</h4>
+<br />
+アニメーションが動いている間、要素の動いている跡を強調したいことがよくあります。その素晴らしい視覚的効果を得るために <a title="no description" href="tiki-cindydoc.php@page=Traces+and+ArrowsJ.html" class="wiki">足跡</a> eの節を参照してください。「足跡」は、 <a title="no description" href="tiki-cindydoc.php@page=LocusJ.html" class="wiki">軌跡</a>をはっきり示してしまうより面白い効果が得られます。<br />
+<br />
+<h4> アニメーションと CindyScript</h4>
+<!--latexreplace<br />
+\index{animation!and CindyScript}<br />
+\index{CindyScript!and animations}<br />
+\index{animation!speed}<br />
+--><!-- /latexreplace --><br />
+<a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> でアニメーションの速さを変えることもできます。初期状態では、アニメーションの名前は "Anim0," "Anim1," ・・となっています。あるアニメーションが、 <code>Anim0</code>という名前であれば、 <code>Anim0.speed</code> と  <code>Anim0.run</code>で速度と実行フラグにアクセスできます。 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコードが<br />
+<div dir="ltr"><pre class='codelisting'>
+Anim0.run=(A.x>0);
+</pre></div><br />
+であれば、Aのx座標が正である間だけ"Anim0"を実行します。同様に、<br />
+<div dir="ltr"><pre class='codelisting'>
+Anim0.speed=B.x;
+</pre></div><br />
+は、 "Anim0" の速さをBの  <i>x</i> 座標により制御します。<br />
+<br />
+<br />
+<h4> アニメーションと CindyLab</h4>
+<!--latexreplace<br />
+\index{animation!and CindyLab}<br />
+\index{CindyLab!and animations}<br />
+--><!-- /latexreplace --><br />
+アニメーションのメインコントロールパネルは <a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a> のシミュレーションのコントロールパネルと同じです。したがって、すべての物理シミュレーションはアニメーションの要素とリンクし、同期します。この特徴を使えば、モーターのような装置を物理シミュレーションで簡単に使うことができます。 たとえば、次の図は、上下に動く点によって周期的に動かされるゴムバンドをシミュレートしています。上下の点の動きは円周上を動く点によって作られます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Animation3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>振動する波のアニメーション</b></td></tr></table><br />
+<br />
+<br />
+<h4> HTMLへの書き出し</h4>
+<!--latexreplace<br />
+\index{export!HTML}<br />
+\index{HTML export}<br />
+--><!-- /latexreplace --><br />
+シンデレラの旧バージョンと違い、HTMLに書き出されたアニメーションはコントロールパネルでフルアクセスできます。つまり、HTMLページ上でアニメーションの開始、一時停止、停止が自由にできます。アニメーションが動いている間、自由要素を動かすこともできます。 これについては、 <a title="no description" href="tiki-cindydoc.php@page=HTML+ExportJ.html" class="wiki">HTMLへの書き出し</a>の節でも解説します。<br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+動くものと動く道を選んでアニメーションを実行する。<br />
+<br />
+<h3> 注意</h3>
+<b>シンデレラ1.4</b>からかなりの変更があります。<br />
+<br />
+<h3>See also</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=LocusJ.html" class="wiki">軌跡</a>
+</li><li> <a title="物理シミュレーション　CindyLab" href="tiki-cindydoc.php@page=CindyLabJ.html" class="wiki">CindyLab</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=CindyScriptJ.html" class="wiki">CindyScript</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Traces+and+ArrowsJ.html" class="wiki">足跡</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=HTML+ExportJ.html" class="wiki">HTMLへの書き出し</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [07:56:47 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=AnimationJ">
+    http://doc.cinderella.de/tiki-index.php?page=AnimationJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

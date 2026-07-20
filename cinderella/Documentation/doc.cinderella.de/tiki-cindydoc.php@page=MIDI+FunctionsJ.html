@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : MIDI FunctionsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>MIDI 関数</h2>
+<br />
+<h3> Cinderella-MIDI の使い方</h3>
+<!-- latexreplace<br />
+\index{MIDI}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+　MIDI は <b>M</b>usical <b>I</b>nstrumental <b>D</b>igital <b>I</b>nterface の略で、コンピュータなどで扱う電子楽器の音楽データの標準的な規格です。 MIDI はそれぞれの楽器で演奏した音色、音量、旋律など音楽を構成する多くのデータからなります。 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> MIDI インターフェースでは、簡単で柔軟な方法で音楽や音響効果を作るための一連のデータを作ることができます。そのための方法を述べる前に、MIDI について少し解説しておきましょう。それにより、シンデレラとの関係を理解しやすくなります。そのなかで、CindyScript でどのように扱うかについても言及します。<br />
+<br />
+<h3>楽譜、チャンネル、楽器</h3>
+<!-- latexreplace<br />
+\index{music|(}<br />
+\index{notes|(}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+　大雑把に言って、MIDIで最も基本的な機能は、情報を音楽シンセサイザに送信して、楽譜として処理させることです。その最も簡単な形は 0 から 127 までの数を使ってシンセサイザに演奏させることです。標準的なMIDIの記述では、中央のＣの音を60とします。そこから半音ずつ数を増減します。したがって、C# は61、Dは62となります。次の表は、２オクターブ分の対応表です。<br />
+<br />
+<!--latexreplace {\small --> <!-- /latexreplace --><br />
+<table border=1 class="wikitable"><tr>
+<td width=20> C </td><td width= 20 > C# </td><td width=20> D </td><td width=20> D# </td><td width=20> E </td><td width=20> F </td><td width=20> F# </td><td width=20> G </td><td width=20> G# </td><td width=20> A </td><td width=20> B </td><td width=20> H </td><td width=20> c </td><td width=20> c# </td><td width=20> d </td><td width=20> e# </td><td width=20> e </td><td width=20> f </td><td width=20> f# </td><td width=20>  g </td><td width=20> g# </td><td width=20> a </td><td width=20> b </td><td width=20> h </td><td width=20> c'</td></tr>
+<td> 60 </td><td> 61 </td><td> 62 </td><td> 63 </td><td> 64 </td><td> 65 </td><td> 66 </td><td> 67 </td><td> 68 </td><td> 69 </td><td> 70 </td><td> 71 </td><td> 72 </td><td> 73 </td><td> 74 </td><td> 75 </td><td> 76 </td><td> 77 </td><td> 78 </td><td> 79 </td><td> 80 </td><td> 81 </td><td> 82 </td><td> 83 </td><td> 84</td></tr>
+</table><br />
+<!--latexreplace } --> <!-- /latexreplace --><br />
+<br />
+CindyScript では、たとえば <code>playtone(60)</code> とするだけでその高さの音を出すことができます。<br />
+<br />
+　しかしながら、楽譜は音の高さだけでできているわけではありません。楽器名や音の大きさなど、その他の内容を含んでいます。MIDIは音楽を構成する多くのものをコントロールします。たとえば、ピアノの演奏を想像してみてください。鍵盤を叩く速さによって音の大きさが変わるでしょう。これはピアノの特徴です。鍵盤の叩きかたによって音色も変わります。 MIDIは音量だけでなくこういった特徴を自動的に表現します。そのため、音量をコントロールするパラメータは「ボリューム」というより「速度」と呼ばれています。Cinderella では、このパラメータは0.0から1.0までの数で表されます。たとえば、 <code>playtone(60,velocity->0.5)</code> とすると、 C 音を中間的な音量でならします。<br />
+　Cinderella の初期状態では、ピアノのような音で演奏されます。音を鳴らすときに不可欠な MIDI の２つの要素があります。それは、 <i>楽器</i> と <i>チャンネル</i> です。ひとつの MIDI 装置で16人の演奏者からなる音を鳴らすことができます。そのために、MIDI は0から15までの16個のチャンネルを持っており、それぞれが128種類の楽器（管楽器、弦楽器、打楽器、ピアノ、アコーディオン、ギターなど）を受け持つことができます。 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> で、ある楽器（たとえば、アコースティックギターは25番）を、チャンネル３に割り当てるには、 <code>midichannel(3, intrument->25)</code> あるいは <code>instruments(25, channel->3)</code> と記述します。 <code>playtone(...)</code> が演奏するのは標準的にはチャンネル 0 ですが、それは修飾子で次のようにして変更できます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+midichannel(3,instrument->25); //guitar
+midichannel(2,instrument->12); //vibraphone
+playtone(60);
+playtone(64);
+playtone(67,channel->3);
+playtone(72,channel->2);
+</pre></div><br />
+<br />
+　ハ長調の主和音を、下の２つの音はピアノで、上の音はヴィブラフォンとギターで鳴らすことを考えてみましょう。それぞれのチャンネルは完全に同時に使われます。ですから、ピアノが同時に２つの音を鳴らすことは問題にはなりません。<br />
+<br />
+　CindyScript MIDI  では、主だった楽器がすぐ使えるように16 のチャンネルには事前に楽器が割り当てられています。次の表がその割当表です。 (楽器名の後ろの数字が対応する楽器の番号です。):<br />
+<br />
+<!--latexreplace {\footnotesize --> <!-- /latexreplace --><br />
+<font size=-4><br />
+<table>
+<tr><td width=230>0: Acoustic Grand Piano (1)</td><td width=230>8: Synt. square wave (81)</td></tr>
+<tr><td>1: Glockenspiel (10)</td><td>9: DRUMSET </td></tr>
+<tr><td>2: Vibraphone (12) </td><td>10: FX 3, crystal (99) </td></tr>
+<tr><td>3: Marimba (13)  </td><td>11: Tinkle Bell (113) </td></tr>
+<tr><td>4: Xylophone (14) </td><td>12: Flute (74) </td></tr>
+<tr><td>5: Woodblock (116)  </td><td>13: Acoustic Bass (33 </td></tr>
+<tr><td>6: Pizzicato Strings (46)  </td><td>14: Percussive Organ (18) </td></tr>
+<tr><td>7: Tremolo Strings (45)  </td><td>15: Alto Saxophone (66) </td></tr>
+</table><br />
+</font><br />
+<!--latexreplace } --> <!-- /latexreplace --><br />
+<br />
+　音についてのその他の要素（残響、バランスなど）には修飾子でアクセスできます。詳しくは別に述べることにして、ここでは最も重要な'duration'について述べます。このパラメータは、音を鳴らす時間（秒）を指定します。 たとえば、 <code>playtone(60,duration->0.1,velocity->1)</code> とすると、短く最音量の C 音を鳴らします。 修飾子で指定しないときの duration の初期値は1秒です。<br />
+<br />
+<br />
+<h3>タイミングとシーケンサ</h3>
+<br />
+　ここまで、音を一つ鳴らす方法を示してきました。Cinderellaでメロディを演奏する方法が２つあります。CindyScriptの <code>wait(...)</code> 関数を使ってタイミングをとるか MIDI シーケンサを使います。まず、シーケンサを使わない方法について述べます。そのためには、<code>wait(...)</code> 関数を使って個々の音符を表現します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playtone(60,duration->3);     wait(500);
+playtone(64,duration->2.5);   wait(500);
+playtone(67,duration->2);     wait(500);
+playtone(72,duration->1.5);
+</pre></div><br />
+<br />
+この例では、それぞれの音は同じ間隔で鳴ります。この方法を使ってメロディを作ればよいのです。次のコードを試してください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+halftones=[61,63,66,68,70,73,75,78,80,82,85,87,90];
+forall(60..90,i,
+  playtone(i,velocity->if(contains(halftones,i),1,0.6),
+             channel->if(contains(halftones,i),3,5));
+  wait(100);
+);
+</pre></div><br />
+<br />
+　この方法には不便な点があります。第１に、タイミングを CindyScript で詳しく書かなければなりません。第２に、  <code>wait(...)</code> 関数によって他の CindyScript の命令の実行ができません。そのため、（他にも理由はありますが）  MIDI シーケンサを使う方が簡単です。<br />
+<br />
+　MIDI シーケンサは、MIDIの第２の主要な特徴です。それは、MIDI でタイミングをとる小さなプログラムです。 CindyScript でこのシーケンサにアクセスするには <code>playmelody(...)</code> 関数か <code>midiaddtrack(...);midistart()</code> 関数を使います。最初の方法はシンプルで直感的です。２番目の方法は強力です。ここでは最初の方法を簡潔に述べます。 <code>plamelody(...)</code> 関数には MIDI イベントのリストを渡します。MIDIイベントの最も簡単な形式は、音と時間のリストからなるものです。ハ長調の分散和音は次のようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([[60,1],[64,1],[67,1],[72,4]]);
+</pre></div><br />
+<br />
+次に示すように、音の高さは数ではなく文字で表すことも可能です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([
+  ["c",1],["e",1],["f",1],["g",5],["c",1],["e",1],["f",1],["g",5],
+  ["c",1],["e",1],["f",1],["g",2],["e",2],["c",2],["e",2],["d",5],
+  ["e",1],["e",1],["d",1],["c",3],["c",1],["e",2],["g",2],["g",1],
+  ["f",4],["f",1],["e",1],["f",1],["g",2],["e",2],["c",2],["d",2],["c",5]
+],speed->300,instrument->57)
+</pre></div><br />
+<br />
+　このコードは「聖者が町にやってきた」を演奏します。この関数にも、いろいろな修飾子があります。たとえば、トランペットのような楽器を選んでいます。（本当のトランペット奏者の方はこんな音ですがご容赦願います）速度の 300 は1分間の"拍数"です。  <i>拍数</i> はシーケンサでの基本的な時間の単位です。４分の４拍子であれば１小節に４つ、ワルツでは１小節に３つというようなものです。また、拍は分数でも許されます。８分の、とか３分の、とか４分の、という使われ方がされるかもしれません。<br />
+<br />
+　シーケンサによる、シンセサイザとのインターフェースは音楽の要素について多くの内容を表すことができます。詳細は後ほど述べます。<br />
+<br />
+<br />
+<h3>打楽器</h3>
+<br />
+　Cinderella は <i>標準 MIDI</i> と呼ばれる、あらかじめ設定された楽器の組合せを用います。標準 MIDI には、特別な（非常に役立つけれど）取り決めがあります。チャンネル 9 が打楽器のために予約されていて、ドラムセットを実行するのに使うことができます。ですから、チャンネル 9 を使うときにはこのことを念頭に置いてください。この場合に使う MIDI 番号は特定の打楽器に割り当てられています。次の表でそれを示します。<br />
+<br />
+<!--latexreplace {\footnotesize --> <!-- /latexreplace --><br />
+<font size=-4><br />
+<table>
+<tr><td width=170> 35 Bass Drum 2 </td><td width=170> 47 Mid Tom 1 </td><td width=170> 59 Ride Cymbal 2 </td><td width=170> 71 Short Whistle </td></tr>
+<tr><td> 36 Bass Drum 1 </td><td> 48 High Tom 2 </td><td> 60 High Bongo </td><td> 72 Long Whistle </td></tr>
+<tr><td> 37 Side Stick </td><td> 49 Crash Cymbal 1 </td><td> 61 Low Bongo </td><td> 73 Short Guiro </td></tr>
+<tr><td> 38 Snare Drum 1 </td><td> 50 High Tom 1 </td><td> 62 Mute High Conga </td><td> 74 Long Guiro </td></tr>
+<tr><td> 39 Hand Clap </td><td> 51 Ride Cymbal 1 </td><td> 63 Open High Conga </td><td> 75 Claves </td></tr>
+<tr><td> 40 Snare Drum 2 </td><td> 52 Chinese Cymbal </td><td> 64 Low Conga </td><td> 76 High Wood Block </td></tr>
+<tr><td> 41 Low Tom 2 </td><td> 53 Ride Bell </td><td> 65 High Timbale </td><td> 77 Low Wood Block </td></tr>
+<tr><td> 42 Closed Hi-hat </td><td> 54 Tambourine </td><td> 66 Low Timbale </td><td> 78 Mute Cuica </td></tr>
+<tr><td> 43 Low Tom 1 </td><td> 55 Splash Cymbal </td><td> 67 High Agogo </td><td> 79 Open Cuica </td></tr>
+<tr><td> 44 Pedal Hi-hat </td><td> 56 Cowbell </td><td> 68 Low Agogo </td><td> 80 Mute Triangle </td></tr>
+<tr><td> 45 Mid Tom 2 </td><td> 57 Crash Cymbal 2 </td><td> 69 Cabasa </td><td> 81 Open Triangle </td></tr>
+<tr><td> 46 Open Hi-hat </td><td> 58 Vibra Slap </td><td> 70 Maracas </td><td>
+</table><br />
+</font><br />
+<!--latexreplace } --> <!-- /latexreplace --><br />
+<br />
+これによって、リズムトラックを伴う音楽を作ることが簡単になります。打楽器は、音楽以外のCinderellaのアプリケーションでも音響効果として有効に使えます。たとえば、卓球ゲームのではウッド・ブロック ( 76 番と 77 番 )を使えば球を打つときの効果音ができます。<br />
+<br />
+次のコードはシーケンサを用いた簡単なロックリズムを示します。トラックを始めに巻き戻すのに、<code>playmelody(...)</code> の中で <code>"goto"</code> が使われているのをごらん下さい。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody(channel->9,speed->500,loop->8,
+ [[35,3],[35,3],[35,3],[35,6],[35,1],["goto",0], //bass drum
+  [-1,2],[42,4],[42,4],[42,4],[42,2],["goto",0], //high-hat
+  [-1,4],[38,8],[38,4],["goto",0],               //snare 
+  [59,4],[59,4],[59,4],[59,4],["goto",0],        //ride cymbal
+  [-1,13],[76,1],[62,1],[-1,2],["goto",0]        //percussion
+]);
+</pre></div><br />
+<br />
+このコードで、いくつかの打楽器が旋律や複雑なリズムパターンを演奏しています。 <code>-1</code> は休符として使われています。<br />
+<br />
+<h3>トラック</h3>
+<br />
+最後に、旋律を受け持つパートと打楽器リズムからなる短い音楽を作って、この簡単な紹介を終わります。MIDI はシーケンサのために多くのトラックを持つことができます。それぞれのトラックは１人の演奏者に対応します。 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の <code>midiaddtrack(...)</code> 関数は、トラックをシーケンサに追加します。追加されたトラックは <code>midistart()</code> 関数によって有効になります。次のコードは、よく知られた「聖者が町にやってきた」をロック風のリズムで演奏します。ここで使われている技法はこのあとで説明します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+midichannel(3,instrument->57);
+midiaddtrack(channel->3,track->1,
+ [["c",1],["e",1],["f",1],["g",5],["c",1],["e",1],["f",1],["g",5],
+  ["c",1],["e",1],["f",1],["g",2],["e",2],["c",2],["e",2],["d",5],
+  ["e",1],["e",1],["d",1],["c",3],["c",1],["e",2],["g",2],["g",1],
+  ["f",4],["f",1],["e",1],["f",1],["g",2],["e",2],["c",2],["d",2],["c",5]
+]);
+midiaddtrack(channel->9,track->2,stretch->1/2,offset->3,repeat->8,
+ [[35,3],[35,3],[35,3],[35,6],[35,1],["goto",0], //bass drum
+  [-1,2],[42,4],[42,4],[42,4],[42,2],["goto",0], //high-hat
+  [-1,4],[38,8],[38,4],["goto",0],               //snare 
+  [59,4],[59,4],[59,4],[59,4],["goto",0],        //ride cymbal
+  [-1,13],[76,1],[62,1],[-1,1]                   //percussion
+]);
+midistart(speed->250);
+</pre></div><br />
+<br />
+　まず、旋律とリズム用の２つのトラックをシーケンサに追加し <code>midistart()</code> で使えるようにします。修飾子で設定するタイミングと位置決めに関して少し問題があります。はじめに、先の例から「聖者が町にやってきた」のトラックをとります。それをトラック１としましょう。つぎに、先ほどのロックリズムパターンをトラック２に入れるのですが、ここでちょっとした問題があります。まず、タイミングが合いません。旋律の拍はリズムトラックの2倍あります。そこで <code>stretch->1/2</code> 修飾子を使ってリズムトラックと合わせます。次に、「聖者が町にやってきた」の最初の3音はアウフタクトです。ですから、リズムは最初から始まってはいけません。そこで <code>offset->3</code> 修飾子で始まりを合わせます。最後に、リズムパターンは８回繰り返します。そこで<code>repeat->8</code> とします。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2>単音</h2>
+<br />
+　サウンド関数の説明を、まず単音を鳴らす関数から始めます。音の特徴を出すために、いくつかの修飾子があります。<br />
+<br />
+<hr />
+<br />
+<A NAME="playtone"></A><br />
+<h4>単音を鳴らす: <span style="color:red;"><code>playtone(&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> これは、音を鳴らすもっとも単純な方法です。この関数が実行されると音が鳴ります。修飾子がないとき、初期設定の楽器音が使われます。鳴る時間は1秒で、音量は <code>0.5</code> です。<br />
+<br />
+<br />
+<b>例</b> 次のコードはハ長調の分散和音を鳴らします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playtone(60);
+wait(1000);
+playtone(64);
+wait(1000);
+playtone(67);
+wait(1000);
+playtone(72, duration->4);
+</pre></div><br />
+<br />
+<b>修飾子:</b> いくつかの修飾子がありますが、ほとんどはその名前から意味がわかるでしょう。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>velocity</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >音量（ピアノの鍵盤を叩くときの速度）</td></tr><tr><td class="wikicell" ><code>amp</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" > <code>velocity</code> と同じ</td></tr><tr><td class="wikicell" ><code>duration</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >音の長さ。秒単位。</td></tr><tr><td class="wikicell" ><code>channel</code></td><td class="wikicell" ><code>0..15</code></td><td class="wikicell" >演奏するチャンネル</td></tr><tr><td class="wikicell" ><code>reverb</code></td><td class="wikicell" ><code>0.0 ... 1.0 </code></td><td class="wikicell" >残響効果 </td></tr><tr><td class="wikicell" ><code>balance</code></td><td class="wikicell" ><code>-1.0 ... 1.0</code></td><td class="wikicell" >左右のバランス</td></tr><tr><td class="wikicell" ><code>bend</code></td><td class="wikicell" ><code>-2.0 ... 2.0</code></td><td class="wikicell" >半音の上げ下げ</td></tr></table><br />
+<br />
+<code>bend</code> 修飾子によって、音程が半音単位で2半音まで上下できます。<br />
+<br />
+音の長さ duration が 0 以下のときは <code>stoptone(...)</code> で止められるまで鳴り続けます。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="stoptone"></A><br />
+<h4>音を止める: <span style="color:red;"><code>stoptone(&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 特定のキーの音を止めます。音が鳴り続けるときに有効です。<br />
+<br />
+<hr />
+<br />
+<A NAME="playfrequency"></A><br />
+<h4>特定の周波数で鳴らす: <span style="color:red;"><code>playfrequency(&#060;real&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>playtone</code> とよく似ています。しかし、こちらは引数を周波数 (Hz) （実数）で渡します。より物理的な <code>playsin(...)</code> を使う方がよい場合もあります。<br />
+<br />
+<b>例:</b> <code>playfrequency(440)</code> で 440 Hz の音を、現在選択されているチャンネルの楽器で鳴らします。 <code>playfrequency</code> 関数は、インドのラーガやジャワのガムラン音楽のような非ヨーロッパ系の音階をシミュレートするときに必要でしょう。<br />
+<br />
+<b>説明:</b> 修飾子は <code>playtone(...)</code> と同様ですが <code>bend</code> 修飾子はここでは無効です。<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2>旋律</h2>
+<br />
+Cinderella MIDI インターフェースは音符の列を演奏するための命令セットを豊富に提供します。原則として、各音符（もっと一般的にはそれぞれのMIDIイベント）はこれを演奏するためのシーケンサと関連します。演奏される音符は CindyScript のリストで与えられます。各音符は音程と長さを表す整数か文字列からなるリストで表されます。また、楽器や音量もこのリストの要素です。 CindyScript のすべての旋律に関する処理に共通するこのリストの構造について説明をします。<br />
+<br />
+<h3>旋律リストの説明</h3>
+<br />
+<tt> <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> において、旋律はリストで表現されます。最も簡単なものは音の列です。次のコードでは、ハ長調の音階を演奏します。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([["C",1],["D",1],["E",1],["F",1],["G",1],["A",1],["H",1],["c",5]])
+</pre></div><br />
+<br />
+音名の代わりに、音の高さを表す整数のコードを使うこともできます。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([[60,1],[62,1],[64,1],[65,1],[67,1],[69,1],[71,1],[72,5]])
+</pre></div><br />
+<br />
+各リストの２番目の数は音の長さを表します。音の長さは拍で数えられます。初期状態では1分につき60の速さで演奏されます。これは、 <code>midispeed(...)</code> 関数の修飾子で変更できます。<br />
+<br />
+内部的には、旋律が演奏される間、次のようなことが起ります。旋律の最初に、シーケンサはその開始点をセットします。最初の音符が鳴らされるとシーケンサはその拍数だけ進みます。内部的には、各拍は各音符を正確に鳴らすための小ステップに分割されます。実際、一つの拍は５×３×２×２×２＝２４０のステップに分けられます。これにより、8分音符、16分音符，32分音符、3連符、５連符を正確に演奏できます。実際にはこの小ステップはほとんど連続していると思えるくらいのものです。そのため、音の長さは実数で表すことができます。小ステップへの変換は自動的に行われます。次のコードでは、音階の各音が1拍分ずつ鳴りますが、8分音符、3連符・・というように細かく分割して鳴らされていきます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([["C",1],
+            ["D",1/2],["D",1/2],
+            ["E",1/3],["E",1/3],["E",1/3],
+            ["F",1/4],["F",1/4],["F",1/4],["F",1/4],
+            ["G",1/6],["G",1/6],["G",1/6],["G",1/6],["G",1/6],["G",1/6],
+	    ["A",1/8],["A",1/8],["A",1/8],["A",1/8],["A",1/8],["A",1/8],["A",1/8],["A",1/8],
+            ["H",1],["c",5]]) 
+</pre></div><br />
+<br />
+つぎに、旋律を構成する他の要素について説明します。<br />
+<br />
+<b>音程:</b> 音程が音名か整数で表されることは既に述べました。１つの音は <code>&#91;&#060;音程&#062;,&#060;長さ&#062;&#93;</code> という形で表されます。ここで、 <code>&#060;音程&#062;</code> は音名か整数で、 <code>&#060;長さ&#062;</code> は正の実数で表します。次の表は中央のオクターブについて音名と音コードの対応を示します。<br />
+<br />
+<table border=1 class="wikitable">
+<tr><td width=30> <b>C</b> </td><td width=30> <b>Cis</b></b> </td><td width=30> <b>Des</b> </td><td width=30> <b>D</b> </td><td width=30> <b>Dis</b> </td><td width=30> <b>Es</b> </td><td width=30> <b>E</b> </td><td width=30> <b>F</b> </td><td width=30> <b>Fis</b> </td><td width=30> <b>Ges</b> </td><td width=30> <b>G</b> </td><td width=30> <b>Gis</b> </td><td width=30> <b>As</b> </td><td width=30> <b>A</b> </td><td width=30> <b>Ais</b> </td><td width=30> <b>B</b> </td><td width=30> <b>H</b> </td><td width=30> <b>c</b> </td></tr>
+<tr><td width=30>48 </td><td width=30> 49 </td><td width=30> 49 </td><td width=30> 50 </td><td width=30> 51 </td><td width=30> 51 </td><td width=30> 52 </td><td width=30> 53  </td><td width=30> 54 </td><td width=30> 54 </td><td width=30> 55 </td><td width=30> 56 </td><td width=30> 56 </td><td width=30> 57 </td><td width=30> 58 </td><td width=30> 58 </td><td width=30> 59 </td><td width=30> 60 </td></tr>
+</table><br />
+<br />
+次のオクターブはこうなります:<br />
+<br />
+<table border=1 class="wikitable">
+<tr><td width=30>  <b>c</b> </td><td width=30> <b>cis</b> </td><td width=30> <b>des</b> </td><td width=30> <b>d</b> </td><td width=30> <b>dis</b> </td><td width=30> <b>es</b> </td><td width=30> <b>e</b> </td><td width=30> <b>f</b> </td><td width=30> <b>fis</b> </td><td width=30> <b>ges</b> </td><td width=30> <b>g</b> </td><td width=30> <b>gis</b> </td><td width=30> <b>as</b> </td><td width=30> <b>a</b> </td><td width=30> <b>ais</b> </td><td width=30> <b>b</b> </td><td width=30> <b>h</b> </td><td width=30> <b>c&#39;</b> </td></tr>
+<tr><td width=30> 60 </td><td width=30> 61 </td><td width=30> 61 </td><td width=30> 62 </td><td width=30> 63 </td><td width=30> 63 </td><td width=30> 64 </td><td width=30> 65  </td><td width=30> 66 </td><td width=30> 66 </td><td width=30> 67 </td><td width=30> 68 </td><td width=30> 68 </td><td width=30> 69 </td><td width=30> 70 </td><td width=30> 70 </td><td width=30> 71 </td><td width=30> 72 </td></tr>
+</table><br />
+<br />
+下のオクターブは同じようにシフトしていけばよいのです。つまり、 <code>C&#39;&#39;</code> は 24 です。上のオクターブも同様です。たとえば、 <code>c&#39;&#39;&#39;</code> は 96 になります。<br />
+<br />
+単音ではなく和音を演奏することもできます。そのためには、同時に鳴らす音をリストにします。その形式は <code>&#91;&#91;&#060;音程1&#62;,&#060;音程2&#62;,&#060;音程3&#62;,...&#93;,&#060;長さ&#062;&#93;</code> です。次のコードは、次第に和音を構成する音を増やしながら演奏します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([["C",1],
+            [["C","E"],1],
+            [["C","E","G"],1],
+            [["C","E","G","c"],5] ] )
+</pre></div><br />
+<br />
+最後に、 <code>-1</code> か <code>"P"</code> または <code>"p"</code> を使うことで休符ができます。<br />
+<br />
+<b>ダイナミクスとフレージング:</b> 旋律を演奏するために、次のようなダイナミクス（音の強弱）やフレージングがあります。それぞれ、その文字列だけのリストにします。現在、次のものが実行できます。:<br />
+<br />
+<ul><li> <b><code>"ppp"</code>:</b> ピアノピアニッシモ
+</li><li> <b><code>"pp"</code>:</b> ピアニッシモ
+</li><li> <b><code>"p"</code>:</b> ピアノ
+</li><li> <b><code>"mp"</code>:</b> メゾピアノ
+</li><li> <b><code>"mf"</code>:</b> メゾフォルテ
+</li><li> <b><code>"f"</code>:</b> フォルテ
+</li><li> <b><code>"ff"</code>:</b> フォルテッシモ
+</li><li> <b><code>"fff"</code>:</b> フォルテフォルテッシモ
+</li><li> <b><code>">"</code>:</b> アクセント
+</li><li> <b><code>"staccato"</code>:</b> スタッカート
+</li><li> <b><code>"st"</code>:</b> スタッカート
+</li><li> <b><code>"legato"</code>:</b> レガート
+</li><li> <b><code>"le"</code>:</b> レガート
+</li><li> <b><code>&#91;"velocity",&#060;実数&#062;&#93;</code>:</b> 音量を <code>&#060;実数&#062;</code> にする。実数は 0.0 から 1.0
+</li></ul>
+<br />
+次のコードは、音階の演奏ををピアニッシモ・スタッカートで始めて、フォルテ・レガートで終わります。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([["st"],["pp"],["C",1],["D",1],["E",1],["F",1],["le"],["f"],["G",1],["A",1],["H",1],["c",5]])
+</pre></div><br />
+<br />
+<br />
+<b>位置合わせ:</b> シーケンサは内部的に演奏位置を表すポインタを持っています。通常、ポインタは演奏位置まで進みます。しかし、ポインタを直接操作して位置をコントロールする命令文があります。トラックが加えられたときはポインタは０に設定されます。<code>"goto"</code> と <code>"gorel"</code> によって、ポインタは絶対位置か相対位置に移動できます。その構文は次の通りです。:<br />
+<br />
+<ul><li> <b><code>&#91;"goto",&#060;実数&#062;&#93;</code>:</b> ポインタを、最初から測って <code>&#060;実数&#062;</code> の位置に置きます。負の数は禁じられています。
+</li><li> <b><code>&#91;"gt",&#060;実数&#062;&#93;</code>:</b>  <code>"goto"</code> と同じです。
+</li><li> <b><code>&#91;"gorel",&#060;実数&#062;&#93;</code>:</b>  ポインタの位置を相対的に計算してof <code>&#060;実数&#062;</code> の位置に置きます。 <code>&#060;実数&#062;</code> は負の値も取り得えます。ただし、結果として負になるような数は禁じられています。
+</li><li> <b><code>&#91;"gr",&#060;real&#062;&#93;</code>:</b>  <code>"gorel"</code> と同じです。
+</li></ul>
+<br />
+次のコードは <code>goto(...)</code> 命令を使って少し弱い音で第２声を鳴らしています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([
+   ["c",1],["e",1],["g",1],["a",1],["c'",4],["goto",0],["vel",0.3],
+   ["g",1],["a",1],["c'",1],["e'",1],["a'",4],
+],speed->100)
+</pre></div><br />
+<br />
+加えられる音符のタイミングをコントロールする、より高度な方法もあります。それは、普通の楽譜の表記法により近いものです。４つの命令があります:<br />
+<br />
+<ul><li> <b><code>&#91;"&#124;&#124;:"&#93;</code>:</b> 繰り返し記号の始め
+</li><li> <b><code>&#91;":&#124;&#124;"&#93;</code>:</b> 繰り返し記号の終わり
+</li><li> <b><code>&#91;"1."&#93;</code>:</b> 第１カッコ
+</li><li> <b><code>&#91;"2."&#93;</code>:</b> 第２カッコ
+</li></ul>
+<br />
+これらの命令を使えばリピートの音楽が簡単にできます。次の楽譜は「おお、スザンナ」です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Susanna.png" border="0"  width="750" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+CindyScript で次のように書けば演奏できます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playmelody([
+   ["c",.5],["d",.5],
+   ["||:"],["e",1],["g",1],["g",1.5],["a",.5],["g",1],["e",1],["c",1.5],["d",.5],
+         ["1."],["e",1],["e",1],["d",1],["c",1],["d",3],["c",.5],["d",.5],[":||"],
+         ["2."],["e",1],["e",1],["d",1],["d",1],["c",4]
+],speed->200)
+</pre></div><br />
+<br />
+<br />
+<b>楽器のコントロール:</b><br />
+<br />
+　最後に、音色と楽器を選ぶ若干の命令があります。旋律リストの中で、楽器を変更することが可能です。次のような命令文があります。<br />
+<br />
+<ul><li> <b><code>&#91;"channel",&#060;整数&#062;&#93;</code>:</b> チャンネルを (0...15) の範囲で変更します。
+</li><li> <b><code>&#91;"ch",&#060;int~整数~&#93;</code>:</b>  <code>channel</code> と同じです。
+</li><li> <b><code>&#91;"instrument",&#060;整数&#062;&#93;</code>:</b> チャンネルと関連して楽器を(1...128) の範囲で変更します。
+</li><li> <b><code>&#91;"inst",&#060;整数&#062;&#93;</code>:</b> <code>instrument</code> と同じです。
+</li><li> <b><code>&#91;&#060;整数&#062;,&#060;整数&#062;,&#060;整数&#062;,&#060;整数&#062;&#93;</code>:</b> この４つの整数からなる命令は、(詳しくは MIDI のマニュアルを参照のこと)楽器のコントロールにアクセスします。最初の数はコントロールコード、2番目はチャンネル、あとの２つはデータです。
+</li></ul>
+トラックが再開されるときは、楽器は初期値にリセットされます。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="playmelody"></A><br />
+<h4>旋律の演奏: <span style="color:red;"><code>playmelody(&#060;list&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>playmelody(...)</code> の使い方はすでに述べました。それは直接旋律を演奏するものでした。リストは旋律言語とのいうべきものです。<code>playmelody(...)</code> はリストをシーケンサに加えてすぐに演奏します。この関数が呼ばれるとき、他のトラックはシーケンサから削除されることを知っておくことは大切です。<br />
+<br />
+<b>修飾子:</b> チャンネル、楽器、速度などのための修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>channel</code></td><td class="wikicell" ><code>0..15</code></td><td class="wikicell" >演奏するチャンネルの設定</td></tr><tr><td class="wikicell" ><code>instrument</code></td><td class="wikicell" ><code>1 ... 123</code></td><td class="wikicell" >楽器の選択</td></tr><tr><td class="wikicell" ><code>speed</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >1分間あたりの拍数を設定 </td></tr><tr><td class="wikicell" ><code>loop</code></td><td class="wikicell" ><code>0,1,2,3,4 ...</code></td><td class="wikicell" >旋律の繰り返し</td></tr><tr><td class="wikicell" ><code>start</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >開始位置 (拍数で)</td></tr></table><br />
+<br />
+修飾子 loop は演奏が終わったあとの巻き戻しを指定します。この修飾子に続く数は巻き戻しの回数です。したがって、 <code>loop->3</code> とすると、旋律は4回演奏されます。 <code>loop->-1</code> は無限ループと解釈されます。これが呼ばれたあとは、新しい旋律（空の旋律<code>playmelody(&#91;&#93;)</code>も可）を加えたときにループが終わります。 あるいは、<code>midistop()</code> 命令を使うこともできます。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="midiaddtrack"></A><br />
+<h4>シーケンサにトラックを追加する: <span style="color:red;"><code>midiaddtrack(&#060;list&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>playmelody(...)</code> とは対照的に、この関数はシーケンサに旋律を追加しますがすぐに演奏はしません。これによって、複数の声部よりなる、より複雑な楽曲を演奏できるようになります。シーケンサの開始は <code>midistart()</code> 命令によって行われます。シーケンサが演奏を始めたら、トラックを追加してもシーケンサは演奏をやりなおしません。トラックはそのまま置き換えられます。これにより、論理的な手順で旋律を変えていくことが可能になります。さらに、シーケンサと比較して追加されたトラックのタイミングを変えていくいくつかの修飾子があります。これによって、旋律を引き伸ばしたり、縮めたり、ずらしたりすることができます。詳細は以下で解説します。<br />
+<br />
+<b>修飾子:</b> つぎの修飾子があります。:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>channel</code></td><td class="wikicell" ><code>0..15</code></td><td class="wikicell" >演奏するチャンネルを選ぶ</td></tr><tr><td class="wikicell" ><code>instrument</code></td><td class="wikicell" ><code>1 ... 123</code></td><td class="wikicell" >楽器を選ぶ</td></tr><tr><td class="wikicell" ><code>speed</code></td><td class="wikicell" ><code>&#060;実数l&#062;</code></td><td class="wikicell" >1分間あたりの拍数 </td></tr><tr><td class="wikicell" ><code>track</code></td><td class="wikicell" ><code>0..10</code></td><td class="wikicell" >シーケンサのトラックを選ぶ</td></tr><tr><td class="wikicell" ><code>start</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >開始位置(拍)</td></tr><tr><td class="wikicell" ><code>mode</code></td><td class="wikicell" ><code>"add", "replace", "append"</code></td><td class="wikicell" >トラックを追加したときの動作</td></tr><tr><td class="wikicell" ><code>stretch</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >旋律を追加したときの伸縮(シーケンサと関連)</td></tr><tr><td class="wikicell" ><code>offset</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >シーケンサと関連して、旋律を追加したときのシフト量</td></tr><tr><td class="wikicell" ><code>repeat</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >旋律がどのくらい追加されるか</td></tr></table><br />
+<br />
+いくつかの修飾子は、さらに説明が必要でしょう。Cinderella は、０から15まで、16個のトラックを扱います。それぞれのトラックは個々の声部のようなものです。旋律を追加するトラックは <code>track</code> 修飾子で指定します。<br />
+<br />
+トラックを追加したとき、 <code>mode</code> 修飾子はそれを既存のトラックと置き換えるのか、末尾に追加されるのか、加算されるのかを示します。<br />
+<br />
+新しい旋律のタイミングは、シーケンサ内の既存のトラックに関連して調節することができます。 <code>stretch</code> 修飾子の数により、旋律のすべての拍について伸縮率を与えられます。 <code>stretch->0.5</code> とすると、もとの速度の2倍で演奏します。 同様に <code>offset</code> は新しい旋律が追加される位置を決めます。 <code>offset->8</code> とすると、開始から8拍後に追加します。最後に、 repeat は、トラックが連続してどのくらい繰り返されるかを示します。 <code>stretch</code>, <code>offset</code> および <code>repeat</code> をつかうと、既存の旋律にリズムパターンを追加するときに非常に役に立つことがあります。<br />
+<br />
+<hr />
+<br />
+<A NAME="midistart"></A><br />
+<h4>シーケンサの開始: <span style="color:red;"><code>midistart()</code></span></h4>
+<br />
+<br />
+<b>解説:</b> この関数はシーケンサを開始します。トラックは <code>midiaddtrack(...)</code> によって事前に追加されていなければなりません。<br />
+<br />
+<b>修飾子:</b> 修飾子は <code>playmelody(...)</code> と同様です。次の修飾子が使えます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>speed</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >1分間あたりの拍数 </td></tr><tr><td class="wikicell" ><code>loop</code></td><td class="wikicell" ><code>0,1,2,3,4 ...</code></td><td class="wikicell" >旋律の繰り返し</td></tr><tr><td class="wikicell" ><code>start</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >開始位置 (拍)</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="midistop"></A><br />
+<h4>シーケンサの停止: <span style="color:red;"><code>midistop()</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  MIDI シーケンサを直ちに停止します。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="midispeed"></A><br />
+<h4>シーケンサの速度の設定: <span style="color:red;"><code>midispeed(&#060;real&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数によってシーケンサの演奏速度を変えることができます。 速度は1分あたりの拍数を実数で与えます。初期値は60です。1秒に1拍ですが、多くの楽曲のなかでは遅い方です。シーケンサがすでに動いていても速度を変えることができます。これによって、ある点で速度を変えることができるようになります。<br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="midispeed"></A><br />
+<h4>シーケンサの速度を問い合わせる: <span style="color:red;"><code>midispeed()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 現在のシーケンサの速度を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="midiposition"></A><br />
+<h4>シーケンサの位置を設定する: <span style="color:red;"><code>midiposition(&#060;real&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数によって、シーケンサの位置を特定の位置に設定できます。これによって <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> は演奏開始位置を明確にコントロールすることができます。<br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="midiposition"></A><br />
+<h4>シーケンサの開始位置を問い合わせる: <span style="color:red;"><code>midiposition()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数はシーケンサの現在の位置を返します。シーケンサが動いているとき、この値は連続的に変化します。<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<h2>音色</h2>
+<br />
+次の関数によって、楽器を選んでチャンネルに割り当て、音色を作ることができます。<br />
+<br />
+<br />
+<A NAME="instrument"></A><br />
+<h4>楽器を選ぶ: <span style="color:red;"><code>instrument(&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数によってチャンネルに楽器を割り当てます。チャンネルが指定されなければ初期値のチャンネルが使われます。各楽器には、 1から128までのコードが割り当てられています。楽器とコードの対応については、次の <code>instrumentnames()</code> で説明します。修飾子によってチャンネルを指定すれば、そのチャンネルの楽器が変更されます。<br />
+<br />
+<b>修飾子:</b> この関数は、楽器によって音色を変えるいくつかの修飾子を持ちます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>velocity</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >音量 (ピアノの鍵盤を叩く速さ)</td></tr><tr><td class="wikicell" ><code>duration</code></td><td class="wikicell" ><code>&#060;実数&#062;</code></td><td class="wikicell" >音の長さ</td></tr><tr><td class="wikicell" ><code>bend</code></td><td class="wikicell" ><code>-2.0 ... 2.0</code></td><td class="wikicell" >半音単位で上げ下げ</td></tr><tr><td class="wikicell" ><code>channel</code></td><td class="wikicell" ><code>0..15</code></td><td class="wikicell" >演奏するチャンネル</td></tr><tr><td class="wikicell" ><code>reverb</code></td><td class="wikicell" ><code>0.0 ... 1.0 </code></td><td class="wikicell" >残響効果</td></tr><tr><td class="wikicell" ><code>balance</code></td><td class="wikicell" ><code>-1.0 ... 1.0</code></td><td class="wikicell" >左右のバランス</td></tr></table><br />
+<br />
+ここで <code>velocity</code> と <code>duration</code> は演奏の速さと音量に影響を与えます。 ( <code>playtone(...)</code> と同じ).<br />
+<br />
+<b>例:</b> 次のコードは、まず<b>Glockenspiel</b> で、次にトランペットで、最後にピアノで、音量と長さを変えて音を出します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+instrument(10,velocity->0.2);
+playtone(96);
+wait(1000);
+instrument(57,duration->0.1,velocity->1);
+playtone(60);
+wait(1000);
+instrument(1,duration->2,velocity->.5);
+playtone(60);
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="instrumentnames"></A><br />
+<h4>利用できる楽器を知る: <span style="color:red;"><code>instrumentnames()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、あなたのコンピュータで利用できる楽器のリストを返します。標準 MIDI では (あなたのコンピュータにすでにインストールされているとして) 次の楽器が使えます。<br />
+<br />
+<!-- latexreplace {\footnotesize --><font size=-4><!-- /latexreplace --><br />
+<font size=-4><br />
+<table>
+<tr><td width=170><b>Piano:</b></td><td  width= 170 ><b>Bass:</b></td><td width= 170 ><b>Reed:</b></td><td width= 170 ><b>Synth Effects:</b></td></tr>
+<tr><td> 1 Acoustic Grand Piano </td><td> 33 Acoustic Bass </td><td> 65 Soprano Sax </td><td> 97 FX 1 (rain) </td></tr>
+<tr><td> 2 Bright Acoustic Piano </td><td> 34 Electric Bass (finger) </td><td> 66 Alto Sax </td><td> 98 FX 2 (soundtrack) </td></tr>
+<tr><td> 3 Electric Grand Piano </td><td> 35 Electric Bass (pick) </td><td> 67 Tenor Sax </td><td> 99 FX 3 (crystal) </td></tr>
+<tr><td> 4 Honky-tonk Piano </td><td> 36 Fretless Bass </td><td> 68 Baritone Sax </td><td> 100 FX 4 (atmosphere) </td></tr>
+<tr><td> 5 Electric Piano 1 </td><td> 37 Slap Bass 1 </td><td> 69 Oboe </td><td> 101 FX 5 (brightness) </td></tr>
+<tr><td> 6 Electric Piano 2 </td><td> 38 Slap Bass 2 </td><td> 70 English Horn </td><td> 102 FX 6 (goblins) </td></tr>
+<tr><td> 7 Harpsichord </td><td> 39 Synth Bass 1 </td><td> 71 Bassoon </td><td> 103 FX 7 (echoes) </td></tr>
+<tr><td> 8 Clavi </td><td> 40 Synth Bass 2 </td><td> 72 Clarinet </td><td> 104 FX 8 (sci-fi) </td></tr>
+<tr><td></td></tr>
+<tr><td> <b>Chromatic Percussion:</b> </td><td> <b>Strings: </b></td><td> <b>Pipe:</b> </td><td> <b>Ethnic:</b> </td></tr>
+<tr><td> 9 Celesta </td><td> 41 Violin </td><td> 73 Piccolo </td><td> 105 Sitar </td></tr>
+<tr><td> 10 Glockenspiel </td><td> 42 Viola </td><td> 74 Flute </td><td> 106 Banjo </td></tr>
+<tr><td> 11 Music Box </td><td> 43 Cello </td><td> 75 Recorder </td><td> 107 Shamisen </td></tr>
+<tr><td> 12 Vibraphone </td><td> 44 Contrabass </td><td> 76 Pan Flute </td><td> 108 Koto </td></tr>
+<tr><td> 13 Marimba </td><td> 45 Tremolo Strings </td><td> 77 Blown Bottle </td><td> 109 Kalimba </td></tr>
+<tr><td> 14 Xylophone </td><td> 46 Pizzicato Strings </td><td> 78 Shakuhachi </td><td> 110 Bagpipe </td></tr>
+<tr><td> 15 Tubular Bells </td><td> 47 Orchestral Harp </td><td> 79 Whistle </td><td> 111 Fiddle </td></tr>
+<tr><td> 16 Dulcimer </td><td> 48 Timpani </td><td> 80 Ocarina </td><td> 112 Shanai </td></tr>
+<tr><td></td></tr>
+<tr><td> <b>Organ: </b></td><td> <b>Ensemble:</b> </td><td> <b>Synth Lead:</b> </td><td> <b>Percussive: </b></td></tr>
+<tr><td> 17 Organ </td><td> 49 String Ensemble 1 </td><td> 81 Lead 1 (square) </td><td> 113 Tinkle Bell </td></tr>
+<tr><td> 18 Percussive Organ </td><td> 50 String Ensemble 2 </td><td> 82 Lead 2 (sawtooth) </td><td> 114 Agogo Bells </td></tr>
+<tr><td> 19 Rock Organ </td><td> 51 Synth Strings 1 </td><td> 83 Lead 3 (calliope) </td><td> 115 Steel Drums </td></tr>
+<tr><td> 20 Church Organ </td><td> 52 Synth Strings 2 </td><td> 84 Lead 4 (chiff) </td><td> 116 Woodblock </td></tr>
+<tr><td> 21 Reed Organ </td><td> 53 Voice Aahs </td><td> 85 Lead 5 (charang) </td><td> 117 Taiko Drum </td></tr>
+<tr><td> 22 Accordion </td><td> 54 Voice Oohs </td><td> 86 Lead 6 (voice) </td><td> 118 Melodic Tom </td></tr>
+<tr><td> 23 Harmonica </td><td> 55 Synth Voice </td><td> 87 Lead 7 (fifths) </td><td> 119 Synth Drum </td></tr>
+<tr><td> 24 Tango Accordion </td><td> 56 Orchestra Hit </td><td> 88 Lead 8 (bass + lead) </td><td> 120 Reverse Cymbal </td></tr>
+<tr><td></td></tr>
+<tr><td> <b>Guitar: </b></td><td> <b>Brass:</b> </td><td> <b>Synth Pad: </b></td><td> <b>Sound effects:</b> </td></tr>
+<tr><td> 25 Acoustic Guitar (nylon) </td><td> 57 Trumpet </td><td> 89 Pad 1 (new age) </td><td> 121 Guitar Fret Noise </td></tr>
+<tr><td> 26 Acoustic Guitar (steel) </td><td> 58 Trombone </td><td> 90 Pad 2 (warm) </td><td> 122 Breath Noise </td></tr>
+<tr><td> 27 Electric Guitar (jazz) </td><td> 59 Tuba </td><td> 91 Pad 3 (polysynth) </td><td> 123 Seashore </td></tr>
+<tr><td> 28 Electric Guitar (clean) </td><td> 60 Muted Trumpet </td><td> 92 Pad 4 (choir) </td><td> 124 Bird Tweet </td></tr>
+<tr><td> 29 Electric Guitar (muted) </td><td> 61 French horn </td><td> 93 Pad 5 (bowed) </td><td> 125 Telephone Ring </td></tr>
+<tr><td> 30 Overdriven Guitar </td><td> 62 Brass Section </td><td> 94 Pad 6 (metallic) </td><td> 126 Helicopter </td></tr>
+<tr><td> 31 Distortion Guitar </td><td> 63 Synth Brass 1 </td><td> 95 Pad 7 (halo) </td><td> 127 Applause </td></tr>
+<tr><td> 32 Guitar harmonics </td><td> 64 Synth Brass 2 </td><td> 96 Pad 8 (sweep) </td><td> 128 Gunshot </td></tr></table><br />
+<!-- latexreplace } --></font><!-- /latexreplace --><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="midichannel"></A><br />
+<h4>チャンネルを選ぶ: <span style="color:red;"><code>midichannel(&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、 <code>playmelody(...)</code> あるいは <code>playtone(...)</code> で使うチャンネルを選びます。修飾子によって、選択したチャンネルの楽器や音色を買えることができます。<br />
+<br />
+<b>修飾子:</b> この修飾子は <code>instrument</code> の修飾子とよく似ています。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>velocity</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >音量(ピアノの鍵盤を叩く速さ)</td></tr><tr><td class="wikicell" ><code>duration</code></td><td class="wikicell" ><code>&#060;real&#062;</code></td><td class="wikicell" >音の長さ</td></tr><tr><td class="wikicell" ><code>bend</code></td><td class="wikicell" ><code>-2.0 ... 2.0</code></td><td class="wikicell" >半音単位での音の上げ下げ</td></tr><tr><td class="wikicell" ><code>instrument</code></td><td class="wikicell" ><code>0..15</code></td><td class="wikicell" >演奏する楽器の指定</td></tr><tr><td class="wikicell" ><code>reverb</code></td><td class="wikicell" ><code>0.0 ... 1.0 </code></td><td class="wikicell" >残響効果 </td></tr><tr><td class="wikicell" ><code>balance</code></td><td class="wikicell" ><code>-1.0 ... 1.0</code></td><td class="wikicell" >左右のバランス</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="midivolume"></A><br />
+<h4>チャンネルの音量を設定する: <span style="color:red;"><code>midivolume(&#060;real&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数によって、チャンネルの音量を設定します。引数は0.0から1.0までの実数です。通常は初期値のチャンネルが対象になりますが、修飾子によってチャンネルは変更できます。<br />
+<br />
+<b>修飾子:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>channel</code></td><td class="wikicell" ><code>0 ..15</code> あるいは <code>"all"</code></td><td class="wikicell" >チャンネルを選択</td></tr></table><br />
+<br />
+チャンネル番号は個々に指定しますが、"all" によって、すべてのチャンネルを指定することもできます。<br />
+<hr />
+<br />
+<A NAME="midicontrol"></A><br />
+<h4>チャンネルのコントローラを設定する: <span style="color:red;"><code>midicontrol(&#060;int&#062;,&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> これにより MIDI コントローラが設定されます。第１の引数はコントローラの番号 (0..127)で、第２の引数はコントローラにセットする値 (0..127) です。コントローラは、残響効果やバランス、楽器に特有の音に影響します。詳細は標準MIDI のマニュアルを見てください。<br />
+<br />
+<b>修飾子:</b> 修飾子の使い方は <code>midivolume</code> と同様です。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h2>３つの小品</h2>
+<br />
+この節の最後に、 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> MIDI を使った３つの小品をお見せします。ユーザー諸氏は、これを例に、さらに実験をしてみてください。<br />
+<br />
+<h3>キーボードピアノ</h3>
+<br />
+この例は、コンピュータのキーボードを鍵盤代わりにしたピアノです。次のコードを <b>timer tick</b>スロットに置いて、実行ボタンを押してください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pairs=[[65,60],[83,62],[68,64],[70,65],[71,67],[72,69],[74,71],
+       [75,72],[76,74],[59,76],[222,77],[92,79],[87,61],[69,63]
+       ,[84,66],[90,68],[85,70],[79,73],[80,75],[93,78]];
+
+l=keydownlist();
+forall(pairs,p,
+  if(contains(l,p_1)&!contains(ol,p_1),playtone(p_2,duration->-1,velocity->0.5));
+  if(contains(ol,p_1)&!contains(l,p_1),stoptone(p_2));
+);
+ol=l;
+</pre></div><br />
+<br />
+このコードでは <code>keydownlist()</code> 関数を利用しています。この関数は、押されたキーの内部コード番号のリストを返します。キーボードのコード番号は演奏される音に関連付けられます。 <code>forall</code> ループによって、すべての可能なキーについて押されたか離されたかをチェックして <code>playtone</code> と <code>stoptone</code> 関数に渡します。コンピュータが実際に楽器になるわけです。<br />
+<br />
+<br />
+<h3>サウンドつき卓球ゲーム</h3>
+<br />
+次の例は、適切なところで<code>playtone(...)</code> を使った本当に小さなプログラムです。サウンド効果付きの卓球ゲームを作ります。 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> の物理シミュレーションを使って、インタラクティブな卓球台が簡単に作れます。卓球台は <b>反射壁</b> を使って作ります。インスペクタを用いて、それぞれの反射壁が質点を弾いたときに、スクリプトが実行されるようにします。 <code>playtone</code> 関数で "click" 音を作り、スクリプトを書き込みます。次の図をごらん下さい。<br />
+<br />
+<!--latexreplace<br />
+\includegraphics<a class="wiki external"  href="height=1.8in">height=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{MIDIPong}\qquad\includegraphics<a class="wiki external"  href="height=1.8in">height=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{MIDIInspect}<br />
+<tt> --></tt><br />
+<span class="img"><img alt="" src="img/wiki_up/MIDIPong.png" border="0"  height="200" /></span>  <span class="img"><img alt="" src="img/wiki_up/MIDIInspect.png" border="0"  height="200" /></span><!-- /latexreplace --><br />
+<br />
+<br />
+<h3> grooveの演奏</h3>
+<br />
+最後の例は、シーケンサのタイミング精度の実証になります。チャーリー・パーカーのジャズ曲 <b>Ornithology</b> の始めの部分です。(このタイトルはチャーリーのあだ名「バード」に由来します)　ジャズの特徴はそのスイング感です。これは、基本となるビートに対してすこしずれたリズムです。次のコードでは、変数 <code>g</code> がスイングのパラメータとして使われます。それは、２番目の音を基本ビートからすこしずらすのです。変数 <code>g</code> を 0.0 から 1.0 の範囲で少し動かしてみるといいでしょう。 それによって、簡単にスイング感を変えられます。（0.5 から 0.7 の範囲では普通のスイングに聞こえます）。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+g=.6;
+mel=[[62,2-g],[67,2+g],[69,2-g],[71,2+g],[72,2-g],[74,2+g],[71,2-g],[72,2+g],[74,2-g],[71,2+g],[67,3],[-1,9],
+     [62,2-g],[67,2+g],[69,2-g],[70,2+g],[72,2-g],[74,2+g],[76,4],[77,4],[67,2-g],[69,2+g],[70,8],
+     [74,2-g],[72,2+g],[69,4],[65,2-g],[70,2+g],[68,2-g],[69,2+g],[65,13],[-1,3]
+];
+
+drum=44;
+beat=[[-1,2-g]];
+apply(1..11,beat=beat++[[-1,4],[drum,4]]);
+beat=beat++[[-1,4],[drum,4-2+g]];
+midiaddtrack(mel ,channel->2,track->2);
+midiaddtrack(beat,channel->9,track->1,velocity->.5);
+midistart(speed->800);
+</pre></div><br />
+<!-- latexreplace<br />
+\index{music|)}<br />
+\index{notes|)}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 17 of September, 2011 [09:58:08 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=MIDI%20FunctionsJ">
+    http://doc.cinderella.de/tiki-index.php?page=MIDI%20FunctionsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

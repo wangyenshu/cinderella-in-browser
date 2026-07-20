@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Accessing Geometric Elements 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Accessing Geometric Elements</h2>
+<br />
+The main communication between CindyScript and the geometry part of Cinderella is accomplished by accessing the geometric objects of a construction. Geometric elements can be accessed in two different ways: either one can access an element by the name of its label or one can access lists of elements by special CindyScript operators. The interaction between Cinderella and CindyScript gives CindyScript the possibility to read essentially all properties of the elements of a geometric construction. Most properties can also be set by CindyScript. The following sections first describe the possible ways to address geometric objects and then provide a detailed list of the supported properties.<br />
+<br />
+<br />
+<h3>Accessing Elements by Their Names</h3>
+<br />
+Every element in a geometric construction has a unique name, its label. This name can be used as a handle in CindyScript. Formally, in CindyScript the element plays the role of a predefined variable. The different properties can be read and set via the <span style="color:red;">.</span> operator (dot operator). For instance, the line of code<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.size=20
+</pre></div><br />
+<br />
+sets the size of point <i>A</i> in a construction to the value 20. If a point or a line is contained in an arithmetic operator without a dot operator, then it is automatically converted to a vector representing its position. Thus a point is converted into an <code>[x,y]</code> vector representing its two-dimensional coordinates. A line is converted to an <code>[x,y,z]</code> vector representing its homogeneous coordinates. However,if one intends to set the coordinates of a point, then one has to use the dot operator explicitly. If a handle to a geometric object is not used in an arithmetic expression, then it is still passed to the calculation as the geometric object. Since these concepts are a bit subtle, we will clarify them with a few examples.<br />
+<br />
+Assume that <i>A</i>, <i>B</i>, and <i>C</i> are points in a Cinderella construction. The line<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.xy=(B+C)/2
+</pre></div><br />
+<br />
+sets the point <i>A</i> to be the midpoint of <i>B</i> and <i>C</i>. These two points are contained in an arithmetic expression, and therefore they are immediately  inverted to an <code>[x,y]</code> vector. Setting the position of point <i>A</i> has to be done by explicitly using the <code>.xy</code> property.<br />
+<br />
+The following program sets the color of all three points to green:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=[A,B,C];
+forall(pts,p,
+  p.color=[0,1,0];
+)
+</pre></div><br />
+<br />
+In this code the point names are passed as handles to the list <code>pts</code>. Traversing the list with the <code>forall</code> operator puts this handles one after the other into the variable <code>p</code>, from which their color property is accessed.<br />
+<br />
+<br />
+<h3>Lists of Elements</h3>
+<br />
+Sometimes it is not necessary to access points individually by their name. In particular, this happens whenever one is interested in  performing an operation on all points in a construction. This may happen, for instance, when one wants to calculate the convex hull of a point set. For this, CindyScript provides several operators that return lists of elements. For instance, the operator <code>allpoints()</code> returns a list of all points of a construction. We will demonstrate this with a very tiny example. The following program changes the color of the points depending on their position relative to the <i>y</i>-axis:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=allpoints();
+forall(pts,p,
+  if(p.x<0,
+    p.color=[1,1,0],
+    p.color=[0,1,0];
+   )
+)
+</pre></div><br />
+<br />
+The following picture shows the application of the code to a random collection of points.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ProgList1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Working with lists of points</b></td></tr></table><br />
+<br />
+<br />
+<h3>Properties of Geometric Objects</h3>
+<br />
+We now start with a complete description of all properties that are currently accessible via CindyScript. Every property is at least readable. For each property we list the type of value expected for the property, whether it is read only or also writeable, and a short description of its purpose. Possible property types are usually as follows:<br />
+<br />
+<ul><li><b>real:</b> a real number
+</li><li><b>int:</b> an integer number
+</li><li><b>bool:</b> either <code>true</code> or <code>false</code>
+</li><li><b>string:</b> a sequence of characters
+</li><li><b>2-vector:</b> a two-dimensional vector
+</li><li><b>3-vector:</b> a three-dimensional vector
+</li><li><b>3x3-matrix:</b> a 3 by 3 matrix
+</li></ul>
+<br />
+Some properties, like the current position, are only writable for free objects. We mark this by the word "free" in the corresponding column.<br />
+<br />
+<h5> Properties Common to All Geometric Objects</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" >yes</td><td class="wikicell" >3-vector</td><td class="wikicell" >The (red, green, blue) color vector of the object</td></tr><tr><td class="wikicell" ><code>colorhsb</code></td><td class="wikicell" >yes</td><td class="wikicell" >3-vector</td><td class="wikicell" >The (hue, saturation, black) color vector of the object</td></tr><tr><td class="wikicell" ><code>isshowing</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the object is shown (this is inherited by all elements that depend on the object)</td></tr><tr><td class="wikicell" ><code>visible</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the object is shown (not inherited by dependent objects)</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The opacity of the object (between 0.0 and 1.0)</td></tr><tr><td class="wikicell" ><code>labelled</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the object shows its label</td></tr><tr><td class="wikicell" ><code>name</code></td><td class="wikicell" >no</td><td class="wikicell" >string</td><td class="wikicell" >The label of the object</td></tr><tr><td class="wikicell" ><code>caption</code></td><td class="wikicell" >yes</td><td class="wikicell" >string</td><td class="wikicell" >A caption that may replace the name</td></tr><tr><td class="wikicell" ><code>trace</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the object leaves a trace</td></tr><tr><td class="wikicell" ><code>tracelength</code></td><td class="wikicell" >yes</td><td class="wikicell" >int</td><td class="wikicell" >The length of the trace</td></tr><tr><td class="wikicell" ><code>selected</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the object is currently selected</td></tr></table><br />
+<br />
+<br />
+Each geometric element has a unique <span style="color:blue;">name</span>. the string that represents this name may be accessed by <code>.name</code>. So for instance <code>A.name</code> returns the string <code>"A"</code>. The name may not be identical with the <span style="color:blue;">caption</span> of the element shown in the construction. If <code>A.caption</code> is the empty string the name is shown, otherwise the caption.<br />
+<br />
+<h5> Properties of Points</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>x</code></td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >The <i>x</i>-coordinate of the point</td></tr><tr><td class="wikicell" ><code>y</code></td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >The <i>y</i>-coordinate of the point</td></tr><tr><td class="wikicell" ><code>xy</code></td><td class="wikicell" >free</td><td class="wikicell" >2-vector</td><td class="wikicell" >The <i>xy</i>-coordinates of the point</td></tr><tr><td class="wikicell" ><code>coord</code></td><td class="wikicell" >free</td><td class="wikicell" >2-vector</td><td class="wikicell" >The <i>xy</i>-coordinates of the point</td></tr><tr><td class="wikicell" ><code>homog</code></td><td class="wikicell" >free</td><td class="wikicell" >3-vector</td><td class="wikicell" >The homogeneous coordinates of the point</td></tr><tr><td class="wikicell" ><code>angle</code></td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >Applies only to PointOnCircle objects. The angle of the point on the circle</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" >yes</td><td class="wikicell" >int</td><td class="wikicell" >The size of the point (0..40)</td></tr><tr><td class="wikicell" ><code>imagerot</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >A rotation angle if the point is equipped with an image</td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<h5> Properties of Lines</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>homog</code></td><td class="wikicell" >free</td><td class="wikicell" >3-vector</td><td class="wikicell" >The homogeneous coordinates of the line</td></tr><tr><td class="wikicell" ><code>angle</code></td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >The angle of the line</td></tr><tr><td class="wikicell" ><code>slope</code></td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >The slope of the line</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" >yes</td><td class="wikicell" >int</td><td class="wikicell" >The size of the line (0..10)</td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<h5> Properties of Circles and Conics</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>center</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The center of the circle</td></tr><tr><td class="wikicell" ><code>radius</code></td><td class="wikicell" >free</td><td class="wikicell" >real</td><td class="wikicell" >The radius of the circle</td></tr><tr><td class="wikicell" ><code>matrix</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The matrix describing the quadratic form of the circle or conic</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" >yes</td><td class="wikicell" >int</td><td class="wikicell" >The size of the border line (0..10)</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of Texts</h5>
+<!--latexreplace<br />
+\index{button}<br />
+--><!-- /latexreplace --><br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>text</code></td><td class="wikicell" >yes</td><td class="wikicell" >string</td><td class="wikicell" >The content of the text</td></tr><tr><td class="wikicell" ><code>pressed</code></td><td class="wikicell" >yes</td><td class="wikicell" >boolean</td><td class="wikicell" >The state of this text if it is a button</td></tr><tr><td class="wikicell" ><code>xy</code></td><td class="wikicell" >yes</td><td class="wikicell" >2-vector</td><td class="wikicell" >The position of the text</td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<h5> Properties of Animations</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>run</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the animation is running</td></tr><tr><td class="wikicell" ><code>speed</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The relative animation speed</td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<h5> Properties of Transformations</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>matrix</code></td><td class="wikicell" >no</td><td class="wikicell" >3x3 matrix</td><td class="wikicell" >The homogeneous matrix of the transformation</td></tr><tr><td class="wikicell" ><code>inverse</code></td><td class="wikicell" >no</td><td class="wikicell" >3x3 matrix</td><td class="wikicell" >The homogeneous matrix of the inverse transformation</td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<h4> Properties of CindyLab Objects</h4>
+<br />
+It is not only geometric properties that can be accessed by CindyScript. The simulation parameters of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> constructions can also  be read and sometimes set via CindyScript.<br />
+<br />
+<br />
+<h5> Properties of All <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> Elements</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>simulate</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" >Whether the object takes part in the physics simulation or is neglected</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of Masses</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>mass</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The mass of the object</td></tr><tr><td class="wikicell" ><code>charge</code></td><td class="wikicell" >yes</td><td class="wikicell" >int</td><td class="wikicell" >The charge of the object</td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The individual friction of the object</td></tr><tr><td class="wikicell" ><code>radius</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The radius if the mass is treated as a ball</td></tr><tr><td class="wikicell" ><code>posx</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The <i>x</i>-component of the mass's position</td></tr><tr><td class="wikicell" ><code>posy</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The <i>y</i>-component of the mass's position</td></tr><tr><td class="wikicell" ><code>pos</code></td><td class="wikicell" >yes</td><td class="wikicell" >2-vector</td><td class="wikicell" >The mass's position vector</td></tr><tr><td class="wikicell" ><code>vx</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The <i>x</i>-component of the velocity</td></tr><tr><td class="wikicell" ><code>vy</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The <i>y</i>-component of the velocity</td></tr><tr><td class="wikicell" ><code>v</code></td><td class="wikicell" >yes</td><td class="wikicell" >2-vector</td><td class="wikicell" >The velocity vector</td></tr><tr><td class="wikicell" ><code>fx</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The <i>x</i>-component of the force acting on the particle</td></tr><tr><td class="wikicell" ><code>fy</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The <i>y</i>-component of the force acting on the particle</td></tr><tr><td class="wikicell" ><code>f</code></td><td class="wikicell" >no</td><td class="wikicell" >2-vector</td><td class="wikicell" >The force vector acting on the particle</td></tr><tr><td class="wikicell" ><code>kinetic</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The kinetic energy of the particle</td></tr><tr><td class="wikicell" ><code>ke</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The kinetic energy of the particle</td></tr></table><br />
+<br />
+<br />
+<br />
+Sometimes one is interested to add a user defined force potential between masses. This can be done by scripting a suitable piece of code in the <code>Integeration Tick</code> event. Since internally the position of masses has a finer time scale than usual geometric movements it is necessary to access their position via the <code>pos</code>, <code>posx</code> and <code>posy</code> accessors.<br />
+<br />
+<h5> Properties of Springs and Coulomb Forces</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>l</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The current length of the spring</td></tr><tr><td class="wikicell" ><code>lrest</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The rest length of the spring</td></tr><tr><td class="wikicell" ><code>ldiff</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The distance to the rest length of the spring</td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The spring constant</td></tr><tr><td class="wikicell" ><code>f</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The force vector caused by the spring</td></tr><tr><td class="wikicell" ><code>amplitude</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The amplitude for actuation</td></tr><tr><td class="wikicell" ><code>speed</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The speed for actuation</td></tr><tr><td class="wikicell" ><code>phase</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The phase for actuation (between 0.0 and 1.0)</td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The potential energy in the spring</td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The potential energy in the spring</td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<h5> Property for Velocities</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>factor</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The multiplication factor between graphical representation and actual velocity</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of Gravity</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The strength of the gravity field</td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The potential energy of all masses in the gravity field</td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The potential energy of all masses in the gravity field</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of Suns</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>mass</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The mass of the sun</td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The potential energy of all masses in the sun field</td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The potential energy of all masses in the sun field</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of Magnetic Areas</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The strength of the magnetic field</td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The friction in the magnetic area</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of Bouncers and Floors</h5>
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>xdamp</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >Damping in the <i>x</i>-direction</td></tr><tr><td class="wikicell" ><code>ydamp</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >Damping in the <i>y</i>-direction</td></tr></table><br />
+<br />
+<br />
+<br />
+<h5> Properties of the Environment</h5>
+<br />
+The environment can be accessed by the built-in operator <code>simulation()</code>. The following slots of the environment can be accessed:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>gravity</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The global gravity</td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >The global friction</td></tr><tr><td class="wikicell" ><code>kinetic</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The overall kinetic energy</td></tr><tr><td class="wikicell" ><code>ke</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The overall kinetic energy</td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The overall potential energy</td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" >The overall potential energy</td></tr></table><br />
+<br />
+<br />
+<br />
+<A NAME="inspect"></A><br />
+<h3>Inspecting Elements</h3>
+<br />
+You can also use the generic CindyScript function <span style="color:red;"><code>inspect(&#60;element&#62;)</code></span> to access all the attributes that are available in the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>. For example, if a point <i>A</i> exists in the construction, the function<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+inspect(A)
+</pre></div><br />
+<br />
+will return the array of strings<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[name,definition,color,visibility,drawtrace,tracelength,
+traceskip,tracedim,render,isvisible,text.fontfamily,
+pinning,incidences,labeled,textsize,textbold,textitalics,
+ptsize,pointborder,printname,point.image,
+point.image.rotation,freept.pos]
+</pre></div><br />
+<br />
+Using the two-parameter form <span style="color:red;"><code>inspect(&#60;element&#62;,&#60;string&#62;)</code></span> you can read all the attributes of <i>A</i> that are listed in the above array:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+inspect(A,"text.fontfamily")
+</pre></div><br />
+<br />
+returns<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+SansSerif
+</pre></div><br />
+<br />
+With the three-parameter form <span style="color:red;"><code>inspect(&#60;element&#62;,&#60;string&#62;,&#60;expr&#62;)</code></span> you can also set the attributes that are not read-only (for example, you cannot change the list of incidences or the definition of an element). The following function will set the font of <i>A</i> to a Serif font:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+inspect(A,"text.fontfamily","Serif")
+</pre></div><br />
+<br />
+The inspect command is very powerful, as you can automate all actions you normally would have to do in the Inspector using the mouse. Also, it gives you fine grained control over all properties.<br />
+<hr />
+<h4>Set a user attribute: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string1&#62;,&#60;string2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Sets the user attribute of &#60;geo&#62; identified by &#60;string1&#62; to the value &#60;string2&#62;. </div><br />
+<br />
+<h4>Read a user attribute: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Returns the user attribute identified by &#60;string&#62; of the geometric element  &#60;geo&#62; .</div><br />
+<br />
+Both versions of the attribute function are mainly used for interaction with the <a title="no description" href="tiki-cindydoc.php@page=Visage.html" class="wiki">Visage Extension</a>.<br />
+<br />
+<hr />
+<A NAME="create"></A><br />
+<h3>Creating and Destroying Elements</h3>
+<br />
+Starting with Cinderella version 2.1 you can also create points on the fly from CindyScript. The function<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+p = createpoint("A",[4,6])
+</pre></div><br />
+<br />
+creates a point labelled <i>A</i> at coordinates [4,6], unless there is already an element <i>A</i>. If it exists, it will be moved to the position given as second argument. The value of the function is the point or the already existing element <i>A</i>. This means that repeated executions of the function are not harmful to your code - if you need a free point at "<i>A</i>" you can ensure that it exists using the <span style="color:red;"><code>createpoint</code></span>-command.<br />
+<br />
+<A NAME="remove"></A><br />
+<br />
+Using the <span style="color:red;"><code>removeelement</code></span> function you can also remove elements from your construction. Be aware that all dependent elements will be removed as well. The function expects an element as argument, so you can use either<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+removeelement(A)
+</pre></div><br />
+<br />
+or<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+removeelement(element("A"))
+</pre></div><br />
+<br />
+to remove the element named "<i>A</i>".<br />
+<br />
+More functions to create arbitrary elements are also available and discussed in the section <a title="no description" href='tiki-cindydoc.php@page=Interaction+with+Geometry.html#createandremove' class='wiki'>section on special operators</a>.<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [09:01:26 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Accessing%20Geometric%20Elements">
+    http://doc.cinderella.de/tiki-index.php?page=Accessing%20Geometric%20Elements
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

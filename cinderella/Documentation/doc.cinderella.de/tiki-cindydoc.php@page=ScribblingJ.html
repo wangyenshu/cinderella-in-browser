@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : ScribblingJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1>手書きモード</h1>
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/scribbleJ.png" border="0"  align="left" /></span></div> シンデレラには、 PDA (現在は Sharp Zaurus のみ対応)、 タブレットPC、インタラクティブホワイトボードといったペンによる入力装置を使うための特別なモードがあります。それを、 手書きモード と呼んでいます。<br />
+手書きモードでは、シンデレラはペンで描かれたことを認識しようとします。シンデレラはペンが置かれてから離されるまでのあらゆる動きを解釈します。<br />
+ペンで描いている間、表示画面の中央上部に、どんな図形を描こうとしているかを予想してその図を表示します。<br />
+<br />
+<h2> 要素を描く</h2>
+手書きモードのひとつの機能は、要素を新しく追加することです。手書きの意味は、手書きモードに入ったときに選択されていた要素に影響されるかも知れません。<br />
+次の要素を作ることができます。<br />
+<br />
+<h3> 点</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-Points.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+ペンをわずかに動かすと自由点が描かれます。点の大きさは、ペンを動かした量によります。既存の点の上でペンを動かすと点の大きさを変えることができます。<br />
+２つの点を選んでおき、その中間でペンを動かすと中点が打たれます。<br />
+<br />
+<h3> 線分</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-Lines.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+２点を結ぶと線分ができます。端点がない場合は作られます。短い距離を動かすと線分ができます。画面の80%を超えるとそうはならないことがあります。<br />
+既存の直線を選んでおいて、これに平行、または垂直に動かすと <i>平行線</i> や <i>垂線</i> が引かれます。交わる２直線を選んでおくと <i>角の二等分線</i> を引くことができます。<br />
+<br />
+<h3> 折れ線</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-PolyLines.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+線分をつなげた折れ線が描けます。最後の点が最初の点に近ければ<i>多角形</i>ができます。<br />
+<br />
+<h3> 円</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-Circles.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+ある点を中心として<i>半径を持つ円</i> が描けます。中心がなければ適当に作ります。 既存の３点を通るようにすると <i>３点を通る円</i> が描けます。１点を通るようにすると、<i>中心と通る点による円</i> が描けます。<br />
+<br />
+<h2> 操作</h2>
+新しい要素を作らず、既存の要素を操作する動かしかたがあります。<br />
+<br />
+<h3> 要素を選び、動かす</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-MovSel.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+要素を選択したり、選択を解除ためオブジェクトを一度軽く叩きます。何もないところを叩くとすべての選択が解除されます。選ばれたオブジェクトはドラッグして動かせます。これは<i>自由点</i>のほか、<i>半径つき円</i>のようなものにも適用できます。<br />
+<br />
+<h3> 名前を変える</h3>
+要素を２回素早く叩くと名前を変えるためのダイアログが出ます。<br />
+<br />
+<h3> 取り消しとやりなおし</h3>
+ウィンドウの30%以上を水平にまっすぐ、素早く左に線を引くように動かすと、最後の操作の取り消しができます。右に動かせばやりなおしとなります。<br />
+<br />
+<h3> すべて削除</h3>
+すべての図形を横切るように大きく、すばやく動かすとすべての要素を消去します。画面中央上方に「NEW」とフィードバックされます。<br />
+<br />
+<h3> インスペクタ</h3>
+真下に線を引きもとの点に戻るようにするとインスペクタが開きます。<br />
+<br />
+<h3> 右クリック</h3>
+真上に線を引きもとの点に戻るようにすると、マウスの右クリックと同じになります。通常これはコンテクストメニューを開きますが、インスペクタの<i>Modes / Language</i>タブで変更できます。<br />
+<br />
+<h2> 手書きモードのカスタマイズ</h2>
+手書きモードのカスタマイズができます。手書きモードにしておいて、 インスペクタの 情報(i) タブを開くと 設定 ボタンが現れます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble1J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+設定ボタンを押すと、手書きモードの構成のためのウインドウが開きます。ここに３つのタブがあります。 <i>認識", "形状</i>, <i>動作</i> です。 <i>認識</i> タブでは認識するものを有効/無効にすることができます。<br />
+<br />
+<!-- latexreplace \begin{center} --><!-- /latexreplace --><br />
+<div align="center"><span class="img"><img alt="" src="img/wiki_up/Scribble2J.png" border="0"  width="211" /></span><!-- latexreplace \qquad --><!-- /latexreplace --><span class="img"><img alt="" src="img/wiki_up/Scribble4J.png" border="0"  width="211" /></span></div><br />
+<!-- latexreplace \end{center} --><!-- /latexreplace --><br />
+<br />
+あとの２つのタブでは、手書きモードのいろいろなパラメータを設定することができます。あなたのハードウェアに合わせた手書きモードにできます。ここでの設定は、同一コンピュータ上でのシンデレラのセッション全体で記憶されます。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 25 of February, 2012 [12:38:40 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=ScribblingJ">
+    http://doc.cinderella.de/tiki-index.php?page=ScribblingJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Angle BisectorJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>角の2等分線</h2>
+<!--latexreplace<br />
+\index{line!angle bisectorJ}<br />
+\index{mode!angle bisectorJ}<br />
+\index{angle bisectorJ}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/bisector.png" border="0"  align="left" /></span></div>このモードでは2直線の角の二等分線を作図します。 このモードを使うには多少の注意が必要です。 というのは2直線の角の2等分線は1通りではなく一般に <b>2本ある!</b>からです。 この事実を考えに入れると、2直線の選び方には位置的な注意が必要であることがわかります。<br />
+<br />
+角の2等分線を定義するには、2本の直線を選択しなくてはなりません。 角の2等分線としてどちらの直線が選ばれるかは次の3点によって決まります。 最初に選択した直線をクリックした位置、2番目の直線をクリックした位置、2直線の交点、の3点です。 つまりこの3点による3角形における内角の(厳密にいえば)「2直線の交点の頂点の内角」の2等分線が作図されます。 これが直観的な方法でしょう。<br />
+<br />
+<b>シンデレラ</b> では画面上でユーザを手助けすることによりこの手続きをもう少し簡単にしています。 つまり、画面上にどちらの角が選択されるかを表示することにしたのです。 次の図を参照して下さい。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.2in">width=1.2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AngBis1}  &amp;  \includegraphics<a class="wiki external"  href="width=1.2in">width=1.2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AngBis2}  &amp;  \includegraphics<a class="wiki external"  href="width=1.2in">width=1.2in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AngBis3} \\</tt><br />
+{\small\bf First selection: } &amp;  {\small\bf Moving the mouse:}&amp;  {\small\bf  Second Selection: }\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it A line is highlighted. } &amp;  {\small\it An indication of}&amp;  {\small\it  The angular bisector }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it The selection point } &amp;  {\small\it the chosen angle}&amp;  {\small\it  is added. }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it is memorized. } &amp;  {\small\it is given.}&amp;  \\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+    <table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/AngBis1.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/AngBis2.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/AngBis3.png" border="0"  /></span></td> </tr>
+<tr>
+<td><b>最初の選択：</b><br>   直線がハイライト。<br>  選択された点が記憶<br> されます。</td> <td></td>
+<td><b>マウスを動かす:</b><br>  選択される角が<br> 画面上に表示されます。</td> <td></td>
+<td><b>2本目の選択:</b><br>   角の2等分線が<br> 加えられます。<br></td> </tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+2本の直線を選択して角の2等分線を作図する。<br />
+<br />
+<h3>注意</h3>
+角の2等分線は幾何学(ユークリッド幾何学、双曲幾何学、楕円幾何学)によってその定義が異なります。 双曲幾何学では角の2等分線は複素座標を持つこともあります。<br />
+<br />
+<br />
+(阿原)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [12:14:40 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Angle%20BisectorJ">
+    http://doc.cinderella.de/tiki-index.php?page=Angle%20BisectorJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

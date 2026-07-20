@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Elementary MechanicsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>力学のシミュレーション</h2>
+<br />
+<h3>基本的なしくみ</h3>
+<!--latexreplace<br />
+\index{Newton's law}<br />
+\index{force}<br />
+\index{mass}<br />
+\index{acceleration}<br />
+\index{velocity}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace $$\textrm{acceleration} = \frac{\textrm{force}}{\textrm{mass}}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>加速度</b> は <b>力</b> を <b>質量</b>で割ったものに等しい
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+　この単純な法則は、力の影響を受けている質点(粒子)の動きを理解するための鍵です。 質点というのは、電子や球体ばかりでなく惑星も含みます。 力にはいろいろな種類があります。 電磁気力、引っ張られたバネ、惑星間の重力などです。 質点のタイプや力のタイプとは無関係に、上記の法則はどのように速度が変化するかを示します。<br />
+<br />
+加速度は単位時間における速度の変化です。上記の法則により、単純な、しかし重要な結果を得ます。 <i>もし力が加えられなければ、粒子はその速度を保持し、同じ方向に永遠に同じ速さで移動します。</i> 力が加えられると、粒子は方向を変えたり、速くなったり、遅くなったりします。それらは、引き寄せられたり反発したりするように見えます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral1.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>重力が働くときのボールの動き</b></td></tr></table><br />
+<br />
+<br />
+　原則として、すべての力の働く粒子の初期位置と初速度がわかっていれば、粒子の運動の結果を正確に知ることができます。もしも正しい数学的形式を適用するならば、そのようなシステムは微分方程式につながります。微分方程式は、システムの動きを数学的に記述するものです。ただ、残念なことに、小さな物理システムであっても微分方程式だけでははっきりと解決できません。次のシステム(4つの恒星の影響を受ける惑星)で見られるように混沌とした振る舞いを見せるかも知れません。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral2.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>いくつかの恒星の影響下にある惑星の動き</b></td></tr></table><br />
+<!--latexreplace<br />
+\index{differential equation}<br />
+--><!-- /latexreplace --><br />
+　それでも、数値的な方法で、そのような微分方程式に取り組むことができます。弧の数値的方法では、別々の方法で連続システムをモデル化します。つまり、時間内の別々の点で位置、速度、力を調べます。 ある時刻tにおける状況から、間隔Δt(デルタt)後の位置と時間を推定します。時刻(t+Δt)における推定値を用いて、次の時刻における推定値を計算します。この方法により、位置と速度の異なる道筋が生成されます。もちろん、そのような道筋は正確な物理的現実にはマッチしません。しかしながら、推定値が良好で、時間間隔Δが大きくなければ、物理的に理にかなった近似値が得られます。さらに、良好な数値的解は、たいていの場合、時間間隔をゼロに近づければ、計算結果が物理的現実により近くなるという特性を持っています。.<br />
+<br />
+<hr />
+<br />
+<!--latexreplace --><br />
+<b>続ける</b> --> <a title="no description" href="tiki-cindydoc.php@page=Cinderella+and+PhysicsJ.html" class="wiki">シンデレラと物理学</a><br />
+<!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [13:14:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Elementary%20MechanicsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Elementary%20MechanicsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

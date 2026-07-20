@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Iterated Function Systems 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Iterated Function Systems</h2>
+<!--latexreplace<br />
+\index{iterated function system}<br />
+\index{IFS}<br />
+\index{fractal}<br />
+--><!-- /latexreplace --><br />
+Iterated function systems (IFS) can be used to generate fractal images in Cinderella. An iterated function system requires several transformations T1, T2, T3, … as input. From these transformations a picture is generated as follows:<br />
+<br />
+First one chooses an arbitrary screen point as the start of an iteration. Then  one chooses at random one of the transformations and maps the point and draws it. Then one uses the resulting point of the mapping, chooses a transformation again at random, maps the point, and draws it. This operation is repeated many, many, many times. In this way a "cloud of points" on the screen is created.<br />
+<br />
+The amazing fact about iterated function systems is that this cloud of points is simultaneously self-similar with respect all transformations T1, T2, T3, ….<br />
+<br />
+As an example we consider the situation in the following picture. There two different <a title="no description" href="tiki-cindydoc.php@page=Similarity.html" class="wiki">similarity</a> transformations are defined. One maps point <i>A</i> to itself and point <i>B</i> to Point <i>C</i>. Thus this transformation causes a rotation around <i>A</i> combined with a small contraction (at least for the positions of <i>A</i>, <i>B</i>, and <i>C</i> in the picture below). The second transformation maps <i>A</i> to <i>D</i> and <i>B</i> to <i>E</i>. This also causes a contraction rotation with a different rotation center and contraction rate. The iterated function system defined by these two transformations is shown in the picture below.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFS1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>An IFS by two similarities</b></td></tr></table><br />
+<br />
+<br />
+<h3>Defining an IFS</h3>
+<br />
+In order to define an IFS one has first to select several transformations. For doing this one chooses <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a>, holds the shift key, and clicks on the desired transformations one after another. In this way a set of transformations is selected. Then one chooses in the menu "Modes → Special" the mode "IFS." Then an IFS is automatically added. In our case the cloud of points that is generated is self-similar with respect to both similarities.<br />
+<br />
+<br />
+<h3>Enhancing the IFS</h3>
+<!--latexreplace<br />
+\index{inspect!IFS}<br />
+--><!-- /latexreplace --><br />
+Admittedly, the IFS so far does not look very impressive. The reason for this is that during the creation of the cloud of points the two transformations were chosen at random with equal distribution. However, the second transformation is by far more contractive than the first one, which causes the points to accumulate in a region close to the fixed point of the second transformation. One can influence the "importance" of a transformation in the inspector by adjusting its relative probability. For this one selects the IFS by shift-clicking it in <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> and opening the inspector. In the appearance tab one finds a slider and a color selector for each transformation involved.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFSInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The IFS inspector</b></td></tr></table><br />
+<br />
+The slider controls the relative probability with which the transformation is chosen. The color controls the color that is associated with this transformation in the point cloud. Roughly speaking, points that are generated by choosing one transformation relatively often are more  likely to have that transformation's color. Lowering the relative probability of the second (more contractive) transformation has a nice effect on our picture. The first similarity (the royation around <i>A</i>) becomes "more important," and much more of the inner spiral is filled.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFS3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A different probability distribution</b></td></tr></table><br />
+<br />
+If one does not need an extremely fast and immediate response to  mouse actions, the picture can be further enhanced by altering the visibility of the IFS. By setting the visibility to a small value one causes each individual dot to be printed with a high level of transparency. If one waits long enough, a picture will be produced that has structure even on the subpixel level.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/IFS4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Rendering with low visibility</b></td></tr></table><br />
+<br />
+<br />
+<h3>Changing Parameters</h3>
+<br />
+IFS are remarkably rich structures. Depending on the position of the points involved, the IFS may look qualitatively very different even for identical Cinderella constructions. The picture below shows two different choices of parameters for the IFS of the previous example.<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS5.png" border="0"  width="300" /></span></td>
+<td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS6.png" border="0"  width="300" /></span></td>
+ </tr>
+<tr> <td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Different parameters<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+Other defining transformations may cause other (sometimes very stunning) visual effects. In the picture below the first example was created by four different affine transformations. The second picture was created by eight different symmetrically chosen circle inversions.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS7.png" border="0"  width="300" /></span></td>
+<td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS8.png" border="0"  width="300" /></span></td>
+ </tr>
+<tr> <td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->The Bernsley fern<!--latexreplace } --> <!-- /latexreplace --></b></td>
+<td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Hyperbolic fractals<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<h3>IFS and Transformation Groups</h3>
+<!--latexreplace<br />
+\index{transformation group}<br />
+\index{group}<br />
+--><!-- /latexreplace --><br />
+<br />
+Iterated function systems are very closely related to the Cinderella concept of <a title="no description" href="tiki-cindydoc.php@page=Transformation+Groups.html" class="wiki">transformation groups</a>. A transformation group is a collection of transformations that when applied to a geometric object causes the iterated mapping of this object under the collection of transformations. An IFS can be considered the limit set of this iteration process (if it exists). Consider the example below, in  which again two similarities are defined. In the first picture the image of a point under the iterated application of the transformations is shown (together with green segments that symbolize the traces under the mappings). One now can easily create an associated IFS by simply selecting the transformation group (by shift-clicking it in move mode) and then selecting IFS mode. This operation causes the corresponding IFS to be automatically generated. The resulting picture is shown on the right.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS9.png" border="0"  width="300" /></span></td>
+<td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/IFS10.png" border="0"  width="300" /></span></td>
+ </tr>
+<tr> <td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A transformation group …<!--latexreplace } --> <!-- /latexreplace --></b></td>
+<td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->… and its IFS<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+The structure of the IFS depends heavily on the properties of the defining transformations. If the transformations are not "contractive," then one usually will not see any reasonable effect of an IFS, since in this case the points of the cloud accumulate very fast at locations close to the "line at infinity."<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Transformation+Groups.html' class='wiki'>Transformation Groups</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Transformation+Modes.html' class='wiki'>Transformation Modes</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 30 of July, 2011 [20:15:30 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Iterated%20Function%20Systems">
+    http://doc.cinderella.de/tiki-index.php?page=Iterated%20Function%20Systems
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Setting a Basis 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Setting a Basis</h2>
+<!--latexreplace<br />
+\index{basis}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/basis.png" border="0"  align="left" /></span></div> Bases are a powerful new experimental concept in <b>Cinderella.2</b> for structuring and creating logical dependencies in a drawing. One can set a basis with respect to a frame of up to four points. If a basis is set, then all drawing of free elements is performed with respect to this basis. If the base points move, then everything that is drawn within the basis moves accordingly.<br />
+<br />
+There are four different kinds of bases that can be chosen:<br />
+<br />
+<ul><li> <b>A translation basis</b> requires one base point. If the point is translated, everything that is drawn in the basis is translated as well.
+</li><li> <b>A similarity basis</b> requires two base points. These two points define the origin and the (1, 0) point of a coordinate system. Everything drawn with respect to this basis is scaled and rotated if the points are moved.
+</li><li> <b>An affine basis</b> requires three base points. These three points define the origin, the (1, 0) point, and the (0, 1) point of an affine coordinate system. Everything drawn with respect to this basis is scaled and rotated and sheared if the points are moved.
+</li><li> <b>A projective basis</b> requires four base points. These four points are considered as a basis of a coordinate system in which these points form a square. Everything is drawn accordingly.
+</li></ul>
+<br />
+After selecting "set basis" mode by pressing the corresponding button in the toolbar, one can select one up to four points. Leaving the mode by selecting a new mode defines a basis and declares it active. If a basis is active, all drawing operations and in particular the location of free objects are performed with respect to this basis. This means that if the points of the basis are moved, then the elements that are drawn with respect to this basis are changed accordingly (even if they were free elements).<br />
+<br />
+<br />
+<h3>Example: Creating a Similarity Basis</h3>
+<br />
+We will demonstrate the use of a basis with a similarity basis. For this we start by drawing two points to which the basis should be tied. Then we choose "set basis" mode and select these two points one after  the other. While we do this, optical hints are shown that indicate which type of basis is currently chosen. At this stage, up to four points can be chosen. Leaving basis mode by selecting another mode triggers the completion of the basis selection, and the basis  is then generated and activated.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases1} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases2} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases3}\\</tt><br />
+{\small\it Two points for defining  } &amp;  {\small\it  Selecting the first point}&amp;  {\small\it  Selecting the second point  }&amp; \\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it a similarity basis  } &amp;  {\small\it  }&amp;  {\small\it   }&amp; \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases1.png" border="0"  width="200" /></span>
+</td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases2.png" border="0"  width="200" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases3.png" border="0"  width="200" /></span></td>
+      </tr>
+      <tr>
+	<td><b>Two points for defining<br> a similarity basis</b><br></td><td></td>
+	<td><b>Selecting the first point</b><br></td><td></td>
+	<td><b>Selecting the second point</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+After basis mode is exited, a view button is generated that represents the basis. Whenever this button has a yellow border, the basis is active. Everything that is now drawn will have coordinates with respect to this basis. So now you can make an arbitrary geometric construction that may involve free points, circles with radius, and other free elements. In <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a> you can always change the positions of the free elements of your drawing. Now if you move one of the defining points of the basis, your entire drawing will change and will be adjusted to the current position of your basis.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases4} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases5} &amp; \includegraphics<a class="wiki external"  href="width=1.3333333333333333in">width=1.3333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Bases6}\\</tt><br />
+{\small\it The basis is generated  } &amp;  {\small\it  Draw something.}&amp;  {\small\it  Move the basis.  }&amp; \\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it and selected.  } &amp;  {\small\it  }&amp;  {\small\it   }&amp; \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases4.png" border="0"  width="200" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases5.png" border="0"  width="200" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases6.png" border="0"  width="200" /></span></td>
+      </tr>
+      <tr>
+	<td><b>The basis is generated.<br> and selected</b><br></td><td></td>
+	<td><b>Draw something.</b><br></td><td></td>
+	<td><b>Move the basis.</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+In <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a> one can activate and deactivate bases by clicking them. Active bases are marked by a yellow frame. Clicking an active basis will deactivate it (and all other bases). Clicking an inactive basis will activate it. In this way it possible to have several bases within one construction that are related to different parts of the drawing. It is even possible to define a basis while another basis is active. Then the bases are cascading.<br />
+<br />
+<br />
+<h3>Example: Using a Projective Basis</h3>
+<br />
+By selecting four points in set basis mode it is also possible to create a projective basis. If a projective basis is selected, all drawings are performed as though the four points (in the selected order) formed the four vertices of a quadrangle.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases7.png" border="0"  width="250" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases8.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Four points for a projective basis<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Clicking them defines the basis.<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+This not only affects when the points that define the basis are moved, it affects the generation of several geometric construction operations. In particular, all operations that require (explicitly or implicitly) Euclidean measurements are perspectively distorted. The picture below shows a few constructions within a projective basis. Observe that in particular, midpoints and circles are perspectively adjusted.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+      <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases9.png" border="0"  width="250" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Bases10.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A simple drawing<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A more complex drawing<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+The following picture demonstrates the use of a projective basis in a more complicated setting. First a projective basis is constructed. Then in the usual way an iterated function system is defined. The iterated function system (IFS) will automatically appear in a skew perspective that corresponds to the projective basis.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Bases11.png" border="0"  /></span></td></tr><tr><td class="caption"><b>An IFS in a projective basis</b></td></tr></table><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 25 of August, 2011 [10:15:19 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Setting%20a%20Basis">
+    http://doc.cinderella.de/tiki-index.php?page=Setting%20a%20Basis
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

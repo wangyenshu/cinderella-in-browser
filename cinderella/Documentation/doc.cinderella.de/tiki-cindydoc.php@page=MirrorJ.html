@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : MirrorJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 鏡映</h2>
+<!--latexreplace<br />
+\index{reflection}<br />
+\index{inversion}<br />
+\index{mode!reflection}<br />
+\index{mirror}<br />
+\index{mode!mirror}<br />
+\index{point!reflection}<br />
+\index{circle!reflection}<br />
+\index{line!reflection}<br />
+\index{circle inversion}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/reflection.png" border="0"  align="left" /></span></div> 鏡映は多目的に作られています。 点を中心とした点対称図形のほか、直線を軸とした線対称図形、円に対する反転像も得ることができます。 まず最初のクリックで「鏡」に相当する要素を選択します。 その後にクリックした要素(点、直線、2次曲線)の鏡映像を描きます。 (2度クリックすると鏡映像を消すことができます。) 「鏡」に相当する要素の選び方で、鏡映像は大きく変わります。<br />
+<br />
+<ul><li> <b>「鏡」が直線の場合</b> は普通の意味での鏡映像が得られます。 ある点の鏡映像とは、鏡までの距離が等しく、鏡への垂線の足が同じような点のことです。
+</li><li> <b>「鏡」が点の場合</b> は、この点を中心とする点対称な図形が描かれます。 ある点の点対称図形とは、中心となる点までの距離が等しく、中心と反対側にあるような点のことです。
+</li><li> <b>「鏡」がユークリッド円の場合</b>は、通称「円の反転像」と呼ばれる図形が描かれます。 ある点に関する円の反転像とは、円の中心を始点とし、もとの点を通る半直線上に乗っている点であって、円の中心から の距離が rの2乗/t で決まるような点のことです。 ここで、r とは円の半径、t とは円の中心と最初の点との距離です。
+</li></ul>
+<br />
+直線の鏡映像や、2次曲線の鏡映像とは、それぞれの図形に含まれるすべての点の鏡映が描くような図形のことを意味するとします。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Mirror1} &amp;\includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Mirror2} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Mirror3}\\</tt><br />
+{\small\it  Reflection at a line} &amp;  {\small\it Reflection at a point}&amp;  {\small\it  Inversion at a circle}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Mirror1.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Mirror2.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Mirror3.png" border="0"  /></span></td> </tr>
+<tr> <td><b>直線を軸にする鏡映</b></td><td width=10></td>
+ <td><b>点を中心とする鏡映</b></td><td width=10></td>
+ <td><b>円に対する鏡映</b></td> </tr>
+</table><br />
+<!-- /latexreplace --><br />
+<hr />
+<br />
+<h3>要約</h3>
+最初に「鏡」になる要素を選択する。 その後に選択した要素の鏡映像を描く。<br />
+<br />
+<h3>注意</h3>
+鏡映の定義は選択している幾何学に強く依存しています。<br />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Transformation+ModesJ.html" class="wiki">変換モード</a>
+</li></ul>
+<br />
+<br />
+(阿原)<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [12:17:11 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=MirrorJ">
+    http://doc.cinderella.de/tiki-index.php?page=MirrorJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

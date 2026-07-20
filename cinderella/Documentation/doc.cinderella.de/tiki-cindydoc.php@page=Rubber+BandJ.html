@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Rubber BandJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> ゴムバンド</h2>
+<br />
+<!--latexreplace<br />
+\index{simulation!rubber band}<br />
+\index{rubber band}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-spring.png" border="0"  align="left" /></span></div>  <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> でのゴムバンドは、自然長がゼロの<a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a> です。ゴムバンドは、 直線を加えるモードのように、マウスボタンを押し、ドラッグし、離すという動作によって作成されます。バネの端点がすでに描かれた点ではない場合は、自由質点が付け加えられます。ゴムバンドは端点の2つの質点に対し、次の式による力を与えます。<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\textrm{springconstant}\cdot\textrm{length}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>力</b> = <b>バネ定数</b> ∗ <b>長さ</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+　ここで、 "バネ定数" はインスペクタで調整できるゴムバンド特有の定数で、 長さ は2点間の距離です。2つの質点が互いにある距離を持ってゴムバンドでつながっているならばそれらは互いに引きつけられます。引力が距離と比例しているので、質点が遠く離れているほど、力はより強くなります。<br />
+<br />
+<br />
+　もし、全体への摩擦力が 環境設定で与えられないならば、ゴムバンドと質点のシステムは激しく振動します。次の図は、一方の点が幾何学的な点に固定されたゴムバンドにつながった一つの質点の状況を示します。左側の曲線は、点の振動の結果を示します。 (この曲線は、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のdrawcurvesオペレータにより生成されまた)<br />
+<br />
+<!--latexreplace<br />
+\index{friction}<br />
+\index{damping}<br />
+--><!-- /latexreplace --><br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Rubberband1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>単位速度による質点の軌跡</b></td></tr></table><br />
+<br />
+　環境設定 により、全体的な摩擦力を加えると、振動の減衰が起こります。そのような場合、システムは平衡状態に収束して停止します。次の図は、 重力の影響下にあるゴムバンドでつながれた質点の鎖を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Rubberband2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>重力の影響下にある<br> 質量を持つ点とゴムバンドの鎖</b></td></tr></table><br />
+<br />
+　ゴムバンドの網は面白い振舞いをします。ある意味で、そのような網はクモの巣のように振舞います。次の図は、いくつかの点が地面に固定されて格子点状につないだ質点とゴムバンドの平衡状態を示します。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.1in">width=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Rubberband3} &amp;\includegraphics<a class="wiki external"  href="width=1.1in">width=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Rubberband4}&amp;\includegraphics<a class="wiki external"  href="width=1.1in">width=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Rubberband5}\\</tt><br />
+{\small\it  The net before start} &amp;  {\small\it Four pinned points}&amp;  {\small\it ight pinned points}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Rubberband3.png" border="0"  width="150" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Rubberband4.png" border="0"  width="150" /></span></td><td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Rubberband5.png" border="0"  width="150" /></span></td>
+      </tr>
+      <tr>
+	<td><b>スタート前の網目</b><br></td><td width=10></td>
+	<td><b>４点を固定</b><br></td><td width=10></td>
+	<td><b>８点を固定</b><br></td>
+     </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<h3>インスペクタと <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a></h3>
+<!--latexreplace<br />
+\index{inspect!rubber band}<br />
+\index{rubber band}<br />
+--><!-- /latexreplace --><br />
+　ゴムバンド、 <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>、そして <a title="no description" href="tiki-cindydoc.php@page=Coulomb+ForceJ.html" class="wiki">クーロン力</a> は他に変換されうるオブジェクトです。非常に強力なバネのインスペクタについての詳細な議論は、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のインターフェースと同様に バネ モードの説明中にあります。<br />
+<br />
+<h3>次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Coulomb+ForceJ.html" class="wiki">クーロン力</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [23:17:51 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Rubber%20BandJ">
+    http://doc.cinderella.de/tiki-index.php?page=Rubber%20BandJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

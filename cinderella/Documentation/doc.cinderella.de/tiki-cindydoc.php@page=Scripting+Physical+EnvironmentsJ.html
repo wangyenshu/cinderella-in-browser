@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Scripting Physical EnvironmentsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>物理的環境のプログラム</h2>
+<!--latexreplace<br />
+\index{CindyScript!and CindyLab}<br />
+\index{CindyLab!and CindyScript}<br />
+--><!-- /latexreplace --><br />
+　<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> で <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の可能性を広げる多くの方法があります。ここで、2,3の例を示します。まず、 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> は、物理的量を見るオシロスコープや力の場をプロットするための命令文のような、いくつかの特殊演算を提供します。一方、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->は、物理的シミュレーション に関連するほとんどのパラメータに直接アクセスします。さらに、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->は、 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->の要素の物理的機能を使用可能にしたり不可能にしたりできます。このように、 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->で機械のような振舞いを実行することができます。 ここに、<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->とともに使う<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->のいくつかの例を示します。<br />
+<br />
+<br />
+<h3> オシロスコープ</h3>
+<!--latexreplace<br />
+\index{Oscilloscope}<br />
+--><!-- /latexreplace --><br />
+<code>drawcurves(<i>position</i>,<i>list_of_values</i>)</code> 命令は幾何学表示で曲線を描きます。ここで <code><i>position</i></code> は、オシロスコープが描かれる位置で、 <i>list_of_values</i> は、視覚的に見せるためのいくつかの大きさを含む<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->のリストです。この命令の最も簡単な使用法は次のプログラムで示されます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawcurves((0,0),[B.x,B.y])
+</pre></div><br />
+<br />
+ここで x と y は、点Ｂが表示される座標です。Ｂが恒星の周りを回る点であれば、次のような図になります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>惑星の動きの曲線</b></td></tr></table><br />
+<br />
+初期状態では、曲線の描かれる範囲は値の範囲によって自動的に決まります。 <code>drawcurves(...)</code> 命令では、背景色や、曲線の色、文字の表示など描画のための多くのパラメータが設定できます。詳しくは <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のリファレンスマニュアルをご覧ください。次の図は、連結された調和的発振子の動きに <code>drawcurves</code> 命令を使った例を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>連結された発振子の動き</b></td></tr></table><br />
+<br />
+ここでは、望ましい色と文字の表示のために多くの修飾子が使われました。 この例は、以下の <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> プログラムを使って作りました。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+linecolor((1,1,1));
+drawcurves((-7,-3),
+textcolor((1,1,1));  (A.x,B.x,A.ke,B.ke,a.pe+b.pe+c.pe),
+  height->50,
+  color->(1,1,1),
+  back->(0,0,0),
+  backalpha->1,showranges->true,
+  range->"peek",width->400,
+  colors->[
+    [1,0.5,0.5],
+    [0.5,1,0.5],     
+    [1,0.5,0.5], 
+    [0.5,1,0.5],
+    [0.5,0.5,1]],
+  texts->[
+    "PosA = "+ A.x,
+    "PosB = "+B.x,
+    "EnergyA = "+A.ke,
+    "EnergyB = "+B.ke,
+    "PostentialEnergy = "+(a.pe+b.pe+c.pe)
+]);
+</pre></div><br />
+<br />
+<h3>力の場</h3>
+<!--latexreplace<br />
+\index{force field}<br />
+\index{gravitationaml force}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> をサポートするためにデザインされた <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->t のもうひとつの命令文はdrawforces 命令です。この命令文により、描画領域内のいたるところで方向と強さを視覚化できます。このためには、仮想的な探索粒子を画面上を横切らせ、異なる点で力を計測します。 簡単に <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の命令文<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawforces()
+</pre></div><br />
+<br />
+を書くならば、すべての重力、クーロン力、物体の相互作用などが計測され、流れとして描かれます。探索粒子は、質量 = 1, 電荷 = 1, 半径 = 1　として標準化されています。たとえば、正反対の電荷をもつ2つの荷電粒子は <code>drawforces()</code> 命令で、次のような流れの図を描き出します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>単純な静電場</b></td></tr></table><br />
+<br />
+<code>drawcurves()</code> 命令と同様、 <code>drawforces()</code> 命令にも多くの修飾子があります。それらは、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> リファレンスで詳しく説明されています。ここで、少し高度な例を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>もう一つの単純な静電場</b></td></tr></table><br />
+<br />
+この流れの図を作ったプログラムの一部では、いくつかの修飾子を使っています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawforces(stream->true,
+              color->(1,1,1),
+              factor->3,
+              resolution->5)
+</pre></div><br />
+<br />
+特に,  <code>stream->true</code> 文は、通常の力の場の表示を、より精密な流れの図を与える小さな針の流れの図で置き換えます。<br />
+<br />
+<br />
+<h3> CindyLab の筋書きのプログラム</h3>
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のすべてのパラメータに関与できるので、複雑な動作を実行することも可能です。例として、簡単な卓球のゲームを示しましょう。まず、反射壁で卓球台の縁を描きます。別の反射壁を、ラケットのように、球を打つものとして、幾何学的に自由に動けるようにつくります。最後に、球を速度を持つ粒子として加えます。ここまでは、<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> とシンデレラだけで作ります。設定はすでにできていて、これだけでゲームができます。ただし、球が画面から出てしまうと永久に戻ってきません。<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr> <td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys5.png" border="0"  width="320" /></span></td><td width=10></td>  <td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys6.png" border="0"  width="320" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->卓球ゲームを作る<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->球が飛んでいってしまう<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+そこで <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> が登場します。<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> によって、球が画面から出ていってしまったかどうかを検出し、それに対応することができます。次のプログラムでは、 <code>if(H.x>D.x+9,...</code>.の行で、球が出ていってしまったかどうかを検出します。もし、そうであれば、新しい球をランダムな位置と速度、色で出します。さらに、カウンターが何個の球が失われたかを数えるのに使われます。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(H.x>D.x+9,
+  H.x=F.x;
+  r=random();
+  H.y=(r*D.y+(1-r)*G.y);
+  w=random()*pi/2+3*pi/4;
+  H.vx=-cos(w)*.4;
+  H.vy=sin(w)*.4;
+  H.color=(hue(random()));
+  count=count+1;
+);
+drawtext((-1,-3),"Missed balls: "+count,size->20);
+</pre></div><br />
+<br />
+カウンターを初期化するために、<i>simulation start</i> タグにカウンターをゼロにする行を1行付け加えなければなりません。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+count=0;
+</pre></div><br />
+<br />
+つぎの図は、ゲームの間に撮られたスナップショットを表します。どんなふうに黄色の球が飛んでいき、青の球が出てくるかを見てください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>卓球ゲームのプログラム</b></td></tr></table><br />
+<!--latexreplace<br />
+\index{CindyLab|)}<br />
+--><!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 03 of August, 2011 [00:18:50 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Scripting%20Physical%20EnvironmentsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Scripting%20Physical%20EnvironmentsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

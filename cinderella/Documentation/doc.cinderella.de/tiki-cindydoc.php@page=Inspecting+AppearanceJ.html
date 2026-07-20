@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Inspecting AppearanceJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>外観のインスペクタ</h2>
+<!--latexreplace<br />
+\index{inspect!appearance}<br />
+\index{appearance}<br />
+--><!-- /latexreplace --><br />
+<br />
+インスペクタを用いて、幾何学要素の外観をコントロールすることができます。これには２つのレベルがあります。外観のインスペクタは、現在選択されている要素に対してその属性を変更します。初期設定はこの影響を受けません。主な外観は <IMG SRC="../cinderella.de/files/CindyDocu/Inspector/insp_app.png"> ボタンによってアクセスできます。このセクションは、基本的な外観に焦点をあてています。次の図は、点、直線、円、多角形のパラメータについて示しています。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+
+<td ><IMG SRC="img/wiki_up/PointAppJ.png"></td><td width=10></td>
+<td ><IMG  SRC="img/wiki_up/LineAppJ.png"></td><td width=10></td>
+<td ><IMG  SRC="img/wiki_up/CircleAppJ.png"></td><td width=10></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->点の外観<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->線の外観<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm}  --> <!-- /latexreplace -->円や多角形の外観<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+これらのウィンドウのそれぞれは、色と可視性をコントロールします。いくつかのパラメータは、オブジェクトによって特有なものです。<br />
+<br />
+<br />
+<br />
+<h3> 色と透明度</h3>
+<!--latexreplace<br />
+\index{inspect!color}<br />
+\index{inspect!opacity}<br />
+\index{color}<br />
+\index{opacity}<br />
+--><!-- /latexreplace --><br />
+選択した要素の色を変えるのは、単に色のパレットのどれかをクリックするだけです。選択した要素の色はすぐに変わります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColorSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>カラーパレット</b></td></tr></table><br />
+<br />
+この中にない色を使いたい場合は、まずそれに近い色をダブルクリックします。すると、その色の色選択ウィンドウがポップアップします。この色選択ウィンドウは、オペレーティングシステムにより異なりますが、通常はこのような色を選択する方法がいくつか用意されています。 Mac-OSXの場合は次のようになります。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><IMG SRC="img/wiki_up/Color1J.png"></td><td width=10><!--latexreplace {\kern1.2cm} --> <!-- /latexreplace --></td>
+<td ><IMG SRC="img/wiki_up/Color2J.png"></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it {\kern1mm}  --> <!-- /latexreplace -->カラーホイール<!--latexreplace } --> <!-- /latexreplace --></b></td> <td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->拡張パレット<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+この方法でパレットの色を変えると、 <b>そのパレットの対応する色を使っているすべての要素の色が変わる</b> ということは重要ですので注意してください。<br />
+<br />
+次に、要素の透明度を調節するスライダーについて説明します。透明度は "全く見えない(透明)" から "それだけが見える(背景は見えない)" まであります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AlphasB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>透明度の段階</b></td></tr></table><br />
+<br />
+透明は、他の図形を邪魔しない補助線で使うとよいでしょう。比較的重要度の低い要素は、わずかに見えるようにしておくとよいでしょう。画面上で操作可能に(選択したり動かしたり)するためには、少なくとも20%の不透明度を必要とします。見えない要素は、表示メニューの「式による表示」で選択することができます。しかし、クリッピング(後述)はできません。点や線を見えなくするもう一つの方法は、サイズをゼロにすることです。<br />
+<br />
+<tt> <b>Cinderella.2</b> では、円を塗りつぶすことができます。塗りつぶす色は、「塗りの色」 で変更できます。円の内部と境界線の不透明度も変更できます。</tt><br />
+<br />
+<br />
+<h3>大きさ</h3>
+<!--latexreplace<br />
+\index{inspect!size}<br />
+\index{size}<br />
+--><!-- /latexreplace --><br />
+<br />
+オブジェクトの大きさをコントロールするスライダもあります。点のためのものと円や直線の線のためのものがあります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SizesB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>点の大きさの例</b></td></tr></table><br />
+<br />
+大きさゼロの点は非常に便利です。それは見えませんが、選択して動かすことができ、クリッピングされた直線上のクリッピングした点として扱えます。これにより、線分の端点をつかんで動かすときの理想的な点となります。余分な"装飾"をしなくてすむからです。<br />
+<br />
+<br />
+<h3> クリッピング</h3>
+<!--latexreplace<br />
+\index{inspect!clipping}<br />
+\index{clipping}<br />
+--><!-- /latexreplace --><br />
+<br />
+直線が"クリップ"されるかどうかの設定をします。"クリップ"とは、直線の端点を切り取ることです。そのためのボタンが３つあります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ClippingSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>クリッピングコントロール</b></td></tr></table><br />
+<br />
+クリップされていない直線は表示領域の端から端まで描画されます。クリップされた直線は２つの方法で切り取られます。２番目のボタンでは、直線を描く時に使った２点で切り取られます。３番目のボタンでは、直線上にあるすべての点のうち、両端にある点で切り取られます。このルールはやや複雑ですが、自然なふるまいになります。<br />
+<br />
+<ul><li> 直線の "クリッピング点" は、その直線上になければなりません。さらに、可視でなければならず、無限遠点であってはいけません。点の大きさをゼロにすると隠されたクリッピング点ができます。
+</li><li> 直線上のすべてのクリッピング点がクリッピングのために参照されます。
+</li><li> 直線が少なくとも２つのクリッピング点を持つならば、最初の点から最後の点まで線が引かれます。
+</li><li> クリッピング点が２つに満たない場合は、直線はクリッピングされません。
+</li></ul>
+<br />
+これらの規則は次のような効果をもたらします。<br />
+<br />
+<ul><li> 直線上のどこかの部分が必ず表示されます。
+</li><li> 直線上の可視的な点はその上にあります。
+</li></ul>
+<br />
+これは、図形上で予想される通りのものとなります。点が直線上にあるかどうかを決定することは、シンデレラの定理自動証明によってなされます。 これにより、数学的に正確で一貫したふるまいが保証されるのです。<br />
+<br />
+<br />
+<h3> 線分のはみ出し</h3>
+<!--latexreplace<br />
+\index{inspect!overhang}<br />
+\index{overhang}<br />
+--><!-- /latexreplace --><br />
+ある端点がクリッピングされてしまうのが好ましくないことがあります。線がまだ続くように見えるとよいことがしばしばあります。そこで、「線分のはみ出し」スライダーを使って、はみ出し具合をコントロールすることができます。スライダーの位置により、 線の全長の 0% から 50% の範囲で両端からのはみ出しを調節します。<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ConicB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>個々に色、線幅、はみ出しをつけたパスカルの定理</b></td></tr></table><br />
+<br />
+<br />
+<h3> 初期設定</h3>
+<!--latexreplace<br />
+\index{inspect!defaults}<br />
+--><!-- /latexreplace --><br />
+ボタン  <span class="img"><img alt="" src="buttonsback/inspector-defaults.png" border="0"  /></span>   と  <span class="img"><img alt="" src="buttonsback/inspector-special-def.png" border="0"  /></span>  による２つの情報ブロックがあります。そこでの設定は、選択されたすべての要素と、それ以降に作られる要素に適用されます。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><table align=center>
+<tr>
+<td ><IMG SRC="img/wiki_up/Dafaults1J.png"></td><td width=10><!--latexreplace {\kern1.2cm} --> <!-- /latexreplace --></td>
+<td ><IMG  SRC="img/wiki_up/Dafaults2J.png"></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->基本的な外観の初期設定<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td ><b><!--latexreplace {\small\it {\kern1mm} --> <!-- /latexreplace -->矢印と足跡についての初期設定<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [12:48:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Inspecting%20AppearanceJ">
+    http://doc.cinderella.de/tiki-index.php?page=Inspecting%20AppearanceJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

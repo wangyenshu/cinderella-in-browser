@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Geometries 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Geometries</h2>
+<!--latexreplace<br />
+\index{hyperbolic geometry}<br />
+\index{geometry!hyperbolic}<br />
+\index{spherical geometry}<br />
+\index{geometry!spherical}<br />
+\index{euclidean geometry}<br />
+\index{geometry!euclidean}<br />
+\index{geometries}<br />
+--><!-- /latexreplace --><br />
+It is one of <b>Cinderella's</b> main features that it supports different kinds of <i>geometries</i>.  If you are not accustomed to the idea that there are "different kinds of geometry," this may sound confusing.  You should read the section <a title="no description" href='tiki-cindydoc.php@page=Theoretical+Background.html' class='wiki'>Theoretical Background</a> to get a feeling for the underlying ideas and how they are implemented in <b>Cinderella</b>.  Users who already have some basic knowledge about Euclidean and non-Euclidean geometries might be satisfied reading this reference part only.<br />
+<br />
+Another warning message: Do not confuse <i>geometries</i> with <a title="no description" href="tiki-cindydoc.php@page=Views.html" class="wiki">views</a>; they both come in similar flavors, but the first defines the behavior of elements, while the second describes the presentation of elements.<br />
+<br />
+<br />
+<h3>Types of Geometry</h3>
+<br />
+In each main window of <b>Cinderella</b> you will find three buttons for choosing the type of geometry.  In the present version, Cinderella provides three different kinds of geometry: <i>Euclidean geometry</i>, <i>hyperbolic geometry,</i> and <i>elliptic geometry.</i>  You can switch among these three geometries by pressing the button  <span class="img"><img alt="" src="buttonsback/euclidean.png" border="0"  /></span>  for Euclidean geometry,  <span class="img"><img alt="" src="buttonsback/hyperbolic.png" border="0"  /></span>  for hyperbolic geometry, or  <span class="img"><img alt="" src="buttonsback/elliptic.png" border="0"  /></span>  for elliptic geometry.<br />
+<br />
+The choice of a new geometry does not affect the behavior of the elements you have already constructed. However, every newly added element is interpreted with respect to the new geometry. You can think of each element as having an entry that tells it to which geometry it belongs.  The basic notions affected by the choice of the geometry are the measurements of <i>distances</i> and <i>angles</i>.<br />
+<br />
+However, also other constructions are influenced by this choice. For instance, the <i>angle bisector</i> is defined to be a line whose angles to two other lines are equal. If the measurement of angles has changed, then the definition of angle bisector has to change, too.  Similar things happen to "parallels" and "perpendicular lines." The definition of a circle  is also influenced by the geometry.  A circle is the set of all points that have the same given distance to the center.  If the notion of "distance" is changed, the concept of "circle" changes as well.<br />
+<br />
+Other operations are not affected by the choice of the geometry at all: the line joining two points will always be the same no matter in which of the above geometries you are.<br />
+<br />
+The following list collects all constructions that are influenced by the choice of the geometry.  Observe that the position, as well as the number, of elements that are constructed can change.<br />
+<br />
+<ul><li> <b>Distance:</b> The notion of distance depends on the geometry. It can even happen that in hyperbolic geometry distances of real points become complex numbers, for instance when the line joining both points lies completely outside the horizon.
+</li><li> <b>Angle:</b> The notion of angle depends on the geometry. As in the case of distances, angles can also become complex numbers.
+</li><li> <b>Circle:</b> The exact notion of circularity depends on the definition of "distance," which changes in each geometry. This influences all construction modes for circles.  In the Euclidean view, hyperbolic or elliptic circles can look like arbitrary conics. The picture is clarified in the other views. In the hyperbolic view (Poincaré disk), hyperbolic circles really look like circles. In the spherical view, elliptic circles look like circles on the surface of a ball.
+</li><li> <b>Mirror:</b> The notion of reflection depends on distances and angles and thus it depends on the geometry.  All kinds of mirrors are influenced this way.
+</li><li> <b>Angle bisector:</b> In all three geometries, you have two angle bisectors for a line. However, the exact position depends on the choice of the geometry. In hyperbolic geometry, angle bisectors of real lines can become complex.
+</li><li> <b>Midpoint:</b> The midpoint of two points depends on the definition of "distance." In Euclidean geometry, there is exactly one such midpoint. In hyperbolic and elliptic geometry there are two such midpoints (points of equal distance to the defining points).  <b>Caution:</b> If you are in the "hyperbolic view," only one of these points will be visible, since the other one lies outside the horizon.
+</li><li> <b>Line with fixed angle:</b> This construction is influenced by the choice of the geometry because angles are involved.
+</li><li> <b>Perpendicular:</b> The notion of a perpendicular depends on the notion of "angle" and is influenced by the choice of the geometry.
+</li><li> <b>Parallel:</b> In <b>Cinderella</b> parallels of a line <i>L</i> are defined as lines that have an angle of zero to <i>L</i>. In Euclidean geometry there is a unique parallel to <i>L</i> through a point.  However, in hyperbolic and elliptic geometry there are two such parallels in general.  The parallels in elliptic geometry will usually have complex coordinates, so that you will see them only in the "construction text" view.
+</li></ul>
+<br />
+In the present version of <b>Cinderella</b> some operations are not supported in all geometries. These operations are <a title="no description" href='tiki-cindydoc.php@page=Circle+by+Three+Points.html' class='wiki'>Circle by Three Points</a>, <a title="no description" href='tiki-cindydoc.php@page=Area.html' class='wiki'>Area</a>, and <a title="no description" href='tiki-cindydoc.php@page=Center.html' class='wiki'>Center</a>, where the Euclidean result is always calculated.<br />
+<br />
+<A NAME="Views and Geometries"></A><br />
+<h3>Views and Geometries</h3>
+<br />
+Although every geometry is usable together with every view, a few combinations are a bit more common than others.  Here is a short list of what these common choices represent.<br />
+<br />
+<b>Euclidean view</b> in <i>Euclidean geometry</i>:<br />
+This may be the most common choice. The geometric elements behave like "usual elements" in a "usual plane."<br />
+<br />
+<b>Spherical view</b> in <i>Euclidean geometry</i>:<br />
+This choice gives you control over the behavior "at infinity" of the Euclidean plane. The spherical view represents a double cover of the Euclidean plane.  Each line is mapped to a great circle and each point is mapped to an antipodal pair of points. The boundary of the nonrotated view corresponds to the "line at infinity" of the Euclidean plane.<br />
+<br />
+<b>Euclidean view</b> in <i>hyperbolic geometry</i>:<br />
+What you see here is the "Beltrami-Klein" model of hyperbolic geometry. In this model hyperbolic lines are really straight. Measurement is done according to the definitions of the Cayley-Klein geometry. In the Euclidean view the horizon of hyperbolic geometry is shown as a thin circle.<br />
+<br />
+<b>Hyperbolic view</b> in <i>hyperbolic geometry</i>:<br />
+This is what is known as the Poincaré disk. Hyperbolic lines are represented by circular arcs that cross the boundary of the disk at right angles. The Poincaré disk distorts the usual plane in a way that hyperbolic angles between lines correspond to "Euclidean" angles between the corresponding circular arcs. In mathematical terms, the Poincaré disk is a conformal representation of the hyperbolic plane.  In this picture hyperbolic circles really look circular.<br />
+<br />
+The whole disk represents  only a part of the full plane of the corresponding Cayley-Klein geometry. The part that is shown corresponds to the region inside the circle shown in the Euclidean view. The measurement of distances is such that the distance from any interior point to any point on the boundary is equal to infinity.<br />
+<br />
+<b>Spherical view</b> in <i>elliptic geometry</i>:<br />
+The spherical view is the natural view for elliptic geometry. The angle between two lines corresponds to the spherical angles of the corresponding great circles. Measurement of distances corresponds to geodesic measurement of distances on the surface of a ball. Elliptic circles correspond to circles on the surface of the ball.<br />
+<br />
+However, one has to be a bit careful. Elliptic geometry is not equivalent to spherical geometry (geometry on the ball). This comes from the fact that in elliptic geometry  antipodal points of the ball are identified with each other.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [08:53:28 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Geometries">
+    http://doc.cinderella.de/tiki-index.php?page=Geometries
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : The Elements of CindyLab 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> The Elements of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --></h2>
+<!--latexreplace<br />
+\index{force}<br />
+\index{point!in simulation}<br />
+--><!-- /latexreplace --><br />
+As mentioned in the previous section, simulations in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> are modeled as systems of pointlike particles and forces that influence their movement. The most fundamental unit in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is a <a title="no description" href='tiki-cindydoc.php@page=Free+Mass.html' class='wiki'>Free Mass</a>. Such a mass is much like a usual geometric point in Cinderella. However, it has a number of additional properties besides its position, including a current velocity, a mass, and a charge. A simulation in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> causes the masses to move according to the parameters of the simulation. Adding a free mass is like adding a free point, and you can use either of these two modes for it:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-mass.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Free+Mass.html' class='wiki'>Free Mass</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-mass-vel.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Velocity.html' class='wiki'>Velocity</a></td></tr></table><br />
+<br />
+<br />
+The movements of the masses are influenced by forces. These forces may have various origins.<br />
+<br />
+<ul><li> First of all, there can be environmental forces such as gravitational forces (constant or otherwise) and magnetic fields. They can be added via the three modes:
+</li></ul>
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-gravity.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Gravity.html' class='wiki'>Gravity</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-sun.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Sun.html' class='wiki'>Sun</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/physics-polygon.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Magnetic+Field.html' class='wiki'>Magnetic Field</a></td></tr></table><br />
+<br />
+<br />
+<ul><li> Second, there may be forces between a specific pair of masses. Usually, these forces correspond to springs or to an electromagnetic or gravitational interaction. There are several modes for adding  such an individual interactions between particles:
+</li></ul>
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-spring.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Rubber+Band.html' class='wiki'>Rubber Band</a> (Spring with zero length)</td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-long-spring.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/force-culomb.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Coulomb+Force.html' class='wiki'>Coulomb Force</a></td></tr></table><br />
+<br />
+<br />
+<ul><li> Finally, the forces may come from settings related to the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a>, such as universal gravity or interactions affecting all particles in the system.
+</li></ul>
+<br />
+A last ingredient to <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is the ability to put walls and floors into a physical experiment. Whenever a particle encounters such a so-called <i>bouncer</i>, it bounces off like a tennis ball. One can add bouncers via the following two modes:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-floor.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Floor.html' class='wiki'>Floor</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-bouncer.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Bouncer.html' class='wiki'>Bouncer</a></td></tr></table><br />
+<br />
+The behavior of any of these objects can be influenced by precise settings, which are entered via the inspector (or <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->). The sections on the different elements of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> describe the variety of parameters that are available for each of these objects.<br />
+<br />
+In addition, properties that apply to all physical objects can be controlled by the global setup <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a> .<br />
+<br />
+<br />
+<h2> Starting a Physics Simulation</h2>
+<!--latexreplace<br />
+\index{simulation!starting a}<br />
+--><!-- /latexreplace --><br />
+As soon as physical objects are present in a drawing, an animation control device will show up in the geometric views. With this control device one can play/stop/pause the physics simulation, just as in <a title="no description" href='tiki-cindydoc.php@page=Animation.html' class='wiki'>Animation</a> mode. As in animation mode, it is possible to grab and move free points or free masses at any time.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PhysDemo.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A simple physics scenario with animation control</b></td></tr></table><br />
+<br />
+Starting the physics animation will automatically switch to move mode. As soon as you change to another mode, the physics animation will stop. Note that the accuracy and the global frame rate of the simulation can be adjusted by the <a title="no description" href="tiki-cindydoc.php@page=Environment.html" class="wiki">environment inspector</a>.<br />
+<br />
+<br />
+<h2> The Environment</h2>
+<!--latexreplace<br />
+\index{simulation!environment}<br />
+\index{environment}<br />
+--><!-- /latexreplace --><br />
+Another extremely important ingredient of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a>. The environment collects properties of physical elements that are considered to be common to all physical objects. There you find such elements as global friction and global gravity. There you can also control whether there is an interaction between arbitrary mass particles by gravity or electrostatic forces. All these properties can be influenced either by the inspector or by suitable <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> statements.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 25 of August, 2011 [06:40:39 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=The%20Elements%20of%20CindyLab">
+    http://doc.cinderella.de/tiki-index.php?page=The%20Elements%20of%20CindyLab
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

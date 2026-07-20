@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Arithmetic OperatorsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>算術演算子</h2>
+<br />
+この節では、数に適用されるすべての演算子と関数についてまとめます。この他にも多くの演算子がありますが、 <a title="no description" href="tiki-cindydoc.php@page=Vectors+and+MatricesJ.html" class="wiki">ベクトルと行列</a>, <a title="no description" href="tiki-cindydoc.php@page=Geometric+OperatorsJ.html" class="wiki">幾何演算子</a>, および <a title="no description" href="tiki-cindydoc.php@page=Function+PlottingJ.html" class="wiki">関数プロット</a> の節で解説します。<br />
+<br />
+<br />
+<h3>挿入演算子</h3>
+<br />
+数学の基本的な演算子 <b>+</b>, <b>-</b>, <b>*</b>, <b>/</b>, <b>&#136;</b>はそのまま使えます。これらは、数とリストに適用できますが、演算の意味は、適用されるものによって違います。たとえば、 <code>5+7</code> の結果は <code>12</code> であり、 <code>[2,3,4]+[3,-1,5]</code> の結果は <code>[5,2,9]</code> です。<br />
+<br />
+<hr />
+<h4>加法演算子: <span style="color:red;"><code>&#60;expr&#62;+&#60;expr&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 数(整数、実数、複素数) は、 <span style="color:red;"><b>+</b></span> 演算子で和が求められます。同じ形をしているリストでも和になり、成分ごとの和が求められます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b></td></tr><tr><td class="wikicell" ><code>7 + 8</code>   </td><td class="wikicell"  colspan="2">  <code>15</code></td></tr><tr><td class="wikicell" ><code>2.3 + 5.9</code>   </td><td class="wikicell"  colspan="2">  <code>8.2</code></td></tr><tr><td class="wikicell" ><code>[2,3,4] + [3,4,6]</code>   </td><td class="wikicell"  colspan="2">  <code>[5,7,10]</code></td></tr><tr><td class="wikicell" ><code>[2,3,[1,2]] + [3,4,[1,3]]</code>  </td><td class="wikicell"  colspan="2">  <code>[5,7,[2,4]]</code></td></tr></table><br />
+<br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=String+OperatorsJ.html" class="wiki">文字列演算子</a><br />
+<hr />
+<br />
+<h4>減法演算子: <span style="color:red;"><code>&#60;expr&#62;-&#60;expr&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 数(整数、実数、複素数) は、 <span style="color:red;"><b>-</b></span> 演算子で差が求められます。同じ形をしているリストでも差になり、成分ごとの差が求められます。また <span style="color:red;">-</span> 演算子は、負(マイナス)記号としても使えます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b></td></tr><tr><td class="wikicell" ><code>7 - 8</code>   </td><td class="wikicell"  colspan="2">  <code>-1</code></td></tr><tr><td class="wikicell" ><code>8.3 - 5.9</code>   </td><td class="wikicell"  colspan="2">  <code>2.4</code></td></tr><tr><td class="wikicell" ><code>[2,6,4] - [3,4,6]</code>   </td><td class="wikicell"  colspan="2">  <code>[-1,2,-2]</code></td></tr><tr><td class="wikicell" ><code>[5,3,[1,2]] - [3,4,[1,3]]</code>  </td><td class="wikicell"  colspan="2">  <code>[2,-1,[0,-1]]</code></td></tr></table><br />
+<br />
+<br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=String+OperatorsJ.html" class="wiki">文字列演算子</a><br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<h4>乗法演算子: <span style="color:red;"><code>&#60;expr&#62;*&#60;expr&#62;</code></span></h4>
+<br />
+<b>説明:</b> 数(整数、実数、複素数) は、 <span style="color:red;">*</span> 演算子で積が求められます。数のベクトルまたは数の行列の場合は、演算可能な次元であれば積が求められます。詳しくは例を見てください。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell" > <b>結果</b> </td><td class="wikicell" > コメント</td></tr><tr><td class="wikicell" ><code>7 * 8</code>   </td><td class="wikicell" >  <code>56</code> </td><td class="wikicell" >整数の積</td></tr><tr><td class="wikicell" ><code>(1+i) * (2+i)</code>   </td><td class="wikicell" >  <code> 1+3*i</code> </td><td class="wikicell" > 複素数の積</td></tr><tr><td class="wikicell" > <code>2 * [5,3,2]</code>  </td><td class="wikicell" >  <code>[10,2,4]</code> </td><td class="wikicell" > ベクトルの実数倍</td></tr><tr><td class="wikicell" ><code>[5,3,2] * 2</code>  </td><td class="wikicell" >  <code>[10,2,4]</code> </td><td class="wikicell" > ベクトルの実数倍</td></tr><tr><td class="wikicell" ><code>[2,2,3] * [3,4,6]</code>   </td><td class="wikicell" >  <code>32</code> </td><td class="wikicell" > ベクトルの内積 (x_1,x_2,…,x_n)*(y_1,y_2, …,y_n)=(x_1*x_2+…+x_n*y_n)</td></tr><tr><td class="wikicell" ><code>[[1,2],[3,4]] * [1,2]</code>   </td><td class="wikicell" >  <code>[5,11]</code> </td><td class="wikicell" > 行列と列ベクトルの積 </td></tr><tr><td class="wikicell" ><code>[1,2] * [[1,2],[3,4]] </code>   </td><td class="wikicell" >  <code>[7,10]</code> </td><td class="wikicell" > 行ベクトルと行列の積 </td></tr><tr><td class="wikicell" ><code>[[1,2],[3,4]] * [[1,2],[3,4]]</code>   </td><td class="wikicell" >  <code>[[7,10],[15,22]]</code> </td><td class="wikicell" > 行列の積</td></tr></table><br />
+<br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=Vectors+and+MatricesJ.html" class="wiki">ベクトルと行列</a><br />
+<br />
+<br />
+<hr />
+<br />
+<h4>除法演算子: <span style="color:red;"><code>&#60;expr&#62;/&#60;number&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 数(整数、実数、複素数) は、 <span style="color:red;">/</span> 演算子で商が求められます。<br />
+また、ベクトルは数で割ることができます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>56 / 8</code>   </td><td class="wikicell"  colspan="2">  <code>7</code> </td></tr><tr><td class="wikicell" ><code>[6,8,4] / 2</code>  </td><td class="wikicell"  colspan="2">  <code>[3,4,2]</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<h4>べき乗演算子: <span style="color:red;"><code>&#60;expr&#62;&#136;&#60;expr&#62;</code></span></h4>
+<!-- latexreplace \index{\textasciicircum@\texttt{\textasciicircum}} --><!-- /latexreplace --><br />
+<br />
+<b>説明:</b><br />
+<br />
+数(整数、実数、複素数) のべき乗で、指数は整数に限らず、実数、複素数でも可能です。正式には <code>exp(b*ln(a))</code> が計算されます。(ln(a)は複素変数の対数関数)<br />
+<tt> <code>ln(…)</code> は周期 <code>2*pi</code>で定義されますので、 <code>a&#136;b</code> は一般には多価関数です。 <code>b</code> が整数でない場合には  <code>a&#136;b</code> は最初の主要な値を返します</tt><br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>5&#136;2</code>   </td><td class="wikicell"  colspan="2">  <code>25</code> </td></tr><tr><td class="wikicell" ><code>5&#136;(-1)</code>  </td><td class="wikicell"  colspan="2">  <code>0.2</code> </td></tr><tr><td class="wikicell" ><code>2&#136;(1/2)</code>  </td><td class="wikicell"  colspan="2">  <code>1.4142…</code> </td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<h4>角度演算子: <span style="color:red;"><code>&#60;number&#62;°</code></span></h4>
+<br />
+<br />
+この演算子は、その数に  <code>pi/180</code> を掛けます。これで、度数法(60分法)による角度を弧度法に変換します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>180°</code>   </td><td class="wikicell"  colspan="2">  <code>3.1416…</code> </td></tr><tr><td class="wikicell" ><code>cos(180°)</code>  </td><td class="wikicell"  colspan="2">  <code>-1</code> </td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<h4>絶対値演算子: <span style="color:red;"><code>|&#60;number&#62;|</code></span></h4>
+<br />
+<br />
+　この演算子はオブジェクトの絶対値を求めます。オブジェクトは、実数、複素数、ベクトルのいずれかです。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>&#124;-5&#124;</code>   </td><td class="wikicell"  colspan="2">  <code>5</code> </td></tr><tr><td class="wikicell" ><code>&#124;(3,4)&#124;</code>  </td><td class="wikicell"  colspan="2">  <code>5</code> </td></tr><tr><td class="wikicell" ><code>&#124;1+i&#124;</code>  </td><td class="wikicell"  colspan="2">  <code>1.4142…</code> </td></tr></table><br />
+<br />
+<b>注意:</b>  <code>|_|</code> 演算子を入れ子にして使うことはできません。Cindyscriptはそれを構文エラーとみなします。入れ子にしたい場合はabs()関数を用います。<br />
+<br />
+<br />
+<hr />
+<br />
+<h4>距離演算子: <span style="color:red;"><code>|&#60;number&#62;,&#60;number&#62;|</code></span></h4>
+<br />
+<br />
+　 <code>|...|</code> 演算子を、引数２つで使うことができます。その場合、２つのオブジェクトの距離を計算します。オブジェクトは、実数、複素数、ベクトルのいずれかですが、２つとも同じ種類のものとします。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>&#124;-5,8&#124;</code>   </td><td class="wikicell"  colspan="2">  <code>13</code> </td></tr><tr><td class="wikicell" ><code>&#124;(1,1),(4,5)&#124;</code>  </td><td class="wikicell"  colspan="2">  <code>5</code> </td></tr></table><br />
+<br />
+<b>注意:</b> <code>|_|</code> 演算子を入れ子にして使うことはできません。Cindyscriptはそれを構文エラーとみなします。入れ子にしたい場合はdist()関数を用います。<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<h3>関数</h3>
+<br />
+<br />
+次の演算子は、数(整数、実数、複素数)に適用されます。<br />
+いくつかの関数はベクトルにも適用されます。<br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="add"></A><A NAME="sub"></A><A NAME="mult"></A><A NAME="div"></A><A NAME="pow"></A><A NAME="mod"></A><br />
+<h3>算術関数</h3>
+<h4>和: <span style="color:red;"><code>add(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<h4>差: <span style="color:red;"><code>sub(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<h4>積: <span style="color:red;"><code>mult(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<h4>商: <span style="color:red;"><code>div(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<h4>累乗: <span style="color:red;"><code>pow(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+これらは、  <b>+</b>, <b>-</b>, <b>*</b>, <b>/</b>と同等な、２つの数の演算をする関数です。<br />
+<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>add(5,6)</code>   </td><td class="wikicell"  colspan="2">  <code>11</code> </td></tr><tr><td class="wikicell" ><code>pow(6,2)</code>  </td><td class="wikicell"  colspan="2">  <code>36</code> </td></tr><tr><td class="wikicell" ><code>mod(23,4)</code>  </td><td class="wikicell"  colspan="2">  <code>3</code> </td></tr><tr><td class="wikicell" ><code>add((1,2),(3,4))</code>  </td><td class="wikicell"  colspan="2">  <code>(4,6)</code> </td></tr><tr><td class="wikicell" ><code>mult(2,(3,4))</code>  </td><td class="wikicell"  colspan="2">  <code>(6,8)</code> </td></tr><tr><td class="wikicell" ><code>mult((4,5),(3,4))</code>  </td><td class="wikicell"  colspan="2">  <code>32</code> </td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<h4>剰余: <span style="color:red;"><code>mod(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> <code>mod</code> 関数は <code>&#60;expr1&#62;</code>を <code>&#60;expr2&#62;</code>で割った余りを求めます。<br />
+<br />
+<A NAME="sqrt"></A><A NAME="exp"></A><A NAME="log"></A><br />
+<h3>標準的な関数</h3>
+<h4>平方根: <span style="color:red;"><code>sqrt(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>指数関数: <span style="color:red;"><code>exp(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>自然対数: <span style="color:red;"><code>log(&#60;expr&#62;)</code></span></h4>
+<br />
+これらは、数から数への関数です。<br />
+これらの関数では複素数も使えます。<br />
+<br />
+<hr />
+<br />
+<A NAME="sin"></A><A NAME="cos"></A><A NAME="tan"></A><A NAME="arccos"></A><A NAME="arcsin"></A><A NAME="arctan"></A><A NAME="arctan2"></A><br />
+<br />
+<h3>三角関数</h3>
+<br />
+標準的な三角関数です。<br />
+<br />
+<h4>三角関数 sine: <span style="color:red;"><code>sin(&#60;expr1&#62;)</code></span></h4>
+<br />
+<h4>三角関数 cosine: <span style="color:red;"><code>cos(&#60;expr1&#62;)</code></span></h4>
+<br />
+<h4>三角関数 tangent: <span style="color:red;"><code>tan(&#60;expr1&#62;)</code></span></h4>
+<br />
+<h4>sine の逆関数: <span style="color:red;"><code>arcsin(&#60;expr1&#62;)</code></span></h4>
+<br />
+<h4>cosine の逆関数: <span style="color:red;"><code>arccos(&#60;expr1&#62;)</code></span></h4>
+<br />
+<h4>tangent の逆関数: <span style="color:red;"><code>arctan(&#60;expr1&#62;)</code></span></h4>
+<br />
+<h4>ベクトルのなす角: <span style="color:red;"><code>arctan2(&#60;real1,real2&#62;)</code></span></h4>
+<br />
+<h4>ベクトルのなす角: <span style="color:red;"><code>arctan2(&#60;vec&#62;)</code></span></h4>
+<br />
+<br />
+<code>arc</code> は原則として多価です。しかし、演算子は−piからpiの間の解をひとつ返します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>sin(pi)</code>   </td><td class="wikicell"  colspan="2">  <code>0</code> </td></tr><tr><td class="wikicell" ><code>arccos(-1)</code>  </td><td class="wikicell"  colspan="2">  <code>3.1416…</code> </td></tr><tr><td class="wikicell" ><code>arctan2(1,1)</code>  </td><td class="wikicell"  colspan="2">  <code>45°</code> </td></tr><tr><td class="wikicell" ><code>arctan2(-1,-1)</code>  </td><td class="wikicell"  colspan="2">  <code>-135°</code> </td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="abs"></A><A NAME="round"></A><A NAME="floor"></A><A NAME="ceil"></A><A NAME="re"></A><A NAME="im"></A><A NAME="conjugate"></A><br />
+<h3>数値関数</h3>
+<br />
+次の関数では、単一の数のほか、リストにも適用できます。<br />
+<h4>絶対値: <span style="color:red;"><code>abs(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>四捨五入: <span style="color:red;"><code>round(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>その数以下の最大の整数: <span style="color:red;"><code>floor(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>その数以上の最小の整数: <span style="color:red;"><code>ceil(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>複素数の実部: <span style="color:red;"><code>re(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>複素数の虚部: <span style="color:red;"><code>im(&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>共役複素数: <span style="color:red;"><code>conjugate(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+複素数に対しては、  <span style="color:red;">round</span>, <span style="color:red;">floor</span>, <span style="color:red;">ceil</span> は実部と虚部のそれぞれに対して適用されます。<br />
+<br />
+<span style="color:red;">abs</span> は、実数、複素数、ベクトルなどのノルムを計算します。他の関数はリストにも適用できます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <b>式</b> </td><td class="wikicell"  colspan="2"> <b>結果</b> </td></tr><tr><td class="wikicell" ><code>round(4.3)</code>   </td><td class="wikicell"  colspan="2">  <code>4</code> </td></tr><tr><td class="wikicell" ><code>round([3.2,7.8,3.1+i*6.9])</code>  </td><td class="wikicell"  colspan="2">  <code>[3,8,3+i*7]</code> </td></tr><tr><td class="wikicell" ><code>abs([1,3,1,2,1])</code>  </td><td class="wikicell"  colspan="2">  <code>4</code> </td></tr><tr><td class="wikicell" ><code>floor(4.8)</code>  </td><td class="wikicell"  colspan="2">  <code>4</code> </td></tr></table><br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="random"></A><A NAME="randomnormal"></A><A NAME="randombool"></A><A NAME="random1"></A><A NAME="randomint"></A><A NAME="seedrandom"></A><br />
+<h3>乱数</h3>
+<br />
+次の関数は乱数を発生します。<br />
+<br />
+<h4>0 から 1 までの一様乱数: <span style="color:red;"><code>random()</code></span></h4>
+<br />
+<h4>(0,1)正規乱数: <span style="color:red;"><code>randomnormal()</code></span></h4>
+<br />
+<h4>ブール値の乱数 <code>true</code> または <code>false</code>: <span style="color:red;"><code>randombool()</code></span></h4>
+<br />
+<h4>0 から <code>&#60;number&#62;</code> までの実数の一様乱数: <span style="color:red;"><code>random(&#60;number&#62;)</code></span></h4>
+<br />
+<h4>0 から <code>&#60;number&#62;</code> までの整数の一様乱数: <span style="color:red;"><code>randomint(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<br />
+random 関数は、負の数や複素数を引数にすることもできます。例えば、<code>random(-5)</code> は <code>-5</code> から <code>0</code>までの乱数を発生します。  <code>randomint(6+i*10)</code> は実部が0から6まで、虚部が0から10までの複素数をランダムに発生します。<br />
+<br />
+<h4>乱数発生器の初期化: <span style="color:red;"><code>seedrandom(&#60;number&#62;)</code></span></h4>
+<br />
+疑似乱数は、常に予測不可能な新しい乱数列を発生します。なんらかの理由で、スクリプトを実行するたびに、同じ乱数列を発生させたい場合は、<code>seedrandom(<number>)</code> 関数を使います。引数に与えた整数に対し、同じ乱数列が発生します。異なる引数(seed)を与えれば別の乱数列が発生します。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 11 of February, 2015 [23:25:06 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Arithmetic%20OperatorsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Arithmetic%20OperatorsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

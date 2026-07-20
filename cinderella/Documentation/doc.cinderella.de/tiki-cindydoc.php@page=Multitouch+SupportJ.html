@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Multitouch SupportJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> マルチタッチサポート</h2>
+<br />
+<h3> 序</h3>
+<!-- latexreplace<br />
+\index{multitouch}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+　マウスは、およそ30年間、主なグラフィカル・ユーザ・インタフェースのための入力デバイスでした。物理的なデバイスの動きと画面上の点が１対1に対応するということにシンデレラでの双方向性は依存していました。一方で、マウスは人間の手の動きを平面的にしてしまいます。われわれはその制限に慣れてきましたが、実生活では手と何本かの指での動作を好みます。<br />
+　技術は進歩し、最新の多機能電話やタブレットコンピュータで見られるように、マルチタッチインターフェースが大きな役割をしています。ノートパソコンのタッチバッドでさえ同時にいくつかの指を認識できます。そして、タッチスクリーンも手ごろなものとなり、最新のオペレーティングシステムによってサポートされています。<br />
+<br />
+<!-- latexreplace<br />
+\index{touchscreen}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+　幾何学ツールにとって、マルチタッチはよりよいインターフェースです。数学的に言うと、それは「変換だけ」から「複数の変化」に変わります。シンデレラには自由曲線を描くモードがありません。その代わりとして、「線分を加える」か「1点を通る直線」を使っています。もし、あなたが入力デバイスとしてマウスを使っているならば、この２つのツールだけがユーザーと図面との間のインターフェースです。その状況はマルチタッチ環境でまったく変わったものになります。２本の指の動きによって拡大や縮小をすることがすでに行われています。そのような方法で直線と相互作用をすることが可能です。たとえば、回転と平行移動が同時にできます。<br />
+　プログラマの立場からすると、マルチタッチは若干複雑なものとなります。マウスでは常にカーソルが指し示す位置があり、ボタンは「押すードラッグするー離すという」一連の操作によっています。マルチタッチでは状況が異なります。位置は複数あり（触っていなければ指し示している位置はない）、「タッチするー動かすー離す」という動きも重複するかもしれません。ユーザーとしては気にする必要はありませんが、<!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> でプログラムを角のであればこれは重要です。詳しくは <!-- latexreplace \cite{KorDoh-UIDDGS-2010} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[KD10]</a><!-- /latexreplace --> を見てください。<br />
+<br />
+<h3> シンデレラでマルチタッチを使う</h3>
+<br />
+（訳者注：シンデレラでのマルチタッチサポートはまだ研究段階であり、訳者もその環境が用意できないことから、実際に動作を確かめているわけではありません。したがって、以下の翻訳には誤りがあるかもしれません。できるだけ英語版の方を参照してください）<br />
+<br />
+　いまのところ、シンデレラでは標準的な TUIO プロトコル <!-- latexreplace \cite{KalBovBenCos-TPTTUI-2005} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[KBBC05]</a><!-- /latexreplace --> を通してマルチタッチイベントをサポートしています。 <a class="wiki external"  href="http://www.tuio.org">http://www.tuio.org</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> も参照してください。この標準クロスプラットフォームには、ほとんどのマルチタッチデバイス用のドライバがあります。スマートフォンやタブレットのために、マルチタッチイベントをコンピュータに送信するアプリケーションが TUIO で見つかります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TUIO-settings.png" border="0"  /></span></td></tr><tr><td class="caption"><b>インスペクタのTUIO設定</b></td></tr></table><br />
+<br />
+　TUIO を有効にするには、インスペクタの「モード」を使います。マルチタッチサポートのTUIOチェックボックスをチェックして、標準的なポート3333で働くことを「動かすモード」にして動作を確かめてください。 TUIO サポートがチェックされている間、WindowsまたはMac OSX上で標準的なTUIOドライバが使われていれば、マウスによる操作は重複を避けるために無視されます。シンデレラのその他のモードではまだ TUIO イベントをサポートしていません。もし、「Creation Gestures」がチェックされていれば、1本か２本の指でパッドに触れることで点と直線を作り出せます。これによって、余分な点や線ができるため、このオプションはデフォルトではチェックが外されています。まだ実験段階だと思ってください。<br />
+　「Only frontmost window」オプションは、あなたがマルチタッチのデバイスを使うかどうかによってチェックをつけるかまたは外さなければなりません。もし、デバイスがスクリーンのコンテンツを表示し、スクリーンへのタッチが自動的にシンデレラのウィンドウにマップされるようならチェックをはずさなければなりません。デバイスが、ラップトップコンピュータのタッチバッドやスマートフォンのTUIOアプリのように、スクリーンを持たないか、シンデレラのウインドウを表示しないならば、このオプションをチェックするのがよいでしょう。その場合、タッチ面上のすべてのイベントは、シンデレラで最前面にある表示領域にマップされます。<br />
+<br />
+<h3>  CindyScript を用いたマルチタッチプログラミング</h3>
+<br />
+　幾何学ソフトウェアのためのマルチタッチ入力はまだ研究段階です。そして、「動かすモード」以外には標準的なユーザーインターフェースがまだありません。私たちがシンデレラの将来のアップデートで他のモードに対応するために、 <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> でマルチタッチイベントにアクセスできるようにすることにしました。<br />
+<!-- latexreplace<br />
+\index{touch-local}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+インスペクタでTUIOサポートを有効にすれば、 <b>Mouse Down</b>, <b>Mouse Up</b> , <b>Mouse Drag</b> スロットで マウスの代わりにTUIOイベントが使えるようになります。 <a title="no description" href='tiki-cindydoc.php@page=User+Input.html#mouse' class='wiki'><code>mouse</code> function</a> はタッチイベントを検出して報告します。 <code>mouse()</code> 関数はすべてのタッチイベントのうち、マルチタッチだけを検出します。このことは、連続したマウスイベントが、同じ動作に属しているということにはならないことを意味しています。これはプログラマにとって悪夢です。異なるタッチをどのようにして正しい動作に割り当てることができるのでしょうか。便宜を図るために CindyScript に次のような関数を用意しました。<br />
+<br />
+<h4>タッチ局所変数を定義する: <span style="color:red;"><code>mtlocal(&#60;var1&#62;,&#60;var2&#62;,...)</code></span></h4>
+<br />
+<br />
+説明：mtlocal はタッチシーケンスのための局所変数を定義します。この関数は<b>Mouse Down</b> スロットだけで有効です。変数がタッチ局所変数として定義されると、すべてのタッチシーケンスに対して唯一のインスタンスが作られます。<br />
+もし、 <b>Mouse Drag</b> スロットか <b>Mouse Up</b> スロットでその変数を使うならば、タッチするー動かすー離す、という流れが割り当てられます。<br />
+<br />
+例： <code>mtlocal</code> 関数を使う簡単な例です。次のコードを <b>Draw</b>, <b>Mouse Down</b>, <b>Mouse Up</b> , <b>Mouse Drag</b> スロットに書くと、マウスで多角形（曲線）を描くことができます。マウスボタンが押されている間、多角形は赤で描かれ、いったんマウスボタンを離すと、新しい多角形は青で描かれるようになってリストに追加されます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+// In Draw:
+forall(polygons,drawpoly(#));
+
+// In Mouse Down:
+polygon=[mouse()];
+
+// In Mouse Drag:
+polygon=polygon++[mouse()];
+drawpoly(polygon,color->red(1));
+
+// In Mouse Up:
+polygons=polygons++[polygon];
+</pre></div><br />
+<br />
+このコードでは、まず <b>Mouse Down</b>  スロットで 変数 polygon が作られます。それから <b>Mouse Drag</b> 関数で点が追加され、最後に <b>Mouse Up</b> スロットで変数の内容（リスト）ができあがります。<br />
+　同じコードをマルチタッチ環境で動作させると、 (大域)変数 <code>polygon</code> がすべてのタッチに対して使われます。また、どれかの指が離されると新しい polygon がリストに追加されますが、ドラッグイベントは点の追加をし続けます。このコードはマルチタッチ互換にならずに失敗します。<br />
+<br />
+<tt> <code>mtlocal</code> を使って改善してみます。</tt><br />
+<div dir="ltr"><pre class='codelisting'>
+// In Draw:
+forall(polygons,drawpoly(#));
+
+// In Mouse Down:
+mtlocal(polygon); // make sure every touch gets its own polygon
+polygon=[mouse()];
+
+// In Mouse Drag:
+polygon=polygon++[mouse()];
+drawpoly(polygon,color->red(1));
+
+// In Mouse Up:
+polygons=polygons++[polygon];
+</pre></div><br />
+<br />
+今度は、新しい polygon はそれぞれのタッチのために作られ、DragとUpイベントはそれぞれの動作に対応して正しい  polygon 変数を作るでしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MultiTouchPolygonDraw.png" border="0"  /></span></td></tr><tr><td class="caption"><b>マルチタッチで３つの多角形（曲線）を描く</b></td></tr></table><br />
+<br />
+このコードを試してみると、赤い多角形の描画がすべてのイベントにおける画面の自動消去のために予想通りにいかないことがわかります。そこで、Drawイベントだけで新しい polygon のリストを保持してそれを描画するように改善することができます。次のコードを見てください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+// In Draw:
+
+forall(polygons,drawpoly(#));
+forall(newpolygons,drawpoly(#,color->red(1)));
+
+// In Mouse Down:
+mtlocal(polygon);
+polygon=[mouse()];
+newpolygons=newpolygons++[polygon];
+
+// In Mouse Up:
+newpolygons=newpolygons--[polygon];
+polygons=polygons++[polygon];
+
+// In Mouse Drag:
+newpolygons=newpolygons--[polygon]; 
+polygon=polygon++[mouse()];
+newpolygons=newpolygons++[polygon];
+</pre></div><br />
+<br />
+これに対して、 <a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+System.html#layer' class='wiki'>レイヤーと自動消去フラグ</a> を使えば、すべての新しい polygon 変数を保存しなくても同じ効果を得ることができます。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 28 of February, 2012 [11:27:01 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Multitouch%20SupportJ">
+    http://doc.cinderella.de/tiki-index.php?page=Multitouch%20SupportJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

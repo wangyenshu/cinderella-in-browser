@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Many-Particle SystemsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>複数の粒子システム</h2>
+<!--latexreplace<br />
+\index{many-particle system}<br />
+--><!-- /latexreplace --><br />
+　多くの粒子の相互作用を研究することは魅力的なことです。たとえば、ビリヤードのボール、電子の集まり、あるいは、空間内のいくつかの物体などです。そのような場合、あらゆる粒子は、その他の粒子に対して力を及ぼすでしょう。これら3つのケースをここで簡単に議論します。<br />
+<br />
+<br />
+<h3>荷電粒子</h3>
+<!--latexreplace<br />
+\index{charge}<br />
+--><!-- /latexreplace --><br />
+　20個の電子の相互作用を研究するとします。そこには、相互作用をする190通りの電子の組み合わせがあります。20個の帯電した自由質点を作り、190個の <a title="no description" href="tiki-cindydoc.php@page=Coulomb+ForceJ.html" class="wiki">クーロン力</a>を設定すればそのような粒子システムができます。しかし、 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> ではより簡単にそれを作る方法があります。質点を作り、 <a title="no description" href="tiki-cindydoc.php@page=Free+MassJ.html" class="wiki">自由質点</a> インスペクタで帯電させたなら、 <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a>で <i>電荷による力を有効にする</i>ボックスをチェックするだけです。そうすれば、すべての粒子はすぐに相互作用を始めます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ChargesOnJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>電荷による力を有効にする</b></td></tr></table><br />
+<br />
+次の図は、反射壁のかごに閉じこめられたいくつかの荷電粒子の状態を示します。速い粒子を青で、遅い粒子を赤で、中間の速度のものをその間の色で表示するために <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> を使いました。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ManyBody2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>複数の荷電粒子</b></td></tr></table><br />
+<br />
+この図のために使われた <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の一部を次に示します。<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=allpoints();
+f(x):=hue(max((min((0.5,x)),0.0)));
+forall(pts,#.color=f(#.kinetic))
+</pre></div><br />
+<br />
+<br />
+<br />
+<h3>重力系 n-体システム</h3>
+<!--latexreplace<br />
+\index{gravity}<br />
+\index{many-body system}<br />
+--><!-- /latexreplace --><br />
+　荷電粒子のシステムとよく似たものとして、天体のように重力で引きあう粒子のシステムを考えることができます。そのためには、 <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a> で、対応するボタンをチェックするだけです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GravityOnJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>質点間の重力</b></td></tr></table><br />
+<br />
+<br />
+次の2つの図は、重力を受ける複数の粒子システムを示します。最初のものは、三体問題で非常に珍しい8の字型の解(最近発見されたまれな例)です。二番目の例は、5つの物体の渾沌としたシステムを示します。このシミュレーションのためには、初速を持つそれぞれの質点を描いて、 <i>質点間の重力を有効にする</i> ボタンをチェックするだけです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.6in">height=1.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody4} &amp;\includegraphics<a class="wiki external"  href="height=1.6in">height=1.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody5}\\</tt><br />
+{\small\it  An island of regularity} &amp;  {\small\it Chaotic movement}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody4.png" border="0"  height="200" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody5.png" border="0"  height="200" /></span></td>
+      </tr>
+      <tr>
+	<td><b>規則的な島</b><br></td><td></td>
+	<td><b>カオス的動き</b><br></td>
+      </tr>
+<tt>    </table><!-- /latexreplace --></tt><br />
+<br />
+<h3> 質点を球体とする</h3>
+<!--latexreplace<br />
+\index{ball}<br />
+\index{radius}<br />
+\index{momentum}<br />
+\index{pendulum}<br />
+--><!-- /latexreplace --><br />
+最後に、ゼロでない直径をもつ球体をシミュレートする方法が <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> にあります。そのためには <i>質点を球体とする</i> チェックボックスをチェックします。すると、それぞれの質点は、2つの質点間の距離がそれらの半径の和になれば衝突し反発するようになります。このアプローチが必ずしも現実的な物理モデルとはいえませんが、運動量保存則を含むモデルとしては適切でしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/BallsOnJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>質点を球体とする</b></td></tr></table><br />
+<br />
+<br />
+次の例は、ビリヤードで大きな衝突が起きる前と、起きた直後、さらにしばらくした後のシミュレーションを示します。<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody7} &amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody8}&amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody9}\\</tt><br />
+{\small\it  Before\ldots{}} &amp;  {\small\it \ldots{}shortly after\ldots{}}&amp;  {\small\it \ldots{}long after}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center" cellspacing=0>
+       <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody7.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody8.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody9.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>衝突の前</b><br></td><td></td>
+	<td><b>直後</b><br></td><td></td>
+	<td><b>しばらくした後</b><br></td>
+      </tr>
+<tt>    </table><!-- /latexreplace --></tt><br />
+<br />
+<br />
+以下の例は、運動量保存の法則を例証する標準的な実験を示します。ここでは、振り子の質点は固い振り子の振舞いをモデル化するため、円周上にあります。運動量がどのように赤から黄色のボールへ移されるかについて注意して見てください。力が及ぼされる半径は、質点インスペクタの半径スライダーによって調節することができます。<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody10} &amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody11}&amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody12}\\</tt><br />
+{\small\it  Before\ldots{}} &amp;  {\small\it \ldots{}during\ldots{}}&amp;  {\small\it \ldots{}after}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody10.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody11.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody12.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>衝突の前</b><br></td><td></td>
+	<td><b>途中</b><br></td><td></td>
+	<td><b>その後</b><br></td>
+      </tr>
+<tt>    </table><!-- /latexreplace --></tt><br />
+<br />
+<br />
+<hr />
+<h3>重力センサ（加速度センサ）</h3>
+<!--latexreplace<br />
+\index{gravity hardware}<br />
+\index{accelerometer}<br />
+--><!-- /latexreplace --><br />
+　ノート型パソコンに搭載されている重力センサ（加速度センサ）を利用することができます。インスペクタの「物理全体設定」を選びます。「質点間の設定」の「重力センサを使う」ボタンをチェックします。（加速度センサを搭載していないパソコンではメニューそのものが出ません。）これによって、パソコンを動かすことで重力センサが働いて、質点などの動きをコントロールできます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AMSOnJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>重力センサ</b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<h3>注意</h3>
+<br />
+複数の粒子モデルは膨大な計算時間を要するかもしれません。特に、力が反発力ではなく引力のとき、<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> エンジンの自動ステップ幅適用が効果を示し始めるようないくつかの状況があるかもしれません。<br />
+<br />
+<br />
+<h3>次もご覧ください。</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Free+MassJ.html" class="wiki">自由質点</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 24 of February, 2012 [12:56:31 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Many-Particle%20SystemsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Many-Particle%20SystemsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

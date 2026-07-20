@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interactive Exercises 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Interactive Exercises</h2>
+<!--latexreplace<br />
+\index{interactive exercise|(}<br />
+\index{student exercise|(}<br />
+\index{exercise|(}<br />
+\index{prover}<br />
+--><!-- /latexreplace --><br />
+<br />
+<h3>A Little Cinderella History</h3>
+<br />
+One of the main features of the older versions of Cinderella (up to 1.4) was the ability to easily create interactive student exercises in elementary geometry. A typical such exercise may for instance ask for <i>the construction of the midpoint</i> of two given points. The student was given an interactive web page in which just the two points (say <i>A</i> and <i>B</i>) are given along with a certain set of construction tools to solve the exercise. While he solved the exercise, the automatic prover in Cinderella monitored his activities and provided useful hints and comments. Finally, when the student had successfully mastered the construction task he was prompted a success message.<br />
+<br />
+Unfortunately, this functionality was no longer available as of version 2.0. There were several reasons why we discontinued this feature. One of them was our goal to to merge student exercises and scripting facilities to support more advanced and flexible exercise formats. Another reason was that only a small fraction of users actually used the possibilities of creating exercises.<br />
+<br />
+With the current version we again provide a possibility to create interactive exercises by including the operator <a title="no description" href='tiki-cindydoc.php@page=User+Input.html#createtool' class='wiki'><code>createtool(...)</code></a>. This and the constant monitoring of the construction by the integrated proving engine is the key to interactive exercises with automatic checking of students'  answers. In contrast to the old version of Cinderella there is no longer an exercise editor, but the exercise must be produced by writing a suitable script. Below we show that this not only provides the old functionality for exercises, but also adds the power and versatility of  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->.<br />
+<br />
+In this section we will describe the basic techniques that are necessary to create such exercises, along with some technical explanations. We will do this for a very simple example and start from scratch. On our website at <a class="wiki external"  href="http://cinderella.de">http://cinderella.de</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> we provide templates that may serve as starting point for several typical types of exercises. They will make the generation of exercises quite easy.<br />
+<br />
+<h3> Exporting Tools</h3>
+<br />
+Our task is to generate an exercise that asks for the construction of the <i>midpoint of two given points A and B</i>. The student should be asked to solve this by using lines, points and circles. The first task is to create a toolbar with the essential tools for the exercise. For this, we use the <a title="no description" href='tiki-cindydoc.php@page=User+Input.html#createtool' class='wiki'><code>createtool(...)</code> operator as described earlier</a>. We want to provide a small collection of tools essential for the construction. To achieve this, we add the following statement in the <i>init</i> block of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool(["Move","Point","Line","Circle"],2,2);
+</pre></div><br />
+<br />
+We also add the two points manually that should serve as the start of the exercise. Now our construction looks as follows:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Exer1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> Providing a Sample Construction</h3>
+<br />
+As a next step we provide a sample construction for the exercise (<i>construct the midpoint</i>). This sample construction will later be used as a source to provide hints for the student. The construction is done manually using the construction tools. We also use the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a> to make the construction look a little nicer. After this the construction may look as follows.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Exer2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> Adding the Exercise Text</h3>
+<br />
+As a next step we are going to display a text that asks the student to solve the exercise. We will use this text later on also to give some helpful messages while the student is actually solving the exercise. So we will separate the actual message from the statement that displays it. There are several ways to do this, here we will in <i>init</i> enter a line<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+message="Construct the Midpoint of A and B";
+</pre></div><br />
+<br />
+In draw we enter a line like<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((-8,0),message);
+</pre></div><br />
+<br />
+Going back to the construction our example looks like this:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Exer3.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> Hiding the Sample Construction</h3>
+<br />
+As mentioned before, the sample construction will only serve as a template that is compared to the student's solution. So we have to hide this part of the construction,  except for the starting points. We could either do this manually by using the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>. Alternatively we can add a line of script to the <i>init</i> block that makes all elements but <i>A</i> and <i>B</i> invisible automatically.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+apply(allelements()--[A,B],el,el.visible=false);
+</pre></div><br />
+<br />
+After this the exercise is in perfect shape for the student:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Exer4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> Providing a Success Message</h3>
+<br />
+Now comes the tricky part. We want the student gets a success message when he solved the exercise. For this you have to know the following important fact about Cinderella: Whenever an element is constructed that is already present then Cinderella's proving engine will make sure that the old element is actually re-used and no additional superfluous double element is added. This mechanism even works if the old element was <i>invisible</i>. In this case the visibility flag of the old element is simply turned back the <code>true</code> state. In our case, if the student constructs the midpoint of <i>A</i> and <i>B</i> in some correct way, the prover will make sure that the old invisible point <i>E</i> that is already present in the construction will be re-used. As the prover accepts all points that are always at the same position as <i>E</i>, regardless of their construction, the student may provide his own creative construction for the midpoint and still be awarded with the success message.<br />
+<br />
+So the only thing we have to do for showing the success message is to check whether point <i>E</i> becomes visible. We can do so by adding the following line of code to the <i>draw</i> script before the message is printed:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(E.visible,message="YEAH, you got it")
+</pre></div><br />
+<br />
+If the student manages to construct the midpoint (by any construction!) then automatically point <i>E</i> will become visible and the message <code>"YEAH, you got it"</code> will be shown.<br />
+<br />
+<h3> Giving Intermediate Comments</h3>
+<br />
+We can do even better. We can use the sample construction to provide a message  whenever the student constructs one of the auxiliary elements of it.  For this, we will replace the <code>if(...)</code> statement of the last section by a little program that tests which elements of our construction are already visible and adjusts the message accordingly. Here is a code example demonstrating how to do that (we provide the entire code for the <i>draw</i> section.)<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+clrscr();
+chain=[
+ [a,"Good start"],
+ [C0,"You need circles"],
+ [C1,"You need circles"],
+ [b,"Almost done"],
+ [E,"YEAH, you got it"]
+];
+
+visible=select(allelements(),#.visible);
+found=select(chain,el,contains(visible,el_1));
+
+if(found!=[],
+  message=found_(-1)_2;
+);
+
+drawtext((-8,0),message);
+</pre></div><br />
+<br />
+In the list <code>chain</code> we store pairs of elements and the associated texts that should be shown if the element is constructed. The lines<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+visible=select(allelements(),#.visible);
+found=select(chain,el,contains(visi,el_1));
+</pre></div><br />
+<br />
+collect all elements of <code>chain</code> that are already visible in the list <code>found</code>. Finally, the following lines of code take the last element of this list (the one that was most recently constructed) and stores the associated comment in <code>message</code>:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(found!=[],
+  message=found_(-1)_2;
+);
+</pre></div><br />
+<br />
+This message is then shown by:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((-8,0),message);
+</pre></div><br />
+<br />
+<h3>What the Student Gets</h3>
+<br />
+If the student now solves the exercise in the standard way he will have the following stages of his construction:<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Exer5.png" border="0"  /></span><span class="img"><img alt="" src="img/wiki_up/Exer6.png" border="0"  /></span><br />
+<span class="img"><img alt="" src="img/wiki_up/Exer7.png" border="0"  /></span><span class="img"><img alt="" src="img/wiki_up/Exer8.png" border="0"  /></span><br />
+<br />
+<h3> Exporting</h3>
+<br />
+Finally, we will export this exercise to the web as described in the section on <a title="Creating HTML pages" href='tiki-cindydoc.php@page=HTML+Export.html' class='wiki'>HTML Export</a>. After this the interactive webpage is easily usable as a general interactive student exercise. There are more elaborate patterns of how to relate the hints to parts of the original construction. On our webpage <a class="wiki external"  href="http://cinderella.de">http://cinderella.de</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> we provide a collection of useful templates, including <i>hints that help finding the construction</i>, <i>timed hint blocking</i> and <i>branching hint structure</i>. They will cover the most common usages of the creation of student exercises.<br />
+<!--latexreplace<br />
+\index{interactive exercise|)}<br />
+\index{student exercise|)}<br />
+\index{exercise|)}<br />
+--><!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [09:15:03 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interactive%20Exercises">
+    http://doc.cinderella.de/tiki-index.php?page=Interactive%20Exercises
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : FunctionJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>関数を定義する</h3>
+<!--latexreplace<br />
+\index{function}<br />
+\index{mode!function}<br />
+\index{equation}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/function.png" border="0"  align="left" /></span></div>  関数モードは、多くの状況で使えるとても強力なツールを提供します。簡単に言えば、関数モードは、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の１行プログラムともいえます。 この１行は単に計算されるか(結果が表示される)、等式として表示されるか、副次効果的に計算されます。  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は強力なプログラミング言語で、その１行プログラムも高水準の内容を含みますので、ここで２，３の例によって関数モードの使い方を示します。<br />
+<br />
+関数モードに入り、ウィンドウのどこかをクリックすると次のようなウィンドウが現れます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function0J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>関数を入力するダイアログ</b></td></tr></table><br />
+<br />
+ここで <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のコードを１行入力できます。ボタンは、この行をどのように処理するかを決めます。<br />
+<br />
+<ul><li> <b>計算:</b> 計算結果を表示します。
+</li><li> <b>等式:</b> 入力された通りに表示され、等式としてその結果を示します。たとえば、 "4+7" とすれば "4+7 = 11" と表示されます。
+</li><li> <b>評価:</b> １行プログラムを評価し、その副次効果(変数の設定、描画など)とともに結果を示します。
+</li><li> <b>プロット:</b> 関数のグラフをプロットします。
+</li></ul>
+<br />
+関数の使い方を図とともに例示しましょう。<br />
+<br />
+<br />
+<h5> 図中に計算結果を入れる</h5>
+<!--latexreplace<br />
+\index{calculation}<br />
+--><!-- /latexreplace --><br />
+次のような長方形があるとします。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>長方形</b></td></tr></table><br />
+<br />
+この長方形の面積を計算して表示しましょう。 そのための <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の式は <code>|A,B|*|A,C|</code>です。この式を関数ダイアログに入力します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>式を入力</b></td></tr></table><br />
+<br />
+"計算" ボタンを押すと次の左の図のようになり、 "等式" ボタンを押すと右の図になります。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern.7cm}c@{\kern.7cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.9733333333333334in">width=1.9733333333333334in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Function3}  &amp; \includegraphics<a class="wiki external"  href="width=1.9733333333333334in">width=1.9733333333333334in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Function4} \\<br />
+{\small\it  Text} &amp;  {\small\it Equation}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" >
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Function3.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Function4.png" border="0"  /></span></td>
+</tr>
+<tr>
+<td><b>文字</b> </td> <td width=10></td><td><b>等式</b> </td></tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+説明文も含めて結果を表示したい場合は、次のように入力して"計算"ボタンを押します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function5J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>文を作る</b></td></tr></table><br />
+<br />
+この場合、説明文の文字列に計算結果が追加されます。結果は目的通りのものとなり、次のように表示されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function6J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>文を作った結果</b></td></tr></table><br />
+<br />
+<br />
+<h5> 副次効果の評価</h5>
+<!--latexreplace<br />
+\index{side effect}<br />
+--><!-- /latexreplace --><br />
+<tt> 評価ボタンを押すと、副次効果の評価をします。やや高度な例を示しましょう。左の図で、長方形は点Cを動かしたときに周の長さが一定であるように作られています。長方形の面積が最大になるときの点Ｃの位置を求めるために、次の行を関数ダイアログに入力します。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+F.xy=(C.x,|A,C|*|A,E|)
+</pre></div><br />
+<br />
+点Ｆの<i>x</i>-座標は点Ｃと同じで、 <i>y</i>-座標は面積と同じになります。点Ｃを動かして点Ｆを観察すれば、面積が最大になるところがわかります。図中の軌跡は、動かすものをＣ、軌跡を描く点をＦとしたもので、点Ｃのすべての位置に対する面積の変化を示します。<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>幾何と関数の結合</b></td></tr></table><br />
+<br />
+<br />
+<h5>関数プロット</h5>
+<!--latexreplace<br />
+\index{plot}<br />
+\index{function!plot}<br />
+--><!-- /latexreplace --><br />
+最後に、関数のグラフをプロットするための関数モードの使い方を示します。関数モードのダイアログで <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のグラフ描画機能を使うのです。プロットするものが図中の要素のデータに依存する場合、要素が動かされると自動的に更新されます。たとえば、次の図では、２つのサインカーブは点Ａの位置により合成されまず。 コードは関数モードダイアログの中で単純に評価されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function8.png" border="0"  /></span></td></tr><tr><td class="caption"><b>関数プロット</b></td></tr></table><br />
+<br />
+<br />
+<h5> クリックによる参照</h5>
+<br />
+<tt> <a title="no description" href="tiki-cindydoc.php@page=TextJ.html" class="wiki">文字を追加する</a> モードの場合と同じように、幾何学要素を単にクリックすることにより参照することができます。これにより、ダイアログボックスの中で式を作るのが簡単になります。計量した数字(距離、角度、面積)をクリックするとその数を参照します。他の関数の文字をクリックするとそれを複写できます。</tt><br />
+<br />
+さらに、マウスボタンを押す、ドラッグする、離すという操作で２点間の距離を直接測ることができます。たとえば、点Aを点Bにドラッグしてボタンを離すと、 <code>|A,B|</code> という文字列が関数ダイアログにできます。<br />
+<br />
+<hr />
+<br />
+<h3> 要約</h3>
+関数モードは<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->の１行プログラムとして、計算や評価、関数プロットをします。<br />
+<br />
+<h3> こちらも参照してください</h3>
+<ul><li> <a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=TextJ.html" class="wiki">文字を追加する</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=MeasurementsJ.html" class="wiki">計量</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 28 of February, 2012 [06:58:34 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=FunctionJ">
+    http://doc.cinderella.de/tiki-index.php?page=FunctionJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

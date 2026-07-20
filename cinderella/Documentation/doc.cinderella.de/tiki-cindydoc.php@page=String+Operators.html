@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : String Operators 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>String Operators</h2>
+<br />
+This section lists operators that take strings as arguments. Moreover, operators that generate strings from other values are treated as well.<br />
+<!-- latexreplace<br />
+\index{strings}<br />
+\index{characters}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<h3> Elementary String Operations</h3>
+<br />
+<h4>String concatenation: <span style="color:red;"><code>&#60;string1&#62; + &#60;string2&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  The <code>+</code> operator can also be used to append one string to another. The result of such an operation is again a string. If in an addition operation at least one of the arguments is a string, then the other argument will be automatically converted to a string representation of its value.  </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>&#34;Cindy&#34;+&#34;Script&#34;</code></td><td class="wikicell" ><code>"CindyScript"</code></td></tr><tr><td class="wikicell" ><code>&#34;Four plus three is &#34;+(4+3)</code></td><td class="wikicell" ><code>"Four plus three is 7"</code></td></tr><tr><td class="wikicell" ><code>&#34;&#34;+(4+3)</code></td><td class="wikicell" ><code>"7"</code></td></tr></table><br />
+<br />
+<br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><b>See also:</b> The <code>+</code> operator is also used for the addition of usual numerical values. For this see <a title="no description" href='tiki-cindydoc.php@page=Arithmetic+Operators.html' class='wiki'>Arithmetic Operators</a>.<br />
+<br />
+<hr />
+<A NAME="text"></A><br />
+<h4>Conversion to string: <span style="color:red;"><code>text(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  The operator <code>text(&#60;expr&#62;)</code> evaluates the expression <code>&#60;expr&#62;</code> and converts the result to a string representation. </div><br />
+<br />
+<hr />
+<A NAME="length"></A><br />
+<h4>Length of a string: <span style="color:red;"><code>length(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns the number of characters in a string.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>   <code>length("CindyScript")</code> evaluates to the integer <code>11</code>.</div><br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><b>See Also:</b> <a title="no description" href='tiki-cindydoc.php@page=Lists+and+Linear+Algebra.html' class='wiki'>Lists and Linear Algebra</a><br />
+<br />
+<hr />
+<br />
+<A NAME="substring"></A><br />
+<h4>Extracting a substring: <span style="color:red;"><code>substring(&#60;string&#62;,&#60;int1&#62;,&#60;int2&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns the substring of <code>&#60;string&#62;</code> that begins after the character indexed by the integer <code>&#60;int1&#62;</code> and ends with the character indexed by <code>&#60;int2&#62;</code>.                  </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>   <code>substring("abcdefg",3,6)</code> evaluates to the string <code>"def"</code>.  </div><br />
+<br />
+<hr />
+<br />
+<A NAME="indexof"></A><A NAME="indexof2"></A><br />
+<h4>Searching for occurrence: <span style="color:red;"><code>indexof(&#60;string1&#62;,&#60;string2&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator searches for the first occurrence of <code>&#60;string2&#62;</code> in <code>&#60;string1&#62;</code>. The index of this first occurrence is returned. If <code>&#60;string2&#62;</code> is not a substring of <code>&#60;string1&#62;</code>, then the value <code>0</code> is returned.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>indexof(&#34;CindyScript&#34;,&#34;i&#34;)</code></td><td class="wikicell" ><code>2</code></td></tr><tr><td class="wikicell" ><code>indexof(&#34;CindyScript&#34;,&#34;y&#34;)</code></td><td class="wikicell" ><code>5</code></td></tr><tr><td class="wikicell" ><code>indexof(&#34;CindyScript&#34;,&#34;z&#34;)</code></td><td class="wikicell" ><code>0</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<A NAME="indexof3"></A><br />
+<h4>Searching for occurrence: <span style="color:red;"><code>indexof(&#60;string1&#62;,&#60;string2&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator searches for the first occurrence of <code>&#60;string2&#62;</code> in <code>&#60;string1&#62;</code> <b>after the index <code>i</code></b>. The index of this first such occurrence is returned. If <code>&#60;string2&#62;</code> does not occur in <code>&#60;string1&#62;</code> after index <code>i</code>., then the value <code>0</code> is returned.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>indexof(&#34;CindyScript&#34;,&#34;i&#34;,1)</code></td><td class="wikicell" ><code>2</code></td></tr><tr><td class="wikicell" ><code>indexof(&#34;CindyScript&#34;,&#34;i&#34;,3)</code></td><td class="wikicell" ><code>9</code></td></tr><tr><td class="wikicell" ><code>indexof(&#34;CindyScript&#34;,&#34;i&#34;,10)</code></td><td class="wikicell" ><code>0</code></td></tr></table><br />
+<br />
+<hr />
+<h3> Advanced String Operations</h3>
+<br />
+<A NAME="tokenize"></A><br />
+<h4>Dissecting a string: <span style="color:red;"><code>tokenize(&#60;string&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is very useful for parsing input. It creates a list of substrings of <code>&#60;string&#62;</code>. The second argument <code>&#60;expr&#62;</code> must be either a string or a list of strings. If <code>&#60;expr&#62;</code> is a string, then the operator searches for occurrences of this string in <code>&#60;string&#62;</code>. These occurrences serve as markers for breaking up &#60;string&#62; into a list of pieces.<br />
+<br />
+If &#60;expr&#62; is a list of strings, then a hierarchical list is generated that represents the subdivision of <code>&#60;string&#62;</code> recursively by the tokens in the list.<br />
+<br />
+<code>tokenize</code> usually converts string representations of numbers to number objects. This can lead to information loss. To turn off this behavior, use the <code>autoconvert</code> modifier and set it to <code>false</code>.<br />
+</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;one:two..three:four&#34;, &#34;:&#34;)</code></td><td class="wikicell" ><code>[&#34;one&#34;, &#34;two..three&#34;, &#34;four&#34;]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;one:two..three:four&#34;, &#34;.&#34;)</code></td><td class="wikicell" ><code>[&#34;one:two&#34;, &#34;&#34;, &#34;three:four&#34;]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;one:two..three:four&#34;, &#34;..&#34;)</code></td><td class="wikicell" ><code>[&#34;one:two&#34;, &#34;three:four&#34;]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;one:two..three:four&#34;, [&#34;.&#34;,&#34;:&#34;])</code></td><td class="wikicell" ><code>[[&#34;one&#34;, &#34;two&#34;], [&#34;&#34;], [&#34;three&#34;, &#34;four&#34;]]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;one:two..three:four&#34;, [&#34;..&#34;,&#34;:&#34;])</code></td><td class="wikicell" ><code>[[&#34;one&#34;, &#34;two&#34;], [&#34;three&#34;, &#34;four&#34;]]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;77777777777777777&#34;,&#34;:&#34;)</code></td><td class="wikicell" ><code>[77777777777777776]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;77777777777777777&#34;,&#34;:&#34;,autoconvert-&#62;false)</code></td><td class="wikicell" ><code>[77777777777777777]</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="replace"></A><br />
+<A NAME="replace3"></A><br />
+<h4>Replacing in strings: <span style="color:red;"><code>replace(&#60;string1&#62;,&#60;string2&#62;,&#60;string3&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator replaces all (!) occurrences of &#60;string2&#62; in &#60;string1&#62; by &#60;string3&#62;.<br />
+<br />
+This operator is extremely useful for creating text replacement systems of the kind they are used in so called Lindenmeyer Systems.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>replace( &#34;one:two..three:four&#34;, &#34;o&#34;, &#34;XXX&#34;)</code></td><td class="wikicell" ><code>&#34;XXXne:twXXX..three:fXXXur&#34;</code></td></tr><tr><td class="wikicell" ><code>replace(&#34;F&#34;, &#34;F&#34;, &#34;F+F&#34;)</code></td><td class="wikicell" ><code>&#34;F+F&#34;</code></td></tr><tr><td class="wikicell" ><code>replace(&#34;F+F&#34;, &#34;F&#34;, &#34;F+F&#34;)</code></td><td class="wikicell" ><code>&#34;F+F+F+F&#34;</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="replace2"></A><br />
+<h4>Replacing in strings: <span style="color:red;"><code>replace(&#60;string&#62;,&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is very similar to the previous one. <code>&#60;list&#62;</code> contains a list of replacement pairs, and all such replacements are applied simultaneously to <code>&#60;string&#62;</code>.<br />
+</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>replace(&#34;XYX&#34;, [[&#34;X&#34;,&#34;one&#34;], [&#34;Y&#34;,&#34;two&#34;]])</code></td><td class="wikicell" ><code>&#34;onetwoone&#34;</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="parse"></A><br />
+<h4>Parsing a string: <span style="color:red;"><code>parse(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator parses a string to an expression and evaluates this expression. This operator is particularly useful in processing user input that comes from text fields in a construction.<br />
+</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>parse(&#34;3+7&#34;)</code></td><td class="wikicell" ><code>10</code></td></tr></table><br />
+<br />
+<br />
+<br />
+The code fragment<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+text="sin(x)+cos(x)";
+f(x):=parse(text);
+</pre></div><br />
+<br />
+defines the function <code>f(x)</code> to be <code>sin(x)+cos(x)</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="guess"></A><br />
+<h4>Guessing a good representation of a number: <span style="color:red;"><code>guess(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This very powerful operator is described in detail in the section <a title="no description" href='tiki-cindydoc.php@page=Calculus.html' class='wiki'>Calculus</a>. It takes a  numerical expression in floating-point representation and attempts to convert it to a mathematical expression that generates that floating-point number with high precision. This expression is then represented as a string.<br />
+</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>guess(8.125)</code></td><td class="wikicell" ><code>&#34;65/8&#34;</code></td></tr><tr><td class="wikicell" ><code>guess(0.774596669241483)</code></td><td class="wikicell" ><code>&#34;sqrt(3/5)&#34;</code></td></tr></table><br />
+<br />
+<br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><b>See also:</b> <a title="no description" href='tiki-cindydoc.php@page=Calculus.html' class='wiki'>Calculus</a><br />
+<br />
+<hr />
+<br />
+<A NAME="format"></A><br />
+<h4>Formating a number to a specified precision: <span style="color:red;"><code>format(&#60;number&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes a number as first arguments and an integer specifying the number of digits after the decimal point. A string is generated that corresponds to the number up to the specified precision. Up to 14 digits are possible. If the argument of format is a list of objects the format statement is applied to each of the objects recursively.<br />
+</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>format(sqrt(2),4)</code></td><td class="wikicell" ><code>&#34;1.4142&#34;</code></td></tr><tr><td class="wikicell" ><code>format(pi,14)</code></td><td class="wikicell" ><code>&#34;3.14159265358979&#34;</code></td></tr><tr><td class="wikicell" ><code>format(&#91;sin(30°),cos(30°)&#93;,3)</code></td><td class="wikicell" ><code>&#91;0.5,0.866&#93;</code></td></tr></table><br />
+<br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><b>Warning:</b>  The format statement should only produced to create formatted output elements. The formatted values will always be *strings* and hence usually not valid objects for arithmetic operations. The following example illsustrates this:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>format(sqrt(2),4)+ format(sqrt(2),4)</code></td><td class="wikicell" ><code>&#34;1.41421.4142&#34;</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h2>String Comparison and Sorting</h2>
+<!-- latexreplace<br />
+\index{order}<br />
+\index{strings}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Like real numbers, strings admit a total ordering. Thus they can be compared using the operators <code>></code>, <code><</code>, <code>>=</code>, <code><=</code>, <code>==</code>, and <code>!=</code>. Please refer to <a title="no description" href='tiki-cindydoc.php@page=Boolean+Operators.html' class='wiki'>Boolean Operators</a> for the use of these relations.<br />
+<br />
+The order that is used for strings is lexicographic (dictionary) order. Thus, for example,<br />
+<br />
+<!-- latexreplace \begin{center} --><!-- /latexreplace --><div align="center"><code>"a"<"abd"<"abe"<"b"<"blue"<"blunt"<"xxx"</code></div><!-- latexreplace \end{center} --><!-- /latexreplace --><br />
+<br />
+<A NAME="sort"></A><br />
+<h4>Sorting of lists: <span style="color:red;"><code>sort(&#60;list&#62;)</code></span></h4>
+<br />
+<h4>Sorting of lists: <span style="color:red;"><code>sort(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>Sorting of lists: <span style="color:red;"><code>sort(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  The various versions of the <code>sort</code>-operator can be used to sort lists that contain string values. The sorting order is usually taken to be the lexicographic order of the words. Alternatively, one can specify a user-defined sorting function such as the lengths of the strings.<br />
+</div><br />
+<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>sort([&#34;one&#34;, &#34;two&#34;, &#34;three&#34;,  &#34;four&#34;, &#34;five&#34;])</code></td><td class="wikicell" ><code>[&#34;five&#34;,&#34;four&#34;,&#34;one&#34;,&#34;three&#34;,&#34;two&#34;]</code></td></tr><tr><td class="wikicell" ><code>sort([&#34;one&#34;, &#34;two&#34;, &#34;three&#34;,  &#34;four&#34;, &#34;five&#34;],length(&#35;))</code></td><td class="wikicell" ><code>[&#34;one&#34;,&#34;two&#34;,&#34;four&#34;,&#34;five&#34;,&#34;three&#34;]</code></td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><b>See also:</b> <a title="no description" href='tiki-cindydoc.php@page=Lists+and+Linear+Algebra.html' class='wiki'>Lists and Linear Algebra</a><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h3> Accessing and Replacing Characters</h3>
+<br />
+<h4>Index operator: <span style="color:red;"><code>&#60;string&#62;_&#60;int&#62;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  The infix operator <code>_</code>, which accesses the fields of a list, can be also used to access a character at a specific position in a string. Characters can be returned and set with this operator.<br />
+</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>&#34;CindyScript&#34;_5</code></td><td class="wikicell" ><code>&#34;y&#34;</code></td></tr><tr><td class="wikicell" ><code>&#34;CindyScript&#34;_12</code></td><td class="wikicell" >undefined</td></tr></table><br />
+<br />
+<br />
+After evaluating the code fragement<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a="CindyScript";
+a_5="erella";
+</pre></div><br />
+<br />
+the variable <code>a</code> contains the string <code>"CinderellaScript"</code>.<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 09 of February, 2015 [20:47:31 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=String%20Operators">
+    http://doc.cinderella.de/tiki-index.php?page=String%20Operators
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Kepler Ellipses 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Kepler Ellipses</h2>
+<!--latexreplace<br />
+\index{CindyLab}<br />
+\index{simulation!sun}<br />
+\index{Kepler ellipse}<br />
+\index{planet}<br />
+\index{sun}<br />
+\index{gravitational force}<br />
+\index{force field}<br />
+\index{simulation!velocity}<br />
+\index{velocity}<br />
+\index{simulation!mass}<br />
+\index{mass}<br />
+\index{Newton's law}<br />
+--><!-- /latexreplace --><br />
+In this little tutorial we want to set up a very small physics simulation with <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->. We want to model a planet orbiting a sun. You should learn in this tutorial how to set up and start running a physics simulation.<br />
+<br />
+<br />
+After starting Cinderella, <b>go to "add sun" mode by clicking the  <span class="img"><img alt="" src="buttonsback/add-sun.png" border="0"  /></span>  button in the toolbar</b>. Then add a sun at an arbitrary position. After the sun has been added, an animation control will appear. The animation control is always present when physics elements of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> are present. The view will now look approximately like Figure 1.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun1B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 1: A sun is born</b></td></tr></table><br />
+<br />
+Now we add the planet that we want to orbit the sun. The planet needs an initial velocity perpendicular to the sun. Otherwise, it will be attracted directly toward the sun and end up in a singularity. For adding the point <b>go to "add velocity" mode by clicking   <span class="img"><img alt="" src="buttonsback/add-mass-vel.png" border="0"  /></span> , and perform a press–drag–release operation somewhere near the sun</b>. When the mouse is pressed the mass-point is created. Dragging creates the force, and releasing finalizes the situation. The picture should now look approximately like Figure 2. If not, you can change the position of the points and of the arrowhead in move mode.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun2B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 2: A sun and a planet</b></td></tr></table><br />
+<br />
+Now you can <b>start the simulation by pressing the play button</b>. Most probably, the animation will run too fast. You can change the animation speed with the slider in the animation control. The planet should describe an elliptical path (this is the essence of Keplers third law).<br />
+<br />
+We now want to make the ellipse a little more visible. For this we want to create a trace of point <i>B</i>, the planet, while it is moving. Open the inspector and go to the "Special Appeareance" tab by clicking the button  <span class="img"><img alt="" src="buttonsback/inspector-special.png" border="0"  /></span> . After point <i>B</i> has been selected, the inspector looks like Figure 3:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PhysInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 3: Inspecting the planet</b></td></tr></table><br />
+<br />
+<b>Check the "Draw Trace" checkbox</b>. This causes Point <i>B</i> to leave a trace as it moves. <b>Now restart the animation</b>. You will see the ellipse as a trace of the planet, as in Figure 4.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun4B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 4: The planet's orbit</b></td></tr></table><br />
+<br />
+We recommend that you carry out several experiments with this configuration. Here are a few proposals:<br />
+<br />
+<ul><li> Vary the location of the planet.
+</li><li> Vary the speed (the magnitude of the velocity).
+</li><li> Vary the direction of the velocity.
+</li><li> What happens when more than one sun is present?
+</li></ul>
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [16:44:24 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Kepler%20Ellipses">
+    http://doc.cinderella.de/tiki-index.php?page=Kepler%20Ellipses
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

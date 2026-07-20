@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Console OutputJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>コンソールへの出力</h2>
+<br />
+CindyScript の入力ウィンドウの下に、テキストを表示するウィンドウがあります。これは、最終的な描画のためには使われませんが、デバッグにはとても役に立ちます。<br />
+<br />
+<A NAME="print"></A><br />
+<h4>テキストの印字: <span style="color:red;"><code>print(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は &#60;expr&#62;  を評価した結果を画面に表示します。<br />
+<br />
+<hr />
+<br />
+<A NAME="err"></A><br />
+<h4>テキストの印字: <span style="color:red;"><code>err(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、 &#60;expr&#62; を評価した結果を画面に表示します。もし &#60;expr&#62;が変数であれば変数名が印字されます。デバッグに有効です。<br />
+<br />
+<hr />
+<br />
+<A NAME="println"></A><br />
+<h4>テキストの印字と改行: <span style="color:red;"><code>println(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は &#60;expr&#62;  を評価して画面に印字して改行します。<br />
+<br />
+<hr />
+<br />
+<h4>改行: <span style="color:red;"><code>println()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は改行だけを行います。<br />
+<br />
+<hr />
+<br />
+<A NAME="clearconsole"></A><br />
+<h4>画面クリア: <span style="color:red;"><code>clearconsole()</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  画面からすべての文字を消去してクリアします。<br />
+<br />
+<hr />
+<br />
+<A NAME="assert"></A><br />
+<h4>条件の印字: <span style="color:red;"><code>assert(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、エラーメッセージを作って表示するのに用いられます。この演算子は  <code>if(!&#60;bool&#62;,println(&#60;expr&#62;))</code> を実行するのと同じです。条件が満たされるかどうかを調べて、エラーメッセージを作成します。<br />
+<br />
+<b>Example:</b> この演算子の典型的な使い方は次のようなものです。<br />
+<div dir="ltr"><pre class='codelisting'>
+assert(isinteger(k),"k is not an integer");
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="message"></A><br />
+<h4>ステータス行に表示: <span style="color:red;"><code>message(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、アプリケーションのステータス行、または、シンデレラ・アプレットのためのブラウザーのステータス行で&#60;expr&#62; を評価した結果を表示します。<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 07 of March, 2012 [13:29:59 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Console%20OutputJ">
+    http://doc.cinderella.de/tiki-index.php?page=Console%20OutputJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

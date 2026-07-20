@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Entering Program CodeJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>プログラムコードの入力</h2>
+<br />
+<a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコードを入力するためのエディタは、メニューの <i>スクリプト/CindySript</i> にあります。この項目を選ぶと、プログラムコードを編集するウィンドウが開きます。それぞれのファイルは個々のプログラムエディタウィンドウを持っています。最初は次のように表示されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnterScript5J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>スクリプトエディタ</b></td></tr></table><br />
+<br />
+このウィンドウはいくつかの構成要素からできていますが、少し説明が必要でしょう。ウィンドウの主要部分は、中央右の大きな白のスペースです。これが、スクリプトを書く部分です。ウィンドウの左側に"ツリー表示"があります。そこでスクリプトが実行されるべき項目(これをスロットといいます)を選びます。スクリプトを書く第一歩は、この中から適するスロットを選ぶことです。<br />
+<br />
+右下の部分はエディタがメッセージを表示する場所で、右上にはいくつかのコントロールと、スクリプトの名前を入力するフィールドがあります。<br />
+<br />
+<br />
+<h3>小さなスクリプトを入力する</h3>
+<br />
+　スクリプトを入力するための第一歩は、そのスクリプトを実行するスロットを選ぶことです。そのために、左側に表示されている"Events"のうちの一つをクリックします。 ここで "Draw" を選んでみましょう。 Draw スロットで入力されたスクリプトは画面上で描画がされるとき、いつでも実行されます。このスロットを選ぶと、ウィンドウの大きな空白の部分(メインウィンドウ)にスクリプトを書けるようになります。「クリックしてスクリプトを書き始めてください」と表示されているときにメインウィンドウでクリックすればテキストが書けます。例として、次の短いスクリプトを入力し、タイトルに "My first script" と書き、メインウィンドウに図のようにスクリプトを書きましょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnterScript6J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>テキスト入力</b></td></tr></table><br />
+<br />
+<br />
+歯車アイコンのボタンを押すとスクリプトが実行されます。この例では、10個の緑色の点が打たれます。また、シフトキーとEnterキーを同時に押す（Shift+Enter）ことにより実行することもできます。<br />
+<br />
+<br />
+<br />
+<h3>スロット</h3>
+<br />
+　シンデレラのすべてのスクリプトは、それが実行されるスロットと関連しています。シンデレラのスクリプトはプログラムの実行時に動作するので、同じスクリプトが何回か実行されることもあり得ます。それぞれのスロットの意味は次の通りです。<br />
+<br />
+<ul><li> <b>Draw:</b> 新しい画面が作られる前にこのスロットが実行されます。このなかのスクリプトは頻繁に実行されます。幾何学的要素がドラッグされるたびに自動的に更新されなければならない典型例です。
+</li></ul>
+<br />
+<ul><li><b>Move:</b> このスロットは "Draw" よりも頻繁に呼ばれます。自由要素の位置が内部的に変わるたびに、これは実行されます。一般に、画面が書き換えられるより多く起こります。 時々、"Draw" スロットに入れたスクリプトが奇妙な、予想外の結果を引き起こすことがあります。そのようなとき、"Move" スロットに入れるとよいことがあります。
+</li></ul>
+<br />
+<ul><li><b>Initialization:</b> スクリプトエディタのプレイボタンが押されると、このスクリプトが１度だけ実行されます。変数の値や点の位置を初期状態に戻すのに便利です。
+</li></ul>
+<br />
+<ul><li><b>Timer Tick:</b> スクリプトがこのスロットに含まると、幾何の画面に <a title="no description" href="tiki-cindydoc.php@page=AnimationJ.html" class="wiki">アニメーション</a> コントローラが(まだ表示されていなければ)現れます。このアニメーションコントローラのプレイボタンが押されると、このスロットのスクリプトが数ミリ秒ごとに実行されます。
+</li></ul>
+<br />
+<ul><li><b>Integration Tick:</b> このスロットは物理シミュレーションだけに関係します。このスロットのスクリプトは物理シミュレーションエンジンが、質点の位置と力に関する情報を必要とするときにいつでも実行されます。ユーザーが力や位置エネルギーをコントロールしたいときに用います。
+</li></ul>
+<br />
+<ul><li><b>Simulation Start:</b> アニメーションコントローラが "Stop" から "Play" に変わるときこのスクリプトが実行されます。アニメーションの初期状態に入るのによいスロットです。
+</li></ul>
+<br />
+<ul><li><b>Simulation Stop:</b> アニメーションコントローラが "Play" から "Stop" に変わるときこのスクリプトが実行されます。アニメーションの結果を評価するのによいスロットです。
+</li></ul>
+<br />
+<ul><li><b>Mouse Down:</b> このスロットと以下の3つのスロットは、CindyScript のインターフェースの下でのプログラミングに非常に役立ちます。このスロットのスクリプトは、マウスボタンが押されたとき実行されます。 <code>mouse()</code> 関数によって、現在のマウスの座標がスクリプトに読み込まれます
+</li></ul>
+<br />
+<ul><li><b>Mouse Up:</b> このスロットのスクリプトは、マウスボタンが離されたとき実行されます。
+</li></ul>
+<br />
+<ul><li><b>Mouse Click:</b> このスロットのスクリプトは、マウスがクリックされたとき実行されます。
+</li></ul>
+<br />
+<ul><li><b>Mouse Drag:</b> このスロットのスクリプトは、マウスがドラッグされている間実行されます。.
+</li></ul>
+<br />
+<ul><li><b>Key Typed:</b> このスロットのスクリプトは、キーボードのキーが押されたとき実行されます。このスロットはユーザーがキーボードを使って操作をするときに便利です。キーボードで打たれた文字列は　<code>key()</code>関数と<code>keydownlist()</code>関数によってアクセスできます。
+</li></ul>
+<br />
+<ul><li><b>Key Down:</b> このスロットのスクリプトは、キーボードのキーが押されたとき、正確にはキーが下に下がったとき実行されます。
+</li></ul>
+<br />
+<ul><li><b>Key Up:</b> このスロットのスクリプトは、キーボードのキーが離されたとき、正確にはキーが上にあがったとき実行されます。
+</li></ul>
+<br />
+<br />
+<h3> コントロールボタン</h3>
+<br />
+　スクリプトエディタウィンドウの上部には、スクリプトの実行/停止ボタン、スクリプトの名前を入力するタイトルフィールド、そして、異なる言語に切り替える(現在、CindyScriptだけが文書化されます)ボタンがあります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnterScript7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>スクリプトコントロール</b></td></tr></table><br />
+<br />
+これらのコントロールのうち、一番重要なのはおそらく "Play" ボタンでしょう。このボタンが押されると、すべてのスクリプトが解析され、プログラムが開始されます。プログラムを変更するとPlayボタンを押すたびにそれが有効になります。また、 shift と enter キーを同時に押せば、プレイボタンを押すのと同じことになります。<br />
+<br />
+プログラムの実行が止まったように見えるときは、スクリプトが無限ループから抜け出せなかったり、単に長すぎる計算を実行しているだけかもしれません。"Stop"ボタンは一種の非常手段として押すことができます。<br />
+<br />
+左側の小さなタイトルフィールドは、スクリプトに個別の名前をつけるのに用いられます。<br />
+<br />
+最後に、スクリプトのために言語を選ぶドロップダウンメニューがあります。 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> でプログラミングをするのに必要な情報は、このマニュアルで見つけられるでしょう。しかし、"Python" や "JRuby" "Core Cinderella geometry language" でプログラムすることも可能です。このオプションはそのときのためのものです。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of March, 2012 [12:15:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Entering%20Program%20CodeJ">
+    http://doc.cinderella.de/tiki-index.php?page=Entering%20Program%20CodeJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

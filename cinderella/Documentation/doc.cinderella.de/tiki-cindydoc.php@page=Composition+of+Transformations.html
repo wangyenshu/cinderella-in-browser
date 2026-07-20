@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Composition of Transformations 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>Composition of Transformations</h3>
+<!--latexreplace<br />
+\index{mode!define composition of transformation}<br />
+\index{transformation!composition of}<br />
+\index{composition of transformations}<br />
+--><!-- /latexreplace --><br />
+It is also possible to form new transformations by composing two existing ones. For this, one goes into composition mode and then clicks the two transformations to be composed (it is also possible to click the same transformation twice to obtain its <i>square</i>). Almost all combinations of transformations are admissible for compositions; the few exceptions are explained below.<br />
+<br />
+<br />
+<h4> Combining Euclidean Transformations</h4>
+<br />
+Euclidean <i>rotations</i>, <i>line reflections</i>, and <i>translations</i> are called Euclidean transformations. They have the property that they leave Euclidean lengths and angles invariant. Composing such transformations results in another Euclidean transformation.<br />
+<br />
+<br />
+<h4>Similarity</h4>
+<br />
+<i>Translations</i> and <i>rotations</i> are special types of <i>similarity.</i> In contrast to a Euclidean transformation, a <i>similarity</i> may also scale the objects that are mapped. A similarity leaves angles and ratios of lengths invariant. Combining similarities, rotations, and translations yields a similarity. Combining a similarity with a line reflection leads to a reflecting similarity that is not explicitly present in Cinderella but can be generated in this way.<br />
+<br />
+<br />
+<h4>Affine Transformations</h4>
+<br />
+<i>Translations</i>, <i>line reflections</i>, <i>rotations</i>, and <i>similarities</i> are all special kinds of <i>affine transformation</i>. Affine transformations do not alter ratios of lengths. However, angles are not invariant. Combining any of these transformations results in another affine transformation. Affine transformations have the particular property that they transform parallel lines to parallel lines.<br />
+<br />
+<br />
+<h4> Hyperbolic Transformations</h4>
+<br />
+If you switch to hyperbolic geometry (as described in the <a title="no description" href='tiki-cindydoc.php@page=Geometries.html' class='wiki'>Geometries</a> section), all transformations are interpreted in a hyperbolic fashion. In particular, you get hyperbolic translations and hyperbolic rotations. Combining them generates another hyperbolic transformation.<br />
+<br />
+<br />
+<h4> Elliptic Transformations</h4>
+<br />
+If you switch to elliptic geometry, all transformations are interpreted in an elliptic fashion. In particular, you get elliptic translations and elliptic rotations. Combining them generates another elliptic transformation.<br />
+<br />
+<br />
+<h4>Projective Transformations</h4>
+<br />
+All the previously described transformations are special kinds of projective transformation. Thus all of them can be combined freely, and the result will be a projective transformation.<br />
+<br />
+<hr />
+<br />
+<br />
+<h4>Möbius transformations</h4>
+<br />
+Möbius transformations are not in general projective transformations. Furthermore, there is no easily representable supergroup of transformations that contains both Möbius transformations and projective transformations. Thus in Cinderella it is not permitted to compose Möbius transformations and projective transformations. For similar reasons it is not permitted to compose Möbius transformations and affine transformations.<br />
+<br />
+However, Euclidean transformations are special kinds of Möbius transformations, and therefore it is perfectly permissible to combine them. It is also permitted to combine a Möbius transformation with a reflection or with a circle inversion. The characteristic property of Möbius transformations is that they map circles and lines to circles and lines.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 23 of December, 2011 [15:58:32 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Composition%20of%20Transformations">
+    http://doc.cinderella.de/tiki-index.php?page=Composition%20of%20Transformations
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

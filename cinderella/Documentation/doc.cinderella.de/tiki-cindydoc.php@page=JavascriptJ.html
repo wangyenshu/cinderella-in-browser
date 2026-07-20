@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : JavascriptJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>JavaScript</h2>
+<br />
+　インターネットブラウザのアプレットとしてシンデレラを利用するときは、 JavaScript を通してHTMLページとシンデレラをリンクすることができます。コミュニケーションは双方向です。シンデレラの図面はHTMLページ上でのイベントを通知することができ、ボタンが押されたというようなイベントに反応することができます。<br />
+<br />
+<tt> JavaScript を使ういくつかの方法があります。ここで少し示します。</tt><br />
+<br />
+<ul><li> <b>HTML のボタンによるコントロール:</b> 説明的なテキストに用意されたボタンを押してアプレットを開始するのがよい方法です。そのようなボタンは、図面を特別な配置に動かすことができます。
+</li></ul>
+<br />
+<ul><li> <b>図面の説明:</b>  JavaScript のマウスオーバー機能は、HTMLのテキストで特定の説明へリンクするのに使えます。
+</li></ul>
+<br />
+<ul><li> <b>通知:</b> HTMLテキストにシンデレラで起っていることを通知するのは有効でしょう。それにより、注意のウインドウを開いたり、説明ページに移動したりできます。
+</li></ul>
+<br />
+<br />
+<h3>  JavaScript からシンデレラを呼ぶ</h3>
+<!-- latexreplace<br />
+\index{JavaScript}<br />
+--><!-- /latexreplace --><br />
+　基本的に、JavaScriptから CindyScript のコマンドを実行することができます。たとえば次のようなものがあります。<br />
+<br />
+<ul><li>  CindyScript の関数を使う
+</li><li>  CindyScript の変数の値を変える
+</li><li> 図面の要素を動かす
+</li><li> 要素の外観を変える
+</li></ul>
+<br />
+　そのために、シンデレラアプレットに JavaScript のコマンドへのハンドルとして使われる名前があることが大切です。その名前は、たとえば <code>name="CindyJSDemo"</code> というようにHTMLコードのアプレットタグで与えられます。このハンドルを利用して JavaScript は任意の CindyScript 命令文を、関数 <!-- latexreplace \verb|doCindyScript(<statement>)| --><code>doCindyScript(&#60;statement&#62;)</code><!-- /latexreplace --> で呼び出すことができます。命令文は文字列として与えられます。この文字列は <!-- latexreplace \verb|doCindyScript| --><code>doCindyScript</code><!-- /latexreplace --> 関数が呼ばれるたびに解析されて実行されます。次のコードがその例です。４つの点A,B,C,Dに対し、HTMLの４つのボタンによって、それぞれ関係する位置に配置します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+⟨script language="JavaScript" type="text/javascript"⟩
+   function doScript(c) { document.CindyJSDemo.doCindyScript(c);};
+   
+⟨/script⟩
+
+
+⟨input type="button" value="Middle of AB" 
+       onclick="doScript('D.xy=(A+B)/2');" /⟩
+⟨input type="button" value="Middle of AC" 
+       onclick="doScript('D.xy=(A+C)/2');" /⟩
+⟨input type="button" value="Middle of BC"
+       onclick="doScript('D.xy=(B+C)/2');" /⟩
+⟨input type="button" value="Middle of ABC"
+       onclick="doScript('D.xy=(A+B+C)/3');" /⟩
+⟨br⟩
+
+⟨applet   name="CindyJSDemo"
+          code     = "de.cinderella.CindyApplet"
+          archive = "cindyrun2.jar"
+          width    = 680
+          height   = 336⟩
+
+... applet specifications ...
+
+⟨/applet⟩
+
+</pre></div><br />
+<br />
+この JavaScript コードを実行するには、シンデレラの図面でA,B,C,Dの点が作図されていればよいのです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/JS.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<tt> CindyScript の呼び出しが複雑な場合があり、この技術は多くの異る目的のために使われるかもしれません。 <code>repaint</code> 命令を使ってある位置から別の位置へ円滑な移動をさせる弧とができます。残念ながら、JavaScript では、文字列に普通の <code>改行</code> を含むことはできません。ですから、複雑なスクリプトが断片化される場合があります。より小さなスクリプトに分割することによってこの問題が回避できます。次のコードは点A,B,Cを、位置 <code>[0,0]</code>, <code>[4,0]</code> and <code>[2,3]</code> へ動かすボタンの例です。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+⟨input type="button" value="Smooth move of ABC" onclick="doScript(
+'oldpos=[A.xy,B.xy,C.xy];'+
+'newpos=[[0,0],[4,0],[2,3]];'+
+'n=40;'+
+'repeat(n,i,'+
+'  l=i/n;'+
+'  pos=l*newpos+(1-l)*oldpos;'+
+'  A.xy=pos_1;'+
+'  B.xy=pos_2;'+
+'  C.xy=pos_3;'+
+'  repaint();'+
+'  wait(10);'+
+');'
+);" /⟩
+</pre></div><br />
+<br />
+<h4>シンデレラから JavaScript を呼ぶ: <span style="color:red;"><code>javascript(&#60;string&#62;)</code></span></h4>
+<br />
+　逆に、CindyScript から JavaScript を呼ぶこともできます。これは、単に CindyScript の関数 <code>javascript(...)</code> を使うだけです。次のコードは、点Aが原点から離れると JavaScript で「A is too close to the origin」警告を出すものです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(|A,[0,0]|<1,
+  javascript("alert('A is too close to the origin')");
+);
+</pre></div><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 27 of February, 2012 [11:09:32 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=JavascriptJ">
+    http://doc.cinderella.de/tiki-index.php?page=JavascriptJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

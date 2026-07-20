@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interaction with Geometry 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Interaction with Geometry</h2>
+<br />
+CindyScript can interact in different ways with a geometric drawing that was created with Cinderella. We already saw that it can read the numerical data and appearance of geometric elements. However it can also change the position of the free elements of a construction. CindyScript may even inquire and change the construction sequence by creating and deleting new geometric elements.<br />
+<br />
+<h3>Moving Elements</h3>
+<br />
+The calculations within CindyScript can be used to control the positions of free elements in a Cinderella construction. One way of doing this is to explicitly set the position information of a free element. For instance, if <code>A</code> is a free point, the line <code>A.xy=[1,1]</code> sets this point to the coordinates <code>[1,1]</code>. Another way of moving  an element is with the <code>moveto</code> operator.<br />
+<br />
+<A NAME="moveto"></A><br />
+<h4>Moving a Free Element: <span style="color:red;"><code>moveto(&#60;geo&#62;,&#60;pos&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> In this operator, <code>&#60;geo&#62;</code> is a free geometric object and <code>&#60;pos&#62;</code> (usually a vector) describes a position to which this object should be moved. Calling this operator simulates a move for this geometric object.</div><br />
+<br />
+If <code>&#60;geo&#62;</code> is a free point, then <code>&#60;vec&#62;</code>  can be a list <code>[x,y]</code> of two numbers or a list <code>[x,y,z]</code> of three numbers. The first case is interpreted as Euclidean coordinates, while the second case is interpreted as homogeneous coordinates and sets the point to <code>[x/z,y/z]</code>.<br />
+<br />
+If <code>&#60;geo&#62;</code> is a free line, then <code>&#60;vec&#62;</code> has to be a list of three numbers <code>[a,b,c]</code>, and the line is set to the line described by the equation <code>a∗x + b∗y + c = 0</code>.<br />
+<br />
+<div class="examples"><br />
+<b>Examples:</b>  The following code lines summarize possible ways to move geometric elements (we also include the possibilities of moving elements by accessing their data fields):</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//A is a free point
+moveto(A,[1,4]);        //moves A to Euclidean coordinates [1,4]
+A.xy=[1,4];             //moves A to Euclidean coordinates [1,4]
+A.x=5;                  //sets the x coordinate of A to 5, lets the y coordinate unchanged
+A.y=3;                  //sets the y coordinate of A to 3, lets the x coordinate unchanged
+moveto(A,[2,3,2]);      //moves A to homogeneous coordinates [2,3,2]
+A.homog=[2,3,2];        //moves A to homogeneous coordinates [2,3,2]
+
+//a is a free line
+moveto(a,[2,3,4]);      //moves a to homogeneous coordinates [2,3,4]
+a.homog=[2,3,4];        //moves a to homogeneous coordinates [2,3,4]
+
+//b is a line through a point
+b.slope=1;              //sets the slope of the line to 1
+
+//C is a circle with free radius
+C.radius=1;             //sets the radius of the circle to 1
+
+</pre></div><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>Handles to Objects</h3>
+<br />
+<A NAME="mover"></A><br />
+<h4>Who has moved: <span style="color:red;"><code>mover()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator gives a handle to the element that is currently moved by the mouse.</div><br />
+<br />
+<hr />
+<A NAME="elementsatmouse"></A><br />
+<h4>Elements close to the mouse: <span style="color:red;"><code>elementsatmouse()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator gives a list with handles to all the elements that are close to the current mouse position.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following script is a little mean. Putting it into the mouse move slot will make exactly those elements disappear that are close to the mouse. They reappear if the mouse moves away again.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+apply(allelements(),#.alpha=1);
+apply(elementsatmouse(),#.alpha=0);
+repaint();
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="incidences"></A><br />
+<h4>Incidences of an object: <span style="color:red;"><code>incidences(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns a list all the elements that are generically incident to a geometric element <code>&#60;geo&#62;</code>.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="element"></A><br />
+<h4>Getting an element by name: <span style="color:red;"><code>element(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns the geometric object identified by the name given in <code>&#60;string&#62;</code>.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The <code>element</code> operator is necessary for situations where the element name is not a valid variable identifier or already used by a user-defined or built-in name. For example, if you try to access the color of a line having the name <code>i</code>, you cannot write <code>i.color=&#91;1,1,1&#93;</code> as <code>i</code> is reserved for the complex unit. Instead, you use:</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+element("i").color=[1,1,1]
+</pre></div><br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="createandremove"></A><br />
+<h3>Creating and Removing Elements</h3>
+<br />
+<A NAME="createpoint"></A><br />
+<h4>Creating a free point: <span style="color:red;"><code>createpoint(&#60;string&#62;,&#60;pos&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator creates a new point with label <code>&#60;string&#62;</code>. The point will beset to position <code>&#60;pos&#62;</code>. If an element with this name is already exists then no new element is created. However, if there already exists a free point with this name, then this point is moved to the specified position.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="create"></A><br />
+<h4>Creating a geometric element: <span style="color:red;"><code>create(&#60;list1&#62;,&#60;string&#62;,&#60;list2&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  With this operator it is possible to generate arbitrary geometric elements that are functional in a geometric construction. Due to the fact that algorithms may create multiple outputs several subtleties arise. This function is meant for expert use only. </div><br />
+<br />
+The first list contains a list <code>&#60;list1&#62;</code> of element names for the generated output objects of the algorithm. <code>&#60;string&#62;</code> is the internal name of the geometric algorithm. The second list <code>&#60;list2&#62;</code> is a list of the parameters that are needed for the definition. The following table shows a few possible creation statements.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+create(["A"],"FreePoint",[[1,1,1]]);
+create(["B"],"FreePoint",[[4,3,1]]);
+create(["a"],"Join",[A,B]);
+create(["X"],"CircleMP",[A,B]);
+create(["Y"],"CircleMP",[B,A]);
+create(["P","Q"],"IntersectionCircleCircle",[X,Y]);
+create(["b"],"Join",[P,Q]);
+create(["M"],"Meet",[a,b]);
+</pre></div><br />
+<br />
+This sequence of statements creates the fully functional construction shown below.<br />
+Observe that in the sixth statement when two circles are intersected there must be a list of two output elements specified.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CreateX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+You can find the valid parameters for elements by constructing them manually and using the <code>algorithm</code> and <code>inputs</code> functions described below.<br />
+<hr />
+<br />
+<A NAME="removeelement"></A><br />
+<h4>Removing a geometric element: <span style="color:red;"><code>removeelement(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Removes a geometric element together with all its dependent elements from a construction.</div><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="inputs"></A><br />
+<h4>Input elements of an element: <span style="color:red;"><code>inputs(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns a list all the elements that are needed to define the object <code>&#60;geo&#62;</code>. These may be other geometric, elements, numbers or vectors.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="algorithm"></A><br />
+<h4>Algorithm of an element: <span style="color:red;"><code>algorithm(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns a string that resembles the algorithm of the definition the object <code>&#60;geo&#62;</code>.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following piece of code generates all information contained in a construction sequence.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+els=allelements();
+data=apply(els,([[#.name],algorithm(#),inputs(#)]));
+</pre></div><br />
+<br />
+Applied to the construction of a perpendicular bisector in the picture below it generates the following output:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+ [[["A"],"FreePoint",[[4,4,-4]]],
+  [["B"],"FreePoint",[[4,-3,1]]],   
+  [["a"],"Join",[A,B]],
+  [["C"],"Mid",[A,B]],
+  [["b"],"Orthogonal",[a,C]]
+] 
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PerpBisect.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<h3>Accessing Element Properties</h3>
+<!-- latexreplace<br />
+\index{properties}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+Element properties like color, size, etc. are conveniently accessible via operators like <code>.color</code>, <code>.size</code> etc. However, elements have by far more properties. All of them can be generically accessed by the following operators.<br />
+<br />
+<A NAME="inspect1"></A><br />
+<h4>List all inspectable properties: <span style="color:red;"><code>inspect(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Returns a list of names of all private properties of a geometric element.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The operator <code>inspect(A)</code> applied to a the free point <i>A</i> returns the following list of property names.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[name,definition,color,color.red,color.blue,color.green,alpha,visibility,
+drawtrace,tracelength,traceskip,tracedim,render,isvisible,
+text.fontfamily,plane,pinning,incidences,labeled,textsize,textbold,textitalics,
+ptsize,pointborder,printname,point.image,
+point.image.media,point.image.rotation,freept.pos]
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="inspect2"></A><br />
+<h4>Accessing an inspectable property: <span style="color:red;"><code>inspect(&#60;geo&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Accesses an arbitrary inspectable property.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  One can access the color of a point <i>A</i>  by <code>inspect(A,"color")</code></div><br />
+<br />
+<hr />
+<br />
+<A NAME="inspect3"></A><br />
+<h4>Setting an inspectable property: <span style="color:red;"><code>inspect(&#60;geo&#62;,&#60;string&#62;,&#60;data&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Setting the value of inspectable property.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  One can set the color of a point <i>A</i> to white by <code>inspect(A,"color",(1,1,1))</code></div><br />
+<br />
+<hr />
+<hr />
+<br />
+<A NAME="repaint"></A><br />
+<h4>Forcing a repaint operation: <span style="color:red;"><code>repaint()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator causes an immediate repaint of the drawing surface. This operator is meant to be used whenever a script has updated a construction and wants to display the changes. It is not allowd to use this operator in the <code>draw</code> or in the <code>move</code> slot.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="repaint1"></A><br />
+<h4>Forcing a delayed repaint operation: <span style="color:red;"><code>repaint(&#60;real&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  As <code>repaint</code> but with a time delay of as many milliseconds as given by he parameter</div><br />
+<br />
+<hr />
+<br />
+<A NAME="locusdata"></A><br />
+<h4>Points on a locus: <span style="color:red;"><code>locusdata(&#60;locus&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns a list of points in <i>xy</i>-coordinates that are all on a locus given by the name <code>&#60;locus&#62;</code> of a geometric element.</div><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 23 of August, 2016 [13:40:23 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20Geometry">
+    http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20Geometry
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

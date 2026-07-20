@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Copy, Paste, and Macros 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<!--latexreplace \part{Advanced Topics} --> <!-- /latexreplace --><br />
+<br />
+<h1> Copy, Paste and Macros</h1>
+The macro concept of Cinderella differs a little from macros available in other geometry software. We describe ways of using the macro capabilities below.<br />
+<!-- latexreplace<br />
+\index{macro}<br />
+\index{copy}<br />
+\index{paste}<br />
+\index{redefine}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<h2> Copy/Paste</h2>
+<br />
+The easiest way to create a macro on the fly is to use the copy/paste actions. If you select several elements using the <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a> and choose Edit/Copy from the menu (or the equivalent keyboard shortcut), Cinderella will copy the selected elements to the clip board. Additionally, intermediate construction steps that define the relations between the selected elements will be copied as hidden elements. When you paste the elements, these hidden elements will be pasted as well, and as a consequence the pasted elements will behave as they did before.<br />
+<br />
+Here is an example. Start by using <a title="no description" href='tiki-cindydoc.php@page=Add+a+Circle.html' class='wiki'>Add a Circle</a> twice to create two points A and B and two circles that use A and B as center and B and A as point on the circle.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Next, use the <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a> tool to add the perpendicular bisector of A and B.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Now, switch to <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a>, press shift to add to the selection, and click A and B.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro3.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+The three selected elements, A, B and the line a, can now be copied to the clipboard using the menu or the keyboard shortcut (CMD-C on the Mac or Ctrl-C on Windows).<br />
+<br />
+Open a new Cinderella window (CMD-N or Ctrl-N) and paste the clipboard data. You will see points A and B and the line a. The circles are added as hidden elements &mdash; you cannot see or use them, but they are used to determine the position of line a. You can verify this by moving A and B &mdash; the line will behave as perpendicular bisector of A and B.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h2> Redefine</h2>
+<div id="supi"><span class="img"><img alt="" src="buttonsback/solder.png" border="0"  align="left" /></span></div><br />
+What if you want to create the three perpendicular bisectors of a triangle? The solution above shows you how to speed up the creation of three perpendicular bisectors, but pasting the bisector construction three times is not satisfactory:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro5.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Note that you end up with three bisectors of three points of pairs (it's nice to know, though, that the pasted points have been renamed and moved a little). This is the time when the Redefine Point  <span class="img"><img alt="" src="buttonsback/solder.png" border="0"  /></span>  mode is useful. Switch to this mode and move <!-- latexreplace $A'$ to $A$, $B'$ to $B$, $B''$ to $C$, $A_3$ to $B$ and $B_3$ to $C$ -->A' to A, B' to B, A'' to A, B'' to C, A3 to B, and B3 to C<!-- /latexreplace -->. The pasted points will be identified with the existing triangle points and you will end up with a proper construction containing only the triangle and its edge bisectors.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro6.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h2> Creating own Tools</h2>
+<br />
+Working with copy/paste addresses most cases of repeating steps in a construction. If you want to use several partial constructions, you can also use a convenient way to create a new tool: Just use "Edit/Create Tool from Selection" after you selected the elements that define the new tool. Using the bisector example from above, we get the following dialog, where we can add a name and description for this tool. The icon is created automatically!<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro7.png" border="0"  width="600" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+After you confirm the creation of the tool, it will be available in the toolbar. The tools you created can be saved to a file and loaded in other constructions using the corresponding menu entries in the Scripting menu.<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [17:03:03 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Copy%2C%20Paste%2C%20and%20Macros">
+    http://doc.cinderella.de/tiki-index.php?page=Copy%2C%20Paste%2C%20and%20Macros
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Transformations by Functions 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>Transformations  by Functions</h3>
+<!--latexreplace<br />
+\index{mode!define transformation by function}<br />
+\index{transformation!by function}<br />
+\index{function}<br />
+--><!-- /latexreplace --><br />
+This transformation mode is quite different from all other transformation modes. While all other transformation modes directly encode geometric transformations, this mode can be freely defined by an arbitrary function. The function must be given as <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code.<br />
+<br />
+To define such a function one has to choose the mode and click somewhere in a view. Then a window pops up in which one can enter the function. The function must be a function with exactly one free variable. The name of this variable can be "#" (the generic run variable in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->), "x", "y", "z", "t", or "v". The selection is kept somewhat restrictive to avoid interference with the names of geometric elements.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Input window for function transformations</b></td></tr></table><br />
+<br />
+<br />
+<br />
+In the function, the variable can be either a vector with (<i>x</i>, <i>y</i>)-coordinates or a complex number. If the function requires a vector, it has also to return a vector. If it requires a complex number, it has also to return a complex number.<br />
+<br />
+As usual, defining a transformation creates a view button. In contrast to other transformation modes, the transformations defined by a function can only map points. More complicated objects like lines, circles, and conics cannot be mapped. The function has to describe how the point is mapped to another point. Here two variants are admissible: either the point is treated as a two-dimensional vector or it is treated as a complex number (where the <i>x</i>-coordinate represents to the real part and the <i>y</i>-coordinate represents the imaginary part).<br />
+<br />
+The following entry form shows a simple definition in which a function is defined by a polynomial that interprets a mapped point as a complex number.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Defining a complex function</b></td></tr></table><br />
+<br />
+Applying this transformation to a point generates a new point that represents the result of the function. The picture below shows a point and its image. Furthermore, the trace of a circle is shown in the picture.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Applying the function to a point</b></td></tr></table><br />
+<br />
+<br />
+<h4>Function Transformations and Iterated Function Systems (IFS)</h4>
+<!--latexreplace<br />
+\index{iterated function system}<br />
+\index{IFS}<br />
+\index{Julia set}<br />
+--><!-- /latexreplace --><br />
+Function transformations are particularly useful for the definition of iterated function systems. A typical example is the definition of "Julia sets". A Julia set can be defined as the iterated function system generated by the two functions <code>+sqrt(z-c)</code> and <code>-sqrt(z-c)</code>. Here "c" is an arbitrary constant and "z" is the (complex) input variable. After defining these two functions as transformation functions one can use these functions within <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+Systems.html" class="wiki">iterated function systems</a> mode. In the following example we control the constant "c" by a point <i>A</i> of the construction. The two functions are defined by<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sqrt(#-complex(A))
+</pre></div><br />
+<br />
+and<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+-sqrt(#-complex(A))
+</pre></div><br />
+<br />
+The resulting picture depends on the position of <i>A</i>. One instance is shown below:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A Julia set defined by transformation functions</b></td></tr></table><br />
+<br />
+<br />
+A more advanced picture can be generated by composing the iterated function system with a color plot programmed in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The color plot iterates the function <code>z^2+c</code> with different start values and counts how long it takes the absolute value of the function to exceed the number  2.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m=40;
+f(x):=x^2+complex(A);
+g(y,n):=if(
+  or(|y|>2,n==m),
+   n,g(f(y),n+1)
+);
+colorplot((1-g(#_1+i*#_2,0)/m),B,C,startres->20,pxlres->1)
+</pre></div><br />
+<br />
+The resulting picture, which is overlaid with the iterated function system, looks as follows.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A Julia set defined by transformation functions and a color plot</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [13:35:41 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Transformations%20by%20Functions">
+    http://doc.cinderella.de/tiki-index.php?page=Transformations%20by%20Functions
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

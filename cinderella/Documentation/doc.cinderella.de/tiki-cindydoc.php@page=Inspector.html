@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Inspector 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> The Inspector</h1>
+<!--latexreplace<br />
+\index{inspector}<br />
+--><!-- /latexreplace --><br />
+The inspector is the fundamental distributing center for all properties of geometric elements. It is one of the fundamental improvements in <b>Cinderella.2</b>, and it completely replaces the appearance editor in previous releases.<br />
+<br />
+Understanding the functionality of the inspector will help you to control and personalize your Cinderella constructions. In this section we will give a general overview on the functionality of the inspector. Specific information on the functionality and inspection parameters of geometric and physical objects can be found in the descriptions of the objects themselves.<br />
+<br />
+<br />
+<h2> A General Overview</h2>
+<br />
+You can open the inspector by choosing the menu item <i>Edit/Information</i>. Depending on the selection of elements, a window sill pop up that either is almost empty or contains  information on the selected elements. In any case, it will contain a button toolbar. With this toolbar you can switch between the different information blocks of the inspector.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/InspectorToolbar.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The inspector buttons</b></td></tr></table><br />
+<br />
+Each of these buttons represents a choice of properties that can be influenced by the inspector. Clicking one of these buttons switches to the corresponding information block. To provide a rough overview, the following graphic explains the type of parameters that can be inspected within the different blocks:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/InspectorOverview2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The information blocks</b></td></tr></table><br />
+<br />
+Roughly speaking, the first row of buttons represents information on individual elements, while the second row represents Cinderella's default settings. The inspector always refers to all elements that are currently selected. Each element provides several attributes that can be viewed or changed by the inspector. All such attributes that belong to the currently chosen inspector block are shown. In what follows we will briefly demonstrate the possibilities of the inspector. We will organize the sections roughly by the inspector's information blocks:<br />
+<br />
+<ul><li>  <span class="img"><img alt="" src="buttonsback/inspector-info.png" border="0"  /></span> <b>Geometric information:</b> for definitions, labels, geometric parameters, etc.
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-appearance.png" border="0"  /></span> <b>Basic appearance:</b> for color, size, visibility, labeling, circle filling, etc.
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-special.png" border="0"  /></span> <b>Advanced appearance:</b> for traces and arrow properties
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-defaults.png" border="0"  /></span> <b>Basic defaults:</b> defaults for color, size, visibility, labeling, etc.
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-special-def.png" border="0"  /></span> <b>Advanced defaults:</b> defaults for traces, arrows, rendering, etc.
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-port.png" border="0"  /></span> <b>Views I:</b> for view properties such as mesh, color and background images
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-port2.png" border="0"  /></span> <b>Views II:</b> for view properties units, precision etc.
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-cindy.png" border="0"  /></span> <b>Preferences:</b> for various global settings and various default parameters
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-ui.png" border="0"  /></span> <b>Menu/language:</b> for choice of menu and language
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-physics.png" border="0"  /></span> <b>Physics:</b> for the physical parameters of all <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> elements
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-global.png" border="0"  /></span> <b>Environment:</b> environment for physics, accuracy, friction, many-body setup, actuation, etc.
+</li><li>  <span class="img"><img alt="" src="buttonsback/inspector-license.png" border="0"  /></span> <b>License:</b> license information
+</li></ul>
+<br />
+<br />
+A more detailed description of the most important inspector facilities can be found in the following sections:<br />
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Info+Block.html' class='wiki'>Info Block</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Inspecting+Appearance.html' class='wiki'>Inspecting Appearance</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Traces+and+Arrows.html' class='wiki'>Traces and Arrows</a>
+</li><li> Physics and environment are discussed in <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Controlling+the+Views.html' class='wiki'>Controlling the Views</a>
+</li></ul>
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [22:36:38 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Inspector">
+    http://doc.cinderella.de/tiki-index.php?page=Inspector
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

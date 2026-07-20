@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : User inputJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>ユーザー入力</h2>
+<br />
+マウスやキーボードによる入力が必要になることがあります。そのとき、 "Mouse Down," "Mouse Up," "Mouse Click," "Mouse Drag,"  "Key Typed"を使います。 ( <a title="no description" href="https://doc.cinderella.de/tiki-cindydoc.php@page=Entering+Program+CodeJ.html" class="wiki">プログラムコードの入力</a>参照)。これらは、イベントが起こるとそれに対応します。イベントに対応して入力データを読むために２つの演算子があります。<br />
+<br />
+<h3>マウスとキーボード</h3>
+<A NAME="mouse"></A><br />
+<h4>マウスの位置: <span style="color:red;"><code>mouse()</code></span></h4>
+<br />
+<b>説明:</b>  マウスボタンが押されたとき、マウスの位置を表すベクトルを返します。ベクトルは同次座標です。(無限遠点も考慮します) 　もし、２次元のユークリッド座標が必要であれば、 <code>mouse().xy</code> によって座標が得られます。<br />
+<br />
+<hr />
+<br />
+<A NAME="key"></A><br />
+<h4>キー入力: <span style="color:red;"><code>key()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> キーボードで打たれた文字列を返します。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<A NAME="iskeydown"></A><br />
+<h4>あるキーが押されたか: <span style="color:red;"><code>iskeydown(&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、ある特定のキーが押されたならばブール値 true を返します。そのキーは整数の引数で与えます。たとえば、 <i>shift</i> キーが押されたかどうかを決定できます。キーの番号は、たとえば 65, 66, 66, .... が 'A', 'B', 'C',... に対応します。 'shift', 'crtl' と 'alt' は 16, 17, 18 です。<br />
+<br />
+<hr />
+<br />
+<A NAME="keydownlist"></A><br />
+<h4>押されたキーのリスト: <span style="color:red;"><code>keydownlist()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、押されたキーのリストを返します。MIDI関数の節に、興味深い例を示しました。 <a title="no description" href='https://doc.cinderella.de/tiki-cindydoc.php@page=MIDI+Functions.html#piano' class='wiki'>キーボードピアノ</a> です。<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> 重力センサにおける AMS データ</h3>
+<br />
+　ユーザー入力にアクセスするもう一つの興味深い方法があります。CindyScript はノートパソコンに実装されている重力センサ（加速度センサ）にアクセスできます。重力センサは3次元のセンサです。<br />
+<br />
+<A NAME="amsdata"></A><br />
+<h4>AMS データの取得: <span style="color:red;"><code>amsdata()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は AMS センサの生のデータを取得します。<br />
+<br />
+<hr />
+<br />
+<A NAME="calibratedamsdata"></A><br />
+<h4>調整された AMS データの取得: <span style="color:red;"><code>calibratedamsdata()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、 AMS センサの調整されたデータを取得します。調整されたデータは、空間におけるパソコンの位置をベクトルデータとしたものです。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> 描画面に独自のツールボタンを作る。</h3>
+<br />
+　シンデレラはHTMLページに図形を書きだすことができます。それに 、点や直線､園を描くツールのセットをつけておくとよいことがよくあります。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='https://doc.cinderella.de/tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の次の関数を用いて、カスタムツールバーをつけたり取り除いたりすることができます。<br />
+　ツールバーは、特にインタラクティブな練習問題を作るときに重要です。その例は <a title="no description" href="https://doc.cinderella.de/tiki-cindydoc.php@page=Interactive+ExercisesJ.html" class="wiki">インタラクティブな練習問題</a>にあります。<br />
+<br />
+<hr />
+<br />
+<A NAME="createtool"></A><br />
+<h4>カスタムツールバーを作る: <span style="color:red;"><code>createtool(&#60;string&#62;,&#60;int&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<h4>カスタムツールバーを作る: <span style="color:red;"><code>createtool(&#60;list&#62;,&#60;int&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> シンデレラの描画面にツールボタンを作ります。第１の引数は、１個のツールバーを表す文字列か複数個からなるリストです。あとの２つの引数は画面の角からの相対的な位置をピクセル数で表したものです。通常、このコードは、スクリプトエディタの Initializationスロットに入れます。<br />
+<br />
+次の文字列を使います。<br />
+<br />
+<!--latexreplace {\footnotesize --> <!-- /latexreplace --><br />
+<ul><li><b>一般操作:</b> <code> "Move"</code>, <code>"Delete"</code>
+</li><li><b>点を打つ:</b> <code>"Point"</code>, <code>"Intersection"</code>, <code>"Mid"</code>, <code>"Center"</code>
+</li><li><b>線を引く:</b> <code>"Line"</code>, <code>"Segment"</code>, <code>"Line Through"</code>, <code>"Parallel"</code>, <code>"Orthogonal"</code>, <code>"Angle Bisector"</code>
+</li><li><b>円を描く:</b><code>"Circle"</code>, <code>"Circle by Radius"</code>, <code>"Compass"</code>, <code>"Circle by 3"</code>, <code>"Arc"</code>
+</li><li><b>２次曲線を描く:</b> <code>"Conic by 5"</code>, <code>"Ellipse"</code>, <code>"Hyperbola"</code>, <code>"Parabola"</code>
+</li><li><b>特別メニュー:</b> <code>"Polar Point"</code>, <code>"Polar Line"</code>, <code>"Polygon"</code>, <code>"Reflection"</code>, <code>"Locus"</code>
+</li><li><b>計測をする:</b> <code>"Distance"</code>, <code>"Angle"</code>, <code>"Area"</code>
+</li></ul>
+<!--latexreplace } --> <!-- /latexreplace --><br />
+<br />
+<a title="no description" href="https://doc.cinderella.de/tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> のツールも使えます:<br />
+<br />
+<!--latexreplace {\footnotesize --> <!-- /latexreplace --><br />
+<ul><li><b>部品:</b> <code>"Mass"</code>, <code>"Velocity"</code>, <code>"Rubberband"</code>, <code>"Spring"</code>, <code>"Coulomb"</code>
+</li><li><b>環境:</b> <code>"Gravity"</code>, <code>"Sun"</code>, <code>"Floor"</code>, <code>"Bouncer"</code>, <code>"Magnet"</code>
+</li></ul>
+<br />
+<!--latexreplace } --> <!-- /latexreplace --><br />
+　ツールの表示位置は固定されています。初期位置は右上隅です。修飾子 <code>reference</code> を用いれば他の隅を指定できます。その修飾子は、 <code>"UL", "UR", "LL", "LR"</code> です。初めの文字は、 <i>upper/lower</i> すなわち上下で、２番目の文字は <i>left/right</i>すなわち左右を表します。<br />
+<br />
+<br />
+<b>例:</b>簡単な使い方を示しましょう。次のコードで、「動かすモード」のツールボタンができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool("Move",2,2);
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Tool1.png" border="0"  /></span><br />
+<br />
+複数のツールは次のようにして作ることができます。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool(["Move","Point","Line","Circle"],2,2);
+</pre></div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool(["Move","Point","Line","Circle"],2,2,flipped->true);
+</pre></div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool(
+ [
+  ["Move","Point","Line","Circle"],
+  ["Parallel","Orthogonal","Circle by Radius","Compass"],
+  ["Distance","Angle","Area","Polygon"],
+ ]
+,2,2,flipped->false);
+</pre></div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool(
+
+...same as example above...
+
+,reference->"LR");
+</pre></div><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Tool3.png" border="0"  /></span><span class="img"><img alt="" src="img/wiki_up/Tool2.png" border="0"  /></span><br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Tool5.png" border="0"  /></span><span class="img"><img alt="" src="img/wiki_up/Tool6.png" border="0"  /></span><br />
+<br />
+<b>Modifiers:</b> 次のような修飾子があります:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>reference</code></td><td class="wikicell" ><code>&#60;文字列&#62;</code></td><td class="wikicell" > 参照位置</td></tr><tr><td class="wikicell" ><code>flipped</code></td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" ><code>flipped→true</code> 行と列を入替え</td></tr><tr><td class="wikicell" ><code>space</code></td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" > ツールボタンの間隔。ピクセル数で</td></tr></table><br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="removetool"></A><br />
+<h4>ツールの削除: <span style="color:red;"><code>removetool(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>カスタムツールバーからツールを削除する。<br />
+<br />
+<hr />
+<br />
+<A NAME="removetools"></A><br />
+<h4>すべてのツールの削除: <span style="color:red;"><code>removetools()</code></span></h4>
+<br />
+<br />
+<b>説明:</b>カスタムツールバーからすべてのツールを削除する。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 17 of August, 2016 [05:52:28 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=User%20inputJ">
+    http://doc.cinderella.de/tiki-index.php?page=User%20inputJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

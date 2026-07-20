@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Elementary Drawing FunctionsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>描画関数の基礎</h2>
+<br />
+この節で解説するのは、点、直線、線分を描く演算子です。<br />
+<br />
+<br />
+<A NAME="draw"></A><br />
+<A NAME="draw1"></A><br />
+<h4>描画: <span style="color:red;"><code>draw(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>draw(&#60;expr&#62;)</code> 関数は多機能な演算子です。 <code>&#60;expr&#62;</code>の意味に応じて、対応するものが描かれます。現在、３種類の入力方法があります。<br />
+<br />
+<b>点を描く:</b> 次の２つの形式があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b> 表記:</b></td><td class="wikicell"  colspan="2"><b>描画:</b></td></tr><tr><td class="wikicell" ><code>draw([x,y])</code> </td><td class="wikicell"  colspan="2">  <i>x,y</i>座標に点を打つ</td></tr><tr><td class="wikicell" ><code>draw([x,y,z])</code> </td><td class="wikicell"  colspan="2"> 同次座標が (x,y,z) である点を打つ。(これについてはこのあとに説明があります)</td></tr></table><br />
+<br />
+同次座標について:  <code>[x,y,z]</code> が点の同次座標であるとき、対応する点は、 <i>xy</i>-座標が <code>[x/z,y/z]</code> の点です。 <code>z=0</code> の点は "無限遠点" です。この点は、シンデレラの通常のユークリッド表示では見えません。しかし、球面表示や局所的に射影基底が設定されている場合は表示されます。(参照 : <a title="no description" href="tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html" class="wiki">座標系</a>).<br />
+<br />
+<b>線分を描く:</b>2点のリストを与えると線分を描きます。 点の座標はユークリッドの座標でも、同次座標でもかまいません。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>表記:</b></td><td class="wikicell"  colspan="2"><b>描画:</b></td></tr><tr><td class="wikicell" ><code>draw([a,b])</code> </td><td class="wikicell"  colspan="2">  <code>a</code> と <code>b</code>　を結ぶ線分を引く</td></tr></table><br />
+<br />
+<b>例:</b> 次のコードは、次の図を描きます。ユークリッドの座標と同次座標の両方が使われています。さらに、線分の描画命令が点の描画命令のあとにあるので、線分の方が前面に描かれています。<br />
+<div dir="ltr"><pre class='codelisting'>
+A=[0,0];
+B=[0,2,2];
+C=[1,1,1];
+D=[1,0];
+E=[0.5,1.5];
+linesize(3);
+pointsize(10);
+draw(A);draw(B);
+draw(C);draw(D);draw(E);
+draw([A,B]);draw([B,C]);
+draw([C,D]);draw([D,A]);
+draw([C,E]);draw([B,E]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/HouseX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>直線を描く:</b> 同次座標は直線を表すの用いられます。3つの実数 <code>[a,b,c]</code> で表される直線は、方程式 <code>a∗x+b∗y+c=0</code>で表されるものと考えることができます。 ユークリッド座標 <code>[x,y]</code>の点は、この方程式を満たすときに限りこの直線上にあります。同次座標 <code>[x,y,z]</code>の点は、方程式 <code>a∗x+b∗y+c∗z=0</code> を満たすときに限りこの直線上にあります。<br />
+<br />
+3つの実数 <code>[a,b,c]</code>が点を表すのか直線を表すのかをCindyScriptが知るために、直線が引かれた場合には内部フラグが立つようになっています。たとえば、 <code>join(A,B)</code>命令は、2点 <code>A</code> と <code>B</code> を通る直線を計算して、直線であるという内部フラグを立てます。その結果、直線が引かれます。演算子 <code>line(<expr>)</code> を使うことによって、直線のフラグを強制的に立てることもできます。<br />
+<br />
+<b>例:</b> 次の２つの描画命令はいずれも直線を描きます:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+draw(line([1,1,0.5]));
+draw(join([1,2],[2,-1]));
+</pre></div><br />
+<br />
+<b>修飾子:</b> 描画命令はいくつかの修飾子を扱うことができます。それらを次の表にまとめます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>pointsize</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >点の大きさを設定する。</td></tr><tr><td class="wikicell" ><code>linesize</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >線の幅を設定する</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >点の大きさと線の幅を設定する</td></tr><tr><td class="wikicell" ><code>pointcolor</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数3>]</code></td><td class="wikicell" >RGB 値による点の色を設定する</td></tr><tr><td class="wikicell" ><code>linecolor</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数3>]</code></td><td class="wikicell" >RGB 値による線の色を設定する</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数3>]</code></td><td class="wikicell" >RGB 値による点と線の色を設定する</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >透明度を <code><alpha></code> の値により設定する</td></tr><tr><td class="wikicell" ><code>noborder</code></td><td class="wikicell" ><code><ブール値></code></td><td class="wikicell" ><code>noborder->true</code> なら点の境界線の表示をしない</td></tr><tr><td class="wikicell" ><code>border</code></td><td class="wikicell" ><code><ブール値></code></td><td class="wikicell" ><code>border->true</code> なら点の境界線の表示をする</td></tr><tr><td class="wikicell" ><code>dashtype</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >破線パターンを０から４で指定する</td></tr><tr><td class="wikicell" ><code>dashing</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >破線を描く。与えた数により細かさが変わる</td></tr><tr><td class="wikicell" ><code>dashpattern</code></td><td class="wikicell" ><code><リスト></code></td><td class="wikicell" >個別の破線パターンを指定する</td></tr></table><br />
+<br />
+修飾子は部分的な効果です。つまり、表示に関する初期設定は修飾子があるときは無効で修飾子が優先されます。<br />
+<br />
+<b>例:</b> 次のコードは、破線の修飾子を使った例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+linesize(3);
+draw((0,0),(0,6),dashtype->0);
+draw((1,0),(1,6),dashtype->1);
+draw((2,0),(2,6),dashtype->2);
+draw((3,0),(3,6),dashtype->3);
+draw((4,0),(4,6),dashtype->4);
+draw((6,0),(6,6),dashing->4);
+draw((7,0),(7,6),dashing->6);
+draw((8,0),(8,6),dashing->8);
+draw((9,0),(9,6),dashing->10);
+draw((11,0),(11,6),dashpattern->[0,4,2,4]);
+draw((12,0),(12,6),dashpattern->[0,2,2,2,4,2]);
+draw((13,0),(13,6),dashpattern->[0,4,2,4]);
+draw((14,0),(14,6),dashpattern->[4,2,1,2]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Dashing.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>参照::</b> <a title="no description" href="tiki-cindydoc.php@page=Script+Coordinate+SystemJ.html" class="wiki">座標系</a> と <a title="no description" href="tiki-cindydoc.php@page=Geometric+OperatorsJ.html" class="wiki">幾何学演算子</a><br />
+<br />
+<hr />
+<br />
+<A NAME="draw2"></A><br />
+<h4>線分を引く: <span style="color:red;"><code>draw(&#60;expr&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> draw演算子に２つの引数を与えると線分が描けます。２つの引数はユークリッド座標か同次座標です。したがって、 <code>[draw([0,0],[1,1])]</code> は <code>[0,0]</code> to <code>[1,1]</code> を結ぶ線分を描きます。<br />
+<br />
+<b>修飾子:</b>  <code>draw(&#60;expr&#62;)</code> と同様、いくつかの修飾子が使えます。ただし、点に関する指定は無効です。<br />
+<br />
+<hr />
+<br />
+<A NAME="drawall"></A><br />
+<h4>リストのオブジェクトを描画する: <span style="color:red;"><code>drawall(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>   <code>drawall(&#60;list&#62;)</code> 演算子は、リストを引数とします。リストのそれぞれの要素は、通常の  <code>draw(&#60;expr&#62;)</code> 演算子で描画できるものでなくてはなりません。  <code>drawall</code> 演算子は数学的に複雑な、あるいは高度に規則性のある図形を描くのにとても役に立ちます。<br />
+<br />
+<b>例:</b> 次のコードは、次の図を描きます。２行目で単位円上に点を打つ関数を定義します。 <code>steps=2*pi*(1..n)/n;</code> 行は、変数 <code>steps</code> を単位円を17等分する角度のリストとして作ります。これらに対応する点が、変数 <code>pts</code> に <code>pts=apply(steps,f(#))</code> の行でリストとして代入されます。変数 <code>segs</code> はこのような点のすべてのペアのリストです。最後の２つの行で、 <code>draw</code> を使って、このリストにある線分を描きます。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+n=17;
+f(x):=[sin(x),cos(x)];
+steps=2*pi*(1..n)/n;
+pts=apply(steps,f(#));
+segs=pairs(pts);
+drawall(segs,alpha->0.9);
+drawall(pts,size->4);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CompleteGraphX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> この演算子は <code>draw(&#60;expr&#62;)</code>  演算子と同様な修飾子を扱います。<br />
+<br />
+<hr />
+<br />
+<A NAME="connect"></A><br />
+<h4>点をつなげる: <span style="color:red;"><code>connect(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、点のリストを受け取って、それらを順に結んだ線分を描きます。<br />
+<br />
+<b>例:</b> 次のコードは、シンデレラで画面上に描かれたすべての点に対し、点を順に結んだ図を描きます。１行目で変数  <code>pts</code> に、描かれているすべての点を代入します。２行目で、変数 <code>sortpts</code> に <i>x</i>-座標で並べ替えた点のリストを代入します。最後に、 <code>connect</code>演算子で点を順に結びます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=allpoints();
+sortpts=sort(pts,#.x);
+connect(sortpts);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ConnectTheDotsX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> この演算子は <code>draw(<expr>)</code> 演算子と同様な修飾子を扱います。<br />
+<br />
+<hr />
+<br />
+<A NAME="drawpoly"></A><br />
+<h4>多角形を描く: <span style="color:red;"><code>drawpoly(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、点のリストを受け取って、それらからできる多角形を描きます。<br />
+<br />
+<br />
+<b>修飾子:</b> この演算子は次の修飾子が使えます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数3>]</code></td><td class="wikicell" >点の色と線の色を RGB 値で与える</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >透明度を指定する</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="fillpoly"></A><br />
+<h4>中を塗った多角形を描く: <span style="color:red;"><code>fillpoly(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、点のリストを受け取って、それらからできる中が塗られた多角形を描きます。<br />
+<br />
+<b>例:</b> 次のコードはそのあとのような図を描きます。<code>repeat</code> ループのそれぞれのステップで長方形を描き、そののち、座標系を回転・縮小しています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sq=[[-1,-1],[-1,1],[1,1],[1,-1]];
+repeat(300,i,
+  fillpoly(sq,color->hue(i/10));
+  rotate(4°);
+  scale(0.95);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/DrawPolyX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> 次の修飾子が使えます。:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数3>]</code></td><td class="wikicell" >RGB値で点と線の色を指定する。</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" > <code><alpha></code>値によって透明度を指定する。</td></tr></table><br />
+<br />
+<A NAME="drawcircle"></A><br />
+<h4>円を描く: <span style="color:red;"><code>drawcircle(&#60;point&#62;,&#60;radius&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>&#60;point&#62;</code> を中心とする半径 <code>&#60;radius&#62;</code> の円を描きます。点の座標はユークリッド座標か同次座標で与えます。<br />
+<br />
+<tt> <b>修飾子:</b> この関数は <code>draw(&#60;expr&#62;)</code>  と同様な修飾子ガ使えます。</tt><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="fillcircle"></A><br />
+<h4>円盤を描く: <span style="color:red;"><code>fillcircle(&#60;point&#62;,&#60;radius&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>&#60;point&#62;</code> を中心とする、半径  <code>&#60;radius&#62;</code> の、内部を塗りつぶした円を描きます。点の座標はユークリッド座標か同次座標で与えます。<br />
+<br />
+<b>修飾子:</b> この関数は次の修飾子が使えます。:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数3>]</code></td><td class="wikicell" >塗りつぶす色を RGB 値で与える</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code><実数></code></td><td class="wikicell" >透明度を指定する</td></tr></table><br />
+<br />
+<b>例:</b> 次の例が <code>drawcircle</code> と  <code>fillcircle</code> を使った例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(100,i,
+ fillcircle((0,0),1,color->hue(i/70));
+ drawcircle((0,0),1,color->(0,0,0));
+ translate((1.5,0));rotate(26°);scale(.95);
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FillCircleX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [10:53:41 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Elementary%20Drawing%20FunctionsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Elementary%20Drawing%20FunctionsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

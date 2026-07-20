@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : A Dynamic Geometry Program 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>A Dynamic Geometry Program</h3>
+<br />
+<br />
+<!--latexreplace<br />
+\index{dynamic geometry|(}<br />
+\index{geometry!dynamic|(}<br />
+--><!-- /latexreplace --><br />
+Here we will briefly sketch how to use Cinderella.2 as a plain geometry program (without taking advantage of the scripting facilities and the simulation engine). In particular, we will emphasize several application areas in which it is advantageous to use <i>Cinderella</i>.<br />
+<br />
+<br />
+<h4>Sample Applications</h4>
+<br />
+The application areas of <i>Cinderella</i> reach from pure Euclidean (and non-Euclidean) geometry via physics (optics, for example) to computational kinematics and computer-aided design (CAD). The following sample applications offer potential scenarios in which you can benefit by using <i>Cinderella</i>.<br />
+<br />
+<br />
+<h5>Exact Drawings</h5>
+Suppose that you are writing a scientific publication for which you need one or more figures. When the drawings are a bit more complicated, it is usually almost impossible to produce a perfect one on the first attempt.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EulerLineB.png" border="0"  width="380" /></span></td></tr><tr><td class="caption"><b>The Euler line of a triangle</b></td></tr></table><br />
+<br />
+Either you will have many elements in almost the same place, or some parts of the figure will not fit onto the page.<br />
+<br />
+<!--latexreplace<br />
+\index{drawing}<br />
+\index{Euler line}<br />
+--><!-- /latexreplace --><br />
+With <i>Cinderella</i> you start by making a computer sketch of a construction. This sketch might not look like the final drawing you expected. However, it provides all the relations that are essential for the construction. After you have made a sketch, you select the base elements and move them around until the picture satisfies all your aesthetic requirements. During the "move phase" you will always have a valid instance of your geometric construction. Finally, you use <i>Cinderella's</i> inspector to adjust the color and size of each geometric element.<br />
+<br />
+<br />
+<h5>Geometric Calculator</h5>
+Sometimes it happens that you want to get a feeling for some geometric situation. Either you have read something interesting in a geometry book or you have a new idea yourself.<br />
+<br />
+You do the construction with <i>Cinderella</i> and start to play with it. Through geometric exploration you gain new insights, and often hidden properties of the construction are revealed. <i>Cinderella's</i> mathematically consistent implementation ensures that no strange effects occur that do not come genuinely from the configuration.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/ThreeBarX.gif" border="0"  width="300" /></span></td></tr><tr><td class="caption"><b>Dynamics of a three-bar linkage</b></td></tr></table><br />
+<br />
+When you want to communicate your research to other colleagues, you can create an interactive web page and make it available on the Internet. Then your colleagues will have instant access to the configuration and can interact with it locally in their Java-enabled web browsers.<br />
+<br />
+<br />
+<h5>Interactive Worksheets and Student Exercises</h5>
+<!--latexreplace<br />
+\index{student exercise}<br />
+\index{interactive exercise}<br />
+--><!-- /latexreplace --><br />
+Another interesting application is the generation of interactive worksheets or student exercises. With Cinderella it is easy to export any construction to the internet. By this you can create an infinite variety of interactive mathematical worksheets. By suitable programming techniques it is even possible to create interactive student exercises. Imagine that you want to teach students how to construct the circumcenter of a triangle using only straightedge and compass. First you do the construction yourself. Using this sample construction you can create an exercise that guides a user step by step through the construction task. The required programming techniques are presented in the section <a title="no description" href='tiki-cindydoc.php@page=Interactive+Exercises.html' class='wiki'>Interactive Exercises</a>.<br />
+<br />
+The students can solve the exercises on their own computers and arrive at a solution completely by themselves or by following hints you have provided. No matter what construction a student may have used to solve the problem, <i>Cinderella's</i> integrated automatic theorem-checking facilities can decide whether it is correct. The student's creativity for finding a solution is not restricted by the program.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/NewIntroExercise.png" border="0"  /></span></td></tr><tr><td class="caption"><b>An exercise for students</b></td></tr></table><br />
+<br />
+<br />
+<h4>Design and Features</h4>
+<br />
+Several major design goals guided us in the development of <i>Cinderella</i>.  We want to mention the three most important ones to give you an impression of the overall architecture of the program.<br />
+<br />
+<br />
+<h5>General Approaches</h5>
+<!--latexreplace<br />
+\index{hyperbolic geometry}<br />
+\index{geometry!hyperbolic}<br />
+\index{spherical geometry}<br />
+\index{geometry!spherical}<br />
+\index{euclidean geometry}<br />
+\index{geometry!euclidean}<br />
+\index{geometries}<br />
+--><!-- /latexreplace --><br />
+<i>Cinderella</i> is designed to cover a wide range of geometric disciplines. The program  provides "native support" for <b>Euclidean geometry</b>, <b>hyperbolic geometry</b>, <b>elliptic geometry</b>, and <b>projective geometry</b>.<br />
+<br />
+This means that you do not have to simulate hyperbolic geometry by making complicated Euclidean constructions. You can use the "hyperbolic mode" of <i>Cinderella</i> and the constructions will behave like elements of the hyperbolic plane.<br />
+<br />
+<!--latexreplace<br />
+\index{projective geometry}<br />
+\index{geometry!projective}<br />
+\index{Cayley-Klein geometries}<br />
+--><!-- /latexreplace --><br />
+<i>Cinderella</i> achieves this by implementing very general mathematical approaches to geometry that form a common background for all of the areas above. Much of the mathematics behind <i>Cinderella</i> makes use of the great, and unfortunately almost forgotten, geometric achievements of the geometers of the nineteenth century. We would like to mention just a few of them: <b>Monge</b> and <b>Poncelet</b>, who "invented" projective geometry; <b>Plücker</b>, <b>Grassmann</b>, <b>Cayley</b>, and <b>Möbius</b>, who developed a beautiful algebraic language to deal with projective geometry; <b>Gauss</b>, <b>Bolyai</b>, and <b>Lobachevsky</b>, who "discovered" what is today called hyperbolic geometry; and finally, <b>Klein</b>, <b>Cayley</b>, and <b>Poincaré</b>, who managed to obtain a unified description of Euclidean and non-Euclidean geometries in terms of projective geometry and complex numbers. For an excellently written and exciting introduction to the historical development of geometry in the nineteenth century we recommend the book of  <!-- latexreplace Yaglom \cite{Yag-FKSEISNC-1988} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">Yaglom [Yag88]</a><!--/latexreplace -->. In addition, the historical book by Felix Klein <!-- latexreplace \cite{Kle-DM1C-1979} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">historical book by Felix Klein [Kle28]</a><!--/latexreplace -->  is a very interesting introduction into this topic.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Hyperbolic2.gif" border="0"  width="300" /></span></td></tr><tr><td class="caption"><b>Hyperbolic circles of equal size</b></td></tr></table><br />
+<br />
+<b>Projective geometry</b> forms the background for the incidence geometry part of   <i>Cinderella</i>, and <b>Cayley-Klein geometries</b> form the backbone for the metric part of <i>Cinderella</i>.<br />
+<br />
+<br />
+<h5>Mathematical Consistency</h5>
+<!--latexreplace<br />
+\index{consistency}<br />
+\index{CAD}<br />
+--><!-- /latexreplace --><br />
+To put it metaphorically, "The geometric constructions done with <i>Cinderella</i> should behave as if they lived in a reasonable geometric universe. In this universe no unnatural things should happen."<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Offset.gif" border="0"  width="300" /></span></td></tr><tr><td class="caption"><b>Offset curve of a parabola, a challenge for most CAD systems</b></td></tr></table><br />
+<br />
+Other systems for interactive geometry suffer from mathematical inconsistencies. You do a construction, drag around the base elements, and suddenly one part of the construction jumps from one place to another. This behavior is unfortunately common even in software systems for parametric CAD.<br />
+<br />
+<i>Cinderella</i> completely resolves this problem by using a new theory. It makes use of features from <b>complex analysis</b> and merges them with the "old geometry" mentioned above.<br />
+<br />
+Based on this theory, it was possible to equip <i>Cinderella</i> with an <b>automatic theorem checker</b> that governs most of the internal decisions <i>Cinderella</i> makes. This theorem checker is also used for automatic feedback operations in student exercises. Another benefit of this approach is that you have a generic tool to construct correct and complete geometric loci, which are real branches of algebraic curves.<br />
+<br />
+<br />
+<h5>Modular Design</h5>
+<i>Cinderella</i> is designed to be as modular as possible. This architecture makes <i>Cinderella</i> well prepared for further extensions in many directions.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern1cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.6666666666666667in">width=1.6666666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{MarkedRulerEuc2}   &amp;    \includegraphics<a class="wiki external"  href="width=1.5in">width=1.5in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{MarkedRulerSp} \\<br />
+{\small\it Conchoidal curve in a Euclidean\ldots{}} &amp;  {\small\it \ldots{}and in a spherical view}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align=center >
+<tr>
+<td><IMG width=250 SRC="../cinderella.de/files/CindyDocu/Images/MarkedRulerEuc2.gif"></td><td width=20></td>
+<td>    <IMG width=250 SRC="../cinderella.de/files/CindyDocu/Images/MarkedRulerSp.gif"> </tr>
+<tr>
+<td align=center><b>Conchoidal curve in a Euclidean…</b></td><td></td>
+<td align=center><b>…and in a spherical view</b>  </td>
+</tr>   <tr>     <td>   </tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+Even the present release benefits from the modular approach. For instance, it is possible to view the same geometric constructions simultaneously in many geometric contexts. A construction in hyperbolic geometry can be simultaneously displayed, and manipulated, in the "Poincaré model" of hyperbolic geometry and in the "Beltrami-Klein model." The simultaneous use of different views makes it possible to gain a deeper understanding of a configuration. For example, the "behavior at infinity" of a configuration becomes immediately visible in a spherical view.<br />
+<br />
+<br />
+<h5>Transformations and Transformation Groups</h5>
+<!--latexreplace<br />
+\index{transformation}<br />
+\index{transformation group}<br />
+\index{group}<br />
+--><!-- /latexreplace --><br />
+Cinderella provides powerful support for all kinds of geometric transformations. This often makes it possible to encapsulate high-level geometric operations into a very simple construction principles. Transformations are used in several contexts. Cinderella.2 supports simple reflections, translations, and rotations, as well as projective transformations and Möbius transformations.<br />
+<br />
+Projective transformations are a very useful tool for constructing perspectivally correct drawings of three-dimensional scenes. Furthermore, Cinderella provides facilities for constructing transformation groups generated by several transformations.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/ProjectiveGroup.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>Perspective view of an ornament</b></td></tr></table><br />
+<br />
+For example, the picture above was created as the perspective image of the application of a transformation group to a circle. The transformation group was generated by 60&#176; rotations around the corners of a regular triangle.<br />
+<br />
+<br />
+<h5>Fractals</h5>
+<!--latexreplace<br />
+\index{fractal}<br />
+\index{IFS}<br />
+\index{iterated function system}<br />
+--><!-- /latexreplace --><br />
+Cinderella also provides a simple approach for the construction of fractal structures. The fractals constructible by Cinderella are so-called iterated function systems. They are constructed using a collection of geometric transformations. The iterated function system is a cloud of points that is self-similar with respect to the defining transformations. Using the interactive features of Cinderella, the program provides a unique experimental environment for the exploration of spaces of fractal objects.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/NiceIFS.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>A simple fractal</b></td></tr></table><br />
+<!--latexreplace<br />
+\index{dynamic geometry|)}<br />
+\index{geometry!dynamic|)}<br />
+--><!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [08:57:46 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=A%20Dynamic%20Geometry%20Program">
+    http://doc.cinderella.de/tiki-index.php?page=A%20Dynamic%20Geometry%20Program
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

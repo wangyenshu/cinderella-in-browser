@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Boolean OperatorsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>ブール演算子</h2>
+<br />
+　条件付き分岐では真偽の判定が必要になりますが、これに関する演算がブール演算です。この節では、ブール演算について解説します。<br />
+<br />
+<h3>挿入演算子</h3>
+<h4>等しい: <span style="color:red;"><code>&#60;expr1&#62; == &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、２つの式の評価結果が等しいかどうかを調べます。演算の結果は <code>true</code> または <code>false</code> です。<br />
+<br />
+<hr />
+<h4>等しくない: <span style="color:red;"><code>&#60;expr1&#62; != &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、２つの式の評価結果が等しくないかどうかを調べます。演算の結果は <code>true</code> または <code>false</code> です。  <code><expr1> == <expr2></code>の否定です。<br />
+<br />
+<hr />
+<h4>より大: <span style="color:red;"><code>&#60;expr1&#62; > &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、式 <code><expr1></code>  が、式  <code><expr2></code>  <b>より大きい</b> かどうかを調べ、<code><bool></code> 値を返します。比較は2つのものだけが行えます。ともに <b>実数</b>であれば、通常の大小関係です。ともに <b>文字列</b>であれば、辞書順に比較します。 それ以外は(比較できない値の場合) <code>___</code> が返されます。<br />
+<br />
+<br />
+<hr />
+<h4>より小: <span style="color:red;"><code>&#60;expr1&#62; < &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b> この演算子は <b>より小</b> であることを除けば <b>></b> と同じです。<br />
+<br />
+<hr />
+<h4>大きいか等しい: <span style="color:red;"><code>&#60;expr1&#62; >= &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は <b>大きいか等しい</b> であることを除けば <b>></b> と同じです。<br />
+<br />
+<hr />
+<h4>小さいか等しい: <span style="color:red;"><code>&#60;expr1&#62; &#60;&#61; &#60;expr2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は <b>小さいか等しい</b> であることを除けば <b>></b> と同じです。<br />
+<br />
+<hr />
+<br />
+<h4> ファジー(あいまい)な比較  <font color=#ff0000><code>~==</code></font>, <font color=#ff0000><code>~!=</code></font>, <font color=#ff0000><code>~<</code></font>, <font color=#ff0000><code>~></code></font>, <font color=#ff0000><code>~>=</code></font>, <font color=#ff0000><code>~<=</code></font> :</h4>
+<br />
+<b>説明:</b> <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> は、比較を <i>ファジー(あいまい)</i> におこなう演算子を持っています。この演算子では、条件がεの限界内かどうかを調べます。したがって、 <code>a~==0</code> は、値 <code>a</code>  が  <code>+ε</code> から <code>-ε+の範囲にあるかどうかを調べます。 小さな値 ε は  -+0.0000000001</code>に設定されます。この演算子は、数値計算における誤差を吸収するのに時々役に立ちます。たとえば、多くの表計算ソフトなどでは、8.2ー7.2 の値に誤差があり、if(8.2-7.2 >=1 , A, B ) という判断が正しくできません。Cinderellaでも同様ですが、このようなとき、if(8.2-7.2 ~>=1 , A, B ) とすると正しく実行できます。<br />
+<br />
+ファジー演算子の正確な意味は次の図から読み取れるでしょう。ここでは、演算子が真であると評価する <code>b</code> の値の範囲を赤で表示しています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/CindyScript/Comparisons.png" border="0"  width="250" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<h4>論理積: <span style="color:red;"><code>&#60;bool1&#62; &amp; &#60;bool2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 2つのブール値の <b>論理積</b> は次の真理表で定義されます。<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell" ><b><code>B</code></b></td><td class="wikicell" ><b><code>A &amp; B</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr></table><br />
+<br />
+2つの引数のうちひとつでもブール表現でない場合は、演算子は<code>___</code>を返します。<br />
+<br />
+<hr />
+<br />
+<h4>論理和: <span style="color:red;"><code>&#60;bool1&#62; % &#60;bool2&#62;</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b> 2つのブール値の <b>論理和</b> は次の真理表で定義されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell" ><b><code>B</code></b></td><td class="wikicell" ><b><code>A % B</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr></table><br />
+<br />
+2つの引数のうちひとつでもブール表現でない場合は、演算子は<code>___</code>を返します。<br />
+<br />
+<hr />
+<br />
+<h4>否定: <span style="color:red;"><code>!&#60;bool&#62;</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b> 1つのブール値の <b>否定</b> は次の真理表で定義されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell"  colspan="2"><b><code>!A</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell"  colspan="2"><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell"  colspan="2"><code>false</code></td></tr></table><br />
+<br />
+引数がブール表現でない場合は、演算子は<code>___</code>を返します。<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>関数型演算子</h3>
+<br />
+<A NAME="and"></A><br />
+<h4>論理積: <span style="color:red;"><code>and(&#60;bool1&#62;,&#60;bool2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> <code>and(x,y)</code> は <code>x &amp; y</code>と同等です。<br />
+<br />
+<hr />
+<br />
+<A NAME="or"></A><br />
+<h4>論理和: <span style="color:red;"><code>or(&#60;bool1&#62;,&#60;bool2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> <code>or(x,y)</code> は <code>x % y</code>と同等です。<br />
+<br />
+<hr />
+<br />
+<A NAME="not"></A><br />
+<h4>否定: <span style="color:red;"><code>not(&#60;bool&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> <code>not(x)</code> は <code>!x</code>と同等です。<br />
+<br />
+<hr />
+<br />
+<A NAME="xor"></A><br />
+<h4>排他的論理和: <span style="color:red;"><code>xor(&#60;bool1&#62;,&#60;bool2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 2つのブール値の <b>排他的論理和</b> は次の真理表で定義されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b><code>A</code></b></td><td class="wikicell" ><b><code>B</code></b></td><td class="wikicell" ><b><code>xor(A,B)</code></b></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>false</code></td></tr><tr><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td><td class="wikicell" ><code>true</code></td></tr><tr><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>true</code></td><td class="wikicell" ><code>false</code></td></tr></table><br />
+<br />
+2つの引数のうちひとつでもブール表現でない場合は、演算子は<code>___</code>を返します。<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>型の判定</h3>
+<br />
+次の関数は、式が特定の型であるかどうかを調べます。これらの関数は、入力値の型に依存する関数を定義する際に重要です。さらに、プログラム内において、引数の型を確かめられるのでデバッグに有効です。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="isinteger"></A><br />
+<h4>整数か: <span style="color:red;"><code>isinteger(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が整数かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isreal"></A><br />
+<h4>実数か: <span style="color:red;"><code>isreal(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が実数かどうかを調べます。 なお、整数は実数です。<br />
+<br />
+<hr />
+<br />
+<A NAME="iscomplex"></A><br />
+<h4>複素数か: <span style="color:red;"><code>iscomplex(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は<code>&#60;expr&#62;</code> iが複素数かどうかを調べます。 なお、実数は複素数でもあります。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="iseven"></A><br />
+<h4>偶数か: <span style="color:red;"><code>iseven(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が偶数かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isodd"></A><br />
+<h4>奇数か: <span style="color:red;"><code>isodd(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が奇数かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="islist"></A><br />
+<h4>リストか: <span style="color:red;"><code>islist(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> がリストかどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="ismatrix"></A><br />
+<h4>行列か: <span style="color:red;"><code>ismatrix(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が行列かどうかを調べます。 これは、リストの成分が、すべて同じ長さのリストになっているかを意味します。もし <i>n</i> 個の成分が  <i>m</i> の長さであれば <i>n</i> × <i>m</i> 行列です。<br />
+<br />
+<hr />
+<br />
+<A NAME="isnumbervector"></A><br />
+<h4>数ベクトルか: <span style="color:red;"><code>isnumbervector(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code>が、すべて数(整数、実数または複素数)からなるベクトルかどうかを調べます。<br />
+<br />
+<hr />
+<A NAME="isnumbermatrix"></A><br />
+<h4>数の行列か: <span style="color:red;"><code>isnumbermatrix(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code>が、成分がすべて数(整数、実数または複素数)の行列かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isstring"></A><br />
+<h4>文字列か: <span style="color:red;"><code>isstring(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が文字列かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isgeometric"></A><br />
+<h4>幾何学要素か: <span style="color:red;"><code>isgeometric(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が幾何学要素かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isselected"></A><br />
+<h4>選択されているか: <span style="color:red;"><code>isselected(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が選択された幾何学要素かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="ispoint"></A><br />
+<h4>点か: <span style="color:red;"><code>ispoint(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が幾何の点かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isline"></A><br />
+<h4>直線か: <span style="color:red;"><code>isline(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が幾何の直線かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="iscircle"></A><br />
+<h4>円か: <span style="color:red;"><code>iscircle(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が幾何の円かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isconic"></A><br />
+<h4>円錐曲線か: <span style="color:red;"><code>isconic(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が幾何の円錐曲線かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="ismass"></A><br />
+<h4>質点か: <span style="color:red;"><code>ismass(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> の質点かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="issun"></A><br />
+<h4>恒星か: <span style="color:red;"><code>issun(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> の恒星かどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isspring"></A><br />
+<h4>バネか: <span style="color:red;"><code>isspring(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> のバネかどうかを調べます。<br />
+<br />
+<hr />
+<br />
+<A NAME="isundefined"></A><br />
+<h4>未定義要素か: <span style="color:red;"><code>isundefined(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#60;expr&#62;</code> が未定義要素 (___)を返すかどうかを調べます。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of March, 2012 [09:20:03 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Boolean%20OperatorsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Boolean%20OperatorsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

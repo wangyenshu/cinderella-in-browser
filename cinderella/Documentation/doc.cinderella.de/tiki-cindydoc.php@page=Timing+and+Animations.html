@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Timing and Animations 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Timing and Animations</h2>
+<br />
+<h3> Time and Date</h3>
+<br />
+<!-- latexreplace<br />
+\index{clock}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+CindyScript has an internal clock that provides access to the current date and time. The clock can be also used to synchronize some automated animations. Furthermore, an operator is provided that is synchronized with the current timestamp of a running animation or physics simulation.<br />
+<br />
+<A NAME="time"></A><br />
+<h4>Accessing time: <span style="color:red;"><code>time()</code></span></h4>
+<br />
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This operator returns a list <code>[h,m,s,ms]</code> of four integers. The four values correspond to "hour," "minute," "second," "millisecond" on the computer's clock. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following code produces a simple clock on a Cinderella view. The variable <code>t</code> contains the time information. The subsequent code is used to produce a clocklike drawing on the view. An auxiliary function <code>p(w)</code> is defined that produces points on the unit circle. The code must be placed in the "Tick" section of CindyScript in order for it to run continuously. </div><br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+t=time();
+
+p(x):=[sin(2*pi*x),cos(2*pi*x)];
+O=[0,0];
+S=p(t_3/60)*4;
+M=p(t_2/60)*5;
+H=p((t_1*60+t_2)/(12*60))*3.5;
+draw(O,S);
+draw(O,M,size->2);
+draw(O,H,size->3);
+apply(1..12,draw(p(#/12)*5));
+apply(1..60,draw(p(#/60)*5,size->1));
+
+drawtext((3,5),t);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ClockX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="date"></A><br />
+<h4>Accessing date: <span style="color:red;"><code>date()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns a list <code>[y,m,d]</code> of three integers. The three values correspond to "year," "month," and "day" on the computer's calendar. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="seconds"></A><br />
+<h4>Timestamp: <span style="color:red;"><code>seconds()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Returns the time elapsed since the last evaluation of <code>resetclock()</code>. The time is scaled in a way such that one unit corresponds to one second. The time's resolution is on the millisecond scale. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="resetclock"></A><br />
+<h4>Resetting the internal seconds: <span style="color:red;"><code>resetclock()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Resets the value of the <code>seconds()</code> operator. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="simulationtime"></A><br />
+<h4>Accessing the timestamp of a simulation: <span style="color:red;"><code>simulationtime()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator gives a handle to the running time clock synchronized with the progression of an animation or simulation. </div><br />
+<br />
+<b>Caution:</b> This operator is still experimental.<br />
+<br />
+<hr />
+<br />
+<A NAME="wait"></A><br />
+<h4>Pause the script for a specified time: <span style="color:red;"><code>wait(&#60;real&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Will completely halt every script execution for a number of milliseconds as given by the parameter. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following code produces an acoustic jingle. </div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(25,i,
+  playtone(72+i);
+  wait(100);
+)
+</pre></div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Animation Control</h3>
+<br />
+<!-- latexreplace<br />
+\index{animation!and CindyScript}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<A NAME="playanimation"></A><br />
+<h4>Starting the animation: <span style="color:red;"><code>playanimation()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This statement starts the animation. Also physics simulation in <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> depend on running animations. </div><br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="pauseanimation"></A><br />
+<h4>Pausing the animation: <span style="color:red;"><code>pauseanimation()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This statement pauses the animation. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="stopanimation"></A><br />
+<h4>Stopping the animation: <span style="color:red;"><code>stopanimation()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This statement stops the animation. Stopping an animation also causes the geometric elements to be restored to there original position. </div><br />
+<hr />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [09:10:13 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Timing%20and%20Animations">
+    http://doc.cinderella.de/tiki-index.php?page=Timing%20and%20Animations
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

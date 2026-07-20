@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Animation 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> Animation</h3>
+<!--latexreplace<br />
+\index{animation}<br />
+\index{mover}<br />
+\index{road}<br />
+\index{mode!animation}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/animation.png" border="0"  align="left" /></span></div> In an animation you do not move the points yourself; <b>Cinderella</b> does it for you. An animation is defined by a "mover" and a "road," as in the definition of a locus.<br />
+<br />
+<ul><li> The <b>mover</b> is a free element whose movement drives the animation.
+</li><li> The <b>road</b> is an element incident to the mover.  During the animation, the mover will be moved along the road.
+</li></ul>
+<br />
+Either you select the mover and the road in this order, or you click on a locus, which will select the mover and road of the locus.  If the selected mover is either a "point on a line," a "point on a circle," or a "line through a point," then <b>Cinderella</b> automatically recognizes that there is a unique road and selects it for you.  Currently, the following combinations of mover and road are supported:<br />
+<ul><li> <b>mover = point, road = line:</b> The point moves along the line.
+</li><li> <b>mover = point, road = circle:</b> The point moves along the circle.
+</li><li> <b>mover = line, road = point:</b> The line rotates about the point.
+</li></ul>
+<br />
+After you have defined an animation, control devices are added to the main windows. The following picture shows Cinderella after an animation of a point on a circle road was added and started:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Animation1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Animation of a rotating point</b></td></tr></table><br />
+<br />
+<h4> Global Control of Animations</h4>
+<!--latexreplace<br />
+\index{animation control panel}<br />
+\index{animation!speed}<br />
+\index{animation!play}<br />
+\index{animation!pause}<br />
+\index{animation!stop}<br />
+--><!-- /latexreplace --><br />
+The main control device consists of three buttons and a speed slider in the lower left corner of the window. These controls refer to all animations. The precise meaning of the buttons is as follows:<br />
+<br />
+<table align="center">
+<tr>
+<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/play.gif"> </td>
+<td>Start the animation</td></tr>
+<tr>
+<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/pause.gif"></td>
+<td>Pause the animation </td></tr>
+<tr>
+<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/stop.gif"></td>
+<td>Stop the animation </td></tr></table><br />
+<br />
+If you stop a running a animation, the picture will return to its position  before the animation started. If you stop a paused animation, you are able to continue from the position of the paused animation. The slider can be used to adjust the speed of an animation.<br />
+<br />
+There are a few significant differences regarding animations compared to the older version <b>Cinderella 1.4</b>.<br />
+<br />
+<ul><li> After defining an animation, you have to explicitly start it by pressing the start button.
+</li><li> While an animation is running you can still move the free elements of a construction.
+</li><li> You can have more than one animated element. Each of the animations can be started or stopped individually by pressing the port buttons in the upper right of the picture.
+</li></ul>
+<br />
+<h4> Individual Control of Animations</h4>
+<br />
+The port button associated with an animation is also a handle for selecting the animation. For selecting an animation you must press and hold the shift key and click the associated port button. Selected animations are indicated by a highlighted border of the port button.<br />
+<br />
+The properties of a selected animation can be changed in the <a title="no description" href="tiki-cindydoc.php@page=Inspector.html" class="wiki">inspector</a>. In particular, the "Info" panel of the inspector can contain slots where you can adjust the speed of an animation. You can thereby adjust the relative speed of different animations. Animation speeds can even be set to negative values. In this way you can change the direction of an animation.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Inspecting animations</b></td></tr></table><br />
+<br />
+In the inspector you can also start and stop an individual animation by checking the "Running" box.<br />
+<br />
+<h4> Tracing Elements</h4>
+<br />
+It will often be desirable to emphasize the trace of moving elements visually while an animation is running. To do this, consider the section on <a title="no description" href="tiki-cindydoc.php@page=Traces+and+Arrows.html" class="wiki">tracing</a> elements, which shows you how to create stunning visual effects. Tracing is often a very interesting alternative to creating an explicit <a title="no description" href="tiki-cindydoc.php@page=Locus.html" class="wiki">locus</a>.<br />
+<br />
+<h4> Animations and CindyScript.</h4>
+<!--latexreplace<br />
+\index{animation!and CindyScript}<br />
+\index{CindyScript!and animations}<br />
+\index{animation!speed}<br />
+--><!-- /latexreplace --><br />
+<br />
+You can also control the speed of an animation via the <a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a> programming language. By default, the labels of the are "Anim0," "Anim1," …. If <code>Anim0</code> is the name of an animation, you can access the speed and running flags via the fields <code>Anim0.speed</code><br />
+and <code>Anim0.run</code>. Thus a <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code fragment like<br />
+<div dir="ltr"><pre class='codelisting'>
+Anim0.run=(A.x>0);
+</pre></div><br />
+forces "Anim0" to run only if the <i>x</i>-coordinate of A is positive. Similarly, the fragment<br />
+<div dir="ltr"><pre class='codelisting'>
+Anim0.speed=B.x;
+</pre></div><br />
+allows you to control the speed of "Anim0" via the <i>x</i>-coordinate of B.<br />
+<br />
+<br />
+<h4> Animations and CindyLab.</h4>
+<!--latexreplace<br />
+\index{animation!and CindyLab}<br />
+\index{CindyLab!and animations}<br />
+--><!-- /latexreplace --><br />
+The main control panel (play/pause/stop) of animations is identical to the control panel of simulations in <a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a>. Thus all physics simulations are linked and synchronized with animated elements. Using this feature one can easily use animations to add motor-like devices to a physics simulation. The picture below, for instance, shows a simulated rubber band that is periodically driven by a point that moves up and down. The movement of the point is derived from an animated point that moves along a circle.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Animation3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Animation of an oscillating wave</b></td></tr></table><br />
+<br />
+<h4> HTML Export</h4>
+<!--latexreplace<br />
+\index{export!HTML}<br />
+\index{HTML export}<br />
+--><!-- /latexreplace --><br />
+In contrast to the old version of Cinderella, exported animations generate full access to the control panel. Thus the user can start, stop, and pause animations freely on an HTML page. One is also allowed to move free elements while an animation is running. For a detailed treatment of this issue we refer to the section <a title="Creating HTML pages" href='tiki-cindydoc.php@page=HTML+Export.html' class='wiki'>HTML Export</a>.<br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Start an animation by selecting a mover and a road.<br />
+</div><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+The are many changes compared to  <b>Cinderella 1.4</b>.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Locus.html' class='wiki'>Locus</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a>
+</li><li> <a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Traces+and+Arrows.html" class="wiki">Traces</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>
+</li><li> <a title="Creating HTML pages" href='tiki-cindydoc.php@page=HTML+Export.html' class='wiki'>HTML Export</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 24 of August, 2011 [16:51:54 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Animation">
+    http://doc.cinderella.de/tiki-index.php?page=Animation
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

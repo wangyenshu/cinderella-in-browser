@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Preface to Cinderella 1.2 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<!-- latexreplace \section*{Preface to Cinderella 1.2} --><br />
+<h2>Preface to Cinderella 1.2<!-- /latexreplace --></h2>
+<br />
+<b>Cinderella</b> is a program for doing geometry on a computer. In its present form it is the product of a sequence of three projects carried out between 1993 and 1998. It is based on various mathematical theories ranging from the great discoveries of the geometers of the nineteenth century to newly developed methods that find their first applications in this program.<br />
+<br />
+The idea for the first of these projects was born in 1992 during a combinatorics conference at the Mittag-Leffler Institute in Sweden, when Henry Crapo and Jürgen Richter-Gebert were taking a trip on a boat called <i>Cinderella</i>. At that time, Jürgen Richter-Gebert had developed symbolic methods for automatic theorem proving in geometry <!-- latexreplace \cite{Ric-MTPPG-1995} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[RG95]</a><!-- /latexreplace-->, and both of them dreamed of computer software that would allow one to input geometric configurations with just a few mouse clicks and then ask the computer about properties of these configurations.<br />
+<br />
+Henry and Jürgen started the project on a NeXT platform, which at that time was famous for its marvelous software architecture. <b>Cinderella</b> became the working title for the project, and this title turned out to be unremovable.<br />
+<br />
+A few weeks of development produced the first working prototype. The program was based on principles from projective geometry and invariant theory. It was able to find <i>readable</i> algebraic proofs for many theorems of projective geometry about points, lines, and conics <!-- latexreplace \cite{CraRic-APGT-1995} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[CrRG95]</a><!-- /latexreplace -->.<br />
+<br />
+However, as a platform NeXT gradually declined in popularity, and with it the initial enthusiasm for <b>Cinderella</b>. After the summer of 1995 almost no further progress was made. At a conference on computational geometry at Mt. Holyoke College, in South Hadley, Massachusetts, it was almost impossible to give a software demonstration due to the vanishing of NeXT computers and their operating system.<br />
+<br />
+In August 1996, right after that Mt. Holyoke conference, we (Ulli Kortenkamp and Jürgen Richter-Gebert, at that time working at the Technical University of Berlin in the group of Günter M. Ziegler) decided to start a new project, based entirely on the platform-independent language Java. At that time, the language Java was relatively new, and at first both of us were very skeptical about using an interpreted (presumably slow) language as the basis for a program that requires a large amount of computation in real time. But we tried anyway.<br />
+<br />
+The goal of this second project was to have the old functionality that was available in the NeXT version, substantially extended by features of Euclidean and non-Euclidean geometry. We also wanted functionality for geometric loci. Moreover, since Java is designed to be "Internet-aware," the new program should be able to run inside a web browser. In particular, we wanted to be able to create student exercises for the web. The theorem-proving facilities of the program should be used to automatically check the correctness of the student's solution.<br />
+<br />
+Conferences, competitions, and their deadlines are often driving forces for rapid development. A first working version was presented at the "CGAL startup meeting" in September 1996 at the Technical University (ETH) Zurich. A second version won the "Multimedia Innovation Award" at the Multimedia Transfer of the ASK Karlsruhe in January 1997.<br />
+<br />
+During 1997, Jürgen Richter-Gebert became an assistant professor at the ETH Zurich. This change forced another break in the development. Ulli Kortenkamp moved to Zurich in September.<br />
+<br />
+At the same time, we began negotiating for the publication of <b>Cinderella</b>. Originally, we planned to polish and finish the second project. However, things turned out differently.<br />
+<br />
+The second version, like other computer programs for geometry, suffered from seemingly unavoidable mathematical inconsistencies. These inconsistencies came from ambiguities in operations like "Take the intersection of a circle and a line." There may be two, one, or no intersections depending on the position of the circle and the line. While dragging a construction, the program has to decide which intersection point to choose. This seemingly innocuous ambiguity may lead to terrible inconsistencies in the behavior of a construction. It may happen that while you move a point only a little bit, whole parts of the construction flip over.<br />
+<br />
+At the beginning of 1998 it turned out that this problem of jumping elements was indeed solvable. However, it was clear that implementing the theory would not be an easy job. Every configuration had to be embedded in a complex vector space. Results of analytic function theory had to be used to avoid "singular situations." If we wanted to use those new insights, we had to rewrite the mathematical kernel of the program from scratch. The program had to perform approximately twenty to one hundred times as many computations as previously, a challenge for us and for Java.<br />
+<br />
+We decided to do this and ended up with the third project, whose outcome you see here. In a period of unbelievably intensive work (that stretched our patience and that of our families to the extreme) we rewrote the whole program again, tuning the program to higher performance at every opportunity.<br />
+<br />
+It turned out to be a good idea to undertake this effort. The benefits of the newly developed theory were much greater than we had originally thought. Based on the new methods we were able to do reliable randomized theorem checking. This proved to be much more useful than the old symbolic methods. It was also possible to generate complete geometric loci by generic methods, which is a novelty to the best of our knowledge.<br />
+<br />
+The present program is a mixture of old geometry from the nineteenth century, complex analysis, our new methods, and modern software technology. We hope you will enjoy it as much as we do.<br />
+<br />
+<br />
+<!-- latexreplace \medskip\leftline{\it J\"urgen Richter-Gebert<a href="tiki-editpage.php?page=Richter-Gebert" title="Create page: Richter-Gebert" class="wiki wikinew">?</a>, Ulli Kortenkamp}\smallskip --> <i>Jürgen Richter-Gebert, Ulli Kortenkamp</i><br />
+<!-- /latexreplace --> <!-- latexreplace \smallskip\leftline{\it Zurich, December 1998}\bigskip --> <i>Zurich, December 1998</i> <!-- /latexreplace --><br />
+<br />
+<!-- latexreplace \clearpage\setlength{\parskip}{0pt}<br />
+\tableofcontents<br />
+\setlength{\parskip}{6pt plus2pt minus 2pt}<br />
+\clearpage --><!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [09:04:34 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Preface%20to%20Cinderella%201.2">
+    http://doc.cinderella.de/tiki-index.php?page=Preface%20to%20Cinderella%201.2
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

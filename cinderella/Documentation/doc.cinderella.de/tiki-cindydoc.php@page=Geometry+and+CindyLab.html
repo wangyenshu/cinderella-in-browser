@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Geometry and CindyLab 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Geometry and CindyLab</h2>
+<br />
+In a sense this section is not much more than a reminder for the user of Cinderella. One should always be aware of the fact that in <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> all masses are still geometric points and all that springs, bouncers and floors are lines and segments. Thus it is always possible to enhance <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> experiments by geometric constructions. These geometric constructions can sometimes be extremely helpful in order to analyze the exact meaning of an experiment. We will illustrate this by three small examples.<br />
+<br />
+<h3>Example 1: Equilibrium Condition for Forces</h3>
+<!--latexreplace<br />
+\index{equilibrium}<br />
+\index{forces!in equilibrium}<br />
+\index{conic}<br />
+--><!-- /latexreplace --><br />
+If a physical situation is in an equilibrium situation then none of the masses is accelerated. This however implies that in such a case at any mass there are no forces present. This in turn implies that if there are several sources of forces affecting at a particle, the all these forces have to sum up to zero. The experiment below exemplifies this situation for a simple network of rubber bands and springs. There a triangle of (blue) springs is constructed. All vertices of the triangle are joined to a central particle by rubber bands. In the start situation the lengths  and directions of the rubber bands may be arbitrary. However, if one lets the System come to an equilibrium situation (by starting the simulation and adding some friction) then the forces caused by the rubber bands at the inner vertex have to cancel out. If all rubber bands have identical spring constants, then this implies that the three segments representing the rubber bands can be shifted parallel to form a triangle (sum of forces equals zero).<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/GeoPhys1.png" border="0"  width="300" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/GeoPhys2.png" border="0"  width="300" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Situation before start<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td width=10></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Situation in  equilibrium<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+This can simply be tested by a small auxiliary construction that concatenates parallel shifts of the three segments (left part of picture). In the start situation one observes that this chain of three arrows does not necessarily have to meet. The second picture shows the equilibrium situation in which the three edges automatically form a perfect triangle.<br />
+<br />
+Sometimes very surprising and interesting relations occur on equilibrium configurations. For instance, the next picture shows the situation of three springs that are surrounded by six rubber bands. The rubber bands may have arbitrary spring constants. In the equilibrium situation the six vertices of the construction will automatically lie on a conic.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A surprising equilibrium condition</b></td></tr></table><br />
+<br />
+<br />
+<h3>Example 2: Planet Movement</h3>
+<!--latexreplace<br />
+\index{planet movement}<br />
+\index{Kepler's law}<br />
+--><!-- /latexreplace --><br />
+There is an amazing and not very well known geometric property of planet movement in a two-body system. As already mentioned, a planet orbiting around a sun will describe the trace of an ellipse. If we consider the velocity of the planet it is fast whenever the planet is close to the sun and slow whenever it is far away. It also  changes its direction all the time during the movement. In Cinderella it is easy to explicitly study the path of the velocity vector. For this one first adds a <a title="no description" href='tiki-cindydoc.php@page=Sun.html' class='wiki'>Sun</a> and a particle with <a title="no description" href='tiki-cindydoc.php@page=Velocity.html' class='wiki'>Velocity</a>. If one starts the simulation the particle will move along a Kepler ellipse. Then one adds a free point and defines a <a title="no description" href='tiki-cindydoc.php@page=Translation.html' class='wiki'>Translation</a> from the planet to this point. Now one can easily translate the velocity vector to this and obtain a picture of the isolated behavior of the velocity vector.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The trace of the velocity vector</b></td></tr></table><br />
+<br />
+Viewing the trace of the velocity vector one might conjecture that the trace is circular. It is easy to at least visually verify this conjecture by simply adding a free circle to the drawing and moving it while the animation is running to a position in which it matches the trace of the velocity vector. The picture below shows how nicely it matches up.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The trace is circular</b></td></tr></table><br />
+<br />
+<br />
+<h3>Example 3: Forces at the Golden Gate Bridge</h3>
+<!--latexreplace<br />
+\index{bridge}<br />
+\index{Golden Gate Bridge}<br />
+\index{transformation!projective}<br />
+\index{projective transformation}<br />
+--><!-- /latexreplace --><br />
+The picture below shows an example that was already considered in the section on <a title="no description" href='tiki-cindydoc.php@page=Gravity.html' class='wiki'>Gravity</a>. Here a background image of the Golden Gate Bridge is loaded. With the use of <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> a physics simulation is constructed that models the distribution of forces in the cables of the bridge. Cinderella is used to straighten out the perspective of the photograph. This can be done by using a <a title="no description" href='tiki-cindydoc.php@page=Projective+Transformation.html' class='wiki'>Projective Transformation</a> that maps the situation in the physics simulation to the situation in the picture. Adjusting the gravity to the correct value shows that this situation exactly resembles the situation on the supporting cables of the bridge.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GeoPhys6.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>An analysis of the Golden Gate Bridge</b></td></tr></table><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [08:57:54 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Geometry%20and%20CindyLab">
+    http://doc.cinderella.de/tiki-index.php?page=Geometry%20and%20CindyLab
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

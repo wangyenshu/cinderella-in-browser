@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Control Operators 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> Programming</h1>
+<h2>Control Operators</h2>
+<br />
+<h3>Program Flow</h3>
+We first describe those operators that allow to generate conditional branching and various kinds of loops. The user should be aware that there are also other kinds of loop-like structures that arise from the different ways of traversing lists. They are described in the section <a title="no description" href='tiki-cindydoc.php@page=Elementary+List+Operations.html' class='wiki'>Elementary List Operations</a>.<br />
+<!-- latexreplace<br />
+\index{loop}<br />
+\index{control flow}<br />
+\index{branches}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<A NAME="if"></A><A NAME="if2"></A><br />
+<h4>The conditional operator: <span style="color:red;"><code>if(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  The expression <code>&#60;expr&#62;</code> is evaluated, if the Boolean condition <code>&#60;bool&#62;</code> evaluates to <code>true</code>. In this case the return value of the <code>if</code>-function is &#60;expr&#62;. Otherwise, <code>___</code> is returned. A typical use of the <code>if</code>-operator is the conditional evaluation of side effects. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> This code fragment prints a message on the console, if <code>x</code> has a negative value. </div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(x<0,println("x is now negative"))
+</pre></div><br />
+<br />
+<br />
+<hr />
+<A NAME="if3"></A><br />
+<h4>The conditional branch operator: <span style="color:red;"><code>if(&#60;bool&#62;,&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  The expression <code>&#60;expr1&#62;</code> is evaluated, if the Boolean condition <code>&#60;bool&#62;</code> evaluates to <code>true</code>. If <code>&#60;bool&#62;</code> evaluates to <code>false</code>, then <code>&#60;expr2&#62;</code> is evaluated. In any case, the value of the evaluated expression is returned. Thus this ternary version of the <code>if</code>-operator encodes an if/then/else functionality. There are two typical uses of this version of the <code>if</code>-operator: Firstly, the <code>if</code>-operator is used to force the conditional evaluation of program parts (which usually causes side effects).<br />
+</div><br />
+<div class="examples"><br />
+<b>Example:</b> This code fragment prints a message on the console that shows whether <code>x</code> is positive, negative, or zero.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(x<0,                                   
+   println("x is now negative"),      
+   if (x>0,     
+      println("x is now positive"),    
+      println("x is zero")                
+   )                                        
+ )     
+</pre></div><br />
+<br />
+<br />
+A second use of the <code>if</code>-operator is to return a certain value depending on the condition encoded by <code>&#60;bool&#62;</code>. This is particularly useful in the definition of functions.<br />
+<br />
+<div class="examples"><br />
+<b>Example:</b><br />
+This code fragment defines the function <code>f(x)</code> to be the absolute value function (for real values of <code>x</code>).<br />
+</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=if(x>0,x,-x)  
+</pre></div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> This code fragment takes a geometric element <i>A</i> (most probably a point) and sets its color to red or blue depending on the value of its <i>x</i>-coordinate.</div><br />
+<div dir="ltr"><pre class='codelisting'>
+A.color=if(A.x>0,(1,0,0),(0,0,1))  
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="trigger"></A><br />
+<h4>The trigger operator: <span style="color:red;"><code>trigger(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  The <code>trigger</code> operator is very similar to the <code>if</code> operator. In contrast to <code>if</code>, the <code>trigger</code> operator has a dynamic flavor. The expression <code>&#60;expr&#62;</code> is evaluated whenever <code>&#60;bool&#62;</code> changes from <code>false</code> to <code>true</code>. This means that during the dragging of a construction, &#60;expr&#62; is evaluated, if &#60;bool&#62; was <code>false</code> in the previous instance and is now <code>true</code>. The purpose of this operator is to trigger side effects whenever some event occurs while the construction is being dragged. The following code fragment demonstrates this behavior.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> This code fragment will print a message whenever point <code>A</code> crosses the <i>y</i>-axis.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+trigger(A.x<0,println("A now entered the x-negative half-plane"))
+trigger(A.x>0,println("A now entered the x-positive half-plane"))
+</pre></div><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="while"></A><br />
+<h4>The while loop: <span style="color:red;"><code>while(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  The <code>while</code> operator evaluates the expression <code>&#60;expr&#62;</code> as long as the condition <code>&#60;bool&#62;</code> is true. The result of the very last evaluation is returned as the function's value.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> </div><br />
+<div dir="ltr"><pre class='codelisting'>
+x=0;
+sum=0;
+erg=while(x<4,
+         x=x+1;
+         sum=sum+x;
+         println(x+"  -->  "+sum);
+         sum
+      );
+println(erg);
+</pre></div><br />
+<br />
+This code fragment produces the output<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+1  -->  1 
+2  -->  3 
+3  -->  6 
+4  -->  10 
+10
+</pre></div><br />
+<br />
+After its evaluation, the value of variable <code>erg</code> is <code>10</code>. A word of caution: one should be aware of the fact that <code>while</code> operations may easily create infinite loops, if the conditional is never satisfied.<br />
+<br />
+<hr />
+<br />
+<A NAME="repeat"></A><br />
+<h4>The repeat loop: <span style="color:red;"><code>repeat(&#60;number&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator provides the simplest kind of loop in CindyScript: <code>&#60;expr&#62;</code> is evaluated <code>&#60;number&#62;</code> times. The result of the last evaluation is returned. During the evaluation of <code>&#60;expr&#62;</code> the special variable <code>#</code> contains the run variable of the loop. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> This code produces a list of the first 100 integers together with their squares.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(100,
+    println(#+" squared is "+#^2)
+)
+</pre></div><br />
+<br />
+<div class="modifiers"><br />
+<b>Modifiers:</b>  The <code>repeat</code> loop supports a variety of modifiers. These modifiers can be used to control the start value, stop value, and step size of the loop. The modifier <code>start</code> sets the start value of the loop. The modifier <code>stop</code> sets the end value of the loop. The modifier <code>step</code> sets the step size. Arbitrary combinations of modifiers are possible. As long as not all three modifiers are set, the loop will always be executed <code>&#60;number&#62;</code> times. Only real values are allowed for the modifiers. The table below demonstrates different uses of the modifiers. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>repeat(6, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>1 2 3 4 5 6</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, start->4, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>4 5 6 7 8 9</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, stop->2, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>-3 -2 -1 0 1 2</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, step->3, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>1 4 7 10 13 16</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, stop->12, step->4, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>-8 -4 0 4 8 12</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, start->3, step->2, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>3 5 7 9 11 13</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, start->3, stop->4, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>3 3.2 3.4 3.6 3.8 4</code> </td></tr><tr><td class="wikicell" ><code>repeat(6, start->0, stop->-3, println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>0 -0.6 -1.2 -1.8 -2.4 -3 </code> </td></tr><tr><td class="wikicell" ><code>repeat(6, start->3, stop->4, step->0.4,println(#+&#34; &#34;))</code></td><td class="wikicell" > <code>3 3.4 3.8</code>       </td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<h4>The repeat loop: <span style="color:red;"><code>repeat(&#60;number&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is identical to the operator <code>repeat(&#60;number&#62;,&#60;expr&#62;)</code>, except for one difference: the run variable is now assigned to <code>&#60;var&#62;</code>. This allows for the use of nested loops with different run variables.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> This code fragment will draw a 10 × 10 array of points.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(10,i,
+   repeat(10,j,
+      draw((i,j))
+   )
+)
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="forall"></A><br />
+<h4>The forall loop: <span style="color:red;"><code>forall(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes a <code>&#60;list&#62;</code> as its first argument. It produces a loop in which <code>&#60;expr&#62;</code> is evaluated for each entry of the list. In every iteration, the run variable <code>#</code> takes the value of the corresponding list entry.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> </div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=["this","is","a","list"];
+forall(a,println(#))
+</pre></div><br />
+<br />
+This code fragment produces the output<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+this
+is
+a
+list
+</pre></div><br />
+<br />
+<hr />
+<br />
+<h4>The forall loop: <span style="color:red;"><code>forall(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Similar to <code>forall(&#60;list&#62;,&#60;expr&#62;)</code>, but the run variable is now named <code>&#60;var&#62;</code>. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="eval"></A><br />
+<h4>Forcing evaluation: <span style="color:red;"><code>eval(&#60;expr&#62;,&#60;modif1&#62;,&#60;modif2&#62;,…)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator forces the evaluation of the expression &#60;expr&#62;. Free variables of the expression can be substituted using a list of modifiers. The variables for the substitution are assigned only locally. Afterwards, the variables are set to the values they had before the evaluation.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> This code fragment evaluates to <code>7</code>.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+eval(x+y,x->2,y->5)
+</pre></div><br />
+<br />
+<hr />
+<br />
+<h3> Variable Management</h3>
+<!-- latexreplace<br />
+\index{variables}<br />
+\index{local variable}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+The following descriptions explain how to intentionally create or destroy local variables. The user should be aware of the fact that for most purposes it is completely sufficient to create variables on the fly by simply assigning values to them. Such variables will by default be global. The use of local variables may become necessary or recommended if recursive functions are generated or if one wants to create a library of functions.<br />
+<br />
+<A NAME="createvar"></A><A NAME="removevar"></A><br />
+<h4>Creating variables: <span style="color:red;"><code>createvar(&#60;varname&#62;)</code></span></h4>
+and<br />
+<h4>Destroying variables: <span style="color:red;"><code>removevar(&#60;varname&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> These operators help in the manual administration of the creation of local variables. <code>createvar(x)</code> creates a new variable named <code>x</code>, while the old value is put on a stack. <code>removevar(x)</code> removes the local variable and restores the value from the stack. Notice that usually, variables do not have to be created explicitly. They are automatically generated when they are first used. The <code>createvar</code> and <code>removevar</code> operators should only be used if one wants to reserve a variable name for a certain local region of the code.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> </div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=10;
+println("x is now "+x);
+createvar(x);
+x=5;
+println("x is now "+x);
+removevar(x);
+println("x is now "+x);
+</pre></div><br />
+<br />
+This code fragment produces the output<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x is now 10
+x is now 5
+x is now 10
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="regional"></A><br />
+<h4>Creating many local variables for a function: <span style="color:red;"><code>regional(name1,name2,...)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This statement can be used at the beginning of a function. It has almost the same effect as the <code>local</code> statement and creates several local variables. However, unlike with the <code>local</code> statement, the variables are removed automatically, when the function terminates. Therefore, an explicit call of <code>release</code> is not necessary. Most often it is much more convenient to use <code>regional</code> than to use <code>local</code>. </div><br />
+<br />
+<hr />
+<br />
+Variables have some kind of persistence within CindyScript. If the value of a variable is set in a statement, it remains set, until it is changed. One can explicitly clear variables using the following operators. Often it is useful to put a <code>clear()</code> statement under the <code>init</code> event of the program.<br />
+<br />
+<A NAME="clear"></A><br />
+<h4>Clear all variables: <span style="color:red;"><code>clear()</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator clears all variables. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="clear1"></A><br />
+<h4>Clear a specific variable: <span style="color:red;"><code>clear(&#60;var&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator clears variable <code>&#60;var&#62;</code>.  </div><br />
+<br />
+<hr />
+<br />
+<A NAME="keys"></A><br />
+<h4>Handles to key variables of objects: <span style="color:red;"><code>keys(&#60;var&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  Gives a list of all keys associated to an object via a <code> &#60;object&#62;:&#60;key&#62;=&#60;something&#62;</code> declaration. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  It is possible to associate a value under a freely chosen key to an object. This can be done by code similar to the following one: </div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A:"age"=34;
+A:"haircolor"="brown";
+</pre></div><br />
+<br />
+These assignments may be accessed also by a similar syntax like:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+println(A:"age");
+println(A:"haircolor");
+</pre></div><br />
+<br />
+The operator <code>keys</code> returns a list of all associated keys of an object. So in this example<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+println(keys(A));
+</pre></div><br />
+<br />
+will return the list <code>["age","haircolor"]</code>.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 09 of February, 2015 [20:09:42 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Control%20Operators">
+    http://doc.cinderella.de/tiki-index.php?page=Control%20Operators
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

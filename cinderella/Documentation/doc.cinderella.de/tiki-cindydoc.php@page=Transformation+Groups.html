@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Transformation Groups 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Transformation Groups</h2>
+<!--latexreplace<br />
+\index{transformation group}<br />
+\index{group}<br />
+\index{iteration}<br />
+--><!-- /latexreplace --><br />
+Transformation groups are perhaps among the most sophisticated objects currently available in Cinderella.2. A transformation group is constructed from a collection of transformations. A transformation group is can be applied to an arbitrary geometric object. This object is mapped by applying the elements of the transformation group iteratively. The transformation group has several applications and structural features. We will exemplify them by several concrete examples. It should be mentioned that the concept of transformation groups in Cinderella is different from the mathematical notion of a transformation group. The two main differences are that in Cinderella a transformation group does not per se contain the inverses of the transformations and that only a large but finite number of iterations are performed.<br />
+<br />
+<br />
+<h3>Creating a Transformation Group</h3>
+<br />
+We first will explain how to construct a transformation group that generated a simple plant-like structure on the screen. For this we place three points <i>A</i>, <i>B</i> and <i>C</i> as shown in the picture and create two <a title="no description" href='tiki-cindydoc.php@page=Similarity.html' class='wiki'>Similarity</a> transformations <i>A->B; C->C</i> and <i>A->A; C->B</i>. Selecting the two similarity transformations by shift-clicking them in the move mode and then choosing the mode <i>Special->Transformation group</i> creates a view button for the transformation group.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TG1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The starting situation</b></td></tr></table><br />
+<br />
+If we add a single point <i>D</i>, select it and click the button of the transformation group a picture similar to the following is created:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TG2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Applying a simple transformation group to a poin</b></td></tr></table><br />
+<br />
+This picture is created by applying both transformations to the point D. Then both transformations are applied to the generated images. This procedure is repeated until a either certain interation depth is reached or until the number of elements exceeds a certain limit. These parameters can be controlled in the inspector of the transformation group.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TrafoInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The transformation group inspector</b></td></tr></table><br />
+<br />
+<br />
+The parameters controllable in the inspector are by default applied to all mapped elements. Changing them does not change the parameters of the mapped elements. Parameters of already mapped elements can be changed by selecting the whole group of elements (by clicking any of the generated images) one can change their individual settings in the inspector.<br />
+<br />
+The appearace details of mapped elements can be controlled by the following part of the inspector.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TwigSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The twig settings</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+One can observe that the points are connected by segments the segments exemplify the tree structure of the derivation process. One can turn off the connecting branches by the corresponding slot in the inspector. It is also possible to draw only the "leaves" of the generated tree. The following table shows all four combinations of drawing the points and conncecting them.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG5.png" border="0"  width="300" /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG6.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG3.png" border="0"  width="300" /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG4.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Drawing all points...<!--latexreplace } --> <!-- /latexreplace --></b></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->...or drawing only leaves<!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+Elements are only connected if the mapped element is a point. The following picture adds the mapping of an additional circle.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TG7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Mapping a circle</b></td></tr></table><br />
+<br />
+<br />
+<h3> Transformation Groups and Iterated Function Systems</h3>
+<!--latexreplace<br />
+\index{iterated function system}<br />
+\index{IFS}<br />
+--><!-- /latexreplace --><br />
+Transformation groups  are closely related to <a title="no description" href='tiki-cindydoc.php@page=Iterated+Function+Systems.html' class='wiki'>Iterated Function Systems</a>. One can generate the corresponding IFS by selecting a transformation group and choosing the <i>Special->IFS</i> mode. The following picture shows the effect of a transformation corresponding to a pythagoras tree. The picture on the left shows the corresponding IFS. The IFS corresponds of all the limit points of the transformation group.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG8.png" border="0"  width="300" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG9.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A Pythagoras tree...<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->...and its IFS<!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>Transformation Groups With Dependencies</h3>
+<br />
+The transformation groups considered in the examples so far were "free" in a mathematical sense (if the coordinates of the controlling points were choosen generally enough). This means that in this general case no matter how long we proceed with the iteration process the same composed transformation will never occur twice. However if the parameters of the defining transformations were in a more special position it may happen that there are several ways to generate the same transformation by composition.<br />
+<br />
+For instance take a simple reflection <i>R</i>. If <i>R</i> is applied twice the identity map is generated. So for instance <i>R</i> and <i>R&#179;</i> produce an identical transformation. If as described before the transformationn group is generated by a simple ennumeration of all possible compositions of transformations in the group and <i>R</i> is contained in the group, then many identical transformations will be constructed. This would be an unnecessary waste of computation power and memory. Luckily, Cinderella is equipped with a geometric proving engine, that allows to neglect transformations if they were already be generated before. This feature is used when the <i>Use prover</i> checkbox is checked in the inspector.<br />
+<br />
+We exemplify the difference by a very simple example. Consider two different translations <i>P</i> and <i>Q</i>. Since translations commute with each other applying <i>P</i> after <i>Q</i> generates the same effect then applying <i>Q</i> after <i>P</i>. The pictures below exemplify the effect of using or not using the prover.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG10.png" border="0"  width="300" /></span></td> <td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG11.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->No prover used<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Prover used<!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+The first situation is generated by not using the prover. A filled circle with opacity 20% is mapped by a translation group generated by two translations. One can observe that not many different circles seem to be generated. However the situation is different. Many circles were generated most of which overlap (you recognize this by the increasing opacity). If instead the prover is used, then the picture on the left is generated. Considerably more circles are visible no two of which overlap. The prover has thrown out all superfluous repetitions of transformations.<br />
+<br />
+<h3> Ornament Groups</h3>
+<!--latexreplace<br />
+\index{ornament}<br />
+\index{kaleidoskope}<br />
+--><!-- /latexreplace --><br />
+It is particularly interesting to study planar ornament groups (or cristallographic groups) with this feature of Cinderella.2. We will exemplify this by a few simple examples. First consider a triangle build of three mirrors, that form edge angles of 90&#176;, 45&#176; and 45&#176;. These three reflections generate a reflection group like a kaleidoskopic prism. Applying this reflection gruop to an arbitrary geometric object creates a nicely symmetric picture in the plane.<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG12.png" border="0"  width="300" /></span></td> <td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG13.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Generating a reflection group...<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->...and applying it.<!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+As a second example we consider a cristallographic group that is generated by rotations that come from a regular hexagon. We first draw a regular hexagon by using an appropriate <a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a> mode. Then one defines a 60&#176; rotation around the center and two 120&#176; rotations at two consecutive verticies by using the <a title="no description" href='tiki-cindydoc.php@page=Similarity.html' class='wiki'>Similarity</a> mode. After generating a transformation group from these transformations one can again map arbitrary objects to obtain an ornamental pattern.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG21.png" border="0"  width="300" /></span></td> <td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG22.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Generating a rotation group...<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->...and applying it.<!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>The Generation Order</h3>
+<br />
+It is interesting to study which transformations are processed if the prover is used for a reflection group. In general a tree-like structure is generated that reached each cell of the reflection group exactly once. The following pictures show the situation for two different reflection groups. The default setting of transformation groups are used. This generates approximately 300 elements and uses the prover. If a point is mapped the <i>Connect</i> feature that is used by default connects points that differ by exatly one transformation. The tree of points represents the traversion order of the elements of the transformation group. Observe how different positions of the mirrors cause structurally very different trees.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG14.png" border="0"  width="300" /></span></td> <td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG15.png" border="0"  width="300" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A (90°,45°,45°) triangle group<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A (60°,60°,60°) triangle group.<!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>Hyperbolic Transformation Groups</h3>
+<!--latexreplace<br />
+\index{hyperbolic geometry}<br />
+\index{geometry!hyperbolic}<br />
+--><!-- /latexreplace --><br />
+In hyperbolic geometry one can observe particularly interesting transformation groups. They are generalizations of the usual crystallographic groups. The main reason for the existing of those interesting symmetric patterns is the fact, that in hyperbolic geometry there exist regular <i>n</i>-gons with arbitrarily small vertex angles. For instance there exist regular polygons  with 90&#176; vertex angles. Four of these pentagons fit exactly around a hyperbolic corner. Thus the hyperbolic plane can be seamlessly tiled by regular pentagons with right angles. We will demonstrate how to construct such a tiling.<br />
+<br />
+First we need a hyperbolic pentagon with right angles. For this we switch to hyperpolic geometry (see <a title="no description" href='tiki-cindydoc.php@page=Geometries.html' class='wiki'>Geometries</a>) and open a hyperbolic view (see <a title="no description" href='tiki-cindydoc.php@page=Views.html' class='wiki'>Views</a>). Then one has to construct a right angled pentagon. This can be done by using the <i>Polygon->Regular Pentagon</i> mode. If one changes the size of the pentagon, snap values are shown that indicate how many polygons fit around a corner (see <a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a>). Stopping at a snap value of <i>4</i>  (Figure 1) we obtain the desired right angled pentagon. By chosing the mode <a title="no description" href='tiki-cindydoc.php@page=Rotation.html' class='wiki'>Rotation</a> LL one can construct two rotations of 90&#176; around two corners of the pentagon (Figures 2 and 3).<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/TG16.png" border="0"  width="200" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG17.png" border="0"  width="200" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/TG18.png" border="0"  width="200" /></span></td> <td width=10></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 1<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 2<!--latexreplace } --> <!-- /latexreplace --></b></td> <td width=10></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 3 <!--latexreplace } --> <!-- /latexreplace --></b></td>
+ </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+Creating the transformation group of these two transformations and mapping all segments creates the desired teselation.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TG19.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>A hyperbolic tesselation by regular pentagons</b></td></tr></table><br />
+<br />
+The picture below shows the application of this hyperbolic group to a small triangle. Observe that it shows only rotational symmetry but no mirror symmetry. For the image the iteration depth was considerably raised.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TG20.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>A hyperbolic tesselation by right triangles</b></td></tr></table><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+Transformation groups with high iteration depth may be very time and memory demanding. So interactive drawings may be slowed down considerably by transformation groups with a huge iteration depth. Eventually transformation groups may even cause an <i>out of memory error</i>.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li><a title="no description" href='tiki-cindydoc.php@page=Transformation+Modes.html' class='wiki'>Transformation Modes</a>
+</li><li><a title="no description" href='tiki-cindydoc.php@page=Iterated+Function+Systems.html' class='wiki'>Iterated Function Systems</a>
+</li><li><a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a>
+</li><li><a title="no description" href='tiki-cindydoc.php@page=Geometries.html' class='wiki'>Geometries</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 23 of December, 2011 [16:42:57 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Transformation%20Groups">
+    http://doc.cinderella.de/tiki-index.php?page=Transformation%20Groups
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

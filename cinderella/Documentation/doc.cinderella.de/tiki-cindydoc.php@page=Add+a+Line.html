@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Add a Line 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> Add a Line</h3>
+<!--latexreplace<br />
+\index{mode!add line}<br />
+\index{line!by two points}<br />
+\index{add line}<br />
+\index{join}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/multi-add-line.png" border="0"  align="left" /></span></div> This mode allows  a line through two points to be added. The mode is  powerful enough to generate the line together with the two  points with just one mouse action. When the mouse is pressed, the  first point is added.  Dragging the mouse generates the second  point and the line.  When the mouse is released, the position of  the second point is frozen, and the construction is finished.  The logic behind this mode is very similar to the logic behind  other interactive modes, such as <a title="no description" href="tiki-cindydoc.php@page=Add+a+Parallel.html" class="wiki">add a parallel</a>, <a title="no description" href="tiki-cindydoc.php@page=Add+a+Perpendicular.html" class="wiki">add a perpendicular</a>, and <a title="no description" href="tiki-cindydoc.php@page=Add+a+Circle.html" class="wiki">add a circle</a>.<br />
+<br />
+Constructing a line in this mode is a three-step procedure:<br />
+<br />
+<ul><li> <b>Pressing the left mouse button</b> generates the first point. The definition of this point depends on the position of the mouse at the moment the button is pressed:
+<ul><li> If the mouse pointer is over an existing point, then this point is taken as the first point.
+</li><li> If the mouse pointer is over the intersection of two elements (line, circle, or conic), then this intersection is automatically constructed and taken as the first point.
+</li><li> If the mouse pointer is over just one element (line or circle), then a point is constructed that is constrained to this element. This point is taken as the first point.
+</li><li> Otherwise, a free point is added.
+</li></ul></li><li> <b>Dragging the mouse</b> generates the line and the second point.  The definition of the second point depends on the mouse position.  As in <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point</a> mode, the second point snaps to existing elements. The choice of definition is completely analogous to the choice for the first point. The elements that define the second point are always highlighted.
+</li><li> <b>Releasing the mouse button</b> freezes the  definition of the second point.  The construction is then finished.
+</li></ul>
+<br />
+<br />
+The figures below show the three stages during the construction  of a line.  Here the first point is a free point and the  second point is the intersection of the two existing lines.<br />
+<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+{\small\it Press the mouse \ldots{}} &amp;  {\small\it \ldots{} drag it \ldots{}}&amp;  {\small\it   \ldots{} and release it.}\\<br />
+\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddLine1} &amp; \includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddLine2} &amp;\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddLine3}\ \\<br />
+\end{tabular}<br />
+$$<br />
+ --> <table align="center">
+      <tr><td></tr>
+      <tr>
+	<td><b>Press the mouse …</b><br></td> <td width=10></td>
+	<td><b>… drag it …</b><br></td> <td width=10></td>
+	<td><b>… and release it.</b><br></td>
+      </tr>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddLine1.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddLine2.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddLine3.png" border="0"  /></span></td>
+      </tr>
+      <tr><td></tr>
+<tt>          </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Add a line mode creates a line connecting two points by a press–drag–release  sequence.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Point.html' class='wiki'>Add a Point</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Line+through+a+Point.html' class='wiki'>Line through a Point</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Parallel.html' class='wiki'>Add a Parallel</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Perpendicular.html' class='wiki'>Add a Perpendicular</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Circle.html' class='wiki'>Add a Circle</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [08:02:26 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Add%20a%20Line">
+    http://doc.cinderella.de/tiki-index.php?page=Add%20a%20Line
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

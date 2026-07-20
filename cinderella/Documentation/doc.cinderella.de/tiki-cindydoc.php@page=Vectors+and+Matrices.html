@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Vectors and Matrices 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Vectors and Matrices</h2>
+<br />
+Lists can serve as representation of vectors and matrices. In particular, lists that contain numerical values permit many different arithmetic operations. Furthermore, the coordinate values of geometric elements are usually retrieved as lists of numerical values. For instance, if <code>A</code> is the label of a geometric point, then <code>A.xy</code> returns a list of two numbers, the <code>x</code> and the <code>y</code> coordinates of the point. Similarly, <code>A.homog</code> returns a list of three numbers: the homogeneous coordinates of the point. Several arithmetic operations serve the particular purpose of calculating directly with these coordinate vectors.<br />
+<br />
+<h3> Definition of Vectors and Matrices</h3>
+<!-- latexreplace<br />
+\index{vector}<br />
+\index{matrix}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Any list can be considered as a "vector of objects." However, of particular interest are vectors of numbers. Such a vector will be called a "number vector." Whether a certain list is a number vector can be tested with the operator <span style="color:red;"><code>isnumbervector(&#60;expr&#62;)</code></span>.<br />
+<br />
+If the elements of a list are again lists, and if all these lists have the same length, then such a list is called a <i>matrix</i>. Whether a list is a matrix can be tested with the operator <span style="color:red;"><code>ismatrix(&#60;expr&#62;)</code></span>. If furthermore all (second-level) elements in the matrix are numbers, this matrix is called a number matrix. Whether a list is a number matrix can be tested with the operator  <span style="color:red;"><code>isnumbermatrix(&#60;expr&#62;)</code></span>. The entries of a matrix are vectors of the same length. These vectors are considered as the rows of the matrix. Thus, if a matrix contains <i>n</i> vectors of length <i>m</i>, then it is an <i>n</i> × <i>m</i> matrix.<br />
+<br />
+<h3> Addition and Multiplication</h3>
+<br />
+In the section <a title="no description" href='tiki-cindydoc.php@page=Arithmetic+Operators.html' class='wiki'>Arithmetic Operators</a> we explain how the fundamental operations of addition, subtraction, multiplication, and division can be applied to lists of numbers. As a rule of thumb, one can say that on this level, everything that is mathematically reasonable can be performed in CindyScript. So, for instance, if <code>A</code> and <code>B</code> are lists of numbers, then the expression <code>(A+B)/2</code> calculates the midpoint of these two vectors.<br />
+<br />
+Addition and subtraction of lists is allowed whenever the lists have the same shape. This means that the lists have the same length, and if some of the entries are lists as well, then the corresponding entries of the two summands recursively again have the same shape.<br />
+<br />
+Multiplication with lists is allowed whenever this performs a mathematically meaningful operation. The following table summarizes the different admissible uses of the multiplication operator.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>factor 1</b> </td><td class="wikicell" ><b>factor 2</b></td><td class="wikicell" ><b>result</b></td><td class="wikicell" ><b>meaning</b></td></tr><tr><td class="wikicell" >number </td><td class="wikicell" > number </td><td class="wikicell" > number </td><td class="wikicell" > usual multiplication</td></tr><tr><td class="wikicell" >number </td><td class="wikicell" > vector of length <i>r</i> </td><td class="wikicell" >vector of length <i>r</i></td><td class="wikicell" > scalar vector multiplication</td></tr><tr><td class="wikicell" >vector of length <i>r</i></td><td class="wikicell" > number </td><td class="wikicell" > vector of length <i>r</i></td><td class="wikicell" > scalar vector multiplication</td></tr><tr><td class="wikicell" >vector of length <i>r</i></td><td class="wikicell" > vector of length <i>r</i></td><td class="wikicell" > number </td><td class="wikicell" > scalar product of two vectors</td></tr><tr><td class="wikicell" ><i>n</i> × <i>r</i> matrix </td><td class="wikicell" > vector of length <i>r</i></td><td class="wikicell" > vector of length <i>n</i> </td><td class="wikicell" > matrix × vector</td></tr><tr><td class="wikicell" >vector of length <i>n</i> </td><td class="wikicell" > <i>n</i> × <i>r</i> matrix </td><td class="wikicell" >  vector of length <i>r</i></td><td class="wikicell" > vector × matrix</td></tr><tr><td class="wikicell" ><i>n</i> × <i>r</i> matrix </td><td class="wikicell" > <i>r</i>× <i>m</i> matrix </td><td class="wikicell" > <i>n</i> × <i>m</i> matrix</td><td class="wikicell" > matrix multiplication</td></tr></table><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Products, Sums, Max, and Min</h3>
+<br />
+<A NAME="sum"></A><br />
+<A NAME="sum1"></A><br />
+<h4>The summation operator: <span style="color:red;"><code>sum(&#60;list&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator adds all elements of a list. The elements may be numbers, or themselves lists (or vectors or matrices), or even strings. </div><br />
+<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>sum(1..10)</code></td><td class="wikicell"  colspan="3"><code>55</code></td></tr><tr><td class="wikicell" ><code>sum([4,6,2,6])</code></td><td class="wikicell"  colspan="3"><code>18</code></td></tr><tr><td class="wikicell" ><code>sum([ [3, 5], [2, 5], [5, 6] ])</code></td><td class="wikicell"  colspan="3"><code>[10, 16]</code></td></tr><tr><td class="wikicell" ><code>sum([&#34;h&#34;,&#34;e&#34;,&#34;ll&#34;,&#34;o&#34;])</code></td><td class="wikicell"  colspan="3"><code>&#34;hello&#34;</code></td></tr></table><br />
+<br />
+<br />
+<br />
+One can, for instance, use the sum operator to define an arithmetic mean function by the following code fragment:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+average(x) := sum(x)/length(x)
+</pre></div><br />
+<br />
+This function works for a list of numbers as well as for the average of a list of vectors or matrices.<br />
+<br />
+<hr />
+<br />
+<A NAME="sum2"></A><br />
+<h4>The summation operator: <span style="color:red;"><code>sum(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the summation operator, but it takes the sum of results of <code>&#60;expr&#62;</code> while a loop traverses all elements of <code>&#60;list&#62;</code>. The running variable is as usual <code>#</code>. </div><br />
+<br />
+We can calculate the sum of all squares of the first hundred integers by the following expression:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>sum(1..100,#&#94;2)</code></td><td class="wikicell"  colspan="3"><code>338350</code></td></tr></table><br />
+<br />
+<br />
+It is time for a little mathematical mystery:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>sum(1..10,#&#94;2)</code></td><td class="wikicell"  colspan="3"><code>385</code></td></tr><tr><td class="wikicell" ><code>sum(1..100,#&#94;2)</code></td><td class="wikicell"  colspan="3"><code>338350</code></td></tr><tr><td class="wikicell" ><code>sum(1..1000,#&#94;2)</code></td><td class="wikicell"  colspan="3"><code>333833500</code></td></tr><tr><td class="wikicell" ><code>sum(1..10000,#&#94;2)</code></td><td class="wikicell"  colspan="3"><code>333383335000</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="sum3"></A><br />
+<h4>The summation operator: <span style="color:red;"><code>sum(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the last one, except that the running variable is locally named <code>&#60;var&#62;</code>. </div><br />
+<br />
+<hr />
+<A NAME="product"></A><A NAME="product1"></A><br />
+<h4>The product operator: <span style="color:red;"><code>product(&#60;list&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator multiplies together all elements of a list. The elements are expected to be numbers. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>product(1..5)</code></td><td class="wikicell"  colspan="3"><code>120</code></td></tr></table><br />
+<br />
+<br />
+<br />
+One can, for instance, use the product operator to define the factorial function by the following code fragment:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+fac(x) := product(1..x)
+</pre></div><br />
+<br />
+<hr />
+<A NAME="product2"></A><br />
+<h4>The product operator: <span style="color:red;"><code>product(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the product operator, but it takes the product of results of <code>&#60;expr&#62;</code> while a loop traverses all elements of <code>&#60;list&#62;</code>. The running variable is, as usual, <code>#</code>. </div><br />
+<br />
+<hr />
+<A NAME="product3"></A><br />
+<h4>The product operator: <span style="color:red;"><code>product(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the last one, except that the running variable is locally named <code>&#60;var&#62;</code>.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="max"></A><A NAME="max1"></A><br />
+<h4>The maximum operator: <span style="color:red;"><code>max(&#60;list&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator finds the maximum value in a list of entries.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>max([4,2,6,3,5])</code></td><td class="wikicell"  colspan="3"><code>6</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<A NAME="max2"></A><br />
+<h4>The maximum operator: <span style="color:red;"><code>max(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the max operator <code>max(&#60;list&#62;)</code>, but it takes the maximum of results of <code>&#60;expr&#62;</code> while a loop traverses all elements of <code>&#60;list&#62;</code>. The running variable is, as usual, <code>#</code>.   </div><br />
+<br />
+<hr />
+<A NAME="max3"></A><br />
+<h4>The maximum operator: <span style="color:red;"><code>max(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the last one, except that the running variable is locally named <code>&#60;var&#62;</code>.</div><br />
+<br />
+<hr />
+<A NAME="min"></A><A NAME="min1"></A><br />
+<h4>The minimum operator: <span style="color:red;"><code>min(&#60;list&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator finds the minimum of a list of entries. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>min([4,2,6,3,5])</code></td><td class="wikicell"  colspan="3"><code>2</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<A NAME="min2"></A><br />
+<h4>The minimum operator: <span style="color:red;"><code>min(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+This operator is similar to the min operator <code>min(&#60;list&#62;)</code>, but it takes the minimum of results of <code>&#60;expr&#62;</code> while a loop traverses all elements of <code>&#60;list&#62;</code>. The running variable is, as usual, <code>#</code>.<br />
+<br />
+<hr />
+<A NAME="min3"></A><br />
+<h4>The minimum operator: <span style="color:red;"><code>min(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the last one, except that the running variable is locally named <code>&#60;var&#62;</code>. </div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Vector and Matrix Arithmetic</h3>
+<br />
+Besides addition and multiplication, as described earlier in this section, there are several operators responsible for vector and matrix administration.<br />
+<br />
+<A NAME="matrixrowcolumn"></A><br />
+<h4>Dimensions of a matrix: <span style="color:red;"><code>matrixrowcolum(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the argument is a matrix, this operator returns the number of rows and the number of columns of the matrix, encoded as a two-element list. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>matrixrowcolumn([[1,2],[3,2],[1,3],[5,4]])</code></td><td class="wikicell"  colspan="3"><code>[4,2]</code></td></tr></table><br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="transpose"></A><br />
+<h4>Transposing a matrix: <span style="color:red;"><code>transpose(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the argument is a matrix, this operator returns the transpose of the matrix. In the transpose, the rows and columns are interchanged. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>transpose([[1,2],[3,2],[1,3], [5,4]])</code></td><td class="wikicell"  colspan="3"><code>[[1,3,1,5],[2,2,3,4]]</code></td></tr><tr><td class="wikicell" ><code>transpose([[1],[3],[1],[5]])</code></td><td class="wikicell"  colspan="3"><code>[[1,3,1,5]]</code></td></tr><tr><td class="wikicell" ><code>transpose([[1,3,1,5]])</code></td><td class="wikicell"  colspan="3"><code>[[1],[3],[1],[5]]</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="row"></A><br />
+<h4>Rows of a matrix: <span style="color:red;"><code>row(&#60;matrix&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the first argument is a matrix, this operator returns the row with index <code>&#60;int&#62;</code> as a vector. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>row([[1,2],[3,2],[1,3], [5,4]],2)</code></td><td class="wikicell"  colspan="3"><code>[3,2]</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="column"></A><br />
+<h4>Columns of a matrix: <span style="color:red;"><code>column(&#60;matrix&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the first argument is a matrix, this operator returns the column with index <code>&#60;int&#62;</code> as a vector. </div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>column([[1,2],[3,2],[1,3], [5,4]],2)</code></td><td class="wikicell"  colspan="3"><code>[2,2,3,4]</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="submatrix"></A><br />
+<h4>Extracting a submatrix of a matrix: <span style="color:red;"><code>submatrix(&#60;matrix&#62;,&#60;int1&#62;,&#60;int2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the first argument is a matrix, this operator returns the submatrix obtained by deleting the column with index <code>&#60;int1&#62;</code> and the row with index <code>&#60;int2&#62;</code>.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>submatrix([[1,2,4],[3,2,3], [1,3,6],[5,4,7]],2,3)</code></td><td class="wikicell"  colspan="3"><code>[[1,4],[3,3],[5,7]]</code></td></tr></table><br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="rowmatrix"></A><br />
+<h4>Converting a vector to a row matrix: <span style="color:red;"><code>rowmatrix(&#60;vector&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the first argument is a vector, this operator returns the matrix with a single row consisting of this vector.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>rowmatrix([1,2,3,4])</code></td><td class="wikicell"  colspan="3"><code>[[1,2,3,4]]</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="columnmatrix"></A><br />
+<h4>Converting a vector to a column matrix: <span style="color:red;"><code>columnmatrix(&#60;vector&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   If the first argument is a vector, this operator returns the matrix with a single column consisting of this vector.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell"  colspan="3"><b>Result</b></td></tr><tr><td class="wikicell" ><code>columnmatrix([1,2,3,4])</code></td><td class="wikicell"  colspan="3"><code>[[1],[2],[3],[4]]</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<A NAME="zerovector"></A><br />
+<h4>Creating a zero vector: <span style="color:red;"><code>zerovector(&#60;int&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   Creates a zero vector of length <code>&#60;int&#62;</code>.</div><br />
+<br />
+<hr />
+<A NAME="zeromatrix"></A><br />
+<h4>Creating a zero matrix: <span style="color:red;"><code>zeromatrix(&#60;int1&#62;,&#60;int2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   Creates a matrix with <code>&#60;int1&#62;</code> rows and <code>&#60;int2&#62;</code> columns that contains only zeros.</div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Linear Algebra</h3>
+<br />
+Since lists may be used as vectors or matrices there are also several arithmetic operations from linear algebra that are applicable to lists.<br />
+<!-- latexreplace<br />
+\index{linear algebra}<br />
+\index{vector}<br />
+\index{matrix}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<A NAME="det"></A><br />
+<h4>Determinant of a square matrix: <span style="color:red;"><code>det(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   This operator calculates the determinant of a square matrix, that is, one with the same number of rows and columns. Note that the determinant is an extremely useful function, for many geometric purposes. For instance, the determinant of the 3 × 3 matrix formed by the homogeneous coordinates of three points is zero if and only if the three points are collinear. The sign of the determinant carries information on the relative orientation of the three points. In the section <a title="no description" href='tiki-cindydoc.php@page=Geometric+Operators.html' class='wiki'>Geometric Operators</a> you can find descriptions of the functions <code>area(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code> and <code>det(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code>. Both are variants of the determinant function that are particularly useful in geometric contexts and exhibit slightly better performance than the general determinant formula.  </div><br />
+<br />
+<hr />
+<h4>Calculating the length of a vector: <span style="color:red;"><code>&#124;&#60;vec&#62;&#124;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Enclosing a vector between two vertical bars <code>&#124;&#60;vec&#62;&#124;</code> can be used to calculate the length of a vector. This operator can also be applied to a real or complex number and returns its absolute value.</div><br />
+<br />
+<hr />
+<h4>Calculating the distance between two vectors: <span style="color:red;"><code>&#124;&#60;vec1&#62;,&#60;vec2&#62;&#124;</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  Enclosing two vectors of equal length within two vertical bars <code>&#124;&#60;vec1&#62;,&#60;vec2&#62;&#124;</code> can be used to calculate the distance between the vectors. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="dist"></A><br />
+<h4>Calculating distances: <span style="color:red;"><code>dist(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator calculates the distance between two vectors and returns it as a number. This operator is also very useful for geometric calculations.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="hermiteanproduct"></A><br />
+<h4>The Hermitian scalar product: <span style="color:red;"><code>hermiteanproduct(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator returns the Hermitian scalar product of two vectors. It is similar to the dot product <code>&#60;vec1&#62;*&#60;vec2&#62;</code>. However, the second vector is complex conjugated before multiplication. In particular, <code>hermiteanproduct(a,a)</code> is always nonnegative. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> </div><br />
+The following code fragment shows the difference between the dot product and the scalar product.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=[2+3*i,1-i];
+println(hermiteanproduct(a,a));
+println(a*a);
+</pre></div><br />
+<br />
+produces the output:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+15 
+-5 + i*10
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="inverse"></A><br />
+<h4>Inverse of a square matrix: <span style="color:red;"><code>inverse(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   This operator calculates the inverse of a square matrix, that is, one with the same number of rows and columns. If the matrix is not square or not invertible the operator returns an undefined object. Inverses are sometimes very useful when the same type of linear equations <i>Ax=b</i> has to be solved for different right sides <i>b</i>. If the matrix <i>A</i> does change often it is more preferable to use the <code>linearsolve</code> operator. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="adj"></A><br />
+<h4>Adjunct of a square matrix: <span style="color:red;"><code>adj(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   This operator calculates the adjunct of a square matrix. For invertible matrices the adjunct is the inverse times the determinant. Unlike the inverse the adjunct of a matrix always exists. </div><br />
+<br />
+<hr />
+<br />
+<A NAME="eigenvalues"></A><br />
+<h4>Eigenvalues of a square matrix: <span style="color:red;"><code>eigenvalues(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   This operator calculates the eigenvalues of a square matrix. The result is returned as a list of values. If an Eigenvalue occurres with algebraic multiplicity 'r' the operator lists this eigenvalue 'r' times. Thus the operator always returns <i>n</i> values for an <i>n</i> by <i>n</i> matrix. In particular the operator assumes the matrix to be embedded over the complex numbers. So also complex eigenvalues are listed.</div><br />
+<br />
+<b>Example:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m1=[[1,1,0],[0,1,0],[0,0,.5]];
+println(eigenvalues(m1));
+m2=[[1,1,0],[-1,1,0],[0,0,.5]];
+println(eigenvalues(m2));
+</pre></div><br />
+<br />
+produces the output:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[1,1,0.5]
+[1 + i*1,1 - i*1,0.5]  
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="eigenvectors"></A><br />
+<h4>Eigenvectors of a square matrix: <span style="color:red;"><code>eigenvectors(&#60;matrix&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b>   This operator calculates a basis of eigenvectors of a square matrix. The result is returned as a list of vectors. The order of this list corresponds to the order of the eigenvalues in the <code>eigenvalues</code> operator. </div><br />
+<br />
+<b>Warning:</b> If the matrix is not diagonalizable the output of this function is meaningless.<br />
+<br />
+<hr />
+<br />
+<A NAME="linearsolve"></A><br />
+<h4>Solving a linear equation: <span style="color:red;"><code>linearsolve(&#60;matrix&#62;,&#60;vector&#62;)</code></span></h4>
+<br />
+<h4>Solving a linear equation: <span style="color:red;"><code>linearsolve(&#60;matrix&#62;,&#60;matrix&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>   The operator <code>linearsolve(A,b)</code> calculates a solution <i>x</i> of the system of equations <i>Ax=b</i>. The matrix <i>A</i> must be square (<i>n</i> times <i>n</i>) and invertible. <i>b</i> can either be an <i>n</i> dimensional vector, it can be a matrix with <i>n</i> rows. If either <i>A</i> is not invertible or the dimension constraints are not met an undefined value is returned. </div><br />
+<br />
+<b>Example:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m=[[1,1,0],[0,1,0],[0,1,1]];
+x=linearsolve(m,[2,3,4]);
+println(x);
+println(m*x);
+</pre></div><br />
+<br />
+produces the output:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[-1,3,1] 
+[2,3,4] 
+</pre></div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Advanced geometric operations</h3>
+<br />
+<A NAME="convexhull3d"></A><br />
+<h4>Computing a convex hull in 3D: <span style="color:red;"><code>convexhull3d(&#60;list of vectors&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{hull}<br />
+\index{convex hull}<br />
+\index{polytope}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes a list of 3-dimensional vectors as input and calculates their convex hull. it returns a pair of two lists. The first of these lists contains the vertices of the convex hull. The second list contains a the list of faces of the convex hull. Each facet is given as the indices of the vertices of the first list.</div><br />
+<br />
+<b>Example:</b> The following list of points describes a three dimensional cube with an additional point in its center.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+ [[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],
+  [-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[0,0,0]]
+</pre></div><br />
+<br />
+Applying the convex hull operator to this list produces the following output:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[
+ [[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],
+  [-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1]],
+ [[6,5,1,2],[3,1,5,7],[3,4,2,1],[8,7,5,6],[8,6,2,4],[8,4,3,7]]
+] 
+</pre></div><br />
+<br />
+Observe that the interior point has been properly removed, and that the convex hull operator can nicely handle coplanarities.<br />
+<br />
+The convex hull operator is remarkably robust to degenerate situations. The following image has been computed under usage of the <code>convexhull3d(...)</code> operator. It shows the section of a 4-dimensional polytope (a 600-cell) with a 3-dimensional space.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ConvexHullX.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A section of a 600-cell rendered with CindyScript.
+</b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 09 of February, 2015 [21:10:15 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Vectors%20and%20Matrices">
+    http://doc.cinderella.de/tiki-index.php?page=Vectors%20and%20Matrices
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

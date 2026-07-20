@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Polygons 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Polygons</h2>
+<!--latexreplace<br />
+\index{mode!polygon}<br />
+\index{mode!regular polygon}<br />
+\index{polygon}<br />
+\index{regular polygon}<br />
+--><!-- /latexreplace --><br />
+In <b>Cinderella.2</b> various methods are provided to generate regular polygons. They are accessible via the "Polygon" submenu in the "Modes" menu. These modes can be subdivided into two different classes. One class consists of "regular polygon" mode only; the other consists of all the remaining modes in this menu.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Poly1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Polygon mode menu</b></td></tr></table><br />
+<br />
+<br />
+<h3> Regular Polygon</h3>
+<!--latexreplace<br />
+\index{star polygon}<br />
+--><!-- /latexreplace --><br />
+This mode can be used if two points of one edge of a regular polygon are already present. First one clicks on these two points. Then, while the mouse is being dragged, a hint is displayed that indicates the shape of the regular <i>n</i>-gon that will be generated. By adjusting the mouse one can choose whether one wants a triangle, a square, a pentagon, and so forth. Clicking a third time will freeze the position of the polygon, and the vertices and segments for the edges are generated. They are then available in the construction as fully featured geometric elements.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly2}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly3} &amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly4}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Poly5} \\</tt><br />
+{\small\it The two points } &amp;  {\small\it Selecting them}&amp;  {\small\it   Hints while dragging}&amp;  {\small\it  Situation after the}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it  } &amp;  {\small\it }&amp;  {\small\it }&amp;  {\small\it  third click}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly4.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Poly5.png" border="0"  width="150" /></span></td> <td width=10></td>
+<tr>
+<td><b>The two points</b></td> <td></td>
+<td><b>Selecting them</b></td> <td></td>
+<td><b>Hints while dragging</b></td> <td></td>
+<td><b>Situation after the third click</b></td> <td></td></tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+This mode is also available in hyperbolic geometry, in which case a regular <i>hyperbolic</i> polygon is created. This is a polygon all of whose sides have equal lengths and all of whose angles are equal.<br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+This mode is currently not supported in spherical geometry. In hyperbolic geometry, in contrast to Euclidean geometry, the angle of an <i>n</i>-gon is not determined by the number <i>n</i>.<br />
+</div><br />
+<br />
+<br />
+<h3> Regular Polygons by Center and Vertex</h3>
+<br />
+The remaining modes for regular polygons are very similar to "add a circle" mode. They are defined by a press–drag–release sequence. Pressing the mouse creates the center of the polygon, and dragging creates the polygon. Releasing freezes the construction.<br />
+<br />
+For each regular <!-- latexreplace $n$-gon from $n=3$ to $n=9$ -->n-gon from <i>n</i> = 3 to <i>n</i> = 9<!-- /latexreplace --> a specific mode is provided. Furthermore, there exist several modes for regular star polygons. The following picture shows all regular polygons constructible by these kinds of modes.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Poly6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A sampler of regular polygons</b></td></tr></table><br />
+<br />
+This mode is also available for hyperbolic geometry. There another important feature comes into play. A regular <i>n</i>-gon in hyperbolic geometry is a polygon with identical angles at each vertex and with all edges of equal length. In contrast to Euclidean geometry, the number <i>n</i> does not determine the angle. Depending on the size of the polygon, the angle can take any value between <!-- latexreplace $0<div class="simplebox">\circ$ and $\frac{n-2}{n}\cdot 180</div>\circ$ -->0° and (<i>n</i> – 2)/<i>n</i> ∗ 180°<!-- /latexreplace -->. Thus there exist, for instance, regular pentagons for which all angles are exactly 90°. Four such pentagons fit around a vertex, like squares in Euclidean geometry. Usually it is difficult to construct a polygon of the right size for studying this effect. The regular polygon modes of <b>Cinderella.2</b> provide a method for generating these polygons in a controlled way. While the mouse is being dragged, snap points are indicated, and a small number is displayed that indicates how many similar polygons fit around a corner.<br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Polygon.html' class='wiki'>Polygon</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Circle.html' class='wiki'>Add a Circle</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Transformation+Groups.html' class='wiki'>Transformation Groups</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Geometries.html" class="wiki">Hyperbolic Geometry</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 25 of August, 2011 [18:13:09 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Polygons">
+    http://doc.cinderella.de/tiki-index.php?page=Polygons
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

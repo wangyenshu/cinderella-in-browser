@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Shapes 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Shapes</h2>
+<br />
+Besides elementary drawing operations for lines, polygons, and circles, <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace --> also offers the possibility to combine these objects into more complicated objects called shapes. Shapes are not directly visible, but may be used for filling, outline drawing or clipping. They can be combined using logical operations like union, intersection or set difference. We first list the elementary operators and then explain their usage in a more elaborate example.<br />
+<br />
+<hr />
+<br />
+<h3>Shape primitives</h3>
+<!-- latexreplace<br />
+\index{shapes}<br />
+\index{paths}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<A NAME="circle"></A><br />
+<h4>A circular shape: <span style="color:red;"><code>circle(&#60;point&#62;,&#60;radius&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator creates a circular shape of a given <code>&#60;radius&#62;</code> around a given <code>&#60;point&#62;</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="polygon"></A><br />
+<h4>A polygonal shape: <span style="color:red;"><code>polygon(&#60;list&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator creates a polygonal shape defined by a list of positions given in <code>&#60;list&#62;</code>.<br />
+<br />
+<hr />
+<br />
+<A NAME="halfplane"></A><br />
+<h4>A half-plane shape: <span style="color:red;"><code>halfplane(&#60;line&#62;,&#60;point&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator creates a half-plane shape. The half-plane is defined by its supporting line <code>&#60;line&#62;</code> and a point <code>&#60;point&#62;</code> contained in the half-plane, which determines on which side of the supporting line the half-plane lies. <code>&#60;line&#62;</code> may either be a three-dimensional vector of homogeneous coordinates, or a reference to a line object.<br />
+<br />
+<hr />
+<br />
+<A NAME="screen"></A><br />
+<h4>The shape of the screen: <span style="color:red;"><code>screen()</code></span></h4>
+<br />
+<b>Description:</b> This operator creates a rectangular shape that is large enough to cover all active drawing surfaces.<br />
+<br />
+<hr />
+<br />
+<h3>Combining shapes</h3>
+<br />
+Primitive shapes can be combined to form new shapes using three logical operators.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span style="color:red;"><code>&#60;shape1&#62;++&#60;shape2&#62;</code></span></td><td class="wikicell"  colspan="2"> creates the union of two shapes</td></tr><tr><td class="wikicell" > <span style="color:red;"><code>&#60;shape1&#62;&#126;&#126;&#60;shape2&#62;</code></span></td><td class="wikicell"  colspan="2">  creates the intersection of two shapes</td></tr><tr><td class="wikicell" ><span style="color:red;"><code>&#60;shape1&#62;--&#60;shape2&#62;</code></span></td><td class="wikicell"  colspan="2">  creates the difference of two shapes</td></tr></table><br />
+<br />
+<hr />
+<br />
+<h3>Using shapes</h3>
+<br />
+Shapes can be used for filling, outline drawing and clipping.<br />
+<br />
+<hr />
+<br />
+<A NAME="fill"></A><br />
+<h4>Fill a shape: <span style="color:red;"><code>fill(&#60;shape&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator fills a shape with a specified color.<br />
+<br />
+<b>Modifiers:</b> This operator supports the following modifiers:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real1&#62;,&#60;real2&#62;,&#60;real3&#62;]</code></td><td class="wikicell" >sets the fill color to an RGB value</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the opacity to the value <code>&#60;alpha&#62;</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="draw"></A><br />
+<h4>Draw a shape: <span style="color:red;"><code>draw(&#60;shape&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator draws the outline of a shape.<br />
+<br />
+<b>Modifiers:</b> This operator is a further polymorphic extension to the usual draw operator and supports the same modifiers.<br />
+<br />
+<hr />
+<br />
+<A NAME="clip"></A><br />
+<h4>Set clippath: <span style="color:red;"><code>clip(&#60;shape&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator sets the clip path to the given shape. All subsequent drawing operations are clipped with respect to this clip path. The clip path is pushed on  the appearance stack, thus it can be removed again by statements like <code>grestore()</code> or <code>greset()</code>.<br />
+<br />
+<hr />
+<br />
+<h3>Examples</h3>
+<br />
+The following examples illustrate the use of shapes. The following code defines three different shapes, a quadratic one and two circular ones. These are then combined into a more complex shape using logical operations. The complex shape is filled and outlined. The original shapes are outlined by a thinner line.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+shape1=circle(E,4);
+shape2=circle(F,4);
+shape3=polygon([A,B,C,D]);
+color((0,0,0));
+shape=shape1++shape2++shape3;
+fill(shape,color->(1,0.8,0));
+draw(shape,size->3);
+draw(shape1);
+draw(shape2);
+draw(shape3);
+</pre></div><br />
+<br />
+The resulting image is shown as the first picture below. The other three images are created using other combinations of the shapes.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape1X} &amp; \includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape3X}  \\<br />
+{\small\tt {\kern2mm} shape1++shape2++shape3 }&amp;<br />
+{\small\tt {\kern2mm} shape1\textasciitilde{}\textasciitilde{}shape2\textasciitilde{}\textasciitilde{}shape3} \\<a class="wiki external"  href="5mm">5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape2X} &amp; \includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape4X}  \\</tt><br />
+{\small\tt {\kern2mm}  shape1++shape2$--$shape3 } &amp;<br />
+<tt> {\small\tt {\kern2mm} shape1++shape2\textasciitilde{}\textasciitilde{}shape3} &amp;\\</tt><br />
+\end{tabular}<br />
+$$<br />
+ --><table>
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Shape1X.png" border="0"  /></span></td><td> <span class="img"><img alt="" src="img/wiki_up/Shape3X.png" border="0"  /></span></td>
+</tr>
+<tr>
+<tr><td>shape1++shape2++shape3</td><td>shape1&#126;&#126;shape2&#126;&#126;shape3</td></tr>
+<tr><td height=10> </td></tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Shape2X.png" border="0"  /></span></td><td> <span class="img"><img alt="" src="img/wiki_up/Shape4X.png" border="0"  /></span></td>
+</tr>
+<tr><td>shape1++shape2--shape3</td><td>shape1++shape2&#126;&#126;shape3</td></tr>
+</table><!-- /latexreplace --><br />
+<br />
+<br />
+The following code snippet demonstrates the usage of shapes as a clipping path. First of all, four circles and their union are defined as a shape. Then this shape is used as a clipping path for another drawing (concentric circles around point <i>E</i>).<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+r=3;
+shape=circle(A,r)++circle(B,r)++circle(C,r)++circle(D,r);
+clip(shape);
+repeat(60,i,
+  drawcircle(E,i/2,color->(0,.6,0),size->3);
+);
+greset();
+draw(shape,color->(1,1,1),size->2);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Shape5.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Shapes can become rather complicated objects, as the following iterative example shows. A word of caution may be appropriate here: The more complicated shape become, the more computational resources they consume. The use of overly complex shapes can slow down Cinderella considerably.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=complex(A);
+b=complex(B);
+z=complex(C);
+shape=circle((0,0),0);
+repeat(50,
+  shape=shape++circle(gauss(a),|a-b|);
+  a=a*z;
+  b=b*z;
+);
+fill(shape,color->(1,0.7,0));
+draw(shape,color->(0,0,0),size->2);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Shape6.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [17:01:07 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Shapes">
+    http://doc.cinderella.de/tiki-index.php?page=Shapes
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

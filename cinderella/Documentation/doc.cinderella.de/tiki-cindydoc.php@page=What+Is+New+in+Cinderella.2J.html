@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : What Is New in Cinderella.2J 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Cinderella.2で新しくなったこと</h2>
+<br />
+　この章では以前出版されたシンデレラのバージョン(1.0から1.4)と、現在のバージョン <b>Cinderella.2</b> の違いについての簡単な概要を提供します。このリリースの正式なバージョン名は &quot;2.6&quot;です。このリリースでは、古いバージョンに多くの改善、機能拡張、および拡張をしました。 ソースコードの量で測ると、Cinderella.2は約7MBあります。これは、旧版の約5倍です。ここまで拡大した理由は、Cinderella.2が新しい可能性をひらくいくつかの領域を持っているということです。シンデレラ1.4版が単に幾何学のプログラムであったのに対し、Cinderella.2は、プログラミング機能、変換のフルサポート、強化された描画機能、そして完全な物理シミュレーションエンジンを提供します。<br />
+<br />
+<br />
+　次のリストは、主要な変更についての概要です。項目は特定の順序にはなっていません。トピックの詳細については、読者はマニュアルの該当する章を参照してください。 すでにシンデレラに親しんでいる読者にとっては、この章は新しい機能を探検するのに役立つでしょう。<br />
+<br />
+<br />
+<h3>拡張された図形要素</h3>
+<br />
+<h4>円弧と角の表示</h4>
+<br />
+<b>Cinderella.2</b> は幾何学要素として 円弧 をサポートしました。円弧は3点をクリックすることで定義できます。最初と最後の点が弧の端点になります。円弧は、すべて3点を通る唯一の円によって決まります。円のように、円弧は他の幾何学要素と交差するでしょう。また、自由点を円弧上に置くこともできます。なお、新しい図形要素 : 角に印をつける小さなマークも用意しました。<br />
+<br />
+<br />
+<h3>線分の性質</h3>
+<br />
+Cinderella 1.2までは、線分は純粋に図形的なものにとどまり、構築には使えませんでしたが <b>Cinderella.2</b> での<a title="no description" href="tiki-cindydoc.php@page=SegmentJ.html" class="wiki">線分を加える</a> は幾何学要素として使えるようになりました。その振舞いは直線と同様です。線分上の自由点は線分をはみ出して動くことはできません。線分上だけしか動くことのできない点による軌跡を定義することもできます。<br />
+<br />
+<h3>多角形モード</h3>
+<br />
+正<a title="no description" href="tiki-cindydoc.php@page=PolygonsJ.html" class="wiki">多角形</a>を容易に作成するためのモードが加えられました。これは特に、多角形の対称性に基づいて対称な図形を作るのに重要です。対称な多角形は、 <a title="no description" href="tiki-cindydoc.php@page=Transformation+ModesJ.html" class="wiki">変換モード</a>と組み合わせると非常に役立ちます。<br />
+<br />
+<br />
+<br />
+<h3>円錐曲線（二次曲線）モード</h3>
+<br />
+いくつかの新しいモードが <a title="no description" href="tiki-cindydoc.php@page=Conic+OperationsJ.html" class="wiki">円錐曲線</a>の作成のために付け加えられました。特に、 焦点と通る点から楕円や双曲線を描くことができます。<br />
+<br />
+<br />
+<h3>三角形の網目</h3>
+<br />
+方眼に加え<a title="no description" href="tiki-cindydoc.php@page=Geometries.html" class="wiki">ユークリッド表示</a>で点にスナップする正三角形の網目が追加されました。<br />
+<br />
+<br />
+<h3>背景画像</h3>
+<br />
+背景に画像を読み込むことが可能になりました。特に、画像の上で動的な描画をすることにより、自然界のものを幾何学的に分析することが可能になります。<br />
+<br />
+<h3>PDFと画像ファイルへの書き出し</h3>
+<br />
+シンデレラの図をほかのドキュメントで利用するために、PDFとさまざまな形式での画像ファイルへの書き出しができます。PDFによって正確な図を書きだすことができます。<br />
+<br />
+<hr />
+<br />
+<br />
+<h3>新しいアニメーションの仕様</h3>
+<br />
+旧版のアニメーションと比較して、新しい <a title="no description" href="tiki-cindydoc.php@page=AnimationJ.html" class="wiki">アニメーション</a>モデルはずっと柔軟になりました。アニメーションが動いている間に別の要素を動かすことができます。 また、いくつかのアニメーションを同時に動かしたりコントロールしたりできます。 特に、それぞれのアニメーションの速度をコントロールすることができます。新しいアニメーションは、 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> で作られる物理シミュレーションとシームレスに動きます。<br />
+<br />
+<br />
+<h3>足跡</h3>
+<br />
+すべての幾何学的要素は、画面上に足跡を残すことができます。足跡は時間とともに薄くなり、すばらしい視覚効果をつくります。これは、プリントアウトでダイナミックな表現を高めるのに役立ちます。足跡はまた要素の動きを研究するのにも役に立つでしょう。この目的のためには、足跡は軌跡より柔軟です。<br />
+<br />
+<h3>文字通りの軌跡</h3>
+<br />
+軌跡は、通常実線で描かれます。 <b>Cinderella.2</b> では、幾何学的要素の足跡と同じような方法で軌跡を描くことも可能です。このために、足跡の連続したコピーが画面上に作られます。この特徴は、円や多角形の軌跡のように実線では描くことのできないものを研究する場合に有効です。<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<h3>変換</h3>
+<br />
+<a title="no description" href="tiki-cindydoc.php@page=Transformation+ModesJ.html" class="wiki">変換</a>は <b>Cinderella.2</b>での大きな改良点の一つです。鏡映、回転、平行移動、 相似変換、アフィン変換、射影変換、メビウス変換を定義することができます。 変換は、多くの状況で使える強力な道具です。任意の幾何学的要素を変換によって写すことができます。<br />
+<br />
+<br />
+<h3>変換群</h3>
+<br />
+いくつかの変換はグループ化することができます。 <a title="no description" href="tiki-cindydoc.php@page=Transformation+Groups.html" class="wiki">変換群</a> は、グループの各変換が幾何学的要素を順に変換していきます。このツールによって、双曲幾何学のような高度な設定も簡単にできます。<br />
+<br />
+<br />
+<br />
+<h3>反復機能システム</h3>
+<br />
+変換群のように <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+SystemsJ.html" class="wiki">反復機能システム</a> いくつかの変換からできています。しかし、このモードでは、関係するすべての変換によって自己相似形の雲のようなものができます。通常、反復機能システムは非常に興味深いフラクタルになります。<br />
+<br />
+<br />
+<h3> 基底 (未完成)</h3>
+<br />
+あらかじめ選ばれた基底のもとですべての描画をすることができます。基底には、平行移動基底、相似変換基底、アフィン基底、射影基底があります。基底を用いると、遠近法に基づく正確な描画が可能になります。<br />
+<br />
+<hr />
+<br />
+<br />
+<h3>複写と貼り付け</h3>
+<br />
+図形の一部をコピーすることが可能です。 再定義 の手続きとともに、これは大きな構造物を造るのに強力な方法です。<br />
+<br />
+<h3>選択したものからツールを作る</h3>
+<br />
+選択モードから、マクロのような、それ自身の構造を含むツールを作ることができます。<br />
+<br />
+<h3>再定義</h3>
+<br />
+<tt> <a title="no description" href="tiki-cindydoc.php@page=Copy,+Paste,+and+MacrosJ.html" class="wiki">再定義</a> は作成したものの従属構造を変えるのに非常に有効です。このツールによって、従属点と自由点の関係を変えることができます。特に、複写／貼り付けとの組み合わせると、非常に有用です。</tt><br />
+<br />
+<br />
+<hr />
+<br />
+<h3> 1.4版から新しく追加された機能</h3>
+<br />
+<h4>インスペクタ</h4>
+<br />
+<tt> <b>Cinderella.2</b> では、インスペクタはあらゆる属性をコントロールする中央制御装置ともいうべきものになりました。<a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a> oで、点や線の表現や物理的属性、定義などをコントロールできます。</tt><br />
+<br />
+<br />
+<h4>CindyScript</h4>
+<br />
+初めに述べたように、CindyScript はシンデレラの拡張において最も重要なものの一つです。CindyScript は、シンデレラのほかの部分とシームレスに働くように設計された関数型プログラミング言語です。CindyScript を使うと、動的な構造物のコントロールをすることが可能になります。また、任意の描画情報を図に加えることも可能です。<br />
+<br />
+<br />
+<h3>CindyLab</h3>
+<br />
+２番目の重要な改良はCindyLabです。これは、質量を持った点と力に関する物理シミュレーションモデルのエンジンです。 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> で、物理実験を簡単に描画してすぐにシミュレーションすることができます。特に、物理学と幾何学の相互作用をシンデレラで研究できます。<br />
+<br />
+<br />
+<br />
+<h3>ペン入力デバイス</h3>
+<br />
+<b>Cinderella.2</b> は、ペンによるデバイス(例えば、タブレットＰＣ、電子ホワイトボード、ＰＤＡ)による入力をサポートします。このモードでは、シンデレラは手書きの図形を認識して、それを(可能ならば)コンピュータ上の図形に変換します。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 21 of July, 2011 [13:17:14 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=What%20Is%20New%20in%20Cinderella.2J">
+    http://doc.cinderella.de/tiki-index.php?page=What%20Is%20New%20in%20Cinderella.2J
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

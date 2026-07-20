@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Magic OperatorsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>魔法の演算子</h2>
+<br />
+<h3>数式解析</h3>
+<br />
+<A NAME="parse"></A><br />
+<h4>数式の解析 <span style="color:red;"><code>parse(&lt;string&gt;)</code></span>:</h4>
+<br />
+<b>説明:</b> この演算子（関数）は、文字列を解析して数式として評価します。この演算子はユーザーが入力した文字列を解析するのに役立ちます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>文字列</b></td><td class="wikicell" ><b>評価結果</b></td></tr><tr><td class="wikicell" ><code>parse(&quot;3+7&quot;)</code> </td><td class="wikicell" > <code>10</code></td></tr></table><br />
+<br />
+コードの例<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+text=&quot;sin(x)+cos(x)&quot;;
+f(x):=parse(text);
+</pre></div><br />
+<br />
+関数 <code>f(x)</code> が <code>sin(x)+cos(x)</code> として解釈され定義されます。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 22 of July, 2011 [12:18:34 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Magic%20OperatorsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Magic%20OperatorsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

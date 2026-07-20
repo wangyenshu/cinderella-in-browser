@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : ListsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> リストと線形代数</h1>
+<br />
+<h2> <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> におけるリストの使いかた</h2>
+<br />
+リストは、CindyScript で最も基本的な概念の一つです。CindyScript では、リストはいくつかの目的で使われます。<br />
+<br />
+<ul><li> オブジェクトを列記する
+</li><li> データの配列を構造化する
+</li><li> ベクトルを表す
+</li><li> 行列を表す
+</li></ul>
+<br />
+この節では、一般的なリストの作り方とともにそれらの要素へのアクセス方法について一般的なことがらを述べます。リストのそれぞれの側面については次の各節を参照してください。<br />
+<br />
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Elementary+List+OperationsJ.html" class="wiki">リスト処理の基礎</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Advanced+List+OperationsJ.html" class="wiki">高度なリスト処理</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Lists+of+Geometric+ElementsJ.html" class="wiki">幾何学要素のリスト</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Vectors+and+MatricesJ.html" class="wiki">ベクトルと行列</a>
+</li></ul>
+<br />
+<hr />
+<hr />
+<br />
+<h3>リストの作成</h3>
+<br />
+リストは、カギカッコの中にコンマで区切って要素を並べるだけで簡単に作れます。たとえば<br />
+<br />
+<div align="center"><code>[45,12.5,123,2,5.5,5]</code></div><br />
+これは数のリストです。<br />
+<br />
+<div align="center"><code>["this", "is", "a", "list", "of", "strings"]</code></div><br />
+これは文字列のリストです。種類の異なるオブジェクトを混ぜてリストにすることもできます。<br />
+<br />
+<div align="center"><code>["this", 3,"is",5 , "a",654, "mixed",234 , "list"]</code></div><br />
+リストを要素にしたリストもできて、自由に入れ子(ネスト)にできます<br />
+<br />
+<div align="center"><code>[[4,6], ["a", "b"], 1, [4, "b", [23, "b"]], [ ]]</code></div><br />
+最後の要素 <code>[ ]</code> には何も入っていません。これは空リストです。<br />
+<br />
+　要素の数が少なくとも２つあるならば、丸括弧 <code>(...)</code> でくくってリストにすることもできます。これは、数学でよく使われる形で記述するのに便利でしょう。たとえば、３次元ベクトルは次のように表現できます。<br />
+<br />
+<div align="center"><code>(7.3,9.3,-14.3)</code></div><br />
+<br />
+<hr />
+<br />
+<A NAME="take"></A><br />
+<h4>リストの要素へのアクセス: <span style="color:red;"><code>take(&#60;list&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+リストの各要素には、挿入演算子 <span style="color:red;"><code>&#60;list&#62;_&#60;int&#62;</code></span> か、関数 <span style="color:red;"><code>take(&#60;list&#62;,&#60;int&#62;)</code></span>を用いてアクセスできます。第２引数のインデックスは整数です。インデックスが0か、リストの要素数より大きいときは、<code>___</code> が返されます。また、「Index out of range」という Warning メッセージが出ます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >式: </td><td class="wikicell" >結果:</td></tr><tr><td class="wikicell" ><code>[2 ,5 ,7 ,3]_3</code> </td><td class="wikicell" > <code>7</code> </td></tr><tr><td class="wikicell" ><code>take([2 ,5 ,7 ,3],2)</code> </td><td class="wikicell" > <code>5</code> </td></tr><tr><td class="wikicell" ><code>[2 ,5 ,7 ,3]_5</code> </td><td class="wikicell" > <code>___</code> </td></tr></table><br />
+<br />
+インデックスは計算式で与えることもできます。また、入れ子にしたリストの要素にもアクセスできます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >式: </td><td class="wikicell" >結果:</td></tr><tr><td class="wikicell" ><code>[[2,[4,5]],1]_1</code> </td><td class="wikicell" > <code>[2,[4,5]]</code> </td></tr><tr><td class="wikicell" ><code>[[2,[4,5]],1]_(7-5)</code> </td><td class="wikicell" > <code>1</code> </td></tr><tr><td class="wikicell" ><code>[[2,[4,5]],1]_1_2</code> </td><td class="wikicell" > <code>[4,5]</code> </td></tr><tr><td class="wikicell" ><code>[[2,[4,5]],1]_1_2_2</code> </td><td class="wikicell" > <code>5</code> </td></tr><tr><td class="wikicell" ><code>[[2,[4,5]],1]_1_2_2_2</code> </td><td class="wikicell" > <code>___</code> </td></tr></table><br />
+<br />
+<br />
+リストが変数に代入されると、個々の要素は  <code>_</code> 演算子によってアクセスしたのち、それを設定することができます。たとえば次の例を見てください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=[[2,[4,5]],1];
+a_2="A"; 
+a_1_2_1="B"; 
+</pre></div><br />
+<br />
+この結果、 <code>a</code> は <code>[[2,["B",5]],"A"]</code> になります。<br />
+<br />
+<h5>高度な使用法</h5>
+<br />
+　リストの要素にアクセスするのに、強力なオプションがあります。負の数を使えば、末尾から逆順に数えてアクセスできるのです。次に示すのがその例です。:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >式: </td><td class="wikicell" >結果:</td></tr><tr><td class="wikicell" ><code>[2 ,5 ,7 ,3]_(-1)</code> </td><td class="wikicell" > <code>3</code> </td></tr><tr><td class="wikicell" ><code>take([2 ,5 ,7 ,3],(-3)</code> </td><td class="wikicell" > <code>5</code> </td></tr><tr><td class="wikicell" ><code>[[2,6] ,5 ,7 ,3]_(-4)_(-1)</code> </td><td class="wikicell" > <code>6</code> </td></tr></table><br />
+<br />
+　整数のリストを使って、まとめてアクセスすることもできます。すると、結果はリストで返されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >式: </td><td class="wikicell" >結果:</td></tr><tr><td class="wikicell" ><code>&#91;2 ,5 ,7 ,3&#93;_&#91;2,3&#93;</code> </td><td class="wikicell" > <code>&#91;5,7&#93;</code> </td></tr><tr><td class="wikicell" ><code>&#91;2 ,5 ,7 ,3&#93;_&#91;-1,1,1&#93;</code> </td><td class="wikicell" > <code>&#91;3,2,2&#93;</code> </td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 08 of April, 2015 [12:07:04 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=ListsJ">
+    http://doc.cinderella.de/tiki-index.php?page=ListsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

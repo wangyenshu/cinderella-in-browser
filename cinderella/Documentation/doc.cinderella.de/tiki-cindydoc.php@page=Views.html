@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Views 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Views</h2>
+<!--latexreplace<br />
+\index{hyperbolic geometry}<br />
+\index{geometry!hyperbolic}<br />
+\index{spherical geometry}<br />
+\index{geometry!spherical}<br />
+\index{euclidean geometry}<br />
+\index{geometry!euclidean}<br />
+\index{geometries}<br />
+\index{view}<br />
+--><!-- /latexreplace --><br />
+The entry "Views" in the menu bar offers items for opening windows containing different views of a geometric construction.  Each view is a kind of "projection" of the abstract configuration to some visible part of the computer  screen.  Usually you can create constructions and manipulations in  any of the views. The changes are reported to the other views  immediately.  In particular, you can have several views of the same  type (for instance two Euclidean views with different scales).<br />
+<br />
+The views are also related to the different kinds of <a title="no description" href="tiki-cindydoc.php@page=Geometries.html" class="wiki">geometries</a>. Which view is appropriate for which geometry  is discussed in the section <a title="no description" href='tiki-cindydoc.php@page=Geometries.html#Views and Geometries' class='wiki'>Views and Geometries</a>.<br />
+<br />
+<br />
+<h3>Euclidean View</h3>
+<!--latexreplace<br />
+\index{view!euclidean}<br />
+\index{translate}<br />
+\index{zoom}<br />
+\index{mesh}<br />
+\index{triangular mesh}<br />
+\index{quadratic mesh}<br />
+\index{fetch}<br />
+\index{snap}<br />
+--><!-- /latexreplace --><br />
+The Euclidean view is the usual drawing surface.  When  <b>Cinderella</b> is started you will get a window containing a  Euclidean view. It is the natural window for doing Euclidean geometry.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pascal.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Pascal's theorem in a Euclidean view</b></td></tr></table><br />
+<br />
+The Euclidean view has view-specific control  buttons.  They can be used for zooming and translation.  Furthermore, they are used to control grids and snap points.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/translate.png" border="0"  align="left" /></span></div><b>Translate mode:</b> This mode allows  the entire coordinate system to be translated.  After you have selected this mode, you can move  the view around while  pressing the left mouse button.<br />
+<br />
+<A NAME="Zoom in"></A><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/zoom-in.png" border="0"  align="left" /></span></div><b>Zoom in:</b> With this mode you can zoom into the drawing.  The operation is  inverse to the zoom out operation. There are two ways of doing this:<br />
+<br />
+<ul><li> With a press–drag–release sequence you mark a region. The view will be zoomed to show exactly this region.
+</li><li> You can click the left mouse button  over any position in the view.  The view will be zoomed around the click point. The factor of zooming is 1.4.  You can also click the right button (or shift-click the left button) to get the inverse of this zooming operation.
+</li></ul>
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/zoom-out.png" border="0"  align="left" /></span></div> <b>Zoom out:</b> With this mode you can zoom out the drawing.  The operation is  inverse to the zoom in operation.  There are two ways of using  this mode:<br />
+<br />
+<ul><li> With a press–drag–release sequence you can mark a region in the view. The view will be appropriately zoomed so that the currently visible part zooms to that region.
+</li><li> You can click the left mouse button  at any place in the view.   The view will be zoomed around the click point. The factor of zooming is 0.7.  You can also click the right button (or shift-click the left button) to get the inverse of this zooming operation.
+</li></ul>
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/fetch.png" border="0"  align="left" /></span></div> <b>View all points:</b> Pressing this button adjusts the current zoom settings in order to show all points of the construction.<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/mesh.png" border="0"  align="left" /></span></div> <b>Toggle square grid:</b> Shows/hides a quadrangular grid on the view.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/tmesh.png" border="0"  align="left" /></span></div> <b>Toggle triangle grid:</b>  Shows/hides a triangular grid on the view.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/axes.png" border="0"  align="left" /></span></div> <b>Toggle axes:</b> Shows/hides a coordinate system within the view.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/snap.png" border="0"  align="left" /></span></div>  <b>Snap:</b> Toggles "snap" mode. In this mode the grid points are  magnetic and will attract the mouse.  This is the ideal tool for exact drawings.  When you first select this mode, the grid and axes are automatically shown. You can hide them again individually.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/moreMesh.png" border="0"  align="left" /></span></div> <b>Fine grid:</b>   Gives the grid a higher density.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/lessMesh.png" border="0"  align="left" /></span></div> <b>Coarse grid:</b>   Gives the grid a lower density.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Church.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Using "snap" mode for exact drawings</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<h3>Spherical View</h3>
+<!--latexreplace<br />
+\index{view!spherical}<br />
+\index{rotate}<br />
+\index{home}<br />
+\index{scale}<br />
+--><!-- /latexreplace --><br />
+The spherical view arises from a projection of  the Euclidean plane onto the surface of a ball. The center of the projection is the center of the sphere.  The plane does not pass through this center.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Homo.gif" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>Projection from the plane onto the ball</b></td></tr></table><br />
+<br />
+This projection maps each point to an antipodal pair of points  on the sphere. Each line is mapped to a great circle (an  equator) on the sphere.  The incidence structure is preserved.  Working with the spherical view allows elements at infinity to  be manipulated.  They lie on the boundary of the image of the  unrotated sphere.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Spherical.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>Pascal's theorem in a spherical view</b></td></tr></table><br />
+<br />
+<br />
+The spherical view is a natural way to represent elliptic  geometry.  Measurement of angles between lines corresponds to measuring angles on the sphere. Measuring distances corresponds  to the usual geodesic measurement of distances on the sphere, keeping in mind that antipodal points are identified with each other.<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/rotate.png" border="0"  align="left" /></span></div>  <b>Rotate:</b> This mode allows the spherical ball to be rotated (after the  projection).  In this mode you can rotate the view by moving the  mouse while keeping the left button pressed.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/home.png" border="0"  align="left" /></span></div>  <b>Home:</b> This action resets the rotation of the spherical view to its original position.  After a reset, the visible boundary of the  ball corresponds to the line at infinity again.<br />
+<br />
+<br />
+<b>The scale slider:</b>  This slider lets you control the distance from the sphere to the  Euclidean plane.  You can use this slider to find  the proper magnification of the drawing.<br />
+<br />
+<br />
+<h3>Hyperbolic View</h3>
+<!--latexreplace<br />
+\index{view!hyperbolic}<br />
+\index{Poincar\'e disk}<br />
+--><!-- /latexreplace --><br />
+The hyperbolic view is the natural view for hyperbolic geometry.  In fact, doing hyperbolic geometry is the main reason for opening a  hyperbolic view.  The hyperbolic view represents an  implementation of the Poincaré disk model of hyperbolic  geometry. In this model the (finite part of the) hyperbolic  plane is represented by a disk. Each line is represented by a  circular arc that is orthogonal to the boundary of this disk.  The measurement of angles between lines is conformal.  This  means that you can read off angles by measuring Euclidean angles  between the circular arcs.  The measurement of distances is such that the elements on the boundary are "infinitely far away" from  any other point on the disk.  If you "walk" in hyperbolic unit  steps in one direction, you will never reach the boundary. In  the disk, the steps seem to become smaller and smaller (in  Euclidean measurement).<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+    <table align="center">  <tr>
+	<td>  </tr>  <tr>
+	<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/HyperbolicView.gif"></td><td width=20><!--latexreplace {\kern1cm} --> <!-- /latexreplace --></td>
+	<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/Hyperbolic3.gif"></td>  </tr>  <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Hyperbolic circles of equal size<!--latexreplace } --> <!-- /latexreplace --></b></td><td width=20></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Hyperbolic altitudes meet in a point.<!--latexreplace } --> <!-- /latexreplace --></b></td>  </tr>  <tr>
+	<td>  </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>Polar Euclidean and Spherical Views</h3>
+<!--latexreplace<br />
+\index{view!polar}<br />
+--><!-- /latexreplace --><br />
+Polarity is an important concept of projective geometry.  Because of the complete symmetry between lines and points, it is  possible to turn every statement about incidences of points and  lines into a corresponding "polar statement" in which the roles of  points and lines are interchanged.<br />
+<br />
+<b>Cinderella</b> offers two polar views for visualizing polarity.  The polarity implemented in <b>Cinderella</b> is the polarity  with respect to the identity matrix.  In algebraic terms, we use  the homogeneous coordinates of a point and interpret them as a  line, and vice versa.  Geometrically, this finds its easiest  interpretation in the spherical view.  Whenever you have a point,  consider it as a "north pole"; the corresponding "equator" is  its polar line.  Whenever you have a line, consider it as an  "equator"; the corresponding "north pole" is its polar point.  The figure below shows a  configuration in the spherical  view and in the polar spherical view.<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern.7cm}c@{\kern.7cm}c}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=2.026666666666667in">width=2.026666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Spher1} &amp;\includegraphics<a class="wiki external"  href="width=2.026666666666667in">width=2.026666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Spher2}\\</tt><br />
+{\small\it  A configuration\ldots{}} &amp;  {\small\it \ldots{}and its polar}\\<br />
+\end{tabular}<br />
+$$<br />
+ -->    <table align="center">  <tr>
+	<td>  </tr>  <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Spher1.png" border="0"  /></span></td><td width=20></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Spher2.png" border="0"  /></span></td>  </tr>  <tr>
+	<td><b>A configuration …</b></td><td width=20></td>
+	<td><b>… and its polar</b></td>  </tr>  <tr>
+	<td>  </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+Polar view elements are selectable, but moving them is disabled.  If you want to move elements, you have to control them in a primal view.<br />
+<br />
+<A NAME="Construction Text"></A><br />
+<h3>Construction Text</h3>
+<!--latexreplace<br />
+\index{view!construction text}<br />
+\index{construction text}<br />
+--><!-- /latexreplace --><br />
+The construction text is a textual description of the construction steps.  Each element of the geometric construction  is represented by a row in the construction text window.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Thales1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A picture of Thales' theorem</b></td></tr></table><br />
+<br />
+Each row shows a little icon that resembles the  element it refers to. The icon is shown in the size, color, and  shape of the element.  This makes it easy to identify  elements quickly.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Thales2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The construction steps for Thales' theorem</b></td></tr></table><br />
+<br />
+<br />
+The construction text consists of four columns.  The first column shows the icons. The second column shows the labels of the geometric elements. These labels are unique identifiers within the construction. The third row explains how the element  is defined.  The fourth row represents the current value of the  element. In most cases this is the present location with  respect to the coordinate system.  With the menu "Format" you can change how the locations or values of  elements are shown.<br />
+<br />
+The texts that appear in the "construction text" are exactly the three  entries that can be referenced in <a title="no description" href="tiki-cindydoc.php@page=Text.html" class="wiki">text</a> mode.<br />
+<br />
+The four columns are separated by vertical lines.  You can select  these lines with the mouse to control the width of each column.  If the text has too many rows for the window, a scrollbar at the  right side of the window is available for scrolling.<br />
+<br />
+<br />
+<h3>General Functions</h3>
+<!--latexreplace<br />
+\index{PDF}<br />
+\index{export!PDF}<br />
+--><!-- /latexreplace --><br />
+In each view, a toolbar at the bottom displays view-specific  operations. Those that are common to all views are described  below.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/printPDF.png" border="0"  align="left" /></span></div> <b>Generate PDF:</b>  If you press this button, the contents of the view will be  exported to a PDF file.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/euclidean.png" border="0"  align="left" /></span></div><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/hyperbolic.png" border="0"  align="left" /></span></div><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/elliptic.png" border="0"  align="left" /></span></div><br />
+<b>Choose the geometry:</b>  With these buttons you change the current geometry.  All  geometric constructions refer to this geometry.  For a detailed  discussion of geometries consult the chapters <a title="no description" href='tiki-cindydoc.php@page=Geometries.html' class='wiki'>Geometries</a> and <a title="no description" href='tiki-cindydoc.php@page=Theoretical+Background.html' class='wiki'>Theoretical Background</a>.<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:32:59 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Views">
+    http://doc.cinderella.de/tiki-index.php?page=Views
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

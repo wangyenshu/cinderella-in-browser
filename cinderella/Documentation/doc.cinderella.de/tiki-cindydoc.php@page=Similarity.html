@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Similarity 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>Similarity</h3>
+<!--latexreplace<br />
+\index{mode!define a similarity}<br />
+\index{transformation!similarity}<br />
+\index{similarity}<br />
+--><!-- /latexreplace --><br />
+Similarities are among the most useful transformations available in Cinderella. They can be considered as a composition of a rotation and a scaling. With a suitably chosen similarity one can map an arbitrary (ordered) pair of points to another one.<br />
+<br />
+A similarity can be defined by specifying the preimage and image for two pairs of sample points. Thus a similarity is defined by choosing an (ordered) collection of four points.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity1}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity2}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity3}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Similarity4} \\<br />
+{\small\bf First click: } &amp;  {\small\bf  Second click:}&amp;  {\small\bf  Third click: }&amp;  {\small\bf Fourth click:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it The first preimage  } &amp;  {\small\it  The first image}&amp;  {\small\it  The second preimage }&amp;  {\small\it  The second image}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   is defined. } &amp;  {\small\it is defined.}&amp;  {\small\it is defined }&amp;  {\small\it  is defined.}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity1.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity4.png" border="0"  width="150" /></span></td>
+ </tr>
+<tr>
+<td><b>First click:</b><br>   The first preimage<br>   is defined.</td><td></td>
+<td><b>Second click:</b><br>   The first image<br>   is defined.</td><td></td>
+<td><b>Third click:</b><br>   The second preimage<br>   is defined.</td><td></td>
+<td><b>Fourth click:</b><br>   The second image<br>   is defined.</td>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+After this sequence of four clicks, the similarity has been defined completely. In this example the similarity will be uniquely defined by the facts that <i>A</i> is mapped to <i>C</i> and that <i>B</i> is mapped to <i>D</i>.<br />
+<br />
+Applying a translation to a selection of many objects will map them all simultaneously.  The following pictures demonstrate the effect of a similarity transformation.<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity5.png" border="0"  /></span></td> <td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Similarity6.png" border="0"  /></span></td>
+ </tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->The preimage<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->The situation after mapping<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+If one iterates a similarity, the sequence of mapped pictures will automatically form some kind of logarithmic spiral. The picture below demonstrates this effect.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Similarity7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A logarithmic spiral</b></td></tr></table><br />
+<br />
+In the definition of a similarity it is also possible to use points more than once. Thus it is possible to map a point to itself by selecting the same point as image and preimage. We get several interesting special cases of similarity:<br />
+<br />
+<ul><li> <b><i>A</i> → <i>A</i> and <i>B</i> → <i>B</i>:</b> The <i>identity transformation</i>, which leaves all points invariant
+</li><li> <b><i>A</i> → <i>A</i> and <i>B</i> → <i>C</i>:</b> <i>A</i> <i>similarity</i>, with  fixed point <i>A</i>
+</li><li> <b><i>A</i> → <i>B</i> and <i>B</i> → <i>A</i>:</b> A point <i>reflection</i> that interchanges <i>A</i> and <i>B</i>
+</li></ul>
+<br />
+<h4> Similarities and Sliders</h4>
+<br />
+Similarities are sometimes very useful tools for implementing a slider control in a geometric scenario. The following example illustrates this technique. Suppose that you want to create an object that can be smoothly transformed from one shape into another. The transition is to be controlled by a point on a segment that acts as a slider control. Let us suppose that you want to create a figure that "morphs" from the square on the left smoothly to the triangle on the right as the green point is moved.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Similarity8.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A morphing task</b></td></tr></table><br />
+<br />
+One can achieve such an effect by defining many similarity configurations, one for each preimage/image pair of points. For each such pair one defines a similarity that maps the endpoints of the slider to the two points of the pair. One  then constructs the image of the sliding point under this map. When the slider is moved, the mapped point moves from the morphing start position smoothly to the end position. The picture below shows a construction of this process.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Similarity9.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Morphing made easy</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+Similarities are not defined for hyperbolic and elliptic geometry.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Translation.html' class='wiki'>Translation</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Affine+Transformation.html' class='wiki'>Affine Transformation</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Projective+Transformation.html' class='wiki'>Projective Transformation</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:40:04 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Similarity">
+    http://doc.cinderella.de/tiki-index.php?page=Similarity
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

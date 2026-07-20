@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Copy, Paste, and MacrosJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<!--latexreplace \part{Advanced Topics} --> <!-- /latexreplace --><br />
+<br />
+<h1>複写、貼付、マクロ</h1>
+<br />
+シンデレラの以前のバージョンとは異なり、シンデレラ２では、マクロが扱えるようになりました。シンデレラのマクロの概念は、他の幾何ソフトウエアとは異なります。 以下にマクロを使う方法を解説します。<br />
+<!-- latexreplace<br />
+\index{macro}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<h2> 複写／貼付</h2>
+<br />
+自動的にその場でマクロをつくる最も簡単な方法は、複写／貼付を使うことです。 <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a>でいくつかの要素を選択し、メニューから 編集/複写 を選ぶと(あるいは同等のキーボードショートカットによって)、シンデレラは選ばれた要素をクリップボードに複写します。さらに、選ばれた要素の関係を定める中間の作図ステップが、隠れた要素として複写されます。要素を貼付けると、これらの隠れた要素も貼付けられ、結果として貼付けられた要素は以前のように機能します。<br />
+<br />
+たとえば <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a> を使って、２点A,Bをそれぞれ中心とし、互いの点を通る円を描きます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro1J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+次に、 <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>　を用いて、線分ABの垂直二等分線を加えます。(２点が２円の交点にぴったり合うようにします)<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+さて、 <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a> にして、シフトキーを押しながら点A,Bをクリックします。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro3J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+こうして選ばれた点A,Bと直線aは編集メニューの複写かキーボードショートカット(Macでは Command+C、WindowsではCtrl+C)によってクリップボードに複写されます。<br />
+<br />
+新しいウィンドウを開き (Command-N か Ctrl-N) クリップボードのデータを貼付ます(Macでは Command+V、WindowsではCtrl+V)。点A,Bと直線aが見えるでしょう。円は隠れた要素として追加されており、見たり使ったりすることはできませんが、直線aの位置を決めるのに用いられます。点AとBを動かしてみるとわかります。直線はいつも線分ABの垂直二等分線になっているでしょう。<a href="https://doc.cinderella.de/tiki-editpage.php?page=B%E3%81%A8%E7%9B%B4%E7%B7%9Aa%E3%81%8C%E8%A6%8B%E3%81%88%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82%E5%86%86%E3%81%AF%E9%9A%A0%E3%82%8C%E3%81%9F%E8%A6%81%E7%B4%A0%E3%81%A8%E3%81%97%E3%81%A6%E8%BF%BD%E5%8A%A0%E3%81%95%E3%82%8C%E3%81%A6%E3%81%8A%E3%82%8A%E3%80%81%E8%A6%8B%E3%81%9F%E3%82%8A%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8C%E3%80%81%E7%9B%B4%E7%B7%9Aa%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E6%B1%BA%E3%82%81%E3%82%8B%E3%81%AE%E3%81%AB%E7%94%A8%E3%81%84%E3%82%89%E3%82%8C%E3%81%BE%E3%81%99%E3%80%82%E7%82%B9A%E3%81%A8B%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%81%A8%E3%82%8F%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82%E7%9B%B4%E7%B7%9A%E3%81%AF%E3%81%84%E3%81%A4%E3%82%82%E7%B7%9A%E5%88%86AB%E3%81%AE%E5%9E%82%E7%9B%B4%E4%BA%8C%E7%AD%89%E5%88%86%E7%B7%9A%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82" title="Create page: B%E3%81%A8%E7%9B%B4%E7%B7%9Aa%E3%81%8C%E8%A6%8B%E3%81%88%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82%E5%86%86%E3%81%AF%E9%9A%A0%E3%82%8C%E3%81%9F%E8%A6%81%E7%B4%A0%E3%81%A8%E3%81%97%E3%81%A6%E8%BF%BD%E5%8A%A0%E3%81%95%E3%82%8C%E3%81%A6%E3%81%8A%E3%82%8A%E3%80%81%E8%A6%8B%E3%81%9F%E3%82%8A%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8C%E3%80%81%E7%9B%B4%E7%B7%9Aa%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E6%B1%BA%E3%82%81%E3%82%8B%E3%81%AE%E3%81%AB%E7%94%A8%E3%81%84%E3%82%89%E3%82%8C%E3%81%BE%E3%81%99%E3%80%82%E7%82%B9A%E3%81%A8B%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%81%A8%E3%82%8F%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82%E7%9B%B4%E7%B7%9A%E3%81%AF%E3%81%84%E3%81%A4%E3%82%82%E7%B7%9A%E5%88%86AB%E3%81%AE%E5%9E%82%E7%9B%B4%E4%BA%8C%E7%AD%89%E5%88%86%E7%B7%9A%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%80%82" class="wiki wikinew">?</a><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro4J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3> 再定義</h3>
+<div id="supi"><span class="img"><img alt="" src="buttonsback/solder.png" border="0"  align="left" /></span></div><br />
+あなたは、三角形の三辺の垂直二等分線をどのように引きますか? まず、「線分を加える」で三角形ABCを描き、先ほどの方法で、複写／貼付 をすると点と垂直二等分線の組を早く描くことができます。 しかし、垂直二等分線を３回貼付けるだけでは不十分です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro5J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+３回続けて貼付けをすると、3組の点のペアと垂直２等分線ができています。うまい具合に、すこしずつずらして置かれています。ここで <span class="img"><img alt="" src="buttonsback/solder.png" border="0"  /></span> <a title="no description" href="tiki-cindydoc.php@page=Redefine+PointJ.html" class="wiki">点の再定義</a> を用います。モードメニューから <a title="no description" href="tiki-cindydoc.php@page=Redefine+PointJ.html" class="wiki">点の再定義</a> を選ぶか、「点の取り付け/取り外し」ボタンをクリックして点の再定義モードに移り、<!-- latexreplace $A'$ to $A$, $B'$ to $B$, $B''$ to $C$, $A_3$ to $B$ and $B_3$ to $C$ -->A' を Aに, B' を Bに, A'' を Aに, B'' を Cに, A3 を Bに, そして B3 を Cに<!-- /latexreplace --> 、それぞれドラッグしていきます。すると、先ほど貼付けてできた点は、もとの三角形の頂点と同じになり、３辺の垂直２等分線が完成します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro6J.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h2> ツールを自前で作る</h2>
+<br />
+複写/貼付を伴う作業は、作図で繰り返し使われます。もし、部分的な作図を何度も使いたい場合は、新しいツールを作るという便利な方法があります。新しいツールとして定義したい要素を選択して、 "編集/選択項目からツール作成" を選びます。先ほどの垂直２等分線の例でいうと、次のようなダイアログが出ます。 ここで、このツールの名前と説明を書きます。アイコンは自動的に作成されます。<br />
+（なお、図では日本語で「垂直二等分線」となっていますが、そのままでは日本語入力はできません。他のワープロソフトなどを開いてそちらで入力し、カットアンドペーストで複写します）<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Makro7J.png" border="0"  width="600" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+ツールが作られたことを確かめたならば、これ以降、ツールバーからこのツールを利用できます。作成したツールはファイルに保存でき、スクリプトメニューの対応するメニュー項目を使っている他の図に読み込むことができます。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 25 of February, 2012 [10:51:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Copy%2C%20Paste%2C%20and%20MacrosJ">
+    http://doc.cinderella.de/tiki-index.php?page=Copy%2C%20Paste%2C%20and%20MacrosJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

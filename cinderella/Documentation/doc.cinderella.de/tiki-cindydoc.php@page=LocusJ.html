@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : LocusJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 軌跡</h2>
+<!--latexreplace<br />
+\index{locus}<br />
+\index{add locus}<br />
+\index{mode!locus}<br />
+--><!-- /latexreplace --><br />
+<h4> 軌跡を描く</h4>
+<!--latexreplace<br />
+\index{mover}<br />
+\index{road}<br />
+\index{tracer}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/locus.png" border="0"  align="left" /></span></div> 軌跡とは、図中のある点を動かすことにより描かれる、他の特定の点が動く跡のことです。 軌跡の定義は、次の3つにより確定します。<br />
+<br />
+<br />
+<ul><li> <b>動かす点</b>とは、直線や円の上を自由に動くことのできる自由点です。
+</li><li> <b>動かす道</b>とは、動かす点が動くことのできる直線や円のことをいいます。 動かす点はその道の上を動きます。
+</li><li>  <b>軌跡を描く点</b>とは、動かす点が動かす道の上をくまなく動いた時に、計算の結果軌跡を描く点のことです。
+</li></ul>
+<br />
+動かす点、動かす道、軌跡を描く点の順番でクリックして要素を指定することになります。 しかし、もし自由要素の中でも制約のある場合、つまり「直線の上を自由に動く点」 「円の上を自由に動く点」「定点を通る直線」を指定するとシンデレラは動かす道が1つしかないと 認識して自動的に選択します。 (訳者中：この時、特に注意しなければならないのは、「定点を通る直線」の場合、動かす点とは 動かす直線のことを意味し、動かす道とは定点のことを意味する、ということです。原文では 「動かす点= mover」「動かす道 = road」ですが、この訳がよりわかりやすいと思いました)． 最下段のメッセージに注意して、順番に要素を指定してください．<br />
+<ul><li> <b>「動かす点」= 直線上の自由点、「動かす道」=直線:</b> 点が直線の上をくまなく動きます。
+</li><li> <b>「動かす点」= 円上の自由点、「動かす道」= 円:</b> 点が円の上をくまなく動きます。
+</li><li> <b>「動かす点」= 線分上の自由点、「動かす道」=線分:</b> 点が線分の上をくまなく動きます。
+</li><li> <b>「動かす点」= 円弧上の自由点、「動かす道」=円弧:</b> 点が円弧の上をくまなく動きます。
+</li><li> <b>「動かす点」= 定点を通る直線、「動かす道」 = 点:</b> 定点を通るすべての直線について考えます。
+</li></ul>
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Locus1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>トロコイド曲線</b></td></tr></table><br />
+<br />
+(訳註：このトロコイドを作図するのには数学の 知識とちょっとした作図の裏技が必要です。最初からトロコイドを描く専用のモードがあるわけではないことを注意しておきます。また、これを試行錯誤で描くことはとても難しいでしょう。)<br />
+<br />
+シンデレラでは、軌跡を描く点として、特別に直線を選択することもできます。 この場合には、包絡線が描かれます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Locus2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>円形の鏡の内部における光線の包絡線</b></td></tr></table><br />
+<br />
+(訳註：この包絡線の絵を書くのにも数学の知識とちょっとした裏技が必要です。)<br />
+<br />
+また、要素の軌跡は代数曲線の実平面上の枝であると言うことができます。 シンデレラではその枝全体を画面上に描くように組まれています。 (訳註：枝というのは数学用語で、複数個の値をとる計算においてその値の1つ1つを枝と呼びます。)<br />
+<br />
+<h2> 軌跡とインスペクタ</h2>
+<!--latexreplace<br />
+\index{inspect!locus}<br />
+\index{color!of a locus}<br />
+--><!-- /latexreplace --><br />
+<b>シンデレラ1.4</b>に比べ、シンデレラ2での軌跡モードはずっと柔軟で強力になりました。新しい機能のほとんどは <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>からアクセスできます。ここでは、どんなことができるか、簡単に説明します。より詳しい説明については、 例題<a href="https://doc.cinderella.de/tiki-editpage.php?page=Cinderella+by+ExampleJ" title="Create page: Cinderella+by+ExampleJ" class="wiki wikinew">?</a> を参照してください。<br />
+<br />
+インスペクタの表示タブを開くと、次のようなウィンドウになります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/LocusInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>軌跡の表示インスペクタ</b></td></tr></table><br />
+<br />
+通常、軌跡は線で描かれますので、色と、表示/非表示、線の幅だけが関係します。<br />
+しかし、 シンデレラ２ では、軌跡を描く要素の標本をスナップショットとして表示することができます。この場合、点の軌跡は点列として描かれます。そのため、点の外観も関係してきます。軌跡の表示は、インスペクタの下方の「軌跡の属性」で設定されます。３つのチェックボックスは次のような意味です。<br />
+<br />
+<ul><li> <b>もとの形を使う:</b> このボックスがチェックされていると、線の代わりにもとの図形が足跡として描かれます。
+</li><li> <b> 軌跡を描く点のデータを使う:</b> このボックスがチェックされていると、軌跡を描く点のデータがそのまま使われます。特に、外観はそのまま保たれます。
+</li><li> <b>アニメーションで再計算する:</b> このボックスがチェックされていると、アニメーションをしながら、実際のデータと動かす点の位置で軌跡は常に更新されます。
+</li></ul>
+<br />
+解像度スライダーは、軌跡の標本点の数をコントロールします。<br />
+<br />
+新しい軌跡の特徴をすこしでも理解するために、次の図を見てください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Locus4aJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>式による表示</b></td></tr></table><br />
+<br />
+次の２つの図は、同じ軌跡を異なる方法で表示したものです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern.7cm}c@{\kern.7cm}c}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.8466666666666667in">width=1.8466666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Locus4} &amp;\includegraphics<a class="wiki external"  href="width=1.8466666666666667in">width=1.8466666666666667in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Locus5}\\</tt><br />
+{\small\it  Plain locus} &amp;  {\small\it Colored trace}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Locus4.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Locus5.png" border="0"  /></span></td>
+      </tr>
+      <tr>
+	<td><b>単純な表示</b><br></td> <td width=10></td>
+	<td><b>色をつけた表示</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+左側が単純な表示です。次の行<br />
+<div dir="ltr"><pre class='codelisting'>
+D.color=hue(B.angle/pi/2)
+</pre></div><br />
+を <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のパネルに書くと、軌跡を描く点は、動かす点の角度によって色を変えます。それから、「もとの形を使う」と「軌跡を描く点のデータを使う」をチェックしたのが右の図です。このようにすれば、軌跡の８の字がどのように描かれるかがよくわかるでしょう。<br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+動く点、動かす道、軌跡を描く点を指定することにより、軌跡(または包絡線)を描くことができる．<br />
+<br />
+<h3>注意</h3>
+軌跡を計算させる時に、画面が一時的に止まってしまう ことがあります。 しかしこれはコンピュータの性能が悪いとか、シンデレラにプログラムミスがあるとか、シンデレラの作者が悪いとか、ということではありません． 正しい軌跡をすべての場合にわたって描くことは困難を伴うものであり、シンデレラでは万全を期すために、時間はかかりますが綿密な計算を繰り返しているのです。 プログラム作者としては、できる限り早く軌跡を表示できるアルゴリズムを使っていますが、それでも限度があるので、了承してください． 数学的な厳密さを犠牲にしたくないのです。<br />
+<br />
+<h3> こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=AnimationJ.html" class="wiki">アニメーション</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Traces+and+ArrowsJ.html" class="wiki">足跡</a>
+</li></ul>
+<br />
+(阿原)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [07:40:45 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=LocusJ">
+    http://doc.cinderella.de/tiki-index.php?page=LocusJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : General Use of TransformationsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>変換の一般的な使い方</h2>
+<!--latexreplace<br />
+\index{transformation!defining a}<br />
+\index{transformation!applying a}<br />
+\index{transformation!selecting a}<br />
+\index{map}<br />
+--><!-- /latexreplace --><br />
+変換の使い方を、簡単な平行移動を例に説明していきます。変換の生成は次の二段階で成り立っています。:<br />
+<br />
+<ul><li> まず、変換は適切な変換モードにより定義される必要があります。
+</li><li> 次に、一度変換が定義される、任意の幾何学的なオブジェクトに適用されます。
+</li></ul>
+<br />
+動かすモードで動かしている間、変換のは変換されたオブジェクトが動くに応じて最新のものに変えられます。<br />
+<br />
+<h3>変換の定義</h3>
+<br />
+一般的な幾何学モードでは、どのように変換を定義するかはあなたが定義したい変換のタイプに依存します。平行移動は<i>A</i>と<i>B</i>という二つの点をクリックすることで定義されます。この平行移動は<i>A</i>から<i>B</i>へと動く幾何学的な移動に相当します。<br />
+<br />
+例に沿って考えていきましょう。:すでに<i>A</i>と<i>B</i>という点は描かれているものと想定します。平行移動を定義するためには変換のメニューから平行移動モードを選択する必要があります。点<i>A</i>をクリックした後、平行移動を作図するための視覚的なヒントとして矢印が現れます。その後、点<i>B</i>をクリックして下さい。すると、小さい長方形の<b>ビューボタン</b>が現れます。これは、さらに平行移動を行うためのボタンです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo1}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo2}  &amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo3}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo4} \\</tt><br />
+{\small\bf First selection:  } &amp;  {\small\bf  Moving the mouse:}&amp;  {\small\bf Move to second point:}&amp;  {\small\bf Second selection:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it The first point of the  } &amp;  {\small\it An arrow hint}&amp;{\small\it  The arrow helps you.}&amp;{\small\it  The translation}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it translation is selected.} &amp;  {\small\it  is shown.}&amp;  {\small\it  }&amp;{\small\it is created. }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo1.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo4.png" border="0"  width="150" /></span></td>
+ </tr>
+<tr> <td><b>始点の選択:</b><br>   始点となる点を<br>選択します。</td><td></td>
+<td><b>マウスを動かす:</b><br>   ヒントとなる矢印が<br> 現れます。</td><td></td>
+<td><b>次の点に移る:</b><br>   矢印が手伝ってくれます。<br> </td> <td></td>
+<td><b>終点の選択:</b><br>   これで変換が作られました。</td> </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+ビューボタンは変換を表すもので、一般的な幾何学モードのボタンと同じように動作します。そのボタンを押すことで、現在選択されている要素にその変換を作用させることができます。<br />
+<br />
+<br />
+<h3>変換の利用</h3>
+<br />
+変換を定義した後、その変換を使うことができます。そのためには <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a>という、選択モードとしても使われるモードへ移る必要があります。では、ひとつまたはいくつかの要素をクリックして選んだとします。もし、同時に多くの選択をしたいのなら、Shiftキーを押したままにしなくてはいけません。平行移動によって描きたい要素を選択した後、ただ自分の使いたい変換のビューボタンを押せばよいのです。この方法で変換された要素が作られます。それらは自動的にもとの図形と同じ外見を持ちます。その上、それらは自動的に選択された状態になっているので、簡単にそれらをもう一度変換させることができます。<br />
+<!--latexreplace<br />
+<tt> $$</tt><br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo5}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo6}  &amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo7}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo8} \\</tt><br />
+{\small\bf Select the preimage:  } &amp;  {\small\bf  Move the mouse:}&amp;  {\small\bf Click the trafo:}&amp;  {\small\bf Another click:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it You must do this in  } &amp;  {\small\it  If you move over}&amp;{\small\it  This maps the}&amp;{\small\it  Maps the mapped}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it move mode. } &amp;  {\small\it  a transformation,}&amp;  {\small\it   element.}&amp;{\small\it elements again. }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   } &amp;  {\small\it  it is highlighted. }&amp; {\small\it   }&amp; {\small\it }&amp;\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo5.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo6.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo7.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo8.png" border="0"  width="150" /></span></td>
+ </tr>
+<tr> <td><b>もとの図形を選ぶ:</b><br>   この動作は動かすモードで<br> 行う必要があります</td><td></td>
+<td><b>マウスを動かす:</b><br> 変換ボタン上にくると<br> ハイライトします。</td><td></td>
+<td><b>変換をクリックする:</b><br> 変換された図形が<br> 表示されます</td> <td></td>
+<td><b>もう一度クリックする</b><br>  さらに変換された図形が<br> 表示されます。</td> </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<h3>変換のパラメータを変更する</h3>
+<br />
+変換は動的なオブジェクトです。 もしももとの図形の位置が変わると、変換された要素もそれに従って更新されます。もしもこの例で、 点<i>A</i> や点 <i>B </i>が移動されると、変換された円も同じように動いていきます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GenTrafo9.png" border="0"  /></span></td></tr><tr><td class="caption"><b>平行移動の変更</b></td></tr></table><br />
+<br />
+<br />
+<h3>変換の選択</h3>
+<br />
+時々、変換を<b>選択</b>することが必要となってきます。これは動かすモードでも行うことができます。しかしながら、変換を選択するには、クリックするときにShiftキーを押しておかなければなりません。選択された変換は<a title="no description" href="tiki-cindydoc.php@page=Transformation+GroupsJ.html" class="wiki">変換群</a> や <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+SystemsJ.html" class="wiki">反復関数系</a>での入力パラメータとして使われます。<br />
+<br />
+<br />
+<hr />
+<br />
+<h3>See also</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+SystemsJ.html" class="wiki">反復関数系</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Transformation+GroupsJ.html" class="wiki">変換群</a>
+</li></ul>
+<br />
+<br />
+(横山)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 30 of July, 2011 [11:58:12 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=General%20Use%20of%20TransformationsJ">
+    http://doc.cinderella.de/tiki-index.php?page=General%20Use%20of%20TransformationsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

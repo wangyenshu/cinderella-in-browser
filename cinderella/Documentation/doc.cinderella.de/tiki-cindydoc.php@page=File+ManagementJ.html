@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : File ManagementJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>ファイル管理</h2>
+<!-- latexreplace<br />
+\index{files}<br />
+\index{input}<br />
+\index{output}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+　CindyScriptでファイル操作を行なういくつかの方法があります。しかし、これらのコマンドはHTMLページのアプレットでは動作しないことを注意してください。<br />
+<br />
+<hr />
+<hr />
+<h3>データの読み込み</h3>
+<br />
+<A NAME="setdirectory"></A><br />
+<h4>ディレクトリを設定する: <span style="color:red;"><code>setdirectory(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、これ以降のファイルのディレクトリを設定します。ファイルの読み書きをするときは、対象となるディレクトリを設定してから行ないます。設定しない場合はエラーとなります。<br />
+<br />
+<b>例：</b> Windowsでデスクトップにディレクトリを設定する場合、たとえば<br />
+　　　setdirectory(C:¥Documents and Settings\ユーザー名\デスクトップ);<br />
+のようにします。デスクトップのディレクトリは、Windowsのバージョンによって異なりますので確かめてください。<br />
+Macintoshの場合も同様ですが、 Cinderella をデスクトップに置いてあれば<br />
+　　　setdirectory("../../../../");<br />
+でデスクトップを指定できます。Cinderellaがあるのと同じフォルダです。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="load"></A><br />
+<h4>データの読み込み: <span style="color:red;"><code>load(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子の引数  <code><string></code> はファイル名とします。ディレクトリ名を含んでも構いません。 ファイル名が正しければ、ファイルに含まれる全情報が文字列として返されます。この演算子は <code>tokenize</code> とともに、データを解析するのに有用です。データは <code>setdirectory</code>  で指定されたディレクトリから読まれます。<br />
+<br />
+<b>例:</b>  ファイル <code>LoadDemo.txt</code>  には次のデータが入っているものとします。<br />
+<br />
+<code>abc,gfdg;1,3,5.6,3.141;56,abc,xxx,yyy</code><br />
+<br />
+次のコードは、データを読み込んで  ";" と "," によりトークン化されたリストを作ります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=load("LoadTest.txt");
+y=tokenize(x,(";",","));
+apply(y,println(#));
+</pre></div><br />
+<br />
+結果として次のものを出力します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[abc,gfdg]
+[1,3,5.6,3.141]
+[56,abc,xxx,yyy]
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="import"></A><br />
+<h4>プログラムコードの読み込み: <span style="color:red;"><code>import(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子の引数 <code><string></code>はファイル名とします。ディレクトリ名を含んでも構いません。ファイル名が正しければ、ファイルの内容は <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> のコードとして解析され、実行されます。こうして、あらかじめ定義された関数ライブラリを読み込むことができます。 <code>import</code> 演算子は CindyScript の "Initialization"  スロットだけで運用するのがよいでしょう。そうでないと、動作のたびに読み込まれることになります。<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>ファイルへの書き出し</h3>
+<br />
+　Cindy script のスクリプトをファイルへ書き出すこともできます。よく使われるのは次の手順です。<br />
+<br />
+<ul><li> 1. setdirectory()関数を用いてディレクトリを指定する。
+</li><li> 2. ファイルを開く
+</li><li> 3. ファイルに書く
+</li><li> 4. ファイルを閉じる
+</li></ul>
+<br />
+これは次の命令で行ないます。<br />
+<br />
+<hr />
+<br />
+<A NAME="openfile"></A><br />
+<h4>ファイルを開く: <span style="color:red;"><code>openfile(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 指定した名前のファイルを開きます。戻り値はprint命令で必要なファイルハンドルです。<br />
+<br />
+<hr />
+<br />
+<A NAME="printlnln"></A><br />
+<h4>ファイルに書いて改行する: <span style="color:red;"><code>println(&#60;file&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>println(...)</code> と同様ですが、  <code>&#60;file&#62;</code> で指定したファイルに書き出します。<br />
+<br />
+<hr />
+<br />
+<A NAME="print"></A><br />
+<h4>ファイルに書く: <span style="color:red;"><code>print(&#60;file&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> <code>print(...)</code> と同様ですが <code>&#60;file&#62;</code> で指定したファイルに書き出します。<br />
+<br />
+<hr />
+<br />
+<A NAME="closefile"></A><br />
+<h4>ファイルを閉じる: <span style="color:red;"><code>closefile(&#60;file&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> ファイルを閉じます。<br />
+<br />
+<b>例:</b> 次の例は、ファイルに書き出す一連の手順を示します。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+setdirectory("../../../../");
+f=openfile("myFile");
+println(f,"Here are some numbers");
+forall(1..15,print(f,#+" ");
+println(f,"");
+closefile(f);
+</pre></div><br />
+<br />
+これにより、次のような内容のファイルが作られます。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+Here are some numbers
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+</pre></div><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3>HTMLとの連携</h3>
+<br />
+<A NAME="openurl"></A><br />
+<h4>Webページを開く: <span style="color:red;"><code>openurl(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  &#60;string&#62;のWebページをブラウザで開きます。<br />
+<br />
+<br />
+<A NAME="javascript"></A><br />
+<h4>javascriptを呼びだす: <span style="color:red;"><code>javascript(&#60;string&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{JavaScript}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>説明:</b>  書き出されたアプレットにおいて、ブラウザの Javascript 環境での命令を呼びだします。この命令の内容は <code>&#60;string&#62;</code> に書きます。スタンドアロンのアプリケーションでは何もしません。<br />
+<br />
+<b>例:</b> 次のコードでは、ブラウザ上にポップアップウィンドウを表示してメッセージを出します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+  javascript("alert('Hi from Cinderella!!')");
+</pre></div><br />
+<br />
+<hr />
+<h3> ネットワーク</h3>
+<!-- latexreplace<br />
+\index{TCP}<br />
+\index{networking}<br />
+\index{communication}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+シンデレラでの TCP コマンドはほんの簡単なものだけです。しかしネットワークの基本的な機能はあります。インターネット上でデータを送受信することができるはずです。<br />
+<br />
+<h4>TCP ポートを開く: <span style="color:red;"><code>openconnection(&#60;string&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<b>説明:</b>  第１引数で指定されたサーバーへのTCP接続を行い、第２引数で指定されたポートを開きます。戻り値は、このネットワーク接続へのハンドルです。<br />
+<br />
+<h4>TCP へ書きだす: <span style="color:red;"><code>print(&#60;handle&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<h4>TCPへ書きだす: <span style="color:red;"><code>println(&#60;handle&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<b>説明:</b>   <code>print</code> と <code>println</code> 関数は、ファイルだけでなく <code>openconnection</code>によって作られるネットワークへも書き出しを行ないます。<br />
+<br />
+<h4>TCP ポートへの出力と消去: <span style="color:red;"><code>flush(&#60;handle&#62;)</code></span></h4>
+<br />
+<b>説明:</b>  与えられた接続への出力バッファを消去します。<br />
+<br />
+<h4>TCP 接続からの読み込み: <span style="color:red;"><code>readln(&#60;handle&#62;)</code></span></h4>
+<br />
+<b>説明:</b>  与えられた接続から行を読みます。もしデータがなければ5秒後にタイムアウトします。<br />
+<br />
+<h4>TCP 接続を閉じる: <span style="color:red;"><code>closeconnection(&#60;handle&#62;)</code></span></h4>
+<br />
+<b>説明:</b>  与えられたハンドルの接続を閉じます。<br />
+<br />
+<br />
+<b>例:</b>次のコードでは、Webサーバを開いて、そこからHTMLコードを読み出します。<br />
+<div dir="ltr"><pre class='codelisting'>
+x=openconnection("cermat.org",80);
+println(x,"GET /");
+y="";
+while(!isundefined(y),y=readln(x);println(y));
+closeconnection(x);
+</pre></div><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 13 of April, 2012 [10:51:18 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=File%20ManagementJ">
+    http://doc.cinderella.de/tiki-index.php?page=File%20ManagementJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

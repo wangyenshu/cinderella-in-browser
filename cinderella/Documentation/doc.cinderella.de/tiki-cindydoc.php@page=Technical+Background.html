@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Technical Background 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Technical Background</h2>
+<b><i>This section from the original 1999 manual is reproduced here for historic reasons.</i></b><br />
+<br />
+Normally you would, and should, not care about the programming language and other technical details of software you just want to use. Nevertheless, we want to tell you about the computer science background of <i>Cinderella</i>.<br />
+<br />
+<br />
+<!--latexreplace<br />
+\index{Java}<br />
+--><!-- /latexreplace --><br />
+<i>Cinderella</i> was written in Java, the platform independent programming language developed by Sun Microsystems. This means that the software can be run on any computer, irrespective of its operating system, provided that there is a thing called the "Java Virtual Machine" (JVM) for this system. These Java Virtual Machines are available from Sun Microsystems for Windows 95/98/NT and Solaris, and there exist ports for Linux, OS/2, MacOS, BeOS, AIX, HP-UX and many more. In fact, you probably already have a JVM installed on your computer, since Netscape Navigator and Microsoft Internet Explorer have a built-in JVM. This, in turn, means that you can run Java programs inside a web browser. These programs are known as "Applets".<br />
+<br />
+<br />
+We do not want to explain Java in full detail here, instead we recommend the official Java home page at <a href="http://www.javasoft.com">http://www.javasoft.com</a> as a starting point for further reading.  However, we do want to tell you about some of the consequences of choosing Java for <i>Cinderella</i>.<br />
+<br />
+<br />
+<!--latexreplace<br />
+\index{operating system}<br />
+--><!-- /latexreplace --><br />
+It is a fact that, although Microsoft Windows is the dominating operating system today, many mathematics departments have a variety of Unix workstations. Even within the same working group you can find a mixture of different systems. Java enables everybody, regardless of the choice of platform, to use <i>Cinderella</i> in the same way. It is even possible to install and use the <b>same code on all of your computers</b>.  For us, we could use our favorite operating system (Linux) for development, and at the same time we were sure to reach the largest possible audience.<br />
+<br />
+<br />
+Second, the fact that you can run Java software inside web browsers has been used for the web export functionality of <i>Cinderella</i>. This means that you can publish constructions easily, spice up your personal home page with animations, or assign construction homework to your students. Our <a href="https://doc.cinderella.de/License.html#start">license agreement</a> gives you great freedom in redistributing the necessary parts of <i>Cinderella</i>, but please obey the few restrictions that come with it.<br />
+<br />
+<br />
+Java is an <b>interpreted</b> language, as opposed to <b>compiled</b> languages like C or C++, which are the usual languages used for most software. Interpreted languages have some technical advantages, but they suffer from an additional translation step which slows the program down. Java (or the virtual machine) has been tuned a lot for performance, and the performance gap is not as large as it was when our project started. Still we had to do a lot of optimization by hand to create acceptable speed, and the "interactive feeling", of <i>Cinderella</i>.<br />
+<br />
+<br />
+Sometimes you'll notice a short delay when you move a point. Do not blame your computer, Java or <i>Cinderella</i>. These delays are caused by extremely complex calculations which are necessary to get the correct result or the correct screen representation after a movement. The generation of correct loci is one reason for that; many intersections involving conicals are the other. We tried our best to speed up these calculations, but there is a (mathematical) limit where we do not want to sacrifice accuracy for speed.<br />
+<br />
+<br />
+Finally we want to mention the tools that helped us creating <i>Cinderella</i> and this documentation. First there is <a href="http://www.xemacs.org"><b>XEmacs</b></a>, a powerful, extensible text editor, which is based on GNU Emacs, which in turn is a version of the original Emacs written by Richard Stallman in the seventies at MIT. It is definitely the best editor available, and we used it to write the whole program and all of the documentation.<br />
+<br />
+<br />
+The program itself was developed with the help of the <a href="http://www.javasoft.com/products/jdk/1.1"><b>Java Development Kit</b></a> of Javasoft, a division of Sun Microsystems, in particular with the Linux port of it (see <a href="http://java.blackdown.org/">http://java.blackdown.org</a> for more information on the Java-Linux porting project). <b>Linux</b> is a free, unix-like operating system originating from the work of Linus Torvalds, and is now continually improved by the effort of several hundred developers all around the world.<br />
+<br />
+<br />
+The parsing engine (used for loading saved constructions) was constructed with the help of <a href="http://www.antlr.org"><b>ANTLR 2.5.0</b></a>, a public-domain Java/C++ parser generator, written by Terence Parr of the MageLang institute.<br />
+<br />
+<br />
+Post-optimization and compression of the code was done with <a href="http://www.alphaworks.ibm.com"><b>Jax</b></a> from alphaworks, the research division of IBM. We want to thank the Jax team, in particular Frank Tip, for their help and IBM for the permission to use Jax commercially.<br />
+<br />
+<br />
+The <b>Concurrent Versions System (CVS)</b> by <a href="http://www.cyclic.com">Cyclic Software</a> did most of the version merging (and saved us from a lot of headaches). It is free software, too.<br />
+<br />
+<br />
+Thanks to the "browser war" between Microsoft and <a href="http://www.netscape.com">Netscape</a>, the licensing terms for redistributing <b>Netscape Navigator</b> allow us to ship a Java-1.1 compatible browser with <i>Cinderella</i>.<br />
+<br />
+<br />
+The documentation of <i>Cinderella</i>, both the printed manual and the online version, were written with XEmacs in HTML. We used the same files for the printed version and the screen representation. The design of the web pages uses Cascading Style Sheets (CSS); the hardcopy was created using a whacked version of <a href="http://www.tdb.uu.se/~jan/html2ps.html"><b>html2ps</b></a> by Jan Karrman.<br />
+<br />
+<br />
+The icons and images used in <i>Cinderella</i> were designed by ourselves with <a href="http://www.gimp.org"><b>The GIMP</b></a> (GNU Image Manipulation Program), written by Peter Mattis and Spencer Kimball. In our view it is one of the most impressive freely distributed pieces of software. The additional figures in the documentation were created with <i>Cinderella</i>, of course, and <a href="http://www.povray.org"><b>Povray</b></a>, a free 3D raytracing software, and some PostScript hacking.<br />
+<br />
+<br />
+Two people deserve special mention: <a href="http://www.javasoft.com/people/jag"><b>James Gosling</b></a>, the creator of the Java programming language, and <a href="http://www.jwz.org"><b>Jamie Zawinski</b></a>, responsible for the first Unix versions of Netscape Navigator. They are both connected to XEmacs in a special way: James Gosling did the first C-implementation of Emacs, known as GOSMACS, and Jamie Zawinski was the person responsible for XEmacs versions 19.0 to 19.10, which was at that time a collaborative work of Lucid (now out of business) and Sun Microsystems (sic!).<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:29:34 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Technical%20Background">
+    http://doc.cinderella.de/tiki-index.php?page=Technical%20Background
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

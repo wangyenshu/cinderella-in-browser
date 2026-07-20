@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Preface to Cinderella.2.0J 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<!-- latexreplace \section*{Preface to Cinderella 2.0} --><br />
+<h2>Cinderella.2.0 への序文<!-- /latexreplace --></h2>
+<br />
+<!-- latexreplace \smallskip\rightline{\small\it{I may not always be perfect, but I am always me!}}\smallskip --><br />
+<i>I may not always be perfect, but I am always me!</i><br />
+<!-- /latexreplace --> <!-- latexreplace \smallskip\rightline{\small\it{Found on a t-shirt}}\bigskip --><br />
+<i>Found on a t-shirt</i><br />
+<!-- /latexreplace --><br />
+<br />
+<hr />
+<br />
+1998年にシンデレラの最初のリリースをしてから7年半が経ちました。その間に、プロジェクトは私たち自身が予期しなかったいくつかの変貌を遂げました。私たちは今、シンデレラが<b>シンデレラ２</b>となって、すっかり新しくなったことを感じます。<br />
+<br />
+ある意味で、シンデレラのプログラミングは "終わりのない物語" であることがわかりました。付け加えたい機能や、改善したいこと(デバッグも含め)が常にあるのです。ですから、現在の版は決して完全なものではなく、残念ながらまだ日の目を見ていないような新しい特徴もあります。<br />
+<br />
+新しい版から何が期待されるでしょうか。まず第一に、最も明らかな変化は、シンデレラの幾何学部分がかなり改善されたとはいえ、それだけにはとどまらないということです。現在の版は３つの主要部分からなります。それは <b>Cinderella</b> &#150; 幾何学エンジン <b><!--latexreplace {\it CindyScript} -->CindyScript<!-- /latexreplace --></b> &#150; 関数型プログラミング言語、そして <b><!--latexreplace {\it CindyLab} -->CindyLab<!-- /latexreplace --></b> &#150; 物理シミュレーションエンジンです。一見すると、これら３つの部分は互いにほとんど独立して使うことができるように思います。しかし <a title="no description" href="tiki-cindydoc.php@page=Dynamic+GeometryJ.html" class="wiki">動的な幾何学</a> <a title="no description" href="tiki-cindydoc.php@page=CindyScriptJ.html" class="wiki">CindyScript</a> そして <a title="物理シミュレーション　CindyLab" href="tiki-cindydoc.php@page=CindyLabJ.html" class="wiki">CindyLab</a> は、互いに協力し、それぞれの利点をできるだけ生かすように設計されています。 (新しいロゴをご覧いただけたでしょうか。それはいろいろの方法で互いに相互作用する３つの部分を象徴しています)。 この最終的なデザインに至った経過はエキサイティングな物語ではありますが、それを書くには紙数が足りません。一言で言えば、それは長い道のりでした。ユーザーからの要求、クールなソフトウェアにしたいという私たち自身の欲求、科学的な視覚化とマルチメディアに関して昼夜繰り返される会議。それらは、時には行き詰まりながらも実り多い日々でした。<br />
+<br />
+シンデレラ の幾何学部分はかなり改善されました。変換と変換群が追加されました。円錐曲線を描く方法が増えました。フラクタルを扱うことも可能です。また、正多角形を直接描くこともできます。変換と変換群は先進的な図を描くのにおおいに役立つことがわかりました。私たちはユーザーの皆さんがそれらの概念を利用することを勧めます。一番リクエストが多かったのは "マクロ"でした。シンデレラ２では、既存の図の一部を再利用する、複写/貼付/再定義をマクロ化できます。それをツールバーのボタンにしてしまうこともできます。<br />
+<br />
+<b><!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --></b> は、シンデレラの図の中の点が質量を持つ点として振舞い、線分がバネやその他の物理的な力を発生させるものとして振る舞うような環境を提供します。<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> は、粒子と質量、力に関するシミュレーションをするだけのものではありますが、それは実に強力な道具です。私たちはすでに複数の恒星を持つ惑星系や不思議な動作をする機械、ビリヤードのシミュレーションなど多くのことを楽しんでいます。<br />
+<br />
+最後に、 <b><!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --></b> は幾何学のアプリケーションとして設計された関数型プログラミング言語ですが、実は数学の他の分野でも利用できるように設計されているのです。<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> はシンデレラでも関数のグラフを描きたいという欲求から生まれました。コンピュータ・サイエンスでは、問題に対する単純な解から出発した技術が他に波及するということがよくあるのです。ざっとこんな具合でした。「式も計算したいね」-「どうして点の位置を操作するのにこれを使わないんだい?」 「制御機構を加えようよ」「行列も扱えるといいな」・・・　「リストを使おう」・・・「再帰的定義はどうだ」・・・「関数のグラフ機能を強化しよう」　こうして、フル機能で、数学的に根拠のある関数型の、リアルタイムで高水準なプログラミング言語ができあがったのです。プログラミング言語と連動して、動的な幾何学の環境がどのくらいその長所を活かせるか、まったく想像ができません。しかし、学生たちがすでに<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->を使っていろいろなことをおこなっているのを見て、とても驚いています。私たちは、すべての読者が本当にクールで予想外のアプリケーションをこのツールで作り出すことを勧めます。<br />
+<br />
+なお、これら３つの部分とは別に、いくつかの優れた付属品があります。たとえば、シンデレラ２はペンタブレットやインタラクティブホワイトボードやPDAによる手書き認識をサポートしています。 また、最初のリリース以来プロジェクトの一部であった幾何学的な練習問題は、大いに改善されました。<br />
+<br />
+最終版に盛り込めなかったものがいくつかあります。それは安定性の問題です。われわれは、それらが正しく動くようになったら数ヶ月後ごとに加えていくつもりです。予定しているのは次のようなものです。 幾何学の基底についての本格的なサポート、シンデレラの操作の記録ツール (<b>CINErella</b>)、ハードウェアシミュレータなどなど。したがって、頻繁にアップデートを確認して更新することを勧めます。<br />
+<br />
+シンデレラ２を作るにあたって、コメント、ユーザーフィードバック、β版のテストなどで実に多くのかたがたの助力を得ました。なんといっても、私たちの家族に第一に感謝をしたい。シンデレラのために、私たちは多くの余暇をあてました。そのため、父親として、あるいは夫としての時間を家族に与えることができませんでした。数えきれないほどの週末と夜の時間を新しい機能の追加やバグ退治のために費やしました。 私たちは、これからの人生を他の大切なことにも多くの時間を割けるようになることを望んでいます。<br />
+<br />
+私たちは Dirk Materlik にも感謝します。彼は図形認識についての卒業論文で私たちのチームに関わり、後期に <a class="wiki external"  href="http://www.matheon.de">Matheon</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> <a class="wiki external"  href="http://cinderella.de/visage">Visage project</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />の傍ら、設計の重要な問題を解決するのに助力してくれました。 ( <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>は、彼なしにはできなかったでしょう)。また、特に Gunter Gemmel にも感謝したい。彼は、 <a title="no description" href="tiki-cindydoc.php@page=CalculusJ.html" class="wiki">PSLQ algorithm</a>の実装を一晩でやり遂げてくれました。多くの人たちが積極的にβ版とプレβ版を使ってコメントを寄せてくれました。順不同で名前を挙げますが、失念してこの中に書けなかった人たちもいることをご容赦願います。 : Hermann Vogel, Gunter Gemmel, Martin von Gagern, Peter Lebmeir, Vanessa Krummeck, Thorsten Orendt, Andreas Fest, Carola Dietrich, Wolf Dieter Heker, David Bakin, Christof Boeckler, Gerhard Bischoff, Alexander Elkins, Dan Beaton, Camille Wormser, Franz Klement.<br />
+<br />
+最後に、特筆すべき人が二人います。ひとりは David Kramer で、ハーバードから来た私たちの編集者です。彼は、私たちが書いたドキュメントを丁寧に読み、すくなくとも言語的には理解しやすいドキュメントを仕上げる手助けをしてくれました。ありがとう David! ２番目の人は、ある意味ではほとんどシンデレラ・チームのメンバーともいってよい人です。それは Martin Peters で、私たちが信頼を寄せる、シュプリンガー・フェアラーク社の編集者です。彼は、私たちの新しい問題に対して常に聴く耳を持ち、ソフトウェアをリリースするまでには時間が必要なことを理解してくれ、公開上の問題を解決したり、いくつかの重要なコンタクトをとるのを積極的に助けてくれました。そして、最も大切なことなのですが、最良の結果であると思えることを私たち自身が決定する自由を常に与えてくれました。<br />
+Martin の忍耐と信頼に対してとても感謝しています!<br />
+<br />
+<!-- latexreplace \begin{flushleft}\it{May 2006\\<br />
+<br />
+J\"urgen Richter-Gebert<a href="tiki-editpage.php?page=Richter-Gebert" title="Create page: Richter-Gebert" class="wiki wikinew">?</a>, Munich\\<br />
+Ulrich Kortenkamp, Schwäbisch Gm\"und}<br />
+\end{flushleft}\smallskip --><br />
+<i>May 2006</i><br />
+<i>Jürgen Richter-Gebert, Munich</i><br />
+<i>Ulrich Kortenkamp, Schwäbisch Gmünd</i><br />
+<!-- /latexreplace --><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 30 of August, 2011 [11:05:03 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Preface%20to%20Cinderella.2.0J">
+    http://doc.cinderella.de/tiki-index.php?page=Preface%20to%20Cinderella.2.0J
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

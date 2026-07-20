@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : String OperatorsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>文字列演算子</h2>
+<br />
+この節では、引数が文字列である演算子をリストアップします。また、他の値から文字列を生成する演算子も扱います。<br />
+<br />
+<h3>基本的な文字列演算子</h3>
+<br />
+<h4>文字列の結合: <span style="color:red;"><code>&#60;string1&#62; + &#60;string2&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>+</code> 演算子はひとつの文字列に他のものを付け加えます。その結果は文字列になります。引数のうち少なくとも一つが文字列であれば、他の引数は自動的に文字列に変換されます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>"Cindy"+"Script"</code> </td><td class="wikicell" > <code>"CindyScript"</code></td></tr><tr><td class="wikicell" ><code>"４たす３は "+(4+3)</code> </td><td class="wikicell" > <code>"４たす３は 7"</code></td></tr><tr><td class="wikicell" ><code>""+(4+3)</code> </td><td class="wikicell" > <code>"7"</code>.</td></tr></table><br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><br />
+<b>参照:</b>  <code>+</code>  演算子は数値の加法にも用いられます。 <a title="no description" href="tiki-cindydoc.php@page=Arithmetic+OperatorsJ.html" class="wiki">算術演算子</a>を参照してください。<br />
+<br />
+<hr />
+<br />
+<A NAME="text"></A><br />
+<h4>文字列への変換: <span style="color:red;"><code>text(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は &#60;expr&#62; を評価し、結果を文字列に変換します。<br />
+<br />
+<hr />
+<br />
+<A NAME="length"></A><br />
+<h4>文字列の長さ: <span style="color:red;"><code>length(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、文字列の文字数を返します。<br />
+<br />
+<b>例:</b>  <code>length("CindyScript")</code> の結果は <code>11</code> です。<br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=ListsJ.html" class="wiki">リスト</a><br />
+<br />
+<hr />
+<br />
+<A NAME="substring"></A><br />
+<h4>文字列の抜きだし: <span style="color:red;"><code>substring(&#60;string&#62;,&#60;int1&#62;,&#60;int2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子では <code>&#60;string&#62;</code> の <code>&#60;int1&#62;</code> 文字目の次から <code>&#60;int2&#62;</code>文字目までの文字列を抜き出します。<br />
+<br />
+<b>例:</b>  <code>substring("abcdefg",3,6)</code> は <code>"def"</code>を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="indexof"></A><A NAME="indexof2"></A><br />
+<h4>文字列の検索: <span style="color:red;"><code>indexof(&#60;string1&#62;,&#60;string2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、文字列 <code>&#60;string2&#62;</code> が <code>&#60;string1&#62;</code>の中にあるかどうかを検索し、最初に見つかった位置を返します。もし  <code>&#60;string2&#62;</code> が <code>&#60;string1&#62;</code>の中になければ <code>0</code> を返します。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>indexof("CindyScript","i")</code> </td><td class="wikicell" > <code>2</code></td></tr><tr><td class="wikicell" ><code>indexof("CindyScript","y")</code> </td><td class="wikicell" > <code>5</code></td></tr><tr><td class="wikicell" ><code>indexof("CindyScript","z")</code> </td><td class="wikicell" > <code>0</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="indexof3"></A><br />
+<h4>文字列の検索: <span style="color:red;"><code>indexof(&#60;string1&#62;,&#60;string2&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、文字列 <code>&#60;string2&#62;</code> が <code>&#60;string1&#62;</code> <b>の &#60;int&#62;文字目以降</b>にあるかどうかを検索し、最初に見つかった位置を返します。もし  <code>&#60;string2&#62;</code> が <code>&#60;string1&#62;</code> の &#60;int&#62;文字目以降になければ  <code>0</code> を返します。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>indexof("CindyScript","i",1)</code> </td><td class="wikicell" > <code>2</code></td></tr><tr><td class="wikicell" ><code>indexof("CindyScript","i",3)</code> </td><td class="wikicell" > <code>9</code></td></tr><tr><td class="wikicell" ><code>indexof("CindyScript","i",10)</code> </td><td class="wikicell" > <code>0</code></td></tr></table><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h3>高度な文字列演算子</h3>
+<br />
+<h4>文字列の分解: <span style="color:red;"><code>tokenize(&#60;string&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<A NAME="tokenize"></A><br />
+<br />
+<b>説明:</b> この演算子は、入力された文字列を解析するのに大変有効です。引数 <code>&#60;string&#62;</code>の部分文字列のリストを作成します。2番目の引数 <code>&#60;expr&#62;</code> は、文字列か、文字列のリストでなければなりません。もし <code>&#60;expr&#62;</code> が文字列であれば、<code>&#60;string&#62;</code>からこの文字列を検索します。この文字列は <code>&#60;string&#62;</code> を分解するときの標識となります。<br />
+<br />
+もし &#60;expr&#62; が文字列のリストであれば、このリストを再帰的に使って  <code>&#60;string&#62;</code> の部分文字列のリストを生成します。<br />
+標識が存在しない場合、間違った結果を返すことがあります。その場合には修飾子を使います。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>tokenize("one:two--three:four",":")</code> </td><td class="wikicell" > <code>["one", "two--three", "four"]</code></td></tr><tr><td class="wikicell" ><code>tokenize("one:two--three:four","-")</code> </td><td class="wikicell" > <code>["one:two", "", "three:four"]</code></td></tr><tr><td class="wikicell" ><code>tokenize("one:two--three:four","--")</code> </td><td class="wikicell" > <code>["one:two", "three:four"]</code></td></tr><tr><td class="wikicell" ><code>tokenize("one:two--three:four",["-",":"])</code> </td><td class="wikicell" > <code>[["one", "two"], [], ["three", "four"]]</code></td></tr><tr><td class="wikicell" ><code>tokenize("one:two--three:four",["--",":"])</code> </td><td class="wikicell" > <code>[["one", "two"], ["three", "four"]]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;77777777777777777&#34;,&#34;:&#34;)")}</code> </td><td class="wikicell" > <code>[77777777777777776]</code></td></tr><tr><td class="wikicell" ><code>tokenize( &#34;77777777777777777&#34;,&#34;:&#34;,autoconvert-&#62;false)")}</code> </td><td class="wikicell" > <code>[77777777777777777]</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="replace"></A><br />
+<A NAME="replace3"></A><br />
+<h4>文字列の置換: <span style="color:red;"><code>replace(&#60;string1&#62;,&#60;string2&#62;,&#60;string3&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、&#60;string1&#62;の中の &#60;string2&#62;  をすべて &#60;string3&#62;で置き換えます。<br />
+　この演算子は、Lindenmeyerシステムと呼ばれる文字列置き換えシステムを作成するときにとても役立ちます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>replace("one:two--three:four","o","XXX")</code> </td><td class="wikicell" > <code>"XXXne:twXXX--three:fXXXur"</code></td></tr><tr><td class="wikicell" ><code>replace("F","F","F+F")</code> </td><td class="wikicell" > <code>"F+F"</code></td></tr><tr><td class="wikicell" ><code>replace("F+F","F","F+F")</code> </td><td class="wikicell" > <code>"F+F+F+F"</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="replace2"></A><br />
+<h4>文字列の置換: <span style="color:red;"><code>replace(&#60;string&#62;,&#60;list&#62;)</code></span></h4>
+<br />
+<b>説明:</b> この演算子は前のものとよく似ています。 <code>&#60;list&#62;</code> は <code>&#60;string&#62;</code>に対して、置き換えをする文字列の組合せからなるリストです。<br />
+<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>replace("XYX",[["X","one"],["Y","two"]])</code> </td><td class="wikicell" > <code>"onetwoone"</code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="parse"></A><br />
+<h4>文字列の解析: <span style="color:red;"><code>parse(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、文字列の内容を解析して、その結果を評価します。この演算子は、テキストフィールドから入力された文字列を処理するのに特に有効です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>parse("3+7")</code> </td><td class="wikicell" > <code>10</code></td></tr></table><br />
+<br />
+次のコードは、 <code>f(x)</code> を<code>sin(x)+cos(x)</code>で定義します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+text="sin(x)+cos(x)";
+f(x):=parse(text);
+</pre></div><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="guess"></A><br />
+<h4>文字列の解析: <span style="color:red;"><code>guess(&#60;number&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この非常に強力な演算子については <a title="no description" href="tiki-cindydoc.php@page=Special+OperatorsJ.html" class="wiki">特殊演算子</a>の節で詳説します。それは浮動小数点で表された数を、高い精度でその浮動小数点数を生み出す数式に変えようとします。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>guess(8.125)</code> </td><td class="wikicell" > <code>"65/8"</code></td></tr><tr><td class="wikicell" ><code>guess(0.774596669241483)</code> </td><td class="wikicell" > <code>"sqrt(3/5)"</code></td></tr></table><br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=CalculusJ.html" class="wiki">計算</a><br />
+<br />
+<hr />
+<br />
+<A NAME="format"></A><br />
+<h4>数を整形する: <span style="color:red;"><code>format(&#60;number&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、第１引数の数の小数点以下を、第２引数で指定された桁まで、文字列として整形します。最高14桁まで可能です。引数がリストの場合は、各要素に対して整形がなされます。<br />
+<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>format(sqrt(2),4)</code> </td><td class="wikicell" > <code>"1.4142"</code></td></tr><tr><td class="wikicell" ><code>format(pi,14)</code> </td><td class="wikicell" > <code>"3.14159265358979"</code></td></tr><tr><td class="wikicell" ><code>format(&#91;sin(30°),cos(30°)&#93;,3)</code></td><td class="wikicell" > <code>&#91;0.5,0.866&#93;</code></td></tr></table><br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><br />
+<b>注意:</b> format命令は、出力としての整形を行なうだけです。整形された値は文字列として扱われますので計算はできません。次の例を見てください。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>format(sqrt(2),4)+format(sqrt(2),4)</code> </td><td class="wikicell" > <code>"1.41421.4142"</code></td></tr></table><br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h2>文字列の比較と並べ替え</h2>
+数と同様、文字列も順序付けができます。したがって、演算子  <b>></b>, <b><</b>, <b>>=</b>, <b><=</b>, <b>==</b>,  <b>!=</b> を使って比較ができます。これらの演算子については <a title="no description" href="tiki-cindydoc.php@page=Boolean+OperatorsJ.html" class="wiki">ブール演算子</a> を参照してください<br />
+<br />
+文字の順序としては、辞書順を使います。たとえば、次のようになります。<br />
+<br />
+<div align="center"><code>"a"<"abd"<"abe"<"b"<"blue"<"blunt"<"xxx"</code></div><br />
+<br />
+<br />
+<A NAME="sort"></A><br />
+<h4>リストの並べ替え: <span style="color:red;"><code>sort(&#60;list&#62;)</code></span></h4>
+<br />
+<h4>リストの並べ替え: <span style="color:red;"><code>sort(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<h4>リストの並べ替え: <span style="color:red;"><code>sort(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> いくつかの<code>並べ替え</code>-演算子が文字列を含むリストを並べ替えるのに使えます。 並べ替えの順序は常に辞書順です。あるいは、文字列の長さのように、ユーザーが順序を定義することもできます。<br />
+<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>sort(["one","two","three","four","five"])</code> </td><td class="wikicell" > <code>["five","four","one","three","two"]</code></td></tr><tr><td class="wikicell" ><code>sort(["one","two","three","four","five"],length(#))</code> </td><td class="wikicell" > <code>["one","two","four","five","three"]</code></td></tr></table><br />
+<br />
+<!-- \latexreplace \noindent --><!-- /latexreplace --><br />
+<b>参照:</b> <a title="no description" href="tiki-cindydoc.php@page=ListsJ.html" class="wiki">リスト</a><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h3>文字列中の文字へのアクセスと置き換え</h3>
+<h4>指標演算子: <span style="color:red;"><code>&#60;string&#62;_&#60;int&#62;</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  リストの項目にアクセスする挿入演算子  <code>_</code> は、文字列内の特別な位置にある文字にアクセスするのにも使えます。この演算子で、文字を返したり、文字をセットしたりすることができます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>式</b></td><td class="wikicell" ><b>結果</b></td></tr><tr><td class="wikicell" ><code>"CindyScript"_5</code> </td><td class="wikicell" > <code>"y"</code></td></tr><tr><td class="wikicell" ><code>"CindyScript"_12</code> </td><td class="wikicell" > <code>_?_</code></td></tr></table><br />
+<br />
+次のコードでは、変数 <code>a</code> は <code>"CinderellaScript"</code> になります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a="CindyScript";
+a_5="erella";
+</pre></div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 11 of February, 2015 [23:12:39 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=String%20OperatorsJ">
+    http://doc.cinderella.de/tiki-index.php?page=String%20OperatorsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

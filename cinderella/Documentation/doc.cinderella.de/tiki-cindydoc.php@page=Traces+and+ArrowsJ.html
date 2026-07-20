@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Traces and ArrowsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>足跡、矢線、レンダリング</h2>
+<br />
+外観を設定するための第２の重要な情報ブロックが、ボタン <IMG SRC="../cinderella.de/files/CindyDocu/Inspector/insp_app_special.png"> にあります。 このブロックでは、足跡と矢線の設定をします。<br />
+<br />
+<br />
+<h3>足跡</h3>
+<!--latexreplace<br />
+\index{inspect!trace}<br />
+\index{trace}<br />
+--><!-- /latexreplace --><br />
+点や線を動かしたときの足跡を残すことができます。このインスペクタブロックは次のようになっています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PointApp2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>足跡インスペクタ</b></td></tr></table><br />
+<br />
+これらのコントロールの大部分は「足跡」に関連します。足跡は <b>Cinderella.2</b>での小さな拡張の一つです。 <b>any</b> オブジェクトの足跡でも描くことができます。足跡は次第に薄くなり、結果としてダイナミックな印象を残します。次の図で２種類の足跡を示します。最初の図は、組み合わせた鏡に反射してできる6つの点の足跡です。２番目の図は、アニメーションの途中にできる直線の跡です。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><IMG SRC="img/wiki_up/Trace1B.png"></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+<td ><IMG SRC="img/wiki_up/Trace2B.png"></td>
+</tr>
+<tr>
+<td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->鏡に反射する点の足跡<!--latexreplace } --> <!-- /latexreplace --> </b></td><td></td>
+<td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->直線のアニメーションの跡<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+足跡を残すには、目的の要素を選んで、 "足跡を描く" チェックボックスをチェックします。<br />
+<br />
+"足跡の長さ" は残しておく足跡の数をコントロールします。性能上の理由で、この数は1000より大きくはできません。<br />
+<br />
+通常、足跡は動いているすべての図で描きます。しかし、 "足跡の間隔" パラメータで <i>n</i> 番目の足跡だけを描くようにできます。これは、アニメーションがゆっくりしているときに役に立ちます。<br />
+<br />
+最後に、"足跡の大きさの変化" では、足跡の大きさを次第に小さくすることができます。<br />
+<br />
+<br />
+<h3>矢線</h3>
+<!--latexreplace<br />
+\index{inspect!arrow}<br />
+\index{arrow}<br />
+--><!-- /latexreplace --><br />
+線分は矢線にすることができます。矢線の外観はこのインスペクタブロックで変更できます。線分が選ばれると、インスペクタウィンドウには次のコントロールが追加されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ArrowSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>矢線コントロール</b></td></tr></table><br />
+<br />
+矢線の設定は、外観の設定と似ています。それは現在選択されている線分に適用されます。 線分のどちらの端点にでも矢印をつけることができ、4種類が用意されています。２つのスライダーは矢印の大きさと位置を設定します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ArrowExamplesB.png" border="0"  /></span></td></tr><tr><td class="caption"><b>いろいろな矢線 </b></td></tr></table><br />
+<br />
+<br />
+<h3>レンダリング</h3>
+<br />
+"レンダリング" と呼ばれている一つのチェックボックスもあります。このボックスがチェックされていると、 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> でのバネが、いかにもバネらしいぎざぎざの線で描かれます。さらに、このチェックボックスは、手書きモードで描かれた点と線が、手書きのままの図で表示されるかどうかを決定します。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [13:07:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Traces%20and%20ArrowsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Traces%20and%20ArrowsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

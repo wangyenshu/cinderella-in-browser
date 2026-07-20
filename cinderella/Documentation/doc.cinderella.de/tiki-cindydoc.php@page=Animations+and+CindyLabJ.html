@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Animations and CindyLabJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>アニメーションと CindyLab</h2>
+<!--latexreplace<br />
+\index{animation}<br />
+\index{spring}<br />
+\index{actuation}<br />
+--><!-- /latexreplace --><br />
+　現実の世界の多くの装置は、何らかのモーターで駆動されます。抽象的なレベルでは、モーターとは、エネルギーをシステムに注ぎ込むものです。それは、自由質点間の純粋な相互作用を超える運動を引き起こします。 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> には、外部力による駆動と環境によるシミュレーションのコントロールを考慮に入れる3つの原則があります。<br />
+<br />
+<ul><li> バネの作動
+</li><li> 幾何学的なシンデレラの <a title="no description" href="tiki-cindydoc.php@page=AnimationJ.html" class="wiki">アニメーションの使用</a>
+</li><li> 位置と速度のような、システムのパラメータを変更する <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->t の使用
+</li></ul>
+<br />
+このあと、この３つの可能性について、略述していきます。可能な相互作用の展開は無数にあるので、基本的な原則だけに焦点を絞って２，３の実例を挙げていきます。<br />
+<br />
+<br />
+<h3>バネの作動</h3>
+<br />
+　バネの作動は、おそらく  <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> でシミュレーションをするときの最も本質的な方法です。それは、 <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>の節で議論されています。バネの静止長を周期的に変えることができます。環境設定で若干の摩擦力を加えるならば、周期運動のためにバネを使うことができます。 バネ の節で説明したように、振幅と位相を独立して変えることができます。次の図は、振幅が同じで位相が異なるいくつかのバネの動作を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys3.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>同じ振幅で位相の異なるバネの動作</b></td></tr></table><br />
+<br />
+　バネの動作を用いた典型的な例は小さな歩く機械の足で、それぞれ特有の位相を持ったバネで構成されています。次の図では、それぞれの足の２つのバネは0.25だけずらした位相で動作します。それぞれの足は、他の足とは位相がずれています。その結果、4本の足で歩くことができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>歩く足</b></td></tr></table><br />
+<br />
+この装置が <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の 床 の上に落とされると、小さな生き物のように、自動的に歩き始めます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>床の上で歩く機械</b></td></tr></table><br />
+<br />
+<h3> 幾何学的アニメーション</h3>
+<br />
+　シンデレラの幾何学部分では、 <a title="no description" href="tiki-cindydoc.php@page=AnimationJ.html" class="wiki">アニメーション</a> モードにより、点を動かす標準的な方法があります。ここでは、例えば、円周上や線分上で点を動かすことができます。シンデレラのアニメーションモードは、 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> でシームレスに機能します。動かす点に物理的属性をつけたり、それらをバネでつなぐことができます。次の図で、しなやかなロープのようなものは、いくつかのゴムバンドをつないで作りました。 ゴムひもの片方の端点は緑色の点に固定されています。もう一方の端点は、シンデレラのアニメーションによって動かされます。円周上を回転する点は、いくつかのゴムひもの端点を周期的に上下するのに使われます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys4.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>振動する波のアニメーション</b></td></tr></table><br />
+<br />
+<br />
+質量を持つ点を直接アニメーションで使うこともできます。次の例は、物理的には全く非現実的ですが、アニメーションで質量を持つ点が使えるというデモです。ここで、 惑星 は円周上にあります。アニメーションで恒星は円周上を回ります。図は、回転している恒星の引力のもとでの惑星の動きを示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AnimPhys5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>回転する恒星の周りをまわる惑星</b></td></tr></table><br />
+<br />
+<br />
+アニメーションは物理シミュレーションと同期します。これは、アニメーション速度スライダーを動かすと、物理シミュレーションとアニメーションそのものの両方が遅くなることを意味します。<br />
+<br />
+<br />
+<br />
+<h3>CindyScript による運動シミュレーション</h3>
+<!--latexreplace<br />
+\index{CindyScript!and CindyLab}<br />
+\index{CindyLab!and CindyScript}<br />
+--><!-- /latexreplace --><br />
+　通常、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> はシミュレーションに関する最も柔軟で強力な方法を提供します。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> により、 位置, 速度, 静止長 パラメータのような <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->  の要素を直接支配することができます。このため、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のプログラムが実行されるときは、いつでも物理的要素の挙動を支配できます。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のマニュアルで説明されるように、このスクリプト言語は、特定の時刻に動作させることができます。詳細なリストは  <a title="no description" href="tiki-cindydoc.php@page=CindyLab+and+CindyScriptJ.html" class="wiki">CindyLab と CindyScript</a>で見つけられるでしょう。<br />
+<br />
+原則的に、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  は、物体のパラメータに"最終値"があるので、どんな物理的な振舞いでも変更することができます。例えば、粒子の速度をプログラム的に変えることができます。次の例は、動くものの上のバネのバランスをとるための簡単な制御プログラムを示します。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AnimPhys6.png" border="0"  width="300" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AnimPhys7.png" border="0"  width="300" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->バランスをとるアザラシ 開始前<!--latexreplace } --> <!-- /latexreplace --></b><br></td><td></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->バランスをとるアザラシ 歩行中<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+     </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+アザラシの鼻の点がＣです。バネのもう一方の点がＤです。  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の次の行が点Ｃの水平速度を変更するために機能します。<br />
+<!--latexreplace<br />
+\index{seal}<br />
+--><!-- /latexreplace --><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(C.x < D.x,C.vx=C.vx+.05);
+if(C.x > D.x,C.vx=C.vx-.05);
+C.vx=C.vx+random(0.02);
+</pre></div><br />
+<br />
+最初の行で、バネが左に傾いたならば、アザラシはバネが落ちないように前進します。２行目では、反対向きに同じことをします。最後に、わずかな動きをランダムにアザラシに与えます。これで、アニメーションがより現実的に見えます。<br />
+<br />
+<br />
+<br />
+時々、特定の時間に <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> を実行させることが役に立ちます。そのため、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->t の内部では時間についての異なる２つの概念が存在します。 <code>simulationtime()</code>関数は、シミュレーションの内部時計と同期します。シミュレーションのあらゆる時刻変化はこの値を増加させます。これに対して、実時間に同期する時計を参照することができます。のためには <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の <code>time()</code> 関数と <code>seconds()</code> 関数が使えます。この概念の詳細については、 <a title="no description" href="tiki-cindydoc.php@page=Special+Operators.html" class="wiki">特殊演算子</a>の<b>Time</b> の節を参照してください。<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 31 of July, 2011 [13:31:30 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Animations%20and%20CindyLabJ">
+    http://doc.cinderella.de/tiki-index.php?page=Animations%20and%20CindyLabJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

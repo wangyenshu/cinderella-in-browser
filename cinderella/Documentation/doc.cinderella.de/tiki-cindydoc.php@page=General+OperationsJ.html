@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : General OperationsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>全体的な操作</h2>
+<br />
+<h3>ファイル操作</h3>
+<br />
+ファイルの操作は標準的なもので、他のソフトウェアにあるようなものとほぼ同じです。 シンデレラにより作図されたファイルは、特別のファイル形式で保存されます。 作図ファイルは  <code>.cdy</code>という拡張子を持ちます。<br />
+<br />
+<ul><li>  <span class="img"><img alt="" src="buttonsback/new.png" border="0"  /></span> <b>新規作成</b>：この操作は、何も描かれていない新しい図を作ります。
+</li><li>  <span class="img"><img alt="" src="buttonsback/load.png" border="0"  /></span>  <b>開く</b>：作図ファイルを読み込みます。
+</li><li>  <span class="img"><img alt="" src="buttonsback/save.png" border="0"  /></span>  <b>保存</b>：必要であればファイル名の入力をうながし、作図をファイルに保存します。
+</li><li>  <span class="img"><img alt="" src="buttonsback/save-as.png" border="0"  /></span> <b>別名で保存</b>：新しいファイル名を指定し、作図をファイル保存します。
+</li></ul>
+<br />
+<br />
+<h5>出力</h5>
+<br />
+<ul><li>  <span class="img"><img alt="" src="buttonsback/export-html.png" border="0"  /></span> <b>HTMLへの書き出し</b>：インタラクティブなHTMLファイルを自動的に生成します。
+</li><li>  <span class="img"><img alt="" src="buttonsback/print.png" border="0"  /></span> <b>(すべての図を)印刷</b>：その時に開いているすべての描画面を印刷します。この作業にはJavaの印刷ルーチンが用いられています。そのため、この出力は「Print PDF」によるものより劣っています。あなたがPDFによるプレビューや印刷を行なうのであればこの形式が良いでしょう。
+</li></ul>
+<br />
+<br />
+<h5>取り消し、やり直し、消去</h5>
+<br />
+<ul><li> <span class="img"><img alt="" src="buttonsback/undo.png" border="0"  /></span> <b>取り消し</b>：この操作により、最後に行った動作を取り消すことができます。 次の動作が取り消し可能なものです。この操作では、続けて行った動作を好きなだけ取り消して戻ることができます。
+<ul><li> 作図などの動作
+</li><li> 移動
+</li><li> 外観の変更
+</li><li> ズーム、平行移動、回転
+</li><li> 要素の消去
+</li></ul></li></ul>
+<br />
+<ul><li>  <span class="img"><img alt="" src="buttonsback/redo.png" border="0"  /></span> <b>やり直し</b>：「取り消し」で取り消した作業を「やり直し」で再度やり直すことができます。続けて行った取り消し操作について好きなだけやり直すことができます。
+</li><li> <A NAME="Delete"></A> <span class="img"><img alt="" src="buttonsback/delete.png" border="0"  /></span>  <b>消去</b>：選択された要素のすべてと、選択された要素に依存して決まっている要素をすべて消去します。もしはずみで誤って消してしまっても、「取り消し」で取り戻すことができます。
+</li></ul>
+<br />
+<br />
+<h3>選択のための道具</h3>
+<br />
+<ul><li>  <span class="img"><img alt="" src="buttonsback/select-all.png" border="0"  /></span> <b>すべてを選択</b>：すべての要素を選択します。
+</li><li>  <span class="img"><img alt="" src="buttonsback/select-points.png" border="0"  /></span> <b>すべての点を選択</b>：すべての点を選択します。
+</li><li>  <span class="img"><img alt="" src="buttonsback/select-lines.png" border="0"  /></span> <b>すべての直線を選択</b>：すべての直線を選択します。
+</li><li>  <span class="img"><img alt="" src="buttonsback/select-conics.png" border="0"  /></span> <b>すべての２次曲線を選択</b>：すべての２次曲線と円を選択します。
+</li><li>  <span class="img"><img alt="" src="buttonsback/select-none.png" border="0"  /></span> <b>選択の解除</b>：現在選択されているものをすべて解除します。
+</li></ul>
+<br />
+<br />
+（阿原）<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 28 of February, 2012 [06:41:30 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=General%20OperationsJ">
+    http://doc.cinderella.de/tiki-index.php?page=General%20OperationsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

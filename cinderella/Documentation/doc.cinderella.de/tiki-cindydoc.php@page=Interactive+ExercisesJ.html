@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interactive ExercisesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>インタラクティブな練習問題</h2>
+<br />
+<h3>シンデレラのちょっとした歴史</h3>
+シンデレラの前のバージョンである1.4版の大きな特徴の１つは、初等幾何のインタラクティブな練習問題を簡単に作ることができることでした。たとえば、２点を与えておいて「中点を作図しなさい」といったものです。生徒はWebページ幾何ツールを使って問題を解きます。彼が問題を解く間、シンデレラはその操作を監視し、適切なヒントやコメントを出します。作図に成功すれば、成功のメッセージが表示されます。残念ながら、この機能性はバージョン2.0の時点では、もう利用できませんでした。私たちがこの機能を取りやめたのにはいくつかの理由がありました。そのひとつは、より高度で柔軟な練習問題のフォーマットをサポートするために、学生用練習問題とスクリプト機能を統合するという目的のためでした。もうひとつは、ごくわずかなユーザーしか練習問題を作るという可能性を利用しなかったということです。<br />
+<br />
+この版で、われわれは再び<a title="no description" href='tiki-cindydoc.php@page=User+Input.html#createtool' class='wiki'><code>createtool(...)</code></a>演算子を含む練習問題作成の可能性を提供します。これと、インタラクティブな練習問題のために、統合化された探査機能により生徒の解答を常にモニタリングすることが鍵となります。シンデレラの旧バージョンとは対照的に、もう練習問題エディタはありませんが、適切なスクリプトを書くことによって練習問題を作り出します。このあと、以前の練習問題作成機能だけでなく、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の力と融通性を示します。<br />
+<br />
+この節では、いくつかの技術的な説明とともに、練習問題を作るのに必要な基本技術を解説します。われわれのWebサイト <a class="wiki external"  href="http://cinderella.de">http://cinderella.de</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> で、いくつかの典型的な練習問題のもとになるテンプレートをを提供します。それらは、練習問題の作成を容易なものとします。<br />
+<br />
+<h3> 書きだしツール</h3>
+<br />
+２点A,Bを与えてその中点を作図するという練習問題を考えます。学生は直線を引き、円を描き、点を打つ方法を知る必要があります。そのため、最初に行なうのは専用のツールバーを作ることです。そのために、 <a title="no description" href='tiki-cindydoc.php@page=User+Input.html#createtool' class='wiki'><code>createtool(...)</code> 関数</a> を使います。これで専用の小さなツールバーを作ることができます。<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->の Initializationスロットに次のコードを書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createtool(["Move","Point","Line","Circle"],2,2);
+</pre></div><br />
+<br />
+次に、問題用に２つの点をとりますと、次の図のようになります。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Exer1.png" border="0"  /></span><br />
+<br />
+<h3> 例示の図を作る</h3>
+<br />
+次に、中点を作図するための例を作ります。この図は、学生にヒントとして示すものです。この図は、普通に作図ツールを用いて作図します。<a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a>を使って見栄えをよくしましょう。次の図のようになります。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Exer2.png" border="0"  /></span><br />
+<br />
+<h3> 問題文を加える</h3>
+<br />
+次に問題文を作成します。学生が問題に取り組む間、ヒントとなるメッセージを出すのにも使います。そこで、メッセージとなるテキストを、それを表示する命令文とは切り離します。そのためにはいくつかの方法があります。次の行を Initialization スロットに書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+message=" A と B の中点を作図しなさい";
+</pre></div><br />
+<br />
+draw スロットに次のような１行を書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((-8,0),message);
+</pre></div><br />
+<br />
+図は次のようになります。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Exer2J.png" border="0"  /></span><br />
+<br />
+<h3> 例示の図を隠す</h3>
+<br />
+前述のように、例示する図は学生の解答と比較するひな形として用いられるだけです。したがって、始めは隠しておかなければなりません。インスペクタを用いれば非表示にすることができました。あるいは、Initializationスロットに、A,B以外の要素を非表示にする次のようなコードを書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+apply(allelements()--[A,B],el,el.visible=false);
+</pre></div><br />
+<br />
+これで練習問題は完成です。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Exer4J.png" border="0"  /></span><br />
+<br />
+<h3>成功メッセージを作る</h3>
+<br />
+ここは、トリッキーな部分になります。学生が正解を得たならば成功メッセージを表示したいのです。そのためには、シンデレラについて、以下に述べる重要なことがらを知っておかなければなりません。幾何要素が作られるときには、シンデレラの探査機能が働き、既存の要素がそこにあればそれを使い、新しい要素は追加されません。既存の要素が不可視でもこの機能は働きます。この場合、既存の要素の表示/非表示フラグが「true」つまり「表示」になるだけです。今の場合、学生が何らかの方法で正しく中点を作図したならば、探査機能はすでに作図してあった中点の E が再利用します。こうして、学生の作図手順によらず、点 E と同じものであればそれを受け入れて成功メッセージを出すことになります。<br />
+<br />
+ですから、成功メッセージを出すかどうかは、点 E が表示フラグが true になったかどうかを調べるだけでよいのです。次のコードを draw スロットに書き加えます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(E.visible,message="よろしい。できましたね。")
+</pre></div><br />
+<br />
+学生が何らかの方法で中点を作図できたならば点Eが表示され「よろしい。できましたね。」というメッセージが表示されます。<br />
+<br />
+<h3> 途中でコメントを表示する</h3>
+<br />
+さらに改善をしましょう。学生が作図に必要な要素をひとつ作ったならばなんらかのメッセージを出すようにします。そのために、先ほどの <code>if(...)</code> 命令文を、例示のために作った図のどの要素が描かれたかを調べてメッセージを出すような小さなプログラムに置き換えます。たとえば、次のようなコードを drawa スロットに書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+clrscr();
+chain=[
+ [a,"そうです"],
+ [C0,"そう。円が必要ですね。"],
+ [C1,"そう。円が必要ですね。"],
+ [b,"もう一息"],
+ [E,"よろしい。できましたね。"]
+];
+
+visible=select(allelements(),#.visible);
+found=select(chain,el,contains(visible,el_1));
+
+if(found!=[],
+  message=found_(-1)_2;
+);
+
+drawtext((-8,0),message);
+</pre></div><br />
+<br />
+ここで、 <code>chain</code> リストは、幾何要素とそれがつくられたときに表示するメッセージの組からなります。<br />
+次の行は、既存の要素で表示モードになったものを探しだして <code>found</code> リストとします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+visible=select(allelements(),#.visible);
+found=select(chain,el,contains(visi,el_1));
+</pre></div><br />
+<br />
+最後に、次の行でこのリストの中で最後に作られたものに対応するメッセージを取り出します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(found!=[],
+  message=found_(-1)_2;
+);
+</pre></div><br />
+<br />
+そして、これを表示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((-8,0),message);
+</pre></div><br />
+<br />
+<h3>でき上がったもの</h3>
+<br />
+もし学生が標準的な方法で問題を解いたならば、次のようになるでしょう。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Exer5J.png" border="0"  /></span><span class="img"><img alt="" src="img/wiki_up/Exer6J.png" border="0"  /></span><br />
+<span class="img"><img alt="" src="img/wiki_up/Exer7J.png" border="0"  /></span><span class="img"><img alt="" src="img/wiki_up/Exer8J.png" border="0"  /></span><br />
+<br />
+<h3> 書きだし</h3>
+<br />
+最後に、Web用に<a title="no description" href="tiki-cindydoc.php@page=HTML+ExportJ.html" class="wiki">HTMLに書きだし</a>ます。これでインタラクティブなWebページでこの練習問題が使えるようになります。さらに、もとの図の一部とヒントを関連付けるためのよりうまい方法があります。われわれのWebページ <a class="wiki external"  href="http://cinderella.de">http://cinderella.de</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> で一定時刻に発生するように仕組んだヒントや分岐構造を持ったヒントなどの役に立つテンプレートを提供します。それらは、学生用練習問題でよく使うようなものを集めてあります。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 25 of February, 2012 [13:02:34 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interactive%20ExercisesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Interactive%20ExercisesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

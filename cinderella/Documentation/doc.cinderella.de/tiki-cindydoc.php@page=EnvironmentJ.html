@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : EnvironmentJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>環境</h2>
+<!--latexreplace<br />
+\index{simulation!environment}<br />
+\index{environment}<br />
+\index{numerical integration}<br />
+--><!-- /latexreplace --><br />
+「環境」は <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> で非常に 特別な役割を演じます。<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の他の対象とは異なり、特定のモードや特定の幾何学的対象はそこにはありません。環境は多かれ少なかれ、一般的に存在するものです。環境の作用は、インスペクタまたは <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> によって変更することができます。環境は、次の要素に影響を及ぼします。:<br />
+<br />
+<ul><li> シミュレーションにおける数値的正確さ
+</li><li> 重力や摩擦のような力
+</li><li> いくつかの物体によるシステムの定義
+</li><li> バネの動作
+</li></ul>
+<br />
+まず、これらに影響を与えるものをすべてリストアップし、それからいくつかの例を示します。<br />
+<br />
+<h3>環境設定インスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!environment}<br />
+\index{accuracy}<br />
+\index{actuation}<br />
+--><!-- /latexreplace --><br />
+　インスペクタウィンドウの小さな地球の絵のラベルのついたタブを押すと、4つのグループからなる環境設定インスペクタに入ります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnvironmentInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>環境設定のインスペクタ</b></td></tr></table><br />
+<br />
+<br />
+それぞれのグループの働きを、以下に詳細に示します。:<br />
+<br />
+<br />
+<b>正確度</b><br />
+<br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->は、物理的運動の数値的シミュレーションに基づいています。 数値的シミュレーションは、別々の時間ステップで進行します。運動における別々の標本点の間では、一般に、大きな時間ステップにより正確度は低くなります。しかしながら、より少ない標本点を使うことは、より速いシミュレーションを行うことができるという長所があります。そのため、速度と正確度にはトレードオフの関係があります。 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のユーザーはこの効果に気がついているに違いありません。さらに、必ずしも生成されるすべての時間ステップについて図を描くのではないというのが実際的でしょう。 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の初期状態では、シミュレーションが比較的速くでき、すべての場面が描かれるようになっています。もし 正確度(accuracy) を上げるか、 フレーム(frame) を少なくする必要があれば、対応するスライダーでこれらのパラメータを調整することができます。正確度スライダーを右に動かせばシミュレーションの正確度が高くなります。それぞれの目盛で正確度はおよそ倍になります。フレームレートを変えずに正確度を上げると、アニメーションがスローモーションで見えるようになります。これは時々非常に有効な効果となります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AccuracySettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+　正確度スライダーと対応して、フレームスライダーの各目盛はそれぞれのフレームを半分にします。したがって、フレームスライダーが4の位置にあれば、各フレーム間で16ステップのシミュレーションが行われるのです。 もし、正確度とフレームのスライダーが同じ位置にあれば、シミュレーションの速度は最初の位置にあるのと同じ(すなわち同じ時間間隔で見える)ことになります。シミュレーションは几帳面に行われます。必要とされた計算の結果が、アニメーションの減速に終わるかも知れません。シミュレーションの状況によってちょうどよい設定を見つけるために、2つのスライダーをいろいろと動かしてみることを勧めます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Environment3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>いろいろな正確度によるトレース</b></td></tr></table><br />
+<br />
+上の図は、シミュレーションにおける正確度の影響を示します。このシミュレーションは3つの恒星の重力の影響下で動いている惑星を示します。最初のパラメータのわずかな違いが時間とともに非常に異なる経路につながるという点で、この状況はカオスと似ています。青と白の痕跡はともに同じ初期条件で計算されます。白の痕跡の正確度は青の4倍です。どれだけわずかな分岐により非常に異なる経路に至っているか、よく観察してください。<br />
+<br />
+<br />
+<b>力についての環境</b><br />
+<!--latexreplace<br />
+\index{force}<br />
+\index{gravity}<br />
+\index{friction}<br />
+--><!-- /latexreplace --><br />
+　環境のこの部分では、パラメータはすべてのシミュレーションの対象に一斉に作用するように設定されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GlobalSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<i>バネの強さ</i>  スライダーはすべてのバネ定数を変更するグローバルパラメータです。 ( <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>を参照). したがって、このスライダーを動かすことにより、すべての力の強弱を調整できます。<br />
+<br />
+<tt> <i>重力</i> スライダーは、すべての質点に垂直に働く重力を設定します。<a title="no description" href="tiki-cindydoc.php@page=GravityJ.html" class="wiki">重力</a> モードでの個々の重力を調整するために、このスライダーを使うと好都合です。</tt><br />
+<br />
+<tt> <i>摩擦力</i> スライダーは、おそらくこのグループで最も重要なスライダーです。それは、すべての質点に適用される摩擦力を発生します。日常的に現実味のあるシミュレーションを行うためには若干の摩擦力を加えなければなりません。そうすると、外部の力によって動かされないシミュレーションは最後にはつり合った状態で止まります。もし、摩擦力が加えられなければ、物体は永久に動き続けます。</tt><br />
+<br />
+次の図は、摩擦力がある場合とない場合について、物体の弾道の様子を示します。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Environment5.png" border="0"  width="320" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Environment6.png" border="0"  width="320" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->摩擦力なし<!--latexreplace } --> <!-- /latexreplace --></b><br></td> <td width=10></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->摩擦力あり<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<br />
+<b>複数の物体の動き</b><br />
+<br />
+　2つの自由質点間の相互作用では、 <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>,  <a title="no description" href="tiki-cindydoc.php@page=Rubber+BandJ.html" class="wiki">ゴムバンド,あるいはCoulomb ForceJ</a>加えることによって、はっきりとその相互作用を指定しなければなりません。しかしながら、電子、多くの惑星系、あるいは多数のビリヤードのボールのような、相互作用をする物体の全体的効果について研究することは魅力的なことです。このグループの3つのチェックボックスによって、そのような振舞いを定義することができます。このような振舞いについての広範囲な応用があるので、 <a title="no description" href="tiki-cindydoc.php@page=Many-Particle+SystemsJ.html" class="wiki">複数の粒子システム</a>としてこの話題を設けました。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ManybodySettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+　このうち、「重力センサを使う」という項目は、重力センサを搭載したコンピュータの場合に表示されます。<br />
+<br />
+<b>バネの動作</b><br />
+<br />
+　2つの動作スライダーにより、 <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>の自然長の動作を支配することができます。すべてのバネの動作は同期され、全体的な動力によって動かされます。 この2つのスライダーで、全体的な速度と動作の強さを変えることができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringSettingsJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<h3>環境とCindyScript</h3>
+<br />
+　環境は、いくつかの重要な量へのアクセスを許可し、シミュレーションの設定します。環境は、幾何学的要素に対しては直接には関与できないので、環境の対象を操作するために <code>simulation()</code>関数があります。特に、これを通してアクセスできる値は次のものです。:<br />
+<br />
+<br />
+<br />
+<ul><li> <b>strength</b>: scaling factor の扱い(実数、読み書き可)
+</li><li> <b>simulation().potential</b>: シミュレーションの全体的位置エネルギー; これに、バネ、恒星、重力の位置エネルギーが微粒子間の位置エネルギーと同様に加えられる。(実数、読み出しのみ可、座標系の選択に依存する付加的定数のみ定義可)
+</li><li> <b>simulation().pe</b>: <b>simulation().potential</b>の省略形
+</li><li> <b>simulation().kinetic</b>: シミュレーションにおける全体的な運動エネルギー; この値のために、運動する粒子の運動エネルギーが加えられる。 (実数、読み出しのみ可、座標系の選択に依存する付加的定数のみ定義可)
+</li><li> <b>simulation().ke</b>:  <b>simulation().kinetic</b>の省略形
+</li><li> <b>friction</b>: 全体的な摩擦力 (実数、読み書き可)
+</li><li> <b>gravity</b>: 全体的な重力定数 (実数、読み書き可)
+</li></ul>
+<br />
+<h3> 次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Many-Particle+SystemsJ.html" class="wiki">複数の粒子システム</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a>
+</li></ul>
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 25 of March, 2012 [12:15:19 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=EnvironmentJ">
+    http://doc.cinderella.de/tiki-index.php?page=EnvironmentJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

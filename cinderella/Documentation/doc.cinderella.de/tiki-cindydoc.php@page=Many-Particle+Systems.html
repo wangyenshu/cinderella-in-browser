@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Many-Particle Systems 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Many-Particle Systems</h2>
+<!--latexreplace<br />
+\index{many-particle system}<br />
+--><!-- /latexreplace --><br />
+Sometimes it is desirable to study the interaction of many highly interrelated particles. Imagine, for instance, the balls on a billiard table, a collection of electrons, or a system of several bodies in space. In  such a case every particle may exert a force on every other particle. We will briefly discuss these three cases here.<br />
+<br />
+<br />
+<h3>Charged Particles</h3>
+<!--latexreplace<br />
+\index{charge}<br />
+--><!-- /latexreplace --><br />
+Suppose we want to study the interaction of 20 electrons. There are thus 190 different pairs of electrons, with a force of interaction for each pair. One could in principle construct such a particle system by creating 20 charged free masses and then inserting 190 <a title="no description" href='tiki-cindydoc.php@page=Coulomb+Force.html' class='wiki'>Coulomb Force</a>s. However, in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> there is a much easier way if doing this. After the masses have been created and equipped with charges (using the <a title="no description" href='tiki-cindydoc.php@page=Free+Mass.html' class='wiki'>Free Mass</a> inspector), one can simply open the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a> inspector and check the box <i>Charges cause forces</i>. Then all the particles will interact immediately.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ChargesOn.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Charges cause forces</b></td></tr></table><br />
+<br />
+The picture below shows the situation of several charged particles trapped in a cage of bouncers. <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> was used to make fast particles appear blue und slow particles appear red, with the  rest of the spectrum for intermediate speeds.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ManyBody2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Many electrically charged particles</b></td></tr></table><br />
+<br />
+The corresponding fragment of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> used for this drawing is the following:<br />
+<div dir="ltr"><pre class='codelisting'>
+pts=allpoints();
+f(x):=hue(max((min((0.5,x)),0.0)));
+forall(pts,#.color=f(#.kinetic))
+</pre></div><br />
+<br />
+<br />
+<br />
+<h3> Gravitational <i>n</i>-Body Systems</h3>
+<!--latexreplace<br />
+\index{gravity}<br />
+\index{n-body system}<br />
+--><!-- /latexreplace --><br />
+In complete analogy to systems of charged particles it is also possible to work with systems of particles that attract each other by gravity, such as systems of celestial bodies. For this one simply has to check the corresponding button in the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a> inspector.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GravityOn.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Gravity between masses</b></td></tr></table><br />
+<br />
+<br />
+The following two pictures show two many-body systems subject to gravitational forces. The first one is a very remarkable figure-eight solution to the three-body problem (which actually is a sporadic example that was discovered only recently). The second picture shows a chaotic system of five bodies. For the simulation only the masses together with  their initial velocities have to be drawn and the <i>Gravity between masses</i> button to be checked.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.6in">height=1.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody4} &amp;\includegraphics<a class="wiki external"  href="height=1.6in">height=1.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody5}\\</tt><br />
+{\small\it  An island of regularity} &amp;  {\small\it Chaotic movement}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody4.png" border="0"  height="200" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody5.png" border="0"  height="200" /></span></td>
+      </tr>
+      <tr>
+	<td><b>An island of regularity</b><br></td><td></td>
+	<td><b>Chaotic movement</b><br></td>
+      </tr>
+<tt>    </table><!-- /latexreplace --></tt><br />
+<br />
+<h3> Masses as Balls</h3>
+<!--latexreplace<br />
+\index{ball}<br />
+\index{radius}<br />
+\index{momentum}<br />
+\index{pendulum}<br />
+--><!-- /latexreplace --><br />
+Finally, there is also a way in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> to mimic the behavior of balls with nonzero diameter. For this one has to check the <i>Masses are balls</i> checkbox. Then each mass-object is equipped with a repulsive potential that is zero at great distances from the object but assumes very high values if the centers of the two mass-objects come within a distance that is close to the sum of their radii. For example, if two tennis balls meet, there will be an interaction between them for an instant of time. Although this approach does not exactly model the usual physical reality, it is still very appropriate for modeling balls and effects involving conservation of momentum.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/BallsOn.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Masses are balls</b></td></tr></table><br />
+<br />
+The following picture shows a simulation of a billiard table shortly before a huge collision, shortly after the collision, and a long time after collision.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody7} &amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody8}&amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody9}\\</tt><br />
+{\small\it  Before\ldots{}} &amp;  {\small\it \ldots{}shortly after\ldots{}}&amp;  {\small\it \ldots{}long after}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody7.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody8.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody9.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>Before...</b><br></td><td></td>
+	<td><b>...shortly after....</b><br></td><td></td>
+	<td><b>...long after</b><br></td>
+      </tr>
+<tt>    </table><!-- /latexreplace --></tt><br />
+<br />
+<br />
+The following example shows a standard experiment that exemplifies the conservation of momentum. Here, the masses of the pendulum are bound to circles in order to model the behavior of a stiff pendulum. Observe how the momentum is transferred from the red to the yellow ball. The radius of the force potential can be adjusted by the radius slider of the mass inspector.<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody10} &amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody11}&amp;\includegraphics<a class="wiki external"  href="height=1.1in">height=1.1in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ManyBody12}\\</tt><br />
+{\small\it  Before\ldots{}} &amp;  {\small\it \ldots{}during\ldots{}}&amp;  {\small\it \ldots{}after}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody10.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody11.png" border="0"  width="250" /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/ManyBody12.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>Before...</b><br></td><td></td>
+	<td><b>...during....</b><br></td><td></td>
+	<td><b>...after</b><br></td>
+      </tr>
+<tt>    </table><!-- /latexreplace --></tt><br />
+<br />
+<br />
+<h3>Gravity hardware</h3>
+<!--latexreplace<br />
+\index{gravity hardware}<br />
+\index{accelerometer}<br />
+--><!-- /latexreplace --><br />
+It is also possible to control the gravity strength by a build in accelerometer of a laptop computer. This can be achieved by click on the 'Use gravity hardware' button. By this it is possible to control the behavior of the physical objects by actually physically moving the computer. A nice feature for game development.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AMSOn.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Gravity hardware</b></td></tr></table><br />
+<br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+<br />
+Many-body simulations may entail expensive (in terms of processing time) computations. In particular, whenever the force is attractive rather then repulsive, there may be many situations in which the automatic step-width adaptation of the <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> engine comes into play.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Free+Mass.html' class='wiki'>Free Mass</a>
+</li></ul>
+</div><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:30:59 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Many-Particle%20Systems">
+    http://doc.cinderella.de/tiki-index.php?page=Many-Particle%20Systems
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

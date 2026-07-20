@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Visage 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Visage: Visualization of Graph Algorithms</h2>
+<br />
+The Visage extension of Cinderella has it origins in a project started in 2005 in the DFG research center <!-- latexreplace \textsc{Matheon} -->Matheon<!-- /latexreplace --> in Berlin.<br />
+<br />
+We will give only a brief overview over the basic elements of Visage here. You can find more information about Visage (mostly in German language) on its webpage at <a class="wiki external"  href="http://cinderella.de/visage">http://cinderella.de/visage</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />, currently hosted by the Centre for Educational Research in Mathematics Education (CERMAT). We also refer to <!-- latexreplace \cite{GesKorLutMat-VVADM-2005,FesKor-TGAWV-2009} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[GKLWM05] and [FK09]</a><!-- /latexreplace --> for more information about how you can use Visage in teaching.<br />
+<br />
+<h3> Starting Visage</h3>
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/visage-button.png" border="0"  align="left" /></span></div>You can access Visage from the Scripting menu. Choosing the Visage menu item will open a window for choosing the basic graph algorithm underlying your explorations.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ChoosAlgorithmVisage.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Choosing the underlying algorithm for Visage</b></td></tr></table><br />
+<br />
+For now, choose the "Draw Graph" algorithm. The Cinderella toolbar will change to a Visage-specific toolbar that contains tools for drawing vertices and edges.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/DrawingAGraph.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A famous graph</b></td></tr></table><br />
+<br />
+You can draw undirected or directed and unweighted or weighted graphs. Usually, the chosen graph algorithms governs the available types. You can always choose a new algorithm (and its corresponding toolbar) using the  <span class="img"><img alt="" src="buttonsback/visage-button.png" border="0"  /></span>  button, and, if applicable, the existing graph will be reused.<br />
+<br />
+<h3> Running Algorithms</h3>
+<br />
+Visage comes with several built-in algorithms that can be applied to graphs. By default the algorithms run in step-by-step mode, as Visage is not meant for high-performance calculations but for visualization in educational settings. Pressing the play button  <span class="img"><img alt="" src="buttonsback/SchrittVor.png" border="0"  /></span>  will execute one step each time. The rewind button  <span class="img"><img alt="" src="buttonsback/ReSet.png" border="0"  /></span>  reinitializes the algorithm and you can start it again.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Visage-DFS.png" border="0"  width="680" /></span></td></tr><tr><td class="caption"><b>Visualizing Depth First Search</b></td></tr></table><br />
+<br />
+<h3> Interaction With CindyScript</h3>
+<br />
+You can write graph algorithms also in <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace -->. On the Visage website you find a small library that makes it easy to access vertices and edges of a graph. This library relies on user attributes of geometric elements. These user attributes are accessible via two CindyScript commands:<br />
+<br />
+<h4>Set a user attribute: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string1&#62;,&#60;string2&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Sets the user attribute of &#60;geo&#62; identified by &#60;string1&#62; to the value &#60;string2&#62;. </div><br />
+<br />
+<h4>Read a user attribute: <span style="color:red;"><code>attribute(&#60;geo&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> Returns the user attribute identified by &#60;string&#62; of the geometric element  &#60;geo&#62; .</div><br />
+<br />
+The Visage extension sets the attribute <code>"edge"</code> of undirected edges to <code>"u"</code> and of directed edges to <code>"d"</code>. The attribute <code>"vertex"</code> of vertices is set to "v". Thus, you can identify the vertices and edges of a graph by checking these attributes:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+alledges():=select(allsegments(),
+                   attribute(#,"edge")=="u" % attribute(#,"edge")=="v");
+allvertices():=select(allpoints(),attribute(#,"vertex")=="v");
+</pre></div><br />
+<br />
+If you mark a vertex as a start or end vertex for a graph algorithm it will have the attribute <code>"specialvertex"</code> with a value of either <code>"start"</code> or <code>"finish"</code>. Finally, weighted edges store their weight in the user attribute <code>"weight"</code>. For flow algorithms the capacity and flow are stored in the user attributes <code>"capacity"</code> and <code>"flow"</code>, as expected.<br />
+<br />
+<h3> Java Extensions</h3>
+<br />
+Actually, it is also possible to write algorithms in Java that interact with the Visage extension. However, the API for such interaction is only available online at <a class="wiki external"  href="http://cinderella.de/visage">http://cinderella.de/visage</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />. If you are interested in using Visage with Java we ask you to contact us at <code>visage@cinderella.de</code>.<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [09:15:33 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Visage">
+    http://doc.cinderella.de/tiki-index.php?page=Visage
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

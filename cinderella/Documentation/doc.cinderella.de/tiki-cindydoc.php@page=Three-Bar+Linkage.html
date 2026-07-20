@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Three-Bar Linkage 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>A Three-Bar Linkage</h2>
+<!--latexreplace<br />
+\index{linkage}<br />
+\index{three-bar linkage}<br />
+--><!-- /latexreplace --><br />
+In the second tutorial we want to explore the dynamics of a little mechanical linkage. In particular, you will learn how to make bars of a fixed length. You will also learn how to produce a geometric locus  of a point.<br />
+<br />
+<br />
+<h3>Making a Bar</h3>
+<!--latexreplace<br />
+\index{mode!add circle by radius}<br />
+\index{add circle by radius}<br />
+\index{circle}<br />
+\index{circle!by center and radius}<br />
+--><!-- /latexreplace --><br />
+After starting <i>Cinderella</i> or erasing a previous configuration, <b>switch to <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Radius.html" class="wiki">circle by radius</a> mode by pressing the button  <span class="img"><img alt="" src="buttonsback/circle-by-radius.png" border="0"  /></span> .</b>  This mode is used for working with circles whose radii remain constant when their centers move.  <b>Move the mouse pointer over the view. Press the left mouse button. Hold the button while dragging the mouse. Release the mouse.</b> With these actions you have generated a circle. Switch to <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> to see how the circle behaves. When you select the center you can move the position of the circle, and the radius stays constant. You can also select the circle itself and move it. Then its center stays fixed and the radius of the circle changes.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar02B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 1: A first circle</b></td></tr></table><br />
+<br />
+We now want to add a point that is bound to the boundary of the circle. <b>Select <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point</a> mode. Move the mouse over the view.  With the button pressed, move the mouse pointer to the boundary of the circle. When the circle is highlighted, release the mouse.</b> You have now created a point that is on the boundary of the circle. You could alternatively have clicked the mouse over the circle boundary. However, that gives you a bit less control over whether you actually hit the circle. Your configuration should now look approximately like that in Figure 1.<br />
+<br />
+<b>Switch to <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> to see how this new point behaves.</b> If you select it and drag the mouse, the point will never leave the circle; it attempts to remain as close to the mouse position as possible.  When you move the center of the circle or change the circle's radius, the point also stays on the circle. The point furthermore keeps its relative angle to the center. <b>Choose the interactive <a title="no description" href="tiki-cindydoc.php@page=Segment.html" class="wiki">add a segment</a> mode  by pressing the  <span class="img"><img alt="" src="buttonsback/segment.png" border="0"  /></span>  and draw a segment from the center to the point on the perimeter</b> (see Figure 2).<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar03B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 2: A bar</b></td></tr></table><br />
+<br />
+This line now behaves like a bar of fixed length, given by the radius of the circle. The only way to change its length is to change the radius of the circle.<br />
+<br />
+<br />
+<h3>Adding Two More Bars</h3>
+<br />
+We now want to add two more bars to complete the three-bar linkage that was presented in  <a title="no description" href="tiki-cindydoc.php@page=A+Dynamic+Geometry+Program.html" class="wiki">the introduction</a>.  The linkage is a chain of three consecutive bars that is pinned down at each of its ends.  <b>Switch to <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Radius.html" class="wiki">circle by radius</a> mode again and add a second circle to the right of the first one. Do not let the two circles intersect.</b><br />
+<br />
+The radius of the second circle represents the length of the third bar in the row (we have not created the second one yet).  Before finishing the construction we should analyze the situation.  If point <i>C</i> in our construction is to be linked to point <i>B</i> of the construction by two bars of given lengths, then there is not much freedom for the point that is common to those two bars. In fact, there are exactly two possible positions for this point. They are the two intersections of two circles: one circle around <i>C</i>, already drawn, and another, yet to be drawn, circle around <i>B</i>.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar04B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 3: Two more circles</b></td></tr></table><br />
+<br />
+Therefore, as the next step, <b>draw a circle around point <i>B</i> in <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Radius.html" class="wiki">circle by radius</a> mode. Make sure that its radius is large enough so the circle intersects the circle around <i>C</i>.</b> This stage of the construction is shown in Figure 3. Finally, draw a segment in <a title="no description" href="tiki-cindydoc.php@page=Segment.html" class="wiki">segment</a> mode  <span class="img"><img alt="" src="buttonsback/segment.png" border="0"  /></span>  from <i>B</i> to one of the intersection points of the circle around <i>B</i> and the circle  around <i>C</i> (this is an alternative to adding a line and clipping it to its endpoints).<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar05B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 4: The three bars</b></td></tr></table><br />
+<br />
+This new point is automatically labeled <i>D</i>.  Observe that this point is not a free point, since its position is determined, up to choosing the second intersection, by the positions of <i>A</i>, <i>B</i>, <i>C</i>, and the radii of the circles.<br />
+<br />
+<b>Finish the construction by adding the third bar from <i>C</i> to <i>D</i></b>.  Most probably, the lines will be already clipped, since you made this choice in the appearance editor. If not, select them and use the appearance editor to clip them. Your drawing should now look like Figure 4.<br />
+<br />
+<br />
+<h3>Moving the Construction</h3>
+<!--latexreplace<br />
+\index{mode!move}<br />
+\index{move mode}<br />
+\index{drag mode}<br />
+--><!-- /latexreplace --><br />
+The lengths of the bars are determined by the radii of the circles. <b>Select <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> again and play with the construction.</b>  An interesting thing happens when you move point <i>B</i>, the point on the first circle.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar06B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 5: The bars are too short</b></td></tr></table><br />
+<br />
+First of all, you notice that the whole construction has exactly one degree of freedom when point <i>B</i> is moved. Moving it allows the whole construction to behave as if it were a mechanical linkage. We can consider the possibility of moving <i>B</i> as a kind of "driving input force"; that is what CAD people would call it. There are positions for point <i>B</i> for which the bars are too short (see Figure 5), which means that the two circles no longer intersect. When this happens, the lines and the intersection point disappear.<br />
+<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar07B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 6: After coming back</b></td></tr></table><br />
+<br />
+One of the most interesting things, which you might initially overlook, happens if you return point <i>B</i> to the original position, where the circles once again intersect: the other point of intersection is chosen; the linkage takes the other possible position.  Try this many times to get a feeling for it. <b>Move point <i>B</i> back and forth, so that the bars disappear and reappear.</b>  This behavior seems a bit counterintuitive at first, but it is exactly the right thing to happen.  Imagine that the bars were made from real matter, steel or wood, for instance. Then they would have a certain mass. What would happen if you pushed the whole construction and let it move freely, driven only from inertial forces? The two bars, those that disappear in the drawing, would come to a position in which they formed a straight line. Then point <i>D</i> would "sweep over", and the whole construction would move to the other possible position.<br />
+<br />
+<br />
+<h3>Starting an Animation</h3>
+<!--latexreplace<br />
+\index{animation}<br />
+\index{mode!animation}<br />
+--><!-- /latexreplace --><br />
+If you still do not believe that this is natural behavior, <b>choose <a title="no description" href="tiki-cindydoc.php@page=Animation.html" class="wiki">animation</a> mode by pressing  <span class="img"><img alt="" src="buttonsback/animation.png" border="0"  /></span> .</b> The message line below the view asks you  to choose a "moving element." In our case we want <i>B</i> to be the moving point: <b>Click <i>B</i></b>. Since point <i>B</i> has only one degree of freedom, it is clear how to move it, and the animation is started immediately. Otherwise, you would have been asked to select a "road" on which <i>B</i> should move. In this construction the road is clear: it is the first circle.<br />
+<br />
+An animation control panel<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/CindyGeo/AnimationControl.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+is added to the geometric view. It has buttons like a CD player to start, stop, and pause the animation, and it has a slider to control the animation speed. By pressing the play button you can start the animation.<br />
+<br />
+For a moment enjoy watching the animation. Observe that point <i>B</i> moves only in a region in which the bars are long enough.  It "knows" when to change the direction. <i>Cinderella</i> tries to model true physical behavior.  It does not add masses to the moving elements, but it uses methods from complex analysis to determine the most reasonable thing to do.  You can also move the free elements during the animation. Now exit the animation by pressing the "Stop" button in the animation controller.<br />
+<br />
+<br />
+<h3>Drawing a Locus</h3>
+<!--latexreplace<br />
+\index{locus}<br />
+\index{add locus}<br />
+\index{mode!locus}<br />
+--><!-- /latexreplace --><br />
+We now would like to know how the midpoint of the middle bar moves during the animation. We first add the midpoint. <b>Choose <a title="no description" href="tiki-cindydoc.php@page=Midpoint.html" class="wiki">midpoint</a> mode  <span class="img"><img alt="" src="buttonsback/multi-add-middle.png" border="0"  /></span> .</b> By a press–drag–release sequence you can add the midpoint of two points: <b>Move the mouse over point <i>D</i>. Press it, and with the left button pressed move over point <i>B</i>.  Now release the mouse button.</b> The midpoint is added.<br />
+<br />
+Now <b>choose <a title="no description" href="tiki-cindydoc.php@page=Locus.html" class="wiki">locus</a> mode  <span class="img"><img alt="" src="buttonsback/locus.png" border="0"  /></span> .</b> This mode requires that you select a "mover," a "road," and a "tracer" in this order. The mover is the element that moves (the "driving force").  The road, which is the path along which the mover will move, must be incident to the mover. The tracer is the point whose trace  will be calculated.<br />
+<br />
+<b>Click point <i>B</i> (the "mover").</b> <i>Cinderella</i> recognizes that this point has a unique road and selects the circle as well.  So finally, <b>point <i>E</i> has to be selected as tracer.</b> It takes a second, and the locus is generated automatically. You can switch to move mode and see how the locus changes when you move the free elements.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ThreeBar08B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 7: Constructing a locus</b></td></tr></table><br />
+<br />
+If you restart the animation by pressing the "play" button you will see how the locus was generated.<br />
+<br />
+<br />
+<h3>Experimenting</h3>
+<br />
+It is worth to experiment with the resulting construction. The constructed locus varies dynamically with movements of the free parameters of the construction (points A and C and the radii of the circles). The locus may take interesting and quite surprising shapes, as the following collection of pictures shows.<br />
+<br />
+<tt> <!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+   <table align=center> <tr>
+ <td><span class="img"><img alt="" src="img/wiki_up/ThreeBar09B.png" border="0"  /></span></td> <td><span class="img"><img alt="" src="img/wiki_up/ThreeBar10B.png" border="0"  /></span></td>
+</tr><tr>
+ <td><span class="img"><img alt="" src="img/wiki_up/ThreeBar11B.png" border="0"  /></span></td> <td><span class="img"><img alt="" src="img/wiki_up/ThreeBar12B.png" border="0"  /></span></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of September, 2011 [10:29:51 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Three-Bar%20Linkage">
+    http://doc.cinderella.de/tiki-index.php?page=Three-Bar%20Linkage
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

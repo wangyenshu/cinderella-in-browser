@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Tiny Code ExamplesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 小さなプログラム例</h2>
+<br />
+　この節では、CindyScript を使った小さなプログラムの例をあげます。それぞれの例は、CindyScript でいろいろなものの取り扱いかたを示します。<br />
+<br />
+<hr />
+<br />
+<h3> 重心</h3>
+<br />
+３つの点の重心 <i>D</i> を設定します。状況により色が変わるようにします。この例では、点Dのx座標の正負により色が変わります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+D.xy=(A+B+C)/3;
+D.color=if(D.x>0,
+   (1,1,0),
+   (0,0,1)
+)
+</pre></div><br />
+<br />
+// in draw　とあるのは、Drawスロットに書く、という意味です。<br />
+<br />
+このコードは順番に実行されます。点Dの位置を計算して <code>D.xy</code> に代入することでDの位置が決まります。点Dの色はＤの位置によって if 文で設定されます。<br />
+<br />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 選択と集積</h3>
+<br />
+x軸の上下で点を分類してネットワーク状に線で結びます。適当に点をいくつかとっておいて次のスクリプトをdrawスロットに書いて実行します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+pts=allpoints();
+above=select(pts,p,p.y>0);
+below=pts--above;
+segs=pairs(above);
+drawall(segs,color->(0.6,0,0));
+segs=pairs(below);
+drawall(segs,color->(0,0.6,0))
+</pre></div><br />
+<br />
+x軸より上の点を<code>select</code> 演算子により選びだします。それを全体から引くとx軸より下の点が得られます。 <code>pairs</code>演算子で点を２つずつ結びます。<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 凸型外殻の描画</h3>
+<br />
+すべての点を内部に含む凸型の外殻を描きます。数の不安定性に対処する<code>~></code>演算子の働きを見てください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex3.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+pts=allpoints();
+leftof(A,B):=select(pts,p,area(A,B,p)~>0);
+rightof(A,B):=select(pts,p,area(A,B,p)~<0);
+
+isedge(A,B):=(leftof(A,B)==[]%rightof(A,B)==[]);
+segments=pairs(pts);
+hull=select(segments,seg,isedge(seg_1,seg_2));
+drawall(hull);
+</pre></div><br />
+<br />
+凸型外殻の計算は非常にうまい幾何学的原則によってなされます。凸型外殻の中にすべての点が入ります。 <code>leftof</code> と <code>rightof</code> というユーザー定義関数は線分ABのどちら側にあるかで点を分類します。さらにこれを用いて  <code>isedge</code> を定義し２つの点のペアが凸型外殻の端となるかどうかを調べます。ここで、あいまいな比較 <code>~<0</code> の使い方に着目してください。最後に、すべての端の線を描画します。<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> アナログ時計</h3>
+<br />
+時針、分針、秒針をもったアナログ時計を作ります。まず、原点を始点とする3つの矢線を描いておきます。その終点をB,C,Dとします。それから次のスクリプトを Timer Tick スロットに書いて実行します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in timerstep
+t=time();
+
+p(x):=(sin(2*pi*x),cos(2*pi*x));
+B.xy=p(t_3/60)*4;
+C.xy=p(t_2/60)*5;
+D.xy=p((t_1*60+t_2)/(12*60))*3.5;
+
+apply(1..12,i,draw(p(i/12)*5));
+apply(1..60,i,draw(p(i/60)*5,size->1));
+
+drawtext((3,5),t);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+点はスクリプトで描きます。時計盤の円は「円を描く」モードで描いておきます。この時計は、 <code>time</code> 関数がコンピュータのシステム時間にアクセスするのを利用しています。ｔがリストであることを利用して秒針は1秒ごとに動くようになっています。<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3> 最短距離にある点</h3>
+<br />
+点Aに最も近い点を緑の円で囲んで示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex5.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+pts=allpoints();
+s=sort(pts,|#-A|);
+p=s_2;
+draw(p,size->20);
+</pre></div><br />
+<br />
+上のコードではA自身が最短になるために、距離で並べ替えた後、2番目に近いものをとっています。もうひとつの方法は、あらかじめ点Aを除外しておくものです。次のコードをご覧ください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+pts=allpoints()--[A];
+s=sort(pts,|#-A|);
+p=s_1;
+draw(p,size->20);
+</pre></div><br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 簡単な模様</h3>
+<br />
+点を動かして簡単な模様を描きます。線の色は点の色がそのまま使われます。まず、点をいくつかとり、色を変えておきます。（下図では3つ）//in draw 以下のスクリプトを Drawスロットに、// in init 以下を Initializationスロットに書いて実行します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex6.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+forall(pts,p,
+   p:"trace"=p:"trace" ++ [p.xy]
+);
+
+tr0=[[1,0],[0,1]];
+tr1=[[-1,0],[0,1]];
+tr2=[[-1,0],[0,-1]];
+tr3=[[1,0],[0,-1]];
+
+trs=[tr0,tr1,tr2,tr3];
+
+forall(trs,t,
+ forall(pts,p,
+   connect((p:"trace")*t,color->p.color,size->2);
+ );
+);
+
+//in init
+pts=allpoints();
+forall(pts,p,p:"trace"=[]);
+</pre></div><br />
+<br />
+変数 <code>"trace"</code> に、自分自身の軌跡がどんどん追加されていくことを見てください。<br />
+<br />
+<hr />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 回帰直線</h3>
+<br />
+すべての点に対する回帰直線を描きます。最小2乗法により正方形を描いていきます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex7.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+
+//Least-square line
+pts=allpoints();
+m=apply(pts,(1,#.x));
+y=apply(pts,#.y);
+ma=transpose(m)*m;
+mb=transpose(m)*y;
+mainv=inverse(ma);
+v=mainv*mb;
+f(x):=v_2*x+v_1;
+plot(f(x));
+
+//Draw the squares
+
+sq(x,y1,y2):=(
+   d=y2-y1;
+   p=((x,y1),(x,y2),(x+d,y2),(x+d,y1),(x,y1));
+   drawpoly(p,color->(1,0.5,0.5),alpha->0.4);
+   connect(p,color->(.8,0,0));
+);
+
+forall(pts,sq(#.x,#.y,(f(#.x))));
+</pre></div><br />
+<br />
+このコードでは、回帰直線を見つけるために高度な行列計算をしています。<br />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> ひまわり</h3>
+<br />
+チュートリアルのひまわりよりちょっといい方法です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex8.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+n=round(100*|B,E|);
+d=0.01*(|D,F|/|D,C|-.5);
+ang=137.508°+d;
+repeat(n,i,
+  w=ang*i;
+  r=sqrt(i)*.2;
+  p=(sin(w),cos(w))*r;
+  draw(p,color->(1,0.8,0));
+);
+drawtext((-5,-6),"n="+n);
+drawtext((0,-6),"w="+180*ang/pi+"?");
+</pre></div><br />
+<br />
+このコードは、ヒマワリが成長するときに現れる特定の角度  <code>ang=137.508deg.</code>を用いています。<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 関数プロット</h3>
+<br />
+関数式を自由に入力してそのグラフを描きます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex9.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+
+//Parameter sliders
+a=K.x;
+b=L.x;
+c=M.x;
+d=N.x;
+drawtext(K+(0.2,0.2),"a="+a);
+drawtext(L+(0.2,0.2),"b="+b);
+drawtext(M+(0.2,0.2),"c="+c);
+drawtext(N+(0.2,0.2),"d="+d);
+
+//Parse and plot
+f(x):=parse(Text0.val);
+plot(f(x),color->red(0.6),size->2);
+</pre></div><br />
+<br />
+関数式は、シンデレラの文字入力ボタンで "Text0'' のところに書きます。これを直接解釈し、上のスライダできまる係数を使ってグラフを描きます。<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 色をまぜる</h3>
+<br />
+3つの点A,B,Cを赤、緑、青の電球としましょう。この３つの色の混ざり具合をシミュレートします。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex10.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+
+colorplot(
+ (1-|#,A|/4,
+  1-|#,B|/4,
+  1-|#,C|/4),
+ (-5,-5),(5,5),pxlres->3
+)
+</pre></div><br />
+<br />
+このカラーミキサーは実に単純です。 <code>colorplot</code> 関数が、平面上の各点における色の混ざり具合を計算します。<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> ジュリア集合</h3>
+<br />
+フラクタルとして有名なジュリア集合です。複素数平面上の点Ｃが表す複素数によって計算されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex11.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+
+g(z,c):=z^2+c;
+
+julia(z):=(
+  iter=0;
+  while(iter<100 & |z|<2,
+    z=g(z,complex(C.xy));
+    iter=iter+1;
+  ); 
+  1-iter/100;
+);
+
+colorplot(julia(complex(#))
+   ,A,B,startres->16,pxlres->1);
+</pre></div><br />
+<br />
+ここでも <code>colorplot</code> 関数が大きな役割を果たします。上のコードで定義されている <code>julia</code> 関数は、各点の色を反復的に計算します。<code>startres</code> と <code>pxlres</code> 修飾子を使うことでより細かい図を描くことができます。<br />
+<br />
+<hr />
+<br />
+<!--latexreplace \newpage --> <!-- /latexreplace --><br />
+<br />
+<h3> 群れのシミュレーション</h3>
+<br />
+魚の群れをシミュレートします。それぞれの魚は隣の魚と同じ方向でしかもその場所に泳ごうとします。すべての魚は点Uによって与えられる障害を避けなければなりません。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Ex12.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//in draw
+
+ms=allmasses()--[U];
+lim=0.5;
+apply(ms,m,
+  near=select(ms,p,|p-m|<4);
+  avg=sum(near,m,m.v)/length(near);
+  m.v=m.v+.2*(avg);
+  if(|m.v|>lim,m.v=lim*m.v/|m.v|)
+  //Draw connections
+  apply(near,draw(#,m,color->(0,0,0),alpha->0.2));
+);
+</pre></div><br />
+<br />
+ここで、魚と障害物は正電荷を帯びた粒子としてモデル化されます。これにより、魚は互いに押しのけあいます。スクリプトはそれぞれの点の速度を設定します。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 08 of March, 2012 [09:46:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Tiny%20Code%20ExamplesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Tiny%20Code%20ExamplesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

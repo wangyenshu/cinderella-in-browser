@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : The Elements of CindyLabJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の要素</h2>
+<!--latexreplace<br />
+\index{force}<br />
+\index{point!in simulation}<br />
+--><!-- /latexreplace --><br />
+　前のセクションで述べた通り、 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> でのシミュレーションは点のような粒子とそれらの動きに影響を与える力のシステムとしてモデル化されます。最も基本的な単位は自由質点です。自由質点は、シンデレラの幾何学の点のようなものです。しかしながら、質点は、位置の他、現在の速度、質量、電荷といった属性を持っています。 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> におけるシミュレーションではパラメータ(変数)によって質点が動きます。自由質点を加えるのは自由点を加えるようなものです。質点は次の2つのモードのいずれかによって追加されます<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-mass.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Free+MassJ.html" class="wiki">自由質点</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-mass-vel.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=VelocityJ.html" class="wiki">速度</a></td></tr></table><br />
+<br />
+<br />
+質点の動きは力の影響を受けます。力にはいろいろな源があります。<br />
+<br />
+<ul><li> 第一に、重力（一定なものもそうでないものも）や磁場といった環境によるものです。それらは、つぎの3つのモードで与えられます。:
+</li></ul>
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-gravity.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=GravityJ.html" class="wiki">重力を加える</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-sun.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=SunJ.html" class="wiki">恒星</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/physics-polygon.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Magnetic+FieldJ.html" class="wiki">磁場を加える</a></td></tr></table><br />
+<br />
+<br />
+<ul><li> 第二に、特定の2つの質点の間に働く力があります。通常、それらの力は、バネや、電磁気力、重力の相互作用に対応します。そのような、粒子間の相互作用を加えるいくつかのモードがあります。
+</li></ul>
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-spring.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Rubber+BandJ.html" class="wiki">ゴムバンド</a> (長さ0のバネ)</td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-long-spring.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=SpringJ.html" class="wiki">バネ</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/force-culomb.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Coulomb+ForceJ.html" class="wiki">クーロン力</a></td></tr></table><br />
+<br />
+<br />
+<ul><li> 最後に、力は、全体にかかる重力や、システムのすべての粒子の相互作用といった<a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境</a>から来るかもしれません。
+</li></ul>
+<br />
+　<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の最後の要素は、実験装置の壁と床が持つ性質です。粒子はそのような"反射壁"に当たると、テニスボールのようにはね返ります。反射壁は次の2つのモードで加えられます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-floor.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=FloorJ.html" class="wiki">床</a></td></tr><tr><td class="wikicell" > <span class="img"><img alt="" src="buttonsback/add-bouncer.png" border="0"  /></span> </td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=BouncerJ.html" class="wiki">反射壁</a></td></tr></table><br />
+<br />
+　これらのオブジェクトの動作は、インスペクタ(または <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->)の正確な設定によって支配することができます。 <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のそれぞれの要素に関するセクションで、これらの物体が利用できる変数の種類について述べます。<br />
+<br />
+さらに、すべての物体にあてはまる属性は、 環境 のグローバル設定によってコントロールできます。<br />
+<br />
+<h3> 物理シミュレーションの開始</h3>
+<!--latexreplace<br />
+\index{simulation!starting a}<br />
+--><!-- /latexreplace --><br />
+　物理的な物体が描かれると、アニメーションのコントロール装置が画面に現れます。このコントロール装置によって、 アニメーションモードのように、シミュレーションの開始/終了/一旦停止ができます。アニメーションモードのように、いつでも自由点や自由質点をつかんだり動かしたりすることができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PhysDemo.png" border="0"  /></span></td></tr><tr><td class="caption"><b>簡単な物理アニメーション</b></td></tr></table><br />
+<br />
+物理アニメーションを始めると、自動的に「動かすモード」に変わります。他のモードに移行すると、物理アニメーションは停止します。シミュレーションの精度とグローバルなフレームレートは 環境インスペクタによって調整できることに注意してください。<br />
+<br />
+<br />
+<br />
+<h3> 環境設定</h3>
+<!--latexreplace<br />
+\index{simulation!environment}<br />
+\index{environment}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のもうひとつのとても重要な構成要素は <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a>です。環境は、物体に共通と思われる物理的要素の属性を集めたものです。そこには、全体にかかる摩擦と重力といった要素があります。重力や静電力による任意の粒子間の相互作用もコントロールできます。それらすべての属性は、インスペクタの他、適当な <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の命令文によっても影響されます。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:26:04 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=The%20Elements%20of%20CindyLabJ">
+    http://doc.cinderella.de/tiki-index.php?page=The%20Elements%20of%20CindyLabJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

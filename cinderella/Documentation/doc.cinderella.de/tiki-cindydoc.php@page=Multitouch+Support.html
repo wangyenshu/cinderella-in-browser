@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Multitouch Support 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Multitouch Support</h2>
+<h3> Introduction</h3>
+<!-- latexreplace<br />
+\index{multitouch}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+The computer mouse has been the predominant input device for graphical user interfaces for about 30 years. The interactive component of Cinderella depends on it, as it provides a one-to-one correspondence between the movements of a physical device and a point on the screen. On the other hand, the mouse restricts the gestural expression of a human being to a two-dimensional translation. We have become used to that restriction, but in real life we prefer to work with both hands and several fingers.<br />
+<br />
+Technology advances, and one of the big steps forward are multitouch interfaces as found in modern smartphones or tablet computers. Even the touchpads of laptops are able to recognize several fingers simultaneously, and screens with touch recognition have become affordable and are supported by the latest computer operating systems.<br />
+<!-- latexreplace<br />
+\index{touchscreen}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+For a geometry tool, multitouch is more than a nice-to-have feature. Mathematically spoken, the interface changes from "translation only" to "multi-transformation capable". For good reasons there is no mode to add a "free line" in Cinderella. Instead you have to use <a title="no description" href="tiki-cindydoc.php@page=Add+a+Line.html" class="wiki">lines by two points</a> or <a title="no description" href="tiki-cindydoc.php@page=Line+through+a+Point.html" class="wiki">lines through a point</a>. If you are using a mouse as input device, only those two tools define a meaningful interaction between the user and the construction. The situation changes drastically in a multitouch environment. Movements of two fingers are already powerful enough to encode a similarity transformation. In such a scenario it is physically possible to use two fingers to get the full interaction for a line: You can rotate and translate it at the same time.<br />
+<br />
+From a programmers' point of view, multitouch introduces some complexity. With the mouse there is a defined pointer position at any time, and the button interaction is always a press-drag-release sequence. This is no longer true for multitouch interaction; obviously there might be any number of current positions (even none, if you don't touch), and the touch-move-release sequences may overlap. As a user, you should not have to care, but if you are going to work with <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace -->, this will be of importance. See <!-- latexreplace \cite{KorDoh-UIDDGS-2010} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[KD10]</a><!-- /latexreplace --> for a discussion in more detail.<br />
+<br />
+<h3> Using Multitouch With Cinderella</h3>
+<br />
+Currently, Cinderella supports multitouch events through the community standard TUIO protocol <!-- latexreplace \cite{KalBovBenCos-TPTTUI-2005} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[KBBC05]</a><!-- /latexreplace -->, see also <a class="wiki external"  href="http://www.tuio.org">http://www.tuio.org</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />.  This cross-platform standard has the advantage that there are corresponding drivers for almost every multitouch device. For smartphones and tablets you can find apps on the TUIO home page that will send the multitouch events to your computer.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TUIO-settings.png" border="0"  /></span></td></tr><tr><td class="caption"><b>TUIO settings in the Inspector</b></td></tr></table><br />
+<br />
+You can enable TUIO support in the mode and language settings of the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>. Check the TUIO support checkbox and Cinderella will listen on the standard port 3333 for TUIO events in <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">Move mode</a>. While TUIO support is on, regular mouse events will be ignored in Move mode to avoid double input if used with standard TUIO drivers on Windows or Mac OS X. Other modes of Cinderella still require mouse operation and do not support TUIO events. If you check <i>Creation gestures</i>, you can create points and lines by touching the plane with one or two fingers. As this can lead to a lot of unwanted points and lines this option is unchecked by default and should be considered experimental.<br />
+<br />
+The <b>Only frontmost window</b> option should be checked or unchecked depending on the device you use for multitouch gestures. If the device displays the screen contents it usually should be unchecked, as the touches on the screen are mapped to the individual windows of Cinderella automatically. If the device does not have a screen or does not show the Cinderella windows, as it is the case with touchpads on laptop computers or TUIO apps on mobile phones, it might be better to check this option. In that case all events on the touch surface are mapped to the visible view area of the frontmost window of Cinderella.<br />
+<br />
+<h3> Programming Multitouch With CindyScript</h3>
+Multitouch input for geometry software is still a research area, and besides the obvious behavior in move mode, there are no user interaction standards yet. While we will work on the multitouch integration in other modes for future updates of Cinderella, we also decided to make the multitouch events accessible to <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace -->.<br />
+<!-- latexreplace<br />
+\index{touch-local}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+If you enable TUIO support in the Inspector, the mouse event slots <b>Mouse Down</b>, <b>Mouse Up</b> and <b>Mouse Drag</b> will be triggered by TUIO events instead of regular mouse events. The <a title="no description" href='tiki-cindydoc.php@page=User+Input.html#mouse' class='wiki'><code>mouse</code> function</a> will report the location of the touch event. The <code>mouse()</code> location is uniquely defined as every touch event reports about one of the multiple touches only. This implies that you cannot rely on the fact that successive mouse events belong to the same gesture. This is a programmer's nightmare: How can you keep track of the different touches and assign them to the right actions? For your convenience, CindyScript includes the necessary tool, as we describe below.<br />
+<br />
+<h4>Declaring touch-local variables: <span style="color:red;"><code>mtlocal(&#60;var1&#62;,&#60;var2&#62;,...)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> All variables declared to be mtlocal are local variables for a touch sequence. This function is only useful in the <b>Mouse Down</b> slot. If a variable is defined as touch local, then for all touch sequences a unique instance of that variable is created. If you use the same variable in the <b>Mouse Drag</b> slot or <b>Mouse Up</b> slot you will work with the instance of that variable that is assigned to the touch-move-release sequence.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> We will illustrate the use of the <code>mtlocal</code> function with a small example. By placing the following code in the <b>Draw</b>, <b>Mouse Down</b>, <b>Mouse Up</b> and <b>Mouse Drag</b> slots you can draw polygons withs the mouse. While the mouse is pressed, the new polygon will be drawn in red, when the mouse is released, the new polygon will be added to a list of polygons that is drawn in blue.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+// In Draw:
+forall(polygons,drawpoly(#));
+
+// In Mouse Down:
+polygon=[mouse()];
+
+// In Mouse Drag:
+polygon=polygon++[mouse()];
+drawpoly(polygon,color->red(1));
+
+// In Mouse Up:
+polygons=polygons++[polygon];
+</pre></div><br />
+<br />
+This code relies on the fact that a polygon will be created first in <b>Mouse Down</b>, then points will be added in <b>Mouse Drag</b>, and finally the polygon is complete and will be added to the list of polygons in <b>Mouse Up</b>.<br />
+<br />
+When the same code runs in a multi touch environment, the (global) variable <code>polygon</code> will be used for all touches. Also, if any touch is released, the new polygon is added to the list of polygons, but still other drag events will add points to it. The code is not multitouch-compatible and will badly fail.<br />
+<br />
+By adding a single call to <code>mtlocal</code> we can fix the code:<br />
+<div dir="ltr"><pre class='codelisting'>
+// In Draw:
+forall(polygons,drawpoly(#));
+
+// In Mouse Down:
+mtlocal(polygon); // make sure every touch gets its own polygon
+polygon=[mouse()];
+
+// In Mouse Drag:
+polygon=polygon++[mouse()];
+drawpoly(polygon,color->red(1));
+
+// In Mouse Up:
+polygons=polygons++[polygon];
+</pre></div><br />
+<br />
+Now a new polygon will be created for each touch, and the drag and up events will use the correct polygon variable that is associated to the gesture.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MultiTouchPolygonDraw.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Drawing three polygons at once using multitouch</b></td></tr></table><br />
+<br />
+If you try this code example, you will see that the repainting of the red polygons does not work as expected due to the automatic clearing of the screen at every event. We can fix that by explicitly keeping a list of new polygons and drawing them in the draw event only. You find the final code below.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+// In Draw:
+
+forall(polygons,drawpoly(#));
+forall(newpolygons,drawpoly(#,color->red(1)));
+
+// In Mouse Down:
+mtlocal(polygon);
+polygon=[mouse()];
+newpolygons=newpolygons++[polygon];
+
+// In Mouse Up:
+newpolygons=newpolygons--[polygon];
+polygons=polygons++[polygon];
+
+// In Mouse Drag:
+newpolygons=newpolygons--[polygon]; 
+polygon=polygon++[mouse()];
+newpolygons=newpolygons++[polygon];
+</pre></div><br />
+<br />
+Alternatively, you could use <a title="no description" href='tiki-cindydoc.php@page=Script+Coordinate+System.html#layer' class='wiki'>layers and the autoclear flag</a> to achieve the same effect without storing all the new polygons.<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [09:01:48 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Multitouch%20Support">
+    http://doc.cinderella.de/tiki-index.php?page=Multitouch%20Support
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

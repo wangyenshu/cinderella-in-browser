@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Scripting Physical Environments 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Scripting Physical Environments</h2>
+<!--latexreplace<br />
+\index{CindyScript!and CindyLab}<br />
+\index{CindyLab!and CindyScript}<br />
+--><!-- /latexreplace --><br />
+There are many ways in which <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> can be used to enhance the possibilities of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->. We will present a few of them here. On the one hand, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> provides several special operators that have been implemented for use with <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> (for instance, an oscilloscope for viewing physical magnitudes and a statement for plotting force fields). On the other hand, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> has direct access to most of the parameters that are relevant for physics simulations. Moreover, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> can enable or disable physical functionalities of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> objects. In this way one can implement machine-like behavior in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> scenarios. We will give several examples here that use <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> together with <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->.<br />
+<br />
+<br />
+<h3> The Oscilloscope</h3>
+<!--latexreplace<br />
+\index{oscilloscope}<br />
+--><!-- /latexreplace --><br />
+The statement <code>drawcurves(<i>position</i>,<i>list_of_values</i>)</code> generates a region in the geometric view in which the development of magnitudes can be shown. Here <code><i>position</i></code> is the position at which the oscilloscope is drawn and <i>list_of_values</i> is a <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> list that contains several magnitudes to be represented graphically. The simplest use of this operator is presented by the following program:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawcurves((0,0),[B.x,B.y])
+</pre></div><br />
+<br />
+Here the <i>x</i> and <i>y</i> coordinates of point B are shown. If B is a point moving around a sun, the picture might look like the one below.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Curved plots of planetary motion</b></td></tr></table><br />
+<br />
+By default, the display range of the curve is automatically adapted to the range of values. The <code>drawcurves(...)</code> operator supports many different modifiers that can be usedto set background colors, curve colors, display texts, as well as many additional parameters for drawings. You will find a detailed description in the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> reference manual. The picture below shows the use of the <code>drawcurves</code> operator applied to a coupled harmonic oscillator.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The movement of a coupled oscillator</b></td></tr></table><br />
+<br />
+Here many modifiers were used in order to get the desired color behavior and the text display. The example was constructed using the following <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> program:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+linecolor((1,1,1));
+drawcurves((-7,-3),
+textcolor((1,1,1));  (A.x,B.x,A.ke,B.ke,a.pe+b.pe+c.pe),
+  height->50,
+  color->(1,1,1),
+  back->(0,0,0),
+  backalpha->1,showranges->true,
+  range->"peek",width->400,
+  colors->[
+    [1,0.5,0.5],
+    [0.5,1,0.5],     
+    [1,0.5,0.5], 
+    [0.5,1,0.5],
+    [0.5,0.5,1]],
+  texts->[
+    "PosA = "+ A.x,
+    "PosB = "+B.x,
+    "EnergyA = "+A.ke,
+    "EnergyB = "+B.ke,
+    "PotentialEnergy = "+(a.pe+b.pe+c.pe)
+]);
+</pre></div><br />
+<br />
+<h3>Force Fields</h3>
+<!--latexreplace<br />
+\index{force field}<br />
+\index{field!force}<br />
+\index{gravitational force}<br />
+--><!-- /latexreplace --><br />
+Another <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> operator that was designed to support <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is the <code>drawforces</code> operator. With this operator one can visualize the direction and strength of forces all over the drawing area. To accomplish this, a virtual probe particle moves across the screen, measuring the forces at different points. If one simply writes in <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> the line<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawforces()
+</pre></div><br />
+<br />
+then all gravitational forces, Coulomb forces, ball interactions, etc. are measured and the flux is drawn. The probe particle is standardized to have mass = 1, charge = 1, and radius = 1. If, for instance, two charged particles are present with opposite charges, then the <code>drawforces()</code> operator causes the following flux picture:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A simple electrostatic field</b></td></tr></table><br />
+<br />
+Like the <code>drawcurves()</code> operator, the <code>drawforces()</code> operator supports many modifiers. They are explained in detail in the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> reference. Here we just present a slightly more advanced example.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Another simple electrostatic field</b></td></tr></table><br />
+<br />
+The code fragment that generated this flux picture uses several modifiers.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawforces(stream->true,
+              color->(1,1,1),
+              factor->3,
+              resolution->5)
+</pre></div><br />
+<br />
+In particular, the <code>stream->true</code> statement replaces the usual display of force fields with small needles with little streamlets that give a more accurate picture of the flux.<br />
+<br />
+<br />
+<h3> Programming CindyLab Scenarios</h3>
+<br />
+Since <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> can influence all the parameters of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->, it is also easy to implement complicated behavior. As an example, we present here an implementation of a simple table tennis game. First, a few bouncers are used to draw the boundary of the table. Another bouncer is constructed geometrically that is bound to a point so that it can be freely moved like a table tennis paddle. Finally, a table tennis ball is added as a particle with velocity. So far, the construction makes use only of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> and Cinderella. The situation is already quite functional. One can indeed play table tennis. However, if the ball leaves the screen, it will be lost forever.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">
+<tr> <td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys5.png" border="0"  width="320" /></span></td><td width=10></td>  <td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys6.png" border="0"  width="320" /></span></td>
+</tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Construction of a table tennis game<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->A lost ball<!--latexreplace } --> <!-- /latexreplace --></b></td>
+</tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+This is the point at which <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> comes into play. With <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> one can detect whether the ball is leaving the screen and react to such an event. The following program detects the ball leaving the screen with the code line <code>if(H.x>D.x+9,...</code>. If this happens, a new point with random position, random speed, and random color is inserted at the end of the table. In addition, a counter is used to count how many balls have been lost.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(H.x>D.x+9,
+  H.x=F.x;
+  r=random();
+  H.y=(r*D.y+(1-r)*G.y);
+  w=random()*pi/2+3*pi/4;
+  H.vx=-cos(w)*.4;
+  H.vy=sin(w)*.4;
+  H.color=(hue(random()));
+  count=count+1;
+);
+drawtext((-1,-3),"Missed balls: "+count,size->20);
+</pre></div><br />
+<br />
+In order to initialize the counter, there must also be one additional line of code in the <i>simulation start</i> tag that sets the counter to zero.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+count=0;
+</pre></div><br />
+<br />
+The picture below shows a snapshot that was taken during a game. Observe how the yellow ball leaves the game and the blue ball is thrown in.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptPhys7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Scripting the table tennis game</b></td></tr></table><br />
+<!--latexreplace<br />
+\index{CindyLab|)}<br />
+--><!-- /latexreplace --><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:32:10 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Scripting%20Physical%20Environments">
+    http://doc.cinderella.de/tiki-index.php?page=Scripting%20Physical%20Environments
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

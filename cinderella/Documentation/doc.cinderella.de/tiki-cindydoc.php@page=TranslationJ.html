@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : TranslationJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>平行移動</h2>
+<!--latexreplace<br />
+\index{mode!define a translation}<br />
+\index{transformation!translation}<br />
+\index{translation}<br />
+--><!-- /latexreplace --><br />
+平行移動は特定の長さだけ特定の方向へ移動することです。平行移動はある図と写した図のサンプルとして用いられる２点を選択することで定義されます。平行移動を定義するにはマウスで２回クリックする必要があります。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo1}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo2}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo3}&amp; \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo4} \\<br />
+{\small\bf First selection: } &amp;  {\small\bf  Moving the mouse:}&amp;  {\small\bf  Move to second point: }&amp;  {\small\bf Second selection:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it The first point of the  } &amp;  {\small\it  An arrow hint}&amp;  {\small\it  The arrow helps you. }&amp;  {\small\it   The translation}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   translation is selected. } &amp;  {\small\it  is shown.}&amp;  {\small\it  }&amp;  {\small\it  is created.}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo1.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo4.png" border="0"  width="150" /></span></td></tr>
+<tr> <td><b>最初の選択:</b><br>平行移動の最初の点を <br>  選択する</td><td></td>
+<td><b>マウスカーソルを動かす:</b><br>ヒントが矢印で出ます</td><td></td>
+<td><b>２番目の点に動かす:</b><br>  矢印が手助けします<br> </td> <td></td>
+<td><b>２番目の選択:</b><br> 平行移動ができます</td> </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+平行移動の定義についての詳細は<a title="no description" href="tiki-cindydoc.php@page=General+Use+of+TransformationsJ.html" class="wiki">変換の一般的な使い方</a>でも説明されています。<br />
+<br />
+変換をたくさんの選択した対象に適用させると、すべて同時に作図することができます。この過程で、すべての現れた情報を元の図形から作図した図形へと移すことができます。次の図から、どのように現れた情報が写ったのかがわかります。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Trans1.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Trans2.png" border="0"  /></span></td>
+ </tr>
+<tr>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->元の画像<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->写したあとの状態<!--latexreplace } --> <!-- /latexreplace --></b></td><td></td>
+</tr>
+</table><br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+平行移動の使い方の１つとして、規則的な装飾のような模様を作り出すことができます。つぎの図で示されているのは、２つの違った方向へと２つの変換を繰り返すことによって作り出された模様です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Trans3.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>規則的な円の模様</b></td></tr></table><br />
+<br />
+変換はある動点の周りで生じる状況についての学ぶためにも使われることもあるかもしれません。そのような場合には、ある点を一種の基点とし、その点を目的の位置に写す平行移動を定義し最終的に平行移動することで、平行移動について学ぶことができます。このような変換の応用は少し難しいので、簡単な技術を例示します。下の画像を見てください。回転している赤い<i>D</i>点と、緑色をした<i>C</i>点が表されています。緑の点は赤い点の三倍の速さで回っています。回転している赤い点から見ると緑の点の軌跡はどのように見えるでしょうか。このために、平行移動を赤の点 <i>D</i> からある定点 <i>E</i>への移動で定義します。それから緑の点にこの変換を適用します。写された点の軌跡は暗緑色で示されます。これが <i>D</i> から見た<i>C</i> の動きです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Trans4.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>異なる位置からの見え方の解析</b></td></tr></table><br />
+<br />
+<br />
+同じ技術が <a title="no description" href="tiki-cindydoc.php@page=Geometry+and+CindyLabJ.html" class="wiki">幾何学とCindyLab</a>の節の例２にあります。そこでは、惑星の移動の速度ベクトルのふるまいについて解析しています。<br />
+<br />
+<br />
+<hr />
+<br />
+<h2>注意</h2>
+平行移動は、双曲幾何学や、球面の幾何学でも利用できます。そこでは、直線の接続状態を保存するように、点 <i>A</i>から点 <i>B</i> への平行移動が定義されます。<br />
+<br />
+<h2>こちらも参照してください</h2>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=SimilarityJ.html" class="wiki">相似変換</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=RotationJ.html" class="wiki">回転</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=ReflectionJ.html" class="wiki">鏡映</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=General+Use+of+TransformationsJ.html" class="wiki">変換の一般的な使い方</a>
+</li></ul>
+<br />
+<br />
+(横山)<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 30 of July, 2011 [11:45:03 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=TranslationJ">
+    http://doc.cinderella.de/tiki-index.php?page=TranslationJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

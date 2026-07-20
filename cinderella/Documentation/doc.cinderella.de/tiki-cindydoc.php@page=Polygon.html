@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Polygon 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>Polygon</h3>
+<!--latexreplace<br />
+\index{polygon}<br />
+\index{mode!polygon}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/polygon.png" border="0"  align="left" /></span></div> In this mode a polygon can be constructed from a sequence of vertices. Select the vertices in the order in which they should appear on the boundary of the polygon. Unlike the other definition modes, this mode does not expect a fixed number of input selections.  You finish the creation of a polygon by selecting the first point a second time to close the polygon. For instance, if you want to construct a polygon through vertices <i>A</i>, <i>B</i>, <i>C</i>, and <i>D</i>, you have to select <i>A</i>, <i>B</i>, <i>C</i>, <i>D</i>, and <i>A</i> in this order.<br />
+<br />
+If you made a mistake in selecting a point, you just click the point again to delete it from the boundary of the polygon. However, only the last point in the sequence can be deselected in this way.<br />
+<br />
+Graphical hints guide you through the definition phase. They always resemble the part of the polygon that has been constructed so far.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l@{\kern.5cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly1} &amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly2} &amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly3}&amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly4} &amp;  \includegraphics<a class="wiki external"  href="width=0.6in">width=0.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoly5} \\</tt><br />
+{\small\it 1st click  } &amp;  {\small\it 2nd click}&amp;  {\small\it  3rd click  }&amp;  {\small\it  4th click }&amp;  {\small\it  5th click  }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/AddPoly1.png" border="0"  /></span></td>    <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/AddPoly2.png" border="0"  /></span></td>   <td width=10></td>
+ <td><span class="img"><img alt="" src="img/wiki_up/AddPoly3.png" border="0"  /></span></td>   <td width=10></td>
+ <td><span class="img"><img alt="" src="img/wiki_up/AddPoly4.png" border="0"  /></span></td>  <td width=10></td>
+ <td><span class="img"><img alt="" src="img/wiki_up/AddPoly5.png" border="0"  /></span></td>   <td width=10></td>
+ </tr>
+<tr>   <td><b>1st click</b></td>   <td width=10></td>
+ <td><b>2nd click</b></td>  <td width=10></td>
+  <td><b>3rd click</b></td>  <td width=10></td>
+  <td><b>4th click</b></td>  <td width=10></td>
+  <td><b>5th click</b></td>  <td width=10></td>
+<tt> </tr>  </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+For construction regular polygons there are also a variety of other modes described in the section  <a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a>.<br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Select a sequence of points to define a polygon. To finish the definition select the first point again.<br />
+</div><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+This mode is supported only in the Euclidean, spherical, and textual views.  The hyperbolic view ignores polygonal objects.  The orientation of the polygon is important when one measures its area.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Area.html' class='wiki'>Area</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a>
+</li></ul>
+</div><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [08:42:13 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Polygon">
+    http://doc.cinderella.de/tiki-index.php?page=Polygon
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Line through a PointJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>傾きつき直線(点を通る直線)</h2>
+<!--latexreplace<br />
+\index{mode!line through point}<br />
+\index{line!trough point}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/through.png" border="0"  align="left" /></span></div>  このモードではある1点を通り適当な傾きを持つ直線を描きます。 動かすモードでその1 点を動かすと、傾きはそのままで直線は平行移動します。 しかし、動かすモードで直線を動かし、線の傾きを変えることもできます。 ですからこのモードは傾きつき直線と呼んでもいいでしょう。 このモードでは一回の「押す、ドラッグする、離す」動作で、1つの点と直線を描きます。 最初にマウスのボタンを押した時に点が追加されます。 マウスをドラッグすると、直線が追加されます。この直線は常にマウスにくっついています。 (訳註：このモードでは2つ目の点は追加されません．) マウスのボタンを離すと直線の場所が決まります。 細かく説明すると：<br />
+<br />
+<ul><li> <b>マウスのボタンを押す</b> と点が生成されます。 この点の場所は、マウスのボタンが押された場所で決まります。
+<ul><li> もしすでにある点の上でマウスのボタンが押されたならば、その点が1つ目の点として選ばれます。
+</li><li> もしマウスのボタンが2つの要素(直線、円、2次曲線)の交わりの上で押されたならば、その交点が新しく追加され、そしてそれが1つ目の点となります。
+</li><li> もしマウスのボタンが一本の直線(または円)の上で押された場合、その点はその直線(または円)を自由に動ける自由点として追加され、かつ1つ目の点となります。
+</li><li> それ以外の場合は、自由点が1つ目の点となります。
+</li></ul></li><li> <b>マウスをドラッグする</b> と直線が生成されます。 この段階では直線の傾きは自由に変更できます。 マウスがすでにある点に近づくと直線はその点にスナップします。
+</li><li> <b>マウスのボタンを離す</b> と直線の位置が決定されます。 こうして直線を引く作業が完了します。 マウスのボタンを離す位置によって、次の二通りの場合がありえます。
+<ul><li> もしマウスのボタンが他のすでにある点の上で離されれば、その点が直線上の2つ目の点となります。 つまり2点をつなぐ直線(結ぶ)を引いたことになります。
+</li><li> もしくは、傾きつき直線が追加されます。
+</li></ul></li></ul>
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+「押す、ドラッグする、離す」の一連の動作で傾きつき直線を描く。<br />
+<br />
+<h3>次も参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Circle+by+RadiusJ.html" class="wiki">半径つき円を描く</a>
+</li></ul>
+<br />
+<br />
+<br />
+(阿原)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [11:00:25 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Line%20through%20a%20PointJ">
+    http://doc.cinderella.de/tiki-index.php?page=Line%20through%20a%20PointJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

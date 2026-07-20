@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Kepler EllipsesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>ケプラーの楕円</h2>
+<br />
+この小さなチュートリアルで、<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> による小さな物理シミュレーションを準備します。太陽を軌道に乗って回っている惑星をモデル化します。このチュートリアルで、物理シミュレーションの準備と始め方について学んでください。<br />
+<br />
+シンデレラを起動したら、 <b>ツールバーの   <span class="img"><img alt="" src="buttonsback/add-sun.png" border="0"  /></span> ボタンをクリックして「恒星を加える」モードにします。</b>それから、任意の位置に恒星(太陽)を加えてください。 恒星が加えられるとアニメーションコントローラが現れます。<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> の物理的要素が存在するときは、常にアニメーションコントローラがあります。表示画面は図１のように見えるでしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun1B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図1 : 恒星が生まれた</b></td></tr></table><br />
+<br />
+<br />
+さて、恒星の軌道に乗って回って欲しい惑星を加えます。惑星の初速度は恒星に対して垂直でなければなりません。さもないと直接恒星に引きつけられて終わってしまいます <b>「速度つき質点を加える」モード    <span class="img"><img alt="" src="buttonsback/add-mass-vel.png" border="0"  /></span> をクリックし、恒星に近いところでマウスボタンを押し、そのまま少しドラッグして離してください。</b>  マウスボタンを押すと質点が作られます。ドラッグすると速度ベクトルが作られ、ボタンを離すとでき上がります。図２のようになったでしょうか。うまくいかなかったときは、動かすモードにして、点の位置を変えたり、矢線を調節したりすることができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun2B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図２ : 恒星と惑星</b></td></tr></table><br />
+<br />
+<br />
+さて、 <b>プレイボタンを押してシミュレーションを始めることができます。 </b>きっとアニメーションは速く動きすぎるでしょう。アニメーションコントローラのスライダーを動かすと速さを変えることができます。惑星は楕円軌道を描くでしょう。 (これがケプラーの第３法則です)。<br />
+<br />
+楕円をもうすこし見やすくしましょう。そのためには、惑星である点 B が動いた足跡を表示します。 インスペクタを開き、「特別な表示の設定」ボタン  <span class="img"><img alt="" src="buttonsback/inspector-special.png" border="0"  /></span> をクリックします。点 B を選択すると、インスペクタは図３のようになるでしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PhysInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図３ : 惑星のインスペクタ</b></td></tr></table><br />
+<br />
+<br />
+<b>「足跡を描く」チェックボックスをチェックします</b>これで、点 B は、その動いた跡を残すようになります。<b>では、アニメーションを再開しましょう。</b>惑星の軌跡が図４のように楕円軌道として見えるでしょう。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Sun4B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図４ : 惑星の軌道</b></td></tr></table><br />
+<br />
+この設定でいくつかの実験を行うことを勧めます。少し提案をしましょう。<br />
+<br />
+<ul><li> 惑星の位置を変えてください。
+</li><li> 速さ（速度の大きさ）を変えてください。
+</li><li> 速度の方向を変えてください。
+</li><li> 2つ以上の太陽が存在すると、どんなことが起こりますか？
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 19 of February, 2012 [00:22:02 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Kepler%20EllipsesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Kepler%20EllipsesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

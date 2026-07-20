@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Pappus TheoremJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>パッポスの定理</h2>
+<br />
+パッポスの定理は、射影幾何において最も基本的な定理の一つです。 ある意味で「3直線が1点で交わる」とか「3点が1直線上にある」といったタイプの定理の中で最も簡単な例だと言えましょう。 ここでは、一つ一つ要素を付け加えることによって図を作っていって定理の結論を確かめましょう。 また、最初においた頂点を動かすことによって、図を変形させても定理が成り立ち続けることを確かめられると思います。<br />
+<br />
+<h3>最初の点を描く</h3>
+<b>シンデレラ</b>を始めると、最初はユークリッド表示 のウィンドウが出てきます。 このウィンドウには、シンデレラの機能のほとんどが割り当てられているツールバー (小さい絵ボタンの列)がついています。 このツールバー の下には平面(描画面)が用意され、 ここに作図、操作をし、図を構成していきます。<br />
+<br />
+ツールバーの中の  <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span>   というボタンだけが少し暗い色になっているのが分かるでしょう。これはシンデレラの現在の操作モードを示しています。<br />
+<br />
+描画面でのマウス操作は、この操作モードに従った動作となります。 点を一つ打つため <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">点を加える</a>  <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span>  のアイコンをクリックします。次に、 <b>マウスを描画面の上へ持っていき、左ボタンをクリックして下さい。</b> 新しい点が描画面に追加され、自動的に大文字の名前がつけられます(図1)。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap01B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図1：最初に描いた点</b></td></tr></table><br />
+<br />
+<br />
+二つ目の点を描画面に描く前に、まず続きを読んで下さい。 点を描画面に描く途中で、マウスのボタンを離してしまわずに押したままマウスを動かすと点を描画面上で自由に動かすことができるのがわかるでしょう。 点は、マウスの描画面上の現在の位置において幾何的状況にあうように定義されるのです (まだわたしたちの描いたものに幾何的状況というほどのものはそれほど現われていませんが、じきに現われてきます)．<b>マウスを描画面上で動かしてみて、(左)ボタンを押してください。 そしてボタンを押したままマウスを動かしてみてください。 (訳註：これをドラッグするといいます。)</b> がマウスにくっついてくるのがわかるでしょう。 その点の座標が点といっしょに表示されます。 すでに描かれた点に近づけてみる (<b>やってみてください</b>)と、新しい点が、古い点にスナップ する(音はしませんが、ぱちん、という感じで重なります) のがわかります。 さらに動かして<b>マウスボタンを離して</b> はじめてそこに点が追加されます。 (古い点にスナップしたところでボタンを離すと、点は追加されません。 <b> こんな調子で描画面にいくつか点を追加してみてください。</b>(図2)<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap02B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図2：たくさんの点</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<h3>操作のやり直し</h3>
+<br />
+画面上にたくさんの点を描いたかもしれませんね。 そういうとき、取り消しで、 自分が画面上でやった作業を取り消すことができるのです。 取り消しボタン  <span class="img"><img alt="" src="buttonsback/undo.png" border="0"  /></span>   を押せば、最後に描いた点が消えるでしょう。  <b>「取り消し」を何回か押して、描画面の上にちょうど2つの点だけが残るようにしてみましょう</b>。この作業を通して、もし間違った操作をしてしまっても、「取り消し」で元に戻せること、また何回でも戻せることがわかります。<br />
+<br />
+<br />
+<h2>点を動かす</h2>
+<br />
+さて、パッポスの定理の図を作ってみましょう残った2点 A と B をだいたい図3のような位置に置いてください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap03B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図3：図のように動かしてください</b></td></tr></table><br />
+<br />
+<br />
+あるいは、あなたの描いた最初の2点はぜんぜん違う位置にあるかもしれません。そのような時は<b><a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a> にするために、ツールバーの <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span>  ボタンを押してください。</b> このモードにすると、描画面でクリックしてももはや点は描かれません。 そのかわり、すでに描かれた点を動かすことができるようになっています。 <b>動かしたい点の上にマウスを持っていってマウスボタンを押してください。そしてドラッグしてください。</b> Tすると点はマウスに従って動きます。 なお、このモードでは他の点にスナップしないことにも気づくでしょう。 <b>ボタンを離せば</b>点はそこに置かれます。 一般的には、点を動かすモードでは、図の中の自由要素をドラッグすることによって動かすことができます。 (自由要素の位置から作図で決まる)残りの図は、自由要素の動きに従って自動的に動きます。<br />
+<br />
+<br />
+<h3>直線を加える</h3>
+<br />
+さて、 <i>A</i> と <i>B</i>とを結ぶ直線を引いてみましょう。  <b> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a> モードにするために、ツールバーの <span class="img"><img alt="" src="buttonsback/multi-add-line.png" border="0"  /></span> ボタンを押してください。</b>  このモードでは、「押す、ドラッグする、離す」という一連の動作によって、2点を結ぶ直線を描くことができます。 <b>マウスを <i>A</i> に置いてください。左ボタンを押しながら、マウスを動かして点 <i>B</i> に重ねてください。 そしてボタンを離します。</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap04B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図4：直線を加える</b></td></tr></table><br />
+<br />
+<br />
+この方法で、求める直線が描けたはずです。 いくつか注意をしておきましょう。 点 <i>A</i> の上でマウスボタンを押したとき、その点が白く光ります (ハイライトするといいます)． これは「あなたが(今から描かれるべき)直線のスタートする点としてそこを選んだ」ということを意味します。 マウスをドラッグしている間、マウスの位置には必ず二つ目の点が現れ、ボタンを離した時、二つ目の点がその位置に置かれるのです。 ですから、ボタンを離す前にマウスをほかの点(たとえば <i>B</i> )にスナップすれば、新しい点が作られずに、その点を二つ目の点とみなして直線が描かれるのです。<br />
+<br />
+もし、あなたがうまくこの動作を行えなくても、取り消しボタンで何回でもトライしてみることができます。 図4のような図ができるまで、何度でも挑戦してみてください。<br />
+<br />
+<br />
+<h3>さらに直線を描く</h3>
+<br />
+図5のような図を作るために、もう3本の直線を追加します。この作業は次の3つのマウス操作で行うことができます。 <b>まず、点 <i>B</i> にマウスを合わせて、「押す、ドラッグする、離す」の作業で点  <i>C</i>を図5のような位置に作ります。 次に、点 <i>C</i> から始めて点 <i>D</i> を、点 <i>D</i> から始めて点 <i>E</i> を作ります。</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap05B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図5：さらに直線を描く</b></td></tr></table><br />
+<br />
+<br />
+実は、ここまでは"直線を加える"というモードだけで作れたということに注意しましょう。 点を加えるモードで点 <i>A</i> と <i>B</i> を描きましたがこれは不必要な作業でした． 同じことを直線を加えるモードで直接行うこともできたのです。 というのは、このモードでは、二つ目の点が生成されるばかりでなく、もし必要とあらば一つ目の点も生成されるからなのです。こうして作られた直線には小文字で <i>a</i> から <i>d</i> までの名前が自動的につけられます。<br />
+<br />
+<br />
+<br />
+<h3>交点を決める</h3>
+<br />
+さて、引き続き直線を加えるモードのままでいましょう。 さて、点 <i>E</i> と、直線 <i>a</i> と直線 <i>c</i> との交点を結ぶ直線を引くことにしましょう。  <b>マウスを点 <i>E</i> の上に持っていきます。そこで、「押す、ドラッグする、離す」と いう動作を始めるのですが、ドラッグしながらマウスを直線 <i>a</i> と直線 <i>c</i> との交点のあたりに持ってきてみてください。2直線がぴかっと光ったところでボタンを離すのです。</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap06B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図6：交点を加える</b></td></tr></table><br />
+<br />
+<br />
+ドラッグしたマウスを2直線の交点のあたりに持ってくると、その2直線がハイライトし、マウスが交点にスナップされます。 そこで、マウスボタンを離すと、新しい点 <i>F</i> が交点として定義され、そこまでの直線が描かれます。 ここで、ツールバーから動かすモードを選び、点 <i>A</i> から点 <i>E</i> を少し動かしてみましょう。 それに従って直線や点 <i>F</i> が動きます。<br />
+<br />
+こうして現れた新しい点 <i>F</i> は少し暗い色で表示されているのがわかるでしょうか。これは「点 <i>F</i> は動かすモードで動かせない点である」ということを意味しています。 こういう点を「従属点」と呼ぶことにします。 ほかの点は、動かすモードで動かすことができますから、「自由点」と呼ぶことにします。<br />
+<br />
+ここで、さらに注意しておきます。 同じような構成法で、「半自由点」を作ることもできます。 これは、特定の直線の上だけを動けるような自由点のことを言います。 これは、点を加えるモードですでにある直線(の点でないところ)でマウスボタンを離せば作ることができます。 ほかにも <a title="no description" href="tiki-cindydoc.php@page=Interactive+ModesJ.html" class="wiki">インタラクティブモード</a>でも同じようなことができます。 詳しくはリファレンスガイドをご覧ください。<br />
+<br />
+<br />
+<h3>描画の完成</h3>
+<br />
+さらに直線を追加して、作図を完成させましょう。 図7と同じような図を作ることができるでしょうか。<b>まず点 <i>A</i> から <i>b</i> と <i>d</i> の交点までの直線を引きます。 そして <i>A</i> から <i>D</i> 、そして <i>B</i> から <i>E</i> までの直線を引きます。 最後に、 <i>C</i> から <i>e</i> と <i>f</i> の交点までの直線を引きます。</b><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap07B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図7：パッポスの定理</b></td></tr></table><br />
+<br />
+さてここまで8個の点と9本の直線を描きました． ここまでの図をみると、(もし正しく描けていればの話ですが)何かに気づくでしょう。 そうです。 3本の直線 <i>g</i>, <i>h</i>, <i>k</i> が一点で交わっています。 このような図を描くといつでもそうなっているというのがパッポスの定理の内容です  <b> <a title="no description" href="tiki-cindydoc.php@page=Move+ModeJ.html" class="wiki">動かすモード</a> にするために、ツールバーの   <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span>   をクリックします。自由点(明るいオレンジ色の点)をドラッグして動かしてみると、 いつでもこの3直線が一点で交わっていることが確認できます。</b> この定理はギリシアで古くから知られていたことで、４世紀ごろ活躍していたアレキサンドリアのパッポスの名前がつけられ、<b>射影幾何学</b>において基本的で重要な定理であることが再認識されたのでした。<br />
+<br />
+<br />
+<h3>要素の設定を変更する</h3>
+<br />
+もしかしたら、あなたはこの図のできばえに満足していないかもしれません。 直線は細すぎるし、定理の最終結論をどこかに書いておきたいと思うかもしれません。 このようなことは <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a> を使うとできます。 <b>メニューから「編集」→「インスペクタ」を選んでください。</b> 次のようなウィンドウが現れます(図8)<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PapInsp1J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図8 : インスペクタ</b></td></tr></table><br />
+<br />
+<br />
+インスペクタには、図形のいろいろな性質や選ばれた要素に応じていくつかのタブが用意されています。ここでは要素の表示方法を変更したいので、 <b>ボタン  <span class="img"><img alt="" src="buttonsback/inspector-appearance.png" border="0"  /></span> を押して、表示方法のタブを出します。</b> そのとき、要素が選ばれていないと、インスペクタは編集する要素がない旨を表示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PapInsp2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>表示方法</b></td></tr></table><br />
+<br />
+ここでどれかの要素を選べば、編集できる属性が直ちに表示されます。 <b>では、ボタン  <span class="img"><img alt="" src="buttonsback/select-lines.png" border="0"  /></span>  "すべての直線を選ぶ" をクリックして、直線をすべて選択しましょう。</b> インスペクタウィンドウは次のようになります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PapInsp3J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図9: 表示方法のタブ</b></td></tr></table><br />
+<br />
+<br />
+インスペクタで変更したものは、すぐにその要素に適用されます。 <b>「線の幅」 のスライダーを３番目の目盛まで動かすと </b>すべての直線が太くなります。次に、 <b>< <span class="img"><img alt="" src="buttonsback/move.png" border="0"  /></span> ボタンを押して動かすモードにします。</b> このモードでは、1つまたはいくつかの要素を選択することができます。要素を1つだけ選択する場合はその要素をクリックします。シフトキーを押したまま要素をクリックすると、それらの要素が選択または非選択状態になります。<br />
+<br />
+<b>まず直線 <i>k</i> の上でクリックし、シフトキーを押したまま直線 <i>h</i> と <i>g</i> をクリックしましょう。</b> ３本の直線 g, h, k が明るく表示されるでしょう。  <b>インスペクタのカラーパレットの中の赤い四角をクリックしましょう。</b> ３本の直線が青から赤に変わります。 「線の幅」のスライダのつまみを4番目の目盛まで移動することによってこの3本の線の太さを変更することができます。最後に   <b>すべての選択を解除</b> するために、ボタン <span class="img"><img alt="" src="http://doc.cinderella.de/buttonsback/select-none.png" border="0"  /></span> を押します。<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap11B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図11: 表示方法(外観)の変更</b></td></tr></table><br />
+<br />
+<br />
+<h3>最後の点を追加して、定理の証明を行う</h3>
+<br />
+先に進む前に <b>シンデレラ</b> の情報ウィンドウを開くために <b>メニューから(表示)→(情報)を選んでください。</b> 情報ウィンドウが開きます <b>シンデレラ</b> は作図の中に現れた自明でない事実をこのウィンドウに表示します。<br />
+<br />
+さて、3本の赤い直線の交点を追加しましょう。 (訳註：シンデレラでは点を加えるモードで3本の直線の交点を加えることは避けたほうが良いのです。というのは2本の直線の交点でしたら1つに決まりますが、3本が1点で交わるというのは数学的事実なのか それともたまたま一致しただけなのか、2つの場合があるからです。) 今度は<b><a title="no description" href="tiki-cindydoc.php@page=IntersectionJ.html" class="wiki"> 交点</a> モード   <span class="img"><img alt="" src="buttonsback/meet.png" border="0"  /></span> によって、交点を作ります。</b> このモードでは２つの直線の交点を新しい点として追加することができます。 <b>２本の赤い直線  <i>g</i> と <i>h</i></b> を順にクリックしましょう。交点ができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap12B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図 12: 交点を追加</b></td></tr></table><br />
+<br />
+<br />
+さて、この点には <i>K</i> という名前がついていますが、パッポスの定理により、この点はいつでも直線 <i>k</i> の上 にあることになります。 情報ウィンドウにはこの注目すべき事実が自動的に表示されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap13J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図13: 証明された定理</b></td></tr></table><br />
+<br />
+<br />
+「証明」をどうやって行っているか、きっと不思議に思うでしょう。 シンデレラは形式的な証明を生成する記号論的手法は使いません。 その代わりに「定理自動証明」と呼ばれる方法を用いています。 まず、「直線 <i>k</i> 上に点 <i>K</i> はいつもあるようだ」という予想を立てます。 そして、自由点を少し動かしてみてやはりその予想が成り立つかどうかを調べます。 数学的にちょっと変な気がするかもしれませんが、十分に(!)ランダムに(!)自由点を動かしても成り立っているような性質は少なくとも、記号論によって証明された命題と同じくらい信頼できるのです。 シンデレラはこの方法を絶えず用いて、保有しているデータの構造を的確に把握するようにしています。<br />
+<br />
+<br />
+<h3>点を無限遠点へと動かす</h3>
+<br />
+パッポスの定理の対称性について調べてみましょう。 図をよりよくするために、点と直線のラベル(名前の表示)を消して、点と直線をもう少し小さくしましょう。  <b>まず   <span class="img"><img alt="" src="buttonsback/select-lines.png" border="0"  /></span> ボタンを使ってすべての直線を選択しましょう。インスペクタを開いて、「ラベルをつける」の右側のボタンを押して、ラベルを消してください。 そして、直線の幅を細くしてください(線の幅スライダの目盛を2番目にします)． そして、次には  <span class="img"><img alt="" src="buttonsback/select-points.png" border="0"  /></span> ボタンを押してすべての点を選んでください。そして、点の大きさをもう少し小さくしましょう (インスペクタはいつも選択されている要素の情報を示しています。点の大きさスライダの目盛りを左へ2目盛り動かしてください)。 そして、メニューから「表示」→「球面表示」を選んでください。</b> そこに最初に現れた画像はどう見てもわかりにくいものだと思います。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap14B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図14: 球面表示</b></td></tr></table><br />
+<br />
+新しく表示された図は球面なのです。 平面から球面へのある射影を考えると、平面の図が球面に写ることがわかります。 射影の原点は球面の中心です (図15を見てください)． 平面上の任意の点について、球面の中心と結ぶ直線を考えます.この直線と球面との交わりが射影の像になります。 ただし、球面の中心を通る直線は必ず球面と2点で交わるので、射影の像は2点あり、対蹠点(たいせきてん)の位置にあるこ とがわかります。 そして平面上の直線について、この直線と球面の中心を通る平面を考えます。 この平面と球面との交わりが射影の像になります。するとこれは球面上の大円であることがわかります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Homo.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>図15 : 平面から球面への射影</b></td></tr></table><br />
+<br />
+<br />
+球面表示では、描画面の下に赤い細長いスライダがあって、もとの平面と射影される球面との距離を調節できます。 この赤いスライダの中の目盛りを左右に動かすことによって、球面上の図のズームアップのようなことが可能です。 <b>赤いスライダの中の目盛りを右側へ動かして</b> ください。 球面上の点の配置がよりはっきりとわかる図になりました。 うまく調節して、図16のようにしてみてください。 先ほど描いた図が球面上に写し出されているのがはっきりわかると思います。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pap15B.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図16 : 球面上でのパッポスの定理</b></td></tr></table><br />
+<br />
+<br />
+この図にはもう少し解説が必要です。 平面上の各点に対して、その点と球面の中心とを結ぶ空間直線を考えましょう。 この直線と球面との交わりは対蹠点となる2点です。 平面上の各直線に対しては、その直線と球面の中心とを含むような空間平面を考えましょう。 この平面と球面の交わりは大円であって、それが「球面表示」の画面に表示されているのです。<br />
+<br />
+すると、球面表示の画面にはあるけれど、ユークリッド平面上の点とは対応していない点があることがわかります。 今、平面と球面の位置関係として、球面の南極点に平面が接している状況を考えてください。 すると、赤道上にある点は、平面に対応する点がなく、いわゆる「無限遠点」であることがわかります。 シンデレラでは、どの表示にあるときでも、操作を加えることができるようになっています。 つまり、球面表示の画面上でも、動かすモードにすれば自由点を自由に動かすことが可能です。 球面表示の方で点を動かせば、ユークリッド平面表示の方の図も連動して描き換わります。 とくに、球面表示のほうで、点をユークリッド平面上の無限遠点(に相当する場所)へ動かすことも可能です。<br />
+<br />
+さて、あなたが作ったパッポスの定理の図にはきれいな3回対称性があることを観察してみましょう。 <b>点 <i>A</i> を球面表示の上で、絵の境界の11時の方角へと動かしてみてください。</b> この点は無限遠点に位置します。 平面表示のほうを見てみると、点 <i>A</i> を通る直線は平行になっていることがわかります。 「平行線は無限遠点で交わる」というわけです。 同じように、 <b> 球面表示にもどして点 <i>E</i> をだいたい図の境界の7時の方角へ、点 <i>C</i> を絵の境界の3時の方角へと動かしていってください。</b> 球面表示はだいたい図17右のようになるでしょう。 平面表示では3本の平行線が3組、交わっているのが見えるでしょう(図17左)． この図が、ユークリッド平面の上でのパッポスの定理の特別な場合となっているのです。 平行線を含む形のパッポスの定理の命題を再構成してみるのも面白いことでしょう。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.68in">width=1.68in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{pap17B}&amp; \includegraphics<a class="wiki external"  href="width=1.68in">width=1.68in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{pap16B}\\</tt><br />
+\multicolumn{2}{c}{\small\it  Figure 17: A threefold symmetry} \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align=center>
+<tr><td ><span class="img"><img alt="" src="img/wiki_up/pap17B.png" border="0"  /></span></td><td width=20></td>
+<td>   <span class="img"><img alt="" src="img/wiki_up/Pap16B.png" border="0"  /></span></td> </tr>
+<tr><td ><b>図17: 3回対称性</b></td> </tr>
+</table><!-- /latexreplace --><br />
+<br />
+ユークリッド平面表示では、図が大きすぎたり小さすぎたりすることがあるかもしれません。 そういう時は、ズームインやズームアウトすることができます。 ズームインボタン  <span class="img"><img alt="" src="buttonsback/zoom-in.png" border="0"  /></span>  やズームアウトボタン  <span class="img"><img alt="" src="buttonsback/zoom-out.png" border="0"  /></span>  が平面表示の下のほうにあるのが見えるでしょう。これらのモードにして、 「押す、ドラッグする、離す」という作業を行えば、ドラッグした範囲のズームインやズームアウトができます。<br />
+<br />
+(阿原)<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 19 of February, 2012 [00:27:47 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Pappus%20TheoremJ">
+    http://doc.cinderella.de/tiki-index.php?page=Pappus%20TheoremJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

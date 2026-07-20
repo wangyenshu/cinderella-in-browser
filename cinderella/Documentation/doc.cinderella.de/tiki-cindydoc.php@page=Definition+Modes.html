@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Definition Modes 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Definition Modes</h2>
+<!--latexreplace<br />
+\index{definition mode}<br />
+--><!-- /latexreplace --><br />
+The <b>definition modes</b> use a simple "define by selection" mechanism to construct new elements. You choose a certain definition mode by clicking on its icon in the toolbar. Then you are asked to select a certain number of elements in the view. After a sufficient number of elements are selected, the newly defined element is added to the construction.  Although these modes are slightly inconvenient compared to the <a title="no description" href="tiki-cindydoc.php@page=Interactive+Modes.html" class="wiki">interactive modes</a>, using these modes is sometimes unavoidable.  There are four major circumstances in which the definition modes should be used:<br />
+<br />
+<ul><li> A certain geometric operation is provided only as a definition mode.  (This is for instance the case for the following modes: <a title="no description" href="tiki-cindydoc.php@page=Angle+Bisector.html" class="wiki">angle bisector</a>, <a title="no description" href="tiki-cindydoc.php@page=Compass.html" class="wiki">compass</a>, <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Three+Points.html" class="wiki">circle by three points</a>, <a title="no description" href="tiki-cindydoc.php@page=Center.html" class="wiki">center</a>,  <a title="no description" href="tiki-cindydoc.php@page=Conic+by+Five+Points.html" class="wiki">conic by five points</a>, <a title="no description" href="tiki-cindydoc.php@page=Polar+of+a+Point.html" class="wiki">polar of a point</a>, <a title="no description" href="tiki-cindydoc.php@page=Polar+of+a+Line.html" class="wiki">polar of a line</a>, and <a title="no description" href="tiki-cindydoc.php@page=Polygon.html" class="wiki">polygon</a>).
+</li><li> A point of intersection cannot not be reached in the visible area of a view. For instance, two lines can be almost parallel, so that their point of intersection lis far outside the viewing region in the window.  Then the usual "add a point" or "add a line" modes are not applicable. But you can still select the lines and apply the "intersection" mode.
+</li><li> An element could be invisible or complex. It can still be selected (e.g., in a "construction text" view), and a definition mode can be used.
+</li><li> A situation could be ambiguous, such as three lines passing through a point. Then the interactive "add point" mode cannot be used to add a point of intersection (since all three lines would be close to the mouse pointer position).  In this case, use "intersection" mode and select the lines whose intersection is desired.  In the case of a <b>geometric theorem</b> in which three lines always meet, such as the altitudes of a triangle, <b>Cinderella's</b> theorem checking mechanism ensures that the added point is considered incident to all three lines.
+</li></ul>
+<br />
+<!-- latexreplace --><br />
+The definition modes are<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/center.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Center.html' class='wiki'>Center</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/bisector.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Angle+Bisector.html' class='wiki'>Angle Bisector</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/compass.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Compass.html' class='wiki'>Compass</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/mirror.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Mirror.html' class='wiki'>Mirror</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/circle-by-three.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Circle+by+Three+Points.html' class='wiki'>Circle by Three Points</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/conic-by-five.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Conic+by+Five+Points.html' class='wiki'>Conic by Five Points</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/ellipse.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Ellipse+by+Foci.html' class='wiki'>Ellipse by Foci</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/parabola.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Parabola+by+Focus+and+Directrix.html' class='wiki'>Parabola by Focus and Directrix</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/hyperbola.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Hyperbola+by+Foci.html' class='wiki'>Hyperbola by Foci</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/polar-line.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Polar+of+a+Point.html' class='wiki'>Polar of a Point</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/polar-point.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Polar+of+a+Line.html' class='wiki'>Polar of a Line</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/polygon.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Polygon.html' class='wiki'>Polygon</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/intersection.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Intersection.html' class='wiki'>Intersection</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/arc.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Arc.html' class='wiki'>Arc</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/angle-mark.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Angle+Mark.html' class='wiki'>Angle Mark</a></td></tr></table><br />
+<br />
+<!-- /latexreplace --><br />
+<br />
+A few things are common to all definition modes and should be known in advance:<br />
+<br />
+<ul><li> Elements are selected by clicking them with the mouse pointer. The selection can be made in any of the geometric views, in particular in the <a title="no description" href='tiki-cindydoc.php@page=Views.html#Construction Text' class='wiki'>construction text</a>, where all elements are always visible and selectable).
+</li><li> Selected elements are highlighted in the view.
+</li><li> Preselected elements are often considered when a definition mode is chosen. So if two lines are selected and you press the button that chooses "meet" mode, then the point of intersection is instantly added.
+</li><li> If you made a mistake in selecting an element you can deselect it with a second click.
+</li><li> You can also select the elements by moving the mouse while holding the mouse button down. All elements that are  touched by the mouse pointer will be selected (or deselected).
+</li><li> Selected elements that do not contribute to the required selection of the mode are ignored. For instance, if you choose <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Three+Points.html" class="wiki">circle by three points</a> mode, all selected lines, circles, and conics are ignored.
+</li><li> Selection modes communicate with the user using the message line. There you can find messages that tell you about the next expected input.
+</li></ul>
+<br />
+In addition to the standard modes that are provided with a button, there are also many new modes in <b>Cinderella.2</b> that are accessible only via the menu. For these please consult the sections <a title="no description" href='tiki-cindydoc.php@page=Polygons.html' class='wiki'>Polygons</a>, <a title="no description" href='tiki-cindydoc.php@page=Conic+Operations.html' class='wiki'>Conic Operations</a>, and <a title="no description" href='tiki-cindydoc.php@page=Transformation+Modes.html' class='wiki'>Transformation Modes</a>.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [11:11:53 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Definition%20Modes">
+    http://doc.cinderella.de/tiki-index.php?page=Definition%20Modes
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

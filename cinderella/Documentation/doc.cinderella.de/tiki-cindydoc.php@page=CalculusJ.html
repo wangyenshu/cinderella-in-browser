@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : CalculusJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>計算</h2>
+<br />
+CindyScript は純粋に数的言語です。記号的計算は行いません。にもかかわらず、通常記号的システムだけが行えるようないくつかの手続きを行うことができます。たとえば、関数の微分や接線を計算することができます。この節では、これら２つの機能の使い方を例示します。<br />
+<br />
+<br />
+<h3>微分と接線</h3>
+<br />
+<A NAME="d"></A><br />
+<h4>微分: <span style="color:red;"><code>d(&#060;function&#062;,&#060;var&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、第１引数  <code><function></code> に与えられた関数の導関数を作ります。微分は標準的な実行変数 # についておこなわれますが、変数名を第２引数に指定します。次のコードが使用例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=(x-3)*(x-2)*(x-1)*x*.4;
+g(x):=d(f(#),x);
+h(x):=d(g(#),x);
+plot(f(x),size->2);
+plot(g(x),color->(0.8,0,0));
+plot(h(x),color->(0,0,0));
+</pre></div><br />
+<br />
+実行結果は次の図です。青の線がもとの関数 <code>f(x)</code> 、赤の線が第１次導関数  <code>g(x)</code> 、そして黒の線が第２次導関数 <code>h(x)</code>のグラフです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CurDisX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+第２次導関数は第１次導関数を微分したものです。しかし注意事項があります。微分演算子は完全に数の原則に基づいています。 <code>f(x)</code> が微分可能ならば、導関数は  <code>d(f(#),x)</code> で定義されます。ここで、<code>x</code>  が微分する変数を示しています。導関数の値は、式<br />
+<br />
+<table align=center>
+<tr><td><code>(f(x+eps)-f(x-eps))/2eps</code></td></tr>
+</table><br />
+<br />
+によって計算されます。 <code>eps</code> は十分小さい数です。これは、この点における実際の微分係数に十分近い値になります。しかし、連続して何度かこの演算子を使うと、かなり誤差を生じます。5回も微分すると結果は使えません。したがって第５次導関数ではもはや理にかなった計算はできません。<br />
+<br />
+<br />
+<b>修飾子:</b> 初期値として、上記の式の <code>eps</code>  は 0.0001 に設定されています。この値は、高次導関数の信頼性と精度のバランス上十分理にかなった値です。この値は修飾子  <code>eps->&#060;number&#062;</code> によって変更することができます。<br />
+<br />
+<hr />
+<br />
+<A NAME="tangent"></A><br />
+<h4>接線: <span style="color:red;"><code>tangent(&#060;function&#062;,&#060;var&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、微分とよく似ています。しかし、微分係数を計算する代わりに、ある点における接線の同次座標を計算します。 その点は第２引数で与えます。 次のコードでは、放物線のいろいろな接線を計算しています。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=(x^2)/4;
+repeat(250,start->-30,stop->30,x,
+  t=tangent(f(#),x);
+  draw(t,alpha->.3);
+);
+plot(f(x),size->3,color->(0,0,0));
+</pre></div><br />
+<br />
+次の図が実行結果を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ParabolaX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+tangent 演算子の戻り値は3次元ベクトルの同次座標です。加えて、直線の内部フラグが立っています。(<a title="no description" href="tiki-cindydoc.php@page=Geometric+OperatorsJ.html" class="wiki">幾何学演算子</a>参照) そのため、自動的に直線が引かれるのです。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="guess"></A><br />
+<h4>実数値を推測する: <span style="color:red;"><code>guess(&#060;number&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 推測演算子は、CindyScript のなかでも、おそらく最も洗練されて強力な演算子の一つです。それは浮動小数点数から記号的意味を取り戻すのに使われます。 guess 演算子は入力として数を予想し、文字列を返します。文字列は入力された数を記述する記号的な式です。 guess 演算子は、次の形式の文字列を生み出そうとします。<br />
+<br />
+<table align=center>
+<tr><td><code>a+b*sqrt(c)</code>,</td></tr>
+</table><br />
+<br />
+ここで <code>a</code>, <code>b</code>, <code>c</code>  は、約1000以下の分母と分子で表される有理数です。入力された数が十分な精度で表現できるならば、上記の形で表します。 そうでなければ、 guess 演算子はそのまま入力値を返します。<br />
+<br />
+したがって、guess 演算子は２次方程式の解を発見するのに使うことができます。この演算子は、図形に隠された特性を見つけるのに時々役に立ちます。これを２,３の例で示しましょう。最初の図では、直線の傾きと2つの円の交点の座標が"推測されて"います。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GuessX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+入力された座標と半径が整数ならば、結果は平方根か比較的係数の小さな２次方程式の解です。次の２つの例は、推測の重要な使用例です。左は星形正五角形で２つの長さを比較しています。長さの比は正確に黄金比です。第２の例は単純な図形で２つの正方形の面積比の関係の面白さを表しています。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Guess2X.png" border="0"  /></span> <span class="img"><img alt="" src="img/wiki_up/Guess3X.png" border="0"  /></span><br />
+<br />
+<b>注意:</b>  guess 演算子の背後で働いているのは、いわゆる PSLQ と呼ばれるアルゴリズムです。実数 x,y,z が与えられたときに、整数関係 <i>a</i>&#183;<i>x</i>+<i>b</i>&#183;<i>y</i>+<i>c</i>&#183;<i>z</i>=0　を発見する実に巧妙なアルゴリズムです。実数xが２次関係式の解であるかどうかを調べたいならば、 <i>a</i>+<i>b</i>&#183;<i>x</i>+<i>c</i>&#183;<i>x</i>&#178;=0 の整数関係を探さなくてはなりません。これが、 guess 演算子が実装しているものです。解はその整数係数を使って再構成されます。<br />
+<br />
+<hr />
+<br />
+<A NAME="roots"></A><br />
+<h4>n次方程式の解: <span style="color:red;"><code>roots(&#060;list&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  roots 関数は、１変数の多項式からなる方程式の解を示します。低次の項から高次の項に向かって順に係数を与えます。結果は複素数のこともあります。<br />
+<br />
+<br />
+<b>例:</b> たとえば、方程式 <i>1+x<sup>2</sup>=0</i> の解を求めたい場合は、単に <code>roots([1,0,1])</code> とします。結果は複素数 <code>[-0-i*1,-0+i*1]</code> です。<br />
+<br />
+　次のコードは、３次方程式の解を計算してグラフとともに表示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=0.4;
+b=-0.4;
+c=-3;
+d=-1;
+f(x):=a*x^3+b*x^2+c*x+d;
+plot(f(x),size->2);
+r=roots([d,c,b,a]);
+forall(r,draw((#,0)))
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RootsX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 07 of March, 2012 [09:52:49 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=CalculusJ">
+    http://doc.cinderella.de/tiki-index.php?page=CalculusJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

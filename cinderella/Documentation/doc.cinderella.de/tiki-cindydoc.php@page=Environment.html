@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Environment 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Environment</h2>
+<!--latexreplace<br />
+\index{simulation!environment}<br />
+\index{environment}<br />
+\index{numerical integration}<br />
+--><!-- /latexreplace --><br />
+The environment plays a very special role in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->. Unlike the other objects in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> there is neither a specific mode nor a specific geometric object associated with it. Since the environment is an omnipresent object, it is more or less <i>always there</i>. The behavior of the Environment can be altered or influenced only by the inspector or by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The environment allows one to influence the following factors:<br />
+<br />
+<ul><li> the numerical accuracy of the simulation
+</li><li> environmental forces such as gravity and friction
+</li><li> the definition of many-body systems
+</li><li> the actuation of springs
+</li></ul>
+<br />
+We will first list all ways that these influences can be made and then present a few examples.<br />
+<br />
+<h3>Inspecting the Environment</h3>
+<!--latexreplace<br />
+\index{inspect!environment}<br />
+\index{accuracy}<br />
+\index{actuation}<br />
+--><!-- /latexreplace --><br />
+The environment inspector occupies a whole tab in the inspector window. If one presses the tab that is labeled with a small planet Earth, one enters the environment inspector, which contains four major groups.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnvironmentInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The environment inspector</b></td></tr></table><br />
+<br />
+The tasks of the particular groups are listed in detail below:<br />
+<br />
+<br />
+<b>Accuracy</b><br />
+<br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is based on a numerical simulation of physical motion. The numerical simulation proceeds in discrete time steps. Between the discrete sample points of the motion there is practically no information about the physical system. This implies that in general, larger time steps imply less accuracy. Using fewer sample points, however, has the advantage of creating faster simulations. So there is a certain tradeoff between speed and accuracy. The user of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> must be aware of this effect. Furthermore, it may be useful not to create a picture for every time step that has been created. The default settings of <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> are such that the simulation runs relatively fast and every simulated frame is indeed shown. If additional <i>accuracy</i> or fewer <i>frames</i> are required, one can adjust these parameters with the corresponding sliders in the environment inspector. Moving the accuracy slider to the right increases the accuracy of the simulation. Every tick corresponds roughly to a doubling of the accuracy. Increasing the accuracy without changing the frame rate is like viewing an animation in slow motion. This is sometimes a very useful effect.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/AccuracySettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Corresponding to the accuracy slider, every tick of the frame slider corresponds to showing half as many frames. So if the frame slider is in position 4, there are 16 simulation steps between each frame. If the accuracy and the frame slider are exactly aligned, the simulation speed will still be the same as in the initial position (i.e., frames are shown for the identical time steps). The simulation is just much more exact. The additional computational effort that is required may then result in a slowdown of the perceived speed of the animation. We highly encourage the user to play with the two sliders in order to find the right setup for each simulation situation.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Environment3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Traces of various accuracies</b></td></tr></table><br />
+<br />
+The picture above demonstrates the influence of accuracy on a simulation. The simulation shows a planet moving under the gravitational influence of three suns. This situation is chaotic in the sense that a slight change in the initial parameters will lead to very different passes over time. Both the blue and the white trace are calculated with the same initial parameters. The accuracy for the white trace was four times that for the blue trace. Observe how the traces slightly diverge until they follow qualitatively very different paths.<br />
+<br />
+Finally, the speed slider is synchronized with the animations speed slider in the viewing window.<br />
+<br />
+<br />
+<br />
+<b>Environmental Forces</b><br />
+<!--latexreplace<br />
+\index{force}<br />
+\index{gravity}<br />
+\index{friction}<br />
+--><!-- /latexreplace --><br />
+In this part of the environment, parameters can be set that simultaneously apply to all simulation objects.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GlobalSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+The <i>Spring Strength</i> slider is a global parameter that is used to modify all spring constants (see <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a>). Thus by moving this slider one can weaken or strengthen all interaction forces simultaneously.<br />
+<br />
+The <i>Gravity</i> slider brings into existence a vertical gravitational force that applies to all masses. Sometimes it is more convenient to use this slider then to devise an individual gravity in <a title="no description" href='tiki-cindydoc.php@page=Gravity.html' class='wiki'>Gravity</a> mode.<br />
+<br />
+The <i>Friction</i> slider is perhaps the most important slider of this group. It produces a frictional force that applies to all moving masses. Whenever one is interested in realistic simulations for everyday scenarios, one should add some friction. In this way, every simulation that is not driven by an external force will eventually come to rest in an equilibrium position. If no friction is present, mass-objects will usually move and oscillate forever.<br />
+<br />
+The picture below shows a ballistic shot of a ball with and without friction.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Environment5.png" border="0"  width="320" /></span></td><td width=10><!--latexreplace {\kern.7cm} --> <!-- /latexreplace --></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Environment6.png" border="0"  width="320" /></span></td>
+      </tr>
+      <tr>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Without friction<!--latexreplace } --> <!-- /latexreplace --></b><br></td> <td width=10></td>
+	<td><b><!--latexreplace {\small\it --> <!-- /latexreplace -->With friction<!--latexreplace } --> <!-- /latexreplace --></b><br></td>
+      </tr>
+<tt>    </table><!--latexreplace $$ --> <!-- /latexreplace --></tt><br />
+<br />
+<b>Many-Body Behavior</b><br />
+<!--latexreplace<br />
+\index{many-particle system}<br />
+--><!-- /latexreplace --><br />
+With the usual modes interaction between two free masses, one generally has to specify that interaction explicitly by adding a <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a>, a <a title="no description" href='tiki-cindydoc.php@page=Rubber+Band.html' class='wiki'>Rubber Band</a>, or a <a title="no description" href='tiki-cindydoc.php@page=Coulomb+Force.html' class='wiki'>Coulomb Force</a>. However, it is often desirable to study an entire ensemble of objects that interact with each other, such as a cloud of electrons, a many-planet system, or a table with a large number of billiard balls. The three checkboxes in this group allow one to define such behavior. Since there is a wide range of applications of such behaviors, we have dedicated an entire section, <a title="no description" href='tiki-cindydoc.php@page=Many-Particle+Systems.html' class='wiki'>Many-Particle Systems</a>, to this topic.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ManybodySettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>Spring Actuation</b><br />
+<br />
+With the two actuation sliders one can influence the  actuation of the resting lengths of a <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a>. The actuations for all springs are synchronized and in a sense driven by a global motor. With these two sliders one can vary the global speed and strength of this actuation.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<h3>The Environment and CindyScript</h3>
+<br />
+The environment allows for access to several important magnitudes and settings of the simulation. Since the environment is not directly bound to a geometric object, there is a function <code>simulation()</code> that serves as a handle to the environment object. You can access, for example, the total kinetic energy in the simulation using <code>simulation().ke</code>. In particular, the values accessible via this object are the following:<br />
+<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" >  scaling factor of the simulation  </td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the overall potential energy in the simulation; for this, all potential energies of springs, suns, and gravities, as well as interparticle potential energy, are summed up (defined only up to and additive constant that depends on the choice of coordinates)  </td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > abbreviation for <code>potential</code>  </td></tr><tr><td class="wikicell" ><code>kinetic</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the overall kinetic energy in the simulation; for this value, all kinetic energies of moving particles are summed up (defined only up to an additive constant that depends on the choice of coordinates)  </td></tr><tr><td class="wikicell" ><code>ke</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > abbreviation for <code>kinetic</code>  </td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the global friction constant  </td></tr><tr><td class="wikicell" ><code>gravity</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the global gravity constant </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Many-Particle+Systems.html' class='wiki'>Many-Particle Systems</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [21:56:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Environment">
+    http://doc.cinderella.de/tiki-index.php?page=Environment
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

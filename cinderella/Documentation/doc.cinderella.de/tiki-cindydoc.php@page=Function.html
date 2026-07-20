@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Function 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> Function</h3>
+<!--latexreplace<br />
+\index{function}<br />
+\index{mode!function}<br />
+\index{equation}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/function.png" border="0"  align="left" /></span></div> Function mode provides an extremely powerful tool that can be used in many circumstances. Briefly, function mode provides a one-line interface to the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> language. This one line can be either simply evaluated (so that the result is displayed) or displayed as an equation or evaluated with all side effects. Since <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is a powerful language and even one line of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> may encode very high level interactions, we will here demonstrate a few uses of function mode by means of a couple of examples.<br />
+<br />
+When you are in function mode and click somewhere in the window, the following window will pop up:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function0.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The "enter a function" dialog</b></td></tr></table><br />
+<br />
+There you can enter one line of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code. The buttons allow you to determine how this line should be processed.<br />
+<br />
+<ul><li> <b>Text:</b> calculates the result of  the code and displays it.
+</li><li> <b>Equation:</b> displays the line entered literally, followed by an equation sign and the result of the evaluation. So a line "4+7" becomes the displayed equation "4+7 = 11".
+</li><li> <b>Evaluate:</b> evaluates the line and performs all side effects of the line (such as setting variables, drawing, or plotting).
+</li></ul>
+<br />
+We will present a few examples to illustrate the use of functions.<br />
+<br />
+<br />
+<h5> Calculations in Constructions</h5>
+<!--latexreplace<br />
+\index{calculation}<br />
+--><!-- /latexreplace --><br />
+Consider the following drawing of a rectangle:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A rectangle</b></td></tr></table><br />
+<br />
+We want to calculate and display the area of this rectangle. A suitable <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> expression for calculating the area of this rectangle is <code>|A,B|*|A,C|</code>. We enter this function into the function dialog.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Entering the text</b></td></tr></table><br />
+<br />
+If we now press the "Text" button, we get the following picture on the left; if we press the "Equation" button, we get the picture on the right.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern.7cm}c@{\kern.7cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.9733333333333334in">width=1.9733333333333334in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Function3}  &amp; \includegraphics<a class="wiki external"  href="width=1.9733333333333334in">width=1.9733333333333334in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Function4} \\<br />
+{\small\it  Text} &amp;  {\small\it Equation}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" >
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Function3.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Function4.png" border="0"  /></span></td>
+</tr>
+<tr>
+<td><b>Text</b> </td> <td width=10></td><td><b>Equation</b> </td></tr>
+</table><br />
+<!-- /latexreplace --><br />
+<br />
+If we want to display the result in a custom text, we may achieve this by<br />
+entering the following code and hitting the "Text" button:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Creating a custom text</b></td></tr></table><br />
+<br />
+In this case, the line consists of a string to which the result of the calculation is appended. The result is again a string, which contains the desired text. The result in the window looks as follows:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Result of creating a custom text</b></td></tr></table><br />
+<br />
+<br />
+<h5> Evaluation with Side Effects</h5>
+<!--latexreplace<br />
+\index{side effect}<br />
+--><!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+Pressing the evaluate button allows for the evaluation of side effects. We will illustrate this feature by a slightly more sophisticated example. In the picture below the rectangle has been constructed in a way such that its perimeter remains constant when point C is moved. We will use this construction to analyze for which position of point C we obtain the largest area of the rectangle.  Entering the line<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+F.xy=(C.x,|A,C|*|A,E|)
+</pre></div><br />
+<br />
+into the function dialog will move the point F to a  position whose <i>x</i>-coordinate is the same as that of point C. The <i>y</i>-coordinate of F will be the area. Thus while we move C we can watch point F and determine for which position of C it assumes its maximal <i>y</i>-value. In the figure on the left a locus is constructed (mover = C, tracer = F) that shows the areas for all possible positions of C.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Combining geometry and functions</b></td></tr></table><br />
+<br />
+<h5> Plotting Functions</h5>
+<!--latexreplace<br />
+\index{plot}<br />
+\index{function!plot}<br />
+--><!-- /latexreplace --><br />
+As a final application we shall demonstrate how to use function mode for generating a plot of a function. For this we simply use the plot function of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> and evaluate it via the function mode dialog. If the plot contains parameters that depend on the data of the elements in the drawing, then it is automatically updated as the elements are moved. In the example below, two sine waves are superimposed whose frequencies depend on the position of A. The code line is simply evaluated in the function mode dialog.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Function8.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Plotting a function</b></td></tr></table><br />
+<br />
+<br />
+<h5> Click Referencing</h5>
+<br />
+As in <a title="no description" href="tiki-cindydoc.php@page=Text.html" class="wiki">text mode</a> it is possible to obtain the reference of a geometric element by simply clicking on it in an arbitrary view. This simplifies the process of entering a formula in the dialog box. Clicking on a text that contains a measured number (for instance a distance, an angle, or an area) produces a reference to this number. Clicking on the text of another function reproduces the defining text of this function.<br />
+<br />
+Furthermore, it is possible by a press–drag–release operation with the mouse to measure the distance between two points directly. If, for instance, A and B are two points in a geometric view, then pressing the mouse over A, dragging to B, and releasing it will produce the text <code>|A,B|</code> in the function dialog.<br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Function mode allows for the calculating, evaluating, and plotting  of functions via a one-line interface to <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->.<br />
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Text.html' class='wiki'>Text</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Measurements.html' class='wiki'>Measurements</a>
+</li></ul>
+</div><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 29 of August, 2011 [20:27:04 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Function">
+    http://doc.cinderella.de/tiki-index.php?page=Function
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

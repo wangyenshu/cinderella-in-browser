@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : HTML Export 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1> Creating Interactive Webpages</h1>
+<br />
+An exciting feature of Cinderella is its ability to create interactive webpages. You can publish any construction, even those using several views, within seconds, and without further knowledge about HTML.<br />
+<!-- latexreplace<br />
+\index{HTML export|(}<br />
+\index{HTML}<br />
+\index{export}<br />
+\index{applets}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+This chapter explains the three scenarios for export: Plain examples, animations and construction exercises. You also find detailed information on the exported HTML code and instructions for post-processing of the web pages, e.g. adding explanatory text.<br />
+<br />
+<h2> Glossary</h2>
+<br />
+If you are familiar with the World Wide Web and its technical background or if you do not want to bother with technicalities right now you can safely skip this section. As an aid for the further description we want to explain a few of the terms used below.<br />
+<br />
+<b>HTML</b> is the page description language (or format) for web pages. It can be created and edited with any plain text editor, but it is much more convenient to use a special HTML editor. You can view the HTML code of a web page with the "view source" option in your web browser.<br />
+<br />
+The HTML code mainly consist of the text which will be shown, enhanced by <b>tags</b> which describe the appearance and structure of this text. Here is an example:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+⟨p⟩This is a paragraph containing some ⟨b⟩bold text⟨/b⟩ 
+and some ⟨i⟩italics text⟨/i⟩.⟨/p⟩ 
+⟨p⟩This picture ⟨img src="pappos.gif"⟩ was produced
+ with ⟨a href="http://www.cinderella.de"⟩Cinderella⟨/a⟩!⟨/p⟩
+</pre></div><br />
+<br />
+This fragment describes two paragraphs marked by <p>...</p>. The first paragraph contains two regions which should be typeset with special fonts, the first one, marked by <b>...</b>, in bold, the second one in italics. You might recognize the easy structure of HTML, most of the elements are marked with opening (<something>) and closing tags (</something>).<br />
+<br />
+The second paragraph in the example shows how to <b>include an image</b> using the <img> tag. This tag does not have a closing companion, but it uses an option (src=...) to reference the image file. You also find a <b>hyperlink</b>, which is the most powerful element in HTML. You name a location which can be reached by clicking on the phrase included by <a>...</a>.<br />
+<br />
+Hyperlinks are usually given by an URL, an uniform resource locator. These describe resources by the protocols which give access to them. For the WWW most communication is done with the Hypertext Transfer Protocol, short for http. This explains the http:-part of the WWW addresses, which can be left out since most browsers assume it as a default. Other examples are ftp, the File Transfer Protocol, or the prefix file: which describes files that reside locally on your harddisk.<br />
+<br />
+A special tag is reserved for <b>Java integration</b> into web pages. Whenever a Java compatible browser encounters an applet tag it tries to load the java program referenced by the code option and runs it inside a rectangle on the web page. The size of the rectangle is given by the width and height options. These programs are called <b>Applets</b>, as opposed to standalone applications. The diminutive is a little misleading, since applets can be as powerful as full applications.<br />
+<br />
+The applet tag can also contain an archive option which describes the location of the java code. For Cinderella we provide an archive called cindyrun.jar which contains all the code needed for showing and manipulating constructions. This is an example of how the applet tag produced by Cinderella's web export functions could look like:<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+⟨applet code    = "de.cinderella.CindyApplet"
+        archive = "cindyrun.jar"
+        width   = 435
+        height  = 231⟩
+⟨param...
+⟨/applet⟩
+</pre></div><br />
+<br />
+You find many <param> tags which pass additional parameters like the filename of the construction to the applet. Never change or delete these parameters without exactly knowing what they mean.<br />
+<br />
+<h2>Exporting Plain Examples</h2>
+<br />
+This is the easiest way to create a webpage with Cinderella. Whenever you have created a configuration you can use the export button  <span class="img"><img alt="" src="buttonsback/export-html.png" border="0"  /></span>   to create an interactive webpage showing this construction in exactly the views that you are currently using. Each view will be a separate applet, and these applets communicate using a kernel ID which you find as a parameter of the applet.<br />
+<br />
+The construction itself is not saved in the HTML code, but in a separate file with the extension ".cdy". Whenever you create a web page you are prompted to save your file, if you have not done so before. The applet expects the file in the same directory as the html file of the web page. All this is automized by the Export dialog that pops up when you press the export button.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ExportX.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>Export dialog</b></td></tr></table><br />
+<br />
+This dialog window asks for file names for the Cinderella file and the corresponding  HTML file. The HTML file should end in ".html" or ".htm", depending on your local standards. If you do not supply one of these extensions, Cinderella will assume ".html" as a default. The dialog also makes sure that the Cinderella runtime library <i>cindyrun2.jar</i> is available in your export folder. This step finishes the web export, and you should be able to view the result in a Java-1.6 compatible web browser.<br />
+<br />
+The runtime library "cindyrun2.jar" contains the necessary code to show and manipulate constructions. It is essential to have this file at the same place were your construction and HTML files reside. You also find this file in the installation directory so that you can  copy it into the directory containing the interactive web page, if necessary for some reasons.<br />
+<br />
+<br />
+If you experience any problems, be sure to check whether:<br />
+<br />
+<ul><li> The file ending in ".htm" or ".html" exists and is readable.
+</li><li> The file mentioned as value in <param name=filename> section of the html file exists and is readable (you should be able to load it with Cinderella)
+</li><li> The file "cindyrun2.jar" is present in the same directory as the two files above and is referenced in the archive option of the applet tag.
+</li><li> You are using a Java-1.6 compatible browser. We recommend using the most recent version of Internet Explorer, Firefox, Safari or similar browsers.
+</li></ul>
+<br />
+The exported construction is always in move mode. That means that movable elements can be dragged around within the applet rectangle. If you want to prevent elements from being movable, please use the pinning option in the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>.<br />
+<br />
+<h2> Exporting Animations</h2>
+<br />
+Exporting automatic animations is as easy as exporting interactive examples. Unlike earlier versions of Cinderella, Cinderella.2 does not distinguish between animations and ordinary constructions. Using the "Autostart Animations" option available in the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a> you can make sure that an animation is automatically running when a user visits your page. It is also possible to hide the animation control panel in the applet by checking the corresponding option in the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a><br />
+<br />
+While exporting animations please keep in mind that the potential visitors of your web page might have slower computers than you. You should adjust the animation speed accordingly.<br />
+<br />
+<h2> Creating Interactive Exercises</h2>
+<br />
+The creation of interactive Exercises in the form it was available in Cinderella 1.4 is no longer present in the current release. However there are possibilities to create similar (and even more flexible) exercises also with Cinderella.2.6. For an instruction of how to do this please consult the section <a title="no description" href='tiki-cindydoc.php@page=Interactive+Exercises.html' class='wiki'>Interactive Exercises</a>.<br />
+<br />
+<h2> Post-Processing</h2>
+<br />
+The web site containing your construction or exercise is very basic. Cinderella does not try to be a full-featured web editor. You can use any other web editor for post-processing the HTML files.<br />
+<br />
+The width and height parameters of the applets can be changed, if you want to. We recommend that the view sizes should be set to the correct size before you export the construction.<br />
+<br />
+Never change the kernelID parameter of the applet, it is important for inter-applet communication. The order and placement of the applets can be changed arbitrarily. You can also merge two different HTML pages, which gives you the possibility of showing different constructions on one web page.<br />
+<br />
+If you have several Cinderella-enabled pages on your web site you can use a single <i>cindyrun2.jar</i> for all these. Then you will have to change the archive parameter of all your applets to reflect the location of your central <i>cindyrun2.jar</i>. It should be sufficient to include the complete URL of its location in the archive tag.<br />
+<br />
+<h2> Legal Issues</h2>
+<!-- latexreplace<br />
+\index{license}<br />
+<tt> --><!-- /latexreplace -->Whether you are using the free version of Cinderella or you have purchased a pro license, we allow the non-commercial redistribution of the cindyrun2.jar runtime necessary for embedding Cinderella applets on web pages. The exact terms are available in the <!-- latexreplace software license available on our website. --><a title="no description" href='tiki-cindydoc.php@page=Software+License.html' class='wiki'>Software License</a>.<!-- /latexreplace --></tt><br />
+<br />
+Basically, it all boils down to the fact that you should not try to make money out of your examples, that is, sell them or put them onto a commercial online service. You can certainly use them for teaching (even if you get paid for this). If you want to publish a book or CD-ROM which uses Cinderella, you should contact the Cinderella authors to get a written permission.<br />
+<br />
+Whenever you are unsure about your license, please contact us in writing or via eMail. You can find contact details on the Cinderella website.<br />
+<br />
+<!-- latexreplace<br />
+\index{HTML export|)}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:24:57 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=HTML%20Export">
+    http://doc.cinderella.de/tiki-index.php?page=HTML%20Export
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

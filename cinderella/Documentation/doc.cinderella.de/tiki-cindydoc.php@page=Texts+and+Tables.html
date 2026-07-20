@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Texts and Tables 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Texts and Tables</h2>
+<!-- latexreplace<br />
+\index{text}<br />
+\index{typesetting!text}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+With CindyScript you can produce controlled and styled text for a drawing. The essential functionality is covered by the <code>drawtext</code> operator. Furthermore, with <code>drawtable</code> a table output can be generated. Using texts and tables in scripts is very useful, since one can use the script language to control when and where text is displayed in a construction. This is a very important tool for providing explanatory texts and functional exercises that react to input.<br />
+<A NAME="drawtext"></A><br />
+<h4>Drawing Text: <span style="color:red;"><code>drawtext(&#60;vec&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<b>Description:</b> The <code>drawtext(&#60;vec&#62;,&#60;string&#62;)</code> operator plots a text <code>&#60;string&#62;</code> at a specified position that is given by the position vector <code>&#60;vec&#62;</code>. This position vector can be given either in Euclidean <i>xy</i>-coordinates or in homogeneous coordinates.<br />
+<br />
+<b>Example:</b> The line <code>drawtext(</code><code>(0,0),"Hello World")</code> prints the string "Hello World" with lower left corner at the position (0, 0).<br />
+<br />
+<b>Modifiers:</b> The <code>drawtext</code> operator supports several operators for the modification of appearance and position.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the text size</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real&#62;,&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" >sets the text color </td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the text opacity</td></tr><tr><td class="wikicell" ><code>xoffset</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >set an <i>x</i> offset in pixels between text and base point</td></tr><tr><td class="wikicell" ><code>yoffset</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >set a <i>y</i> offset in pixels between text and base point</td></tr><tr><td class="wikicell" ><code>offset</code></td><td class="wikicell" ><code>[&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" >set an <i>xy</i> offset in pixels between text and base point</td></tr><tr><td class="wikicell" ><code>align</code></td><td class="wikicell" ><code>"left", "right", "mid"</code></td><td class="wikicell" > determines where the text alignment should be</td></tr><tr><td class="wikicell" ><code>bold</code></td><td class="wikicell" ><code>&#60;bool&#62;</code></td><td class="wikicell" >flag for bold text</td></tr><tr><td class="wikicell" ><code>italics</code></td><td class="wikicell" ><code>&#60;bool&#62;</code></td><td class="wikicell" >flag for italics text</td></tr><tr><td class="wikicell" ><code>family</code></td><td class="wikicell" ><code>&#60;string&#62;</code></td><td class="wikicell" >specifying the font family</td></tr></table><br />
+<br />
+<br />
+Besides the available font families also the three strings <code>serif</code>, <code>sansserif</code><br />
+and <code>monospaced</code> are allowed, that always produce corresponding standard font types.<br />
+<br />
+<b>Example:</b> The code<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=1..10;
+forall(x,i,
+  drawtext((i,0),"Text",
+  size->2*i+15,
+  bold->true,
+  color->(1-i/10,0,i/10))
+)
+</pre></div><br />
+<br />
+produces the picture below.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/TextX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<!-- latexreplace<br />
+\index{newline}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+If the string expression contains a &#60;newline&#62; chacracter then this line-break is literally interpreted. By this it is easy to produce multilined text, as the following piece of code shows.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawtext((0,0),size->18,
+"In Cinderella 'newlines' in Text
+are really used as line terminators.
+So this text will appear as a 
+multilined text.")
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Newlines.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="fontfamilies"></A><br />
+<h4>Available font families: <span style="color:red;"><code>fontfamilies()</code></span></h4>
+<br />
+<b>Description:</b>  This operator produces a list of all font families that are available on your computer. Usually this will be quite a lot. The following piece of code displays the names of some of these font families in their own font style.<br />
+<!-- latexreplace<br />
+\index{fonts}<br />
+\index{typesetting!fonts}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div dir="ltr"><pre class='codelisting'>
+families=fontfamilies();
+i=0;
+while(length(families)>i,i=i+1;
+   drawtext((mod(i,5)*7,round(i/5)),families_i,family->families_i);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Fonts.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="unicode"></A><br />
+<h4>Unicode Characters: <span style="color:red;"><code>unicode(&#60;string&#62;)</code></span></h4>
+<br />
+<b>Description:</b> Cinderella can display any Unicode Character in text strings. To access a unicode character the statement <code>unicode(&#60;string&#62;)</code> accepts a unicode description (a number) given as a string of digits. It returns a string with the corresponding unicode character. By default the base of the unicode description is 16. So hexadecimal descriptions are usually accepted as input.  The base can be changed by a modifier.<br />
+<br />
+The base of the unicode description can be changed with the <code>base</code> modifier.<br />
+<br />
+<b>Example:</b> Both <code>unicode("0041")</code> and <code>unicode("65",base->10)</code> produce the character "A".<br />
+<br />
+<hr />
+<br />
+<A NAME="candisplay"></A><br />
+<h4>Test whether a string can be displayed: <span style="color:red;"><code>candisplay(&#60;string&#62;)</code></span></h4>
+<br />
+<b>Description:</b> This operator tests, whether a given string can be displayed in the currently chosen font. It returns a boolean value.<br />
+<br />
+<hr />
+<br />
+<A NAME="drawtable"></A><br />
+<h4>Drawing tables: <span style="color:red;"><code>drawtable(&#60;vec&#62;,&#60;list&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{tables}<br />
+\index{typesetting!tables}<br />
+<tt> --></tt><br />
+<!-- /latexreplace -->One- and two-dimensional lists can be easily drawn in a geometric view as tables. In the simplest form one has only to provide the list and a position where the table should be drawn. Modifiers can be used to fine tune the appearance of the table.<br />
+<br />
+<!-- latexreplace \goodbreak --><!-- /latexreplace --><br />
+<b>Example:</b> The following code produces the picture below:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=1..10;
+table=apply(x,(#,#^2,#^3,#^4));
+drawtable((0,0),table);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Table1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> The <code>drawtable</code> operator supports several modifiers to control the graphical appearance of the table. A summary of the modifiers is given in the following table:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>width</code></td><td class="wikicell" ><code>&#60;int&#62;</code></td><td class="wikicell" >the width of the cells in pixels</td></tr><tr><td class="wikicell" ><code>height</code></td><td class="wikicell" ><code>&#60;int&#62;</code></td><td class="wikicell" >the width of the cells in pixels</td></tr><tr><td class="wikicell" ><code>flip</code></td><td class="wikicell" ><code></code></td><td class="wikicell" > exchanges the role of rows and columns</td></tr><tr><td class="wikicell" ><code>border</code></td><td class="wikicell" ><code>&#60;bool&#62;</code></td><td class="wikicell" >turns on/off drawing of lines and borders</td></tr><tr><td class="wikicell" ><code>size</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the text size</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[&#60;real&#62;,&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" >sets the text color </td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" >sets the text opacity</td></tr><tr><td class="wikicell" ><code>offset</code></td><td class="wikicell" ><code>[&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" > sets an <i>xy</i> offset in pixels between text and base point</td></tr><tr><td class="wikicell" ><code>align</code></td><td class="wikicell" ><code>"left", "right", "mid"</code></td><td class="wikicell" > determines the horizontal text alignment within a cell</td></tr><tr><td class="wikicell" ><code>back</code></td><td class="wikicell" ><code>&#60;bool&#62;</code></td><td class="wikicell" >turns on/off the drawing of a table background</td></tr><tr><td class="wikicell" ><code>back</code></td><td class="wikicell" ><code>[&#60;real&#62;,&#60;real&#62;,&#60;real&#62;]</code></td><td class="wikicell" > turns on the drawing of table background and sets it to an RGB color</td></tr><tr><td class="wikicell" ><code>backalpha</code></td><td class="wikicell" ><code>&#60;real&#62;</code></td><td class="wikicell" > sets opacity of the table background</td></tr></table><br />
+<br />
+<br />
+<b>Example:</b> The following code is a more elaborate example using the  <code>drawtable</code> operator. modifiers are used to create a nice appearance of the tables. A second table is used to create a heading for the table.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=1..9;
+tab=apply(x,(#,#^2,#^3,#^4));
+tab1=("x","$x^2$","$x^3$","$x^4$");
+linecolor((0,0,.8));
+drawtable((0,0),tab,
+  width->50,
+  height->22,
+  back->(1,0,0),
+  backalpha->0.1,
+  align->"right",
+  size->12
+);
+linecolor((0,0,0));
+drawtable((0,8.1),tab1,flip->true,
+  width->50,
+  height->33,
+  back->(0,0,1),
+  backalpha->0.4,
+  align->"mid",
+  size->16,
+  color->(1,1,1)
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Table2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 10 of July, 2014 [08:12:09 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Texts%20and%20Tables">
+    http://doc.cinderella.de/tiki-index.php?page=Texts%20and%20Tables
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : CindyLab and CindyScriptJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>  CindyLab と CindyScript</h2>
+<!--latexreplace<br />
+\index{CindyScript!and CindyLab}<br />
+--><!-- /latexreplace --><br />
+<tt> <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> と <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の相互関係は非常に重要です。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->は位置、速度と力を含むシステムのすべての物理的変数に関与します。<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->により、物理的な展開に影響を与え たり 解析する ことができます。物理シミュレーションの解析は、数値データで終わるか、変数の動きが直接目で見えるような視覚効果に終わるかもしれません。次の図は、それ自身の重さによる張力のもとにある橋の構造を示します。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は、ロッドの圧縮や伸張をハイライト表示するのに用いました。赤は伸張、青は圧縮に対応します。緑は圧縮も伸張もないことを示します。色の効果は、物理実験に次の3行の <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->コードを付け加えてできました。</tt><br />
+<!--latexreplace<br />
+\index{tension}<br />
+\index{spring}<br />
+\index{bridge}<br />
+--><!-- /latexreplace --><br />
+<div dir="ltr"><pre class='codelisting'>
+segs=allsegments();
+f(x):=hue(max((min((0.5,x+0.3)),0.0)));
+forall(segs,#.color=f(A.y*#.ldiff))
+</pre></div><br />
+<br />
+　1行目で描画されているすべての線分のリスト segs を定義します。2行目で、実数を色番号に対応させる関数を定義します。3行目で、それぞれの線分の色を自然長からの変化に応じて設定します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>橋の張力</b></td></tr></table><br />
+<br />
+　<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は、物理実験を解析する特別な方法(命令)も提供します。たとえば、<b>drawcurve</b> 命令は、物理シミュレーションにおける変数の値のカーブプロッタのように使えます。次の図は、2つの調和的なバネ振り子のエネルギーの流れを示します。2つの振り子の間でエネルギーが前後に移る様子を観察することができます。<br />
+<!--latexreplace<br />
+\index{coupled oscillator}<br />
+\index{oscillator}<br />
+\index{curve plotter}<br />
+--><!-- /latexreplace --><br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>連結振動子の動き</b></td></tr></table><br />
+<br />
+<tt> 最後の例は、<b>colorplot</b>命令を<b>drawfield</b>命令とともに、静電場における磁束を視覚化するのに使っています。しかしながら、マウスのドラッグに応じてなめらかに動くためには、かなりのコンピュータの力が必要です。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>静電場における磁束</b></td></tr></table><br />
+<!--latexreplace<br />
+\index{flux}<br />
+\index{force}<br />
+\index{field!electrostatic}<br />
+--><!-- /latexreplace --><br />
+　<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は、物理効果を分析すること以外にも使うことができます。物体の物理変数をコントロールするために<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->を使うこともできます。特に、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->でコントロールすることのできるあらゆる物体をシミュレートするフラグがあります。このフラグは物理属性がシミュレーションによって考慮されているかどうかに関わらずコントロールすることができます。このような特徴を使えば、機械やゲームをその機能的な属性とともにシミュレートするのにシンデレラをすぐに使うことができます。<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [13:35:05 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=CindyLab%20and%20CindyScriptJ">
+    http://doc.cinderella.de/tiki-index.php?page=CindyLab%20and%20CindyScriptJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

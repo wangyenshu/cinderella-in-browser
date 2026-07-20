@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Scribbling 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1>Scribbling</h1>
+<div id="supi"><span class="img"><img alt="" src="buttonsback/scribbleJ.png" border="0"  align="left" /></span></div> Cinderella contains a specialized mode for using dynamic geometry on pen-driven devices, in particular interactive whiteboards.  We call this mode <i>Scribbling</i>.<br />
+In Scribble Mode, you just draw using the pen and Cinderella attempts to recognize what you intended to do with the stroke. Cinderella interprets every <i>scribble</i> that you do &mdash; a scribble means your pen movement from the moment you put it down until you pull it up again.<br />
+While you are scribbling, Cinderella gives you a visual feedback in the upper center of the view on what would happen if you end the stroke right then.<br />
+<!-- latexreplace<br />
+\index{whiteboard}<br />
+\index{sketch recognition}<br />
+\index{gestures}<br />
+\index{scribbling}<br />
+<tt> --><!-- /latexreplace --></tt><br />
+<br />
+<h2> Creating Elements</h2>
+One class of scribbles are those that create new elements into the construction. The meaning of a scribble may be influenced by the elements that are selected when you start the scribble.<br />
+The following elements can be created:<br />
+<br />
+<h3> Points</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-Points.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+Draw a small scribble to create a Free Point. The size of the new point will be similar to the size of the scribble you drew. You can draw a point-scribble over an existing point to change its size.<br />
+Preselect two points and draw a small scribble in the middle of those to create a Midpoint.<br />
+<br />
+<h3> Lines</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-Lines.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+Draw a line to create a <i>line through two points</i>. The endpoints are created if they do not exist. Short scribbles create lines that are cut off at the endpoints; scribbles over 80% of the window are not.<br />
+Preselect an existing line and draw a scribble parallel or orthogonal to it to create a <i>Parallel</i> or <i>Orthogonal</i>. Preselect two lines and draw an <i>Angular Bisector</i> to create one.<br />
+<br />
+<h3> Polylines</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-PolyLines.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+Draw multiple lines to create a sequence of segments. If the last point is near the first point, a <i>Polygon</i> is created.<br />
+<br />
+<h3> Circles</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-Circles.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+Draw a circle to create a <i>Circle By Radius</i>. A midpoint is created if it does not exist. Preselect a midpoint for greater tolerance. If the scribble passes exactly 3 existing points to create a <i>Circle By 3 Points</i>. Pass exactly 1 point to create a <i>Circle By Midpoint and Border Point</i>.<br />
+<br />
+<h2> Gestures</h2>
+Gestures are those scribbles that do not create a new element but influence those that are already there.<br />
+<br />
+<h3> Moving and Selecting</h3>
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble-MovSel.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+Tap an object once to select or deselect it. Tap in an empty space to deselect all. Move a selected object by dragging it. This applies to <i>Free Points</i> as well as other free elements, such as <i>Circle by Radius</i>.<br />
+<br />
+<h3> Changing the Name</h3>
+Tap an element twice within a short time period to open a dialog that allows you to change the element name.<br />
+<br />
+<h3> Undo and Redo</h3>
+Draw a horizontal, straight, quick scribble over 30% of the window width to the left to undo the last action; to the right to redo an action.<br />
+<br />
+<h3> Delete All</h3>
+Draw a quick, large gesture, crossing out all of the construction, to delete all elements.<br />
+<br />
+<h3> Inspect</h3>
+A straight line down, then back up to the startpoint, opens the Inspector.<br />
+<br />
+<h3> Right Click</h3>
+A straight line up, then back down simulates a right mouse button click. Usually, this brings up the context menu; this can be adjusted in the <i>Modes / Language</i>-Tab of the Inspector.<br />
+<br />
+<h2> Customizing the Scribble Mode</h2>
+You can customize the scribble mode. In the <i>Info</i> tab of the Inspector, a <i>Settings...</i> button will appear when you have selected Scribble mode:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Scribble1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+Press this button to bring up the Scribble Mode configuration interface. It has three tabs: <i>Recognize, Forms</i> and <i>Gestures</i>. In the <i>Recognize</i> tab, you can enable and disable the various recognition modes to facilitate the recognizing of the remaining modes:<br />
+<br />
+<!-- latexreplace \begin{center} --><!-- /latexreplace --><br />
+<div align="center"><span class="img"><img alt="" src="img/wiki_up/Scribble2.png" border="0"  width="211" /></span><!-- latexreplace \qquad --><!-- /latexreplace --><span class="img"><img alt="" src="img/wiki_up/Scribble4.png" border="0"  width="211" /></span></div><br />
+<!-- latexreplace \end{center} --><!-- /latexreplace --><br />
+<br />
+The other two tabs let you set various parameters of the recognition modes. You can use this to fine-tune Scribble Mode to your particular hardware device; the settings you do here are remembered across different Cinderella sessions on the same computer.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [09:13:48 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Scribbling">
+    http://doc.cinderella.de/tiki-index.php?page=Scribbling
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

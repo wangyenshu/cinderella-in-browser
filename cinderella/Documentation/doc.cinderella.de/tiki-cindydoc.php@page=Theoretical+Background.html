@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Theoretical Background 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1>Theoretical Background</h1>
+<!--latexreplace<br />
+\index{projective geometry}<br />
+\index{geometry!projective}<br />
+--><!-- /latexreplace --><br />
+<br />
+<h2>Problems in Interactive Geometry</h2>
+<br />
+How should a system for doing interactive geometry behave when a user interacts with it? In a sense, the requirements are similar to the requirements for other programs:<br />
+<br />
+<ul><li> The program should be easy to use.
+</li><li> The user should not be disturbed by unnatural behavior of the program.
+</li><li> The user should not be tormented by being forced to make unnecessary input.
+</li><li> The computed results should be correct.
+</li></ul>
+<br />
+Unfortunately, under these requirements interactive geometry turns out to be a difficult subject. There are two main reasons for this:<br />
+<br />
+<ul><li> There are problems that come from <b>special cases</b> that occur even in a static setup.
+</li><li> There are problems that are of a <b>genuinely dynamic</b> nature.
+</li></ul>
+<br />
+<br />
+<h3>Static Problems</h3>
+<!--latexreplace<br />
+\index{projective geometry}<br />
+\index{geometry!projective}<br />
+\index{complex numbers}<br />
+--><!-- /latexreplace --><br />
+Our usual "everyday geometry" is full of special cases. Two lines can intersect or they can be parallel. Two circles can intersect in one or two points or not at all. So, even for static constructions it is sometimes difficult to figure out what a correct and reasonable result for such a special case should be. For instance, what is the angular bisector of two parallel lines? Is it undefined? Can it be any line parallel to the two lines? Should it be a line that is equidistant to the two lines?<br />
+<br />
+We could try to exclude all the special cases and not allow them at all. However, on the one hand, this would mean excluding nonesoteric cases such as parallel lines. On the other hand, when we allow points to be moved in a construction, it happens all the time that mutually dependent elements are forced into special cases. Observe that this is still a static problem!<br />
+<br />
+Such static problems have been studied for a long time. The great geometers of the nineteenth century were aware of them, and it is due to their effort that most of them could be solved. The key to a solution is gradually to extend Euclidean geometry to a larger domain. First, the usual plane is extended by elements at infinity, leading to <i>projective geometry</i>. Then the underlying algebraic structure is extended to cover <i>complex numbers</i>. This essentially removes all special cases from geometry.<br />
+<br />
+It was an exciting development in mathematics when finally, around 1870, these approaches led to a completely consistent system. This system explains the effects of Euclidean geometry as well as those of non-Euclidean geometries, such as hyperbolic geometry. Today it is called <i>Cayley-Klein geometry</i> in honor of two of its main contributors.<br />
+<br />
+The mathematical background and the implementation of <b>Cinderella</b> rely on this general setup. In this way, <b>Cinderella</b> can deal with all special cases, and as an additional benefit it is able to do non-Euclidean as well as Euclidean geometry. It is an amazing fact that by using these general principles the program does not become more complicated. On the contrary, the exclusion of special cases allows a much simpler and straightforward program structure.<br />
+<br />
+<br />
+<h3>Dynamic Problems</h3>
+<!--latexreplace<br />
+\index{dynamic geometry}<br />
+\index{geometry!dynamic}<br />
+--><!-- /latexreplace --><br />
+<br />
+For systems of interactive geometry there is a second class of problems, which are in a sense more subtle than the static problems. Unfortunately, they lead to even more drastic effects. Assume that you have created a construction that involves points, lines, and circles, and in particular the intersection of two circles (or of a circle and a line). When you move the mouse, the program has to decide, for every position, where the dependent elements are. However, there is a problem. Two circles do not have only one intersection. They have two, and we get both from our calculations. How should the system decide which of them is the one you "want"? When you construct the intersection, the answer to this question is easy: Take the point that is closest to the current mouse position. But when you start to move the construction, there is no obvious answer.<br />
+<br />
+What would be most desirable is a <i>continuous</i> behavior of the program in the following sense: <blockquote>If you make a very small move with a free point, then the elements that depend on it should also move only a little bit.</blockquote><br />
+<br />
+<!--latexreplace<br />
+\index{CAD}<br />
+--><!-- /latexreplace --><br />
+At first sight it is not clear whether this requirement is satisfiable in general. Turn on your favorite system for doing interactive geometry or parametric CAD and make the following experiment: Draw a horizontal line and construct two circles of equal radius whose centers are constrained to slide along the line. Move the circles to a position in which they intersect, and construct the upper point of intersection of the two circles. Now move one circle so that its center passes through the center of the other circle. Most probably you will see that the point of intersection suddenly jumps from the upper intersection to the lower one. This is what has happened in all the systems we have tried so far. Such behavior runs counter to our requirement of continuity: You make a small move, and a dependent point suddenly jumps.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images2/Move2.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>This should not happen!</b></td></tr></table><br />
+<br />
+At first, a single jumping point seems to be a mere curiosity that is tolerable. But what happens if large parts of a construction depend on this jumping point? Then these parts of the construction will jump too, without prior warning. Most systems for interactive geometry use heuristics based on orientation decisions that help to get rid of some of these jump situations. But still, in every system many cases remain unresolved. In fact, there is a proof that no heuristic based on orientations only will be able to resolve all of these dynamic problems <!-- latexreplace \cite{RicKor-CIDG-2002,KorRic-DCDG-2001<a href="tiki-editpage.php?page=KorRic-DCDG-2001" title="Create page: KorRic-DCDG-2001" class="wiki wikinew">?</a>,Kor-FDG-1999} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Kor99], [KRG01], [RGK02]</a><!-- /latexreplace -->. In an article on dynamic geometry <!-- latexreplace \cite{Lab-ENGDGELC-1997} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Lab97]</a><!-- /latexreplace -->, Jean-Marie Laborde, the main designer of Cabri Géométrie, states this dilemma in the following way:<br />
+<br />
+<blockquote>I think we need a real mathematical treatment of all consequences of stretching geometry in some way to a wider (dynamic) system. This system cannot be the projective one if we want to maximize the way the environment takes into account the special characteristics of non-static objects which are at the core of dynamic geometry.</blockquote><br />
+<br />
+<b>Cinderella</b> is the first program that is based on a theory that is capable of preventing dependent elements from jumping. This theory is also based on the use of complex numbers, which were used to solve the problems of static geometry.<br />
+<br />
+The use of this theory has many benefits. For instance, it is the basis of the generation of correct loci. Consider the <a title="no description" href='tiki-cindydoc.php@page=Three-Bar+Linkage.html' class='wiki'>Three-Bar Linkage</a> example of the second tutorial. The generation of the locus is based on the correct calculation of the points of intersection of two circles while a free point moves. In other systems for interactive geometry you will probably get only half of the figure-eight curve. The methods for automatic theorem proving, which are used internally throughout <b>Cinderella</b>, are based on this theory as well.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/ThreeBarX.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>The "three-bar locus" revisited</b></td></tr></table><br />
+<br />
+The following paragraphs should give you an impression of the different mathematical methods and theories that form the basis of the implementation of <b>Cinderella</b>.<br />
+<br />
+<h2>Projective Geometry</h2>
+<!--latexreplace<br />
+\index{projective geometry}<br />
+\index{geometry!projective}<br />
+--><!-- /latexreplace --><br />
+<br />
+The first and perhaps most important step for a consistent geometric setup is to extend the usual Euclidean plane to contain elements at infinity. You have likely heard the phrase "parallel lines meet at infinity," and you might believe it when looking from a bridge along a very long and straight railroad track. This phrase is the key to projective geometry. The extension of geometry by infinite elements removes many of the special cases from usual Euclidean geometry.<br />
+<br />
+Projective geometry has a very long tradition. Its historical origin can be traced back to the study of perspective undertaken by famous painters such as Albrecht Dürer and Leonardo da Vinci. Its mathematical origin is the work of <b>Gaspard Monge</b>, a French geometer, who developed, around 1795, a method called <i>descriptive geometry</i> for representing spatial configurations by planar perspective drawings. Monge observed that nontrivial facts about planar geometric configurations could be derived by considering these configurations as projections of configurations in space. The study of parallels in these projections was most elegantly accomplished by extending the plane by elements at infinity.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/Perspective.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>In perspective drawings, parallels actually meet</b></td></tr></table><br />
+<br />
+The <i>projective plane</i> consists of the points of the usual, Euclidean, plane together with one additional "infinite" point for every possible direction. The lines of the projective plane are the Euclidean lines together with one special "line at infinity." All infinite points lie on the line at infinity. The following nicely symmetric relations between points and lines hold:<br />
+<br />
+<ul><li> Every two distinct points have a unique connecting line (their <i>join</i>).
+</li><li> Every two distinct lines have a unique point of intersection (their <i>meet</i>).
+</li></ul>
+<br />
+The first person who formalized these rules, around 1822, was <b>Victor Poncelet</b>, a student of Monge, who today may be considered the "father of projective geometry." In projective geometry there is no need to consider parallels as something special. They still have a point of intersection; it just happens to lie at infinity. For a readable introduction to projective geometry we refer to the books of H. S. M. Coxeter on that topic <!-- latexreplace \cite{Cox-PG-1994,Cox-RPP-1992} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Cox49], [Cox63]</a><!-- /latexreplace -->.<br />
+<br />
+<br />
+<h2>Homogeneous Coordinates</h2>
+<!--latexreplace<br />
+\index{homogeneous coordinates}<br />
+\index{point}<br />
+\index{line}<br />
+--><!-- /latexreplace --><br />
+On a computer we unfortunately do not have geometric objects as primitive data types. A point or a line has to be represented by numbers: the coordinates. Usually, a point in the plane is described by its <!-- latexreplace $(x,y)$-->(<i>x, y</i>)<!-- /latexreplace --> coordinates. A line may be given by the three parameters <!-- latexreplace $(a,b,c)$ -->(<i>a, b, c</i>)<!-- /latexreplace --> of its defining equation <!-- latexreplace $ax+by+c=0$ --> <i>ax + by + c</i> = 0<!-- /latexreplace -->. However, when we want to do projective geometry, this turns out to be impractical. Each pair of coordinates <!-- latexreplace $(x,y)$-->(<i>x, y</i>)<!-- /latexreplace --> represents a finite point, and there is no representation for the points at infinity. A solution to this problem gradually became clear in the first half of the nineteenth century. It started with Möbius's <i>barycentric coordinates</i>, via the refined setup of <i>homogeneous coordinates</i> given by Plücker, and finally led to Grassmann's setup of <i>multilinear algebra</i>.<br />
+<br />
+The way out of the dilemma is as follows. For every point we use three instead of two coordinates, thereby introducing a third dimension. Consider the following scenario: The plane is embedded parallel to the <i>xy</i>-plane of three-space at a height of <i>z</i> = 1, so it does not pass through the origin (0, 0, 0).<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/HomoCoords.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>Embedding the plane in space</b></td></tr></table><br />
+<br />
+Every point <!-- latexreplace $(x,y)$-->(<i>x, y</i>)<!-- /latexreplace --> is represented by its three-dimensional coordinates <!-- latexreplace $(x,y,1)$-->(<i>x, y, </i>1)<!-- /latexreplace -->. These coordinates are the <i>homogeneous coordinates</i> of the point. What happens with the rest of the points in the three-dimensional space? Almost all of them will be interpreted as points in the original plane: we identify all three-dimensional points that differ by a nonzero multiple. For instance, (4, 6, 2) and (2, 3, 1) describe the same point. In general, a point with spatial coordinates (<i>x</i>, <i>y</i>, <i>z</i>) is identified with the point (<i>x/z</i>, <i>y/z</i>, 1) of the original plane. This process is called dehomogenization. In a way, every point of the original plane corresponds to the line spanned by this point and the origin in three-space.<br />
+<br />
+However, there are points in three-space that do not correspond to points in the original plane. The points of the form (<i>x, y, </i>0) cannot be dehomogenized in the above way, since we would have to divide by zero. These points correspond precisely to the "points at infinity" of projective geometry. To see this, we study the behavior of a point that gradually moves to infinity in the original plane.<br />
+<br />
+Assume that the moving point has coordinates (<i>r</i>, <i>r</i>). As <i>r</i> becomes larger and larger, this point gradually approaches a point at infinity in the 45&#186; direction. Looking at its homogeneous coordinates, we see that they have the form (<i>r</i>, <i>r</i>, 1) ~ (1, 1, 1/<i>r</i>). As <i>r</i> increases, the contribution of the first two coordinates dominates the last coordinate more and more. In the limiting case of <i>r</i> equals "infinity," the homogeneous coordinates are given by (1, 1, 0), an infinite point. You can also try to imagine the line through this point and the three-dimensional origin. As the point approaches infinity, this line becomes more and more horizontal, until, in the limiting case, it is contained entirely in the <i>xy</i>-plane.<br />
+<br />
+A similar representation can be given for lines. For the line <i>ax</i> + <i>by</i> + <i>c</i> = 0 we take the parameters (<i>a</i>, <i>b</i>, <i>c</i>) as the homogeneous coordinates of the line. As in the case of points, we identify nonzero multiples of such coordinates, since they do not alter the solution space of the corresponding equation. There is one set of parameters, (0, 0, 1), that does not correspond to a finite line. This is the line at infinity. The vector (<i>a</i>, <i>b</i>, <i>c</i>) of a line is orthogonal to the plane spanned by the corresponding line and the origin of three-space. In particular, the vector (0, 0, 1) is orthogonal to the <i>xy</i>-plane, the "line at infinity."<br />
+<br />
+In fact, the algebraic notion of homogeneous coordinates provides a complete symmetry between points and lines. Each point or line is represented by three homogeneous coordinates. A point (<i>x</i>, <i>y</i>, <i>z</i>) lies on a line (<i>a</i>, <i>b</i>, <i>c</i>) if and only if the scalar product <i>ax</i> + <i>by</i> + <i>cz</i> is zero, which is simply rewriting the equation of the line. Geometrically, this means that the two corresponding vectors are orthogonal in three-space.<br />
+<br />
+<br />
+<h2>Complex Numbers</h2>
+<!--latexreplace<br />
+\index{complex numbers}<br />
+--><!-- /latexreplace --><br />
+It is not only geometry that has been extended throughout the centuries. A similar process happened to numbers. Probably the first numerical concept considered by mankind was that of the positive integers: 1, 2, 3, …. From that beginning, it was reasonable to extend the number system gradually to encompass more powerful concepts. The <i>negative numbers</i>, the <i>rational numbers</i>, and the <i>real numbers</i> had to be invented to achieve a useful and self-contained system. The observation that there must be numbers that cannot be represented as quotients of two integers is of a geometric nature and dates back to approximately 600 B.C.E. It was observed by the Pythagoreans that there is no rational number measuring the length of a diagonal of a square with sides of length one. Through application of the Pythagorean theorem, this task is equivalent to finding a number <i>x</i> such that <i>x</i>&#178; = 2. This discovery led to a deep crisis in the foundations of ancient geometry.<br />
+<br />
+However, the story of extending the number system does not stop at that point. One of the extensions, with perhaps the most drastic consequences, was the introduction of <i>complex numbers</i>. It was <b>Geronimo Cardano</b> in his 1545 work <i>Ars Magna</i> who was first to explicitly propose such an extension of the real numbers. He was led to his conclusions by the study of solutions of polynomials of degree three. Based on the work of other contemporary mathematicians, he discovered that a complete systematic representation of these solutions can be given only with the help of hitherto unknown values involving square roots of negative numbers.<br />
+<br />
+A complex number is a number of the form <!-- latexreplace $a+ib$ --><i>a</i> + <i>i</i>&#183;<i>b</i><!-- /latexreplace -->, where the symbol <i>i</i> satisfies the equation <!-- latexreplace $i<div class="simplebox">2=-1$ --><i>i</i>&#178; = –1<!-- /latexreplace -->, and <i>a</i> and <i>b</i> are real numbers. Clearly, the number <i>i</i> cannot be a real number, since the square of a real number can never be negative. The system of complex numbers is, like the real numbers, closed under the four basic arithmetic operations of addition, subtraction, multiplication, and division (excluding, of course, division by zero). In other words, the sum and the product of two complex numbers, as well as their difference and quotient, can again be written in the form <!-- latexreplace $a+ib$ --><i>a</i> + <i>i</i>&#183;<i>b</i><!-- /latexreplace --> for suitable parameters <i>a</i> and <i>b</i>. However, unlike the real numbers, the system of complex numbers is also closed under the operation of finding solutions of polynomials. For instance, consider the polynomial<br />
+<br />
+<!-- latexreplace \<a class="wiki external"  href="x^2-6x+13=0\">x^2-6x+13=0\</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> --><br />
+<table align=center> <tr><td><i>x</i>&#178; – 6<i>x</i> + 13 = 0.</td></tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+As you can easily check, it has no real solutions, but the complex numbers 3 + 2<i>i</i> and 3 – 2<i>i</i> do solve this equation. In fact, the following beautiful result is true: <b>Every polynomial equation with arbitrary real or complex coefficients has all its solutions again in the field of complex numbers.</b><br />
+<br />
+In a sense, the discovery of complex numbers is the starting point for most modern mathematics. Many mathematical theories find their broadest, most elegant, and most economical setting when they are formulated over the complex numbers. This happens also with geometry. Consider the situation of two circles. Depending on their position, they can have two, one, or no points of intersection.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern1cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.4333333333333333in">width=1.4333333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{circ4}   &amp;   \includegraphics<a class="wiki external"  href="width=1.7533333333333334in">width=1.7533333333333334in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{circ3} \\<br />
+{\small\it Circles can intersect\ldots{}} &amp;  {\small\it \ldots{}or not.}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<table align=center > <tr>
+	<td> </tr> <tr>
+	<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/circ4.gif">
+	 <td><IMG SRC="../cinderella.de/files/CindyDocu/Images/circ3.gif"> </tr> <tr>
+	<td align=center><b>Circles can intersect…</b>
+	 <td align=center><b>…or not.</b> </tr> <tr>
+	<td> </tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+Finding the coordinates of the points of intersection amounts to solving a quadratic equation. Over the real numbers, this equation might have no solution. In this case, the circles do not intersect. Over the complex numbers, however, a solution always exists. So in the case of visually nonintersecting circles, we say that the intersections still exist, but that they have complex coordinates, and therefore we cannot see them in the real plane.<br />
+<br />
+<b>Cinderella's</b> mathematical kernel is implemented entirely over the complex numbers. So when intersections visually vanish, <b>Cinderella</b> does not have to deal with special cases, and it can still continue calculating. The solutions just have complex coordinates.<br />
+<br />
+What happens if two complex points are connected by a line? In general, this line will also have complex coordinates. However, if the points are so-called <i>complex conjugates</i>, which means that they differ only by the sign of their complex part, then their join is again real. Since the solutions of a quadratic equation with real coefficients are always complex conjugates, it follows that the intersection points of two circles are always complex conjugates. This is the reason why the line joining them is a real line, no matter where in the plane the circles are located, even if the intersection points are complex and therefore invisible. <b>Cinderella</b> will correctly calculate and draw this line, independent of the position of the circles. It may take a while to get used to the fact that intermediate results can disappear while some constructions depending on them remain visible. However, this is exactly what you should expect. Consider the case in which the circles have the same radius. The line is then the <b>perpendicular bisector</b> of the segment joining the two midpoints. If you include the complex situations, you are not compelled to consider so many special cases.<br />
+<br />
+Another example of a theorem in which intermediate steps disappear is the following statement about three circles. Construct the line joining the two points of intersection of each pair of circles. The three chords that you obtain in this way meet in a point, no matter whether the circles intersect or not.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern1cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.78in">width=1.78in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{circ1}   &amp;   \includegraphics<a class="wiki external"  href="width=1.7066666666666668in">width=1.7066666666666668in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{circ2} \\<br />
+{\small\it Intermediate points can be complex\ldots{}} &amp;  {\small\it \ldots{}but theorems remain true.}\\<br />
+\end{tabular}<br />
+$$<br />
+ --> <table align=center > <tr>
+	<td> </tr> <tr>
+	<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/circ1.gif">
+	 <td><IMG SRC="../cinderella.de/files/CindyDocu/Images/circ2.gif"> </tr> <tr>
+	<td align=center><b>Intermediate points can be complex…</b>
+	 <td align=center><b>…but theorems remain true!</b> </tr> <tr>
+	<td> </tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+So in <b>Cinderella</b> each point and each line is represented by <i>complex homogeneous coordinates</i>. This means that altogether, any point or line has a six-dimensional(!) internal representation in the mathematical kernel. This may sound crazy, but it is the most natural thing to do.<br />
+<br />
+<br />
+<h2>Measurements and Complex Numbers</h2>
+<br />
+<!--latexreplace<br />
+\index{measurement}<br />
+--><!-- /latexreplace --><br />
+If we were satisfied with projective incidence theory, then the system presented so far would be fairly complete. However, we want to be able to measure distances and angles, too. Measurements are in a sense the most fundamental geometrical operations. Unfortunately, at first glance, projective geometry does not appear to be capable of measuring, since under perspective transformations distances can change. Actually, for a long time mathematicians considered projective geometry a "nice toy" for doing incidence geometry, but not appropriate for the real stuff: measuring.<br />
+<br />
+History proved them wrong. With the right setup, projective geometry is <i>the</i> universal system for doing measurements. This system unifies and explains different kinds of measurements. For example, it explains the relationship between Euclidean and hyperbolic geometry. However, it took a long time to finally find the algebraic setting in which Projective Geometry develops its full power. The key objects are called "Cayley-Klein geometries" in modern terms. It is an elegant and consistent mathematical approach to measurements that combines projective geometry and complex numbers.<br />
+<br />
+<br />
+<h3>Euclidean and Non-Euclidean Geometry</h3>
+<!--latexreplace<br />
+\index{geometry!euclidean}<br />
+\index{euclidean geometry}<br />
+\index{geometry!non-euclidean}<br />
+\index{non-euclidean geometry}<br />
+--><!-- /latexreplace --><br />
+One part of this development started with the discovery of non-Euclidean geometries. Our everyday geometry is, with relatively great accuracy, described by Euclid’s five postulates. He used these postulates to axiomatize geometry. This happened almost 2000 years ago. The last postulate, the so-called parallel axiom, plays a special role in the development of geometry. A way to formulate it is this: <b>"Whenever there is a line <i>l</i> in the plane and a point <i>P</i> not on <i>l</i>, then there is <i>exactly one</i> line through <i>P</i> that does not meet <i>l</i>."</b><br />
+<br />
+Euclid was very cautious about using the parallel postulate. Large parts of Euclid’s elaborations, for instance the complete theory of congruence of triangles, were done without the explicit need for this axiom. Today we are relatively sure that Euclid himself believed that this axiom was a consequence of the other four axioms. But he could not prove this. After Euclid, many other mathematicians tried to do so, and some of them even presented proofs. But all these proofs were incorrect.<br />
+<br />
+In the sixteenth to eighteenth centuries, mathematicians also found many equivalent formulations for the parallel postulate. One of the most prominent formulations is <!-- latexreplace ``The interior angles in a triangle sum up to $180</div>{\circ}$.'' -->_"The interior angles in a triangle sum up to 180&#186;."__<!-- /latexreplace --> If this statement could be derived from Euclid's first four axioms, then this would prove the dependence of the parallel postulate.<br />
+<br />
+Proving that an axiom is dependent can be done by assuming its contrary and drawing conclusions until a contradiction is shown. Many people tried this, among them <b>C.F. Gauss</b>, <b>J. Bolyai</b>, and <b>N. Lobachevski</b>. They drew conclusion after conclusion, but to their surprise, instead of arriving at a contradiction, they found themselves developing a beautiful geometric system: <b><i>hyperbolic geometry</i></b>. There Euclid's parallel postulate is modified in the following way: <b>"Whenever there is a line <i>l</i> in the plane and a point <i>P</i> not on <i>l</i>, then there will be more than one line through <i>P</i> that does not meet <i>l</i>."</b> A consequence of this assumption is that the angle sum in a triangle is always less than 180&#186;. Between 1815 and 1824, independently from each other, these three people, who are today considered the discoverers of hyperbolic geometry, came to the point at which they declared their system free from contradictions, simply because they could not find any. The system they developed was full of inner beauty, and it is a surprising fact that they could prove that under the assumption of the perturbed parallel postulate they end up with a unique theory (up to trivial isomorphisms).<br />
+<br />
+It is worth mentioning that most probably Gauss was the first to arrive at these conclusions, around 1816. However, he did not dare to publish his results, since he was afraid of conflicts with the leading schools of Kantian philosophy at that time. They considered a straight line as the first thing whose nature is a priori clear.<br />
+<br />
+If you are interested in the history of mathematics, we want to point you to the books of Bell <!-- latexreplace \cite{Bel-DM-1992,Bel-M-1986} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Bel45a], [Bel45b]</a><!-- /latexreplace --> and Struik <!-- latexreplace \cite{Str-CHM-1987} --><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Str87]</a><!-- /latexreplace -->. As an introduction to hyperbolic geometry we recommend the book of Greenberg <!-- latexreplace \cite{Gre-ENG-1996}--><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Gre74]</a><!-- /latexreplace -->.<br />
+<br />
+<h3>Cayley-Klein Geometries</h3>
+<!--latexreplace<br />
+\index{Cayley-Klein geometries}<br />
+\index{cross ratio}<br />
+\index{angle}<br />
+\index{distance}<br />
+--><!-- /latexreplace --><br />
+<br />
+For a long time it was not clear whether the system of hyperbolic geometry was indeed free of contradiction. What was missing was a model of this structure, a mathematical object that satisfied Euclid's first four axioms and the perturbed parallel postulate. With minor flaws, Beltrami was the first to construct such a model in 1868. However, the full beauty of a general theory was first seen when Felix Klein, a student of Plücker, presented his version of what we call "Cayley-Klein geometries"; see, for instance, <!-- latexreplace \cite{Kle-VUNG-1968}--><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Kle28b]</a><!-- /latexreplace -->. What he gave was essentially a reduction of hyperbolic geometry to constructions of Euclidean geometry that implies the following: "If Euclidean geometry is free of contradictions, then so is hyperbolic geometry." This finally solved all problems surrounding Euclid's fifth postulate.<br />
+<br />
+The idea behind Cayley-Klein geometries is to use the projective plane, and to distinguish a special conic, the "fundamental object." A special kind of global measurement is defined that depends only on the fundamental object. Depending on the type of the fundamental object you have chosen, you get different types of geometries: <b>Euclidean geometry</b>, <b>hyperbolic geometry</b>, <b>elliptic geometry</b>, <b>relativistic geometry</b>, and three other geometries of minor importance.<br />
+<br />
+<br />
+We will not go into the details of Cayley-Klein geometries, but we will present the major definitions and demonstrate some basic effects. We first need the concept of a <b>cross ratio</b>: For four points <i>A</i>, <i>B</i>, <i>C</i>, and <i>D</i> on a line, the cross ratio is defined as the number<br />
+<br />
+<div class="tex" alt="$$(A,B|C,D) = \frac{(A-C)(B-D)}{(A-D)(B-C)}$$"> <table align=center> <tr><td align=center>(<i>A, B</i> | <i>C, D</i>) := ((<i>A – C</i>)(<i>B – D</i>)) / ((<i>A – D</i>)(<i>B – C</i>),</td></tr> </table></div><br />
+<br />
+where (<i>A – C</i>) denotes the usual "Euclidean distance" of the points <i>A</i> and <i>C</i>. The cross ratio can also be defined without referring to the notion of Euclidean distance, which is important for a systematic treatment of geometry that is free from circular conclusions.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Images/cross.gif" border="0"  /></span></td></tr><tr><td class="caption"><b>The cross ratio</b></td></tr></table><br />
+<br />
+The cross ratio is of remarkable value in projective geometry, since it is invariant under perspective transformations. So, if you have four points <i>A, B, C,</i> and <i>D</i> on a line and centrally project them to four points <i>A′, B′, C′,</i> and <i>D′</i> on another line, then the cross ratios of the two quadruples of points are identical.<br />
+<br />
+Similarly, the cross ratio of four lines through a point <i>P</i> can be defined to be the cross ratio of four points that are the intersections of each line with another distinct line not going through the point <i>P</i>.<br />
+<br />
+Now the definition of a Cayley-Klein geometry is easy. Choose a quadratic form<br />
+<br />
+<!-- latexreplace \<a class="wiki external"  href="ax^2+by^2+cz^2+dxy+exy+fyz=0\">ax^2+by^2+cz^2+dxy+exy+fyz=0\</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> --><br />
+<table align=center> <tr><td><i align=center><i>x</i>&#178; + <i>y</i>&#178; + <i>cz</i>&#178; + <i>exz</i> + <i>fyz</i> = 0.</td></tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+The zero set of this equation describes a (possibly complex) conic in the projective plane. This is the "fundamental object" of the geometry. Now measurements of angles and distances are defined as follows: For the distance between two points <i>A</i> and <i>B</i> take the line joining them. The intersection of this line with the fundamental object is two points <i>X</i> and <i>Y</i>. Calculate the cross ratio (<i>A, B</i> | <i>X, Y</i>). Take the logarithm of that number and call the result <i>distance</i>.<br />
+<br />
+Angles are calculated in an analogous way. For the angle between two lines <i>L</i> and <i>M</i> first take their meet, that is, their point of intersection. The tangents through the meet that touch the fundamental object are two lines <i>P</i> and <i>Q</i>. Calculate the cross ratio (<i>L, M</i> | <i>P, Q</i>). Take the logarithm of that number and call the result <i>angle</i>. Usually, these two functions are multiplied by some cosmetic constants <i>r</i> and <i>s</i> in order to match the traditional definitions of measurements.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern1cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.56in">width=1.56in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{klein2}   &amp;   \includegraphics<a class="wiki external"  href="width=1.56in">width=1.56in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{klein1}\\<br />
+{\small\it $\textrm{dist}(A,B)=r\cdot\ln(A,B|X,Y)$} &amp;  {\small\it $\textrm{angle}(L,M)=r\cdot\ln(L,M|P,Q)$}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+ <table align=center > <tr>
+	<td> </tr> <tr>
+	<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/klein2.gif">
+	 <td><IMG SRC="../cinderella.de/files/CindyDocu/Images/klein1.gif"> </tr> <tr>
+	<td align=center><b>dist(<i>AB</i>) = <i>r</i>&#183;ln(<i>A, B</i> | <i>X, Y</i>)</b>
+	 <td align=center><b>angle(<i>LM</i>) = <i>s</i>&#183;ln(<i>L, M</i> | <i>P, Q</i>)</b></tr> <tr>
+	<td> </tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+It may sound like magic, but this is all you have to know. Depending on the type of fundamental object that you have chosen, you get different kinds of geometry. Up to isomorphism there are exactly seven different types of geometries you obtain that way. The three most important choices for the fundamental conic are the following:<br />
+<br />
+<ul><li> The circle given by <!-- latexreplace $x<div class="simplebox">2 +y</div>2-z<div class="simplebox">2 =0$ --><i>x</i>&#178; + <i>y</i>&#178; - <i>z</i>&#178;= 0<!-- /latexreplace -->: The resulting measurement corresponds to hyperbolic geometry.
+</li><li> The degenerate conic described by <!-- latexreplace $x</div>2 +y<div class="simplebox">2 =0$ --><i>x</i>&#178; + <i>y</i>&#178; = 0<!-- /latexreplace -->: The resulting measurement corresponds to usual Euclidean geometry.
+</li><li> The equation <!-- latexreplace $x</div>2 +y<div class="simplebox">2+z</div>2 =0$ --><i>x</i>&#178; + <i>y</i>&#178; + <i>z</i>&#178; = 0<!-- /latexreplace --> with no real solutions: The resulting measurement corresponds to elliptic geometry.
+</li></ul>
+<br />
+<br />
+Two things are worth mentioning:<br />
+<br />
+<ul><li> Distances in Euclidean geometry need a little twist. The formulas of Cayley-Klein geometry will always produce a zero distance. This is due to the fact that in Euclidean geometry there is no "absolute" notion of distance. Each length has to be compared to a unit length. The right formulas are obtained immediately in the limit situation.
+</li></ul>
+<br />
+<ul><li> The intersections and tangents in the above constructions do not necessarily have real coordinates. For instance, in the case of elliptic geometry the fundamental object has no real points at all. In this case the intersections of the fundamental object with a line are always complex.
+</li></ul>
+<br />
+The metric part of <b>Cinderella</b> is based on Cayley-Klein geometries. All calculations of lengths, angles, orthogonality, circles, etc. refer to a fundamental object.<br />
+<br />
+We finally want show at least one effect that is caused by this general theory. We do this in order to give you a feeling for what complex numbers, cross ratios, and projective geometry have to do with measuring.<br />
+<br />
+We consider the case of Euclidean geometry. There the fundamental object has the equation <!-- latexreplace $x<div class="simplebox">2+y</div>2 = 0$ --><i>x</i>&#178; + <i>y</i>&#178; = 0<!-- /latexreplace -->. Using complex numbers, this quadratic form can be factored into two linear forms: <!-- latexreplace $x<div class="simplebox">2 + y</div>2 = (1\cdot x + i\cdot y+ 0\cdot z)$ --><i>x</i>&#178; + <i>y</i>&#178; = (1&#183;<i>x</i> + <i>i</i>&#183;<i>y</i> + 0&#183;<i>z</i>)<!-- /latexreplace --> and <!-- latexreplace $x<div class="simplebox">2 + y</div>2 = (1\cdot x + i\cdot y+ 0\cdot z)$ --><i>x</i>&#178; + <i>y</i>&#178; = (1&#183;<i>x</i> – <i>i</i>&#183;<i>y</i> + 0&#183;<i>z</i>)<!-- /latexreplace -->. The points <i>I</i> := (1, <i>i</i>, 0) and <i>J</i> := (1, –<i>i</i>, 0) that occur in this formula play a special role in Euclidean geometry. They are not affected by any Euclidean transformation. In a very well defined way we can say that <b>"Euclidean geometry is projective geometry together with <i>I</i> and <i>J</i>."</b><br />
+<br />
+The points <i>I</i> and <i>J</i> are sometimes called the <b>imaginary circle points</b>, since they have a very special relation to circles: each Euclidean circle passes through <i>I</i> and <i>J</i>. To see this consider a general circle equation in homogeneous coordinates:<br />
+<br />
+<br />
+<!-- latexreplace \<a class="wiki external"  href="ax^2+by^2+cz^2+dxy+exy+fyz=0\">ax^2+by^2+cz^2+dxy+exy+fyz=0\</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> --><br />
+<table align=center> <tr><td><i align=center><i>x</i>&#178; + <i>y</i>&#178; + <i>cz</i>&#178; + <i>exz</i> + <i>fyz</i> = 0.</td></tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+Now plug in the coordinates of <i>I</i> and <i>J</i>. Using the rules for calculating with complex numbers we observe that the circle equation is obviously satisfied. Thus we can say that a circle is a special conic that passes through <i>I</i> and <i>J</i>. With the notion of a circle it is easy to define what it means to have equal distances or equal angles. The remaining concepts of Euclidean geometry can be derived in a straightforward manner. A very good classical source on Cayley-Klein geometries can be found in <!-- latexreplace \cite{Kle-VUNG-1968}--><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[Kle28b]</a><!-- /latexreplace -->. A Modern treatment of these issues that also includes a broad introduction into projective Geometry may be found in <!-- latexreplace \cite{RicOre-G-2009}--><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[RGO09]</a><!-- /latexreplace --> and  <!-- latexreplace \cite{Ric-PPG-2011}--><a title="no description" href="tiki-cindydoc.php@page=References.html" class="wiki">[RG11]</a><!-- /latexreplace -->.<br />
+<br />
+<br />
+<h2>The Principle of Continuity</h2>
+<!--latexreplace<br />
+\index{continuity}<br />
+\index{analytic function}<br />
+--><!-- /latexreplace --><br />
+It was mentioned in the preface of this manual that <b>Cinderella</b> uses some basic new methods to avoid inconsistent behavior. The geometric system we presented in the previous sections is a closed framework for doing geometry, including measurements. However, so far there is an element missing that is crucial for <b>Cinderella</b>: <i>dynamics</i>. Most other systems for interactive geometry, or parametric CAD, suffer from inconsistencies that come from an unsatisfactory treatment of the special effects of dynamics. For instance, consider the "theorem" that <b>the angular bisectors of the sides of a triangle meet in a point</b>. Every pair of lines has two angular bisectors that are perpendicular to each other. Depending on the choice of the angular bisectors, the above statement can be true or false. Now imagine you have constructed an instance of this "theorem" (i.e., you have chosen the correct bisectors). You start to drag the vertices, around and suddenly, without reason, one angular bisector flips to the other position and the "theorem" becomes false. Such a scenario can happen in any system that does not take extra measures to resolve the special problems from the dynamic aspects of geometry.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern1cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.6in">width=1.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Ang1}  &amp;    \includegraphics<a class="wiki external"  href="width=1.6in">width=1.6in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Ang2}\\<br />
+{\small\it The angular bisectors intersect\ldots{}} &amp;  {\small\it \ldots{}or not.}\\<br />
+\end{tabular}<br />
+$$<br />
+--><br />
+ <table align=center > <tr>
+	<td> </tr> <tr>
+	<td><IMG SRC="../cinderella.de/files/CindyDocu/Images/Ang1.gif">
+	 <td><IMG SRC="../cinderella.de/files/CindyDocu/Images/Ang2.gif"> </tr> <tr>
+	<td align=center><b>The angular bisectors<br> of a triangle can intersect…</b>
+	 <td align=center><b>…or not.</b> </tr> <tr>
+	<td> </tr> </table><br />
+<!-- /latexreplace --><br />
+<br />
+Let us consider another small construction. Take two circles and one of their intersections. While you drag elements around, <b>Cinderella</b> has to decide for every mouse move which intersection you "mean."<br />
+<br />
+It is a good first attempt to "trace" this point of intersection using the following rule: <b>"Always take the intersection that is closest to the previous position,"</b> since this precisely reflects the definition of continuity. But how should we deal with vanishing intersections? Again it pays off having implemented everything in complex space. In <b>Cinderella</b> intersections never vanish; they can become complex, however. So we have to trace the intersections in complex space and use the above rule.<br />
+<br />
+However, this is not enough. When you separate two circles that were previously intersecting, there is always a position in which the two points of intersection coincide. How can the points be distinguished in this situation? This time it is analytic function theory that rescues us. <b>If "detours" through complex space are allowed, then there is always a path that avoids all degenerate situations.</b> Again the whole approach is possible only because everything is embedded in a complex space.<br />
+<br />
+Here is an approximate description of what happens while you drag the mouse from one position to another in the "move" mode of <b>Cinderella</b>. While you move a point from position <i>A</i> to position <i>B</i>:<br />
+<br />
+<ul><li> <b>Cinderella</b> generates a path from <i>A</i> to <i>B</i> through complex space that avoids all degeneracies.
+</li><li> The dependent elements are traced through complex space.
+</li><li> The number of intermediate steps on the path is adjusted according to the required accuracy.
+</li></ul>
+<br />
+For the tracing, <b>Cinderella</b> uses an adaptive step-width algorithm. You can imagine that while you drag the construction elements the mouse pointer leaves the "real screen" and walks through complex space.<br />
+<br />
+Why all this effort? With these methods we can be sure that elements do not "jump around" for no reason. So when you start with a correct drawing of the angular bisectors theorem you will never be able to move it to a false position. The theory also forms the basis for reliable randomized theorem checking and for the loci and animation functions of <b>Cinderella</b>.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Sunday 04 of September, 2011 [18:14:53 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Theoretical%20Background">
+    http://doc.cinderella.de/tiki-index.php?page=Theoretical%20Background
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Scripting the Seeds of a Sunflower 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Scripting the Seeds of a Sunflower</h2>
+<!--latexreplace<br />
+\index{CindyScript}<br />
+\index{sunflower}<br />
+--><!-- /latexreplace --><br />
+<br />
+In this tutorial you will learn some elementary applications of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->, the internal Programming language of Cinderella. You should be aware that this tutorial covers only a very small portion of the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> functionality. Nevertheless, you will receive an impression of how <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> can be used.<br />
+<br />
+The following example will be developed step by step. In each step we will add one conceptually new element. At the very end we will arrive at an interactive visualization of the packing pattern of seeds in a sunflower head.<br />
+<br />
+<h3>A first line of CindyScript</h3>
+<br />
+We start with an extremely simple task. We want to draw one point by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> that is bound to a given geometric point. We start by adding one point using the <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point mode</a>  <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span> . It is a good idea for the following example to also turn on the snap grid by pressing the  button  <span class="img"><img alt="" src="buttonsback/snap.png" border="0"  /></span>  in the button line below the drawing surface. After this step your drawing should look like Figure 1.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pic0.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 1: A single point</b></td></tr></table><br />
+<br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is (among other things) capable of adding graphical elements to your construction. Now we want to draw a single point displaced by (1,1) from point <i>A</i>. In order to achieve this we must open the <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> editor in the menu <i>Scripting --> Edit Scripts</i>. Then the window shown below will pop up. This is where <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code is entered primarily.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptScreenX.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 2: The script editor</b></td></tr></table><br />
+<br />
+You will notice that on the left side of this window there is a list of many occasions. Each piece of <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is associated to one of these occasions and will be executed when a corresponding event occurs. We will add a piece of script in the <i>draw</i> event. This means that the script will be executed right before drawing. This is the right place to add code that produces additional graphical output. For adding the piece of code we click on the draw event (see Figure 3).<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptScreen1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 3: Entering code in the draw event</b></td></tr></table><br />
+<br />
+After this we can add a piece of code in the main part of the editor. To draw the desired point the code snippet shown in Figure 4 is already sufficient.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ScriptScreen2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Figure 4: A first line of CindyScript</b></td></tr></table><br />
+<br />
+We will comment on this line of code briefly. The <code>draw(...)</code> statement accepts a two-dimensional vector. It will draw a point at the corresponding position on the drawing surface. By default this point will be green and small. (It is also possible to use the draw statement with two vectors as arguments. Then a segment between the two corresponding points will be drawn.) In our code the argument is <code>A+(1,1)</code>. This summation statement will automatically use the <i>xy</i>-coordinates of point <i>A</i>. To these coordinates we add the vector '(1,1)'. In arithmetic expressions geometric elements are automatically cast into their coordinates.<br />
+<br />
+After entering the line of code you must press the script start button (the one with the two gears) in the script editor. After this your drawing should approximately as shown in Figure 5.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic1.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS1.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 5: Drawing a point<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<h3>Loops</h3>
+<br />
+Now we will add a simple control structure to our script. Instead of one single point we want to draw a whole sequence of points. For this we will use the <code>repeat(...)</code> statement to generate a simple loop. <code>repeat(...)</code> can be used with three arguments. The first one is the number of loops. The second is the name of the running-variable. The last argument is the piece of code that will be executed during the loop. The arguments are separated by commas. In our case we will use the piece of code shown in Figure 6. (Remember to press the start button again to activate the changes to your script.)<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic2.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS2.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 6: A loop that draws points<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+This code draws all together 10 points. The variable <code>i</code> is used as running-variable. During the loop it assumes values <code>1,2,3,4,5,6,7,8,9,10</code>. In contrast to the last step we now calculate the vector <code>A+(i,i)</code>. All together this creates a diagonal chain of points.<br />
+<br />
+In the next step we want to place the point cyclically around point <i>A</i>. The distance from <i>A</i> should be 1 and the points should have an angular displacement of 10°. For this we define a new variable <code>w</code> that plays the role of the angle. We add the line <code>w=i*10°</code> to our loop. This automatically creates the variable <code>w</code> (there is no need of an explicit typing) and associates the angle to it. Then we change our code by adding the vector <code>(sin(w),cos(w))</code>. The result is shown in Figure 7 below.<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic3.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS3.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 7: Drawing points in a circle<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<h3>Adding a slider</h3>
+<br />
+We now want to interactively control the number of points added by a slider in the drawing surface. Sliders are constructed explicitly as geometric objects. For this one usually adds a line segment and places a point on it. However also other types of sliders (for instance circular sliders) are possible variants. We add a simple segment by using the <a title="no description" href="tiki-cindydoc.php@page=Segment.html" class="wiki">add a segment</a>  <span class="img"><img alt="" src="buttonsback/segment.png" border="0"  /></span>  mode. The endpoints of this segment will be <i>B</i> and <i>C</i>. Then we add a point on this segment by using the <a title="no description" href="tiki-cindydoc.php@page=Add+a+Point.html" class="wiki">add a point</a>  <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span>  mode. This point will be point <i>D</i>. We will now use the distance from <i>C</i> to <i>D</i> as a controlling entity for the number of points. The distance can be measured by <code>|C,D|</code>. We multiply this value by 10 and round it to get the value <code>n</code> of number of points to be drawn. This can be done using the simple expression <code>n=round(|C,D|*10)</code>. Again observe that no explicit declaration of variables or typing is necessary. Variables like <code>n</code> are simply containers for values, no matter what these values may be. We furthermore have to change the number of loops from the value <code>10</code> to <code>n</code>. The corresponding piece of code together with a picture of the current state of our drawing is shown in Figure 8. In this drawing the number of points can be controlled interactively by moving point <i>B</i>.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic4.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS4.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 8: Adding a slider<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<h3>A strange angle</h3>
+<br />
+We will now do something the importance of which may not be clear immediately. We change the angular displacement to a value of 137,508°. The result of this action is shown in Figure 9 below.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic5.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS5.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 9: A "strange" angle<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+The points seem to be distributed almost randomly. In fact the value of 137,508° has a certain mathematical meaning. It is 360° times the square of the golden ratio. It has the strange property that it scatters the points in an kind of optimal way. Each new point is placed in a position that is as far away from the previous points as possible. We can see this by changing the distance of each point to the center <i>A</i>. A good choice of this radial displacement is <i>sqrt(i)*0.2</i>. We do so by multiplying the vector we add by a factor <code>r</code> that we set to this value. The result is shown in Figure 10. Observe that the points in the drawing are placed in a way that each of the points has approximately the same amount of free space around itself.<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic6.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS6.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 10: Adjusting the radii<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+Let us be ambitious and increase the number of points significantly. We change our factor 10 in the first line to a value of 80. We recommend to move the points <i>A</i> and <i>D</i> to see the speed of the visualization. A Situation with roughly 400 points is shown in Figure 11.<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic7.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS7.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 11: Much more points<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<h3>Spirals in a sunflower</h3>
+<br />
+The points we drew are roughly positioned like the seeds in the head of a sunflower. You will also observe the typical spiral structures that one sees in a sunflower. The angular displacement factor of 137,508° is crucial for this pattern. We will exemplify this by slightly disturbing this angle and seeing what happens. For this we add another slider with which we can control the amount of disturbance. We again draw a segment with a point on it and add define a (small!) disturbance value by <code>dd=|E,G|*0.1°</code>. We add this value to the angular displacement, by changing the angle to <code>w=i*(137.508+dd)</code>. The effect of such a small disturbance is shown in Figure 12. We observe the ever so slightly changing the angular displacement results in the appearance of obvious spiral structures in the placement of the seeds.<br />
+<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic8.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS8.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 12: Disturbing the angle<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+The number of spirals is intimately related to the golden ratio and its development by continued fractions. We will not elaborate on this (quite deep) mathematical structure. We just mention that the so-called Fibonacci numbers <i>1,1,2,3,5,8,13,21,34,...</i> come into play. Here each number is the sum of its two predecessors. Dividing two consecutive Fibonacci numbers by each other gives a better approximation of the golden ratio the larger these two numbers are. Amazingly the number of prominent spirals will be a Fibonacci number (pick a real sunflower and check it!).<br />
+<br />
+We will exemplify this by changing the color of the points in our visualization. Many <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> functions (and in particular <code>draw(...)</code>) allow for the use of so called <i>modifiers</i>. By using them one can for instance change the color, size or opacity of the element that is drawn. In our particular example we will add the following piece of code to the draw statement: <code>color->hue(i/21)</code>. The function <code>hue(...)</code> creates a rainbow color with full saturation. While the argument runs from 0.0 to 1.0 the color will proceed a full cycle in the color circle. By setting the color to <code>hue(i/21)</code> we paint the seeds in colors that are cyclically with period 21 (a Fibonacci number). We visually observe that the disturbed pattern has 21 prominent spirals.<br />
+<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic9.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS9.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->Figure 13: Coloring the spirals<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [16:46:32 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Scripting%20the%20Seeds%20of%20a%20Sunflower">
+    http://doc.cinderella.de/tiki-index.php?page=Scripting%20the%20Seeds%20of%20a%20Sunflower
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : ShapesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>シェイプ</h2>
+<br />
+　直線や多角形、円などの基本的な描画に加えて <!-- latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> -->CindyScript<!-- /latexreplace -->  によってこれらを結合した図形ーシェイプーを描くことができます。シェイプは直接は目に見えませんが、充填材やアウトラインの描画、クリッピングとして使えるでしょう。シェイプは和集合、積集合、補集合といった集合の論理演算によって作られます。ここでは、まず基本的な演算について説明し、そのあと、より精巧な例を示してこの機能について説明します。<br />
+<br />
+<hr />
+<br />
+<h3>シェイプの初歩</h3>
+<br />
+<A NAME="circle"></A><br />
+<h4>円形のシェイプ: <span style="color:red;"><code>circle(&#60;point&#62;,&#60;radius&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は円形のシェイプを作ります。<br />
+<br />
+<hr />
+<br />
+<A NAME="polygon"></A><br />
+<h4>多角形シェイプ: <span style="color:red;"><code>polygon(&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、 <code>&#60;list&#62;</code> に頂点のリストを渡して多角形のシェイプを作ります。<br />
+<br />
+<hr />
+<br />
+<A NAME="halfplane"></A><br />
+<h4>半平面シェイプ: <span style="color:red;"><code>halfplane(&#60;line&#62;,&#60;point&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は半平面のシェイプを作ります。半平面は境界線 -+&#60;line&#62; と、点 &#60;point&#62; によって定義されます。境界線のどちら側であるかがその点で決まり、点が含まれる方がその半平面です。-+&#60;line&#62; は３次元の同次座標か直線オブジェクトです。<br />
+<hr />
+<br />
+<A NAME="screen"></A><br />
+<h4>スクリーンのシェイプ: <span style="color:red;"><code>screen()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、すべてのアクティブな描画要素を覆うのに十分に大きい長方形を作ります。<br />
+<br />
+<hr />
+<br />
+<h3>シェイプの結合</h3>
+<br />
+　それぞれのシェイプは、論理演算によって結合することができます。それには３つの演算があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" > <span style="color:red;"><code>&#60;shape1&#62;++&#60;shape2&#62;</code></span></td><td class="wikicell"  colspan="2"> ２つのシェイプの併合</td></tr><tr><td class="wikicell" > <span style="color:red;"><code>&#60;shape1&#62;&#126;&#126;&#60;shape2&#62;</code></span></td><td class="wikicell"  colspan="2">  ２つのシェイプの共通部分</td></tr><tr><td class="wikicell" ><span style="color:red;"><code>&#60;shape1&#62;--&#60;shape2&#62;</code></span></td><td class="wikicell"  colspan="2">  ２つのシェイプの差</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<h3>シェイプの使い方</h3>
+<br />
+　シェイプは次に述べる３つの方法で使われます。充填と境界線描画、クリッピングです。<br />
+<br />
+<hr />
+<br />
+<A NAME="fill"></A><br />
+<h4>シェイプによる充填: <span style="color:red;"><code>fill(&#60;shape&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数ではシェイプを与えられた色で塗りつぶします。<br />
+<br />
+<b>修飾子:</b> つぎの修飾子が使えます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>color</code></td><td class="wikicell" ><code>[<実数1>,<実数2>,<実数l3>]</code></td><td class="wikicell" > 塗りつぶす色をRGBで指定 </td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code><実数l></code></td><td class="wikicell" >値 <code><alpha></code> により、透明度を設定</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="Draw a shape"></A><br />
+<h4>シェイプを描く: <span style="color:red;"><code>draw(&#60;shape&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数はシェイプの輪郭線を描きます。<br />
+<br />
+<b>修飾子:</b> この関数はよく使われるdraw()関数の拡張で、drawと同じ修飾子が使えます。<br />
+<br />
+<hr />
+<br />
+<A NAME="Set clippath to shape"></A><br />
+<h4>クリップパスの設定: <span style="color:red;"><code>clip(&#60;shape&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、シェイプのクリップパスを設定します。これ以降に描画するものはすべてこのクリップバスで止められます。クリップパスは表現スタックに加えられますが、それは <code>grestore()</code> あるいは <code>greset()</code> で取り除くことができます。<br />
+<br />
+<hr />
+<br />
+<b>例:</b> 次の図はシェイプの使い方を示します。まず「点を加える」モードで点A〜Fをとっておきます。次のコードで３つの異なるシェイプが定義されます。１つの正方形と２つの円です。そして、それらが論理演算によって結合されています。充填とアウトラインです。小さなシェイプは、細い線でアウトラインが描かれています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+shape1=circle(E,4);
+shape2=circle(F,4);
+shape3=polygon([A,B,C,D]);
+color((0,0,0));
+shape=shape1++shape2++shape3;
+fill(shape,color->(1,0.8,0));
+draw(shape,size->3);
+draw(shape1);
+draw(shape2);
+draw(shape3);
+</pre></div><br />
+<br />
+次の最初の図がこの結果です。ほかの３つの図は、それぞれ図の下に示した演算で作成したシェイプです。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape1X} &amp; \includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape3X}  \\<br />
+{\small\tt {\kern2mm} shape1++shape2++shape3 }&amp;<br />
+{\small\tt {\kern2mm} shape1\textasciitilde{}\textasciitilde{}shape2\textasciitilde{}\textasciitilde{}shape3} \\<a class="wiki external"  href="5mm">5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape2X} &amp; \includegraphics<a class="wiki external"  href="width=1.8in">width=1.8in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Shape4X}  \\</tt><br />
+{\small\tt {\kern2mm}  shape1++shape2$--$shape3 } &amp;<br />
+<tt> {\small\tt {\kern2mm} shape1++shape2\textasciitilde{}\textasciitilde{}shape3} &amp;\\</tt><br />
+\end{tabular}<br />
+$$<br />
+ --><table>
+<tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Shape1X.png" border="0"  /></span></td><td> <span class="img"><img alt="" src="img/wiki_up/Shape3X.png" border="0"  /></span></td>
+</tr>
+<tr>
+<tr><td>shape1++shape2++shape3</td><td>shape1&#126;&#126;shape2&#126;&#126;shape3</td></tr>
+<tr><td height=10> </td></tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Shape2X.png" border="0"  /></span></td><td> <span class="img"><img alt="" src="img/wiki_up/Shape4X.png" border="0"  /></span></td>
+</tr>
+<tr><td>shape1++shape2--shape3</td><td>shape1++shape2&#126;&#126;shape3</td></tr>
+</table><!-- /latexreplace --><br />
+<br />
+次のコードはクリップパスの使い方を示します。「点を加える」モードで５つの点A,B,C,D,Eをとっておきます。スクリプトでは、まず4つの円を合併したシェイプを定義します。すると、このシェイプが、点Ｅを中心とした同心円のクリッピングパスとして働きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+r=3;
+shape=circle(A,r)++circle(B,r)++circle(C,r)++circle(D,r);
+clip(shape);
+repeat(60,i,
+  drawcircle(E,i/2,color->(0,.6,0),size->3);
+);
+greset();
+draw(shape,color->(1,1,1),size->2);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Shape5.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+シェイプは、次の例に示すような反復系のオブジェクトにもなります。ただし、あまり複雑にすると破綻をきたしますので注意しておきます。複雑な形はシンデレラの動作を遅くしてしまいます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=complex(A);
+b=complex(B);
+z=complex(C);
+shape=circle((0,0),0);
+repeat(50,
+  shape=shape++circle(gauss(a),|a-b|);
+  a=a*z;
+  b=b*z;
+);
+fill(shape,color->(1,0.7,0));
+draw(shape,color->(0,0,0),size->2);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Shape6.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [13:19:51 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=ShapesJ">
+    http://doc.cinderella.de/tiki-index.php?page=ShapesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

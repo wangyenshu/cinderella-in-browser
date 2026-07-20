@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Image Manipulation and Rendering 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> Image Manipulation and Rendering</h2>
+<br />
+Cinderella.2 introduces various ways to deal with images in a geometric construction. On the one hand it is possible to load images in a media database and use them freely within CindyScript. Images can be arbitrarily moved, rotated, scaled, perspectively transformed, of even transformed by a function. On the other hand it is possible to use the drawing functions of CindyScript to create custom images which are in turn used as blueprint for other purposes.<br />
+<br />
+<h3> The Media Browser</h3>
+<!-- latexreplace<br />
+\index{background image}<br />
+\index{media browser}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+Prior to all image rendering there is the need to load a specific image into a Cinderella construction. This is done via the Media Browser from which you can access all images you need for a construction. The Media Browser is opened by choosing the menu item <i>File/Media Browser</i>. You can load images by pressing the <i>+</i> button and remove them  again by pressing the <i>-</i> button. Once an image is loaded you see its internal name and a preview of the image. By default, the image name is the original file name, but you can change the internal name by double clicking and editing it. Under this name the image can be accessed from within CindyScript.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Media.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The Media Browser</b></td></tr></table><br />
+<br />
+The images in the media browser can also be used as images for points and lines as well as background of the view port. This functionality is available via the <a title="no description" href="tiki-cindydoc.php@page=Inspector.html" class="wiki">inspector</a>.<br />
+<br />
+<hr />
+<br />
+<h3> Drawing and Transforming Images</h3>
+<br />
+<A NAME="drawimage2"></A><br />
+<h4>Drawing an image: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<b>Description:</b>  This operator takes an image (from the Media Browser) and draws it at a position given by the first argument. The reference point is by default the center of the image. However, this can be altered by modifiers. Also the scaling and positioning of the image can be altered.<br />
+<br />
+<b>Examples:</b>  The following code draws the image called <code>myimage</code> at the position given by the point <i>A</i>.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,"myimage"))
+</pre></div><br />
+<br />
+The following code shows various usages of the <code>drawimage</code> command. It creates the graphics given below.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,"myimage");
+drawimage(B,"myimage",scale->1.5,angle->30°);
+drawimage(C,"myimage",ref->"lb");
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<!-- latexreplace<br />
+\index{reference points}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>Reference points:</b> Reference points can be specified using  the modifiers <code>ref</code>, <code>refx</code>, <code>refy</code>. While the <code>ref</code> modifier expects a two-dimensional information, the last two refer to the two coordinate directions separately. The reference information may be given in three different ways:<br />
+<br />
+<ul><li> Absolute to the pixel coordinates of the original image: If the image for example was originally 400 by 800 pixels then the modifier <code>ref->[100,200]</code> will specify the position in the middle of the left lower quarter of the image.
+</li><li> As relative quotient with respect to the image's dimensions: In this case the position has to be specified by a percentage value (given as a string). So for instance, <code>ref->["25%", "25%"]</code> would again place the reference point in the middle of the left lower quarter of the image - but now independent of the original image's dimensions.
+</li><li> Symbolically as a pair of letters: Here in the <i>x</i>-direction the letters <code>l</code>, <code>c</code>, <code>r</code> represent <i>left', </i>center<i> and </i>right<i>. In the </i>y<i> direction   the letters <code>b</code>, <code>c</code>, <code>t</code> represent </i>bottom', <i>center</i> and <i>top</i>. So the lower left corner may be specified either by <code>ref->"lb"</code> or by <code>ref->["l","b"]</code>.
+</li></ul>
+<br />
+All the position information can be used separately for the horizontal and vertical  direction, for example with <code>refx->"l"</code>, <code>refx->100</code> or <code>refx->"10%"</code>. The following picture exemplifies the positions of a few reference points.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Positions.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> The modifiers of this function are listed below.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >opacity of the image</td></tr><tr><td class="wikicell" ><code>angle</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" >rotation angle around the reference point</td></tr><tr><td class="wikicell" ><code>rotation</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" >same as <code>angle</code></td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > scaling </td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>vec</code></td><td class="wikicell" > separate scaling in both directions</td></tr><tr><td class="wikicell" ><code>scalex</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > scaling in <i>x</i>-direction</td></tr><tr><td class="wikicell" ><code>scaley</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > scaling in <i>y</i>-direction</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > vertical reflection</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > horicontal reflection</td></tr><tr><td class="wikicell" ><code>ref</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point</td></tr><tr><td class="wikicell" ><code>refx</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point</td></tr><tr><td class="wikicell" ><code>refy</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point</td></tr><tr><td class="wikicell" ><code>rendering</code></td><td class="wikicell" ><code>"fast" or "nice"</code></td><td class="wikicell" > specify the rendering quality</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="drawimage3"></A><br />
+<h4>Drawing an image: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<b>Description:</b> Draws a copy of an image whose position and size is specified by two reference points. By default, these reference points are the two corners of the bottom edge. It is also possible to specify the position of the reference points within the image. The syntax for specifying a reference point is the same as in the previous command.<br />
+<br />
+<b>Examples:</b> The simplest usage of the operator is given in the following example.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,"myimage"))
+</pre></div><br />
+<br />
+More advanced usages can be found in the following example. They generate the picture given below. Observe how in the third row the two reference points are specified individually.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,"MyImage");
+drawimage(C,D,"MyImage",aspect->1);
+drawimage(E,F,"MyImage",flipx->true);
+drawimage(G,H,"MyImage",refx1->"20%",refy1->"50%",ref2->"rt");
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>Modifiers:</b><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >opacity of the image</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > vertical reflection</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > horicontal reflection</td></tr><tr><td class="wikicell" ><code>aspect</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > specify the aspect ratio</td></tr><tr><td class="wikicell" ><code>ref1</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point one</td></tr><tr><td class="wikicell" ><code>refx1</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point one</td></tr><tr><td class="wikicell" ><code>refy1</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point one</td></tr><tr><td class="wikicell" ><code>ref2</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point two</td></tr><tr><td class="wikicell" ><code>refx2</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point two</td></tr><tr><td class="wikicell" ><code>refy2</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point two</td></tr><tr><td class="wikicell" ><code>rendering</code></td><td class="wikicell" ><code>"fast" or "nice"</code></td><td class="wikicell" > specify the rendering quality</td></tr></table><br />
+<br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  A more advanced example is given below. It iteratively maps two points (stored the variables <code>a</code> and <code>b</code>) by a transformation matrix. In each step a corresponding image is drawn. This code creates a logarithmic spiral of images. One important issue may arise if many images are drawn in a construction. One may have to select between <i>nice</i> or <i>fast</i> drawing of the images. For this there is a modifier <code>rendering</code> that may be set either to <code>"nice"</code> or to <code>fast</code>. By default it is set to prefer the <i>nice</i> rendering. </div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=(1,0);
+b=(2,-1);
+w=30°;
+m=((cos(w),-sin(w)),
+   (sin(w),cos(w)))*0.9;
+
+repeat(100,
+ drawimage(a,b,"MyImage");
+ a=m*a;
+ b=m*b;
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS3.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="drawimage4"></A><br />
+<h4>Drawing an image: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{transformation!affine}<br />
+\index{affine transformation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<!-- latexreplace<br />
+\index{transformation!rotation}<br />
+\index{rotation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b>  This operator is similar to the last one. Now three reference points are specified to define an affine transformation of the image. By default, the reference points are set to the bottom/left, the bottom/right and the top/left corner of the picture. Again the position op the reference points can be altered by modifiers.<br />
+</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The simplest usage of this command is given by the following piece of code.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,C,"MyImage"))
+</pre></div><br />
+<br />
+This operator is very well suited to draw images under geometric transformation like reflections or rotations. For this the picture has to be drawn with respect to the mapped reference points. An example of this technique is given in the code below<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,C,"MyImage"))
+drawimage(A',B',C',"MyImage"))
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS8.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> The command supports the same modifiers as the previous one and the following additional ones.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>ref3</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point three</td></tr><tr><td class="wikicell" ><code>refx3</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point three</td></tr><tr><td class="wikicell" ><code>refy3</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point three</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="drawimage5"></A><br />
+<h4>Drawing an image: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{transformation!projective}<br />
+\index{projection}<br />
+\index{projective transformation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><b>Description:</b> Again this command is more general than the previous one. This time the four corners (or more generally reference points) are used to specify a projective transformation of the image. By default the position of the reference points are the corners of the image taken in counterclockwise order starting at <i>left/bottom</i>.<br />
+<br />
+<b>Example:</b> The simplest usage is given by the following piece of code.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,D,C,"myimage")
+</pre></div><br />
+The following picture shows the result of this statement. For clarity a projective grid has been added to the picture.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> The command supports the same modifiers as the previous one and the following additional ones.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>ref4</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point four</td></tr><tr><td class="wikicell" ><code>refx4</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point four</td></tr><tr><td class="wikicell" ><code>refy4</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point four</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="mapimage"></A><br />
+<h4>Deforming an image: <span style="color:red;"><code>mapimage(&#060;imagename&#062;,&#060;function&#062;)</code></span></h4>
+<br />
+<b>Description:</b> This command is extremely powerful for deforming images by functions. Usually the function is assumed to be a function that maps a two dimensional vector to a two dimensional vector. By using the <code>complex->true</code> modifier it is also possible to use functions that map the complex plane to the complex plane. The range of the function must be specified by the modifiers <code>xrange</code> and <code>yrange</code>. If they are  not specified the ranges are assumed to be between 0.0 and 1.0. The rectangles defined by these ranges are identified with the rectangular region of the image. From there every image point is mapped to create the resulting image. The functionality is essentially similar to the <code>mapgrid</code> command.<br />
+<br />
+<b>Example:</b> Here the <i>x</i>-axis of the image is deformed using a function that modifies its width by adding a <i>sin</i>-function. In the code the function is specified first. Then it is used in the <code>mapimage</code> command. For better reference  a grid has been added to drawing that illustrates the deformation.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(z):=(z_1*(sin(z_2)+1.3),z_2);
+mapimage("MyImage",f(#),
+xrange->(-1,1),
+yrange->(0,pi),resolution->30
+);
+mapgrid(f(#),color->(0,0,0),alpha->0.3,
+xrange->(-1,1),
+yrange->(0,pi),resolution->30
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A diet for Ritter Rost</b></td></tr></table><br />
+<br />
+This example is similar to the previous one but now a complex function is used to<br />
+specify the mapping.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+r=complex(A);
+f(x):=exp(r*x);
+mapimage("myimage",f(#),
+  complex->true,
+  xrange->(0,1),
+  yrange->(0,pi),resolution->30
+);
+
+mapgrid(f(#),complex->true,
+xrange->(0,1),yrange->(0,pi),color->(0,0,0),alpha->0.5
+,resolutiony->30,resolutionx->10,step->10,size->1);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS7.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>Modifiers:</b> The function supports the following modifiers.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >opacity of the image</td></tr><tr><td class="wikicell" ><code>xrange</code></td><td class="wikicell" ><code>vec</code></td><td class="wikicell" >start and end in <i>x</i>-direction </td></tr><tr><td class="wikicell" ><code>yrange</code></td><td class="wikicell" ><code>vec</code></td><td class="wikicell" >start and end in <i>y</i>-direction </td></tr><tr><td class="wikicell" ><code>complex</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > use a complex function</td></tr><tr><td class="wikicell" ><code>resolution</code></td><td class="wikicell" ><code>int</code></td><td class="wikicell" > quality of the resulting picture          </td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="imagesize"></A><br />
+<h4>Getting dimensions of an image: <span style="color:red;"><code>imagesize(&#060;imagename&#062;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{pixel}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>Description:</b>  Returns the original size of an image. This is a pair of integer values that refers to the pixel width and height of the original image.<br />
+<br />
+<hr />
+<br />
+<A NAME="imagergb"></A><br />
+<h4>Getting pixel data: <span style="color:red;"><code>imagergb(&#060;imagename&#062;,&#060;int&#062;,&#060;int&#062;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{pixel}<br />
+\index{pixel color}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><b>Description:</b>  The function <code>imagergb(&#060;imagename&#062;,x,y)</code> delivers the raw data of the color information of the pixel at original position <i>(x,y)</i>. The operator returns a four-dimensional vector with the raw data of the color. The first three entries represent the <i>rgb</i>-value with each entry ranging from 0 to 255. The last entry represents the alpha value.<br />
+<br />
+<b>Example:</b> The following piece of (slightly elaborate) code first asks for the dimensions of an image and then samples the image in both directions. It plots a point with the corresponding color and opacity and by this creates a very rough copy of the image.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,"MyImage",scale->2);
+dim=imagesize("MyImage");
+forall((0..dim_1/10)*10,i,err(i);
+  forall((0..dim_2/10)*10,j,
+    col=imagergb("MyImage",i,j);
+    draw((i,-j)*.03,color->(col_1,col_2,col_3)/255,
+                    alpha->col_4,
+                    border->false)
+  )
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS9.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> Creating Custom Images</h3>
+<br />
+So far all image operation referred to images that were preloaded via the Media Browser. There is also the possibility to create images within Cinderella. Once these images are created one can pipe all drawing operations coming from CindyScript to such an image using the  <code>canvas</code> commands. The result of the drawing operations are no longer directly visible. However, once the custom image is filled with content one can use it and draw it to draw it on screen with one of the <code>drawimage</code> operations. The <code>canvas</code> operations are built in analogy to the <code>drawimage</code> operations. You use them to place the canvas (the custom image) at an arbitrary place in the plane, even using transformations. This concept is extremely powerful and in the context of this manual we will only sketch its basic usage.<br />
+<br />
+<hr />
+<br />
+<A NAME="createimage"></A><br />
+<h4>Creating a custom image: <span style="color:red;"><code>createimage(&#060;imagename&#062;,&#060;int&#062;,&#060;int&#062;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{bitmap}<br />
+\index{canvas}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>Description:</b>  The operator <code>createimage(&#060;imagename&#062;,width,height)</code> creates an image buffer of the specified dimensions. Initially such an image is fully transparent and contains no drawings. The image buffer is accessible under the specified name in the Media Browser and can furtheron be used by <code>drawimage(...)</code> operations.<br />
+<br />
+<hr />
+<br />
+<A NAME="clearimage"></A><br />
+<h4>Erasing an image: <span style="color:red;"><code>clearimage(&#060;imagename&#062;)</code></span></h4>
+<br />
+<b>Description:</b>  This operator removes all content from an image. After using this operator the image still exists, but it does no longer contain any drawings. It is completely transparent.<br />
+<br />
+<hr />
+<br />
+<A NAME="removeimage"></A><br />
+<h4>Removing an image: <span style="color:red;"><code>removeimage(&#060;imagename&#062;)</code></span></h4>
+<br />
+<b>Description:</b>  This operator removes the image from the Media Browser. After this the image can no longer be accessed.<br />
+<br />
+<hr />
+<br />
+<A NAME="canvas"></A><br />
+<h3>Painting on a canvas</h3>
+<br />
+Images that are creating by a script may be used as a canvas to which drawing commands from CindyScript may be piped. This is a very powerful concept, but it needs a little explanation.<br />
+<br />
+Imagine you have a piece of code that creates some drawing, say:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+ linesize(3);
+ repeat(10,i,
+   drawcircle(K,i*.5);
+ );
+ drawtext(K+(-2,2),"These are",size->20,color->(1,1,0));
+ drawtext(K+(-2,-2),"some circles",size->20,color->(1,1,0));
+</pre></div><br />
+<br />
+This drawing will look like the picture below on the left. Now we want to use this drawing code to generate a custom bitmap. For this we first must create such a bitmap.<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Canvas0.png" border="0"  /></span> <span class="img"><img alt="" src="img/wiki_up/Canvas1.png" border="0"  /></span><br />
+<br />
+We can do this by creating an image in the <i>initialization</i> part of the script with the following code:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createimage("image",400,400)
+</pre></div><br />
+<br />
+Now we specify a region in which this bitmap should be used as a canvas. In our example we do so by drawing a rectangle with certain corner points.<br />
+<br />
+The code for drawing on the canvas is included as an argument to a <code>canvas</code> function in the following way:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+canvas(F,G,E,"image",
+    //....here comes the drawing code....    
+)
+</pre></div><br />
+<br />
+The position of the canvas is specified as a parallelogram generated by the corner points <i>F</i>, <i>G</i> and <i>E</i>. The picture above on the right illustrates which part of the original drawing will be captured by the canvas. Actually, all the drawing operations that are inside the <code>canvas</code> will not have any directly visible effect, so the above picture on the right is just for illustration purposes.<br />
+<br />
+Next, the image can be painted at any location using a <code>drawimage(...)</code> command. The complete resulting code may look like<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+clearimage("image");
+canvas(F,G,E,"image",
+ linesize(3);
+ repeat(10,i,
+   drawcircle(K,i*.5);
+ );
+ drawtext(K+(-2,2),"These are",size->20,color->(1,1,0));
+ drawtext(K+(-2,-2),"some circles",size->20,color->(1,1,0));
+);
+
+drawimage(A,B,C,D,"image");
+</pre></div><br />
+<br />
+The <code>drawimage(...)</code> command used here produces a projective transformation of the generated canvas. It results in the picture shown below on the left<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Canvas2.png" border="0"  /></span> <span class="img"><img alt="" src="img/wiki_up/Canvas3.png" border="0"  /></span><br />
+<br />
+Notice that the image in the canvas is only a bitmap. Therefore it must be specified with suitable resolution. If in the initialization one would have used only an 80x80 bitmap, the picture on the right would result.<br />
+<br />
+Once a canvas is created, it may be used without any further effort in different places and orientations many times. This is illustrated by the following piece of code and the corresponding image.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,P,M,O,"image");
+drawimage(B,P,M,Q,"image");
+drawimage(D,R,M,O,"image");
+drawimage(C,R,M,Q,"image");
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Canvas4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="canvas3"></A><br />
+<h4>Painting on a canvas with one reference point: <span style="color:red;"><code>canvas(&#060;pos&#062;,&#060;imagename&#062;,&#060;drawing code&#062;)</code></span></h4>
+<br />
+<b>Description:</b> This operator uses <code>&#060;imagename&#062;</code> as a canvas and positions it with respect to one reference point identically to the rules of the <code>drawimage(&#060;pos&#062;,&#060;imagename&#062;)</code> operator. All drawing statements in <code>&#060;drawing code&#062;</code> are piped to the canvas. The positioning modifiers are identical to those of <code>drawimage(&#060;pos&#062;,&#060;imagename&#062;)</code>.<br />
+<br />
+<b>Modifiers:</b> The command has several modifiers.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>angle</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" >rotation angle around the reference point</td></tr><tr><td class="wikicell" ><code>rotation</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" >same as <code>angle</code></td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > scaling </td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>vec</code></td><td class="wikicell" > separate scaling in both directions</td></tr><tr><td class="wikicell" ><code>scalex</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > scaling in <i>x</i>-direction</td></tr><tr><td class="wikicell" ><code>scaley</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > scaling in <i>y</i>-direction</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > vertical reflection</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > horicontal reflection</td></tr><tr><td class="wikicell" ><code>ref</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point</td></tr><tr><td class="wikicell" ><code>refx</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point</td></tr><tr><td class="wikicell" ><code>refy</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="canvas4"></A><br />
+<h4>Painting on a canvas with two reference points: <span style="color:red;"><code>canvas(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;,&#060;drawing code&#062;)</code></span></h4>
+<br />
+<b>Description:</b> This operator uses <code>&#060;imagename&#062;</code> as a canvas and positions it with respect to two reference point identical to the rules of the <code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code> operator. All drawing statements in <code>&#060;drawing code&#062;</code> are piped to the canvas. The positioning modifiers are identical to those of <code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code>.<br />
+<!-- latexreplace \goodbreak --><!-- /latexreplace --><br />
+<b>Modifiers:</b> <!-- latexreplace \nopagebreak{} --><!-- /latexreplace -->The command has several modifiers.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > vertical reflection</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>boolean</code></td><td class="wikicell" > horicontal reflection</td></tr><tr><td class="wikicell" ><code>aspect</code></td><td class="wikicell" ><code>real</code></td><td class="wikicell" > specify the aspect ratio</td></tr><tr><td class="wikicell" ><code>ref1</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of first reference point </td></tr><tr><td class="wikicell" ><code>refx1</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of first reference point </td></tr><tr><td class="wikicell" ><code>refy1</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of first reference point </td></tr><tr><td class="wikicell" ><code>ref2</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of second reference point</td></tr><tr><td class="wikicell" ><code>refx2</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of second reference point</td></tr><tr><td class="wikicell" ><code>refy2</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of second reference point</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="canvas5"></A><br />
+<h4>Painting on a canvas with three reference points: <span style="color:red;"><code>canvas(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;,&#060;drawing code&#062;)</code></span></h4>
+<br />
+<b>Description:</b> Similar to the above statement. Now three reference points are used. The positioning modifiers are identical to those of <code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code>.<br />
+<br />
+<b>Modifiers:</b> The command supports the same modifiers as the previous command and in addition.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Modifier</b></td><td class="wikicell" ><b>Parameter</b></td><td class="wikicell" ><b>Effect</b></td></tr><tr><td class="wikicell" ><code>ref3</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>xy</i>-position of reference point three</td></tr><tr><td class="wikicell" ><code>refx3</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>x</i>-position of reference point three</td></tr><tr><td class="wikicell" ><code>refy3</code></td><td class="wikicell" ><code>see above</code></td><td class="wikicell" > <i>y</i>-position of reference point three                          </td></tr></table><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 05 of September, 2011 [07:16:40 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Image%20Manipulation%20and%20Rendering">
+    http://doc.cinderella.de/tiki-index.php?page=Image%20Manipulation%20and%20Rendering
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

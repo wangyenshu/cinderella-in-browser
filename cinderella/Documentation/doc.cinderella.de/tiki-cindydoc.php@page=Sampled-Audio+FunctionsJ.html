@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Sampled-Audio FunctionsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>サウンド関数</h2>
+<br />
+Syntherellaのオーディオ関数は、あなたのコンピュータに内蔵されているスピーカーで、特定の波形の音を鳴らすという可能性を提供します。これによって、音について数学的に分析することができます。<br />
+<br />
+Syntherella は異なるすじみちの３つの特別な関数を提供します。<br />
+<br />
+<ul><li><b><code>playfunction(...)</code></b> 数式で定義した音を鳴らす。
+</li><li><b><code>playlist(...)</code></b> 波形を指定したリストを与えて音を鳴らします。
+</li><li><b><code>playsin(...)</code></b> 特定の周波数の音を鳴らします。 和音も指定できます。
+</li></ul>
+<br />
+これらの関数の説明をする前に、音声信号の作り方について説明をしておきます。<br />
+<br />
+３つの関数のいずれにおいても、振幅は-1.0から1.0 までに制限されます。すべての音声信号の和もこの範囲になければなりません。 <code>playsin(&#060;実数&#062;)</code> 関数について説明します。もっとも簡単な形は、周波数を与えるものです。たとえば <code>playsin(440)</code> は 440Hz の正弦波を1秒間鳴らします。次の簡単な音を鳴らすコードを試してみてください。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'> 
+playsin(440);
+playsin(440*5/4);
+playsin(440*3/2);
+</pre></div><br />
+<br />
+しかし、全体の振幅は許容範囲を超えます。それぞれの信号を<code>1/3</code> に縮小すれば解決します。それには <code>amp->&#060;実数&#062;</code> 修飾子を使います。この修飾子はそれぞれの振幅を調整します。次のようにします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'> 
+playsin(440,amp->1/3);
+playsin(440*5/4,amp->1/3);
+playsin(440*3/2,amp->1/3);
+</pre></div><br />
+<br />
+<tt> <code>playsin</code> が呼ばれると、既存の音に重ねて新しい音が出ます。もし <code>playsin</code> がi２番目に呼ばれるとき最初の音が鳴っていても２番目の音はかまわず鳴り始めます。そのため、ダイナミクスレンジが -1.0 から 1.0 の範囲を超えてしまうかも知れません。 <code>line->&#060;整数&#062;</code> はそのような状況を助けます。特に、 <code>line->1</code> とすれば、一つの音しか扱えないラインに出力します。次のコードをごらん下さい。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'> 
+playsin(440,line->1);
+wait(200);
+playsin(550,line->1);
+wait(200);
+playsin(660,line->1);
+</pre></div><br />
+<br />
+初めに、 440Hz の音が鳴り、 0.2 秒後に 550Hz の音が置き換わり、さらに 0.2 秒後に660Hz の音が１秒間〔フルに）鳴ります。 <code>line</code> 修飾子によって解決される微妙な点がもう一つあります。ある音が他の音で置き得られるとき、２番目の音が最初の音との関連で理にかなった位置から始まるという保証はないのです。<br />
+<br />
+<!--latexreplace $${\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=.3\textwidth">width=.3\textwidth</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Playsin2} &amp;\includegraphics<a class="wiki external"  href="width=.3\textwidth">width=.3\textwidth</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Playsin1}&amp;\includegraphics<a class="wiki external"  href="width=.3\textwidth">width=.3\textwidth</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Playsin3}\\</tt><br />
+{\small\it  Without phase correction} &amp;  {\small\it Phase corrected }&amp;  {\small\it Smooth transition}\\<br />
+\end{tabular}}$$ --><table>
+<tr><td>
+<span class="img"><img alt="" src="img/wiki_up/Playsin2.png" border="0"  width="250" /></span>
+</td><td>
+<span class="img"><img alt="" src="img/wiki_up/Playsin1.png" border="0"  width="250" /></span>
+</td><td>
+<span class="img"><img alt="" src="img/wiki_up/Playsin3.png" border="0"  width="250" /></span>
+</td></tr>
+<tr><td>
+位相がずれている
+</td><td>
+位相がつながっている
+</td><td>
+なめらかにつながっている
+</td></tr>
+</table><!-- /latexreplace --><br />
+<br />
+<hr />
+<hr />
+<A NAME="playsin"></A><br />
+<h4>周波数を指定して音を鳴らす: <span style="color:red;"><code>playsin(&#060;real&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 最も単純な形として、この関数では一定の振幅で1秒間音を鳴らします。速さや振幅などは修飾子で指定できます。<br />
+<br />
+<b>修飾子:</b> いくつかの修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>amp</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >全体の振幅</td></tr><tr><td class="wikicell" ><code>damp</code></td><td class="wikicell" ><code>&#060;実数l&#062;</code></td><td class="wikicell" >指数関数的に減衰する </td></tr><tr><td class="wikicell" ><code>harmonics</code></td><td class="wikicell" ><code>&#060;list~062</code></td><td class="wikicell" >音のスペクトル </td></tr><tr><td class="wikicell" ><code>duration</code> </td><td class="wikicell" ><code>&#060;実数&#062;</code> </td><td class="wikicell" > 鳴らす速さ</td></tr><tr><td class="wikicell" ><code>stop</code> </td><td class="wikicell" ><code>&#060;real&#062;</code> </td><td class="wikicell" >  durationと同じ</td></tr><tr><td class="wikicell" ><code>line</code> </td><td class="wikicell" >数または文字 </td><td class="wikicell" > 音を関連付けるライン </td></tr></table><br />
+<br />
+<br />
+<b>例:</b>  <code>playsin</code> の最も簡単は使い方は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playsin(440)
+</pre></div><br />
+<br />
+<tt> 440Hzの正弦波を鳴らします。これを次のように変えると</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playsin(440,damp->3,stop->5)
+</pre></div><br />
+<br />
+(<code>stop->5</code>) で5秒間鳴るようになり、 (<code>damp->3</code>) で減衰します。また、寄り複雑な音を鳴らすには、harmonics修飾子を使います。 Harmonics修飾子は異なる音の振幅のリストで与えます。次のコードでは<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playsin(440,damp->3,stop->5,harmoics->[0.5,0.3,0.2,0.1])
+</pre></div><br />
+<br />
+次のフーリエ級数によって与えられる音を鳴らします。<br />
+<br />
+<!-- latexreplace $$0.5\sin(440\cdot2\pi x)+0.3\sin(2\cdot440\cdot2\pi x)+0.2\sin(3\cdot440\cdot2\pi x)+0.1\sin(4\cdot440\cdot2\pi x)$$ --><i>0.5*sin(440*2*pi*x)+0.3*sin(2*440*2*pi*x)+0.2*sin(3*440*2*pi*x)+0.1*sin(4*440*2*pi*x).</i><!-- /latexreplace --><br />
+<br />
+これは指数関数的に減衰します。<br />
+<hr />
+<br />
+<A NAME="playfunction"></A><br />
+<h4>関数によって定義された音を鳴らす: <span style="color:red;"><code>playfunction(&#060;funct&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>波形を入力して音を鳴らします。時間単位は関数の1単位が1秒にあたるものです。<br />
+<br />
+<b>修飾子:</b> いくつかの修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>amp</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >全体の振幅</td></tr><tr><td class="wikicell" ><code>damp</code></td><td class="wikicell" ><code>&#060;実数l&#062;</code></td><td class="wikicell" >指数関数的に減衰する </td></tr><tr><td class="wikicell" ><code>start</code> </td><td class="wikicell" ><code>&#060;実数&#062;</code> </td><td class="wikicell" > 開始位置</td></tr><tr><td class="wikicell" ><code>stop</code> </td><td class="wikicell" ><code>&#060;実数&#062;</code> </td><td class="wikicell" > 終了位置</td></tr><tr><td class="wikicell" ><code>duration</code> </td><td class="wikicell" ><code>&#060;実数&#062;</code> </td><td class="wikicell" > 鳴らす速さ</td></tr><tr><td class="wikicell" ><code>mode</code> </td><td class="wikicell" ><code>"append"</code> or <code>"replace"</code> </td><td class="wikicell" > 新しい音のハンドル</td></tr><tr><td class="wikicell" ><code>line</code> </td><td class="wikicell" >数または文字 </td><td class="wikicell" > 音を関連付けるライン </td></tr><tr><td class="wikicell" ><code>silent</code> </td><td class="wikicell" ><code>&#060;ブール値&#062;</code> </td><td class="wikicell" > 発音しない</td></tr><tr><td class="wikicell" ><code>export</code> </td><td class="wikicell" ><code>&#060;ブール値&#062;</code> </td><td class="wikicell" > サンプルデータの書き出し</td></tr></table><br />
+<br />
+<b>例:</b> 次のコードでは、440Hzの音を鳴らします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playfunction(sin(440*x*pi*2))
+</pre></div><br />
+<hr />
+<br />
+次のコードでは、減衰する雑音を鳴らします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playfunction(random(),damp->8)
+</pre></div><br />
+<br />
+<code>start</code> と <code>stop</code> を指定することによってサンプル音の開始と終了を決めることができます。この範囲は非常に短いこともあります。<code>duration</code>を使って、サンプル音を鳴らす時間を指定します。次のコードは1秒間の正弦波を鳴らします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playfunction(sin(1000*x*2*pi),stop->1/1000,duration->1)
+</pre></div><br />
+<br />
+サンプリングによって配列に書きだすことができます。サンプリング周波数は44100Hzです。書き出しは音を鳴らさずに行なえます。次のコードは正弦波の４４の標本点のリストを作成します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sample=playfunction(sin(1000*x*2*pi),stop->1/1000,silent->true,export->true)
+</pre></div><br />
+<br />
+作成されたオーディオデータのリストは、 <code>playwave</code> 関数によって再生することができます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+playwave(sample,duration->1)
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="playwave"></A><br />
+<h4>オーディオデータのリストを再生する: <span style="color:red;"><code>playwave(&#060;list&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、オーディオデータのリストを再生します。データの値は <i>-1.0 から 1.0</i> の範囲にあるものとします。サンプリングレートは 44100 Hzです。しばしば、サンプル音は1秒間再生されます。再生時間は <code>duration</code> 修飾子で指定できます。<br />
+<br />
+<b>修飾子:</b> いくつかの修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 値の型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>amp</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >全体の振幅</td></tr><tr><td class="wikicell" ><code>damp</code></td><td class="wikicell" ><code>&#060;実数l&#062;</code></td><td class="wikicell" >指数関数的に減衰する </td></tr><tr><td class="wikicell" ><code>duration</code> </td><td class="wikicell" ><code>&#060;実数&#062;</code> </td><td class="wikicell" > 鳴らす速さ</td></tr><tr><td class="wikicell" ><code>line</code> </td><td class="wikicell" >数または文字 </td><td class="wikicell" > 音を関連付けるライン </td></tr></table><br />
+<br />
+<b>例:</b><br />
+<br />
+次のコードでは、<code>playwave</code> で再生する３つのデータを作ります。 <code>wait</code>関数によって、３つの音が同じラインを使うのに時間差を設けます。 <code>playwave</code> 関数を使う前に、オーディオデータの作成は完了しています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sample0=apply(1..200,sin(#*2*pi/200));
+sample1=apply(1..100,sin(#*2*pi/100));
+sample2=apply(1..50,sin(#*2*pi/50));
+playwave(sample0,duration->1,line->1);
+wait(400);
+playwave(sample1,duration->1,line->1);
+wait(400);
+playwave(sample2,duration->1,line->1);
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="stopsound"></A><br />
+<h4>再生の停止: <span style="color:red;"><code>stopsound()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数はすべての音の再生を停止します。<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 29 of August, 2011 [07:52:46 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Sampled-Audio%20FunctionsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Sampled-Audio%20FunctionsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

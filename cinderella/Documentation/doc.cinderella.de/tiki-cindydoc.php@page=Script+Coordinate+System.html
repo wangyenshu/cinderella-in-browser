@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Script Coordinate System 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> The Coordinate System of CindyScript</h2>
+<br />
+There is an important feature of CindyScript that immediately changes the appearance of drawings treated by the script in a controlled and global way. Usually the coordinate system of CindyScript is the same as the coordinate system of the geometric construction. However it is possible to transform the coordinate system by special operators. Then all drawing is performed with respect to this modified reference frame. Care has to be taken when using the transformations: if many of them are applied it may be difficult to determine, where an actual drawing is performed. In order to still make an easy use  of the transformation operators CindyScript provides two operators <code>gsave</code> and <code>grestore</code>. Similar to PostScript like languages these operators push/pop the actual state of the drawing engine to a stack. This state contains (besides the graphical default appearance information) the present coordinate transformation. So a temporal use of coordinate systems may be enclosed by a <code>gsave()</code><!-- latexreplace \dots -->...<!-- /latexreplace --><code>grestore()</code> construction. We first introduce the operators and than give a combined example.<br />
+<br />
+<b>Caution:</b>  In the current version of Cinderella 2.6 the application of the transformations is not yet implemented for circles. For circles only euclidean transformations (rotations, translations, reflections, scalings) are supported. Affine and projective transformations will be provided in a later release.<br />
+<br />
+<hr />
+<A NAME="translate"></A><br />
+<h4>Translating the coordinate system: <span style="color:red;"><code>translate(&#60;list&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{coordinates!translate}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator assumes that <code>&#60;list&#62;</code> is of the form <code>[&#60;real&#62;,&#60;real&#62;]</code> and translates the drawing coordinate system by this vector.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="rotate"></A><br />
+<h4>Rotating the coordinate system: <span style="color:red;"><code>rotate(&#60;real&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{coordinates!rotation}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes a real number <code>&#60;real&#62;</code> and rotates the current drawing coordinate system by an angle determined by this number. The anlge is given in rad. If one wants to use angles in degree one can do this by the <code>°</code> operator (this operator multiplies a number by <code>pi/180</code>. So <code>rotate(30°)</code> rotates the coordinate system by 30°.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="scale"></A><br />
+<h4>Scaling the coordinate system: <span style="color:red;"><code>scale(&#60;real&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{coordinates!scaling}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator takes a real number <code>&#60;real&#62;</code> and scales the current drawing coordinate system by this factor.</div><br />
+<br />
+<br />
+<div class="examples"><br />
+<b>Examples:</b>  The following table shows the effect of applying diverse transformations before invoking a code that draws of a square with vertex coordiantes <code>[0,0],[0,1],[1,1],[1,0]</code>.</div><br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR1X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR2X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR3X} \\</tt><br />
+{\small\tt  {\kern2mm} translate(<a class="wiki external"  href="1,0">1,0</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);} &amp;  {\small\tt {\kern2mm} rotate(30°);} &amp;  {\small\tt {\kern2mm} scale(2);}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --><table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR1X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR2X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR3X.png" border="0"  /></span></td></tr><tr><td class="wikicell" ><code>translate([1,0]);</code></td><td class="wikicell" ><code>rotate(30°);</code></td><td class="wikicell" ><code>scale(2));</code></td></tr></table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+The following table shows different combinations of transformations. The order of the operations may seem a little bit counterintuitive. It results from the fact that the operators transforms the coordinate system rather than the objects that are drawn.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\rowcolors{1}{white}{white}<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR4X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR5X} &amp; \includegraphics<a class="wiki external"  href="width=1.4in">width=1.4in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{TR6X} \\</tt><br />
+{\small\tt {\kern2mm} translate(<a class="wiki external"  href="1,0">1,0</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);} &amp;  {\small\tt {\kern2mm} rotate(30°);} &amp;  {\small\tt {\kern2mm} rotate(30°);}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\tt {\kern2mm} rotate(30°);} &amp;  {\small\tt {\kern2mm} translate(<a class="wiki external"  href="-0.5,-0.5">-0.5,-0.5</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);} &amp;  {\small\tt {\kern2mm} scale(2);}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\tt   } &amp;  {\small\tt  } &amp;  {\small\tt {\kern2mm} translate(<a class="wiki external"  href="-0.5,-0.5">-0.5,-0.5</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />);}\\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --><table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR4X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR5X.png" border="0"  /></span></td><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/TR6X.png" border="0"  /></span></td></tr><tr><td class="wikicell" ><code>translate([1,0]);<br>rotate(30°);</code></td><td class="wikicell" ><code>rotate(30°);<br>translate([-0.5,-0.5]);</code></td><td class="wikicell" ><code>rotate(30°);<br>scale(2));<br>translate([-0.5,-0.5]);</code></td></tr></table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+Recursive or iterated application of transformations can lead to surprising effects. The picture below was generated by the following piece of code (assuming that <code>square</code> is a list of objects that draw the unit square).<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(90,
+drawall(square);
+translate((1,1));
+scale(0.92);
+rotate(30°);
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SimilaritySpiral2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="setbasis"></A><br />
+<h4>Relating to a projective basis: <span style="color:red;"><code>setbasis(&#60;basis&#62;)</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{basis!projective}<br />
+\index{projective basis}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  In the geometric part of Cinderella you can <a title="no description" href="tiki-cindydoc.php@page=Setting+a+Basis.html" class="wiki">set a basis to which all drawing is related</a>. These bases can be translational bases, similarity bases, affine bases, or even projective bases. Such basis operations can also be used in CindyScript. The <code>setbasis(&#60;basis&#62;)</code> operator sets the drawing basis to a basis defined in Cinderella. The argument has to be the label of the basis in Cinderella. After applying the setbasis operator all prior coordinate transformations in CindyScript are obsoleted. However, they can be stored by <code>gsave</code> and restored by <code>grestore</code>.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  In the following example a basis <code>Bas0</code> was defined to be a projective basis related to the points A, B, C and D. This means that with respect to this basis the the corners <code>[0,0],[0,1],[1,1],[1,0]</code> of the unit quadrangle are the points A, B, C and D. The first line of the code applies the basis transformation. The next three lines draw a grid within the unit square. The resulting image is shown below.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+setbasis(Bas0);
+x=(0..10)/10;
+drawall(apply(x,([#,0],[#,1])));
+drawall(apply(x,([0,#],[1,#])));
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SetBasisX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>See also:</b> <a title="no description" href="tiki-cindydoc.php@page=Setting+a+Basis.html" class="wiki">Bases in Cinderella</a><br />
+<br />
+<hr />
+<br />
+<h4>Relating to a translation basis: <span style="color:red;"><code>setbasis(&#60;vec1&#62;)</code></span></h4>
+<br />
+<h4>Relating to a similarity basis: <span style="color:red;"><code>setbasis(&#60;vec1&#62;,&#60;vec2&#62;)</code></span></h4>
+<br />
+<h4>Relating to an affine basis: <span style="color:red;"><code>setbasis(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;)</code></span></h4>
+<br />
+<h4>Relating to a projective basis: <span style="color:red;"><code>setbasis(&#60;vec1&#62;,&#60;vec2&#62;,&#60;vec3&#62;,&#60;vec4&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  it is also possible to relate the internal drawing basis of CindyScript directly to a basis specified by points. This avoids the explicit creation of a basis in Cinderella. This can be easily done by providing points of the base frame of the basis.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following piece of code together with the picture below demonstrates this feature. in the code <code>sq</code> is first defined as a macro to draw a square grid. The grid is drawn with respect to several bases.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'> 
+sq:=(draw([0,0],[1,0]);
+     draw([0,0.25],[1,0.25]);
+     draw([0,0.5],[1,0.5]);
+     draw([0,0.75],[1,0.75]);
+     draw([0,1],[1,1]);
+     draw([0,0],[0,1]);
+     draw([0.25,0],[0.25,1]);
+     draw([0.5,0],[0.5,1]);
+     draw([0.75,0],[0.75,1]);
+     draw([1,0],[1,1]));
+
+setbasis(A);
+sq;
+setbasis(B,C);
+sq;
+setbasis(D,E,F);
+sq;
+setbasis(G,H,L,K);
+sq;
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SetBasis2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2>The Appearance and Basis Stack</h2>
+<!-- latexreplace<br />
+\index{appearance stack}<br />
+\index{basis stack}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+Performing transformations of the coordinate system influences the global behavior of drawing operations that are performed. Very often such a change of the coordinate system is only intended for a certain drawing operation after which the coordinate system should be set to its old state again. CindyScript has a mechanism that serves for such services.<br />
+<br />
+The <code>gsave()</code> operator stores all informations in the graphic state (coordinate transformations, sizes, colors, opacity) to a stack. While the <code>grestore()</code> operator reverses this effect by popping the information from the stack. Thus within a sequence <code>gsave()</code><!-- latexreplace \dots -->...<!-- /latexreplace --><code>grestore()</code> any coordinate transformations can be made without having effect to the remaining code.<br />
+<br />
+<br />
+<hr />
+<A NAME="gsave"></A><br />
+<h4>Storing the graphics state: <span style="color:red;"><code>gsave()</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{graphics context}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator stores all informations that may influence the current graphics operations to a stack. The informations include the coordinate system, sizes for points, lines and text as well as colors and opacities.</div><br />
+<br />
+<br />
+<hr />
+<A NAME="grestore"></A><br />
+<h4>Restoring the graphics state: <span style="color:red;"><code>grestore()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operation pops the last stored graphics state from the stack and restores it to the drawing engine.</div><br />
+<br />
+<hr />
+<A NAME="greset"></A><br />
+<h4>Resetting the graphics state: <span style="color:red;"><code>greset()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b>  This operator clears the graphics information to a stack and sets the coordinate system, all sizes, colors and the opacity back to the initial value.</div><br />
+<br />
+<b>See also:</b> <a title="no description" href='tiki-cindydoc.php@page=Appearance+of+Objects.html' class='wiki'>Appearance of Objects</a><br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<br />
+<h2>Layers</h2>
+<br />
+In a sense there is a third dimension in drawings generated by CindyScript. Each drawing is associated to a specific layer. Layers are specified by numbers. When the drawing is generated the layers are painted in the order of the associated numbers. If no layer was specified then all Cindy script drawings are performed in a background layer, that is below all geometric elements. By default, all layers are cleared right before the <i>draw</i> part of CindyScript. However, it is also possible to mark a layer to be not <i>auto cleared</i> which makes it possible to produce background graphics that have to be calculated only once.<br />
+<br />
+<A NAME="layer"></A><br />
+<h4>Setting the drawing layer: <span style="color:red;"><code>layer(&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This statement sets the drawing layer to a specified level. By default the layer is cleared right before the <i>draw</i> event takes place.</div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b>  The following piece of code draws four overlapping circles in the usual drawing order.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+cir(x,y):=(
+  fillcircle((x,y),3,color->(1,.8,0));
+  drawcircle((x,y),3,color->(0,0,0),size->3);
+);
+cir(0,0);
+cir(1,1);
+cir(2,2);
+cir(3,3)
+</pre></div><br />
+<br />
+If one calls a layer statement before each individual drawing, it is possible to reverse the order in which the circles are drawn onto the screen, as the next example demonstrates.<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+cir(x,y):=(
+  fillcircle((x,y),3,color->(1,.8,0));
+  drawcircle((x,y),3,color->(0,0,0),size->3);
+);
+layer(6);
+cir(0,0);
+layer(5);
+cir(1,1);
+layer(4);
+cir(2,2);
+layer(3);
+cir(3,3)
+</pre></div><br />
+<br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Layer1.png" border="0"  /></span></td><td><span class="img"><img alt="" src="img/wiki_up/Layer2.png" border="0"  /></span></td></tr>
+<tr><td>usual drawing</td><td>drawing with reversed layers</td></tr>
+</table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="clearlayer"></A><br />
+<h4>Clearing a layer: <span style="color:red;"><code>clearlayer(&#60;int&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This function clears the given layer and sets it as the current active one.</div><br />
+<br />
+<hr />
+<br />
+<A NAME="clrscr"></A><br />
+<h4>Remove all drawings in a layer: <span style="color:red;"><code>clrscr()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This statement immediately clears all drawings that were performed in a screen. It is sometimes useful to use this statement to make sure that a drawing is really in an empty state. In particular it may become necessary if the <code>repaint()</code> statement is called from inside other scriptslots, or if the autoclear flag of a layer is set to false.</div><br />
+<hr />
+<br />
+<A NAME="autoclearlayer"></A><br />
+<h4>Automatic clearing of layers: <span style="color:red;"><code>autoclearlayer(&#60;int&#62;,&#60;boolean&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> The autoclear flag of a layer can be set using this function. By default, every layer is cleared automatically during construction recalculations. You can turn this of by setting the autoclear flag to <code>false</code>.<br />
+<br />
+If a layer is not cleared automatically, all drawing commands will be preserved. Cinderella does not store a bitmap, but actually redoes all drawings on every step, so you might run into performance problems if you add more and more drawing commands to a layer.<br />
+<br />
+</div><br />
+<div class="examples"><br />
+<b>Example:</b> You can use non-clearing layers to draw background or foreground graphics once in the <i>init</i> slot instead of drawing them every time in the <i>draw</i> slot of the <a title="no description" href="tiki-cindydoc.php@page=The+CindyScript+Editor.html" class="wiki">construction</a>.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+autoclearlayer(-4,false);
+layer(-4);
+repeat(1000,
+   p = [random(20)-5,random(20)-5];
+   color([random(),random(),random()]);
+   fillpolygon(apply([[0,0],[1,0],[1,1],[0,1]],p+#),alpha->.2);
+);
+layer(0);
+</pre></div><br />
+<br />
+The code above in the <i>init</i> slot produces a random background once on layer -4. As the autoclear flag is set to false, this background will stay during all other operations, as demonstrated below. If you want to achieve the same effect in the <i>draw</i> slot you have to store all random polygons and their colors to recreate them on every cycle.<br />
+<!-- latexreplace<br />
+\index{background layer}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/autoclear-background.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A random background</b></td></tr></table><br />
+<br />
+<hr />
+<hr />
+<A NAME="screenbounds"></A><br />
+<h4>Determining screen bounds: <span style="color:red;"><code>screenbounds()</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{pixel}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<div class="description"><br />
+<b>Description:</b> If you work only with a finite part of the projective plane and do not use a <a title="no description" href="tiki-cindydoc.php@page=Views.html" class="wiki">spherical view</a> it makes sense to ask for the screen bounds.  This function returns a list of four points in homogeneous coordinates that define a rectangle covering all visible views.<br />
+<br />
+This function is best used with only one Euclidean view for a construction.</div><br />
+<br />
+<A NAME="screenresolution"></A><br />
+<h4>Determining screen resolution: <span style="color:red;"><code>screenresolution()</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> In contrast to hyperbolic and spherical views, Euclidean views have the same screen resolution everywhere. This function gives the number of pixels between the origin and point <code>[0,1]</code>. If several Euclidean views for the same construction are open, the function will return the maximum of all individual screen resolutions. </div><br />
+<br />
+<div class="examples"><br />
+<b>Example:</b> You can create a checkerboard pattern by coloring pixels. The  code below will color every other pixel independently of the current zoom. Please be aware that we do not recommend to work on the pixel level, but there may be situations that justify this. In most cases, the <a title="no description" href='tiki-cindydoc.php@page=Function+Plotting.html#colorplot' class='wiki'><code>colorplot</code> function</a> is easier to use and a lot faster.</div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+upperleft=(screenbounds()_1).xy;
+lowerright=(screenbounds()_3).xy;
+width in pixels=screenresolution()*(lowerright.x-upperleft.x);
+height in pixels=screenresolution()*(upperleft.y-lowerright.y);
+
+repeat(width in pixels/2, x, 
+ start->upperleft.x, stop->lowerright.x,
+ repeat(height in pixels/2, y,
+   start->upperleft.y, stop->lowerright.y,
+   draw((x,y),border->false,size->.5,color->[0,0,0]);
+ )
+)
+</pre></div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 10 of July, 2014 [10:11:19 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Script%20Coordinate%20System">
+    http://doc.cinderella.de/tiki-index.php?page=Script%20Coordinate%20System
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

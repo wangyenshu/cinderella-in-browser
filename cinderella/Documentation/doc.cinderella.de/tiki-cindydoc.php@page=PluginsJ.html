@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : PluginsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>プラグイン</h2>
+<br />
+　 CindyScript を用いてCinderellaの動作を強化したり個人用にすることができます。自分で書いたJavaのプログラムとCinderellaを連携させることが望ましいことがあるでしょう。Cinderellaのプラグイン構造はそのような方法を与えます。プラグインを使うのが望ましいことはいくつかあるでしょう。 ここではそれらについて解説します。<br />
+<br />
+<ul><li> <b>パフォーマンス:</b> いくつかの CindyScript の動作に遅いものがあります。これについて、最適化されたコードを使えば速くなります。
+</li></ul>
+<br />
+<ul><li> <b>ネイティブライブラリ:</b> 時々、３Ｄグラフィクスの Jogl ライブラリのようなネイティブライブラリを使いたいことがあります。このような場合、Cinderella とそのライブラリをリンクすることができます。
+</li></ul>
+<br />
+<ul><li><b>ライセンスの認可:</b> プラグインは、GNU GPLのようなライセンスのもとでシンデレラを拡張することができます。われわれは、これを利用して将来的にはシンデレラにオープンソース拡張機能をつけることを考えています。
+</li></ul>
+<br />
+<ul><li><b>サードバーティのコード:</b> プラグインはシンデレラプロジェクトに含まれる他のJavaコードのようによい基盤となります。
+</li></ul>
+<br />
+このマニュアルを書いている時点では、プラグインはスタンドアロンとしてしか使えません。近い将来にはアプレットとして使えるようにします。<br />
+<br />
+<br />
+<h3>プラグインの設計</h3>
+<br />
+プラグインを設計についての詳しいことについては <a class="wiki external"  href="http://cinderella.de/plugins">http://cinderella.de/plugins</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />を参照してください。ここには、プラグインの例や作り方が書いてあります。ですから、この節では、作業の流れをざっと解説するだけです。<br />
+<br />
+プラグインそのものは、実行可能なJavaクラスを含む <code>.jar</code> ファイルです。プラグインの中心的なリンクは、シンデレラへの機能として書き出されたJavaのクラスファイルです。シンデレラでは CindyScriptを使ってプラグインにアクセスします。 プラグインの中心となるファイルはJavaクラス <code>CindyScriptPlugin</code>を拡張するものでなければなりません。この親クラスは <code>cindy2.jar</code> ファイルを通して利用できます。<br />
+<br />
+プラグインのためのコードは次のようなものです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+import de.cinderella.api.cs.CindyScript;
+import de.cinderella.api.cs.CindyScriptPlugin;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class ExamplePlugin extends CindyScriptPlugin {
+
+    public String getName() {
+        return "Example Plugin";
+    }
+
+    public String getAuthor() {
+        return "Ulrich Kortenkamp and Juergen Richter-Gebert";
+    }
+
+    @CindyScript("sayHello")
+    public String testFunction() {
+        return "Hello from Plugin";
+    }
+
+    @CindyScript("square")
+    public double quadrieren(double x) {
+        return x * x;
+    }
+
+    @CindyScript("grayvalue")
+    public double getGray(Color c) {
+        return (c.getBlue() + c.getRed() + c.getGreen()) / 3.;
+    }
+
+    @CindyScript("testarray")
+    public String writeArray(ArrayList<Double> al) {
+        return Arrays.toString(al.toArray());
+    }
+
+}
+</pre></div><br />
+<br />
+<code>@CindyScript("square")</code> といったコードは、CindyScript からアクセスするための名前を定義します。プラグインは CindyScript 次の <code>use</code> 関数を用いて呼び出します。:<br />
+<br />
+<h4>Loading a plugin: <span style="color:red;"><code>use(&#60;string&#62;)</code></span></h4>
+<br />
+説明：この関数は引数で与えられたプラグインを呼び出します。これは、 CindyScriptのinitialization スロットに置きます。<br />
+<br />
+したがって、上のプラグインは、次のようにして呼び出します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+use("ExamplePlugin");
+println(sayHello());
+println(square(4));
+println(grayvalue((0.7,0.4,0.1)));
+println(testarray([1,2,3,4,5]));
+</pre></div><br />
+<br />
+出力はつぎのようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+Hello from plugin 
+16 
+102.3333 
+[1.0, 2.0, 3.0, 4.0, 5.0] 
+</pre></div><br />
+<br />
+すべてのクラス・キャストは自動的に実行されます。キャスティングルールの詳細については、オンラインドキュメントを参照してください。<br />
+<br />
+<h3> 利用できるプラグイン</h3>
+<br />
+　現時点では、利用できるプラグインはわずかです。私たちは、作成されたプラグインを、ウェブサイト<a class="wiki external"  href="http://cinderella.de/plugins">http://cinderella.de/plugins</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /> に公開していますので、最新版をここでチェックしてください。現在、つぎの２つのプラグインがあります。<br />
+<br />
+<h4>Cindy To LegoNXT</h4>
+<br />
+　このプラグインはMichael Schmidによって書かれ、レゴマインドストーム NXTブロックに高水準インターフェースを提供します。このプラグインで、レゴ・コンピュータのすべての入出力にアクセスしてコントロールすることができます。したがって、レゴ・ロボット用のコントローラとしてシンデレラを利用することができます。<br />
+<br />
+　たとえば、この中に <code>nxtforward(...)</code>, <code>nxtturnright(...)</code>,  <code>nxtgetlight()</code> といったコマンドがあり、これらを使って CindyScript からロボット自動車の細かい動きをコントロールすることができるのです。<br />
+<br />
+プラグインは私たちのウェブページから短い説明文とともにダウンロードすることができます。<br />
+<br />
+<br />
+<h4>Cindy3D</h4>
+<br />
+　もう一つのプロジェクトは、シンデレラのための3D描画をおこなうJOGL 3Dインターフェースです。このプラグインは <i>Cindy3D</i> と呼ばれ、Matthias Reitinger, Jürgen Richter-Gebert , Jan Sommerが設計しています。このプラグインを用いて、CindyScript から3D描画関数をを使うことができます。関数は、点、線、円、多角形と3次元メッシュを引くものです。<br />
+次の3つの図は<i>Cindy3D</i> を用いて描画した例です。<br />
+<br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/3D1X.png" border="0"  width="350" /></span></td><td><span class="img"><img alt="" src="img/wiki_up/3D2X.png" border="0"  width="350" /></span></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/3D3X.png" border="0"  width="350" /></span></td><td><span class="img"><img alt="" src="img/wiki_up/3D4X.png" border="0"  width="350" /></span></td></tr>
+</table><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [00:02:28 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=PluginsJ">
+    http://doc.cinderella.de/tiki-index.php?page=PluginsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

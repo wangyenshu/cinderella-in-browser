@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : VelocityJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>速度</h2>
+<!--latexreplace<br />
+\index{simulation!velocity}<br />
+\index{velocity}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-mass-vel.png" border="0"  align="left" /></span></div>速度モードでは、マウスの「押す」「ドラッグ」「離す」の３ステップで設定します。マウスボタンを押すと質点ができ、ドラッグにより黒い矢線が出て、ボタンを離すと矢線が決定します。矢線は質点の速度（速さと向き）を示します。矢線の向きは運動の方向を示し、長さは速度の絶対値すなわち速さを示します。矢線が長いほど、物体は速く動きます。すでに存在する質点上でマウスボタンをドラッグすると、その点に速度を与えます。<br />
+<br />
+速度の矢線は次の2つの目的で使用します:<br />
+<br />
+<ul><li> <b>初期化:</b> シミュレーションが始まると、速度矢線を持つ質点は、対応する値で速度を初期化します。（速度の「初期値を読む」がチェックされているときだけそうなります）。
+</li><li> <b>表現:</b> アニメーションの間、矢線は常にそのときの速度を表します。
+</li></ul>
+<br />
+矢線の長さと速さとの関係は一概には決められません。したがって、いくつかの約束事が必要です。 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> の約束事がよく理解されるのは、アニメーションスライダーをドラッグして最大にしたときでしょう。この場合、 シミュレーションの各ステップにおいて、質点は正確に矢の長さだけ進みます。この状況は、次の図に示されます。 (なお、この図は、速度の係数Factorを1.0にしています。)<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Velocity1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>単位速度による質点の軌跡</b></td></tr></table><br />
+<br />
+<br />
+多くの目的のためには、この動作は速すぎるかもしれません。しかし、速度についての処理を標準化するにはよい方法です。<br />
+<br />
+<h3>速度インスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!velocity}<br />
+--><!-- /latexreplace --><br />
+速度の基本的な属性は、 設定情報インスペクタ のシミュレーションタブ (上の列の4番目）を開いて、設定や変更ができます。シミュレーションタブは次のようになっています。:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/VelocityInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>速度インスペクタ</b></td></tr></table><br />
+<br />
+<br />
+2つのコントロールの意味は次の通りです。:<br />
+<br />
+<ul><li> <b>係数:</b> 速度の矢線の長さに対する大きさを変更します。通常は1.0に設定されます。係数を2にすると、同じ時間間隔に2倍の距離を進むことになります。
+</li></ul>
+<br />
+<ul><li> <b>初期値を読む:</b> このチェックボックスは、初期状態ではチェックされています。これがチェックされていると、シミュレーションの開始時に、引かれた矢の長さが計算されて、初速として点のデータに保存されます。ボックスがチェックされていなければ、最初の位置に関わらず矢線の長さは現時点での速度を示すためだけに用いられます。
+</li></ul>
+<br />
+<h3>CindyScriptと速度</h3>
+<br />
+<br />
+<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->でのように、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->によって読み書きできるものがあります。次のものがそうです。:<br />
+<br />
+<ul><li> <b>factor</b>:速度の係数 (実数、読み書き可)
+</li></ul>
+<br />
+<h3> 次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a>
+</li></ul>
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:31:34 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=VelocityJ">
+    http://doc.cinderella.de/tiki-index.php?page=VelocityJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

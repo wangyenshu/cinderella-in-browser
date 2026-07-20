@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Function PlottingJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>関数プロット</h2>
+<br />
+CindyScriptには、数学的な関数をプロットするいくつかの演算子があります。簡単な関数のプロットの他に、極値、零点、変曲点に関する情報も表示できます。<br />
+<br />
+<h3>関数</h3>
+　次の関数は実数関数のグラフを描くものです。<br />
+<br />
+<A NAME="plot"></A><br />
+<h4>関数のプロット: <span style="color:red;"><code>plot(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> <code>plot</code> 演算子は、関数をプロットするのに使えます。この演算子には、一つの式 <code>&#60;expr&#62;</code> を与えます。この式は実行変数 <code>#</code>  を含まなくてはならず、実数の入力値 <code>#</code> に対して、ひとつの実数か2次元ベクトルを計算します。一つの実数の場合には、 <code>plot</code> 演算子は単純な関数のグラフを描きます。ベクトルの場合には、媒介変数形のグラフを描きます。座標系は、幾何の表示画面の座標系に依存します。 <code>#</code> の代わりに他の実行変数を使うことができます。自由変数が一つだけあればそれを実行変数と見なします。複数の自由変数がある場合は、 <code>x</code>, <code>y</code>, <code>t</code>, <code>z</code> の順に探して実行変数とします。<br />
+<br />
+<b>例:</b> <code>plot</code>  演算子の最も簡単な使用法は、直接、関数の式を書くことです。 <code>plot(sin(#))</code> と書けば、すぐに sin(<i>x</i>) のグラフを描きます。これは<code>plot(sin(x))</code>と書いても同じです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Plot0X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+同様に、まず関数を定義しておいて、 <code>plot</code> 演算子でそのグラフを描くこともできます。 次の例をごらんください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=1/(x^2+1)*sin(4*x);
+plot(f(x));
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Plot1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+式 <code>&#60;expr&#62;</code> に２次元ベクトルを与えた場合は、 <code>plot</code> 演算子は自動的に媒介変数表示のグラフを描きます。このとき、入力値の範囲は初期値として1から100までの数がとられます。しかし、これらの初期値は修飾子で簡単に変えることができます。 <code>plot([sin(t),cos(t)]*t)</code>  の結果は次のようになります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ParPlotX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> <code>plot</code>  では多くの修飾子が使えます。そのいくつかは詳しく解説する必要があるでしょう。それらは、曲線の外観、プロットの範囲、画面上の位置、関数の極大値、極小値、零点、変曲点の表示を変更するのに使われます。 利用できる修飾子の概要は次の表にあります。いくつかの修飾子は、引数の形式が異なれば異なる効果をもたらします。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>修飾子:</b>  </td><td class="wikicell" ><b>引数の型:</b>  </td><td class="wikicell" ><b>効果</b></td></tr><tr><td class="wikicell"  colspan="3">外観の表現:</td></tr><tr><td class="wikicell" >color</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >色を設定</td></tr><tr><td class="wikicell" >size</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >線の幅を設定</td></tr><tr><td class="wikicell" >alpha</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >不透明度を設定</td></tr><tr><td class="wikicell" >connect</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >関数値の飛んでいるところをつなぐ</td></tr><tr><td class="wikicell"  colspan="3">繰り返しの制御:</td></tr><tr><td class="wikicell" >start</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >描き始めの値を設定</td></tr><tr><td class="wikicell" >stop</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >描き終わりの値を設定</td></tr><tr><td class="wikicell" >steps</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >プロットする点の間隔 (媒介変数のみ)</td></tr><tr><td class="wikicell" >pxlres</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >曲線をプロットする解像度 (実数関数のみ)</td></tr><tr><td class="wikicell"  colspan="3">特別な点:</td></tr><tr><td class="wikicell" >extrema</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >すべての極値をマークする</td></tr><tr><td class="wikicell" >extrema</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >すべての極値を指定した色でマークする</td></tr><tr><td class="wikicell" >minima</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >すべての極小値をマークする</td></tr><tr><td class="wikicell" >minima</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >すべての極小値を指定した色でマークする</td></tr><tr><td class="wikicell" >maxima</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >すべての極大値をマークする</td></tr><tr><td class="wikicell" >maxima</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >すべての極大値を指定した色でマークする</td></tr><tr><td class="wikicell" >zeros</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >すべての零点をマークする</td></tr><tr><td class="wikicell" >zeros</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >すべての零点を指定した色でマークする</td></tr><tr><td class="wikicell" >inflections</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >すべての変曲点をマークする</td></tr><tr><td class="wikicell" >inflections</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >すべての変曲点を指定した色でマークする</td></tr><tr><td class="wikicell"  colspan="3">破線:</td></tr><tr><td class="wikicell" >dashing</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >破線パターンの幅 (初期値 5)</td></tr><tr><td class="wikicell" >dashtype</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >特定の破線タイプ  ( 値は0から4まで)</td></tr><tr><td class="wikicell" >dashpattern</td><td class="wikicell" ><code>&#60;リスト&#62;</code></td><td class="wikicell" >個々の破線パターンを指定する</td></tr></table><br />
+<br />
+<b>例:</b> 修飾子の使い方についてのいくつかの例を示します。:<br />
+<br />
+定義域を簡単に変更できます。<br />
+たとえば、 <code>plot(f(#),start->A.x,stop->B.x)</code> とすれば、シンデレラで描いた２つの点の  <i>x</i>-座標を使って、描く範囲をコントロールできます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Plot5X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h5>プロットの表現</h5>
+<br />
+　プロットの解像度は自動的に調整されます。  <code>plot(...)</code> 関数は、特異点の近くで自動的に解像度を高めます。次の例は <code>plot(sin(1/#)*#)</code> の結果を示しますが、原点付近での解像度が高くなっているのを観察してください。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Singu.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+　通常、関数値が飛んでいるところが発見されても、初期状態ではその点は結ばれません。その点を結ぶには <code>connect->true</code> という修飾子をつけます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell"  colspan="3"></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="img/wiki_up/Connect1.png" border="0"  /></span></td><td class="wikicell"  colspan="2"><span class="img"><img alt="" src="img/wiki_up/Connect2.png" border="0"  /></span></td></tr><tr><td class="wikicell" ><code>plot(x-floor(x))</code></td><td class="wikicell"  colspan="2"><code>plot(x-floor(x),connect->true)</code></td></tr></table><br />
+<br />
+　ときどき、プロットする点を減らしたり（計算量が多いとき）、増やしたり（解像度を上げたいとき）したい場合があります。プロットする点の密度は  <code>pxlres</code>  修飾子でコントロールできます。 <code>pxlres->1</code> は、1ピクセルあたり1点をプロットします。しかし、上記のようにこれらの調整は自動的に行ないますので、この修飾子の使い方については、このあとの、colorplot()の説明をごらん下さい。<br />
+<br />
+<br />
+<h5>特異点</h5>
+<br />
+修飾子を用いて、零点、極大値、極小値、変曲点を表示することができます。次の３つはその例です。<br />
+<!--latexreplace \rowcolors{1}{white}{white}--><!-- /latexreplace --><br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Plot4X.png" border="0"  /></span></td></tr>
+<tr><td><code>zeros->true</code></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Plot2X.png" border="0"  /></span></td></tr>
+<tr><td><code>extrema->true</code></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Plot3X.png" border="0"  /></span></td></tr>
+<tr><td><code>inflections->true</code></td></tr>
+</table><br />
+<br />
+<br />
+<h5>破線</h5>
+<br />
+　破線オプションは、直線と円のためのものです。これは <code>dashing</code>, <code>dashtype</code> および <code> dashpattern</code> 修飾子でコントロールできます。<br />
+<br />
+<ul><li><code>dashtype</code>   : ０から４までの数であらかじめ定義された破線パターンを指定します。０は破線ではなくつながった線になります。
+</li><li><code>dashing</code>     :  破線の長さを実数で指定します。 <code>dashing->5</code> が標準的な長さです。
+</li><li><code>dashpattern</code>  : リストを用いて破線の長さを指定します。
+</li></ul>
+<br />
+次の図は <code>plot(sin(x),dashpattern->[0,3,7,3],size->2,dashing->5)</code> で描いたものです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/DashPlot.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<h3>動的な色と透明度</h3>
+<br />
+　 <code>color</code> と <code>alpha</code> は実行変数と連動させることができます。関数プロットの色と透明度は、関数値によって変化させられます。次の例は<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+plot(sin(x),color->hue(x/(2*pi)),size->3)
+</pre></div><br />
+<br />
+の実行例です。ここで、周期的な虹色を作るために <code>hue</code> を使っています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PlotColor1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="plot2"></A><br />
+<h4>関数のプロット　その２: <span style="color:red;"><code>plot(&#60;expr&#62;,&#60;var&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>plot(&#60;expr&#62;)</code> と同じですが、実行変数を指定します。<br />
+<br />
+<hr />
+<br />
+<A NAME="fillplot"></A><br />
+<h4>積分イメージのプロット: <span style="color:red;"><code>fillplot(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 関数のグラフとx軸の間をハイライトさせたいことがよくあります。（例えば、積分の説明など）これは <code>fillplot</code> 関数によって実現できます。plot 関数と同様な引数（実行変数など）を使います。最も簡単な使い方では、x軸をはさんだ部分をハイライトします。この関数ではグラフそのものは描きません。グラフも描きたい場合は<code>plot(...)</code> 関数と併用します。次のコードにより、図のような結果が得られます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=1/(x^2+1)*sin(4*x);
+fillplot(f(x));
+plot(f(x));
+</pre></div><br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FillPlot1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>注意:</b>  <code>fillplot(...)</code> における特異点の処理は、 <code>plot(...)</code> 関数ほど精密ではありません。そのため、 <code>plot</code> での修飾子とは使い分ける必要があります。<br />
+<br />
+<b>修飾子:</b>次の修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>修飾子:</b>  </td><td class="wikicell" ><b>引数の型:</b>  </td><td class="wikicell" ><b>効果</b></td></tr><tr><td class="wikicell"  colspan="3">表現:</td></tr><tr><td class="wikicell" >color</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >色の設定</td></tr><tr><td class="wikicell" >pluscolor</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >関数値が正のときの色</td></tr><tr><td class="wikicell" >minuscolor</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >関数値が負のときの色</td></tr><tr><td class="wikicell" >alpha</td><td class="wikicell" ><code><実数l></code></td><td class="wikicell" >透明度</td></tr><tr><td class="wikicell"  colspan="3">定義域の指定:</td></tr><tr><td class="wikicell" >start</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >定義域の左端</td></tr><tr><td class="wikicell" >stop</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >定義域の右端</td></tr><tr><td class="wikicell"  colspan="3">グラフ:</td></tr><tr><td class="wikicell" >graph</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >関数のグラフも描く</td></tr><tr><td class="wikicell" >graph</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >特定の色で関数のグラフを描く</td></tr><tr><td class="wikicell" >size</td><td class="wikicell" ><code><実数l></code></td><td class="wikicell" >関数のグラフの太さ</td></tr></table><br />
+<br />
+<tt> <code>color</code> と <code>alpha</code> 修飾子は <code>plot</code> と同様に色と透明度をコントロールします。次の図はそのいくつかの例を示します。:</tt><br />
+<br />
+<!--latexreplace \rowcolors{1}{white}{white}--><!-- /latexreplace --><br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/FillPlot2.png" border="0"  /></span></td></tr>
+<tr><td><code>fillplot(sin(x))</code></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/FillPlot3.png" border="0"  /></span></td></tr>
+<tr><td><code>fillplot(sin(x),graph->true)</code></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/FillPlot4.png" border="0"  /></span></td>
+<tr><td><code>fillplot(sin(x),graph->true,pluscolor->(.5,1,.5),minuscolor->(1,.5,.5))</code></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/FillPlot5.png" border="0"  /></span></td></tr>
+<tr><td><code>fillplot(sin(x),graph->true,color->(sin(x),-sin(x),0))</code></td></tr>
+</table><br />
+<br />
+<hr />
+<br />
+<A NAME="fillplot2"></A><br />
+<h4>積分イメージのプロット: <span style="color:red;"><code>fillplot(&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>fillplot(...)</code> と同様ですが、2つの関数のグラフではさまれた部分をハイライトします。次の図はその例です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FillPlot6.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+fillplot(sin(x),cos(x),graph->true,pluscolor->(.5,1,.5),minuscolor->(1,.5,.5))
+</pre></div><br />
+<br />
+<b>修飾子:</b>  <code>fillplot(...)</code> と同様の修飾子を用います。<br />
+<br />
+<br />
+<hr />
+<h3> カラープロット</h3>
+<br />
+　カラープロットは平面上の各点についての関数を視覚的に表示するのに使われます。長方形の内部の点について色分けをします。<br />
+<br />
+<A NAME="colorplot"></A><br />
+<h4>場の色表現: <span style="color:red;"><code>colorplot(&#60;expr&#62;,&#60;vec&#62;,&#60;vec&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>colorplot</code> 演算子は、平面関数(planar function)の視覚化を可能にします。関数によって長方形の各々の点に、カラーコードを割り当てます。ここでも  <code>&#60;expr&#62;</code> の関数の中で、実行変数 # が使われます。しかし、こんどはこの変数は平面上の点であることを銘記してください。  <code>&#60;expr&#62;</code> の戻り値は、実数か(その場合は灰色です)、３つの実数のベクトル(RGB)です。どちらの場合も、0から1の間の実数です。２番目と３番目の引数は、描画領域の左下と右上の位置を決定します。<br />
+<br />
+<b>例:</b>  次のコードと２点Ａ,Ｂは下の図を描きます。１行目で２点間の距離の正弦を計算する関数を定義します。(値は区間[0,1]に入るように縮小・シフトしています) <code>colorplot</code> 演算子の第１の引数は、実行変数 <code>#</code> から計算される色のベクトルです。赤はＡからの同心円状の波、緑は0、青はＢからの同心円状の波です。最後に、ＣとＤは長方形の２つの頂点です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(A,B):=((1+sin(2*dist(A,B)))/2);
+colorplot(
+   (f(A,#),0,f(B,#)),
+   C,D
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColPlot2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>実行変数:</b> 通常は <code>#</code> を <code>colorplot</code> の実行変数として使うのがよいでしょう。しかし、別の変数を用いることもできます。どんな変数が実行変数として使えるかは、次の順序で考えてください。<br />
+<br />
+<ul><li>  <code>&#60;expr&#62;</code> の中で１つだけの自由変数が使われている場合、その変数が実行変数として解釈されます。２次元ベクトルの場合もあります。
+</li><li>  <code>&#60;expr&#62;</code> が <code>#</code> を含む場合、 <code>#</code> が実行変数とされます。
+</li><li>  <code>&#60;expr&#62;</code> が <code>x</code> と <code>y</code>を自由変数として含む場合、 ベクトル <code>(x,y)</code> として扱われます。
+</li><li> １つの自由変数が明確に割り当てられない場合、ベクトル <code>(x,y)</code>が用いられます。
+</li><li> 上記のいずれでもない場合、点 <code>p</code> と複素数 <code>z</code> が実行変数としてチェックされます。
+</li></ul>
+<br />
+たとえば<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+colorplot((sin(2*x),sin(2*y),0),A,B)
+</pre></div><br />
+<br />
+とすると次のようになります。:<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColPlot4X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>修飾子:</b>  <code>colorplot</code> 演算子では3つの修飾子が扱えます。 <code>pxlres</code>  は、色をプロットする四角形のピクセルの大きさを決定する整数です。上の図では  <code>pxlres->2</code> の場合で、これが初期値です。 <code>pxlres</code>  を２か１にすると素晴らしい絵ができます。 しかしながら、四角形の中のピクセルごとに、 <code>colorplot</code>  が計算されることに注意してください。 <code>pxlres</code>  が１次関数的に減らされても計算は２次関数的に増加します。したがって、効率を上げるためにこの修飾子を調整するとよいでしょう。次の図は <code>pxlres->8</code> とした場合です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColPlot1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+　解像度を動的に変えることもできます。そのために、解像度を段階的に変える <code>startres</code>があります。たとえば、 <code>startres->16</code> と <code>pxlres->1</code> を使うとインタラクティブな動きをします。十分な時間があれば最もよい解像度になるように再計算をします。<br />
+<br />
+さらに <code>colorplot</code> 演算子では、透明度をコントロールする  <code>alpha</code>  修飾子が使えます。 この修飾子は、実行変数をパラメータに用いることもできます。<br />
+<br />
+次の例は、先ほどの例を少しだけ修正したものです。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(A,B):=((1+sin(2*dist(A,B)))/2);
+colorplot(
+   (f(A,#),0,f(B,#)),
+   C,D,
+   pxlres->2,
+   alpha->-abs(#)+5
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ColPlot3X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<h3> ベクトル場</h3>
+<br />
+　ベクトル場は流体や力線を視覚的に表現することができます。微分方程式でよく使われます。<br />
+<br />
+<A NAME="drawfield"></A><br />
+<h4>ベクトル場の描画: <span style="color:red;"><code>drawfield(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>drawfield</code> 演算子は、式 <code>&#60;expr&#62;</code> で与えられるベクトル場を描画するのに用います。この式は実行変数 <code>#</code> を含んだ２次元ベクトルである必要があります。その結果も２次元ベクトルです。式を <code>drawfield</code>  演算子に適用すると、対応するベクトル場を描きます。ベクトル場は動的です。たとえば、画面上でマウスをドラッグすると絵が動きます。したがって、 <code>drawfield</code>  演算子を Draw スロットでなく "timer tick" スロットに入れるのが有効です。すると、アニメーションコントローラが表示されます。 アニメーションを走らせると、ベクトル場が自動的に動きます。実行変数の考え方は <code>colorplot(...)</code> と同様です。特に、自由変数 <code>x</code> と <code>y</code> を２次元ベクトル <code>(x,y)</code>として使うことができます。<br />
+<br />
+<b>例:</b>  関数  <code>f(x,y)=(y,sin(x))</code>によって定義されるベクトル場を考えます。CindyScriptでの定義のしかたと <code>drawfield</code>  演算子の使い方は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(v):=[v.y,sin(v.x)];
+drawfield(f(#));
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Flux0.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawfield((y,sin(x)));
+</pre></div><br />
+<br />
+でも同じ図が得られます。<br />
+<br />
+図を描くのに、針のような図形が画面上に描かれます。これらの針はベクトル場によって配置されます。アニメーションの間、針はベクトル場によって動きます。計算時間はかかりますが、針のかわりに小さな蛇のような図形でベクトル場の印象を高めることもできます。これは、stream 修飾子で指定できます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(v):=[v.y,sin(v.x)];
+drawfield(f(#),stream->true);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Flux1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>修飾子:</b>  <code>drawfield</code>  演算子は、ベクトル場の生成プロセスを制御する多くの修飾子を備えています。それらの理解を助けるために、どのように図が描かれるかをもう少し詳しく説明します。<br />
+<br />
+図は、ベクトル場の影響を受けているいくつかのテストオブジェクトの動きを示すことで生成されます。初期状態では、テストオブジェクトは針状です。それらはまず格子状に置かれます。これは通常いくつかの副産物を発生し、格子点の周りにある半径でランダムにゆがめられます。アニメーションの間、針は力の場の方向に動きます。針の長さは場の強さを表します。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>修飾子:</b></td><td class="wikicell" ><b>引数の型:</b></td><td class="wikicell" ><b>効果</b></td></tr><tr><td class="wikicell"  colspan="3">テストオブジェクト:</td></tr><tr><td class="wikicell" >resolution</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >ピクセル単位での最初の格子の大きさ。</td></tr><tr><td class="wikicell" >jitter</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >テストオブジェクトのゆがみ</td></tr><tr><td class="wikicell" >needlesize</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >針の最大長</td></tr><tr><td class="wikicell" >factor</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >場の強さの拡大要素</td></tr><tr><td class="wikicell" >stream</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >針状か流体か</td></tr><tr><td class="wikicell" >move</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >オブジェクトを動かす速さ</td></tr><tr><td class="wikicell"  colspan="3">外観の表現:</td></tr><tr><td class="wikicell" >color</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >流体もしくは針の始めの方の色</td></tr><tr><td class="wikicell" >color2</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >針のあとの方の色</td></tr></table><br />
+<br />
+次の図は最初の格子の様子です。  <code>move->0</code> と <code>jitter->0</code> を指定しました。垂直または水平方向から不自然な配置になっている生成物がわかります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Flux2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+次の図は、 <code>resolution->5</code> と <code>stream->true</code> で描写したものです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Flux3.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="drawfieldcomplex"></A><br />
+<h4>複素ベクトル場の描画: <span style="color:red;"><code>drawfieldcomplex(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は <code>drawfield</code> とよく似ています。しかし、これは入力値を１次元の複素数とする関数です。 実部と虚部はベクトル場の  <i>x</i> 成分と  <i>y</i>  成分とみなされます。それ以外は、drawfield と同様です。<br />
+<br />
+<b>例:</b> 次は、描かれた4点によって零値が決まる複素多項式を使った例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=(x-complex(A))*(x-complex(B))*(x-complex(C))*(x-complex(D));
+drawfieldcomplex(f(#),stream->true,resolution->5,color->(0,0,0))
+</pre></div><br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Field5X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+修飾子は  <code>drawfield</code>  演算子と同様です。<br />
+<br />
+<hr />
+<br />
+<A NAME="drawforces"></A><br />
+<h4>力の場の表示: <span style="color:red;"><code>drawforces()</code></span></h4>
+<br />
+<!-- latexreplace<br />
+\index{force field}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<b>説明:</b> この演算子も <code>drawfield</code>  とよく似ています。しかし、今度は <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> における物理シミュレーションに関連しています。引数は必要でなく、画面のいろいろな地点にある潜在的な試験電荷による力を示します。試験電荷は、質量1，電荷1、半径1です。しかし、他のいかなる粒子もこれと相互作用は起こしません。ときどき、力の場を説明するのに、 <code>factor</code>  修飾子を使うことが必要になります。次の図は4つの荷電粒子間の相互作用を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EForces.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="drawforces1"></A><br />
+<h4>点による力の場の描画: <span style="color:red;"><code>drawforces(&#60;mass&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  固定された質量を持つ粒子に関して力の場を描く他の演算子があります。粒子自身は力の計算に入りません。こうして、特定の粒子に作用する力を表現することができます。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> グリッド（方眼）</h3>
+<br />
+　グリッドは平面から平面への写像を視覚化するのに用いることができます。グリッドで写像による変形が示されます。<br />
+<br />
+<A NAME="mapgrid"></A><br />
+<h4>正方グリッドのマッピング: <span style="color:red;"><code>mapgrid(&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、正方グリッドをとって <code>&#60;expr&#62;</code> による関数で変形します。初期状態ではもとのグリッドはその平面における単位正方形とみなされます。この長方形の境界は修飾子によって変更できます。また <code>complex->true</code> 修飾子によって、複素写像を視覚化できます。<br />
+<br />
+<b>修飾子:</b> いくつかの修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>修飾子:</b>  </td><td class="wikicell" ><b>引数の型:</b>  </td><td class="wikicell" ><b>効果</b></td></tr><tr><td class="wikicell"  colspan="3">表現:</td></tr><tr><td class="wikicell" >color</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >色を設定する</td></tr><tr><td class="wikicell" >alpha</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >透明度を設定する</td></tr><tr><td class="wikicell" >size</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >グリッド線のサイズを指定する。</td></tr><tr><td class="wikicell"  colspan="3">繰り返しの制御:</td></tr><tr><td class="wikicell" >xrange</td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;実数&#62;]</code></td><td class="wikicell" >もとの長方形の<i>x</i>の範囲</td></tr><tr><td class="wikicell" >yrange</td><td class="wikicell" ><code>[&#60;実数&#62;,&#60;実数&#62;]</code></td><td class="wikicell" >もとの長方形の<i>y</i>の範囲</td></tr><tr><td class="wikicell" >resolution</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >両方向のグリッド線の数</td></tr><tr><td class="wikicell" >resolutionx</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" > <i>x</i>-方向のグリッド線の数</td></tr><tr><td class="wikicell" >resolutiony</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" > <i>y</i>-方向のグリッド線の数</td></tr><tr><td class="wikicell" >step</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" >両方向のステップ数</td></tr><tr><td class="wikicell" >stepx</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" > <i>x</i>-方向のステップ数</td></tr><tr><td class="wikicell" >stepy</td><td class="wikicell" ><code>&#60;整数&#62;</code></td><td class="wikicell" > <i>y</i>-方向のステップ数</td></tr><tr><td class="wikicell"  colspan="3"><b>型:</b></td></tr><tr><td class="wikicell" >complex</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >複素関数を使う</td></tr></table><br />
+<br />
+<b>例:</b><br />
+<br />
+　次のコードは <code>mapgrid</code> 関数の使い方の例です。修飾子 <code>xrange</code> と <code>yrange</code> による効果も示します。 <i>x</i> 座標と <i>y</i> 座標をそれぞれ２乗する２次元の関数による効果を示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(v):=(v_1^2,v_2^2);
+linesize(1.5);
+mapgrid(f(v),color->(0,0,0));
+mapgrid(f(v),xrange->[1,2],color->(.6,0,0));
+mapgrid(f(v),yrange->[1,2],color->(.6,0,0));
+mapgrid(f(v),xrange->[1,2],yrange->[1,2],color->(0,.6,0));
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Grid1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+次の例は、グリッドの線がまっすぐであったり平行であったりしない例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(v):=(v_1*sin(v_2),v_2*sin(v_1));
+linesize(1.5);
+mapgrid(f(v),xrange->[1,2],yrange->[1,2]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Grid6.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+次の例は、複素関数による <code>mapgrid</code> の使い方の例です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+mapgrid(z^2,complex->true);
+</pre></div><br />
+<br />
+<tt> <code>resolution</code> 修飾子によって生成される格子の密度を指定できます。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+mapgrid(z^2,complex->true,resolution->4);
+</pre></div><br />
+<br />
+初期状態では <code>mapgrid</code> 関数では直接格子点をつなぎます。これは数学的に正しくない図を作るかもしれません。 <code>step</code> 修飾子で格子点の間に段階を追加します。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+mapgrid(z^2,complex->true,resolution->4,step->5);
+</pre></div><br />
+<br />
+以上の３つのコードの結果は次の図です。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Grid7a.png" border="0"  width="200" /></span> <span class="img"><img alt="" src="img/wiki_up/Grid7b.png" border="0"  width="200" /></span> <span class="img"><img alt="" src="img/wiki_up/Grid7c.png" border="0"  width="200" /></span><br />
+<br />
+　グリッドは、複素関数についての特徴のある情報をもたらします。つぎの３つの図は、 <!-- latexreplace $z^2$, $\sin(z)$, $\frac{1}{z}$ と $\tan(z)$ --><code>z*z</code>, <code>sin(z)</code>, <code>1/z</code> と <code>tan(z)</code><!-- /latexreplace --> の結果を示します。<br />
+<br />
+<table>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Grid8a.png" border="0"  /></span></td><td> <span class="img"><img alt="" src="img/wiki_up/Grid8c.png" border="0"  /></span></td></tr>
+<tr><td><span class="img"><img alt="" src="img/wiki_up/Grid8b.png" border="0"  /></span></td><td> <span class="img"><img alt="" src="img/wiki_up/Grid8d.png" border="0"  /></span></td></tr>
+</table><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> オシログラフ</h3>
+<br />
+オシログラフは物理シミュレーションとアニメーションにおける値の変化を視覚化します。<br />
+<!-- latexreplace<br />
+\index{oscilloscope}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<A NAME="drawcurves"></A><br />
+<h4>物理的大きさのグラフを描く: <span style="color:red;"><code>drawcurves(&#60;vec&#62;,&#60;list&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  物理シミュレーションにおいて、大きさが時間とともにどのように変化するかをグラフで示したい場合がよくあります。このために、 <code>drawcurves</code>  演算子が作られました。ここで、<code>&#60;vec&#62;</code> は表示領域の左下の角を表す２次元ベクトルで、 <code>&#60;list&#62;</code>  は観察する値のリストです。アニメーションが始まると値が更新され、対応する曲線が描かれます。<br />
+<br />
+<b>例: </b>  次の図は  <code>drawcurves</code>  演算子の簡単な使い方を示しています。 <a title="no description" href="tiki-cindydoc.php@page=CindyLab.html" class="wiki">CindyLab</a> で振り子を作っています。次のコードは、動く点の  <i>x</i>  座標と <i>x</i>  方向の速度を曲線で表します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawcurves([0,0],[D.x,D.vx])
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Drawcurves1X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b>  <code>drawcurves</code> 演算子はいくつかの修飾子を備えています。曲線の外観を変え、情報を付加するために使います。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>修飾子:</b></td><td class="wikicell" ><b>引数の型:</b></td><td class="wikicell" ><b>効果</b></td></tr><tr><td class="wikicell"  colspan="3">次元:</td></tr><tr><td class="wikicell" >width</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >プロット範囲の幅(ピクセル)</td></tr><tr><td class="wikicell" >height</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >それぞれの曲線の高さ(ピクセル)</td></tr><tr><td class="wikicell"  colspan="3">外観:</td></tr><tr><td class="wikicell" >border</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >表の枠を表示する</td></tr><tr><td class="wikicell" >back</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >背景を表示する</td></tr><tr><td class="wikicell" >back</td><td class="wikicell" ><code>[&#60;実数1&#62;,&#60;実数2&#62;,&#60;実数3&#62;]</code></td><td class="wikicell" >背景を指定した色で塗りつぶす</td></tr><tr><td class="wikicell" >backalpha</td><td class="wikicell" ><code>&#60;実数&#62;</code></td><td class="wikicell" >背景の不透明度</td></tr><tr><td class="wikicell" >colors</td><td class="wikicell" ><code>[<色1>,<色2>,<色3>,...]</code></td><td class="wikicell" >曲線ごとに色を指定する</td></tr><tr><td class="wikicell"  colspan="3">情報:</td></tr><tr><td class="wikicell" >texts</td><td class="wikicell" ><code>[<文字列1>,<文字列2>,<文字列3>,...]</code></td><td class="wikicell" >曲線ごとに表題を付ける</td></tr><tr><td class="wikicell" >showrange</td><td class="wikicell" ><code>&#60;ブール値&#62;</code></td><td class="wikicell" >曲線の最大と最小を表示する</td></tr><tr><td class="wikicell"  colspan="3">描写:</td></tr><tr><td class="wikicell" >range</td><td class="wikicell" ><code><文字列></code></td><td class="wikicell" >"peek" 絶対値が最大のときの大きさ, "auto" 現在表示されている部分の大きさ</td></tr><tr><td class="wikicell" >range</td><td class="wikicell" ><code>[<文字列1>,<文字列2>,<文字列3>,...]</code></td><td class="wikicell" >それぞれの曲線の  "peek"/"auto" </td></tr></table><br />
+<br />
+次のスクリプトは、修飾子の使い方を示します。連結振動子のエネルギー状態を表します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+linecolor((1,1,1));
+textcolor((0,0.8,0));
+drawcurves((-7,-3),
+  [A.x,B.x,A.ke,B.ke,a.pe+b.pe+c.pe],
+  height->50,
+  color->(1,1,1),
+  back->(0,0,0),
+  backalpha->1,
+  range->"peek",width->400,
+  colors->[
+    [1,0.5,0.5],
+    [0.5,1,0.5],     
+    [1,0.5,0.5], 
+    [0.5,1,0.5],
+    [0.5,0.5,1]],
+  texts->[
+    "PosA = "+ A.x,
+    "PosB = "+B.x,
+    "EnergyA = "+A.ke,
+    "EnergyB = "+B.ke,
+    "PotentialEnergy = "+(a.pe+b.pe+c.pe)
+]
+);
+</pre></div><br />
+<br />
+対応する図は次の通りです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Drawcurves2X.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [11:20:57 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Function%20PlottingJ">
+    http://doc.cinderella.de/tiki-index.php?page=Function%20PlottingJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

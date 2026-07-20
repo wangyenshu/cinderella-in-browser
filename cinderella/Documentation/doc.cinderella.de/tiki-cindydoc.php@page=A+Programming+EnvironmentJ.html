@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : A Programming EnvironmentJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> プログラミング環境</h3>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  は、あらゆる面でシンデレラを強化する道具です。それは、シンデレラの幾何学部分と  <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のシミュレーション部分を相互につなぐことができるように設計されています。その機能的な設計はインタラクティブな試作品を素早く作れる高水準プログラミング言語となっています。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は、図形の出力とマウスの操作に対応するものはシンデレラの幾何学部分に、物理シミュレーションは <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> に、いわば外注して利用しています。そのため、ユーザーは中核となる問題をプログラムすることに集中できます。望ましい表示をするために、わずかなコードが必要になることはよくあります。しかし、これは普通のプログラミングとは正反対です。普通は、プログラムの相当な部分が、マウスを使ったユーザーインターフェースの作成に費やされているからです。</tt><br />
+<br />
+<br />
+<h4> 応用例</h4>
+<br />
+他のプログラミング言語と同様に、<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の可能性は限りがなく、制限があるとすれば、ユーザーの想像力(と、ときにはディスクスペース)でしょう。とはいえ、中心的な応用場面を少し示しましょう。<br />
+<br />
+<h5><b>描画力の向上</b></h5>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  の中心的な機能の一つは、幾何の表示画面に図形を表示するプログラムが作れることです。シンデレラの動的な幾何学で、ぎりぎりまで多くの要素を使って作図をしたいことがよくあります。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  を使えば、こういった要素を自動的に作り出すことができます。</tt><br />
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  は幾何変換を扱えるので、わずかなコードで複雑な図形を作ることができます。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PythTree.png" border="0"  width="450" /></span></td></tr><tr><td class="caption"><b>「ピタゴラス」の木をスクリプトで描いた</b></td></tr></table><br />
+<br />
+<br />
+<h5><b>プログラムされた描画</b></h5>
+<br />
+動的な幾何学への古典的なアプローチでは処理できない特別なものがあります。動的な幾何学で作図したものは、本質的にはすべての計算が行われる、分岐のないプログラムのようなものです。したがって、論理的な判断やアルゴリズム的なものを動的幾何学に含むことは本質的に困難です。 通常、これらの問題は、 ブール点と呼ばれる交点特性によって、条件付きで要素の可視的振舞いをコントロールすることで解決されます。 <b>シンデレラ２</b> はこの機能を持っていますが、同時に <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  がこの問題を扱う、よりエレガントな方法を提供します。<br />
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  は任意のアルゴリズムを簡単に実行できる高水準の言語です。したがって、複雑なアルゴリズムであっても動的幾何学の環境に一般的なレベルで含むことができます。図形への出力をそのようなアルゴリズムに含めることができます。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/VoronoiB.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>ドローネ三角網とボロノイダイアグラム</b></td></tr></table><br />
+<br />
+<br />
+<h5>数学的関数の解析</h5>
+<br />
+特に、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  では高度な関数プロットがおこなえます。微分して極値を表示したりすることができます。関数は直接描画でき、結果をすぐに示せます。これと、シンデレラのHTMLへの書き出し機能を使えば関数の解析を多種多様な方法で行えるインタラクティブなワークシートを簡単に作れます。 関数は、幾何で作図したものの図形的な属性としても定義できるので一つの例の中に図形的な入力と解析的な部品を組み込むことができます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/NewtonB.png" border="0"  width="450" /></span></td></tr><tr><td class="caption"><b>ニュートン反復法による解の計算</b></td></tr></table><br />
+<br />
+<br />
+<h5>作図したものの振舞いを制御する</h5>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  で自由要素の位置を制御すると特に面白いことが起こります。通常、CindyScript の制御による動きは、ユーザーによって動かされるものより優先されます。簡単な例でこれを示しましょう。 次の図は、三角形の面積を多角形の内部および周上の格子点の個数で計算するピックの定理です。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PickB.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>ピックの定理</b></td></tr></table><br />
+<br />
+<br />
+ピックの定理は、頂点の座標が格子点上にある場合にのみ適用できますが、通常の動的幾何学ではなかなかうまくできません。しかし、次の３行を追加するだけで、３つの頂点の動きをコントロールできます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.xy=round(A);
+B.xy=round(B);
+C.xy=round(C);
+</pre></div><br />
+<br />
+これで、点は自由に動かせますが、頂点を最も近い格子点にスナップさせます。この例では、すべての文字と、緑と黄色の点は  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  によって作られたものです。<br />
+<br />
+<br />
+<h4>設計と特徴</h4>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->  は、ユーザーが入力するパラメータがいろいろと変化する状況で、数学的問題の要求を満たすプログラムができるように設計されました。多様なデータ型(実数、複素数、リスト、ベクトル、行列)が処理でき、ユーザーの入力に対してリアルタイムに応えることができます。</tt><br />
+<br />
+<br />
+<h5>高度な関数型プログラミング</h5>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> は、関数型プログラミング言語です。これは、すべての処理が関数として行われることを意味します。 関数型のプログラミングは慣れるのに少し時間がかかるかもしれませんが、非常に表現力豊かですので、少しのコードで複雑な状況を記述することが可能です。たとえば、次の３行のコードは100未満の素数を求めて印字します。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+divisors(x):=select(1..x,mod(x,#)==0);
+primes(n):=select(1..n,length(divisors(#))==2);
+print(primes(100));
+</pre></div><br />
+<br />
+１行目は、数xを割り切る数のリストを返す関数を定義します。２行目は、nより小さい数のうち、割りきる数が２つだけである数、すなわち素数のリストをつくる関数を定義します。出力結果は次のようになります。<br />
+<br />
+<!-- latexreplace \smallskip\noindent{\small\texttt{<a class="wiki external"  href="2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97">2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />}}\smallskip --><br />
+<code>[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]</code><br />
+<!-- /latexreplace --><br />
+<br />
+図形の入出力とともに、これらの高水準プログラミング環境を使うと、他の言語ではできないような可能性が開けます。次の図は、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> でプログラミングされた自己相似形の植物のような図形です。この植物を生成するプログラムは右に示されています。すべての図を作るのに、基本的な描画と、幾何変換、関数型プログラミング言語だけが用いられています。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern1cm}l}<br />
+\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{PlantB} &amp;  \includegraphics<a class="wiki external"  href="width=2.26in">width=2.26in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{ScriptPromo14} \\<br />
+<tt> \multicolumn{2}{l}{  \small\it Growing a plant in a view}\\</tt><br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+<br />
+<table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/PlantB.png" border="0"  height="400" /></span></td><td width=30></td>
+<td><IMG height=400 SRC="../cinderella.de/files/CindyDocu/CindyScript/ScriptPromo14.png"></td>
+      </tr>
+      <tr>
+	<td><b>植物の成長</b></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<h5>リアルタイムな計算</h5>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->は図形の小さな動きでも調べることができます。したがって、図形の描画をリアルタイムで操作できます。ユーザーが点を選んでそれを動かすと、それに対する計算結果を直接観察できます。  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> はインタプリタ型の言語ですが、標準的な状況では図をなめらかに表示するための速さは十分です。ユーザーの入力にすぐに反応できるプログラムは、広範囲な応用とインタラクティブなシナリオ作りに対しておおいに可能性が開けます。 小中学校での利用から大学、さらには洗練された数学的研究まで、応用は広範囲です。次の例は、最小二乗法による線形回帰法のスナップショットです。点が動かされたり加えられると図はダイナミックに更新されます。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RegressionB.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>ガウス近似による線形回帰</b></td></tr></table><br />
+<br />
+<br />
+<h5><b>正確な計時</b></h5>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> では時間の取得や物理シミュレーションの時間を同期させるプログラムができます。したがって、時間によって動くシミュレーションを簡単に作ることができます。たとえば、時間制限を設けたインタラクティブなゲームや練習問題をプログラムするのに便利です。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> を物理シミュレーションのタイミングと同期できることは２つの方向で使うことができます。ひとつは、この方法を物理シミュレーションのをリアルタイムに同期させる技術として使います。あるいは、計算時間とシミュレーション時間を組み合わせて、計算時間に合わせてシミュレーションの速度を調節することができます。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ClockB.png" border="0"  width="350" /></span></td></tr><tr><td class="caption"><b>リアルタイムに動く時計</b></td></tr></table><br />
+<br />
+<br />
+<h5><b>高度な描画</b></h5>
+<br />
+<tt> <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の一行コードは、単純な関数のグラフを描くのには十分です。たとえば、<code>plot(sin(x))</code> は正弦関数のグラフをすぐに描きます。しかし、シンデレラは、最大値、最小値、変曲点を直接表示するようないくつかの可能性と強化された描画機能を提供します。これらの特徴を用いて、関数のビジュアルな解析が可能になります。異なる関数の値に色を割り当てて２次元関数をプロットすることもできます。したがって、２次元データのイメージを簡単に作ることができます。次の図は、２点Ａ，Ｂに対する  <code>sin(dist(x-A)*dist(x-B))</code> の確率密度を示します。</tt><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CasinB.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>波としてのカッシーニ楕円</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 29 of August, 2011 [00:27:48 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=A%20Programming%20EnvironmentJ">
+    http://doc.cinderella.de/tiki-index.php?page=A%20Programming%20EnvironmentJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

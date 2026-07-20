@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Technical BackgroundJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>技術的背景</h3>
+<br />
+<b><i>この節は、 1999年のマニュアルに書かれていたものと同じです。履歴という意味で再掲します。</i></b><br />
+<br />
+普通は、ソフトに使われているプログラム言語やソフトの詳細について知りたいとは思わないし、その必要もありません。 しかし、私たちは <i>シンデレラ</i>のコンピュータサイエンスの背景についてお話したいのです。<br />
+<br />
+<br />
+<i>シンデレラ</i> はJavaという言語で書かれています。 これはサン・マイクロシステムズが開発した、機種を選ばないコンピュータ言語なのです。 つまり、どんなコンピュータでもどんなオペレーティングシステムでもこのソフトを動かすことができるのです。 Javaが動くためには、JVM（Java仮想機械）と呼ばれるものが必要です。 サン・マイクロシステムズが、WindowsマシンとSolaris（UNIX）マシン用のJVMを発表していますし、その他にもLinux, OS/2, MacOS, BeOS, AIX, HP-UXといったOS用のJVMもあります。 実際には、多くのコンピュータにJVMがインストールされているはずです。 というのは、Netscape Communicator や Internet ExplorerといったブラウザーソフトにはJVMが組み込まれているのが普通だからです。 ということは、これらブラウザーソフトでJavaのプログラムを動かすことができるということです。 このプログラムを「アプレット」と呼んでいます。<br />
+<br />
+<br />
+ここでJavaについて詳細を述べることはしません。 詳しく知りたい人は、Javaのホームページ <a href="http://www.javasoft.com">http://www.javasoft.com</a> を見てください． しかしながらシンデレラの開発にJavaを用いた結果どうなったかについては一言説明させてください。<br />
+<br />
+<br />
+一般的に言って、マイクロソフト社のWindowsは最もよく使われているOSであることは周知の事実ですが、多くの大学の数学科ではいろいろな種類のUnixワークステーションを使っているのも現実です。 同じ研究グループの中でも使っているコンピュータのOSが違うなどということはとてもよくあることです。 その点、Javaで書いたプログラムで研究を進めれば、コンピュータのOSを気にすることなく同じようにシンデレラを利用することができます。 <b>コンピュータが違っても同じソースコード(プログラムコード)をインストールして使うことだってできる</b>のです。 私たちにとってもっとも親しみのあるOSであるLinuxでシンデレラを開発したのですが、ほかのOSを使っているもっともっとたくさんの人とこのソフトを共有できることは確実なのです。<br />
+<br />
+<br />
+次に、ブラウザーソフトの中でJavaソフトを動かすことができるということから、シンデレラの 「ホームページの作成(HTMLファイルに出力)」という機能が可能になったのです。 つまり、出版物を作ったり、個人のホームページにアニメーションを加えたり、学生向けの宿題を課すこともできるようになったのです。 私たちの決めた <a href="https://doc.cinderella.de/License.html#start">ライセンス</a>では、シンデレラの必要な部分を再配布する自由はできるだけ与えられています (もちろん多少の制限はつけさせていただいていますが)。<br />
+<br />
+<br />
+Java は <b>インタプリタ系</b> 言語でした。 つまり、一般的にソフト開発に用いられているC言語やC++言語のような <b>コンパイル系</b> 言語ではありませんでした。 インタープリタ系である利点はいくつかありますが、プログラムの実行速度が遅くなってしまうという欠点がありました。 現在、Java(あるいはJVM)は実行速度を速めるために改善されてきているので、私たちがこの企画をはじめたころほど遅くはありません。 それでもなお、私たちは  "インタラクティブな感覚"として許せるスピードになるようにソフトの最適化をたくさんしなければいけませんでした。<br />
+<br />
+<br />
+時には、点を動かすのが遅いと感じるときがあるかもしれません。 しかし、これはコンピュータのせいでもJavaのせいでもシンデレラのせいでもありません。 この遅さは、正しい結果と正しい画面表示を得るためにとても複雑な計算をしているからなのです。 この計算が必要なのは、1つには軌跡を描くため、そして2次曲線を含むたくさんの要素の交点を求めるためです。 計算のスピードアップのために最善を尽くしましたが、数学的な正確さを犠牲にしたくなかったので、どうしてもスピードに(数学的な)限度があるのは仕方ありません。<br />
+<br />
+<br />
+最後に、シンデレラやこの本を作成するのに使ったとても便利な道具についても説明させてください。 まず <a href="http://www.xemacs.org"><b>XEmacs</b></a>です。 これは機能が多く広く拡張可能なテキストエディタです。 GNU Emacsを元に作られています。 もとのEmacsはリチャード・ストールマンが70年代にMITで作ったものですが、これはそのひとつのバージョンです。 (訳註：日本語対応EmacsとしてはNEmacsやMeadowという名前のものが広く知られています。) XEmacsは本当に便利で優れたエディタで、私たちはプログラムソースのすべて、このマニュアルのすべてを書くのに利用しました。<br />
+<br />
+<br />
+このソフト自身は、サン・マイクロシステムズから配布された <a href="http://www.javasoft.com/products/jdk/1.1"><b>Java開発キット（Java Development Kit）</b></a> 特にそれのLinuxに移植されたものの助けを借りて作りました(Linuxへの移植について詳しくは <a href="http://java.blackdown.org/">http://java.blackdown.org</a> を見てください)。 <b>Linux</b> はフリーウェアで、Unixと同じような働きをするOSです。 最初はリーナス・トーバルズが作りましたが、今は世界中の何百人というプログラマーがその拡張に努めています。<br />
+<br />
+<br />
+ファイルに保存されている作図を読み出すのに使ったパージング(構文解析)の部分は <a href="http://www.antlr.org"><b>ANTLR 2.5.0</b></a>の助けを借りています。 これは、テレンス・パーがメイジラング研究所で作ったJavaとC++用のパージングソフトで、パブリックドメインです。<br />
+<br />
+<br />
+プログラムコードの後最適化と圧縮には、アルファワークスの <a href="http://www.alphaworks.ibm.com"><b>Jax</b></a> の助けを借りました。 アルファワークスはIBMの一部門です。 Jax のチーム、特にフランク・チップのご助力と、Jax を商業目的で利用する許可をいただいた IBM に感謝したいと思います。<br />
+<br />
+<br />
+<a href="http://www.cyclic.com">Cyclic Software</a> が提供するバージョン一致システム <b>Concurrent Versions System (CVS)</b> を使ってバージョンのマージを行いました (何度も頭痛から救ってもらいました)． これもフリーソフトです。<br />
+<br />
+<br />
+マイクロソフト社と <a href="http://www.netscape.com">Netscape</a>社の「ブラウザー戦争」にも感謝． このおかげで <b>Netscape Navigator</b> の再配布に関するライセンス条項で、シンデレラにJava-1.1対応のブラウザーを同梱することが可能となりました<br />
+<br />
+<br />
+シンデレラのマニュアルには、製本されたものとオンラインで見ることができるものの2種類があります。 どちらもXEmacsを利用してHTML言語で書きました。 同じファイルから印刷物を作成すると同時にコンピュータ画面上に表示できます。 そのウェブページのデザインには、カスケイディング・スタイル・シート(Cascading Style Sheets, CSS)を使いました。 印刷物にするときにはジャン・カールマンの <a href="http://www.tdb.uu.se/~jan/html2ps.html"><b>html2ps</b></a> の変形版を使いました。<br />
+<br />
+<br />
+シンデレラの中で使っているアイコンや図は、私たちがデザインしたのですが、 <a href="http://www.gimp.org"><b>The GIMP</b></a> というソフトを使いました。 これは<i>GNU Image Manipulation Program</i>の略で、ピーター・マチスとスペンサー・キンボルが作ったものです。 私たちの使った感じでは、このソフトはフリーで配られているソフトの中でも非常に感銘深いもののひとつでした。 本文中のほかの図はもちろんシンデレラを使い、この他ポブレイ <a href="http://www.povray.org"><b>Povray</b></a>というフリーの3次元レイトレーシングソフトも使用し、そしてPostScriptをいじっています。<br />
+<br />
+<br />
+Javaの開発者である <a href="http://www.javasoft.com/people/jag"><b>James Gosling</b></a>とNetscape Navigatorの最初のUnix版を作った<a href="http://www.jwz.org"><b>Jamie Zawinski</b></a>の名前をぜひ挙げておかねばなりません。 この二人はともに特別な意味でXEmacsとかかわりがあった人たちです。 ジェームズはEmacsを最初にCで実装しました(GOSMACSという名前で知られています)． ジェイミーはXEmacsのバージョン19.0から19.10の主たる開発者でした。 そのとき、ルーシッド社(今は店じまいしていますが)とサン・マイクロシステムズ社と共同で行った仕事でした。<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 02 of February, 2008 [14:15:44 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Technical%20BackgroundJ">
+    http://doc.cinderella.de/tiki-index.php?page=Technical%20BackgroundJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

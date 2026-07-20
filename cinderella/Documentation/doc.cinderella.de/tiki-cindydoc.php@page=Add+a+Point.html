@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Add a Point 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3> Add a Point</h3>
+<!--latexreplace<br />
+\index{point!free}<br />
+\index{point!on a line}<br />
+\index{point!on a conic}<br />
+\index{point!on a circle}<br />
+\index{mode!add point}<br />
+\index{add point}<br />
+\index{meet}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  align="left" /></span></div> Usually, a single new point will be added when this mode is used.  The mode is designed to be multipurpose and easy to use.  Pressing the left mouse button generates a new point.  When you drag the mouse with the left button pressed, you can change the position and definition of the newly added point. When you finally release the mouse button, the point is fixed. Its definition depends on the position at which the mouse was released.  Sometimes, it can be more convenient to use the  more powerful interactive modes such as <a title="no description" href="tiki-cindydoc.php@page=Add+a+Line.html" class="wiki">add a line</a>, <a title="no description" href="tiki-cindydoc.php@page=Add+a+Parallel.html" class="wiki">add a parallel</a>, and <a title="no description" href="tiki-cindydoc.php@page=Add+a+Circle.html" class="wiki">add a circle</a>, which generate points together with other geometric elements.<br />
+<br />
+As already mentioned, constructing a point can be described as a three-step procedure:<br />
+<br />
+<ul><li> <b>Pressing the left mouse button</b> generates the point.
+</li><li> <b>Dragging the mouse</b> moves the new point close to the mouse position.  You will see that the point snaps to existing elements. Whenever this happens, the  definition of the point is adapted to the current situation and the defining elements are highlighted. In particular, the point snaps to intersections of existing elements, and it snaps to existing points.
+</li><li> <b>Releasing the mouse button</b> fixes the definition of the point.  If at the moment of release the mouse is …
+<ul><li>  over no element at all, then a free point is added with no additional constraints. In "move mode" this point can be freely moved.
+</li><li>  over an already existing line, then the new point will always be incident to the line. In "move mode" this point can only slide along the line.
+</li><li>  over an already existing circle, then a point  that is always incident to this circle is added.  In "move mode" this  point can only slide along the circle.
+</li><li>  over the intersection of two elements (line, circle, or conic),  then that intersection of these elements is added. Also, such a point will appear slightly darker than the free points.  It is no longer freely movable in "move mode."
+</li><li> over an existing point, then no element  will be added.
+</li></ul></li></ul>
+<br />
+The elements that lead to the definition will always be highlighted.<br />
+<br />
+The figures below show the three main situations: a "free point," a "point on a line," and an "intersection point." Notice that while the mouse is dragged, the coordinates that correspond to the point's position are displayed.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+{\small\it Free point:} &amp;  {\small\it Point on a line:}&amp;  {\small\it  Intersection point:}\\<br />
+\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoint1} &amp; \includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoint2} &amp;\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddPoint3} \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=15>
+      <tr>
+	<td><b>Free point:</b><br></td>
+	<td><b>Point on a line:</b><br></td>
+	<td><b>Intersection point:</b><br></td>
+      </tr>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPoint1.png" border="0"  /></span></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPoint2.png" border="0"  /></span></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddPoint3.png" border="0"  /></span></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+A point can also be added with a simple mouse click at the position at which the point should be placed. The above-mentioned three-step procedure collapses then to a single mouse click. However, it is often more convenient to take full advantage of the three steps mentioned above:<br />
+<br />
+<b>Press the mouse button down somewhere, drag the point to the desired position, and release the mouse.</b><br />
+<br />
+<div class="synopsis"><br />
+<h4> Synopsis</h4>
+<br />
+Add a point mode creates a new point with a press–drag–release sequence. The definition is automatically adapted to the situation.<br />
+</div><br />
+<br />
+<div class="caution"><br />
+<h4> Caution</h4>
+<br />
+There are two situations in which it is not appropriate to add a point with this mode:<br />
+<br />
+<ul><li> If you want to add an intersection of two  lines that cross outside the visible area of the view, then you should use <a title="no description" href="tiki-cindydoc.php@page=Intersection.html" class="wiki">intersection mode</a>.
+</li><li> If you want to add a point at a position at which more than two elements cross, then you should do one of the following:
+<ul><li> Perturb the situation slightly using <a title="no description" href="tiki-cindydoc.php@page=Move+Mode.html" class="wiki">move mode</a> if possible.
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Views.html#Zoom in' class='wiki'>Zoom in</a> in to get a higher resolution.
+</li><li> Use <a title="no description" href="tiki-cindydoc.php@page=Intersection.html" class="wiki">intersection</a> mode to define exactly what intersection is meant.
+</li></ul></li></ul>
+</div><br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Circle.html' class='wiki'>Add a Circle</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Intersection.html' class='wiki'>Intersection</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 28 of July, 2011 [08:35:31 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Add%20a%20Point">
+    http://doc.cinderella.de/tiki-index.php?page=Add%20a%20Point
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

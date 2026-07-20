@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Image Manipulation and RenderingJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 画像の操作とレンダリング</h2>
+<br />
+　Cinderella.2 では、面の描画に関していろいろな方法があります。CindyScriptでメディア・データベースで画像を利用することができます。画像は、移動、回転、拡大縮小、射影変換などができます。他方、 CindyScript の描画関数を用いて、他の目的のための青写真的な利用ができます。<br />
+<br />
+<br />
+<h3> メディアブラウザ</h3>
+<!-- latexreplace<br />
+\index{background image}<br />
+\index{media browser}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+　画像操作の前に、どのようにしてシンデレラの作品上に画像を載せるのかという問題があります。そのために「メディアブラウザ」があります。メディアブラウザを使うには、ファイルメニューの「メディアブラウザ」を選びます。するとポップアップウィンドウが出て、 <i>+</i>ボタンを押すと画像ファイルを読み込むことができてリストに追加できます。 <i>-</i> ボタンを押せばリストから削除されます。読み込んだ画像は、内部での名前とプレビューが表示されます。画像の名前は読み込んだファイルの名前ですが、ダブルクリックして名前を変更することができます。これは内部的な名前で、 CindyScriptではこの名前を使います。<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Media.png" border="0"  /></span></td></tr><tr><td class="caption"><b>メディアブラウザ</b></td></tr></table><br />
+<br />
+<br />
+　メディアブラウザ内の画像は、点や直線の代わりとして、また背景画像として使うことができます。使うにはインスペクタを用います。<br />
+<br />
+<hr />
+<br />
+<h3> 画像の表示と変換</h3>
+<br />
+<A NAME="drawimage"></A><br />
+<h4>Drawing an image: <span style="color:red;"><code>画像の表示(&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この関数は、メディアブラウザから画像を取り出して、第1引数で示した点に表示します。初期状態では点の中心が画像の中心になりますが、これは修飾子によって変更することができます。また、画像の拡大縮小と配置も変えることができます。<br />
+<br />
+<b>例:</b>  次のコードでは、 <code>MyImage</code> 画像を点Aの位置に表示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,"MyImage"))
+</pre></div><br />
+<br />
+次の例は <code>drawimage</code> 関数のいろいろな使い方を示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,"myimage");
+drawimage(B,"myimage",scale->1.5,angle->30°);
+drawimage(C,"myimage",ref->"lb");
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS1.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>参照点:</b> 参照点を指定するのに精巧な方法があります。それは、修飾子<code>ref</code>, <code>refx</code>, <code>refy</code> を用いることです。最初のものは２次元情報を示し、あとの２つがそれぞれ座標の方向を示します。参照情報は３つの異なる方法で与えられます。<br />
+<br />
+<ul><li> もとの画像の画素数への絶対参照。たとえば、元の画像の画素数が 400x800 のとき、修飾子 <code>ref->[100,200]</code> により、左下4分の1のところが参照点になります。
+</li><li> 比率で参照。この場合、百分率で位置を示します。たとえば、<code>ref->["25%", "25%"]</code> とすれば左下4分の1のところの参照点を置きます。
+</li><li> 2つの文字で記号的に。ここで x方向 を <code>l</code>, <code>c</code>, <code>r</code>で、順に 左、中央、右、y方向を letters <code>b</code>, <code>c</code>, <code>t</code> で下、中央、上とします。すると左下は <code>ref->"lb"</code> または <code>ref->["l","b"]</code> で表されます。
+</li></ul>
+<br />
+位置情報は２つの方向に分けて指定することもできます。たとえば、<code>refx->"l"</code>, <code>refx->100</code> あるいは <code>refx->"10%"</code> のようにです。次の図はいくつかの参照点を示します。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Positions.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>修飾子:</b> いくつかの修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子 </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >画像の透明度</td></tr><tr><td class="wikicell" ><code>angle</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" >参照点周りの回転角</td></tr><tr><td class="wikicell" ><code>rotation</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > <code>angle</code>と同じ</td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > 拡大縮小 </td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>ベクトル</code></td><td class="wikicell" > それぞれの方向に拡大縮小</td></tr><tr><td class="wikicell" ><code>scalex</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > x軸方向へ拡大縮小</td></tr><tr><td class="wikicell" ><code>scaley</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > y軸方向へ拡大縮小</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 垂直方向に反転</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 水平方向に反転</td></tr><tr><td class="wikicell" ><code>ref</code></td><td class="wikicell" ><code>上記説明参照</code></td><td class="wikicell" > 参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx</code></td><td class="wikicell" ><code>上記説明参照</code></td><td class="wikicell" > 参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy</code></td><td class="wikicell" ><code>上記説明参照</code></td><td class="wikicell" > 参照点の y 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>rendering</code></td><td class="wikicell" ><code>"fast"</code> または <code>"nice"</code></td><td class="wikicell" > 表示品質</td></tr></table><br />
+<br />
+<hr />
+<br />
+<h4>画像表示: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 位置と大きさを２つの参照点で指定して画像を表示します。初期状態では２つの参照点は画像の下辺の両端となります。この参照点を画像内の他の点にすることもできます。その方法は先ほどのものと同じです。<br />
+<br />
+<b>例:</b> 最も簡単な使い方は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,"myimage"))
+</pre></div><br />
+<br />
+修飾子を用いた方法は以下のようになります。２つの参照点や表示の比率がどのように指定されているかに注目してください。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,"MyImage");
+drawimage(C,D,"MyImage",aspect->1);
+drawimage(E,F,"MyImage",flipx->true);
+drawimage(G,H,"MyImage",refx1->"20%",refy1->"50%",ref2->"rt");
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS2.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>修飾子:</b> この関数にはいくつかの修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >画像の透明度</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 垂直方向に反転</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 水平方向に反転</td></tr><tr><td class="wikicell" ><code>aspect</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > アスペクト比</td></tr><tr><td class="wikicell" ><code>ref1</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > １つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx1</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > １つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy1</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > １つめの参照点の y 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>ref2</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > 2つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx2</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > 2つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy2</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > 2つめの参照点の y 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>rendering</code></td><td class="wikicell" ><code>"fast"</code> または <code>"nice"</code></td><td class="wikicell" > 表示品質</td></tr></table><br />
+<br />
+<b>例:</b> より進んだ使い方は次の通りです。変換行列によって2つの参照点を反復的に変化させます。それぞれのステップで画像を表示していきますが、それは対数螺旋を描きます。多くの画像を表示するために一つ問題があります。それは表示速度です。場合によってはきれいに表示するか、速く表示するかを選択する必要があるでしょう。そのための修飾子が  <code>rendering</code> で、 <code>nice</code> か <code>fast</code> を設定します。初期状態では  <code>nice</code> になっています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=(1,0);
+b=(2,-1);
+w=30°;
+m=((cos(w),-sin(w)),
+   (sin(w),cos(w)))*0.9;
+
+repeat(100,
+ drawimage(a,b,"MyImage");
+ a=m*a;
+ b=m*b;
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS3.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="drawimage4"></A><br />
+<h4>画像の表示: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> ３つの参照点を用いてアフィン変換をします。初期状態では、画像の底辺の左右と左上の点です。参照点は修飾子で変更することができます。<br />
+<br />
+<b>例:</b> 最も簡単な使い方は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,C,"MyImage"))
+</pre></div><br />
+<br />
+この関数は、反転や回転のような幾何学的変換をして画像を表示するのに適しています。そのためには、参照点を変換した点を用意します。次の例をご覧ください。点A' , B' , C ' は点A,B,Cを直線に関して鏡像変換（反転）した点です。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,C,"MyImage"))
+drawimage(A',B',C',"MyImage"))
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS8.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> この関数には次の修飾子が追加されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>ref3</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > ３つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx3</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" >３つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy3</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > ３つめの参照点の ｙ 軸方向の位置指定</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="drawimage"></A><br />
+<h4>画像の表示: <span style="color:red;"><code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> ４つの参照点を指定して射影変換をします。初期状態では参照点は左下から４つの角の点を反時計回りにとられます。<br />
+<br />
+<b>例:</b> 最も簡単な使い方は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,B,D,C,"myimage")
+</pre></div><br />
+<br />
+次の図がこの結果です。わかりやすくするために格子を描いてあります。（上のコードで格子が描かれるわけではありません）<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> つぎの修飾子が追加されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>ref4</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > ４つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx4</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" >４つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy4</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > ４つめの参照点の ｙ 軸方向の位置指定</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="mapimage"></A><br />
+<h4>画像をデフォルメする: <span style="color:red;"><code>mapimage(&#060;imagename&#062;,&#060;function&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、引数の関数を用いて画像を変形させます。通常、この関数は、ある関数を用いて２次元ベクトルを２次元ベクトルに写すものとします。complex 修飾子を用いて複素数平面から複素数平面へ写すこともできます。関数の範囲は x-range と y-range 修飾子で指定しますが、指定がなければ0.0と1.0の間とされます。この範囲が画像の長方形の縦横幅に対応します。この範囲ですべての点が写されます。この機能は基本的に <code>mapgrid</code>関数と類似しています。<br />
+<br />
+<b>例:</b> ここでは、x軸方向をsin関数を使って変形します。まず、その関数を定義します。次に <code>mapimage</code> 関数で変形します。図では、わかりやすくするために方眼を描いています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(z):=(z_1*(sin(z_2)+1.3),z_2);
+mapimage("MyImage",f(#),
+xrange->(-1,1),
+yrange->(0,pi),resolution->30
+);
+mapgrid(f(#),color->(0,0,0),alpha->0.3,
+xrange->(-1,1),
+yrange->(0,pi),resolution->30
+);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>やせた  Ritter Rost</b></td></tr></table><br />
+<br />
+<br />
+次の例は前のものと類似していますが、関数として複素関数を用いています。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+r=complex(A);
+f(x):=exp(r*x);
+mapimage("myimage",f(#),
+  complex->true,
+  xrange->(0,1),
+  yrange->(0,pi),resolution->30
+);
+
+mapgrid(f(#),complex->true,
+xrange->(0,1),yrange->(0,pi),color->(0,0,0),alpha->0.5
+,resolutiony->30,resolutionx->10,step->10,size->1);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS7.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<b>修飾子:</b> 次のような修飾子があります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>alpha</code></td><td class="wikicell" ><code>0.0 ... 1.0</code></td><td class="wikicell" >画像の透明度</td></tr><tr><td class="wikicell" ><code>xrange</code></td><td class="wikicell" ><code>ベクトル</code></td><td class="wikicell" >x軸方向の範囲 </td></tr><tr><td class="wikicell" ><code>yrange</code></td><td class="wikicell" ><code>ベクトル</code></td><td class="wikicell" >y軸方向の範囲 </td></tr><tr><td class="wikicell" ><code>complex</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 複素関数を用いるフラグ</td></tr><tr><td class="wikicell" ><code>resolution</code></td><td class="wikicell" ><code>整数</code></td><td class="wikicell" > 変換後の画像の解像度</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="imagesize"></A><br />
+<h4>画像の大きさを取得する: <span style="color:red;"><code>imagesize(&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  画像の大きさを返します。戻り値は幅と高さの画素数を示す２つの整数です。<br />
+<br />
+<hr />
+<br />
+<A NAME="imagergb"></A><br />
+<h4>画素情報を取得する: <span style="color:red;"><code>imagergb(&#060;imagename&#062;,&#060;int&#062;,&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>   <code>imagergb(&#060;imagename&#062;,x,y)</code> で、(x,y) の位置にある画素の色情報を取得します。戻り値は4次元のベクトルで、はじめの3つはRGB値(0〜255)、4番目はアルファ値です。<br />
+<br />
+<b>例:</b> 次のコードでは、まず画像を表示してその大きさを取得します。次に、両方向に標本点を取り、その色と透明度で粗っぽい点からなる画像を作成します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,"MyImage",scale->2);
+dim=imagesize("MyImage");
+forall((0..dim_1/10)*10,i,err(i);
+  forall((0..dim_2/10)*10,j,
+    col=imagergb("MyImage",i,j);
+    draw((i,-j)*.03,color->(col_1,col_2,col_3)/255,
+                    alpha->col_4,
+                    border->false)
+  )
+)
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/RostS9.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> カスタム画像を作る</h3>
+<br />
+　ここまでは、メディアブラウザであらかじめ読み込まれた画像についての操作でしたが、シンデレラの描画面から画像を作ることもできます。いったん画像として作ってしまえば、<br />
+<tt> CindyScript の<code>canvas</code>関係の関数でそれを操作することができます。これにより、描画のための命令などは見えなくなります。しかし、カスタム画像が作られればそれを描画手順のうちの一つとして画面上に描くことができます。画像表示は描画と似て、画面の任意の場所に描くことができます。この概念はとても強力ですが、基本的な使い方を示すだけにします。</tt><br />
+<br />
+<hr />
+<br />
+<A NAME="createimage"></A><br />
+<h4>カスタム画像を作る: <span style="color:red;"><code>createimage(&#060;imagename&#062;,&#060;int&#062;,&#060;int&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>createimage(&#060;imagename&#062;,width,height)</code> 関数は、指定された画像のイメージバッファを作成します。最初はそこには何もありません。イメージバッファはメディアブラウザのもとで指定した名前でアクセス可能となり、 <code>drawimage(...)</code> 関数で使えるようになります。<br />
+<br />
+<hr />
+<br />
+<A NAME="clearimage"></A><br />
+<h4>画像の内容を消去: <span style="color:red;"><code>clearimage(&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この関数は、画像からすべての内容を消去します。消去後も画像は存在しますが、描画された内容はなく、いわば透明な状態です。<br />
+<br />
+<hr />
+<br />
+<A NAME="removeimage"></A><br />
+<h4>画像の削除: <span style="color:red;"><code>removeimage(&#060;imagename&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この関数はメディアブラウザから画像を取り除きます。これ以降アクセスすることはできなくなります。<br />
+<br />
+<hr />
+<br />
+<A NAME="canvas"></A><br />
+<h3>キャンバスに描く</h3>
+<br />
+画像をキャンバスのようにして、CindyScript で描画をすることができます。これは強力な概念ですが、若干の説明を要するでしょう。<br />
+次のコードで同心円を作図したとしましょう。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+ linesize(3);
+ repeat(10,i,
+   drawcircle(K,i*.5);
+ );
+ drawtext(K+(-2,2),"These are",size->20,color->(1,1,0));
+ drawtext(K+(-2,-2),"some circles",size->20,color->(1,1,0));
+</pre></div><br />
+<br />
+この結果は左図のようになります。いま、このコードを使って右図のようなビットマップ画像を作成したいとします。そのための画像をあらかじめ作っておきます。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Canvas0.png" border="0"  /></span> <span class="img"><img alt="" src="img/wiki_up/Canvas1.png" border="0"  /></span><br />
+<br />
+<tt> <i>initialization</i> スロットに、次のようなコードを書くことによって、画像が用意できます。</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+createimage("image",400,400)
+</pre></div><br />
+<br />
+この画像を、キャンバスと見立てます。今の例では、4つの点で指定した長方形をそのキャンバスに対応させます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+canvas(F,G,E,"image"
+    //....here comes the drawing code....    
+)
+</pre></div><br />
+<br />
+３つの頂点 <i>F</i>, <i>G</i>, <i>E</i> でキャンバスの位置が指定されます。上の図の長方形EFGHです。実際には、<code>canvas</code>内でのすべての描画命令による図は目に見えないので、上の図は説明のためのものです。<br />
+図を描いたあとは、 <code>drawimage(...)</code> 関数を用いて図を表示することができます。その結果を例示すると次のようになります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+clearimage("image");
+canvas(F,G,E,"image",
+ linesize(3);
+ repeat(10,i,
+   drawcircle(K,i*.5);
+ );
+ drawtext(K+(-2,2),"These are",size->20,color->(1,1,0));
+ drawtext(K+(-2,-2),"some circles",size->20,color->(1,1,0));
+);
+
+drawimage(A,B,C,D,"image");
+</pre></div><br />
+<br />
+ここで使われる<code>drawimage(...)</code> 関数では、射影変換をしています。その結果は次の図の通りです。<br />
+<br />
+<span class="img"><img alt="" src="img/wiki_up/Canvas2.png" border="0"  /></span> <span class="img"><img alt="" src="img/wiki_up/Canvas3.png" border="0"  /></span><br />
+<br />
+キャンバスの画像はビットマップであることに注意してください。したがって適切な解像度を指定しなければなりません。初期値として 80×80 のサイズにすると次の図のようになるでしょう。いったんキャンバスが作られると、それが異なる場所や大きさで使われることがあるでしょう。次のコードで、そのような例を示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+drawimage(A,P,M,O,"image");
+drawimage(B,P,M,Q,"image");
+drawimage(D,R,M,O,"image");
+drawimage(C,R,M,Q,"image");
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Canvas4.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="canvas3"></A><br />
+<h4>キャンバスに描く (参照点１つ): <span style="color:red;"><code>canvas(&#060;pos&#062;,&#060;imagename&#062;,&#060;drawing code&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#060;imagename&#062;</code> の画像をキャンバスとして用い、１つの参照点に対して<code>drawimage(&#060;pos&#062;,&#060;imagename&#062;)</code> 関数で表示をします。 <code>&#060;drawing code&#062;</code> によりキャンバス上に描画します。 修飾子は <code>drawimage(&#060;pos&#062;,&#060;imagename&#062;)</code>と同様です。<br />
+<br />
+<b>修飾子:</b> The command has several 修飾子.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子 </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>angle</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" >参照点周りの回転角</td></tr><tr><td class="wikicell" ><code>rotation</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > <code>angle</code>と同じ</td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > 拡大縮小 </td></tr><tr><td class="wikicell" ><code>scale</code></td><td class="wikicell" ><code>ベクトル</code></td><td class="wikicell" > それぞれの方向に拡大縮小</td></tr><tr><td class="wikicell" ><code>scalex</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > x軸方向へ拡大縮小</td></tr><tr><td class="wikicell" ><code>scaley</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > y軸方向へ拡大縮小</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 垂直方向に反転</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 水平方向に反転</td></tr><tr><td class="wikicell" ><code>ref</code></td><td class="wikicell" ><code>上記説明参照</code></td><td class="wikicell" > 参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx</code></td><td class="wikicell" ><code>上記説明参照</code></td><td class="wikicell" > 参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy</code></td><td class="wikicell" ><code>上記説明参照</code></td><td class="wikicell" > 参照点の y 軸方向の位置指定</td></tr></table><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="canvas4"></A><br />
+<h4>キャンバスに描く (参照点2つ): <span style="color:red;"><code>canvas(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;,&#060;drawing code&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は <code>&#060;imagename&#062;</code> の画像をキャンバスとして用い、２つの参照点に対して表示をします。 <code>&#060;drawing code&#062;</code> によりキャンバス上に描画します。 修飾子は <code>drawimage(&#060;pos&#062;,&#060;pos&#062;,&#060;imagename&#062;)</code>と同様です。<br />
+<br />
+<b>修飾子:</b> 修飾子がいくつかあります。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>flipx</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 垂直方向に反転</td></tr><tr><td class="wikicell" ><code>flipy</code></td><td class="wikicell" ><code>ブール値</code></td><td class="wikicell" > 水平方向に反転</td></tr><tr><td class="wikicell" ><code>aspect</code></td><td class="wikicell" ><code>実数</code></td><td class="wikicell" > アスペクト比</td></tr><tr><td class="wikicell" ><code>ref1</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > １つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx1</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > １つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy1</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > １つめの参照点の y 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>ref2</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > 2つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx2</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > 2つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy2</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > 2つめの参照点の y 軸方向の位置指定</td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="canvas5"></A><br />
+<h4>キャンバスに描く (参照点3つ): <span style="color:red;"><code>canvas(&#060;pos&#062;,&#060;pos&#062;,&#060;pos&#062;,&#060;&#062;,&#060;drawing code&#062;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 上の関数と同様で、３つの参照点で描画します。<br />
+<br />
+<b>修飾子:</b> この関数には次の修飾子が追加されます。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" >修飾子: </td><td class="wikicell" > 型 </td><td class="wikicell" > 効果:</td></tr><tr><td class="wikicell" ><code>ref3</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > ３つめの参照点の位置指定</td></tr><tr><td class="wikicell" ><code>refx3</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" >３つめの参照点の x 軸方向の位置指定</td></tr><tr><td class="wikicell" ><code>refy3</code></td><td class="wikicell" ><code>上記参照</code></td><td class="wikicell" > ３つめの参照点の ｙ 軸方向の位置指定</td></tr></table><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 06 of March, 2012 [13:17:02 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Image%20Manipulation%20and%20RenderingJ">
+    http://doc.cinderella.de/tiki-index.php?page=Image%20Manipulation%20and%20RenderingJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

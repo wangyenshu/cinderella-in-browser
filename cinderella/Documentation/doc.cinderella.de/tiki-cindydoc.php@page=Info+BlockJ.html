@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Info BlockJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 情報ブロック</h2>
+<!--latexreplace<br />
+\index{inspect!info}<br />
+--><!-- /latexreplace --><br />
+最初のブロックは、要素の幾何学的定義についての情報を提供します。ここで、要素の名前、定義、インシデンス、パラメータを見ることができます。このブロックには、ボタン <span class="img"><img alt="" src="buttonsback/inspector-info.png" border="0"  /></span> で入ることができます。<br />
+<br />
+自由点の情報は次のようになっています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/InfoJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>自由点の情報</b></td></tr></table><br />
+<br />
+点の識別名と位置、ラベルがわかります。識別名は、シンデレラが内部的に、また、CindyScriptで点をコントロールするときに使います。ラベルは画面に表示される名前です。この欄が空欄のときは、識別名がそのまま画面に表示されます。これらの属性は、文字を入力して変えることができます。ラベルは基本的にはアルファベットですが、日本語の「ア」「イ」などにしたいときは、別にテキストエディタなどを開いて日本語を打ち、それをカットアンドペーストでコピーします。直接入力することはできません。<br />
+　さらに、点の定義がわかり、次の例では、点Ｇが３本の直線 <i>a</i>, <i>b</i>, <i>c</i>の交点上にある(インシデント)ことがわかります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Info2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>従属点の情報</b></td></tr></table><br />
+<br />
+自由要素の管理について特に素晴らしい事実があります。それらの位置は <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の式で変えることができます。たとえば、位置を <code>[5,4]</code>  と指定すれば、点の位置は <i>xy</i>-座標 (5, 4) になります。位置を計算で指定することもできます。 式 <code>(B+C)/2</code> により、点は <i>B</i> と <i>C</i> を結ぶ線分の中点に置かれます。その点は、もちろんさらに動かすことができます。<br />
+<br />
+<h3> モードについての情報</h3>
+<br />
+いくつかのモード、たとえば、 <i>固定した角の直線</i> と <i>固定した半径の円</i> には、さらに追加情報があります。これらを入力するためのフィールドが、現在の要素の情報エリアの下にあります。これらのモードを選ぶと、インスペクタウィンドウが自動的に開き、パラメータを入力をうながします。<br />
+また、文字列をボタンとして機能させることなどもここで行なえます。　<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 10 of March, 2012 [06:01:08 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Info%20BlockJ">
+    http://doc.cinderella.de/tiki-index.php?page=Info%20BlockJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

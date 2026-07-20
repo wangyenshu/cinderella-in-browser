@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Scripting the Seeds of a SunflowerJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>ひまわりのスクリプト</h2>
+<br />
+　このチュートリアルで、あなたはシンデレラの内部プログラミング言語である  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の基本的な使い方を学びます。あなたは、このチュートリアルにあるのは  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> の機能のうちわずかな部分であることがわかるでしょう。それでも  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> でどれだけのことが可能なのか、その雰囲気はわかるでしょう。<br />
+<br />
+　次の例はいくつかのステップに分かれています。それぞれのステップで１つずつの概念を加えていきます。最後に、ひまわりの全体を形作るたくさんの小さな花の並び方をインタラクティブに見ることができるようになります。<br />
+<br />
+<h3> <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の最初の一行</h3>
+<br />
+　簡単なことから始めましょう。シンデレラで描画した１つの点と関連させて  <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> で点を打ちます。 <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a> <span class="img"><img alt="" src="buttonsback/single-add.png" border="0"  /></span>  モードにして点を１つ作ります。 <span class="img"><img alt="" src="buttonsback/snap.png" border="0"  /></span> ボタンをクリックして、方眼の上に点を置きやすいようにしておくといいでしょう。図 1 のようになればよいです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Pic0.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図 1: 点を一つとる</b></td></tr></table><br />
+<br />
+<br />
+<!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> で、このように作った図に幾何要素を付け加えることができます。いま、この点Aからx軸方向に1,y軸方向に1移動した点ををとります。そのために、「スクリプト」メニューから <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->を選んでスクリプトエディタを開きます。次のようなウィンドウが出ます。これが、 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->のエディタ画面です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Win0J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図 2: スクリプトエディタ</b></td></tr></table><br />
+<br />
+<br />
+　このウィンドウの左側にいくつかのイベントがあるでしょう。 <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のそれぞれのスクリプトはこれらのイベントと関連して実行されます。これらを「スロット」と呼んでいます。では、 <i>draw</i> スロットにスクリプトを書きましょう。これは、このスクリプトが、画面の描画の前に実行されることを意味しています。図形を描くスクリプトを書くのに適したスロットです。ここにスクリプトを書くためにスロットのアイコンをクリックします。 (図 3).<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Win1J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図 3:  draw スロットを選ぶ</b></td></tr></table><br />
+<br />
+<br />
+　次に、エディタのメインウィンドウにスクリプトを書きます。点を描くために図４のようにスクリプトを書きます。文字の色は自動的につきます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Win2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>図 4:  CindyScript 最初の一行</b></td></tr></table><br />
+<br />
+　このコードについて簡単に説明します。 <code>draw(...)</code> 関数は位置を表す２次元ベクトルを受け取ります。（このようなものを引数（ひきすう）といいます）そして、描画面の指定した位置に点を打ちます。初期設定では、小さな緑色の点です。 ( draw 関数は２つのベクトルを引数として受け取ることもできます。その場合は２点を結ぶ線分を描きます）このスクリプトでは、引数を <code>A+(1,1)</code> としています。これは、点Aのxy座標にベクトル(1,1) を加えるという意味です。計算式の中で幾何要素が自動的にその座標の役割をするわけです。<br />
+<br />
+コードを書き込んだならば、スクリプトのスタートボタン（二つの歯車のアイコン）を押します。すると、図５のように点が打たれます。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic1.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS1.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 5: 点をとる<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>繰り返し</h3>
+<br />
+　さて、簡単な制御機構をこのスクリプトに加えます。一つの点の代わりに点の列を描きます。そのために <code>repeat(...)</code> 関数を用いて繰り返しを行ないます。 <code>repeat(...)</code> 関数には３つの引数を渡します。１つ目は繰り返しの回数です。２番目は実行変数の名前、３番目は、繰り返したいコードです。引数はコンマで区切ります。図６をごらんください。 (スクリプトを変更したならば実行ボタンを押して実行することを忘れないでください。)<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic2.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS2.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 6: 繰り返して点を打つ<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+　このスクリプトは 10 個の点を打ちます。変数 <code>i</code> が実行変数です。繰り返しの間、 <code>1,2,3,4,5,6,7,8,9,10</code> の値をとっていきます。そして、その都度 <code>A+(i,i)</code> を計算し、結果として点列を描きます。<br />
+<br />
+　次のステップでは点 <i>A</i> の周りに円状に点を描きます。点 <i>A</i> からの距離は１とし、10°ずつ点を打っていきます。そのために、角度を表す新しい変数 <code>w</code> を用意します。まず <code>w=i*10°</code> という行を追加します。これで変数 <code>w</code> が自動的に作られ、(変数の型を示す必要はありません) 角度を表すことになります。次に、 <code>(sin(w),cos(w))</code> という行を追加します。図7のようになります。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic3.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS3.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 7: 円状に点を打つ<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>スライダを追加する</h3>
+<br />
+　次に、描画面上にスライダを作り、点の数をインタラクティブに増減できるようにします。スライダは幾何要素で作ります。線分を一つ引き、その上に点を一つとります。他の形のスライダ（たとえば円形のスライダ）も可能です。 <a title="no description" href="tiki-cindydoc.php@page=SegmentJ.html" class="wiki">線分を加える</a> <a title="no description" href="tiki-cindydoc.php@page=SegmentJ.html" class="wiki"><img  src="../cinderella.de/files/CindyDocu/Buttons/segment.png"></a> モードにして線分を一つ追加します。その端点は <i>B</i> と <i>C</i> になるでしょう。次に、<a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki"><img  src="../cinderella.de/files/CindyDocu/Buttons/single-add.png"></a> モードにして線分上に点を一つとります。この点は <i>D</i> になるでしょう。そこで、<i>C</i> と <i>D</i> の距離を点の数をコントロールするために利用します。この距離は <code>|C,D|</code> で測定できます。これに 10 を掛けて四捨五入し、描画する点の数 <code>n</code> とします。これは、 <code>n=round(|C,D|*10)</code> の１行だけでできます。ここでも変数の型を指定する必要がないことに注意してください。 <code>n</code> のような変数は単なる容器のようなものです。次に、繰り返しの数を <code>10</code> から <code>n</code> に変えます。ここまでの図とスクリプトを図8に示します。この図で、描かれる点の数は、点<i>B</i> を動かすことによりインタラクティブにコントロールできます。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic4.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS4.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 8: スライダを追加する<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>奇妙な角にする</h3>
+<br />
+　今から行なうことは一見するとあまり意味がないように思えることでしょう。変化させる角を10°から 137,508°にします。その結果は図９に示した通りです。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic5.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS5.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 9:  "奇妙な" 角<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+　それぞれの点はほとんどランダムに置かれたように見えます。実は 137,508° という角が数学的に特別な意味を持っているのです。それは、 360° に対する黄金比の２乗なのです。それは、点の配置について不思議な性質を持ちます。それぞれの新しい点は、その前の点からできるだけ遠く離れるように置かれます。このことを、中心Aからの距離を変えることのよって見ることができます。放射状に点を置くのに、 <i>sqrt(i)*0.2</i> とするとちょうど具合がよくなります。そのために、変数 <code>r</code> にこの値をセットします。その結果が図10です。それぞれの点が、その周りに自由空間を持つように配置されたことに注意して見てください。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic6.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS6.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図10: 半径を調整<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+　点の数をずっと多くしましょう。１行目の 10 という数を 80 にします。視覚的な変化の速度を見るために、点<i>D</i> を動かして見ましょう。図11ではおよそ400個の点が描かれています。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic7.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS7.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 11: たくさんの点<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<h3>ひまわりにおける螺旋</h3>
+<br />
+　先ほど描いた点は、ひまわりの種のようにおおざっぱに置かれています。ひまわりに見られる典型的な螺旋構造も観察できます。137,508°という角変位の要素がこのパターンでは重要です。 それは角度を少し動かして、何が起きているか見ることで理由が分かるでしょう。そのために、角変位を変化させるスライダーをもう一つ追加します。再び線分を描き、その上に点をとり、わずかな値変化を <code>dd=|E,G|*0.1°</code> で定義します。角を決める式を <code>w=i*(137.508+dd)</code> として、この値を式の中に追加します。このような小さなゆらぎの効果を図12に見ることができます。  ほんの少し角変位を変えるだけで、きれいな螺旋構造が現れることがわかります。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic8.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS8.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 12: 角度のゆらぎ<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+螺旋の数は黄金比とその比が続いていくことに密接に関係しています。　私たちは、この(とても奥深い)数学的な構造を詳しく述べることはしません。ここでは、フィボナッチ数列 (1,1,2,3,5,8,13,21,34,...) と呼ばれるものが役割を果たしていると言うにとどめておきます。フィボナッチ数列のそれぞれの数字は直前の二つの数の和です。２つの連続した数の比をとると、あとのほうの２つの数を取るほどより黄金比に近い数になります。驚くべきことに現れる螺旋の数はフィボナッチ数になっています。(実際のひまわりで確かめてみてください！)<br />
+<br />
+画面上の点の色を変えることによってこれを証明してみましょう。多くの <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> の関数(特にdraw(...)関数)では、修飾子と呼ばれるものを使うことができます。それらを使うことで、例えば、描かれている要素の色、大きさ、透明度を変えることができます。この例では、draw関数に「color->hue(i/21)」を追加します。hue(...)関数はすべての色相帯を持つ虹色を作り出してくれます。引数（hue関数の括弧のなかに書く数） が(0,0)から(1,0)まで動く間に、色相環のすべての色が表現されます。色を「hue(i/21)」と設定することで21 (フィボナッチ数) を１周期としていろいろな色の種を描くことができます。角度のゆらぎによるパターンを21色の螺旋として視覚的に観察することができます。<br />
+<br />
+<!--latexreplace $$ --> <!-- /latexreplace --><br />
+<table align=center>
+<tr>
+<td ><span class="img"><img alt="" src="img/wiki_up/Pic9.png" border="0"  /></span></td>
+<td><span class="img"><img alt="" src="img/wiki_up/CS9.png" border="0"  /></span></td> </tr>
+<tr><td ><b><!--latexreplace {\small\it --> <!-- /latexreplace -->図 13: 螺旋の色分け<!--latexreplace } --> <!-- /latexreplace --></b></td> </tr>
+</table><!--latexreplace $$ --> <!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+＜伊藤＞<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 03 of August, 2011 [00:13:49 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Scripting%20the%20Seeds%20of%20a%20SunflowerJ">
+    http://doc.cinderella.de/tiki-index.php?page=Scripting%20the%20Seeds%20of%20a%20SunflowerJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

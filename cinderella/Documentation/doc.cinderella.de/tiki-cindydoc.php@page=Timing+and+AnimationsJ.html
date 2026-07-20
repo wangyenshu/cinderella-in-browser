@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Timing and AnimationsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>時間とアニメーション</h2>
+<br />
+<br />
+<h3>時間</h3>
+<br />
+CindyScript は現在の日付と時間にアクセスする内部時計を持っています。時計はいくつかの自動化されたアニメーションを同期するのにも用いられます。 さらに、動いているアニメーションまたはシミュレーションの現在の時刻表示を同期するのにも使います。<br />
+<br />
+<br />
+<A NAME="time"></A><br />
+<h4>時刻にアクセスする: <span style="color:red;"><code>time()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は４つの整数からなるリスト  <code>[h,m,s,ms]</code>  を返します。４つの数はコンピュータの時計で "hour," "minute," "second," "millisecond" に相当します。<br />
+<br />
+<b>例:</b>  次のコードは、シンデレラの画面上に簡単な時計を描きます。まず変数  <code>t</code>  に時刻の情報を代入します。以降のコードで時計の図を描きます。関数  <code>p(w)</code> は単位円周上の点を定義します。スクリプトは連続的に動くように、 "Timer Tick" スロットに置かなければなりません。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+t=time();
+
+p(x):=[sin(2*pi*x),cos(2*pi*x)];
+O=[0,0];
+S=p(t_3/60)*4;
+M=p(t_2/60)*5;
+H=p((t_1*60+t_2)/(12*60))*3.5;
+draw(O,S);
+draw(O,M,size->2);
+draw(O,H,size->3);
+apply(1..12,draw(p(#/12)*5));
+apply(1..60,draw(p(#/60)*5,size->1));
+
+drawtext((3,5),t);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/ClockX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="date"></A><br />
+<h4>日にアクセスする: <span style="color:red;"><code>date()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は３つの整数からなるリスト <code>[y,m,d]</code> を返します。 ３つの数は、コンピュータのカレンダーの  "year," "month,"  "day"  に相当します。<br />
+<br />
+<hr />
+<br />
+<A NAME="seconds"></A><br />
+<h4>時刻表示: <span style="color:red;"><code>seconds()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、 <code>resetclock()</code> の実行後に経過した時間を返します。時間は１単位が１秒になるように調整されます。時計の精度はミリ秒です。<br />
+<br />
+<hr />
+<br />
+<A NAME="resetclock"></A><br />
+<h4>内部時計のリセット: <span style="color:red;"><code>resetclock()</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>seconds()</code> 演算子の値をリセットします。<br />
+<br />
+<hr />
+<br />
+<A NAME="simulationtime"></A><br />
+<h4>シミュレーションの時刻表示にアクセスする: <span style="color:red;"><code>simulationtime()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、アニメーションまたはシミュレーションの進行に同期した実行用時計のハンドルを得ます。<br />
+<br />
+<b>注意:</b> この演算子は、まだきちんと実装されていません。<br />
+<br />
+<hr />
+<br />
+<A NAME="wait"></A><br />
+<h4>待ち時間: <span style="color:red;"><code>wait(&#60;real&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> パラメータで与えられたミリ秒単位ですべてのスクリプトの実行を止めます。<br />
+<br />
+<b>例:</b> 次のコードは、音階を鳴らします。wait()の数字を変えると、速さが変わります。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(25,i,
+  playtone(72+i);
+  wait(100);
+)
+</pre></div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h3> アニメーションのコントロール</h3>
+<br />
+<br />
+<A NAME=" playanimation"></A><br />
+<h4>アニメーションを始める: <span style="color:red;"><code>playanimation()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> アニメーションを始めます。CindyLabの物理シミュレーションも同様です。<br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME=" pauseanimation"></A><br />
+<h4>アニメーションの一時停止: <span style="color:red;"><code>pauseanimation()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> アニメーションを一時停止します。<br />
+<br />
+<hr />
+<br />
+<A NAME=" stopanimation"></A><br />
+<h4>アニメーション停止: <span style="color:red;"><code>stopanimation()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> アニメーションを停止します。幾何学要素などの状態は初めの状態に戻ります。<br />
+<hr />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 26 of July, 2011 [11:42:11 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Timing%20and%20AnimationsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Timing%20and%20AnimationsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

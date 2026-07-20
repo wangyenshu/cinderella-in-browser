@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Add a LineJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 直線を加える</h2>
+<!--latexreplace<br />
+\index{mode!add line}<br />
+\index{line!by two points}<br />
+\index{join}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/multi-add-line.png" border="0"  align="left" /></span></div> このモードでは2点と、それを通る直線とを描くことができます。 しかも、2点とそれを結ぶ直線を一回の動作で描くことができます。 マウスのボタンが押された時に1つ目の点が描かれます。 マウスをドラッグし始めると2つ目の点と直線が画面上に現れます。 マウスのボタンを離すと2つ目の点が固定されます。 このモードにおける「2つ目の点の決まり方」は他のインタラクティブ なモード <a title="no description" href="tiki-cindydoc.php@page=Add+a+ParallelJ.html" class="wiki"> 平行線を加える</a>, <a title="no description" href="tiki-cindydoc.php@page=Add+a+PerpendicularJ.html" class="wiki">垂線を加える,</a>,  <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a>。<br />
+<br />
+このモードで直線を描くには次の3つのステップを踏まなければいけません。:<br />
+<br />
+<ul><li> <b>マウスのボタンを押す</b> と最初の点が生成されます。 最初の点の場所はボタンが押されたマウスの位置で決まり、これは直線が描かれるまで変更することはできません。
+<ul><li> もしすでに存在する点の上でマウスのボタンが押されたならば、その点が1つ目の点として選ばれます。
+</li><li> もしマウスのボタンが2つの要素(直線、円、2次曲線)の交わりの上で押されたならば、その交点が新しく追加され、そしてそれが1つ目の点となります。
+</li><li> もしマウスのボタンが一本の直線(または円)の上で押された場合、その点はその直線(または円)を自由に動ける自由点として追加され、かつ1つ目の点となります。
+</li><li> それ以外の場合は、自由点が1つ目の点となります。
+</li></ul></li><li> <b>マウスをドラッグする</b> と、2つ目の点と2点を結ぶ直線が描かれます。 最初の点と同じようにして、2つ目の点もマウスの場所で決まります。 <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a> ときと同じように、すでにある要素に近づけるとスナップします。 1つ目の点を決める時と要領は同じです。 スナップした時にはその要素はハイライトされます。
+</li><li> <b>マウスのボタンを離す</b> と2つ目の点の場所が決まります。 こうして直線を引く作業が完了します。
+</li></ul>
+<br />
+<br />
+下の図は自由点からある2直線の交点までを結ぶ直線を引くときの3つのステップを示しています。ここで1つ目の点は自由点で2つ目の点はすでにある２直線の交点です。<br />
+<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.3cm}l@{\kern.3cm}l}<br />
+{\small\it Press the mouse \ldots{}} &amp;  {\small\it \ldots{} drag it \ldots{}}&amp;  {\small\it   \ldots{} and release it.}\\<br />
+\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddLine1} &amp; \includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddLine2} &amp;\includegraphics<a class="wiki external"  href="width=1.3in">width=1.3in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{AddLine3}\ \\<br />
+\end{tabular}<br />
+$$<br />
+<tt> --></tt><br />
+   <table align="center">
+
+      <tr><td></tr>
+      <tr>
+	<td><b>
+マウスのボタンを押す</b><br></td> <td width=10></td>
+	<td><b>ドラッグして・・・</b><br></td> <td width=10></td>
+	<td><b>そして離す</b><br></td>
+      </tr>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddLine1.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddLine2.png" border="0"  /></span></td> <td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/AddLine3.png" border="0"  /></span></td>
+      </tr>
+      <tr><td></tr>
+
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+<br />
+「押す、ドラッグする、離す」の一連の動作で決まる2点を結ぶ直線を描く。<br />
+<br />
+<h3>こちらも参照してください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Line+through+a+PointJ.html" class="wiki">傾きつき直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+ParallelJ.html" class="wiki">平行線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PerpendicularJ.html" class="wiki">垂線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+CircleJ.html" class="wiki">円を加える</a>
+</li></ul>
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 02 of August, 2011 [12:26:38 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Add%20a%20LineJ">
+    http://doc.cinderella.de/tiki-index.php?page=Add%20a%20LineJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

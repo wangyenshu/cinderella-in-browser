@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interaction with C-Books 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Interaction with C-Books<a href="https://doc.cinderella.de/tiki-editpage.php?page=C-Books" title="Create page: C-Books" class="wiki wikinew">?</a></h2>
+<br />
+The c-book infrastructure and software (also called C-Book<a href="https://doc.cinderella.de/tiki-editpage.php?page=C-Book" title="Create page: C-Book" class="wiki wikinew">?</a> Environment CBE) is being developped in the EU project called MC Squared. C-books are e-books which may be enhanced by so-called widgets which are small pieces of software running within the c-books. Typically, readers of the c-books can interact with the widgets; and moreover, the widgets can communicate internally both with the c-book infrastructure and also with other widgets.<br />
+<br />
+There are three major ways for widgets to interact with the c-book infrastructure and other widgets:<br />
+<ul><li> getting and setting scores to and from the CBE,
+</li><li> using randomized values supplied by the CBE,
+</li><li> communicating with other widgets, so-called cross-widget communication.
+</li></ul>
+<br />
+Cinderella has been integrated into the c-book infrastructure, so that it is possible to use Cinderella files as c-book widgets. In addition, Cinderella now supports the ways of interaction mentioned above (but notice that cross-widget communication is currently still in development). This page gives a brief documentation of how to use this functionality, mainly via CindyScript.<br />
+<br />
+<h3>C-Book Scores</h3>
+<br />
+C-book scores are fully supported by Cinderella via CindyScript. For using scores in c-books there exists a tutorial in the form of a c-book. See <a class="wiki external"  href="http://mc2dme.appspot.com/dwo/dwo.jsp?profile=78&amp;language=en&amp;scoViewNr=5686812383117312">http://mc2dme.appspot.com/dwo/dwo.jsp?profile=78&amp;language=en&amp;scoViewNr=5686812383117312</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />.<br />
+<br />
+Here, we also give some written explanations of how to do this. At first, notice that after having added a widget to a c-book which uses scores in edit mode, you will have to click on the widget in order to open up the widget editor window. There you have to make sure the &quot;include in grading&quot; (&quot;teltMee&quot; in Dutch) check box on top of the window is checked, and that the max score is set to a positive number. Moreover, you either have to check the &quot;add check button&quot; checkbox or not, depending on how the widget interacts with the CBE.<br />
+<br />
+In order to produce your own widget which supports scores, you may use the following functions which are described in more detail below:<br />
+<ul><li> setmaxscore(): set an internal version of the CBE maximum score; this can be used to test your widget when not yet included into the CBE.
+</li><li> getmaxscore(): get the maximum score given by the c-book-author from the CBE.
+</li><li> setscore(): set the score to some non-negative value.
+</li><li> getscore(): get the score back which was set earlier using setscore().
+</li><li> check(): ask the DME to read the current score.
+</li></ul>
+<br />
+<A NAME="setscore"></A><br />
+<h4>Setting the current max score: <span style="color:red;"><code>setmaxscore(&#60;newmaxscore&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This function sets the internal version of maxscore to the value newmaxscore. newmaxscore has to be a non-negative integer. This internal max score is ignored if the widget is running inside the CBE. So, this function is just for testing purposes as long as the widget is still running in the stand-alone version of Cinderella and not as part of the CBE.</div><br />
+<br />
+<br />
+<A NAME="getmaxscore"></A><br />
+<h4>Getting the maximum possible score of the widget from the CBE: <span style="color:red;"><code>getmaxscore()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This function returns the maximum possible score of the current widget which was specified in the widget editor. In the CBE, this is usually a non-negative integer.</div><br />
+<br />
+<br />
+<A NAME="getscore"></A><br />
+<h4>Getting the current score: <span style="color:red;"><code>getscore()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This function returns the current score of the current widget. This has to be set using setscore() before. It is usually a non-negative integer.</div><br />
+<br />
+<br />
+<A NAME="setscore"></A><br />
+<h4>Setting the current score: <span style="color:red;"><code>setscore(&#60;newscore&#62;)</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This function set the current score of the current widget to the value newscore. Newscore has to be a non-negative integer.</div><br />
+<br />
+<br />
+<A NAME="check"></A><br />
+<h4>Tell the CBE to read this widget's current score: <span style="color:red;"><code>check()</code></span></h4>
+<br />
+<br />
+<div class="description"><br />
+<b>Description:</b> This function tells the CBE to ask this widget for the current score (which has been set be setscore() earlier). This is usually a non-negative integer.</div><br />
+<br />
+<br />
+<h3>C-Book Randomized Values</h3>
+<br />
+C-book randomized values are fully supported by Cinderella via CindyScript. For using scores in c-books there exists a tutorial in the form of a c-book. See<br />
+<a class="wiki external"  href="http://mc2dme.appspot.com/dwo/dwo.jsp?profile=78&amp;language=en&amp;scoViewNr=5723475968786432">http://mc2dme.appspot.com/dwo/dwo.jsp?profile=78&amp;language=en&amp;scoViewNr=5723475968786432</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />.<br />
+<br />
+Here are some brief explanations of how to do this.<br />
+<br />
+In order to be able to use random values with a Cinderella widget,<br />
+you just have to know which objects you want to change via the random parameters.<br />
+<br />
+As an example we use a construction of the altitude AE of a right triangle with base CB and with A=(0,0), where we want to set the x-coordinates of the points C and B randomly.<br />
+<br />
+To do this, simply type the following two lines into the text field in the bottom right of the CBE when in edit mode of a new page:<br />
+<br />
+B.x=1..6<br />
+C.x=-6..-1<br />
+<br />
+This tells the CBE to choose for B.x random integer value between 1 and 6 and for C.x a random integer between -6 and -1.<br />
+For most random values, the solution involves the computation of a square root.<br />
+<br />
+How do we have to prepare the Cinderella widget such that this works?<br />
+<br />
+The first thing we need to know is:<br />
+What does the DME pass to the Cinderella widget after the choice of a random value?<br />
+Actually, this is the most natural thing. E.g., based on the following code, it might pass to the widget the code:<br />
+B.x=3<br />
+C.x=-4<br />
+The Cinderella widget simply takes these lines of code and executes them, after having executed the Cinderella widget &quot;initialization&quot;.<br />
+<br />
+Thus, if B and C are free points, everything is fine.<br />
+<br />
+However, we do not want to allow the user to move B and C.<br />
+For this, we may use Cinderella's &quot;pinning&quot; property. Most Cinderella objects can be &quot;pinned&quot; to a fixed coordinate, i.e. they are not allowed to be moved using the mouse or anything else.<br />
+<br />
+So, what we have to do to be able to set the x-coordinates of B and C after the &quot;initialization&quot; is to<br />
+1. set the pinning property to &quot;false&quot; for B and C (or even for all points) in the &quot;initialization&quot; event<br />
+2. and to set it later (e.g., in the &quot;draw&quot; event) to &quot;true&quot;.<br />
+<br />
+This can be achieved using the following <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> code.<br />
+Paste this into the &quot;initialization&quot; event part of the Cinderella &quot;<a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> Editor&quot;:<br />
+<br />
+forall(allpoints(), inspect(,&quot;pinning&quot;, false));<br />
+<br />
+In order to pinn the points after having changed the x-coordinates of B and C,<br />
+paste this into the &quot;draw&quot; event part of the Cinderella &quot;<a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> Editor&quot;:<br />
+<br />
+forall(allpoints(), inspect(,&quot;pinning&quot;, true));<br />
+<br />
+This fixes all points.<br />
+<br />
+In the manual of the DME you will find several other ways to specify random values, such as<br />
+B.x = 1,2,5,6<br />
+to only let the DME choose between the four values 1, 2, 5, and 6.<br />
+We will not go into this here.<br />
+<br />
+Moreover, not only coordinates of points can be set via the random parameters feature.<br />
+<br />
+You may change any other numerical property of a Cinderella object which is changeable from <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> via the syntax<br />
+<br />
+... = integer number<br />
+<br />
+E.g., points also have a y-coordinate, so if you type the following into the &quot;variables for random parameters&quot;<br />
+textarea in the DME at the bottom right of a page<br />
+A.x = -5..5<br />
+A.y=-3..3<br />
+then both coordinates will be set randomly.<br />
+<br />
+<br />
+<h3>Cross-Widget Communication</h3>
+<br />
+Cross-widget communication is still in development. This documentation will be adapted as soon as cross-widget communication is available.<br />
+<br />
+TO DO...<br />
+THE REST OF THIS SECTION IS STILL TO BE WRITTEN...<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Monday 12 of January, 2015 [21:26:31 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20C-Books">
+    http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20C-Books
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

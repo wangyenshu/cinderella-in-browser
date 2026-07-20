@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Free Mass 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<!-- latexreplace \chapter{CindyLab  Objects} --><!-- /latexreplace --><br />
+<h2> Free Mass</h2>
+<!--latexreplace<br />
+\index{simulation!mass}<br />
+\index{mass}<br />
+\index{Newton's law}<br />
+\index{animation control panel}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-mass.png" border="0"  align="left" /></span></div> Adding a free mass particle is similar to adding a free geometric point. The only difference is that mass particles have to be added with free mass mode, while free points are added with <a title="no description" href='tiki-cindydoc.php@page=Add+a+Point.html' class='wiki'>Add a Point</a> mode.<br />
+<br />
+Without the presence of forces or velocities, a free mass appears to be no different from a geometric point. (There is only a very tiny difference between free masses and geometric points, since by default masses are drawn in a slightly brighter color, so that one can easily recognize them in a drawing.)<br />
+<br />
+As soon as a physical object (for instance, a mass) is added, an animation control panel appears in the geometric view. Unless the play button is selected, masses behave like geometric points. Pressing the play button starts the physics simulation. If a <a title="no description" href='tiki-cindydoc.php@page=Velocity.html' class='wiki'>Velocity</a> was assigned to the mass, the mass will start moving automatically. If the mass is influenced by forces (say from a <a title="no description" href='tiki-cindydoc.php@page=Spring.html' class='wiki'>Spring</a> or from <a title="no description" href='tiki-cindydoc.php@page=Gravity.html' class='wiki'>Gravity</a>), the velocity of the mass will change according to the force while the mass is moving. The change of velocity per time unit is called <i>acceleration</i>. The acceleration of a mass in response to a force is governed by the equation<br />
+<br />
+<!-- latexreplace $$\textrm{acceleration}=\frac{\textrm{force}}{\textrm{mass}}$$ --><table align=center cellpadding=5 border=1><tr><td>
+<b>acceleration</b> = <b>force</b> / <b>mass</b>
+</td></tr></table><!-- /latexreplace --><br />
+<br />
+Here <i>force</i> is the vector sum of all forces that act on the mass.<br />
+<br />
+<h3>Inspecting Masses</h3>
+<!--latexreplace<br />
+\index{inspect!mass}<br />
+\index{friction}<br />
+\index{charge}<br />
+\index{radius!of a mass}<br />
+--><!-- /latexreplace --><br />
+The basic properties of a mass can be set and changed using the physics tab (this is the fourth tab in the top row) of the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a>. The physics inspector for a generic mass looks as follows:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MassInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The mass inspector</b></td></tr></table><br />
+<br />
+The meaning of the different entries is as follows:<br />
+<br />
+<ul><li> <b>Mass:</b> This is the value of the physical mass of the object. According to the formula <!-- latexreplace $\textrm{acceleration}=\frac{\textrm{\small force}}{\textrm{\small mass}}$ --><i>acceleration = force/mass</i><!-- /latexreplace --> the acceleration of a particle is larger for smaller masses if the force is constant. This can be considered as the central law of inertia. (Thus with the same force it is much easier to push a tennis ball than a car.) On the other hand, the mass also influences the gravitational force that affects a particle. A gravitational force is proportional to the mass of an object. (Thus heavy objects are more influenced by gravity than light objects. The gravitational force on a tennis ball is much smaller than that on a car.). For instance, in free fall, both of the above effects cancel out exactly, so that in a field of constant gravity a car falls exactly as fast as a tennis ball.
+</li></ul>
+<br />
+<ul><li> <b>Friction:</b> In a usual environment on Earth, a ball that is rolling over a plane horizontal surface will come to rest at some time. The reason for this is <i>friction</i>. In principle, friction can be seen as a force that acts in the opposite direction to that of the motion. This force causes moving objects to slow down over time. For most physical simulations that model situations of everyday life on Earth, it is reasonable to assume that masses are subject to some friction. In contrast, if one models the movement of planets or electrons, it is generally realistic to assume that no friction is present. By default, the friction affecting masses is set to zero. It is also possible to set a global friction value, which is then applied to all masses, in the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a> inspector.
+</li></ul>
+<br />
+<ul><li> <b>Charge:</b> Electromagnetic forces (Coulomb force and Lorentz force) act only on electrically charged particles. The charge slider allows one to set the charge to a specific value. Charges can be either positive or negative. Positive and negative charges attract each other, while like charges repel each other. The charge of a particle will be relevant only if either the particle is involved in a (Coulomb) interaction or the "charges cause forces" box in the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a> is checked. By default, the charge of a mass is set to zero.
+</li></ul>
+<br />
+<ul><li> <b>Radius:</b> Usually, <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> assumes that particles are pointlike objects. However, if  the "masses are balls" box in the <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a> is checked, particles will behave like objects with a nonzero diameter, which repel each other when they hit. This slider adjusts the radius of a particle. By default, the radius is set to 1.0.
+</li></ul>
+<br />
+<ul><li> <b>Fixed:</b> Usually, masses are free to move move around. However, if this box is checked, the mass will not be moved by the physics simulation engine. It is important to know that if this box is checked, the mass may still cause gravitational or electrostatic forces. The following picture shows the movement of three charged particles in a cage of several other similarly charged particles. The outer particles are fixed so that they cannot move.
+</li></ul>
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Mass2.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Three charged particles in a cage <br>of fixed charged particles</b></td></tr></table><br />
+<br />
+It is important to notice that unlike "pinned" points, a "fixed" point is still movable by a mouse action.<br />
+<br />
+<ul><li> <b>Limit speed:</b> This button puts a limiting value on the speed of a particle. Although this behavior is not physically motivated (aside from the absolute limit of the speed of light), checking this box sometimes helps to avoid numerical problems in simulations.
+</li></ul>
+<br />
+<br />
+<h3>Masses and Geometry</h3>
+<br />
+Like any other geometric point, masses can be bound to lines, segments, or circles. In such a case, <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> simulates the behavior as if the mass points were attached to frictionless tracks corresponding to the line, segment, or circle. The following picture shows the state of equilibrium of a chain of springs under the influence of gravity, where the endpoints of the springs are attached to two circles:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Mass3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A chain of springs connected to circles</b></td></tr></table><br />
+<br />
+<br />
+<h3> Masses and CindyScript</h3>
+<!--latexreplace<br />
+\index{kinetic energy}<br />
+--><!-- /latexreplace --><br />
+Like any <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> object, a mass point provides several fields that can be read and generally set by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The following list shows the accessible fields for masses:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>vx</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > <i>x</i>-component of velocity  </td></tr><tr><td class="wikicell" ><code>vy</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > <i>y</i>-component of velocity  </td></tr><tr><td class="wikicell" ><code>v</code></td><td class="wikicell" >yes</td><td class="wikicell" >2-vector</td><td class="wikicell" > velocity as a vector  </td></tr><tr><td class="wikicell" ><code>fx</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > <i>x</i>-component of force  </td></tr><tr><td class="wikicell" ><code>fy</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > <i>y</i>-component of force  </td></tr><tr><td class="wikicell" ><code>f</code></td><td class="wikicell" >no</td><td class="wikicell" >2-vector</td><td class="wikicell" > force as a vector  </td></tr><tr><td class="wikicell" ><code>kinetic</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the kinetic energy of the point  </td></tr><tr><td class="wikicell" ><code>ke</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the kinetic energy of the point  </td></tr><tr><td class="wikicell" ><code>mass</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the mass of the point  </td></tr><tr><td class="wikicell" ><code>friction</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the friction of the point  </td></tr><tr><td class="wikicell" ><code>charge</code></td><td class="wikicell" >yes</td><td class="wikicell" >integer</td><td class="wikicell" > the charge of the point  </td></tr><tr><td class="wikicell" ><code>radius</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the radius of the point  </td></tr><tr><td class="wikicell" ><code>simulate</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" > turn on/off simulation for this point   </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Point.html' class='wiki'>Add a Point</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Velocity.html' class='wiki'>Velocity</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 26 of August, 2011 [15:05:12 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Free%20Mass">
+    http://doc.cinderella.de/tiki-index.php?page=Free%20Mass
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

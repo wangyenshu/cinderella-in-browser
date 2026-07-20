@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : GravityJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>重力</h2>
+<!--latexreplace<br />
+\index{simulation!gravity}<br />
+\index{gravity}<br />
+\index{force}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-gravity.png" border="0"  align="left" /></span></div> 重力は、すべての質点に作用する恒常的な力です。Cinderellaの重力モードは地球の表面（ゼロ以外の質点に作用する恒常的な力の場）で重力をモデル化するようにデザインされています。 重力によって質点にかかる力は、次の2つのパラメータに依存しています。: 重力の強さと物質の質量です。 (これを物質の重さと考えることができますが、専門的には質量と重さは2つの異なる概念です。) これらの関係は、次の方程式によって説明されます。:<br />
+<!-- latexreplace $$\textrm{force}=\textrm{gravityconstant}\cdot\textrm{mass}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>重力</b> = <b>重力加速度</b> * <b>質量</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+　重力も質点が引かれる方向に向きを持ちます。 Cinderellaでは、 直線を引くときのように、マウスボタンを押す/ドラッグする/離すという手順で重力を作ります。重力場は、力の方向を示す黒い矢線で描かれます。矢線が長いほど重力は強くなります。<br />
+<br />
+次の図は、ゼロでない 速度を持つ質点に重力がどのように働くかを示しています。左側は、弾道(放物線)シミュレーションが始まる前の図です。右側は、シミュレーションの間の質点の軌跡を示します。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.7cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.66in">width=1.66in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Gravity1} &amp;\includegraphics<a class="wiki external"  href="width=1.66in">width=1.66in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Gravity2}\\</tt><br />
+{\small\it  A mass-object with nonzero} &amp;  {\small\it Trace of the mass-object under}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   initial velocity before start.} &amp;  {\small\it the influence of gravity.}<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Gravity1.png" border="0"  width="250" /></span></td><td width=10><td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Gravity2.png" border="0"  width="250" /></span></td>
+      </tr>
+      <tr>
+	<td><b>動き始める前のゼロでない初速を持つ物体</b><br></td><td width=10><td>
+	<td><b>重力の影響下にある物体の動いた跡</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<br />
+　第２の例では、端点を固定し、質点どうしをひも状に ゴムバンドでつないだ場合の重力の作用を考えます。 CindyLabの初期状態で、このシステムは激しく振動します。しかしながら、環境設定によって、すこし摩擦力を加えてやれば、このシステムは、しばらくして平衡状態になります。この平衡状態では、質点のチェーンは完全な放物線を描きます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Gravity3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>重力の影響下にある物体のチェーン</b></td></tr></table><br />
+<br />
+　次の図はさらに精巧な例を示します。ここでは、背景に金門橋の写真を載せています。絵の左上の部分は、重力の影響を受けているゴムバンド・チェーンの物理学シミュレーションを示します。それを射影変換<a title="no description" href='tiki-cindydoc.php@page=Projective+Transformation.html' class='wiki'>Projective Transformation</a> によって金門橋の写真の枠に写しました。重力をちょうどよい値に合わせると、ゴムバンドの形状と橋を支えるケーブルの形状がそっくりであることがわかります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Gravity4.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>金門橋の解析</b></td></tr></table><br />
+<br />
+<h3>重力のインスペクタ</h3>
+<!--latexreplace<br />
+\index{inspect!gravity}<br />
+--><!-- /latexreplace --><br />
+A <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->の重力場は、比較的小さな値にセットされる内蔵の係数を備えています。 "重力加速度" の実際の値は、描かれた重力の矢線の長さにこの係数を掛けて計算されます。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GravityInspJ.png" border="0"  /></span></td></tr><tr><td class="caption"><b>重力インスペクタ</b></td></tr></table><br />
+<br />
+<br />
+<h3> 重力と <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a></h3>
+<!--latexreplace<br />
+\index{potential energy}<br />
+--><!-- /latexreplace --><br />
+　<!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> のいくつかの要素のように、重力には、 CindyScriptで読み書きのできるいくつかの要素があります。:<br />
+<br />
+<ul><li> <b>strength</b>: 大きさの要因 (実数、読み書き可)
+</li><li> <b>potential</b>: t 質点の重力場における位置エネルギー(実数、読み出しのみ、座標のとり方に依存する付加的定数として定義される)
+</li><li> <b>pe</b>: 物体の重力場における位置エネルギー(実数、読み出しのみ、座標のとり方に依存する付加的定数として定義される)
+</li><li> <b>simulate</b>:  重力場シミュレーションのON/OFF(ブール値, 読み書き)
+</li></ul>
+<br />
+<h3> 次もご覧ください</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=SunJ.html" class="wiki">恒星</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=EnvironmentJ.html" class="wiki">環境設定</a>
+</li></ul>
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Tuesday 13 of March, 2012 [13:33:57 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=GravityJ">
+    http://doc.cinderella.de/tiki-index.php?page=GravityJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

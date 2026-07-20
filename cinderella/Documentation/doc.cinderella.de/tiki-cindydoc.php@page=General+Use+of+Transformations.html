@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : General Use of Transformations 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h3>General Use of Transformations</h3>
+<!--latexreplace<br />
+\index{transformation!defining a}<br />
+\index{transformation!applying a}<br />
+\index{transformation!selecting a}<br />
+\index{map}<br />
+--><!-- /latexreplace --><br />
+We will demonstrate the use of transformations by a simple translation. The generation of a transformation consists of two steps:<br />
+<br />
+<ul><li> First, a transformation has to be defined by a suitable transformation mode.
+</li><li> Second, once a transformation has been defined, it can be applied to arbitrary geometric objects.
+</li></ul>
+<br />
+During a move in move mode, the parameters of a transformation become updated automatically such that the images of the transformed objects move accordingly.<br />
+<br />
+<br />
+<h4>Defining a Transformation</h4>
+<br />
+As with the usual geometry modes, how to define a transformation depends on the exact type of transformation you want to define. A <i>translation</i> is defined by clicking two points <i>A</i> and <i>B</i>. This translation corresponds to the geometric shift that moves <i>A</i> to the position of <i>B</i>.<br />
+<br />
+Consider the following example: Assume that points <i>A</i> and <i>B</i> are already present in the drawing. To define a translation you have to choose the mode <i>Translation</i> from the <i>Mode -> Transformation</i> menu. After point <i>A</i> is clicked, an arrow appears as an optical hint for the construction of the translation. Then you click point <i>B</i>. After this, a little rectangle, a so  <b>View Button</b>, appears that serves as a link to the translation further on.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo1}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo2}  &amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo3}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo4} \\</tt><br />
+{\small\bf First selection:  } &amp;  {\small\bf  Moving the mouse:}&amp;  {\small\bf Move to second point:}&amp;  {\small\bf Second selection:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it The first point of the  } &amp;  {\small\it An arrow hint}&amp;{\small\it  The arrow helps you.}&amp;{\small\it  The translation}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it translation is selected.} &amp;  {\small\it  is shown.}&amp;  {\small\it  }&amp;{\small\it is created. }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo1.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo2.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo3.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo4.png" border="0"  width="150" /></span></td>
+ </tr>
+<tr> <td><b>First selection:</b><br>   The first point of the <br> translation is selected.</td><td></td>
+<td><b>Moving the mouse:</b><br>   An arrow hint<br>   is shown.</td><td></td>
+<td><b>Move to second point:</b><br>   The arrow helps you.<br> </td> <td></td>
+<td><b>Second selection:</b><br>   The translation<br> is created.</td> </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+The view button serves a kind of representative for the transformation and acts almost like an ordinary geometric mode. By pressing it you apply the transformation to the currently selected elements.<br />
+<br />
+<br />
+<h4>Applying a Transformation</h4>
+<br />
+After you have defined the transformation, you can use it. For this you have to go to <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a>, which at the same time serves as the selection mode. Now you select one or several elements by clicking them. If you want to have a multiple selection, you must hold down the shift key. After you have selected the elements you want to map via your translation, you simply press the view button  of your transformation. In this way the mapped elements are created. They will automatically have the same appearance settings as their preimages. Furthermore, they will automatically become the active selection, so that you can easily apply a transformation to them again.<br />
+<br />
+<!--latexreplace<br />
+<tt> $$</tt><br />
+\begin{tabular}{l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l@{\kern.4cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo5}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo6}  &amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo7}&amp;  \includegraphics<a class="wiki external"  href="width=1.0in">width=1.0in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{GenTrafo8} \\</tt><br />
+{\small\bf Select the preimage:  } &amp;  {\small\bf  Move the mouse:}&amp;  {\small\bf Click the trafo:}&amp;  {\small\bf Another click:}\\<a class="wiki external"  href="-.5mm">-.5mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it You must do this in  } &amp;  {\small\it  If you move over}&amp;{\small\it  This maps the}&amp;{\small\it  Maps the mapped}\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it move mode. } &amp;  {\small\it  a transformation,}&amp;  {\small\it   element.}&amp;{\small\it elements again. }\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+{\small\it   } &amp;  {\small\it  it is highlighted. }&amp; {\small\it   }&amp; {\small\it }&amp;\\<a class="wiki external"  href="-1mm">-1mm</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /><br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo5.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo6.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo7.png" border="0"  width="150" /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/GenTrafo8.png" border="0"  width="150" /></span></td>
+ </tr>
+<tr> <td><b>Select the preimage:</b><br>   You must do this in<br> move mode. </td><td></td>
+<td><b>Move the mouse:</b><br> If you move over<br>   a transformation, <br> it is highlighted.</td><td></td>
+<td><b>Click the transformation:</b><br> This maps the element.<br> </td> <td></td>
+<td><b>Another click</b><br>   maps the mapped<br> elements again.</td> </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<h4>Changing the Parameters of a Transformation</h4>
+<br />
+A transformation is a dynamic object. If the position of the preimages changes, then the mapped elements become updated accordingly. If in our example <i>A</i> or <i>B</i> is moved, then the mapped circles will move as well.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/GenTrafo9.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Changing the translation</b></td></tr></table><br />
+<br />
+<br />
+<h4>Selecting a Transformation</h4>
+<br />
+Sometimes, it may be necessary to <b>select</b> a transformation. This can also be done in <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a>. However, for selecting the transformation you have to press the shift key while you click it. Selected transformations may be used as input parameters for <a title="no description" href="tiki-cindydoc.php@page=Transformation+Groups.html" class="wiki">transformation groups</a> or <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+Systems.html" class="wiki">iterated function systems</a>.<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Move+Mode.html' class='wiki'>Move Mode</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Iterated+Function+Systems.html' class='wiki'>Iterated Function Systems</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Transformation+Groups.html' class='wiki'>Transformation Groups</a>
+</li></ul>
+</div><br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 30 of July, 2011 [08:52:20 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=General%20Use%20of%20Transformations">
+    http://doc.cinderella.de/tiki-index.php?page=General%20Use%20of%20Transformations
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

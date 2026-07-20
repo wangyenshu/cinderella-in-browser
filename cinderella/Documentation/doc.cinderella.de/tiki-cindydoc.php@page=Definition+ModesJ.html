@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Definition ModesJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>定義するモード</h2>
+<br />
+<b>定義するモード</b> とは、新しい要素を描くのに、「選択によって定義する」方法を取るモードのことです。 ツールバーのアイコンの中から定義するモードを選ぶと、画面上の幾つかの要素を選択するように要求されます。 要求を満たすように選択すると、画面上に新しく要素が追加されます。 <a title="no description" href="tiki-cindydoc.php@page=Interactive+ModesJ.html" class="wiki">インタラクティブなモード</a>と比較すると少し使い勝手が悪いようですが、このモードを使わなければできないような作図もあります。 定義するモードを使うべき4つの主な場合について説明します。<br />
+<br />
+<br />
+<ul><li> ある種の作図は定義するモードのみで可能です。 (ある種の作図は定義するモードのみで可能です。( <a title="no description" href="tiki-cindydoc.php@page=Angle+BisectorJ.html" class="wiki">角の2等分線</a>, <a title="no description" href="tiki-cindydoc.php@page=CompassJ.html" class="wiki">コンパス</a>, <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Three+PointsJ.html" class="wiki"> 3点で決まる円</a>, <a title="no description" href="tiki-cindydoc.php@page=CenterJ.html" class="wiki">中心</a>,  <a title="no description" href="tiki-cindydoc.php@page=Conic+by+Five+PointsJ.html" class="wiki">5点で決まる２次曲線</a>, <a title="no description" href="tiki-cindydoc.php@page=Polar+of+a+PointJ.html" class="wiki">点の極線</a>, <a title="no description" href="tiki-cindydoc.php@page=Polar+of+a+LineJ.html" class="wiki">直線の極点</a>, および <a title="no description" href="tiki-cindydoc.php@page=Polygon.html" class="wiki"> 多角形</a>がこれにあたります。)
+</li><li> 直線などの交点が画面からはみ出してしまっていて、選択ができないことがあります。 たとえば、2直線がほとんど平行であって、とても画面内では交わらないという場合です。 するとこれまでのように &quot;点を加える&quot; 、&quot;直線を加える&quot; ことは不可能です。 しかし、 &quot;交点&quot; モードを使えば、交点を取り扱うことができます。
+</li><li> 作図した要素が見えない部分にあったり、複素数領域にあるという場合もありえます。 この時には、「式による表示」を開き、定義するモードを使って要素を選択することにより作図を進めることが可能です。
+</li><li> 状況があいまいさを含む場合もありえます。 たとえば、3直線が1点で交わっている場合、インタラクティブなモードの「点を加える」では交点を追加することはできません。 (というのは、この場合、マウスは3直線のどれとも非常に近い位置にあり、どの直線の上にある点であるかの判別ができないからです。) そこで &quot;交点&quot; モードを使い、直線を選んで交点を決めれば、望みどおりの交点が決まるのです。 もし<b> 本当に幾何学的な意味</b> で3直線が1点で交わっていたとしたら、(たとえば三角形の重心など) シンデレラ の自動定理確認機能により、新しく加えられた点がどの直線の上にも乗っていることをメッセージによって知ることができます。
+</li></ul>
+<br />
+定義するモードは<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/center.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=CenterJ.html" class="wiki">中心</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/bisector.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Angle+BisectorJ.html" class="wiki">角の２等分線</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/compass.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=CompassJ.html" class="wiki">コンパス</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/mirror.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=MirrorJ.html" class="wiki">鏡映</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/circle-by-three.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Circle+by+Three+PointsJ.html" class="wiki">３点で決まる円</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/conic-by-five.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Conic+by+Five+PointsJ.html" class="wiki">５点で決まる２次曲線</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/ellipse.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Ellipse+by+FociJ.html" class="wiki">焦点と通る点で決まる楕円</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/parabola.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Parabola+by+Focus+and+DirectrixJ.html" class="wiki">焦点と準線で決まる放物線</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/hyperbola.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Hyperbola+by+FociJ.html" class="wiki">焦点と通る点で決まる双曲線</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/polar-line.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Polar+of+a+PointJ.html" class="wiki">点の極線</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/polar-point.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Polar+of+a+LineJ.html" class="wiki">直線の極点</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/polygon.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=PolygonJ.html" class="wiki">多角形</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/intersection.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=IntersectionJ.html" class="wiki">交点</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/arc.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=ArcJ.html" class="wiki">円弧</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/angle-mark.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=Angle+MarkJ.html" class="wiki">角の印</a></td></tr></table><br />
+<br />
+<br />
+幾つかの事柄は定義するモードに共通のことですので、それを先に書いておきましょう。<br />
+<br />
+<ul><li> 要素はマウスによるクリックにより選択されます。 選択はどの表示(ユークリッド表示など)でも行うことができます。 特に <a title="no description" href='tiki-cindydoc.php@page=Views.html#Construction Text' class='wiki'>式による表示</a>, であれば、すべての要素を選択の対象としてみることができます。
+</li><li> 選択された要素は画面上でハイライト表示されます。
+</li><li> 定義するモードに切り替える以前に選択されていた要素も、定義するモードのために選択されたものとみなすことができます。 2本の直線を選択しておいて(その時は別のモードになっているかもしれない)&quot;交点&quot; のボタンをクリックすれば、その2直線の交点が点として加えられます。
+</li><li>もし選択を間違えた時、もう一度同じ要素をクリックすることにより選択を解除することができます。
+</li><li> 選択された要素が、そのモードと関係ないものであれば無視されます。 たとえば、 <a title="no description" href="tiki-cindydoc.php@page=Circle+by+Three+PointsJ.html" class="wiki">3点で決まる円 </a> を選んだ時 には、直線、円、2次曲線などは選択されていても無視されます。
+</li><li> 定義するモードではウィンドウの最下段にメッセージが表示されます。 メッセージを読めば、次に何を選択すればよいかがわかるでしょう。
+</li></ul>
+<br />
+<br />
+ボタンによる標準的なモードに加えて、 <b>シンデレラ２</b> では多くの新しいモードがメニューに用意されています。<a title="no description" href="tiki-cindydoc.php@page=PolygonsJ.html" class="wiki">多角形</a>, <a title="no description" href="tiki-cindydoc.php@page=Conic+OperationsJ.html" class="wiki">２次曲線の扱い</a>, <a title="no description" href="tiki-cindydoc.php@page=Transformation+ModesJ.html" class="wiki"> 変換モード</a>を参照してください。<br />
+<br />
+<br />
+(阿原)<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [11:45:10 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Definition%20ModesJ">
+    http://doc.cinderella.de/tiki-index.php?page=Definition%20ModesJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Measurements 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Measurements</h2>
+<!--latexreplace<br />
+\index{measurement}<br />
+\index{distance}<br />
+\index{angle}<br />
+\index{area}<br />
+\index{geometry!non-euclidean}<br />
+\index{hyperbolic geometry}<br />
+\index{spherical geometry}<br />
+\index{euclidean geometry}<br />
+--><!-- /latexreplace --><br />
+Measuring is an important part, perhaps even the origin, of   geometry.  <b>Cinderella</b> has modes for measuring distances,  angles, and area. Their behavior, at least in Euclidean geometry, is relatively straightforward:<br />
+<br />
+<ul><li> Select two points and obtain the distance between them.
+</li><li> Select two lines and obtain the angle between them.
+</li><li> Select a polygon, circle, or conic and obtain its area.
+</li></ul>
+<br />
+For most purposes that is all you have to know.  However, as usual, there are many fine details that sometime make things  more difficult. If you deal with non-Euclidean geometries, their crucial  defining property is a strange way to measure things. What goes on exactly is described in more detail in the section <a title="no description" href='tiki-cindydoc.php@page=Theoretical+Background.html' class='wiki'>Theoretical Background</a>.  For now, it is sufficient to know that in   non-Euclidean geometries measurements differ from the usual Euclidean measurements.  Values of distances or angles may even become complex numbers.  These values can be calculated with the  theory of <b>Cayley-Klein geometries</b>.<br />
+<br />
+The treatment of   measurements in such a general way is one of the core features  of <b>Cinderella</b>.  You should not worry about the strange behavior of measurement in non-Euclidean geometries. Perhaps the best way to understand it is to play with different   constructions to get a feeling for its unique aspects. Allowing  people to get an intuitive feel for non-Euclidean geometries is  one of the main goals of <b>Cinderella</b>.<br />
+<br />
+Another fine point comes from the measurements of areas. <b>Cinderella</b> is able to measure the area of polygons   and conics.  In both cases there are a few things that   deserve some extra attention.  It is easy to define the area for  a polygon that does not intersect itself. But what happens if it does?  The approach chosen in <b>Cinderella</b> is to use a general and consistent formula for area. Areas are counted with respect to an orientation.  How much a point inside the polygon  contributes to the area depends on its winding number with respect to the boundary.<br />
+<br />
+The area of conics is also a delicate topic. It is easy to define the area of an ellipse.  But what is the area of a  hyperbola? Is it infinite?  Is it undefined? Is it something   completely different?  <b>Cinderella</b> chooses an algebraic  approach that tries to use only one formula for all the different cases. It turns out that the area of a hyperbola is most reasonably described by a complex number. So, if you make   measurements of areas of conics do not be surprised if  complex numbers sometimes show up.<br />
+<br />
+In particular, the measurement modes are<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/distance.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Distance.html' class='wiki'>Distance</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/angle.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Angle.html' class='wiki'>Angle</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/area.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href='tiki-cindydoc.php@page=Area.html' class='wiki'>Area</a></td></tr></table><br />
+<br />
+<h4> Remark</h4>
+The measurements are shown as texts.  They can be used as "text   objects," so they can be dragged around and be repositioned.  Consult the description of <a title="no description" href="tiki-cindydoc.php@page=Text.html" class="wiki">text</a> and <a title="no description" href="tiki-cindydoc.php@page=Function.html" class="wiki">function</a> for   these features.<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [12:48:56 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Measurements">
+    http://doc.cinderella.de/tiki-index.php?page=Measurements
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

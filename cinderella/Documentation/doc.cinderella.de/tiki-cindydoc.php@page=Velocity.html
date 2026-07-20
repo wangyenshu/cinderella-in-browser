@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Velocity 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Velocity</h2>
+<!--latexreplace<br />
+\index{simulation!velocity}<br />
+\index{velocity}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-mass-vel.png" border="0"  align="left" /></span></div> The velocity mode requires a press/drag/release sequence. The press generates a free mass, the drag generates a black arrow connected to the mass, and the release freezes the situation. The arrow is an indicator for the velocity (speed plus direction) of the mass point. Its direction indicates the direction of the motion, and its length indicates the absolute value of the velocity, that is, the speed. The longer the arrow, the faster the object. Pressing the mouse button over an existing mass adds a velocity arrow to that mass.<br />
+<br />
+Velocity arrows are used for two purposes:<br />
+<br />
+<ul><li> <b>Initialization:</b> When the simulation is started, a mass with a velocity arrow will be initialized with the corresponding velocity value (this happens only if the "read on init" box of the velocity is checked).
+</li><li> <b>Visualization:</b> During the animation the velocity arrow of a mass always represents the actual velocity of the mass.
+</li></ul>
+<br />
+A priori it is not clear what length corresponds to what speed of a mass point. Therefore, some convention is necessary. The convention taken in <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> is best understood in the case in which the animation-speed slider is dragged to its maximum. In this case, a mass travels exactly the length of its velocity arrow in one simulation time step. The situation is illustrated in the following picture.<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Velocity1.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Trace of a mass point with unit velocity</b></td></tr></table><br />
+<br />
+For many purposes this behavior may be a bit too fast, but it is a good way of normalizing the speed treatment.<br />
+<br />
+<br />
+<h3>Inspecting Velocities</h3>
+<!--latexreplace<br />
+\index{inspect!velocity}<br />
+--><!-- /latexreplace --><br />
+The basic properties of a velocity can be set and changed by inspecting it with the <a title="no description" href='tiki-cindydoc.php@page=Inspector.html' class='wiki'>Inspector</a> and opening the physics tab (this is the fourth tab in the top row). The physics inspector for a generic mass looks as follows:<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/VelocityInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The velocity inspector</b></td></tr></table><br />
+<br />
+The precise meaning of the two controls is as follows:<br />
+<br />
+<ul><li> <b>Factor:</b> With this factor one can change the scaling of the velocity arrow. The factor is usually set to 1.0. Doubling the factor means that in the same time interval, twice as much distance is traveled.
+</li></ul>
+<br />
+<ul><li> <b>Read on Init:</b> This checkbox is checked by default. If it is checked, then at simulation start the length of the drawn arrow is calculated and stored in the point's data as its initial velocity. If the box is not checked, then the initial position does not matter at all. The arrow will be used only to display the actual velocity.
+</li></ul>
+<br />
+<br />
+<h3>Velocity and CindyScript</h3>
+<br />
+<br />
+Like any <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> object, a velocity has several fields that can be read and very often set by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The following list shows the accessible fields for masses:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>factor</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the scaling factor of the velocity </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Point.html' class='wiki'>Add a Point</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 26 of August, 2011 [13:18:07 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Velocity">
+    http://doc.cinderella.de/tiki-index.php?page=Velocity
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

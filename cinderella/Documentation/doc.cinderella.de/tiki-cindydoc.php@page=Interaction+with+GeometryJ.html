@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Interaction with GeometryJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>幾何との連携</h2>
+<br />
+　CindyScript は Cinderella で作図した要素を操作することができます。要素の表示についての情報を得たり、それらを操作することができます。CindyScript で要素を削除したり、新たに作ったりすることもできます。<br />
+<br />
+<h3>要素を動かす</h3>
+<br />
+<a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> での計算は、シンデレラの図形の自由要素の位置をコントロールするのに使えます。その一つは、自由要素の位置をはっきりと指定することです。たとえば、Aが自由要素のとき、  <code>A.xy=[1,1]</code> は、その点を座標 <code>[1,1]</code> に設定します。 もう一つの方法は <code>moveto</code>  演算子を使って点を動かすことです。<br />
+<br />
+<A NAME="moveto"></A><br />
+<h4>自由要素を動かす: <span style="color:red;"><code>moveto(&#60;geo&#62;,&#60;pos&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子では &#60;geo&#62; に幾何の自由要素を、&#60;pos&#62;  にこれを動かしたい位置を記述します。この演算子によって自由要素の動きをシミュレートします。<br />
+<br />
+&#60;geo&#62; が自由点であれば、 &#60;pos&#62;  は2つの数のリスト <code>[x,y]</code> か３つの数のリスト <code>[x,y,z]</code> です。 前者はユークリッド座標と解釈されます。後者は同次座標と解釈され  <code>[x/z,y/z]</code> に点を打ちます。<br />
+<br />
+<tt> &#60;geo&#62; が自由直線であれば &#60;pos&#62; は３つの数のリスト <code>[a,b,c]</code> でなければならず、直線 <code>a*x + b*y + c = 0</code> に設定されます。</tt><br />
+<br />
+<b>例:</b>  次のコードは、幾何の要素をどのように動かせるかをまとめたものです。要素のデータに直接アクセスして動かすものも含みます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+//A は自由点
+moveto(A,[1,4]);        // 点Aをユークリッド座標(1,4)に置く
+A.xy=[1,4];             // 点Aをユークリッド座標(1,4)に置く
+A.x=5;                  // A のx座標を 5 にする。y座標は変化しない
+A.y=3;                  // A のy座標を 3 にする。x座標は変化しない
+moveto(A,[2,3,2]);      // A を同次座標 [2,3,2] に置く
+A.homog=[2,3,2];        // A を同次座標 [2,3,2] に置く
+
+//a は自由曲線
+moveto(a,[2,3,4]);      // a を同次座標 [2,3,4]に置く
+a.homog=[2,3,4];       // a を同次座標 [2,3,4]に置く
+
+//b は傾きつき直線
+a.slope=1;              // 傾きを 1 にする
+
+//C は半径が自由な円
+C.radius=1;             // 半径を 1 にする
+
+</pre></div><br />
+<br />
+<hr />
+<hr />
+<br />
+<h2>幾何要素のハンドル</h2>
+<br />
+<A NAME="mover"></A><br />
+<h4>動いた要素: <span style="color:red;"><code>mover()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、マウスによって今動かされた要素が何であるか(そのハンドル)を返します。<br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="elementsatmouse"></A><br />
+<h4>マウスのあるところの要素: <span style="color:red;"><code>elementsatmouse()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、現在マウスカーソルの近くにある要素のリストを返します。<br />
+<br />
+<b>例:</b> 次のスクリプトはちょっとした意味があります。このスクリプトをMouse Move スロットに置いて実行すると、マウスカーソルの近くにある要素が消えます。マウスカーソルが遠ざかればまた現れます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+apply(allelements(),#.alpha=1);
+apply(elementsatmouse(),#.alpha=0);
+repaint();
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="incidences"></A><br />
+<h4>オブジェクトへのインシデント: <span style="color:red;"><code>incidences(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、幾何要素 &#60;geo&#62; とインシデントなすべての要素のリストを返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="element"></A><br />
+<h4>その名前の要素を取り出す: <span style="color:red;"><code>element(&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b> この関数は、 &#60;string&#62; の名前の幾何要素を返します。<br />
+<br />
+<b>例:</b>  <code>element</code> 演算子は、要素名が無効であるか、あるいはすでに使われているような場合に使われます。たとえば、<code>i</code> という名前の直線の色にアクセスしようとすると、<code>i</code> は虚数単位の名前として予約されているので、 <code>i.color=<a class="wiki external"  href="https://doc.cinderella.de/1,1,1">1,1,1</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" /></code> と書くことはできません。このような場合、次のように書きます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+element("i").color=[1,1,1]
+</pre></div><br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="createandremove"></A><br />
+<h3>幾何要素の生成と消去</h3>
+<br />
+<A NAME="createpoint"></A><br />
+<h4>自由点を作る: <span style="color:red;"><code>createpoint(&#60;string&#62;,&#60;pos&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は <code>&#60;string&#62;</code> をラベルとする点を打ちます。点の位置は <code>&#60;pos&#62;</code> です。すでに同じ名前の点がある場合には新しく作らず、単に指定した位置に移動します。<br />
+<br />
+<hr />
+<br />
+<A NAME="create"></A><br />
+<h4>幾何要素を作る: <span style="color:red;"><code>create(&#60;list1&#62;,&#60;string&#62;,&#62;list2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  この演算子は、任意の幾何要素を作り出します。アルゴリズムがいくつか微妙な点を引き起こしますので、特別な用途に限られます。<br />
+<br />
+第１引数の <code>&#60;list1&#62;</code>は生成する要素の名前のリストです。第２引数の <code>&#60;string&#62;</code> は幾何学的なアルゴリズムの内部的な名前です。第３引数の <code>&#60;list2&#62;</code> は、定義のために必要なパラメータのリストです。<br />
+次の表で、いくつかの例を示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+create(["A"],"FreePoint",[[1,1,1]]);
+create(["B"],"FreePoint",[[4,3,1]]);
+create(["a"],"Join",[A,B]);
+create(["X"],"CircleMP",[A,B]);
+create(["Y"],"CircleMP",[B,A]);
+create(["P","Q"],"IntersectionCircleCircle",[X,Y]);
+create(["b"],"Join",[P,Q]);
+create(["M"],"Meet",[a,b]);
+</pre></div><br />
+<br />
+この一連のコードで、次の図のように幾何要素を作ります。６番目の命令で円の交点を作るとき、２つの点の名前のリストがなければなりません。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CreateX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+幾何要素を作るときの正しいパラメータについては、次に述べる <code>algorithm</code> と <code>inputs</code> 関数によって得られます。<br />
+<br />
+<hr />
+<br />
+<A NAME="removeelement"></A><br />
+<h4>幾何要素の消去: <span style="color:red;"><code>removeelement(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 幾何要素を、それに関連するものも含めて消去します。<br />
+<br />
+<hr />
+<A NAME="inputs"></A><br />
+<h4>幾何要素を構成する要素: <span style="color:red;"><code>inputs(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、幾何要素 &#60;geo&#62; を定義するために必要な要素のリストを返します。それらは幾何要素のほか、数やベクトルであるかも知れません。<br />
+<br />
+<hr />
+<br />
+<A NAME="algorithm"></A><br />
+<h4>幾何要素の作図手順: <span style="color:red;"><code>algorithm(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は &#60;geo&#62; の作図手順を文字列で返します。<br />
+<br />
+<b>例:</b> 次のスクリプトはすべての要素に対してその作図手順を示します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+els=allelements();
+data=apply(els,([[#.name],algorithm(#),inputs(#)]));
+</pre></div><br />
+<br />
+　垂直二等分線の作図手順が次のように出力されます。:<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+ [[["A"],"FreePoint",[[4,4,-4]]],
+  [["B"],"FreePoint",[[4,-3,1]]],   
+  [["a"],"Join",[A,B]],
+  [["C"],"Mid",[A,B]],
+  [["b"],"Orthogonal",[a,C]]
+] 
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/PerpBisect.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<h2>要素の属性へのアクセス</h2>
+<br />
+　色や大きさといった、要素の属性は <code>.color</code>, <code>.size</code> などのオペレータでアクセスできます。しかし、要素にはたくさんの属性があります。それらにアクセスするには次の関数を用います。<br />
+<br />
+<A NAME="inspect1"></A><br />
+<h4>すべての属性のリスト: <span style="color:red;"><code>inspect(&#60;geo&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 幾何要素の属性のリストを返します。<br />
+<br />
+<b>例:</b>  <code>inspect(A)</code> とすると、自由点 <i>A</i> の属性名が次のようにリストアップされます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+[name,definition,color,color.red,color.blue,color.green,alpha,visibility,
+drawtrace,tracelength,traceskip,tracedim,render,isvisible,
+text.fontfamily,plane,pinning,incidences,labeled,textsize,textbold,textitalics,
+ptsize,pointborder,printname,point.image,
+point.image.media,point.image.rotation,freept.pos]
+</pre></div><br />
+<br />
+<hr />
+<br />
+<A NAME="inspect2"></A><br />
+<h4>変更可能な属性へのアクセス: <span style="color:red;"><code>inspect(&#60;geo&#62;,&#60;string&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 変更可能な任意の属性にアクセスします。<br />
+<br />
+<b>例:</b> 点 <i>A</i> の色に、 <code>inspect(A,"color")</code> によってアクセスします。<br />
+<br />
+<hr />
+<br />
+<A NAME="inspect2"></A><br />
+<h4>変更可能な属性を設定する: <span style="color:red;"><code>inspect(&#60;geo&#62;,&#60;string&#62;,&#60;data&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> 変更可能な属性の値を設定します。<br />
+<br />
+<b>例:</b> 点 <i>A</i> の色を <code>inspect(A,"color",(1,1,1))</code> によって白に設定します。<br />
+<br />
+<hr />
+<hr />
+<br />
+<A NAME="repaint"></A><br />
+<h4>再描画をする: <span style="color:red;"><code>repaint()</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は描画している図を強制的に再描画します。これは、スクリプトが図の更新を必要とするときに実行されます。この関数は <code>draw</code> あるいは <code>move</code> スロットにおいてはいけません。<br />
+<br />
+<hr />
+<A NAME="repaint1"></A><br />
+<h4>再描画その２: <span style="color:red;"><code>repaint(&#60;real&#62;)</code></span></h4>
+<br />
+<b>説明:</b>repaint命令を、パラメータで与えられたミリ秒だけ遅らせて実行します。<br />
+<br />
+<hr />
+<br />
+<A NAME="locusdata"></A><br />
+<h4>軌跡上の点: <span style="color:red;"><code>locusdata(&#60;locus&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この関数は、&#60;locus&#62;によって与えられる軌跡上の点の <i>xy</i>-座標のリストを返します。<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 26 of August, 2016 [11:29:35 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20GeometryJ">
+    http://doc.cinderella.de/tiki-index.php?page=Interaction%20with%20GeometryJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Transformations by FunctionsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>関数による変換</h2>
+<!--latexreplace<br />
+\index{mode!define transformation by function}<br />
+\index{transformation!by function}<br />
+\index{function}<br />
+--><!-- /latexreplace --><br />
+この変換モードは、他の全ての変換モードと全く異なります。他の全ての変換モードが直接幾何変換をコード化するのに対し、このモードは任意の関数によって自由に定義することができます。関数は <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> のコードで与えます。<br />
+<br />
+そのような関数を定義するために、「関数による変換」モードを選んだ後、画面のどこかでクリックします。すると、関数を入力するウィンドウがポップアップします。関数は次の自由変数に対する関数でなければなりません。この変数の名前は、 "#" ( <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> における一般的な実行変数), "x", "y", "z", "t", あるいは "v"です。幾何の要素の名前と重ならないように選ぶ必要があります。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo2J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>関数による変換の入力ウィンドウ</b></td></tr></table><br />
+<br />
+<br />
+関数では、変数に(<i>x</i>, <i>y</i>)座標もしくは複素数を表すベクトルも使えます。関数がベクトルを必要とするならばベクトルを返さなければなりません。関数が複素数を必要とするならば複素数を返さなければなりません。<br />
+<br />
+他の変換と同様、変換が定義されると表示ボタンが作られます。他の変換とは対照的に、関数による変換は点の写像だけを作ります。直線や円、楕円のような複雑な図形は写すことができません。関数は点がどのように他の点に写されるかを記述していなければなりません。ここで２つの変形が認められます。点は２次元ベクトルまたは複素数( <i>x</i>座標が実部、<i>y</i>座標が虚部)とみなされます。<br />
+<br />
+次の式は、点を複素数と解釈する多項式によって定義される関数の簡単な例です。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo1J.png" border="0"  /></span></td></tr><tr><td class="caption"><b>複素関数の定義</b></td></tr></table><br />
+<br />
+この変換を適用すると、関数の結果を表す新しい点を生成します。次の図は点Aとその像を示します。さらに、円周上を動く点Aの軌跡が表示されています。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo3.png" border="0"  /></span></td></tr><tr><td class="caption"><b>関数を点に適用した</b></td></tr></table><br />
+<br />
+<br />
+<h3>関数による変換と反復関数系 (IFS)</h3>
+<!--latexreplace<br />
+\index{iterated function system}<br />
+\index{IFS}<br />
+\index{Julia set}<br />
+--><!-- /latexreplace --><br />
+関数による変換は、反復関数系に対して特に有効です。典型的な例が 「ジュリア集合」です。ジュリア集合は２つの関数 <code>+sqrt(z-c)</code> と <code>-sqrt(z-c)</code>による反復関数系で定義することができます。ここで "c" はある定数で、 "z" は複素数変数です。これらの２つの関数を変換として定義した後、この関数を <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+SystemsJ.html" class="wiki">反復関数系</a> モードで使うことができます。次の例では、定数 "c" を、点 A によってコントロールします。２つの関数は次の２つの式で定義されます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+sqrt(#-complex(A))
+</pre></div><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+-sqrt(#-complex(A))
+</pre></div><br />
+<br />
+結果として生じる絵は、Aの位置に依存します。1つの例は、つぎで示されます：<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo4.png" border="0"  /></span></td></tr><tr><td class="caption"><b>変換関数によるジュリア集合</b></td></tr></table><br />
+<br />
+<br />
+より高度な絵を、 <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php@page=CindyScript.html" class="wiki">CindyScript</a> でプログラムした色のプロットを用いた反復関数系によって作ることができます。色は、関数<code>z^2+c</code> を繰り返して、異なる初期値と関数値の絶対値が２を超えるまでの回数でプロットされます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m=40;
+f(x):=x^2+complex(A);
+g(y,n):=if(
+  or(|y|>2,n==m),
+   n,g(f(y),n+1)
+);
+colorplot((1-g(#_1+i*#_2,0)/m),B,C,startres->20,pxlres->1)
+</pre></div><br />
+<br />
+反復関数系の結果として得られる図は次の通りです。<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/FunktTrafo5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>変換関数とカラープロットで定義されたジュリア集合</b></td></tr></table><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Thursday 23 of February, 2012 [10:50:39 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Transformations%20by%20FunctionsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Transformations%20by%20FunctionsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

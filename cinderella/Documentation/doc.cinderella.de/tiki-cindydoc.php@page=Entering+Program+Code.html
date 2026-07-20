@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Entering Program Code 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Entering Program Code</h2>
+<br />
+The editor for CindyScript code can be opened by selecting the menu item <i>Scripting/Edit Scripts</i>. When this item is selected, a window for the program code editor is opened. Each construction has an individual program editor window. When first opened, the editor window looks as follows:<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnterScript5.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The script editor</b></td></tr></table><br />
+<br />
+This window contains several components that require explanation. The main part of the window is occupied by a large white space (the middle part of the right side). This is the text field in which you will enter your script later on. The left side of the window is occupied by a "tree view," in which you can select an occasion upon which a script should be  executed. The first step in entering a script consists in choosing a suitable occasion.<br />
+<br />
+The lower part of the right side is reserved for console output, while the top part of the window contains some controls and a field in which you can enter a name for your script.<br />
+<br />
+<br />
+<h3>Entering a Small Script</h3>
+<br />
+The first step in entering a script consists in choosing the occasion on which the script is to be executed. For this, one has to click on one of the "Events" shown on the left. Let us choose the "Draw" event. A script entered in the Draw event will always be executed when drawing is performed on the screen. After this entry has been selected, the main part of the window is ready for input. Clicking in the main window allows one to enter script code. In the example shown below a small script was entered and given the title "My first script"<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnterScript6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>Entering text</b></td></tr></table><br />
+<br />
+Pressing the button with the two gears executes the script. In the above example a green dotted line will be drawn consisting of ten simple dots. Alternatively the execution can be started by pressing &#060;shift&#062;+&#060;enter&#062;.<br />
+<br />
+<br />
+<h3>Execution Slots</h3>
+<!-- latexreplace<br />
+\index{slots}<br />
+\index{events}<br />
+<tt> --></tt><br />
+<!-- /latexreplace --><br />
+Every script in Cinderella is associated with an occasion on which it will be executed. Since scripts in Cinderella are assumed to run during the runtime of the program, it may well happen that the same script is executed many times during a move. The precise interpretation of the different occasions is described below:<br />
+<br />
+<ul><li> <b>Draw:</b> A script in this slot is executed right before a new screen picture is generated. Scripts entered here will be executed very often. This is the typical place to enter a script that should be automatically updated when the user drags geometric elements.
+</li></ul>
+<br />
+<ul><li><b>Move:</b> Scripts in this slot will be executed even more often than those in the "Draw" slot. They are always invoked if the position of free elements has changed. In general, this happens more often than just at screen refresh. Sometimes putting a script in the "Draw" slot produces strange and unexpected results. It might then be a good idea to place it in the "Move" slot.
+</li></ul>
+<br />
+<ul><li><b>Initialization:</b> A script in this slot is executed whenever the parse button of the script editor is pressed. This slot is very useful for resetting variables or points to an initial state or position.
+</li></ul>
+<br />
+<ul><li><b>Timer Tick:</b> A script in this slot causes an <a title="no description" href="tiki-cindydoc.php@page=Animation.html" class="wiki">animation</a> controller to be shown in geometric view (if not already present). When the play button of the animation controller is pressed, a script in this slot will be regularly executed every few milliseconds.
+</li></ul>
+<br />
+<ul><li><b>Integration Tick:</b> This event is only relevant in context with physics simulations. If a script is contained in this slot it will be executed whenever the internal physics simulation engine requires information on the position and forces of masses. This slot is needed when one wants to implement user specific force potentials.
+</li></ul>
+<br />
+<ul><li><b>Simulation Start:</b> This script is executed when the animation controller changes from "Stop" to "Play." It is a very good place to enter initial setups for animations.
+</li></ul>
+<br />
+<ul><li><b>Simulation Stop:</b> This script is executed when the animation controller changes from "Play" to "Stop." It is a very good place to evaluate the result of an animation.
+</li></ul>
+<br />
+<ul><li><b>Mouse Down:</b> This slot and the following three slots are very useful for programming user interfaces in CindyScript. A script in this slot is executed whenever the mouse button is pressed. With the function <code>mouse()</code> the current mouse coordinates can be read within a script.
+</li></ul>
+<br />
+<ul><li><b>Mouse Up:</b> Scripts in this slot are executed when the mouse is released.
+</li></ul>
+<br />
+<ul><li><b>Mouse Click:</b> Scripts in this slot are executed when the mouse is moved.
+</li></ul>
+<br />
+<ul><li><b>Mouse Drag:</b> Scripts in this slot are executed when the mouse is dragged.
+</li></ul>
+<br />
+<ul><li><b>Key Typed:</b> Scripts in this slot are executed when the key on the keyboard is typed. This slot is very useful for handling user input via the keyboard. A string that corresponds to the currently pressed key can be accessed via the <code>key()</code> and via the <code>keydownlist()</code> functions.
+</li></ul>
+<br />
+<ul><li><b>Key Down:</b> Scripts in this slot are executed when the key on the keyboard is pressed, exactly at the moment when the key moves down.
+</li></ul>
+<br />
+<ul><li><b>Key Up:</b> Scripts in this slot will be executed when the key on the keyboard is released, exactly at the moment when the key moves up.
+</li></ul>
+<br />
+<br />
+<h3> Control Buttons</h3>
+<br />
+In the upper part of the script editor window are two buttons to start and stop the program, as well as a text field to provide names to parts of the program and a language chooser for switching between different languages (at present, only CindyScript is documented).<br />
+<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/EnterScript7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The script controls</b></td></tr></table><br />
+<br />
+Perhaps the most important part of these controls is the "Play" button (the one with the two gears). Whenever this button is pressed all scripts are parsed and the execution of the program is started. Every change in a program requires the play button to be pressed to become active. Alternatively, the key combination &#060;shift&#062;+&#060;enter&#062; can be used as an equivalent for pressing the play button.<br />
+<br />
+It may happen that a script gets stuck in an infinite loop or performs a calculation that simply takes too long. As a kind of emergency exit, the "Stop" button can be pressed.<br />
+<br />
+The little text field on the left can be used to give a script an individual name. Scripts with different names can be accessed and edited separately.<br />
+<br />
+Finally, there is a drop-down menu for choosing the language for the script. In this documentation you will find all necessary information for programming in CindyScript. However, it is also possible to program in "Python", "JRuby" or in the core Cinderella geometry language. These options will be documented later and elsewhere.<br />
+<br />
+You find more information about the ways to enter code in <a title="no description" href="tiki-cindydoc.php@page=The+CindyScript+Editor.html" class="wiki">the corresponding section of the reference manual</a>.<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 02 of September, 2011 [17:32:43 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Entering%20Program%20Code">
+    http://doc.cinderella.de/tiki-index.php?page=Entering%20Program%20Code
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

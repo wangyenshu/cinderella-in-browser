@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Move ModeJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 動かすモード</h2>
+<!--latexreplace<br />
+\index{mode!move}<br />
+\index{move mode}<br />
+\index{drag mode}<br />
+--><!-- /latexreplace --><br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/move.png" border="0"  align="left" /></span></div> このモードは<b>シンデレラ</b>でもっとも重要なモードといえるでしょう。 このモードでは、要素を選んだり、選んだ要素を自由に動かしたりすることができます。<br />
+<br />
+<br />
+<h3>要素を動かす</h3>
+<br />
+普通は、図の中の点や直線などの要素を動かすために使います。 要素の上にマウスをもってきて左ボタンを押し、それをドラッグすれば望む場所へとその要素を移動させることができます。 ボタンを離すと新たな要素を動かすことができます。<br />
+<br />
+<b>シンデレラ</b>では要素を<b>可動要素</b>と<b>固定要素</b>の2種類に分けて考えています。 名前が示すように、可動要素とは、図上で自由に動かすことのできる要素です。 固定要素とは、他の要素によって居場所が完全に決まっている要素のことです。 たとえば、ある点がすでにある2直線の交点として定義されていたとしたら、その点はもはや動かすことはできず、したがって固定要素に分類されます。 点について、それが可動要素か固定要素かは図上の色でわかります。 可動要素は明るい色で表示されているのです。<br />
+<br />
+可動要素は次の6種類あります。<br />
+<!--latexreplace<br />
+\index{point!on a line}<br />
+\index{point!on a conic}<br />
+\index{point!on a circle}<br />
+\index{line!with slope}<br />
+\index{circle!by center and radius}<br />
+\index{text}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+<ul><li> <b>自由点</b>: 他の要素とは独立している点を自由点と呼びます。 このような点は自由に動かすことができます。
+</li><li> <b>直線上の点</b>: ある直線上に加えられた点を示します。 この場合には、この点は直線の上だけを自由に動くことができます。
+</li><li> <b>円周上の点</b>: ある円周上に乗っている点を示します。 この場合には、この点はその円周上だけを自由に動くことができます。
+</li><li> <b>傾きつき直線</b>: ある点を通っていてそのほかに制限のない直線を傾きつき直線と呼びます。 この場合には、この直線を動かすことができますが、その点の周りに回転することになります。
+</li><li> <b>半径つき円</b>: ある点を中心としてそのほかに制限のない円を半径つき円といいます。 円周をドラッグすると、半径を変えることができます。 中心をドラッグすれば円全体を動かすことができます。
+</li><li> <b>文字と数量</b>: 文字と数量の表示も動かすモードでドラッグすることができます。 文字をドラッグすると好きな場所へと移動できます。 描画面の端のほうへと持っていくと、ちょうどよい場所に置かれるように自動調節されます。 また、文字を点に貼り付けることも可能です。 文字をドラッグして、点がハイライトしたところで離すと、以降、点の動きに従ってその文字も動きます。
+</li></ul>
+<br />
+「動かすモード」を使う理由はもう1つあります。 「動かすモード」では<b>ラベルの場所を変える</b>こともできます。 キーボードの<b>シフトキーを押しながら</b>ラベルをドラッグすることにより、ラベルの場所を変えることができます。 といっても無制限に自由に変えられるわけではなく、点からほど近い場所の範囲で動かすことができるのです。 遠い場所へラベルと動かそうとしても、ある程度以上はいかないようになっています。<br />
+<br />
+<br />
+<h3> オブジェクトの選択</h3>
+<!--latexreplace<br />
+\index{Selecting}<br />
+--><br />
+<!-- /latexreplace --><br />
+<br />
+動かすモードは、１つ以上の要素をマウスで選択することにも使われます。要素が選択されると画面上でハイライトされるのですぐにわかります。 要素を選択する場面として次の3つが考えられます。<br />
+<ul><li> 通常このモードは各要素の表示設定を個別に変更するために使います。選択された全ての要素に対して <a title="no description" href="tiki-cindydoc.php@page=InspectorJ.html" class="wiki">インスペクタ</a> で表示設定を変更することができるようになります。たとえば、複数の直線を選択していて、サイズ変更のスライダーを動かすと、選択されていたすべての直線の太さが変わります。
+</li><li> 選択された要素をまとめて <a title="no description" href='tiki-cindydoc.php@page=General+Operations.html#Delete' class='wiki'>削除</a> することができます。
+</li><li> 選択された要素は一斉に動かすことができます。
+</li></ul>
+<br />
+要素を選択するのには、マウスで要素をクリックしてもよいし、マウスのボタンを押したままドラッグして選択することもできます。 やり方によって次の３つの方法が可能になっています。<br />
+<br />
+<ul><li> 画面上の要素をマウスでクリックすると、ポインタがさわっている部分にあるその要素だけが選択され、その他は選択されません。
+</li><li> シフトキーを押しながら要素をマウスでクリックすると、そのたびにこの要素の選択・非選択状態が交互に入れ換わります。ただし、これ以外の要素の選択状態は変わりません。したがって、この「シフトキーを押しながらクリック」でたくさんの要素を選択することができます。
+</li><li> マウスボタンを押したままドラッグするとその領域内にあるすべての要素を選択できます。ただし、インスペクタの「全体の設定」メニューの「ドラッグで複数選択」がチェックされている必要があります。
+</li></ul>
+<br />
+ぜひそれぞれのやり方を試してみることを勧めます。<br />
+<br />
+<br />
+<h3>複数の要素を移動する</h3>
+<br />
+複数の要素を一度に移動させることができます。まず、動かしたい点（直線の場合は端点、円の場合は中心など）をシフトキーを押しながら選んでいきます。それから、どれか一つの点をドラッグすれば、選択されているすべての要素が一斉に移動します。 図形の形や動かす点どうしの位置関係は移動しても変わりません。<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{c@{\kern1cm}c}<br />
+\includegraphics<a class="wiki external"  href="width=1.5733333333333333in">width=1.5733333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Move2BX}  &amp;  {  \includegraphics<a class="wiki external"  href="width=1.5733333333333333in">width=1.5733333333333333in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Move3}} \\<br />
+{\small\it Select several points\ldots{}} &amp;  {\small\it \ldots{}and move them.}\\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center">  <tr>
+<td><span class="img"><img alt="" src="img/wiki_up/Move2.png" border="0"  /></span></td> <td width=10></td>
+<td><span class="img"><img alt="" src="img/wiki_up/Move3.png" border="0"  /></span></td>
+</tr>
+<tr> <td><b>いくつか点を選んで・・・</b></td><td width=10></td>
+ <td><b>移動する</b></td><td width=10></td>
+</tr>
+</table><br />
+<tt> <!-- /latexreplace --></tt><br />
+<br />
+選択された複数の点は、複写/貼付をしたり、ユーザー定義の道具を作るといった使い方もできます。貼り付けをしたオブジェクトはその後も選択された状態になっています。貼り付けをすると、もとの場所から少し離れたところに置かれますが、それをそのまま移動することができるのです。<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<h3>要約</h3>
+<br />
+ドラッグで移動します。クリックで選択されます。<br />
+<br />
+<h3>See also</h3>
+<ul><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+PointJ.html" class="wiki">点を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Add+a+LineJ.html" class="wiki">直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Line+through+a+PointJ.html" class="wiki">傾きつき直線を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=Circle+by+RadiusJ.html" class="wiki">半径つき円を加える</a>
+</li><li> <a title="no description" href="tiki-cindydoc.php@page=TextJ.html" class="wiki">文字を追加する</a>
+</li></ul>
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of March, 2012 [05:25:52 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Move%20ModeJ">
+    http://doc.cinderella.de/tiki-index.php?page=Move%20ModeJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

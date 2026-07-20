@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cinderella2 (CheerpJ)</title>
+    <script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function execCb(cmdPath, argsArray) {
+        if (cmdPath == "xdg-open") {
+          window.open(argsArray, "_blank");
+        }
+      }
+
+      (async function () {
+        await cheerpjInit({ 
+          version: 17, 
+          enableDebug: false, 
+          execCallback: execCb,
+          systemProperties: { 
+            "user.home": "/str", 
+            "user.dir": "/app/cinderella",
+            "apple.laf.useScreenMenuBar": "true",
+            "apple.awt.graphics.UseQuartz": "true"
+          }
+        });
+
+        cheerpjCreateDisplay(1400, 850);
+        
+        // Launch Cinderella's core main class directly, bypassing install4j's native watch service checks
+        await cheerpjRunMain(
+          "de.cinderella.Cindy",
+          [
+            "/app/cinderella/Languages",
+            "/app/cinderella/lib/antlr.jar",
+            "/app/cinderella/lib/cbookif.jar",
+            "/app/cinderella/lib/cindy2.jar",
+            "/app/cinderella/lib/flatlaf-2.4.jar",
+            "/app/cinderella/lib/gson-2.9.0.jar",
+            "/app/cinderella/lib/gson-2.9.0-sources.jar",
+            "/app/cinderella/lib/iText-2.1.7.jar",
+            "/app/cinderella/lib/javaosc.jar",
+            "/app/cinderella/lib/jmdns.jar",
+            "/app/cinderella/lib/jruby.jar",
+            "/app/cinderella/lib/LeapJava.jar",
+            "/app/cinderella/lib/log4j-1.2.16.jar",
+            "/app/cinderella/lib/plugin.jar",
+            "/app/cinderella/lib/script-api.jar",
+            "/app/cinderella/lib/VAqua.jar",
+            "/app/cinderella/lib/xmlrpc-client-1.1.jar",
+            "/app/cinderella/lib/yajtl.jar",
+            "/app/cinderella/Plugins/KetCindyPlugin.jar",
+            "/app/cinderella/Plugins/Cindy3D/Cindy3D.jar",
+            "/app/cinderella/Plugins/Cindy3D/commons-math-2.2.jar",
+            "/app/cinderella/Plugins/Cindy3D/gluegen-rt.jar",
+            "/app/cinderella/Plugins/Cindy3D/jogl-all.jar"
+          ].join(":")
+        );
+      })();
+    </script>
+  </body>
+</html>

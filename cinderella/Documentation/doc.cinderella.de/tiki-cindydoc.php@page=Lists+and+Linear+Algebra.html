@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Lists and Linear Algebra 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1>Lists and Linear Algebra</h1>
+<br />
+<h2> Using Lists in CindyScript</h2>
+<br />
+List are among the most fundamental and elementary concepts of CindyScript. In CindyScript lists serve several purposes. They serve as<br />
+<br />
+<ul><li> enumerative arrays of objects
+</li><li> structured data arrangements
+</li><li> vectors
+</li><li> matrices
+</li></ul>
+<br />
+This section covers the very general aspects of creating lists and accessing their elements as well as all elementary aspects of array functionality. For information on all other aspects of lists, consult the sections<br />
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Elementary+List+Operations.html' class='wiki'>Elementary List Operations</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Advanced+List+Operations.html' class='wiki'>Advanced List Operations</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Lists+of+Geometric+Elements.html' class='wiki'>Lists of Geometric Elements</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Vectors+and+Matrices.html' class='wiki'>Vectors and Matrices</a>
+</li></ul>
+<br />
+<hr />
+<hr />
+<br />
+<h3> Creating Lists</h3>
+<br />
+Lists can be created very easily by placing the elements in square brackets, separated by commas. For example,<br />
+<br />
+<div align="center"><code>[45,12.5,123,2,5.5,5]</code></div><br />
+is a list of numbers.<br />
+<br />
+<div align="center"><code>["this", "is", "a", "list", "of", "strings"]</code></div><br />
+is a list of strings. Objects of different kinds can be mixed in a list:<br />
+<br />
+<div align="center"><code>["this", 3,"is",5 , "a",654, "mixed",234 , "list"]</code></div><br />
+Lists can also have lists as elements, and these can be nested arbitrarily.<br />
+<br />
+<div align="center"><code>[[4,6], ["a", "b"], 1, [4, "b", [23, "b"]], [ ]]</code></div><br />
+The last element <code>[ ]</code> of this list does not contain any elements. It is the empty list.<br />
+<br />
+Alternatively lists consisting of at least two elements can also be enclosed by round brackets <code>(...)</code>. This is sometimes convenient to have a more mathematical appealing notation in the the code. A three-dimensional vector may then be written as follows:<br />
+<br />
+<div align="center"><code>(7.3,9.3,-14.3)</code></div><br />
+<br />
+<hr />
+<br />
+<A NAME="take"></A><br />
+<h4>Accessing Elements of Lists: <span style="color:red;"><code>take(&#60;list&#62;,&#60;int&#62;)</code></span></h4>
+<br />
+<div class="description"><br />
+<b>Description:</b> One can access the individual elements of a list either with the infix operator <span style="color:red;"><code>&#60;list&#62;_&#60;int&#62;</code></span> or the functional operator <span style="color:red;"><code>take(&#60;list&#62;,&#60;int&#62;)</code></span>. The indices start with number 1. If the index that should be accessed is less than 1 or greater than the number of elements in the list, then the value<code>___</code>is returned. Also, a warning message is issued on the console.</div><br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>[2 ,5 ,7 ,3]_3</code></td><td class="wikicell" ><code>7</code></td></tr><tr><td class="wikicell" ><code>take([2 ,5 ,7 ,3],2)</code></td><td class="wikicell" ><code>5</code></td></tr><tr><td class="wikicell" ><code>[2 ,5 ,7 ,3]_5</code></td><td class="wikicell" ><code>___</code></td></tr></table><br />
+<br />
+<br />
+<br />
+The index can also be an arbitrary calculation. Furthermore, indices can access the nested parts of a nested list.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>[ [2, [4,5]],1]_1</code></td><td class="wikicell" ><code>[2,[4,5]]</code></td></tr><tr><td class="wikicell" ><code>[ [2, [4,5]],1]_(7-5)</code></td><td class="wikicell" ><code>1</code></td></tr><tr><td class="wikicell" ><code>[ [2, [4,5]],1]_1_2</code></td><td class="wikicell" ><code>[4,5]</code></td></tr><tr><td class="wikicell" ><code>[ [2, [4,5]],1]_1_2_2</code></td><td class="wikicell" ><code>5</code></td></tr><tr><td class="wikicell" ><code>[ [2, [4,5]],1]_1_2_2_2</code></td><td class="wikicell" ><code>___</code></td></tr></table><br />
+<br />
+<br />
+If a list is stored in a variable, the individual entries can be set after they are accessed by the <code>_</code> operator. So for example, after the code fragment<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=[[2,[4,5]],1];
+a_2="A"; 
+a_1_2_1="B"; 
+</pre></div><br />
+<br />
+is evaluated, the value of <code>a</code> is <code>[[2,["B",5]],"A"]</code>.<br />
+<br />
+<h5> Advanced usage</h5>
+<br />
+The list element accessor has some other powerful options. By using negative numbers as indices one can access the list entries from the end to the beginning. The following examples exemplify this possibility:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>[2 ,5 ,7 ,3]_(-1)</code></td><td class="wikicell" ><code>3</code></td></tr><tr><td class="wikicell" ><code>take([2 ,5 ,7 ,3],(-3))</code></td><td class="wikicell" ><code>5</code>  </td></tr><tr><td class="wikicell" ><code>[ [2,6] ,5 ,7 ,3]_(-4)_(-1)</code></td><td class="wikicell" ><code>6</code></td></tr></table><br />
+<br />
+<br />
+<br />
+It is also possible to use lists of integers as indices. Then a list corresponding to the specified list entries is returned.<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Code</b></td><td class="wikicell" ><b>Result</b></td></tr><tr><td class="wikicell" ><code>&#91;2 ,5 ,7 ,3&#93;_&#91;2,3&#93;</code></td><td class="wikicell" ><code>&#91;5,7&#93;</code></td></tr><tr><td class="wikicell" ><code>&#91;2 ,5 ,7 ,3&#93;_&#91;-1,1,1&#93;</code></td><td class="wikicell" ><code>&#91;3,2,2&#93;</code></td></tr></table><br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 27 of March, 2015 [08:38:58 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Lists%20and%20Linear%20Algebra">
+    http://doc.cinderella.de/tiki-index.php?page=Lists%20and%20Linear%20Algebra
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

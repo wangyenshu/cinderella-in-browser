@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : MeasurementsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>計測</h2>
+<br />
+計測は幾何学の根元といっていいほど重要な位置をしめます。 <b>シンデレラ</b>には、距離を測る、角度を測る、面積を求めるというモードがあります。 その振舞いは少なくともユークリッド幾何学においては、直接的でわかりやすいでしょう。<br />
+<br />
+<ul><li> 2点を選択してその距離を計算する。
+</li><li> 2直線を選択してその間の角度を計算する。
+</li><li> 多角形、円、2次曲線を選択してその面積を計算する。
+</li></ul>
+<br />
+ほとんどの目的のためには、知らなければならないことはこれで全部です。 しかしながら、いつものように、さらに難しく細かい事柄がたくさんあります。 非ユークリッド幾何学を取り扱う時、線分の長さや面積は、見なれないやり方で定義されているのです。 ここでは<a title="no description" href="tiki-cindydoc.php@page=Theoretical+BackgroundJ.html" class="wiki">理論的背景</a>の節に細部は譲るとして、とにかく、双曲幾何学における線分の長さや面積は、ユークリッド幾何学の場合とは異なる、ということを覚えておきましょう。 <b>ケーリー-クライン</b>幾何学を用いて計算をすると、長さや角度が複素数になってしまうこともあります。<br />
+<br />
+このようなとても一般的な方法で長さや角度を計算するのがシンデレラの重要な特徴の1つなのです。 非ユークリッド幾何学での長さや角度の奇妙な振舞いを特に気にする必要はありません。 たぶん理解するために最もよい方法は、いろいろな作図を実際にしてみることで感覚をつかむようにすることでしょう。 非ユークリッド幾何学に対する直感を養ってもらうことこそ、シンデレラの大切な目標なのです。<br />
+<br />
+面積に関する部分についてはほかにも細かい事柄があります。 シンデレラでは多角形と2次曲線の面積を求めることができます。 どちらの場合にも、すこし注釈を述べておくほうがよいでしょう。 多角形の面積を定義することはたやすいのですが、それは自分自身と交わっていない場合です。 それでは自分と交わっていたら面積はどうなるでしょうか。 シンデレラでは、面積に関する一般的で矛盾を含まない理論を用いています。 面積を多角形の向きに応じて計算することです。 多面体の内側の各点が、面積にどれくらい寄与しているかは、境界に関する回転数に依存しているのです。<br />
+<br />
+2次曲線の境界も微妙な問題です。 楕円の面積を求めることは簡単です。 しかし、双曲線の場合の面積をどのように考えればよいでしょうか。 無限としましょうか。 それとも定義できないでしょうか。 シンデレラでは、代数的なアプローチにより、すべての2次曲線について1つの式で面積を定義できているようなものを採用しました。 それによると、双曲線の面積は複素数を用いて、とても理にかなったやり方で定義されるのです。 ですから、面積を表示させて図形を動かした時に、面積の値に複素数が現れても驚かないでください。<br />
+<br />
+計測のモードは次の３つです。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/distance.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=DistanceJ.html" class="wiki">距離</a></td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/angle.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=AngleJ.html" class="wiki">角</a> </td></tr><tr><td class="wikicell" ><span class="img"><img alt="" src="../cinderella.de/files/CindyDocu/Buttons/area.png" border="0"  /></span></td><td class="wikicell" ><a title="no description" href="tiki-cindydoc.php@page=AreaJ.html" class="wiki">面積</a></td></tr></table><br />
+<br />
+<h3> 注意</h3>
+長さや角度は、文字で表示されます。 よってこれは「画面上の文字列」として、場所を移動したりすることができます。 <a title="no description" href="tiki-cindydoc.php@page=TextJ.html" class="wiki">文字を加える</a> や <a title="no description" href="tiki-cindydoc.php@page=FunctionJ.html" class="wiki">関数</a> と同じやり方ですので、こちらを参照してください。<br />
+<br />
+<br />
+(阿原)<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 09 of February, 2008 [12:35:39 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=MeasurementsJ">
+    http://doc.cinderella.de/tiki-index.php?page=MeasurementsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

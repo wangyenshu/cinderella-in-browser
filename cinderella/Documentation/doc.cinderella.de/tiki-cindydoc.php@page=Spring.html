@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Spring 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Spring</h2>
+<!--latexreplace<br />
+\index{simulation!spring}<br />
+\index{spring}<br />
+\index{Hook's law}<br />
+\index{rest length}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/add-long-spring.png" border="0"  align="left" /></span></div> In <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> a spring is very similar to a <a title="no description" href='tiki-cindydoc.php@page=Rubber+Band.html' class='wiki'>Rubber Band</a>. A spring is constructed by a press/drag/release sequence as in <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a> mode. If the endpoints of the spring segment are not already present in the drawing, free mass-objects will be added. A spring causes forces to act on its two endpoints. Unlike rubber bands, springs have a resting length at which the force is zero. If the distance between the two endpoints is smaller than the resting  length, the force will be repulsive. If it is larger than the resting length, the force will be attractive. The force is calculated by the formula<br />
+<!--latexreplace $$\textrm{force} = \textrm{spring constant}\cdot|\textrm{length}-\textrm{restlength}|$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = <b>springconstant</b> · |<b>length</b> – <b>restlength</b>|
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+Here |<i>x</i>| denotes the absolute value of <i>x</i>, <i>springconstant</i> is a characteristic constant of the spring that can be adjusted in the inspector, <i>restlength</i> is the resting length of the spring, and <i>length</i> is the distance between the two points. Springs are very powerful objects that admit many variations via the inspector. So we will first have a look at the inspector before we discuss the various possibilities for defining a spring.<br />
+<br />
+<br />
+<h3>Inspecting Springs</h3>
+<!--latexreplace<br />
+\index{inspect!spring}<br />
+--><!-- /latexreplace --><br />
+The spring inspector comes with a great variety of possibilities for modification. We will discuss these modifications one by one.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringInsp.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The spring inspector</b></td></tr></table><br />
+<br />
+<br />
+<b>Spring Strength</b><br />
+<br />
+The spring strength slider helps in adjusting the value of <i>springconstant</i>. No matter what kind of interaction is modeled by the spring, the <i>springconstant</i> acts as a factor by which the final force is multiplied. Thus setting this slider to a value of zero is equivalent to removing the spring from the configuration.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringStrengthSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<br />
+<b>Spring Type</b><br />
+<br />
+In <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> all interactions between pairs of points are internally modeled as springs. Thus it is simple to switch between the different types of interaction. This can be done by choosing the <i>springtype</i> in the inspector. Currently, there are four different types of interaction implemented. Each of them comes with a specific behavior (and formula) for the spring.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringTypeSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+The four types are defined as follows:<br />
+<!--latexreplace<br />
+\index{rubber band}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-rubberband.png" border="0"  align="left" /></span></div> <i>rubber band</i>: For this spring type it is assumed that the spring has a rest length of zero. Thus the force between the two masses is always attractive. Its absolute value is calculated by the formula<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\textrm{springconstant}\cdot\textrm{length}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = <b>springconstant</b> ∗ <b>length</b>.
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+This type is the default spring type when a <a title="no description" href='tiki-cindydoc.php@page=Rubber+Band.html' class='wiki'>Rubber Band</a> is added.<br />
+<br />
+<br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-spring.png" border="0"  align="left" /></span></div> <i>Spring</i>: For this spring type it is assumed that the spring has a positive resting length. Thus the force between the two masses will be attractive if the two masses are farther apart than the resting length. It will be repulsive if they are closer than the resting length. The absolute value of the force is calculated by the formula<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\textrm{springconstant}\cdot(\textrm{length}-\textrm{restlength})$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = <b>springconstant</b> ∗ (<b>length</b> – <b>restlength</b>)
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+This type is the default type when a spring is added.<br />
+<br />
+<!--latexreplace<br />
+\index{gravitational force}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-newton.png" border="0"  align="left" /></span></div> <i>Newton force</i>: This spring type models the gravitational attraction between two bodies. This force depends on the masses of the bodies and the distance between them. It is always attractive. The absolute value of the force is calculated by the formula<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\frac{\textrm{springconstant}\cdot\textrm{mass}_1\cdot\textrm{mass}_2}{\textrm{dist}<div class="simplebox">2}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = <b>springconstant</b> ∗ <b>mass<sub>1</sub></b> ∗ <b>mass<sub>2</sub></b> / <b>dist&#178;</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+<!--latexreplace<br />
+\index{Coulomb force}<br />
+--><!-- /latexreplace --><br />
+<div id="supi"><span class="img"><img alt="" src="buttonsback/force-culomb.png" border="0"  align="left" /></span></div> <i>Coulomb force</i>: This spring type models the interaction between electrically charged particles. This force depends on the charges of the particles and on the distance between them. It is attractive if the charges have opposite signs and repulsive otherwise. The absolute value of the force is calculated by the formula<br />
+<br />
+<!-- latexreplace $$\textrm{force}=\frac{\textrm{springconstant}\cdot\textrm{charge}_1\cdot\textrm{charge}_2}{\textrm{dist}</div>2}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>force</b> = <b>springconstant</b> *<b> charge<sub>1</sub></b> * <b>charge<sub>2</sub></b> / <b>dist&#178;</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+This type is the default spring type when a <a title="no description" href='tiki-cindydoc.php@page=Coulomb+Force.html' class='wiki'>Coulomb Force</a> is added.<br />
+<br />
+<b>Restlength</b><br />
+<br />
+The two items <i>Restlength from picture</i> and <i>Length at rest</i> are relevant only if the spring has a resting length.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringLengthSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+If <i>Restlength from picture</i> is checked, then the resting length of the spring is defined to be the length of the spring in the drawing when the simulation is started. Thus in this case, a single spring with two mass-objects not otherwise connected at the endpoints exerts no force on the masses.<br />
+<br />
+If this box is not checked, the spring's resting length will be defined by the <i>Length at rest</i> value in the inspector.<br />
+<br />
+<br />
+<b>Spring Actuation</b><br />
+<!--latexreplace<br />
+\index{actuation}<br />
+\index{phase}<br />
+\index{amplitude}<br />
+--><!-- /latexreplace --><br />
+The two items <i>Amplitude</i> and <i>Phase</i> will be relevant only if the spring has a resting length. In this case, <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> provides the possibility to vary the resting length periodically in time. The resting length is then modulated by a sine function, causing it to become periodically longer and shorter.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/SpringActuationSettings.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+The amplitude of the resting length variation can be adjusted by the <i>Amplitude</i> slider. The phase of the vibration with respect to the other springs can be adjusted by the <i>Phase</i> slider. The speed of the oscillation is globally adjusted in the <a title="no description" href="tiki-cindydoc.php@page=Environment.html" class="wiki">environment inspector</a>.<br />
+<br />
+<br />
+<h3>Examples</h3>
+<br />
+Due to their programmatic flexibility, springs can be used in many different circumstances. Here we will present just a few examples and pictures that exemplify the use of springs.<br />
+<br />
+<h5>A Bridge</h5>
+<!--latexreplace \index{bridge} --><!-- /latexreplace -->The first example shows a network of springs that simulates the behavior of a bridge. All springs in this example are used with the default physical setup. However, the appearance of the springs has been slightly altered. Usually, springs are rendered as wiggly objects. This feature can be turned off by the <i>render</i> button in the inspector. Furthermore, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> code was added to change the color of the springs according to their interior tension.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Spring6.png" border="0"  /></span></td></tr><tr><td class="caption"><b>A bridge constructed with springs</b></td></tr></table><br />
+<br />
+<br />
+<!--latexreplace<br />
+\index{pendulum}<br />
+--><!-- /latexreplace --><br />
+<h5>Double Pendulum</h5>
+The next example shows the chaotic movement of a double pendulum. Here two springs are connected and one endpoint is fixed to the ground plane. The <i>springconstant</i> is set to a relatively high value so that the springs behave nearly like rigid rods. The picture shows the movement of this double pendulum under the influence of gravity.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/Spring7.png" border="0"  /></span></td></tr><tr><td class="caption"><b>The chaotic motion of a double pendulum</b></td></tr></table><br />
+<br />
+<br />
+<!--latexreplace<br />
+\index{two-body movement}<br />
+--><!-- /latexreplace --><br />
+<h5>Two-Body Movement</h5>
+The next pictures show two mass particles with initial velocities and their behavior under gravitational forces. For this example, the type of the spring was set to <i>Newton's law</i>. The two mass particles simulate a system of two stars that orbit each other.<br />
+<br />
+<!--latexreplace<br />
+$$<br />
+\begin{tabular}{l@{\kern.7cm}l@{\kern.3cm}l}<br />
+<tt> \includegraphics<a class="wiki external"  href="height=1.35in">height=1.35in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Spring8} &amp;\includegraphics<a class="wiki external"  href="height=1.35in">height=1.35in</a><img border="0" class="externallink" src="img/icons/external_link.gif" alt="external link" />{Spring9}\\</tt><br />
+{\small\it  Two instances of two-body motion} \\<br />
+\end{tabular}<br />
+$$<br />
+ --><table align="center" cellspacing=0>
+      <tr>
+	<td><span class="img"><img alt="" src="img/wiki_up/Spring8.png" border="0"  /></span></td><td width=10></td>
+	<td><span class="img"><img alt="" src="img/wiki_up/Spring9.png" border="0"  /></span></td>
+      </tr>
+      <tr>
+	<td><b>Two instances of two-body motion</b><br></td>
+      </tr>
+<tt>    </table></tt><br />
+<!-- /latexreplace --><br />
+<br />
+<br />
+<h3>Springs and CindyScript</h3>
+<!--latexreplace<br />
+\index{potential energy}<br />
+--><!-- /latexreplace --><br />
+Like any <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> object, a spring provides several fields that can be read and very often set by <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->. The following list shows the accessible fields for springs:<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>Name</b></td><td class="wikicell" ><b>Writeable</b></td><td class="wikicell" ><b>Type</b></td><td class="wikicell" ><b>Purpose</b></td></tr><tr><td class="wikicell" ><code>l</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > current length of the spring  </td></tr><tr><td class="wikicell" ><code>lrest</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > resting length of the spring  </td></tr><tr><td class="wikicell" ><code>ldiff</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > current length difference to the resting length  </td></tr><tr><td class="wikicell" ><code>potential</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the potential energy of the spring  </td></tr><tr><td class="wikicell" ><code>pe</code></td><td class="wikicell" >no</td><td class="wikicell" >real</td><td class="wikicell" > the potential energy of the spring  </td></tr><tr><td class="wikicell" ><code>strength</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the spring constant  </td></tr><tr><td class="wikicell" ><code>amplitude</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the amplitude of actuation  </td></tr><tr><td class="wikicell" ><code>phase</code></td><td class="wikicell" >yes</td><td class="wikicell" >real</td><td class="wikicell" > the phase of actuation  </td></tr><tr><td class="wikicell" ><code>simulate</code></td><td class="wikicell" >yes</td><td class="wikicell" >bool</td><td class="wikicell" > turn on/off simulation for this  spring </td></tr></table><br />
+<br />
+<br />
+<div class="seealso"><br />
+<h4> See Also</h4>
+<br />
+<ul><li> <a title="no description" href='tiki-cindydoc.php@page=Add+a+Line.html' class='wiki'>Add a Line</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Environment.html' class='wiki'>Environment</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Rubber+Band.html' class='wiki'>Rubber Band</a>
+</li><li> <a title="no description" href='tiki-cindydoc.php@page=Coulomb+Force.html' class='wiki'>Coulomb Force</a>
+</li></ul>
+</div><br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Friday 26 of August, 2011 [15:27:56 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Spring">
+    http://doc.cinderella.de/tiki-index.php?page=Spring
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

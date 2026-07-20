@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Control OperatorsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2> 制御命令</h2>
+<br />
+<h3>プログラムの流れ</h3>
+<br />
+<br />
+　分岐や繰り返しといった、プログラムの流れの制御について解説します。繰り返しを行なうのにはいくつかの方法があります。リスト処理で繰り返しに相当する操作をすることもできます。 <a title="no description" href="tiki-cindydoc.php@page=Elementary+List+OperationsJ.html" class="wiki">リスト処理の基本</a>も参照してください。<br />
+<br />
+<A NAME="if"></A><A NAME="if2"></A><br />
+<h4>条件判断: <span style="color:red;"><code>if(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b>   &#60;bool&#62; が真であれば、&#60;expr&#62;  が評価(実行)されます。この場合、&#60;expr&#62; の値が返されます。そうでなければ、 <code>___</code> が返されます。 <code>if</code>が使われるのは次のような場合です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(x<0,println("x は負です"))
+</pre></div><br />
+<br />
+このコードでは、x が負の値であれば、"x は負です"が印字(表示)され、その文字列がそのまま戻り値として返されます。負の値でなければ、何も印字されず、 <code>___</code>が返されます。<br />
+<br />
+<hr />
+<br />
+<br />
+<A NAME="if3"></A><br />
+<h4>条件分岐: <span style="color:red;"><code>if(&#60;bool&#62;,&#60;expr1&#62;,&#60;expr2&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> 条件 &#60;bool&#62; が真であれば &#60;expr1&#62; が評価され、そうでなければ &#60;expr2&#62;が評価されます。それぞれ、評価された値が返されます。したがって、この <code>if</code>文は、if/then/else に相当します。 この条件分岐の典型的な使用法は2つあります。まず、条件によって場合分けをするときに使います。.<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+if(x<0,                                   
+   println("x は負です"),      
+   if (x>0,     
+      println("x は正です"),    
+      println("x は零です")                
+   )                                        
+ )     
+</pre></div><br />
+<br />
+このコードでは、 <code>x</code> の値が正か、負か、ゼロかを表示します。<br />
+<br />
+第２の使い方は、 &#60;bool&#62;  の条件により特定の値を返したいときです。これは関数の定義としてよく使います。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+f(x):=if(x>0,x,-x)  
+</pre></div><br />
+<br />
+このコードは、xの絶対値を返す関数  <code>f(x)</code> を定義します。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A.color=if(A.x>0,(1,0,0),(0,0,1))  
+</pre></div><br />
+<br />
+このコードでは、点 <code>A</code> の色を、そのx座標の正負により、赤か青に設定します。<br />
+<br />
+<hr />
+<br />
+<A NAME="trigger"></A><br />
+<h4>トリガー: <span style="color:red;"><code>trigger(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b>  <code>trigger</code> は <code>if</code> とよく似ています。 <code>if</code>とは対照的に、 <code>trigger</code> は動的意味合いを持ちます。 &#60;expr&#62; は、条件 &#60;bool&#62; が <code>false</code> から <code>true</code>に変わったときに評価されます。たとえば、何かの要素をドラッグしているとき、&#60;bool&#62;が <code>false</code> から  <code>true</code> に変化したことを察知して &#60;expr&#62; を評価(実行)します。 この演算子の目的は、要素をドラッグしているときに何らかのイベントが起きたかどうかを判断することです。 次のコードはそのような例です。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+trigger(A.x<0,println("A はxが負の半平面に入りました"))
+trigger(A.x>0,println("A はxが正の半平面に入りました"))
+</pre></div><br />
+<br />
+このコードでは、点  <code>A</code> が <i>y</i>軸を横切るとメッセージを出します。<br />
+<br />
+<hr />
+<br />
+<A NAME="while"></A><br />
+<h4>while ループ: <span style="color:red;"><code>while(&#60;bool&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b>  <code>while</code> 演算子は &#60;bool&#62;が真である間、&#60;expr&#62; を評価します。最後の評価値が関数の値として返されます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=0;
+sum=0;
+erg=while(x<4,
+          x=x+1;
+          sum=sum+x;
+          println(x+"  -->  "+sum);
+          sum
+       );
+println(erg);
+</pre></div><br />
+<br />
+このコードは次の結果を出します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+1  -->  1
+2  -->  3
+3  -->  6
+4  -->  10
+10
+</pre></div><br />
+<br />
+実行の結果、<code>erg</code> の値は <code>10</code>になります。<br />
+<br />
+<hr />
+<br />
+<A NAME="繰り返し"></A><br />
+<h4>繰り返し: <span style="color:red;"><code>repeat(&#60;number&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> この演算子は CindyScript のなかで最も簡単な繰り返しの演算子です。  &#60;expr&#62;- は &#60;number&#62; 回繰り返され、最後の評価結果が戻ります。 &#60;expr&#62; が評価されている間、実行変数 <code>#</code> は繰り返しの回数を数えます。<br />
+<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(100,
+    println(#+" の平方は "+#^2)
+)
+</pre></div><br />
+<br />
+このコードでは、最初の100個の整数を、その平方とともにリストアップします。<br />
+<br />
+<b>修飾子:</b>  <code>repeat</code> ループにはいろいろな修飾子があります。修飾子として、開始値、終了値、ステップ値が使えます。 修飾子 <code>start</code> は、ループの開始の値を設定します。修飾子 <code>stop</code> は、ループの終了の値を設定します。修飾子 <code>step</code> は、ステップの値を設定します。修飾子は任意に組み合わせることができます。3つの修飾子がひとつもなければ、 &#60;number&#62; 回だけ繰り返します。 修飾子には実数のみが使えます。次の表は、いくつかの修飾子の使い方を示します。<br />
+<br />
+<table class="wikitable"><tr><td class="wikicell" ><b>スクリプト:</b> </td><td class="wikicell" > <b>出力:</b></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>1 2 3 4 5 6</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, start->4, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>4 5 6 7 8 9</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, stop->2, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>-3 -2 -1 0 1 2</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, step->3, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>1 4 7 10 13 16</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, stop->12,step->4, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>-8 -4 0 4 8 12</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, start->3,step->2, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>3 5 7 9 11 13</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, start->3,stop->4, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>3 3.2 3.4 3.6 3.8 4</code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, start->0,stop->-3, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>0 -0.6 -1.2 -1.8 -2.4 -3 </code></td></tr><tr><td class="wikicell" ><div dir="ltr"><pre class='codelisting'>
+repeat(6, start->3,stop->4,step->0.4, println(#+" "))
+</pre></div></td><td class="wikicell" > <code>3 3.4 3.8 </code></td></tr></table><br />
+<br />
+<hr />
+<br />
+<h4>繰り返し: <span style="color:red;"><code>repeat(&#60;number&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<br />
+<b>解説:</b> この演算子は、実行変数が&#60;var&#62;に割り当てられるという１点を除いては、 <code>repeat(&#60;number&#62;,&#60;expr&#62;)</code>と同じです。これは、異なる実行変数を使って、ループを入れ子にすることを考慮しています。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+repeat(10,i,
+   repeat(10,j,
+      draw((i,j))
+   )
+)
+</pre></div><br />
+<br />
+このコードは、 10 × 10 の点列を描きます。<br />
+<br />
+<hr />
+<br />
+<A NAME="forall"></A><br />
+<h4>全走査ループ: <span style="color:red;"><code>forall(&#60;list&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> この演算子の第１引数  &#60;list&#62; はリストです。 &#60;expr&#62; がリストのそれぞれの要素に対して評価されます。 実行変数 <code>#</code> はリストのそれぞれの要素になります。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+a=["this","is","a","list"];
+forall(a,println(#))
+</pre></div><br />
+<br />
+このコードは次の結果を出力します。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+this
+is
+a
+list
+</pre></div><br />
+<br />
+<hr />
+<br />
+<h4>全走査ループ: <span style="color:red;"><code>forall(&#60;list&#62;,&#60;var&#62;,&#60;expr&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> これは、実行変数が  &#60;var&#62; であること以外は <code>forall(&#60;list&#62;,&#60;expr&#62;)</code>と同じです。<br />
+<br />
+<hr />
+<br />
+<A NAME="eval"></A><br />
+<h4>強制的評価: <span style="color:red;"><code>eval(&#60;expr&#62;,&#60;modif1&#62;,&#60;modif2&#62;,…)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> この演算子では、&#60;expr&#62;の内容を強制的に評価します。&#60;expr&#62;内の変数は modifier のリストにある変数で置き換えられます。置き換える変数は局所変数です。実行後はもとの値に書き戻されます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+eval(x+y,x->2,y->5)
+</pre></div><br />
+<br />
+このコードは、評価値を <code>7</code> とします。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<h2>変数の管理</h2>
+<br />
+　局所変数の作り方と削除のしかたを説明します。CindyScriptでは型を明示しなくても自動的に変数が作られ、それは大域的変数です。<br />
+　再帰的な関数や、関数ライブラリを作るときには、局所変数が必要になることがあります。<br />
+<br />
+<A NAME="createvar"></A><br />
+<A NAME="removevar"></A><br />
+<h4>変数の作成: <span style="color:red;"><code>createvar(&#60;varname&#62;)</code></span></h4>
+　および<br />
+<h4>変数の削除: <span style="color:red;"><code>removevar(&#60;varname&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> これらの演算子は、局所変数の生成について手動で管理するのを助けます。<code>createvar(x)</code> は新しい変数 <code>x</code>を作り、前の値はスタックに入れられます。 <code>removevar(x)</code> は局所変数を削除して、スタックの値を書き戻します。通常、変数は明示的に作られる必要はないと思ってください。それらは、最初に使われるときに自動的に作られます。  <code>createvar</code> と <code>removevar</code>は、コードの特定の部分に、ある名前で変数を予約したいときだけ使われます。<br />
+<br />
+<b>例:</b><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x=10;
+println("x is now "+x);
+createvar(x);
+x=5;
+println("x is now "+x);
+removevar(x);
+println("x is now "+x);
+</pre></div><br />
+<br />
+このコードの実行結果は次の通りです。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+x is now 10
+x is now 5
+x is now 10
+</pre></div><br />
+<br />
+<br />
+<hr />
+<br />
+<A NAME="regional"></A><br />
+<h4>関数内で局所変数を使う: <span style="color:red;"><code>regional(name1,name2,...)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> この関数は、ユーザーが定義する関数の最初に使います。引数にある複数の変数を局所変数として定義します。local 関数とほとんど同じですが、local関数とは違って、関数内での処理が終わると自動的に消滅します。したがって、releaseなどで消去する手続きは不要です。local関数より便利に使えます。<br />
+<br />
+<hr />
+<br />
+CindyScript で、変数は一種の持続性を持ちます。ある変数の値が計算で設定されると、それが変更されるまでそのまま残ります。次の演算子を使うと明示的に変数をクリアできます。プログラムの最初の部分で  <code>clear()</code> 文を置くのがしばしば有効になります。<br />
+<br />
+<A NAME="clear"></A><br />
+<h4>すべての変数をクリアする: <span style="color:red;"><code>clear()</code></span></h4>
+<br />
+<br />
+<b>解説:</b> すべての変数をクリアします<br />
+<br />
+<hr />
+<br />
+<A NAME="clear1"></A><br />
+<h4>特定の変数をクリアする: <span style="color:red;"><code>clear(&#60;var&#62;)</code></span></h4>
+<br />
+<br />
+<b>解説:</b> 変数 &#60;var&#62;をクリアします。<br />
+<br />
+<hr />
+<A NAME="keys"></A><br />
+<h4>オブジェクトのキー変数へのハンドル: <span style="color:red;"><code>keys(&#60;var&#62;)</code></span></h4>
+<br />
+<b>解説:</b> &#60;key&#62;=&#60;something&#62; で宣言した  &#60;object&#62;のキー変数のリストを得る。<br />
+<b>例:</b> オブジェクトのキー変数を割り当てることができます。次のようなコードで割当をします。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A:"age"=34;
+A:"haircolor"="brown";
+</pre></div><br />
+<br />
+割当をした結果はつぎのような構文で利用できます。<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+println(A:"age");
+println(A:"haircolor");
+</pre></div><br />
+<br />
+<tt> <code>keys</code> 関数は、オブジェクトに割り当てられた変数のリストを取得します。したがって、次のコードでは</tt><br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+println(keys(A));
+</pre></div><br />
+<br />
+リスト <code>["age","haircolor"]</code> が表示されます。<br />
+<br />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 11 of February, 2015 [23:38:02 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Control%20OperatorsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Control%20OperatorsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

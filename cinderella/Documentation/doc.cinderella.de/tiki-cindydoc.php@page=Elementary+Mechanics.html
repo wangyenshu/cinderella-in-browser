@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Elementary Mechanics 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>Simulating Masses and Forces</h2>
+<br />
+<h3>Elementary Mechanics</h3>
+<!--latexreplace<br />
+\index{Newton's law}<br />
+\index{force}<br />
+\index{mass}<br />
+\index{acceleration}<br />
+\index{velocity}<br />
+--><!-- /latexreplace --><br />
+<!--latexreplace $$\textrm{acceleration} = \frac{\textrm{force}}{\textrm{mass}}$$ --><br />
+<table align=center cellpadding=5 border=1><tr><td>
+<b>acceleration</b> equals <b>force</b> divided by <b>mass</b>
+</td></tr></table><br />
+<!-- /latexreplace --><br />
+<br />
+This simple law is the key to understanding the movement of mass particles under the influence of forces. Mass particles may be almost anything: electrons, balls, or even planets. Forces may be present for various reasons. They may come from electrostatic attraction, from stretched rubber bands, or from interplanetary gravitation. Independent of the type of mass or type of force, the above law describes how the velocity of a particle will change.<br />
+<br />
+Acceleration is the change of velocity per unit time. Thus we observe a simple but important consequence of the above law: <i>If no forces are present, then a particle will maintain its velocity and travel forever with the same speed in the same direction.</i> As soon as forces are present, particles may travel on curved trajectories and they may speed up and slow down. They appear to be attracted to or repelled from the source of the force.<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral1.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>A ball under the attraction of gravitation</b></td></tr></table><br />
+<br />
+In principle, if the initial positions and velocities are known as well as all forces that are acting, one can exactly reconstruct the motion of a system of particles. If we apply the correct mathematical formalism, such systems usually lead to differential equations. These differential equations are in a sense the mathematical essence that describes the movement of the system. Unfortunately, even rather small physical systems lead to differential equations that are not solvable explicitly. They may even exhibit chaotic behavior, as shown in the following system (a freely movable planet under the influence of four fixed stars).<br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/CLGeneral2.png" border="0"  width="400" /></span></td></tr><tr><td class="caption"><b>The chaotic movement of a planet with many suns</b></td></tr></table><br />
+<!--latexreplace<br />
+\index{differential equation}<br />
+--><!-- /latexreplace --><br />
+Nevertheless, one can attack such differential equations by numerical methods. These numerical methods model a continuous system by discrete methods. That is, they sample the positions, velocities, and forces at discrete points in time. From the situation at one moment in time (time stamp) (say <i>t</i>) such numerical methods try to estimate what the positions and velocities will be after some time interval <i>delta</i> has passed. At time stamp <i>t + delta</i> the numerical method proceeds with the estimated data to calculate a new estimate for the next time stamp. By this method, a discrete sequence of positions and velocities is generated. Obviously, such a  sequence does not match the physical reality precisely. However, if the numerical estimation is good and if the time intervals <i>delta</i> are not too big, one can get very reasonable approximations of the physical truth. Furthermore, good numerical solvers have the property that (at least for most cases) the calculated motion becomes a better and better approximation of the physical reality as the time intervals are allowed to tend to zero.<br />
+<br />
+<!--latexreplace --><br />
+<b>Continue</b> --><a title="no description" href='tiki-cindydoc.php@page=Cinderella+and+Physics.html' class='wiki'>Cinderella and Physics</a><br />
+<!-- /latexreplace --><br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 27 of July, 2011 [22:47:19 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Elementary%20Mechanics">
+    http://doc.cinderella.de/tiki-index.php?page=Elementary%20Mechanics
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

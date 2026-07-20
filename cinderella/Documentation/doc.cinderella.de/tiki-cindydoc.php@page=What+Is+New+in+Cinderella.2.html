@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : What Is New in Cinderella.2 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h2>What Is New in Cinderella.2</h2>
+<br />
+This chapter provides a very brief overview of the differences between the previously published versions of Cinderella (versions 1.0 to 1.4) and the current release <b>Cinderella.2</b>. The official version name of this release is "2.6". This release offers many substantial improvements, enhancements, and extensions to the old versions. Measured in bytes of written source code, the Cinderella.2 release has a size of about 7 MB. This is approximately five times the size of the old releases. The reason for this significant growth is the fact that Cinderella.2 contains several areas that open completely new possibilities: While Cinderella 1.4 was solely a geometry program, the new release, Cinderella.2, offers (among other things) programming facilities, full support of transformations, many enhanced graphical features, and a complete physics simulation engine.<br />
+<br />
+<br />
+The following list of items is a rough overview of the major changes. The items appear in no particular order. For details on the topics the reader is referred to the corresponding chapters of the reference part of the manual. For the reader already familiar with Cinderella, this chapter may be a useful guide for exploring the new features.<br />
+<br />
+<br />
+<h3>Enhanced Graphics Primitives</h3>
+<br />
+<h5>Circular Arcs and Angle Marks</h5>
+<b>Cinderella.2</b> offers circular <a title="no description" href="tiki-cindydoc.php@page=Arc.html" class="wiki">arcs</a> as fully supported geometric elements. Arcs can be defined by clicking three points. The first and third points define its endpoints. The arc is supported by the unique circle that passes through all three points. Like a circle, an arc may be intersected with other geometric elements. Free points can also be bound to an arc. Furthermore, a new graphics primitive has been introduced: a little arc for marking an angle.<br />
+<br />
+<br />
+<h5>Active Segments</h5>
+While in Cinderella 1.2, segments were of a purely graphical nature and could not be used for constructions, in <b>Cinderella.2</b> <a title="no description" href="tiki-cindydoc.php@page=Segment.html" class="wiki">segments</a> are fully featured geometric objects. They behave very similarly to lines. A free point bound to a segment cannot be moved away from the segment. It is also possible to define loci whose movers move only along a segment.<br />
+<br />
+<br />
+<h5>Polygon Modes</h5>
+Several modes have been added that facilitate the construction of regular <a title="no description" href="tiki-cindydoc.php@page=Polygons.html" class="wiki">polygons</a>. This is particularly important for the construction of regular symmetric patterns based on the symmetry of polygons. Symmetric polygons are very useful in combination with the <a title="no description" href="tiki-cindydoc.php@page=Transformation+Modes.html" class="wiki">transformation modes</a>.<br />
+<br />
+<br />
+<h5>Conic Modes</h5>
+Several new modes have been added for the construction of <a title="no description" href="tiki-cindydoc.php@page=Conic+Operations.html" class="wiki">conic sections</a>. In particular, it is possible to construct ellipses and hyperbolas by the position of the foci and a perimeter point.<br />
+<br />
+<br />
+<h5>Triangular Mesh</h5>
+In addition to the quadrangular mesh, it is also possible to use a regular triangular mesh for snapping points in <a title="no description" href="tiki-cindydoc.php@page=Geometries.html" class="wiki">Euclidean view</a>.<br />
+<br />
+<br />
+<h5>Background Images</h5>
+It is possible to load a bitmap as a background image. In particular, this enables the analysis of geometric situations that come from exterior sources by overlaying pictures with dynamic drawings.<br />
+<br />
+<br />
+<h5>PDF and Bitmap Export</h5>
+To include Cinderella pictures in other documents, an export to PDF and several image formats are provided. The PDF export also provides the possibility of exact scaling.<br />
+<br />
+<br />
+<hr />
+<br />
+<h3>Enhanced Animations, Traces and Loci</h3>
+<br />
+<h5>New Animation Concept</h5>
+Compared to the old concept of animations, the new <a title="no description" href="tiki-cindydoc.php@page=Animation.html" class="wiki">animation</a> model is much more flexible. While an animation is running, it is still possible to move the base elements of the construction. Also, several animations can be running and controlled at the same time. In particular, it is possible to control the individual speed of each of the animations. The new animations work seamlessly together with the physics simulations that can be constructed using <a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a>.<br />
+<br />
+<br />
+<h5>Traces</h5>
+All geometric elements can leave traces on the screen. Traces become dimmer with age, creating a nice visual effect. This is a very useful feature for improving the dynamic appearance in printouts. Traces may also be used to study the movement of dependent elements. Sometimes, traces are more flexible than loci for this purpose.<br />
+<br />
+<br />
+<h5>Literal Loci</h5>
+Loci are usually drawn as solid lines. In <b>Cinderella.2</b> it is also possible to generate a locus in a way that resembles a trace of the geometric object. For this, a sequence of copies of the traced element is produced on the screen. This feature is particularly valuable in studying traces of objects that cannot be represented by a solid line (such as traces of circles and polygons).<br />
+<br />
+<br />
+<hr />
+<br />
+<h3>Transformation Geometry</h3>
+<br />
+<h5>Transformations</h5>
+<a title="no description" href="tiki-cindydoc.php@page=Transformation+Modes.html" class="wiki">Transformations</a> are one of the major improvements in <b>Cinderella.2</b>. One can define reflections, rotations, translations, similarities, affine transformations, projective transformations, and even Möbius transformations. Transformations are very powerful construction tools in many situations. Arbitrary geometric element can be mapped by transformations.<br />
+<br />
+<br />
+<h5>Transformation Groups</h5>
+Several transformations can be grouped together. A <a title="no description" href="tiki-cindydoc.php@page=Transformation+Groups.html" class="wiki">transformation group</a> now allows a geometric element to be mapped iteratively by all the members of the transformation group. With this tool it is easy to generate ornamental structures even in advanced settings such as hyperbolic geometry.<br />
+<br />
+<br />
+<br />
+<h5>Iterated Function Systems</h5>
+Like a transformation group, an <a title="no description" href="tiki-cindydoc.php@page=Iterated+Function+Systems.html" class="wiki">iterated function system</a> comprises several transformations. However, in this situation a cloud of points is generated that is self-similar with respect of all the translations involved. Usually, an iterated function system is a fractal object that showcases a very interesting and rich structure.<br />
+<br />
+<br />
+<h5>Bases (experimental feature)</h5>
+It is also possible to perform all drawing operations with respect to a basis that has been chosen in advance. The basis can be either a translation basis, a similarity basis, an affine basis, or a projective basis. Using bases, it is very easy to construct perspectively correct pictures of geometric situations.<br />
+<br />
+<br />
+<hr />
+<br />
+<h3>Enhanced Construction Facilities</h3>
+<br />
+<h5>Copy and Paste</h5>
+It is possible to copy and paste parts of a geometric construction. Together with the <a title="no description" href="tiki-cindydoc.php@page=Copy,+Paste,+and+Macros.html" class="wiki">redefine</a> operation, this forms a powerful concept for creating large constructions.<br />
+<br />
+<br />
+<h5>Tool from Selection</h5>
+With the tool from selection mode, one can create individual construction tools that contain their own constructions as macro operations.<br />
+<br />
+<br />
+<h5>Redefine</h5>
+The <a title="no description" href="tiki-cindydoc.php@page=Copy,+Paste,+and+Macros.html" class="wiki">redefine</a> feature is very helpful for changing the dependency structure of a construction. With this tool one can convert a dependent point to a free point and vice versa. Especially in combination with copy/paste, this is a very useful concept.<br />
+<br />
+<br />
+<hr />
+<br />
+<h3>Fundamentally New Program Parts</h3>
+<br />
+<h5>The Inspector</h5>
+In <b>Cinderella.2</b> the inspector became the central controlling unit for all properties of a configuration and its objects. In the <a title="no description" href="tiki-cindydoc.php@page=Inspector.html" class="wiki">inspector</a> one can control and access the appearance properties, the tracing and physical properties, and the definition properties of any object.<br />
+<br />
+<br />
+<h5>CindyScript</h5>
+As already mentioned in the introduction, <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is one of the most important extensions in Cinderella. <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace --> is a fully featured functional programming language that is designed to work seamlessly together with the other parts of Cinderella. Using <!--latexreplace <a title="The Cinderella scripting language CindyScript" href="tiki-cindydoc.php?page=CindyScript" class="wiki">CindyScript</a> --><a title="The Cinderella scripting language ))CindyScript((" href='tiki-cindydoc.php@page=CindyScript.html' class='wiki'>CindyScript</a><!-- /latexreplace -->, it is possible to control the behavior of a dynamic construction. It is also possible to add arbitrary drawing information to a picture.<br />
+<br />
+<br />
+<h5>CindyLab</h5>
+The second major enhancement is <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace -->. This is an engine for physics simulations based on a point-mass/forces simulation model. In <!--latexreplace <a title="no description" href="tiki-cindydoc.php?page=CindyLab" class="wiki">CindyLab</a> --><a title="no description" href='tiki-cindydoc.php@page=CindyLab.html' class='wiki'>CindyLab</a><!-- /latexreplace --> one can simply draw a physical experiment and immediately simulate it. In particular, the interplay of physics and geometry can be studied with Cinderella.<br />
+<br />
+<br />
+<h5>Pen-Driven Devices</h5>
+<b>Cinderella.2</b> offers an input mode that is designed to support pen-driven devices such as tablet PCs, electronic whiteboards, and PDAs. In this mode Cinderella analyzes hand-drawn strokes and translates them (if possible) into geometric constructions.<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Saturday 03 of September, 2011 [10:11:51 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=What%20Is%20New%20in%20Cinderella.2">
+    http://doc.cinderella.de/tiki-index.php?page=What%20Is%20New%20in%20Cinderella.2
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript">
+var tiki_cookie_jar = new Array();
+tiki_cookie_jar = {
+	};
+</script>
+<script type="text/javascript" src="lib/tiki-js.js"></script>
+<title>
+Cinderella Documentation
+ : Geometric OperatorsJ 
+</title>
+
+<link rel="StyleSheet"  href="styles/transitions/1.8to1.9.css" type="text/css" />
+<link rel="StyleSheet"  href="styles/cindydoc.css" type="text/css" />
+<link rel="icon" href="favicon.png" />
+
+
+
+
+    
+
+
+
+<link rel="alternate" type="application/xml" title="RSS Wiki" href="https://doc.cinderella.de/tiki-wiki_rss.php?ver=2" />
+
+
+
+
+</head>
+
+<body >
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" language="JavaScript" src="lib/overlib.js"></script>
+
+
+
+
+
+<div id="tiki-clean">
+  <div  id="tiki-mid">
+    
+
+<div class="wikitopline">
+<table><tr>
+<td style="vertical-align:top;">
+</td>
+</tr></table>
+</div>
+
+<div class="wikitext">
+<h1>幾何学的演算</h1>
+<br />
+幾何学的演算は、幾何の基本的な操作を演算として行うものです。それは、図形の要素や位置を表すベクトル(数のリスト)に適用されます。もし、演算子が図形の要素を返すならば、それをdraw演算子で描画することもできます。<br />
+<br />
+<h2>リストと座標</h2>
+<br />
+直線のための座標は常に同次座標です。すなわち、３つの数のリストで、 <code>[a,b,c]</code> が、方程式 <code>ax+by+c=0</code>を表します。 点の座標はユークリッド座標(２つの数のリスト <code>[x,y]</code>) か、 または同次座標 (３つの数のリスト <code>[x,y,z]</code> で点 <code>[x/z,y/z]</code>)を表す)です。戻り値は常に同次座標です。以下の説明の中では、特に断りなく、点の形式の引数は &#60;point&#62;で、直線の形式の引数は <code>&#60;line&#62;</code> で表します。<br />
+<br />
+<code>&#60;point&#62;</code> と <code>&#60;line&#62;</code> は両方とも３つの数のリストで表現することができるので、両者を区別する方法が必要になります。内部的には、リストは、それが幾何学的にどのような意味を持つのかというフラグを持っています。その情報は、 <code>geotype(&#60;list&#62;)</code> 演算子で得ることができます。この演算子は、 <code>"Point"</code>, <code>"Line"</code>,  <code>"None"</code> のいずれかを返します。ベクトルが持つ幾何学的な意味に応じて、 <code>draw</code> 演算子は対応する図形を描きます。<br />
+<br />
+<br />
+<h2>基本的な幾何学演算子</h2>
+<br />
+<A NAME="meet"></A><br />
+<h4>２直線の交点: <span style="color:red;"><code>meet(&#60;直線1&#62;,&#60;直線2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は２本の直線の交点を計算し、その同次座標を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="join"></A><br />
+<h4>２点を通る直線: <span style="color:red;"><code>join(&#60;点1&#62;,&#60;点2&#62;)</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b> この演算子は、２点を通る直線を計算し、その同次座標を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="para"></A><br />
+<h4>平行線を求める: <span style="color:red;"><code>parallel(&#60;点&#62;,&#60;直線&#62;)</code></span></h4>
+<br />
+<h4>平行線を求める: <span style="color:red;"><code>parallel(&#60;直線&#62;,&#60;点&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子では、点と直線を引数として与え(順序は問わない)、その点を通りその直線に平行な直線を求めます。戻り値は直線の同次座標です。 この演算子はユークリッド幾何に対して適用されます。双曲線幾何と楕円幾何はサポートしていません。この演算子は、 <code>para(...)</code> と略すこともできます。<br />
+<br />
+<hr />
+<br />
+<A NAME="perp2"></A><br />
+<h4>垂線: <span style="color:red;"><code>perpendicular(&#60;点&#62;,&#60;直線&#62;)</code></span></h4>
+<br />
+<h4>垂線: <span style="color:red;"><code>perpendicular(&#60;直線&#62;,&#60;点&#62;)</code></span></h4>
+<br />
+<br />
+<br />
+<b>説明:</b> この演算子では、点と直線を引数として与え(順序は問わない)、その点を通りその直線に垂直な直線を求めます。戻り値は直線の同次座標です。 この演算子はユークリッド幾何に対して適用されます。双曲線幾何と楕円幾何はサポートしていません。この演算子は、  <code>perp(...)</code> と略すこともできます。<br />
+<br />
+<b>組み合わせた例:</b> 次のコードを実行すると図のようになります。それぞれの演算の戻り値が図形のタイプ(点か直線か)を内在していますので、drawall演算子によって自動的に正確に描画されます。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+A=[1,1];
+B=[2,5];
+C=[7,2];
+a=join(B,C);
+b=join(C,A);
+c=join(A,B);
+ha=perpendicular(A,a);
+hb=perpendicular(B,b);
+hc=perpendicular(C,c);
+X=meet(ha,hb);
+drawall([a,b,c,d,ha,hb,hc,X,A,B,C]);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/MeetJoinX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="perp1"></A><br />
+<h4>垂直なベクトル: <span style="color:red;"><code>perpendicular(&#60;リスト&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> もし <code>perp</code> 演算子の引数が、２つの数からなるリスト１つだけとします。その場合は、リスト  <code>[a,b]</code> は <code>[-b,a]</code> に変換されます。それは、もとのベクトルを  90° 回転したものです。<br />
+<hr />
+<br />
+<A NAME="area"></A><br />
+<h4>三角形の面積: <span style="color:red;"><code>area(&#60;点1&#62;,&#60;点2&#62;,&#60;点3&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、&#60;60point1&#62;, &#60;60point2&#62;,  &#60;60point3&#62; を３つの頂点とする三角形の面積を計算します。点の方向が反時計回りならば面積は正、時計回りならば面積は負になります。３点が同一直線上にあるときは面積はゼロです。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2>有用な線形代数演算子</h2>
+<br />
+線形代数で使う次の演算子は幾何でも有用です。特に３次元のベクトルに適用できます。 その状況 (行列の計算、内積など) については、<a title="no description" href="tiki-cindydoc.php@page=Vectors+and+MatricesJ.html" class="wiki">ベクトルと行列</a> の節を参照してください。<br />
+<br />
+<A NAME="det"></A><br />
+<h4>3点の位置ベクトルの行列式: <span style="color:red;"><code>det(&#60;ベクトル1&#62;,&#60;ベクトル2&#62;,&#60;ベクトル3&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、３つの３次元ベクトル  <code>&#60;ベクトル1&#62;</code>, <code>&#60;ベクトル2&#62;</code>, <code>&#60;ベクトル3&#62;</code> からなる 3 × 3 行列の行列式を計算します。<a title="no description" href="tiki-cindydoc.php@page=Vectors+and+MatricesJ.html" class="wiki">ベクトルと行列</a> の節にある一般的な行列式と異なり、この方法はパフォーマンスが優れています。<br />
+<br />
+<hr />
+<br />
+<A NAME="cross"></A><br />
+<h4>2点の位置ベクトルの外積: <span style="color:red;"><code>cross(&#60;ベクトル1&#62;,&#60;ベクトル2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、２つの３次元ベクトルの外積を計算します。外積は３次元ベクトルで、もとの２つのベクトルと垂直です。<br />
+<br />
+<br />
+<hr />
+<hr />
+<br />
+<br />
+<h2>変換とオブジェクトの型</h2>
+<br />
+<A NAME="geotype"></A><br />
+<h4>オブジェクトの型: <span style="color:red;"><code>geotype(&#60;リスト&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、オブジェクトが明確な幾何学的意味を持つかどうかを決定します。戻り値は、文字列で <code>"Point"</code>, <code>"Line"</code>, <code>"None"</code> のいずれかです。<br />
+<br />
+この演算子を、２つの数からなるリストに適用した場合は、常に <code>"Point"</code>を返します。3つの数からなるリストに適用した場合は、このリストの内部フラグによって  <code>"Point"</code>, <code>"Line"</code>, or <code>"None"</code> のいずれかを返します。シンデレラで描画した幾何オブジェクトであれば、常にそのフラグを有しています。 <code>meet</code>  演算子の戻り値は常に "Point" です。 <code>join</code>, <code>parallel</code>,  <code>perpendicular</code>  演算子の戻り値は常に "Line"です。さらに、幾何学的意味は <code>line</code> と <code>point</code> 演算子によって明確に設定することができます。<br />
+<br />
+<hr />
+<br />
+<A NAME="point"></A><br />
+<h4>点の指定: <span style="color:red;"><code>point(&#60;ベクトル&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、３つの数のベクトルを、はっきりと <code>"Point"</code>として位置づけます。引数が３つの数からなるベクトルでなければ無効です。<br />
+<br />
+<hr />
+<br />
+<A NAME="line"></A><br />
+<h4>直線の指定: <span style="color:red;"><code>line(&#60;ベクトル&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は、３つの数のベクトルを、はっきりと <code>"Line"</code> として位置づけます。引数が３つの数からなるベクトルでなければ無効です。<br />
+<br />
+<hr />
+<br />
+<A NAME="complex"></A><br />
+<h4>点を複素数に変換: <span style="color:red;"><code>complex(&#60;点&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は点の座標を複素数に変換します。ここで、ユークリッド座標系はガウスの複素数平面と同一視されます。点  <code>[a,b]</code> は複素数  <code>a+i*b</code>に変換されます。<br />
+<br />
+<hr />
+<br />
+<A NAME="gauss"></A><br />
+<h4>複素数を点に変換: <span style="color:red;"><code>gauss(&#60;点&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> この演算子は先ほどと逆です。複素数  <code>a+i*b</code> を２つの数のリスト <code>[a,b]</code> に変換します<br />
+<br />
+<hr />
+<br />
+<A NAME="crossratio"></A><br />
+<h4>４点または直線の複比: <span style="color:red;"><code>crossratio(&#60;ベクトル&#62;,&#60;ベクトル&#62;,&#60;ベクトル&#62;,&#60;ベクトル&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> ４点の幾何複比を計算します。４点が共線であれば、通常の実数射影平面における複比が計算されます。４点が共線でなければ、複素射影直線の対応した点における複比が計算されます。共線的無限遠点に対しては２つの結果は同等です。<br />
+<br />
+<hr />
+<br />
+<A NAME="crossratio"></A><br />
+<h4>4つの数の複比: <span style="color:red;"><code>crossratio(&#60;数&#62;,&#60; 数 &#62;,&#60; 数 &#62;,&#60; 数&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  4つの実数または複素数の複比 (A/B)/(C/D) を計算します。 とても有用な幾何学的不変量です。<br />
+<br />
+<hr />
+<br />
+<br />
+<h2>幾何学変換と基底</h2>
+<br />
+代数的な方法で幾何の変換を扱うことができます。変換は 3 × 3 行列で表されます。実際の変換は、点の同次座標に変換行列を掛けて行われます。この変換行列を計算するためにいくつかの演算子があります。<br />
+<br />
+<br />
+<A NAME="linereflect"></A><br />
+<h4>線対称: <span style="color:red;"><code>linereflect(&#60;直線&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  &#60;直線&#62;に関して対称な点をを求める行列を返します。<br />
+<br />
+<b>例:</b> 次のコードは直線 <i>a</i> を与えて、対称変換行列を作り、点<i>C</i> の同次座標に掛けて対称点を求めます。結果は緑色の点です。<br />
+<br />
+<br />
+<div dir="ltr"><pre class='codelisting'>
+m=linereflect(a);
+draw(m*C.homog);
+</pre></div><br />
+<br />
+<table align="center" cellspacing=0><tr><td><span class="img"><img alt="" src="img/wiki_up/LineReflectX.png" border="0"  /></span></td></tr><tr><td class="caption"><b></b></td></tr></table><br />
+<br />
+<hr />
+<br />
+<A NAME="pointreflect"></A><br />
+<h4>点対称: <span style="color:red;"><code>pointreflect(&#60;点&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  <code>&#60;点&#62;</code> に関する対称点を求める行列を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>平行移動: <span style="color:red;"><code>map(&#60;点1&#62;,&#60;点2&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  &#60;点1&#62; を &#60;点2&#62; に写す平行移動を表す行列を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>相似変換: <span style="color:red;"><code>map(&#60;点1&#62;,&#60;点2&#62;,&#60;点3&#62;,&#60;点4&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  &#60;点1&#62;を&#60;点2&#62;に、&#60;点3&#62;を&#60;点4&#62; に写す相似変換を表す行列を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>アフィン変換: <span style="color:red;"><code>map(&#60;点1&#62;,&#60;点2&#62;,&#60;点3&#62;,&#60;点4&#62;,&#60;点5&#62;,&#60;点6&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b> &#60;点1&#62;を&#60;点2&#62;に、&#60;点3&#62;を&#60;点4&#62;に、&#60;点5&#62;を&#60;点6&#62; に写すアフィン変換を表す行列を返します。<br />
+<br />
+<hr />
+<br />
+<A NAME="map"></A><br />
+<h4>射影変換: <span style="color:red;"><code>map(&#60;点1&#62;,&#60;点2&#62;,&#60;点3&#62;,&#60;点4&#62;,&#60;点5&#62;,&#60;点6&#62;,&#60;点7&#62;,&#60;点8&#62;)</code></span></h4>
+<br />
+<br />
+<b>説明:</b>  &#60;点1&#62;を&#60;点2&#62;に、&#60;点3&#62;を&#60;点4&#62;に、&#60;点5&#62;を&#60;点6&#62;に、&#60;点7&#62;を&#60;点8&#62; に写す射影変換を表す行列を返します。<br />
+<br />
+<hr />
+<br />
+<br />
+<HR><br />
+<br />
+
+</div> 
+
+
+<p class="editdate">
+  Page last modified on Wednesday 07 of March, 2012 [10:47:08 UTC].
+    <br/>
+    The original document is available at 
+    <a href="http://doc.cinderella.de/tiki-index.php?page=Geometric%20OperatorsJ">
+    http://doc.cinderella.de/tiki-index.php?page=Geometric%20OperatorsJ
+    </a>
+  </p></div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>  
