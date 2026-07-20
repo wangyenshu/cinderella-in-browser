@@ -38,11 +38,10 @@
 
         cheerpjCreateDisplay(1400, 850);
         
-        // Launch Cinderella's core main class directly, bypassing install4j's native watch service checks
         await cheerpjRunMain(
           "de.cinderella.Cindy",
           [
-            "/app/cinderella/Languages",
+            "/app/cinderella/Languages/", 
             "/app/cinderella/lib/antlr.jar",
             "/app/cinderella/lib/cbookif.jar",
             "/app/cinderella/lib/cindy2.jar",
